@@ -1,0 +1,642 @@
+{
+  "Content\\Config\\Primary\\ClanTraits.xml": {
+    "Source": "source\\Content\\Config\\Primary\\ClanTraits.original.xml",
+    "Container": "clanTrait",
+    "Items": [
+      {
+        "ID": "TRAIT_Adaptable",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "我们的旧部族解散了，不过没关系。有新机会摆在眼前，何必回头看呢？" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "我们想换个地方生活。还能容下几个人吗？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "变化是好事。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "这种随遇而安的日子并不坏！需要帮手就告诉我们吧。" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "嗯，听起来不错。我们会去做。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Adventurous",
+        "Description": "想在定居点外担任[主动|ACTIVE][职业|PROFESSION]",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "我们四处看了看，不得不承认这里很让人兴奋。我们很愿意留下。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "我们听说这里有不少了不起的事，就忍不住赶来参与！" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "活在当下吧，谁也不能保证明天。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "与其闲着浪费时间，不如好好把握每一天。生命短暂，值得去看的、去做的事情太多了。" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "好吧，这应该会很有意思！" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Afraid_of_Animals",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "请让我们进去，外面有熊。熊啊！" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "终于……离开树林，来到文明之地了。你得明白，森林绝对是能想象到的最可怕的地方。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "只要看见野兽冰冷漆黑的眼睛，就知道它们脑子里只想着一件事……怎么把我们全杀掉。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "我们可以派上用场。只要别碰任何毛茸茸的东西。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Afraid_of_Fire",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "你们有人负责生火和照看炊火，对吧？我们真的受够自己处理这些事了。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "呃，问一下……你会经常梦见自己被烧死吗？" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "问题有点怪，不过这些帐篷会着火吗？" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "如果有差事，我们很愿意听听……只要你确定不会让我们葬身火海。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Afraid_of_Water",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们真的需要一个落脚处。再在雨里过一夜，我们肯定会疯掉。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "水。最糟糕的东西。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "请别安排会把我们弄湿的差事。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Aggressive",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "有谁的脸需要砸烂吗？" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "有人点了一支单氏族破坏队吗？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "你知道打断鼻梁时那种令人满意的“咔嚓”声吗？嗯，刚刚正想到那个……" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "大概就是等着什么时候能去砸几张脸吧。" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "开始吧！" }
+        ]
+      },
+      {
+        "ID": "TRAIT_All_Thumbs",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "大家手里拿着走来走去的那种末端有金属块的木棍是什么？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "是的……他让我们中的一个人帮忙拿一下锤子……我没想到会变成那样。这种事故正说明工具天生危险。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "承认吧，让我们远离那些精细工具活也许是明智的，但别以为我们就什么都做不好。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Apathetic",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "我想这里和别处也差不多。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "这地方看着还行。那就停在这里吧。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "随便吧。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "有活……没活……说实话，这真的重要吗？" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "好——吧，为什么不呢？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Ascetic",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "诸神向我们开口，命我们与你们一同定居于此。希望你能理解。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "今生的牺牲，会在来世得到回报。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "诸神最眷顾辛勤劳作之人。" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "诸神如此旨意：我们将劳动。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Attentive",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "来的路上，我们注意到附近有几处值得留意的地方。也许我们可以替你仔细看看，再回来报告。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "不知道你有没有发现，你的束腰外衣上好像有块污渍。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "我们只是想指出，很多其他氏族已经被安排了具体任务……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Boisterous",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "啊哈！你一定就是这个非常……伟大……部族的领袖！今晚我们为你举杯！" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Bow_Legged",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "你绝不会相信我们走到这里花了多久，何况那些人还说路不远！" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "不，我们没有连续骑马好几天。事实上我们连马都没有。（换行）……你为什么这么问？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Brown_Thumb",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们的庄稼全死了……大概是土不好之类的。所以我们放弃了那块没用的地。这里长势更好吗？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "人和动物会变大，是因为我们把别的东西吃进肚子里。可植物到底怎么变大？它们又不吃东西！真令人费解。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "我们一直用这些空闲时间种盆栽，练习农活！说起来，叶尖变黄是什么意思？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Calm",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "你好。如果可以的话，我们想加入。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "不太明白为什么人们总觉得非得闹出点动静。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "不用干活确实轻松，但我们也不介意出点力。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Charismatic",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "旅途中我们听说过你卓越领导的传闻。现在看来，传闻确有其事。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Competitive",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "该死！我们没能比 (CLAN_ON_TILE) 更早到这里。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "只用了 27 天就走到这里。以这段距离来说，这可是纪录时间！" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Confident",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "感谢收留我们。我向你保证，我们会对这个共同体有价值。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Corrupt",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们是来拿自己应得那份的。你明白吧？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Craven",
+        "Description": "会拒绝攻击敌方军队"
+      },
+      {
+        "ID": "TRAIT_Creative",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "嗯……来的路上我们刚想到一个点子。你想听听吗？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Curious",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "所以，你有什么故事？" },
+          { "XPath": "comments_Random/comment/text", "Value": "你有没有想过，大约一千六百年后的人会过着什么样的生活？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Demanding",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们要搬进来了。住多久？无限期。所以，让你的氏族把帐篷从那块地方挪开，对，就是那块视野不错的地方，我们要在那里安顿。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Eager",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "准备好了，有能力，也很愿意！" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Easily_Cold",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "别想在冬天把我们派出去。说真的。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Efficient",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们比预计更早抵达，而且还有不少力气。有什么需要做的？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "许多事情只要重新仔细考虑做法，就能改进。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "你知道吗？没有让每个健壮的氏族成员都去工作，会损失很多潜在收益。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Envious",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "啊，所以你们就是那些把好地全占着的人。看来现在你们得和我们分享了，对吧？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "为什么别人都有事做，我们却只能坐在这里？" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "(CLAN_ON_TILE) 的帐篷明显比别人的都大吧？我是说，拜托，他们凭什么？" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "什么，真的？你想让我们去当 (TRAINING_IN_PROFESSION)，而 (CLAN_ON_TILE) 却在做……不管他们在做什么？明明我们会做得更好。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Fastidious",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "真的？你准备让我们住在那里？这绝对不行。我们得重新布置一些东西。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Fecund",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "感谢你邀请我们进来，但我得先提醒，我们可能需要额外空间。路上又要添新人了……！" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "没有比繁衍更崇高的使命了，你说呢？" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "一个人的脑子任何时候都只该想着两件事之一：生产和繁衍。现在我们没有在生产，所以……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Filthy",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "哇……你们把这里收拾得真干净。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "你们的人进棚屋前会脱鞋……真奇怪。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "你知道一直洗来洗去会让皮肤变干吧？" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "反正我闻不出来。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Frail",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "我们太虚弱，走不动了……可以在这里结束旅程吗？" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "玛丽发着高烧，根德拉肚子，吉姆断了条腿，不过除此之外，我们随时能上。" },
+          { "XPath": "comments_Random/comment/text", "Value": "可能……要吐了……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Gentle",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "希望我们能和你以及你的人一起在这里定居。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Gluttonous",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "备好你们最好的肉，在餐厅清出一张桌子，因为我们到了，而这位朋友，正是值得庆祝的理由！" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "几周陈旧的路粮让我们的胃口更大了。打开你的柜子，让我们看看有什么能填饱它。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "今晚，我们要大吃一顿！" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "别错过享受人生滋味的机会。" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "给我们点事做吧，免得我们又胖又懒。" },
+          { "XPath": "comments_Random/comment/text", "Index": 3, "Value": "啊，正合胃口！" },
+          { "XPath": "comments_Random/comment/text", "Index": 4, "Value": "我们要去哪儿？希望是个菜肴不错的地方。" },
+          { "XPath": "comments_Random/comment/text", "Index": 5, "Value": "你确定我们的食物足够撑过冬天吗？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Green_Thumb",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们真心希望你有些需要照料的植物。你看，我们对这种活还算有些本事。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Gregarious",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "哦，我们经历过的事情可多了。你根本想不到。先是有个奇怪的商人，不停说他找到一处能治愈任何伤口的矿泉。然后呢……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Haggler",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们暂时会帮你一把，但别指望我们永远如此。人生万事都有价码。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "下一支商队什么时候来？" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "如果你需要和谁谈成交易，就告诉我们。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Handy",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "谢谢你收留我们。作为回报，我们很乐意替你建点什么，或修点什么。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "等等……你的意思是我们可以就这么留下？没有附加条件？这倒新鲜。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "会使用工具，是人与野兽的区别。会把工具用好，则是人与庸人的区别！" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "那个我们能修。" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "有什么需要我们建造的吗？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Herder",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "像我们这样跟着羊群走了这么久，你也会闻起来像它们。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "有人听见了吗？我有种咩——妙的预感……" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "每次想数清我们有多少只羊，我都会睡着。" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "附近有什么动物需要我们照看吗？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Hillmen",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们的崎岖故乡如今也许太危险，不能居住，但我们仍对那里了如指掌。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "这片土地像海一样平。我们不喜欢海。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "*哈欠*[NEWLINE]我们的故乡从没这么无聊……也许我们该回去。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Hoarder",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "等等，什么？！为了加入你的部族，我们得把东西全交给你？也许这主意根本不怎么样……" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "我们的棚屋被东西塞得有点满。也许该卖掉一些。嗯，也许等明年春天吧……" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "至少没事做的时候，我们能把东西藏起来，躲开所有贪婪的目光。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Imaginative",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "啊，我们终于见面了！没错，我们梦见过这一刻。梦里还预示，我们会一起成就伟业。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "哦！我想得太入神，差点没注意到这座……呃……定居点。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "如果我们发现一座隐藏山谷，里面生活着许多巨大的古老生物，那不是太惊人了吗？" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "我们有几个相当不错的点子，也许能帮上这里的忙。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Impatient",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "终于到了。[NEWLINE]嘿，我们结束了吗？我们还有很多东西要卸，你和我们谈得越久，我们就越晚弄完。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "你是不是也觉得，每件事都比预想的耗时更久？" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "还要多久我们才能真正，嗯，做点什么？" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "所以……我们到了没有？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Impulsive",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "对，这就是我们命中注定该来的地方！你不也这么觉得吗？[NEWLINE]等等……那边是什么？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "我们对之前那件事改主意了。现在觉得建个公共浴场可能不错……哦，或者来个 ___ 也挺好！" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "当斥候听起来挺有趣……不过铁匠好像也不坏……[NEWLINE]啊，算了。晚饭在哪？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Independent",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "遗憾的是，想保住脑袋，我们似乎不能再独自待着。即便如此，最好还是让我们按自己的方式行事。[NEWLINE]成交？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "又来检查我们了？你是不信任我们还是什么？" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "我们越早离开这堆拥挤的人群越好……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Intimidating",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "没错，我们就是 (NAME)。怎么了？这个名字对你有意义吗？最好别让我们听见你在背后议论。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "如果我们不让其他氏族守规矩，就没人会这么做了。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "所以，你到底有没有事情让我们做，还是要让我们继续坐在这里吓小孩？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Lazy",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "呼……你根本不会相信我们已经走了多久。该死，至少也有好几个小时吧。[NEWLINE]所以……有地方能坐吗？" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "那段苦路之后，能休息一会儿就太好了。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "你知道吗，放轻松确实对健康有好处。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "ZZZZZZZZZZZZZ……[NEWLINE]*哼哧*" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "很高兴你也同意，人生不全是干活。" },
+          { "XPath": "comments_Random/comment/text", "Index": 3, "Value": "啊……躺着什么都不做最好了。" },
+          { "XPath": "comments_Random/comment/text", "Index": 4, "Value": "真的，这么快就有差事？我们才刚安顿下来……" },
+          { "XPath": "comments_Random/comment/text", "Index": 5, "Value": "好吧，我想我们会去做的。毕竟在强者眼里，我们都只是驮马。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Leperous",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "是的，我们知道，你不必说。我们会……待在角落里。像往常一样……" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "拜托……别那样看着我们……" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "你知道，这也没那么容易传染……" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "什么都不做也没那么糟。总比被人默默嘲笑强多了。" },
+          { "XPath": "comments_Random/comment/text", "Index": 3, "Value": "我们真希望 (CLAN_ON_TILE) 别再盯着我们看了……我们到底做错了什么……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Local",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "啊，我们从附近其他氏族那里听说了很多关于你的事。如果你有时间，我们可以告诉你哪里食物最多，哪些河别碰，哪些树后面最适合小解。你知道，都是重要消息。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "这是我们唯一熟悉的地方。很难相信有一天我们终究得把它抛在身后……" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "你知道，如果没什么事要我们做，也许我们可以回旧家看看。算是休个小假？[NEWLINE]好吧，是的，我就知道不行……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Low_Fertility",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们知道人数也许不多，但我们打算为你努力干活。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Loyal",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "感谢你收留我们，我们保证你不会后悔。既然我们如今欠你一份大恩，你希望我们做什么？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "我们为侍奉而生。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "如果你需要任何事，任何事都可以，尽管召唤我们。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Marshmen",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们叫 (NAME)，来自潮湿又难闻的土地。但干地……嗯，这倒是新鲜。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "我们本来想自称“沼泽人”，但不知为什么，总觉得哪里怪怪的……" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "如果你有能发挥这一点的差事，水对我们来说并不算什么障碍。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Meek",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "哦……[NEWLINE]你好……" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "嗯……[NEWLINE]算了。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "呃……那个……我们就这样……待着不做事……没关系吗？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Miserable",
+        "Description": "会拒绝[攻击|ATTACK]敌方[军队|ARMY]",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "继续下去也没什么意义，但看来诸神还没折磨够我们。所以……我们来了。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "我想落到这种地方，总比死了强。呵，走着瞧吧。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "唉。[NEWLINE]这一切都太……没意义了。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "也许有活干来分散注意力，人生就不会显得这么可怕……" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "所以，你真想让我们当 (TRAINING_IN_PROFESSION)？认真的？唉……这肯定会糟透。" },
+          { "XPath": "comments_Random/comment/text", "Index": 3, "Value": "又这么冷。每年都一样。我们快撑不住了……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Nervous",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "天啊，真不敢相信我们居然完整地到了这里……等等！那块石头刚才动了！你看见了，对吧？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "我有种不好的预感……关于什么？我是说……你知道，所有事！" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "干坐着最糟了……你只会去想所有可能发生的可怕事情。而且它们大概真的会发生。唉……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Nomadic",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "这些土地很危险，看来我们暂时要与你同行。但你要知道，我们并不打算永远留在这里。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "闭上眼，想象一片无边无际的美丽大地。那曾是我们的家。也许有一天我们会回去。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "整天坐在装满陌生人的巨大帐篷里，实在让我们不太自在。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Northmen",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "问候！听说你们的人一年到头都支着帐篷？哈，太荒唐了！夏天可热得受不了。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "天气这么好，为什么大家还穿着上衣？" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "没有什么比毛皮更实用又时髦。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Obsessive",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们听说了你的事，也谈过要来这里，很快我们就再也想不了别的，所以我们来了！" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "我已经想那棵老树想了好几个星期。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "我们一直停不下来地想着，怎样才能更好地为共同体效力。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Obstinate",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "行，我们同意加入你的部族，但事情要按我们的方式来。明白了吗？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Paranoid",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "重新开始会不错，但这里所有人迟早也会背叛我们。人就是这样，不能信任。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "所以我们可以留下？[NEWLINE]别装了，有什么条件？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "只有当你的理论被证明是错的，那才叫多疑。否则，那叫智慧！" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "树林里到处都是眼睛……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Passionate",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "加入你的部族会是我们遇到过最好的事，我们就是知道！" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Reclusive",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "你能直接告诉我们哪些帐篷归我们吗？" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Rivermen",
+        "Nodes": [
+          { "XPath": "comments_Random/comment/text", "Value": "有些人会晕船。那我第一个告诉你：我们会晕陆。没错，真有这回事。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Rustic",
+        "Nodes": [
+          { "XPath": "comments_Random/comment/text", "Value": "头顶只有开阔天空就能入睡，那才是正道。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Sensitive",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我们上一任氏族领袖极其忘恩负义。希望你会不同……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Squeamish",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "等等，那是什么？你也看见了，对吧？" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "短尾巴的动物最糟，因为你总能看见它们的……它们的……你懂的……" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "负责 (CLAN_ON_TILE) 的那家伙，两眼中间长着一颗可怕的大脓包。这让人……实在很难和他说话。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Stoic",
+        "Nodes": [
+          { "XPath": "comments_Random/comment/text", "Value": "需要我们时，我们就在这里。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Stubborn",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "这不完全是我们原本要去的地方，但该死，我们绝不会再回到外面。我们要留下。" },
+          { "XPath": "comments_Random/comment/text", "Value": "宁愿坐着，也不想让你要求我们做些荒唐事，逼得我不得不拒绝。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Sullen",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "请别问我们从哪来，也别问为什么来。这是……一个真正令人沮丧的故事。反正你也不会想听。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "死亡总是比任何人意识到的都更近。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "没别的事可做时，很难不陷进阴暗的念头里……" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Thorough",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "和你的几位氏族成员谈过，又检查了住处之后，我们判断这里确实可以成为我们的合适家园。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "不用带我们参观了，谢谢。我们已经自己看过不少地方。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "花时间真正弄清手头任务的方方面面，才能得到更好的结果。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "我们已经开始为一项任务做准备。有安排时就告诉我们。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Tough",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "我都记不清来路上有多少强盗袭击过我们了。哦，别担心，我们没事。[NEWLINE]不过既然你提到了，也许有人能帮忙把我兄弟汉瑟里克膝盖上的箭拔出来？" },
+          { "XPath": "comments_Random/comment/text", "Value": "传说高高高祖父 (CLAN_NAME) 曾把一头熊当作爱人。你也看得出来，熊血现在被冲淡了些。但这仍然很能解释一些事。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Vigorous",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Value": "行了行了，我们宣誓效忠之类的。不用带我们参观，把地图拿来，把装备拿出来。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "保持强健体魄的关键，就是不断把自己逼到极限！" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "世界这么小，但拜托，总该还有更多地方可去吧！" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "我们已经准备出发，只要给个目的地！" },
+          { "XPath": "comments_Random/comment/text", "Index": 3, "Value": "(TRAINING_IN_PROFESSION)。好，我们马上去做。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Violent",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "你的定居点软弱又脆弱。只要有足够的铁与血，我们就能修好这一点。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "上一个地方我们一个活口都没留。小心别落得和他们一样。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "你考虑过把人头插在木桩上吓退进攻者吗？人头我们来提供。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "这世上到处都是杀戮与屠灭。什么时候轮到我们？" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "(TRAINING_IN_PROFESSION)？你开玩笑吗？好吧，如果这是粉碎敌人所需，那就这样。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Wasteful",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "我们为了减轻负重丢下了一些补给，想着你会有替代品。幸好我们来得正是时候。再晚一两天，我们可能就饿死了……！" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "这里一定能让我们逃过风霜，我知道！" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "其他氏族总在翻我们的垃圾，真有点恶心……他们是在挨饿还是怎么？" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "培根要是没有边上那些肥肉就好多了。把它们剔掉太麻烦。" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "我们总该有点用处吧。" },
+          { "XPath": "comments_Random/comment/text", "Index": 3, "Value": "(TRAINING_IN_PROFESSION)……不太清楚那是怎么回事，但试试看吧。" },
+          { "XPath": "comments_Random/comment/text", "Index": 4, "Value": "呼，我们可不是为这种天气而生的。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Wild",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "我们听说这里有吃有喝。嗯。不过还需要更刺激一点！" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "所以……这附近有什么好玩的？拜托，别告诉我们你们像上个部族一样端着架子。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "“把自己洗干净？”什么？！你说话像个罗马人。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "他们让我们安分下来。他们让我们穿裤子。嘿嘿……他们不会再犯那种错误了！" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "反正闲着也是闲着，我们会自己找乐子的！" },
+          { "XPath": "comments_Random/comment/text", "Index": 3, "Value": "(TRAINING_IN_PROFESSION) 啊？好，我们应该能玩出点花样！" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Wood_Collectors",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "想找结实的斧头，就不用再找了。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "你也会被噩梦般的橡树和云杉幻象纠缠吗？我们来治好这毛病。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "我们家最小的孩子刚砍倒了他的第一棵树！" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "你刚才说把我们的斧头放哪儿了？" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "(TRAINING_IN_PROFESSION)……嗯……是的，我们大概能把斧头用在那上面。" }
+        ]
+      },
+      {
+        "ID": "TRAIT_Woodsmen",
+        "Nodes": [
+          { "XPath": "comments_Intro/comment/text", "Index": 0, "Value": "森林是我们的第一个家。那我们为什么来这里？当然是两个家比一个好。" },
+          { "XPath": "comments_Intro/comment/text", "Index": 1, "Value": "树木开口了。它们叫我们来这里。" },
+          { "XPath": "comments_Random/comment/text", "Index": 0, "Value": "你见过森林冠层上方闪烁的星光吗？没见过？很好，交给我们吧。外面很危险。" },
+          { "XPath": "comments_Random/comment/text", "Index": 1, "Value": "这片土地可以多几棵树，你不觉得吗？" },
+          { "XPath": "comments_Random/comment/text", "Index": 2, "Value": "我们已经准备好面对荒野。" },
+          { "XPath": "comments_Random/comment/text", "Index": 3, "Value": "你说 (TRAINING_IN_PROFESSION)？太好了，没有什么比困在帐篷里更糟。" }
+        ]
+      }
+    ]
+  },
+  "Content\\Config\\Primary\\Techs.xml": {
+    "Source": "source\\Content\\Config\\Primary\\Techs.original.xml",
+    "Container": "tech",
+    "Items": [
+      {
+        "ID": "TECH_WRAPPER_HONOR",
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[HONOR]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[HONOR]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+      },
+      {
+        "ID": "TECH_WRAPPER_AGRICULTURE",
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[AGRICULTURE]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[AGRICULTURE]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+      },
+      {
+        "ID": "TECH_WRAPPER_LIVESTOCK",
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[LIVESTOCK]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[LIVESTOCK]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+      },
+      {
+        "ID": "TECH_WRAPPER_METALWORKING",
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[METALWORKING]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[METALWORKING]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+      },
+      {
+        "ID": "TECH_WRAPPER_CRAFTING",
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[CRAFTING]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[CRAFTING]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+      },
+      {
+        "ID": "TECH_WRAPPER_DISCOVERY",
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[DISCOVERY]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[DISCOVERY]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+      }
+    ]
+  }
+}

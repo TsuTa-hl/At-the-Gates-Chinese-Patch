@@ -1,0 +1,17 @@
+.tmp/
+.tools/
+
+# Original game resources and extracted backups are not uploaded.
+source/
+
+# .NET build outputs for the IL rewriter.
+tools/AtG.IlRewrite/bin/
+tools/AtG.IlRewrite/obj/
+
+# Local/editor noise.
+.vs/
+.vscode/
+*.user
+*.suo
+Thumbs.db
+Desktop.ini

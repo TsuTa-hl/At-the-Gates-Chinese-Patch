@@ -1,0 +1,272 @@
+[
+  {
+    "Original": "You lack sufficient ",
+    "Translation": "缺少足够的",
+    "MethodToken": "0x060013e5",
+    "ILOffset": 164,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksAnyResourceFromList100",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure text for action button tooltips."
+  },
+  {
+    "Original": " (",
+    "Translation": "（仍需",
+    "MethodToken": "0x060013e5",
+    "ILOffset": 182,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksAnyResourceFromList100",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure punctuation."
+  },
+  {
+    "Original": " more needed).",
+    "Translation": "）。",
+    "MethodToken": "0x060013e5",
+    "ILOffset": 203,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksAnyResourceFromList100",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure suffix."
+  },
+  {
+    "Original": "You lack sufficient ",
+    "Translation": "缺少足够的",
+    "MethodToken": "0x060013e8",
+    "ILOffset": 161,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksAnyResources100",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure text for action button tooltips."
+  },
+  {
+    "Original": " (",
+    "Translation": "（仍需",
+    "MethodToken": "0x060013e8",
+    "ILOffset": 184,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksAnyResources100",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure punctuation."
+  },
+  {
+    "Original": " more needed).",
+    "Translation": "）。",
+    "MethodToken": "0x060013e8",
+    "ILOffset": 205,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksAnyResources100",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure suffix."
+  },
+  {
+    "Original": "You lack sufficient ",
+    "Translation": "缺少足够的",
+    "MethodToken": "0x060013eb",
+    "ILOffset": 102,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksResources100",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure text for action button tooltips."
+  },
+  {
+    "Original": " (",
+    "Translation": "（仍需",
+    "MethodToken": "0x060013eb",
+    "ILOffset": 124,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksResources100",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure punctuation."
+  },
+  {
+    "Original": " more needed).",
+    "Translation": "）。",
+    "MethodToken": "0x060013eb",
+    "ILOffset": 145,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksResources100",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure suffix."
+  },
+  {
+    "Original": "You lack sufficient ",
+    "Translation": "缺少足够的",
+    "MethodToken": "0x060013ee",
+    "ILOffset": 230,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksResourcesToCreate",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure text for action button tooltips."
+  },
+  {
+    "Original": " (need ",
+    "Translation": "（需要",
+    "MethodToken": "0x060013ee",
+    "ILOffset": 248,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksResourcesToCreate",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure punctuation."
+  },
+  {
+    "Original": " more).",
+    "Translation": "）。",
+    "MethodToken": "0x060013ee",
+    "ILOffset": 269,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_LacksResourcesToCreate",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure suffix."
+  },
+  {
+    "Original": "You lack sufficient ",
+    "Translation": "缺少足够的",
+    "MethodToken": "0x060013f1",
+    "ILOffset": 116,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToHeal",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure text for action button tooltips."
+  },
+  {
+    "Original": " (",
+    "Translation": "（仍需",
+    "MethodToken": "0x060013f1",
+    "ILOffset": 133,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToHeal",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure punctuation."
+  },
+  {
+    "Original": " more needed).",
+    "Translation": "）。",
+    "MethodToken": "0x060013f1",
+    "ILOffset": 154,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToHeal",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure suffix."
+  },
+  {
+    "Original": "You lack sufficient ",
+    "Translation": "缺少足够的",
+    "MethodToken": "0x060013f4",
+    "ILOffset": 116,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToImproveMood",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure text for action button tooltips."
+  },
+  {
+    "Original": " (",
+    "Translation": "（仍需",
+    "MethodToken": "0x060013f4",
+    "ILOffset": 133,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToImproveMood",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure punctuation."
+  },
+  {
+    "Original": " more needed).",
+    "Translation": "）。",
+    "MethodToken": "0x060013f4",
+    "ILOffset": 154,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToImproveMood",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure suffix."
+  },
+  {
+    "Original": "You lack sufficient ",
+    "Translation": "缺少足够的",
+    "MethodToken": "0x060013f7",
+    "ILOffset": 116,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToEnnoble",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure text for action button tooltips."
+  },
+  {
+    "Original": " (",
+    "Translation": "（仍需",
+    "MethodToken": "0x060013f7",
+    "ILOffset": 133,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToEnnoble",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure punctuation."
+  },
+  {
+    "Original": " more needed).",
+    "Translation": "）。",
+    "MethodToken": "0x060013f7",
+    "ILOffset": 154,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToEnnoble",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure suffix."
+  },
+  {
+    "Original": "You lack sufficient ",
+    "Translation": "缺少足够的",
+    "MethodToken": "0x060013fa",
+    "ILOffset": 111,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToUpgradeCaravan",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure text for action button tooltips."
+  },
+  {
+    "Original": " (",
+    "Translation": "（仍需",
+    "MethodToken": "0x060013fa",
+    "ILOffset": 128,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToUpgradeCaravan",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure punctuation."
+  },
+  {
+    "Original": " more needed).",
+    "Translation": "）。",
+    "MethodToken": "0x060013fa",
+    "ILOffset": 149,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToUpgradeCaravan",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure suffix."
+  },
+  {
+    "Original": "You lack sufficient ",
+    "Translation": "缺少足够的",
+    "MethodToken": "0x060013fd",
+    "ILOffset": 142,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToTrainForMagisterMilitum",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure text for action button tooltips."
+  },
+  {
+    "Original": " (",
+    "Translation": "（仍需",
+    "MethodToken": "0x060013fd",
+    "ILOffset": 159,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToTrainForMagisterMilitum",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure punctuation."
+  },
+  {
+    "Original": " more needed).",
+    "Translation": "）。",
+    "MethodToken": "0x060013fd",
+    "ILOffset": 180,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasResourcesToTrainForMagisterMilitum",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Display-only resource requirement failure suffix."
+  }
+]

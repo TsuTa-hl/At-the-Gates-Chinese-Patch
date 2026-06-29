@@ -1,0 +1,56 @@
+[
+  {
+    "Original": "Settlement is Idle",
+    "Translation": "定居点空闲",
+    "Safety": "SafeUI",
+    "Note": "Pilot UI ldstr patch entry; byte patch skips this source as fallback coverage is preserved for the rest."
+  },
+  {
+    "Original": "[HOTKEY:Spacebar] View, manage or ",
+    "Translation": "[HOTKEY:Spacebar] 查看、管理或",
+    "MethodToken": "0x0600025e",
+    "StringToken": "0x7000c10c",
+    "Safety": "SafeUI",
+    "Note": "WorldScreen.CreatePopcapPanel clan/support tooltip prefix."
+  },
+  {
+    "Original": " the ",
+    "Translation": " ",
+    "MethodToken": "0x0600025e",
+    "StringToken": "0x7000c152",
+    "Safety": "SafeUI",
+    "Note": "WorldScreen.CreatePopcapPanel English article between action and Clan concept."
+  },
+  {
+    "Original": " who make up your Tribe.",
+    "Translation": "。",
+    "MethodToken": "0x0600025e",
+    "StringToken": "0x7000c15e",
+    "Safety": "SafeUI",
+    "Note": "WorldScreen.CreatePopcapPanel clan/support tooltip suffix."
+  },
+  {
+    "Original": "You can view or select which ",
+    "Translation": "查看或选择",
+    "MethodToken": "0x0600026c",
+    "StringToken": "0x7000cfbe",
+    "Safety": "SafeUI",
+    "Note": "WorldScreen.Refresh_ResearchLabel study task tooltip."
+  },
+  {
+    "Original": " you can ",
+    "Translation": "可",
+    "MethodToken": "0x0600026c",
+    "StringToken": "0x7000cffa",
+    "Safety": "SafeUI",
+    "Note": "WorldScreen.Refresh_ResearchLabel study task tooltip connector."
+  },
+  {
+    "Original": " by clicking this button or pressing [HOTKEY:F1].",
+    "Translation": "：点击此按钮或按[HOTKEY:F1]。",
+    "MethodToken": "0x0600026c",
+    "StringToken": "0x7000d00e",
+    "Safety": "SafeUI",
+    "Note": "WorldScreen.Refresh_ResearchLabel study task tooltip suffix."
+  }
+]
