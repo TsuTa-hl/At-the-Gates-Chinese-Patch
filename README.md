@@ -1,5 +1,16 @@
 # Jon Shafer's At the Gates 简体中文补丁
 
+## 开发者说明
+
+这是我用codex为独立游戏Jon Shafer's At the Gates的汉化补丁，本体见：
+https://store.steampowered.com/app/241000/Jon_Shafers_At_the_Gates/
+
+本体2020年以较低的完成度停止更新，类似Jon Shafer更早的另一作品Sid Meier's Civilization 4 Colonization，特色为人口-职业机制。
+补丁目前完成度也较低，原因是本体仅支持英文无本地化框架，大量未汉化文本AI扫描不到，需要人力游玩提高覆盖率。
+劳累，玩腻了随时弃坑喵。
+
+## AI说明
+
 这是一个本地补丁工程。脚本默认按以下顺序定位游戏目录：
 
 1. 命令行参数 `-GamePath`
