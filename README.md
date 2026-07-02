@@ -5,8 +5,10 @@
 这是我用codex为独立游戏Jon Shafer's At the Gates制作的汉化补丁，本体见：
 https://store.steampowered.com/app/241000/Jon_Shafers_At_the_Gates/
 
+安装方式1：运行Install-ChinesePatch.ps1
+安装方式2：将patch路径下的文件覆盖到\steamapps\common\Jon Shafer's At the Gates
+
 本体2020年以较低的完成度停止更新，特色为人口-职业机制，类似Jon Shafer在Firaxis作为original prototype参与的Sid Meier's Civilization 4 Colonization。
-补丁目前完成度也较低，劳累，玩腻了随时弃坑喵。
 
 ## AI说明
 
