@@ -1,0 +1,162 @@
+[
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1422,
+        "Original":  " enemy ",
+        "Translation":  "敌方",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1438,
+        "Original":  ", reducing the ",
+        "Translation":  "，减少",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1454,
+        "Original":  " available on their ",
+        "Translation":  "可用于其",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1529,
+        "Original":  "Reduces the [Supply Level|SUPPLY] of a ",
+        "Translation":  "降低[Supply Level|SUPPLY]：",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1545,
+        "Original":  " by an additional ",
+        "Translation":  "额外",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1599,
+        "Original":  " enemy ",
+        "Translation":  "敌方",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1625,
+        "Original":  "Can explore ",
+        "Translation":  "可以探索",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1646,
+        "Original":  "Unable to [Attack|ATTACK]",
+        "Translation":  "无法[攻击|ATTACK]",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1948,
+        "Original":  " suffered in combat",
+        "Translation":  "战斗中承受",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1980,
+        "Original":  " suffered after [Retreating|RETREAT]",
+        "Translation":  "[撤退|RETREAT]后承受",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2012,
+        "Original":  " when fighting [Romans|ROME]",
+        "Translation":  "对抗[罗马人|ROME]时",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2044,
+        "Original":  " when fighting [Bandits|BANDIT]",
+        "Translation":  "对抗[强盗|BANDIT]时",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2213,
+        "Original":  " loss by [Defending|DEFENSE] ",
+        "Translation":  "通过[防御|DEFENSE]损失",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2229,
+        "Original":  " on the same ",
+        "Translation":  "在同一",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2281,
+        "Original":  " for all other ",
+        "Translation":  "对所有其他",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2297,
+        "Original":  " on the same ",
+        "Translation":  "在同一",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-2"
+    }
+]

@@ -1,0 +1,86 @@
+[
+{
+    "Assembly": "Common",
+    "Original": "If a member of the Tribal Council...",
+    "Translation": "如果是部族议会成员……",
+    "MethodToken": "0x0600172e",
+    "ILOffset": 82,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.GAME",
+    "MethodName": "BuildDescription_ClanTrait",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial config description text.",
+    "EvidenceScenario": "trial-common-config-description-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "While a member of the Tribal Council...",
+    "Translation": "担任部族议会成员时……",
+    "MethodToken": "0x0600172e",
+    "ILOffset": 89,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.GAME",
+    "MethodName": "BuildDescription_ClanTrait",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial config description text.",
+    "EvidenceScenario": "trial-common-config-description-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "\n\n[COLOR:BAD-RED]This Desire has been granted![/COLOR]",
+    "Translation": "\n\n[COLOR:BAD-RED]此愿望已经满足！[/COLOR]",
+    "MethodToken": "0x06001732",
+    "ILOffset": 251,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.GAME",
+    "MethodName": "BuildDescription_Desire",
+    "Safety": "TooltipFragment",
+    "Note": "Trial config desire description text; preserves color tag.",
+    "EvidenceScenario": "trial-common-config-description-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "% bonus to [Resource Production|PRODUCE]",
+    "Translation": "% [资源生产|PRODUCE]加成",
+    "MethodToken": "0x06001730",
+    "ILOffset": 393,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.GAME",
+    "MethodName": "BuildDescription_Families",
+    "Safety": "TooltipFragment",
+    "Note": "Trial family description text; preserves concept ID.",
+    "EvidenceScenario": "trial-common-config-description-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Refuses to work",
+    "Translation": "拒绝工作",
+    "MethodToken": "0x06001731",
+    "ILOffset": 82,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.GAME",
+    "MethodName": "BuildDescription_Mood",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial mood description text.",
+    "EvidenceScenario": "trial-common-config-description-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "In this state permanently",
+    "Translation": "永久处于此状态",
+    "MethodToken": "0x06001731",
+    "ILOffset": 175,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.GAME",
+    "MethodName": "BuildDescription_Mood",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial mood description text.",
+    "EvidenceScenario": "trial-common-config-description-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "No bonuses or penalties",
+    "Translation": "无加成或惩罚",
+    "MethodToken": "0x06001731",
+    "ILOffset": 203,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.GAME",
+    "MethodName": "BuildDescription_Mood",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial mood description text.",
+    "EvidenceScenario": "trial-common-config-description-1"
+}
+]

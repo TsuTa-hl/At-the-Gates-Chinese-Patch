@@ -1,0 +1,162 @@
+[
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060005f6",
+    "ILOffset": 251,
+    "Original": "Meet with",
+    "Translation": "会见",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy/war dialog action text.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060005f6",
+    "ILOffset": 257,
+    "Original": "in order to make a request or declare war.",
+    "Translation": "才能提出请求或宣战。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy/war dialog tooltip text.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600052f",
+    "ILOffset": 158,
+    "Original": "In the process of being trained as",
+    "Translation": "正在训练为",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog reinforce/training dialog text.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060004ca",
+    "ILOffset": 374,
+    "Original": "is needed).",
+    "Translation": "才可以）。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog make-war target requirement fragment.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060004cb",
+    "ILOffset": 66,
+    "Original": "It is done.",
+    "Translation": "办妥了。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog make-war confirmation text.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060004c4",
+    "ILOffset": 210,
+    "Original": "Leader wiil declare war on:",
+    "Translation": "领袖将宣战对象：",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog make-war target dialog label; original typo preserved only in locator.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000687",
+    "ILOffset": 68,
+    "Original": "Instruct this leader to declare war on another faction.",
+    "Translation": "命令这位领袖向另一派系宣战。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy action tooltip.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000679",
+    "ILOffset": 1126,
+    "Original": "Leader has announced this to the world, which will affect how other Leaders behave in the future.",
+    "Translation": "领袖已向天下宣布此事，这会影响其他领袖日后的行为。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy announcement text.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600068c",
+    "ILOffset": 127,
+    "Original": "My brother!",
+    "Translation": "我的兄弟！",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy dialogue response.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000741",
+    "ILOffset": 76,
+    "Original": "Mercenaries are weaker than normal troops, but they don't require spending any Villagers and are handy in a pinch.",
+    "Translation": "佣兵比正规部队弱，但无需消耗村民，危急时很有用。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog help tip body text.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060005ea",
+    "ILOffset": 20,
+    "Original": "PREVIOUS PAGE",
+    "Translation": "上一页",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog load/save pagination button.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003ff",
+    "ILOffset": 20,
+    "Original": "Next Clan",
+    "Translation": "下个氏族",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan message button.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060004e0",
+    "ILOffset": 9,
+    "Original": "Note attached to",
+    "Translation": "备注附加于",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog tile note popup label.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060004e9",
+    "ILOffset": 17,
+    "Original": "Note for",
+    "Translation": "备注：",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan note popup label.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000487",
+    "ILOffset": 28,
+    "Original": "Send Clan to Rome",
+    "Translation": "派氏族前往罗马",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog victory progress action.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060004f2",
+    "ILOffset": 18,
+    "Original": "shall henceforth be known as...",
+    "Translation": "从此将被称为……",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog rename clan popup text.",
+    "EvidenceScenario": "trial-ui-dialog-actions-1"
+  }
+]

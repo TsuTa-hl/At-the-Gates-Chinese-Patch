@@ -1,0 +1,50 @@
+[
+  {
+    "Assembly": "Game",
+    "Original": "Currently [Occupied|OCCUPIED] (",
+    "Translation": "当前[已占用|OCCUPIED]（",
+    "MethodToken": "0x060012ae",
+    "ILOffset": 389,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_CanForageOnTile",
+    "MethodName": "CanForageOnCurrentTile",
+    "Safety": "TooltipFragment",
+    "Note": "Trial forage-on-tile availability fragment.",
+    "EvidenceScenario": "trial-game-static-checks-5"
+  },
+  {
+    "Assembly": "Game",
+    "Original": "Currently [Occupied|OCCUPIED] (",
+    "Translation": "当前[已占用|OCCUPIED]（",
+    "MethodToken": "0x060012ae",
+    "ILOffset": 517,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_CanForageOnTile",
+    "MethodName": "CanForageOnCurrentTile",
+    "Safety": "TooltipFragment",
+    "Note": "Trial forage-on-tile availability fragment.",
+    "EvidenceScenario": "trial-game-static-checks-5"
+  },
+  {
+    "Assembly": "Game",
+    "Original": ":S] in the [SETTLEMENT] (",
+    "Translation": ":S]在[定居点|SETTLEMENT]中（",
+    "MethodToken": "0x0600133b",
+    "ILOffset": 266,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasClansToBecomeMagisterMilitum",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Magister Militum clan-count requirement suffix; preserves the preceding plural tag suffix.",
+    "EvidenceScenario": "trial-game-static-checks-5"
+  },
+  {
+    "Assembly": "Game",
+    "Original": "This [Clan|CLAN] has maxed out its ability to Improve Mood.",
+    "Translation": "这个[氏族|CLAN]改善心情的能力已达到上限。",
+    "MethodToken": "0x0600139e",
+    "ILOffset": 152,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_NotImproveMoodMaxLimit",
+    "MethodName": "PerformCheck",
+    "Safety": "TooltipFragment",
+    "Note": "Trial improve-mood limit static-check text.",
+    "EvidenceScenario": "trial-game-static-checks-5"
+  }
+]

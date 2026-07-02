@@ -1,0 +1,162 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 7405,
+    "Original": "Minimum of ",
+    "Translation": "至少",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 7507,
+    "Original": " inside ",
+    "Translation": "位于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 7570,
+    "Original": " allowed on Tribal Council",
+    "Translation": "可进入部族议会",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 7624,
+    "Original": "Allows ",
+    "Translation": "允许",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 7732,
+    "Original": "Allows [Traits|CLAN-TRAIT] to be removed from [Clans|CLAN] in the [SETTLEMENT] by spending ",
+    "Translation": "允许在[SETTLEMENT]中移除[Clans|CLAN]的[Traits|CLAN-TRAIT]，消耗",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog property details fragment preserving concept IDs.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 7748,
+    "Original": " [PARCHMENT].",
+    "Translation": "[PARCHMENT]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog property details fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 7764,
+    "Original": "Allows [Crimes|CRIME] to be removed from [Clans|CLAN] in the [SETTLEMENT] by spending ",
+    "Translation": "允许在[SETTLEMENT]中移除[Clans|CLAN]的[Crimes|CRIME]，消耗",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog property details fragment preserving concept IDs.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 7780,
+    "Original": " [PARCHMENT].",
+    "Translation": "[PARCHMENT]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog property details fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 7989,
+    "Original": "Cannot switch ",
+    "Translation": "无法切换",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 8029,
+    "Original": "Extra ",
+    "Translation": "额外",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 8094,
+    "Original": " fewer ",
+    "Translation": "更少",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 8101,
+    "Original": " additional ",
+    "Translation": "额外",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 8446,
+    "Original": " is never worse than [",
+    "Translation": "绝不会低于[",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment preserving partial tag boundary.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 8895,
+    "Original": "Likelihood of engaging in ",
+    "Translation": "发生概率：",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 8927,
+    "Original": " on the same ",
+    "Translation": "在同一",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 8966,
+    "Original": "Likelihood of engaging in ",
+    "Translation": "发生概率：",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-5"
+  }
+]

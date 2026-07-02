@@ -249,7 +249,8 @@ Measure-AtGStage -Summary $timing -Name "clan-card-assets" -ScriptBlock {
 function Remove-AtGGeneratedFontPatch {
     param(
         [string]$FontDirectory,
-        [string]$RootDirectory
+        [string]$RootDirectory,
+        [int]$MaxAttempts = 5
     )
 
     if (!(Test-Path -LiteralPath $FontDirectory)) {
@@ -262,7 +263,23 @@ function Remove-AtGGeneratedFontPatch {
         throw "Refusing to remove font patch outside patch root: $resolvedFontDirectory"
     }
 
-    Remove-Item -LiteralPath $resolvedFontDirectory -Recurse -Force
+    for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
+        try {
+            Remove-Item -LiteralPath $resolvedFontDirectory -Recurse -Force
+            return
+        }
+        catch {
+            if ($attempt -ge $MaxAttempts) {
+                throw "Unable to remove generated font patch after $MaxAttempts attempts: $resolvedFontDirectory. $($_.Exception.Message)"
+            }
+
+            $delayMs = [Math]::Min(2000, 250 * [Math]::Pow(2, $attempt - 1))
+            Write-Warning ("Generated font patch directory is temporarily locked; retrying removal attempt {0}/{1} after {2} ms." -f ($attempt + 1), $MaxAttempts, $delayMs)
+            [GC]::Collect()
+            [GC]::WaitForPendingFinalizers()
+            Start-Sleep -Milliseconds $delayMs
+        }
+    }
 }
 
 $fontOutDir = Join-Path $PatchRoot "Content\Images\Interface\Components\Fonts"
@@ -426,6 +443,7 @@ foreach ($mapPath in @(
     (Join-Path $PSScriptRoot "..\translations\hardcoded-ui-il-rewrite.json"),
     (Join-Path $PSScriptRoot "..\translations\hardcoded-ui-il-strings.json"),
     (Join-Path $PSScriptRoot "..\translations\hardcoded-common-il-rewrite.json"),
+    (Join-Path $PSScriptRoot "..\translations\hardcoded-game-il-rewrite.json"),
     (Join-Path $PSScriptRoot "..\translations\hardcoded-ui-offsets.json")
 )) {
     Add-AtGJsonMapTranslationsToBuilder -Builder $largeFontCharsBuilder -MapPath $mapPath
@@ -470,7 +488,8 @@ $fontSpecs = @(
 $fontStopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 $fontCachePath = Join-Path $fontOutDir ".atg-font-cache.json"
 $fontCharacterSetsPath = Join-Path $fontOutDir ".atg-font-character-sets.json"
-$fontCacheVersion = "merged-fonts-cache-v4-il-rewrite-charsets"
+$fontCacheVersion = "merged-fonts-cache-v5-large-ui-pad0"
+$fontMarkerVersion = "merged-fonts-v5-large-ui-pad0"
 $fontHashBuilder = New-Object System.Text.StringBuilder
 [void]$fontHashBuilder.AppendLine($fontCacheVersion)
 [void]$fontHashBuilder.AppendLine("full:")
@@ -487,7 +506,7 @@ foreach ($spec in $fontSpecs) {
 
     $sourceFontItem = Get-Item -LiteralPath $sourceFont
     $profile = if ($null -ne $spec.Profile) { [string]$spec.Profile } else { "Full" }
-    $glyphPadding = if ($profile -eq "LargeUi") { 1 } else { 2 }
+    $glyphPadding = if ($profile -eq "LargeUi") { 0 } else { 2 }
     [void]$fontHashBuilder.AppendLine("$($spec.Name)|$($spec.Size)|$($spec.Bold)|$profile|padding=$glyphPadding|$($sourceFontItem.Length)|$($sourceFontItem.LastWriteTimeUtc.Ticks)")
     $expectedFontOutputs.Add((Join-Path $fontOutDir ($spec.Name + ".xnb"))) | Out-Null
     $expectedFontOutputs.Add((Join-Path $fontOutDir ($spec.Name + ".png"))) | Out-Null
@@ -532,7 +551,7 @@ else {
         $png = Join-Path $fontOutDir ($spec.Name + ".png")
         Write-Host "Generating merged font $($spec.Name)..."
         $charactersForFont = if ($spec.Profile -eq "LargeUi") { $largeFontChars } else { $chars }
-        $glyphPadding = if ($spec.Profile -eq "LargeUi") { 1 } else { 2 }
+        $glyphPadding = if ($spec.Profile -eq "LargeUi") { 0 } else { 2 }
         $args = @{
             SourcePath     = $sourceFont
             OutputPath     = $xnb
@@ -551,7 +570,7 @@ else {
         }
     }
 
-    "merged-fonts-v4-il-rewrite-charsets" | Set-Content -LiteralPath $fontMarker -Encoding ASCII
+    $fontMarkerVersion | Set-Content -LiteralPath $fontMarker -Encoding ASCII
     [pscustomobject]@{
         Version = $fontCacheVersion
         InputHash = $fontInputHash
@@ -654,6 +673,9 @@ $timingReportForJson = foreach ($timingStage in @(Get-AtGTimingReport -Summary $
     }
 }
 
+$metallurgyAliasName = -join ([char[]](0x51B6, 0x91D1))
+$metallurgyAliasPath = Join-Path $PatchRoot ("Content\Images\Interface\ScreenSpecific\ClanCard\{0}\PortraitBackground_2.xnb" -f $metallurgyAliasName)
+
 $buildReport = [ordered]@{
     GeneratedAtUtc = [DateTime]::UtcNow.ToString("o")
     PatchRoot = (Resolve-Path -LiteralPath $PatchRoot).Path
@@ -692,7 +714,7 @@ $buildReport = [ordered]@{
         UiDll = Test-Path -LiteralPath (Join-Path $PatchRoot "AtTheGatesUI.dll") -PathType Leaf
         CommonDll = Test-Path -LiteralPath (Join-Path $PatchRoot "AtTheGatesCommon.dll") -PathType Leaf
         GameExe = Test-Path -LiteralPath (Join-Path $PatchRoot "At The Gates.exe") -PathType Leaf
-        ClanCardMetallurgyAlias = Test-Path -LiteralPath (Join-Path $PatchRoot "Content\Images\Interface\ScreenSpecific\ClanCard\鍐堕噾\PortraitBackground_2.xnb") -PathType Leaf
+        ClanCardMetallurgyAlias = Test-Path -LiteralPath $metallurgyAliasPath -PathType Leaf
     }
     Timing = @($timingReportForJson)
 }

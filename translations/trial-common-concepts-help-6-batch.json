@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2050,
+    "Original": "Mines are a group of [Mineral|MINERAL]-[Producing|PRODUCE] [Structures|STRUCTURE] that include [IRON-MINE-1:S], [COAL-MINE-1:S], [PEAT-MINE-1:S], [GOLD-MINE-1:S], [GEM-MINE-1:S], [SALT-MINE-1:S], and [STONE-QUARRY-1:S].",
+    "Translation": "矿场是一组[产出|PRODUCE][矿物|MINERAL]的[建筑|STRUCTURE]，包括[IRON-MINE-1:S]、[COAL-MINE-1:S]、[PEAT-MINE-1:S]、[GOLD-MINE-1:S]、[GEM-MINE-1:S]、[SALT-MINE-1:S]和[STONE-QUARRY-1:S]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help mine body; preserve raw structure tags.",
+    "EvidenceScenario": "trial-common-concepts-help-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2071,
+    "Original": "Pastures are a group of [Structures|STRUCTURE] which add [Animals|ANIMAL] to your [Stockpile|STOCKPILE] that include [CATTLE-PASTURE-1:S], [SHEEP-PASTURE-1:S], [PIG-PASTURE-1:S], and [HORSE-PASTURE-1:S].[BLANK-LINE]Pastures are [Constructed|CONSTRUCT] by [RANCHER:S].",
+    "Translation": "牧场是一组会把[动物|ANIMAL]加入你[库存|STOCKPILE]的[建筑|STRUCTURE]，包括[CATTLE-PASTURE-1:S]、[SHEEP-PASTURE-1:S]、[PIG-PASTURE-1:S]和[HORSE-PASTURE-1:S]。[BLANK-LINE]牧场由[RANCHER:S][建造|CONSTRUCT]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help pasture body; preserve raw structure/profession tags.",
+    "EvidenceScenario": "trial-common-concepts-help-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2092,
+    "Original": "Plants are one of the three types of [Deposits|DEPOSIT] in At the Gates ([Animals|ANIMAL] and [Minerals|MINERAL] being the other two).[BLANK-LINE]Like all Deposits, Plants can be [Harvested|HARVEST] to [Produce|PRODUCE] [Resources|RESOURCE], but most types must first be [Identified|UNIDENTIFIED] by a [GATHERER], [REAPER], or [SURVEYOR].[BLANK-LINE]There are 7 types of Plants in AtG:[BLANK-LINE][*][DEPOSIT-BERRIES:S] (always Identified)[END-LINE][*][DEPOSIT-FRUIT-TREES:S][END-LINE][*][DEPOSIT-WHEAT:S] (always Identified)[END-LINE][*][DEPOSIT-BARLEY:S][END-LINE][*][DEPOSIT-OLIVES:S][END-LINE][*][DEPOSIT-GRAPES:S][END-LINE][*][DEPOSIT-FLAX:S]",
+    "Translation": "植物是 At the Gates 三类[资源点|DEPOSIT]之一，另外两类是[动物|ANIMAL]和[矿物|MINERAL]。[BLANK-LINE]与所有资源点一样，植物可以被[采收|HARVEST]来[产出|PRODUCE][资源|RESOURCE]，但多数类型必须先由[GATHERER]、[REAPER]或[SURVEYOR][识别|UNIDENTIFIED]。[BLANK-LINE]AtG 中有 7 类植物：[BLANK-LINE][*][DEPOSIT-BERRIES:S]（总是已识别）[END-LINE][*][DEPOSIT-FRUIT-TREES:S][END-LINE][*][DEPOSIT-WHEAT:S]（总是已识别）[END-LINE][*][DEPOSIT-BARLEY:S][END-LINE][*][DEPOSIT-OLIVES:S][END-LINE][*][DEPOSIT-GRAPES:S][END-LINE][*][DEPOSIT-FLAX:S]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help plant body; preserve raw deposit/profession tags.",
+    "EvidenceScenario": "trial-common-concepts-help-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2113,
+    "Original": "Minerals are one of the three types of [Deposits|DEPOSIT] in At the Gates ([Animals|ANIMAL] and [Plants|PLANT] being the other two).[BLANK-LINE]Like all Deposits, Minerals can be [Harvested|HARVEST] to [Produce|PRODUCE] [Resources|RESOURCE], but all types must first be [Identified|UNIDENTIFIED] by a [DIGGER] or [SURVEYOR].[BLANK-LINE]There are 7 types of Minerals in AtG:[BLANK-LINE][*][DEPOSIT-IRON][END-LINE][*][DEPOSIT-STONE][END-LINE][*][DEPOSIT-COAL][END-LINE][*][DEPOSIT-PEAT][END-LINE][*][DEPOSIT-SALT][END-LINE][*][DEPOSIT-GOLD][END-LINE][*][DEPOSIT-GEMS]",
+    "Translation": "矿物是 At the Gates 三类[资源点|DEPOSIT]之一，另外两类是[动物|ANIMAL]和[植物|PLANT]。[BLANK-LINE]与所有资源点一样，矿物可以被[采收|HARVEST]来[产出|PRODUCE][资源|RESOURCE]，但所有类型都必须先由[DIGGER]或[SURVEYOR][识别|UNIDENTIFIED]。[BLANK-LINE]AtG 中有 7 类矿物：[BLANK-LINE][*][DEPOSIT-IRON][END-LINE][*][DEPOSIT-STONE][END-LINE][*][DEPOSIT-COAL][END-LINE][*][DEPOSIT-PEAT][END-LINE][*][DEPOSIT-SALT][END-LINE][*][DEPOSIT-GOLD][END-LINE][*][DEPOSIT-GEMS]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help mineral body; preserve raw deposit/profession tags.",
+    "EvidenceScenario": "trial-common-concepts-help-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2134,
+    "Original": "Animals are one of the three types of [Deposits|DEPOSIT] in At the Gates ([Plants|PLANT] and [Minerals|MINERAL] being the other two).[BLANK-LINE]Like all Deposits, Animals can be [Harvested|HARVEST] to [Produce|PRODUCE] [Resources|RESOURCE], but most types must first be [Identified|UNIDENTIFIED] by a [HUNTER], [TRAPPER], or [SURVEYOR].[BLANK-LINE]All types of Animals can be [Harvested|HARVEST] for [MEAT] by a [HUNTER] and [PARCHMENT] or [CLOTH] (as leather) by a [TRAPPER]. All Animals but [DEER] can be added to your [Stockpile|STOCKPILE] and used by advanced [Professions|PROFESSION] like the [MEAT-CUTTER] and [PARCHMENT-MAKER].[BLANK-LINE]There are 5 types of Animals in AtG:[BLANK-LINE][*][DEPOSIT-DEER] (always Identified)[END-LINE][*][DEPOSIT-HORSES][END-LINE][*][DEPOSIT-CATTLE][END-LINE][*][DEPOSIT-SHEEP][END-LINE][*][DEPOSIT-PIGS]",
+    "Translation": "动物是 At the Gates 三类[资源点|DEPOSIT]之一，另外两类是[植物|PLANT]和[矿物|MINERAL]。[BLANK-LINE]与所有资源点一样，动物可以被[采收|HARVEST]来[产出|PRODUCE][资源|RESOURCE]，但多数类型必须先由[HUNTER]、[TRAPPER]或[SURVEYOR][识别|UNIDENTIFIED]。[BLANK-LINE]所有动物都可由[HUNTER][采收|HARVEST]为[MEAT]，也可由[TRAPPER]采收为[PARCHMENT]或[CLOTH]（皮革）。除[DEER]外，所有动物都可加入你的[库存|STOCKPILE]，供[MEAT-CUTTER]、[PARCHMENT-MAKER]等高级[职业|PROFESSION]使用。[BLANK-LINE]AtG 中有 5 类动物：[BLANK-LINE][*][DEPOSIT-DEER]（总是已识别）[END-LINE][*][DEPOSIT-HORSES][END-LINE][*][DEPOSIT-CATTLE][END-LINE][*][DEPOSIT-SHEEP][END-LINE][*][DEPOSIT-PIGS]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help animal body; preserve raw deposit/resource/profession tags.",
+    "EvidenceScenario": "trial-common-concepts-help-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2155,
+    "Original": "Most [Deposits|DEPOSIT] start off Unidentified and you must have a [Clan|CLAN] in an appropriate [Profession|PROFESSION] figure out what it is before you can use it.[BLANK-LINE][Plants|PLANT] can be identified by [GATHERER:S] and [REAPER:S], [Minerals|MINERAL] by [DIGGER:S], and [Animals|ANIMAL] by [HUNTER:S] and [TRAPPER:S]. Deposits of any kind can be identified by the [SURVEYOR].",
+    "Translation": "多数[资源点|DEPOSIT]开局时尚未识别，必须让一个处于合适[职业|PROFESSION]的[氏族|CLAN]查明其内容，才能使用。[BLANK-LINE][植物|PLANT]可由[GATHERER:S]和[REAPER:S]识别，[矿物|MINERAL]可由[DIGGER:S]识别，[动物|ANIMAL]可由[HUNTER:S]和[TRAPPER:S]识别。任意类型的资源点都可由[SURVEYOR]识别。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help unidentified deposit body; preserve raw profession tags.",
+    "EvidenceScenario": "trial-common-concepts-help-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2197,
+    "Original": "Each [Clan|CLAN] can be [Trained|TRAIN] in one Profession, which can be [Active|ACTIVE] or [Settled|SETTLED] and grant it the ability to [Harvest|HARVEST] or refine [Resources|RESOURCE], explore the map, [Fight|WARRIOR] enemies, and more.[BLANK-LINE]The performance of Clans in a specific Profession can be improved by buying [Upgrades|UPGRADE] for it. Note that these Upgrades only apply for that specific Profession - switch to something else and the effect will be lost.",
+    "Translation": "每个[氏族|CLAN]都可以被[训练|TRAIN]为一种职业。职业可以是[主动|ACTIVE]或[定居|SETTLED]，并赋予氏族[采收|HARVEST]或精炼[资源|RESOURCE]、探索地图、与敌人[战斗|WARRIOR]等能力。[BLANK-LINE]为特定职业购买[升级|UPGRADE]可以提高氏族在该职业中的表现。注意，这些升级只适用于该职业；切换为其他职业后效果会失去。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help profession body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2218,
+    "Original": "There are six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to: [HONOR], [AGRICULTURE], [LIVESTOCK], [METALWORKING], [CRAFTING], and [DISCOVERY].[BLANK-LINE]Clans gain [Experience|XP] and can increase their [Level|LEVEL] in the Discipline their Profession belongs to, which reduces the [Turns|TURN] needed to [Train|TRAIN] it in more advanced Professions within that Discipline.",
+    "Translation": "[职业|PROFESSION]和[氏族|CLAN]可归属于六种[纪律|DISCIPLINE]：[HONOR]、[AGRICULTURE]、[LIVESTOCK]、[METALWORKING]、[CRAFTING]和[DISCOVERY]。[BLANK-LINE]氏族会获得[经验|XP]，并提升其职业所属纪律的[等级|LEVEL]，从而减少在该纪律内[训练|TRAIN]更高级职业所需的[回合|TURN]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help discipline body; preserve discipline raw tags and concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-6"
+  }
+]

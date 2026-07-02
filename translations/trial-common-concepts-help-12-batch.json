@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3827,
+    "Original": "[Clans|CLAN] and [Structures|STRUCTURE] that are captured from another [Faction|FACTION] suffer a permanent -50% penalty to [Resource Production|PRODUCE] and [Morale|MORALE]. Captured Clans have a red-tinted card background.",
+    "Translation": "从另一个[派系|FACTION]手中夺取的[氏族|CLAN]和[建筑|STRUCTURE]，会永久承受 -50% 的[资源产出|PRODUCE]和[士气|MORALE]惩罚。被俘获的氏族卡牌背景会带有红色调。",
+    "Safety": "LogicSensitive",
+    "Note": "Trial Common concept-help captured penalty body; display-only paragraph.",
+    "EvidenceScenario": "trial-common-concepts-help-12"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3848,
+    "Original": "If your Tribe runs out of [FOOD] all of your [Clans'|CLAN] [Mood|MOOD] will drop by 1 per turn. If more than half of your clans become Resentful you will be overthrown and lose the game![BLANK-LINE]Each of your [Clans'|CLAN] [Families|FAMILY] [Consumes|CONSUME] 0.2 per [Turn|TURN], so make sure you have enough to last through the winter!",
+    "Translation": "如果部族耗尽[FOOD]，所有[氏族|CLAN]的[心情|MOOD]每回合都会下降 1。若超过半数氏族变得怨恨，你将被推翻并输掉游戏！[BLANK-LINE]每个[氏族|CLAN]的[家庭|FAMILY]每[回合|TURN][消耗|CONSUME] 0.2 点，因此务必确保食物足够撑过冬天。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help starvation body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-12"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3905,
+    "Original": "Your [SETTLEMENT] is able to Train one [Clan|CLAN] at a time, and usually in a [Profession|PROFESSION]. Professions grant a Clan the ability to [Harvest|HARVEST] or refine [Resources|RESOURCE], explore the map, [Fight|WARRIOR] enemies, and more.[BLANK-LINE]You can also Train Clans in a specific [Discipline|DISCIPLINE] by clicking on the 'Train Clan in Discipline' button in the Clans Screen. This can be a good way to get a Clan ready for a role you know you want it to serve in but don't have the Resources or have finished [Studying|STUDY] the target Profession yet. Switching a Clan from one Discipline to another is free, and you can further increase its [Level|LEVEL] in a Discipline this way, but this requires spending [PARCHMENT].[BLANK-LINE]If there's nothing you want to Train during the turn you can click the 'Skip' button in the bottom-left corner of the Clans Screen in order to finish the turn.",
+    "Translation": "你的[SETTLEMENT]一次可以训练一个[氏族|CLAN]，通常是训练其[职业|PROFESSION]。职业能让氏族[采收|HARVEST]或精炼[资源|RESOURCE]、探索地图、[作战|WARRIOR]等。[BLANK-LINE]你也可以在氏族界面点击“训练氏族纪律”按钮，让氏族接受特定[纪律|DISCIPLINE]训练。当你已经知道某个氏族将来要承担的角色，但暂时缺少资源，或尚未完成目标职业的[研究|STUDY]时，这会很有用。氏族在不同纪律之间切换是免费的，也可以用这种方式进一步提高其纪律[等级|LEVEL]，但需要花费[PARCHMENT]。[BLANK-LINE]如果本回合没有想训练的内容，可以点击氏族界面左下角的“跳过”按钮来结束回合。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help training body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-12"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3967,
+    "Original": "You can Study one [Tech|TECH] (usually a [Profession|PROFESSION]) at a time, and once [Learned|LEARN] you can [Train|TRAIN] your [Clans|CLAN] in it.[BLANK-LINE]The rate at which you Learn a Tech is based on its [KNOWLEDGE] cost, and how much [KNOWLEDGE] you're [Producing|PRODUCE] each turn.[BLANK-LINE]To Study more advanced Professions at least one Profession from the previous 'tier' in its [Discipline|DISCIPLINE] tree must have already been Learned.",
+    "Translation": "你一次可以研究一项[科技|TECH]（通常是一个[职业|PROFESSION]），一旦[习得|LEARN]，就能用它[训练|TRAIN]你的[氏族|CLAN]。[BLANK-LINE]习得科技的速度取决于其[KNOWLEDGE]花费，以及你每回合[生产|PRODUCE]多少[KNOWLEDGE]。[BLANK-LINE]若要研究更高级的职业，其[纪律|DISCIPLINE]树中上一“层级”至少要有一个职业已经习得。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help study body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-12"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3988,
+    "Original": "Once you've [Studied|STUDY] a [Tech|TECH] long enough to accumulate the full [KNOWLEDGE] cost you may then make use of it:[BLANK-LINE][*]After Learning a [Profession|PROFESSION] you may then [Train|TRAIN] [Clans|CLAN] in it.[BLANK-LINE][*]After Learning an [Upgrade|UPGRADE] you can then spend the [Resources|RESOURCE] required to apply it to  a Clan in the associated Profession.[BLANK-LINE][*]Each of the 6 [Discipline|DISCIPLINE] Techs you can Study at the start of the game allows you to give one of your Clans 2 free [Levels|LEVEL] in that Discipline.",
+    "Translation": "当你[研究|STUDY]一项[科技|TECH]并积累到完整[KNOWLEDGE]花费后，就可以使用它：[BLANK-LINE][*]习得一个[职业|PROFESSION]后，你可以用它[训练|TRAIN][氏族|CLAN]。[BLANK-LINE][*]习得一项[升级|UPGRADE]后，你可以花费所需[资源|RESOURCE]，将其应用到对应职业的氏族身上。[BLANK-LINE][*]游戏开始时可研究的 6 项[纪律|DISCIPLINE]科技，每项都能让你的一个氏族在该纪律中免费获得 2 个[等级|LEVEL]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help learn body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-12"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4009,
+    "Original": "There are 3 kinds of Techs which you can [Study|STUDY] and [Learn|LEARN]:[BLANK-LINE][*][Professions|PROFESSION][BLANK-LINE][*][Upgrades|UPGRADE][BLANK-LINE][*][Discipline|DISCIPLINE] [Level-Up|LEVEL] Techs",
+    "Translation": "你可以[研究|STUDY]并[习得|LEARN] 3 类科技：[BLANK-LINE][*][职业|PROFESSION][BLANK-LINE][*][升级|UPGRADE][BLANK-LINE][*][纪律|DISCIPLINE][升级|LEVEL]科技",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help tech types body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-12"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4030,
+    "Original": "Most [Professions|PROFESSION] have 2 associated Upgrade [Techs|TECH] you can [Learn|LEARN] and then purchase for [Clans|CLAN] in that Profession. The [Resource|RESOURCE] cost of each Upgrade is different, so pay attention! Upgrades only apply for that specific Profession - switch to something else and the effect will be lost.[BLANK-LINE]Note that a Profession's Upgrade Techs can be [Studied|STUDY] in either  order - you need not finish one before the other, despite how they're stacked in the screen.[BLANK-LINE]Upon reaching [Level|LEVEL] 10 in a [Discipline|DISCIPLINE] a Clan can be given one free Upgrade.",
+    "Translation": "大多数[职业|PROFESSION]都有 2 项关联的升级[科技|TECH]，你可以[习得|LEARN]后为该职业的[氏族|CLAN]购买。每项升级所需[资源|RESOURCE]不同，请留意！升级只适用于特定职业；切换到其他职业后效果会失去。[BLANK-LINE]注意，一个职业的升级科技可以按任意顺序[研究|STUDY]；尽管它们在界面中上下叠放，你不必先完成其中一个才能研究另一个。[BLANK-LINE]当一个氏族在某项[纪律|DISCIPLINE]中达到[等级|LEVEL] 10 时，可以获得一次免费升级。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help upgrades body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-12"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4118,
+    "Original": "A [Warrior|WARRIOR] can be given the 'Dig In' command, which allows it to accumulate a [Defense|DEFENSE] bonus on its current [Tile|TILE] of 25% per turn, up to a maximum of 100%.[BLANK-LINE]This bonus will be lost as soon as the [Unit|UNIT] moves or performs another action, so don't expect to go anywhere for a while after you Dig In.[BLANK-LINE]Digging In does not provide a Unit with [Supply|SUPPLY], making this a very dangerous action to perform outside your [Borders|BORDERS] during the [winter|COLD].",
+    "Translation": "[战士|WARRIOR]可以执行“固守”命令，使其在当前[地格|TILE]每回合积累 25% 的[防御|DEFENSE]加成，最高 100%。[BLANK-LINE]一旦[单位|UNIT]移动或执行其他行动，该加成就会失去，因此固守后短时间内不要指望它继续机动。[BLANK-LINE]固守不会为单位提供[补给|SUPPLY]；在[冬季|COLD]时，于[边界|BORDERS]外执行此行动非常危险。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help dig-in body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-12"
+  }
+]

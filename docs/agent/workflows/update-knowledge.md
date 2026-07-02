@@ -13,6 +13,8 @@ pre-test synchronization phase during the normal repair cycle.
 - `docs/agent/translation-style.md`
 - `docs/agent/crash-risks.md`
 - `docs/agent/black-box-tests.md`
+- `docs/agent/trial-localization-state.json` if trial localization batches
+  were selected, run, accepted, rejected, or deferred.
 - The workflow files used in the current cycle.
 
 ## Inputs
@@ -58,7 +60,36 @@ pre-test synchronization phase during the normal repair cycle.
    - Smoke duration.
    - UI test duration and screenshot/hover count.
    - Failure-loop rework duration.
-7. Keep `AGENTS.md` short. Put operational details in `operations.md`, workflow
+7. If trial localization ran, update `docs/agent/trial-localization-state.json`
+   before regenerating review output:
+   - Add each batch path, source scope, input count, accepted count, rejected
+     count, and final status.
+   - Add rejected single entries with assembly, `MethodToken`, `ILOffset`,
+     exact `Original`, failure reason, and retry condition.
+   - Record catalog-precision failures separately from unsafe text failures.
+   - Update the next batch-size guidance only when observed failure density
+     changes.
+8. Regenerate the human review table of known text before final reporting when
+   translation maps, static candidates, DLL catalogs, or trial-localization
+   results changed:
+
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Export-KnownTextReview.ps1
+   ```
+
+   Then validate the review export shape:
+
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-KnownTextReviewExport.ps1
+   ```
+
+   The generated review file is `docs\review\known-texts.csv`: a
+   spreadsheet-friendly table with source, kind, original, translation, status,
+   whether localization was attempted, attempt status, failure reason, safety,
+   notes, and locators. Do not keep a generated Markdown duplicate.
+9. Update `docs\review\project-inventory.md` when files, generated artifacts,
+   test evidence policy, or cleanup decisions change.
+10. Keep `AGENTS.md` short. Put operational details in `operations.md`, workflow
    steps in `docs/agent/workflows/`, and domain facts in the topic files.
 
 ## Stop Conditions

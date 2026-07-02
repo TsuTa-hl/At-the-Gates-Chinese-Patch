@@ -1,0 +1,98 @@
+[
+{
+    "Assembly": "Common",
+    "Original": "Your Tribe can only support a certain number of ",
+    "Translation": "你的部族只能支持一定数量的",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3869,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts clan-limit help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-17"
+},
+{
+    "Assembly": "Common",
+    "Original": ", and once you reach this limit you will no longer gain any [FAME].[BLANK-LINE]You can increase your Clan Limit by clicking the 'Increase Clan Limit' button in the Clans Screen and spending [CLOTH]. The cost of this action increases each time you use it.",
+    "Translation": "，达到上限后，你将不再获得任何[FAME]。[BLANK-LINE]你可以在氏族界面点击“提高氏族上限”按钮并花费[CLOTH]来提高氏族上限。每次执行此行动，花费都会增加。",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3879,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts clan-limit help text; preserves resource token.",
+    "EvidenceScenario": "trial-common-concepts-help-17"
+},
+{
+    "Assembly": "Common",
+    "Original": " in some [Active|ACTIVE] [Civilian|CIVILIAN] [Professions|PROFESSION] like [FARMER] and [MINER] can Construct [Structures|STRUCTURE] to [Harvest|HARVEST] [Resources|RESOURCE] from [Deposits|DEPOSIT] or [Dense Forests|FOREST]. This requires either [TIMBER] or [STONE-BLOCKS], and is generally not something you'll start doing until a year or two into the game.",
+    "Translation": "中的某些[主动|ACTIVE][平民|CIVILIAN][职业|PROFESSION]，如[FARMER]和[MINER]，可以建造[建筑|STRUCTURE]，从[矿藏|DEPOSIT]或[森林|FOREST]中[采收|HARVEST][资源|RESOURCE]。这需要[TIMBER]或[STONE-BLOCKS]，通常要到游戏一两年后才会开始。",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3941,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts construct help text; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-17"
+},
+{
+    "Assembly": "Common",
+    "Original": "Foraging is an action which allows ",
+    "Translation": "采集是一项行动，允许",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4059,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts forage help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-17"
+},
+{
+    "Assembly": "Common",
+    "Original": " in some [Active|ACTIVE] [Civilian|CIVILIAN] [Professions|PROFESSION] like [GATHERER] and [HUNTER] to [Harvest|HARVEST] [Resources|RESOURCE] from [Deposits|DEPOSIT] or [Dense Forests|FOREST] without the need for a [Structure|STRUCTURE]. Foraging is generally a less efficient way of [Producing|PRODUCE] Resources though, so once you've [Learned|LEARN] Professions capable of [Constructing|CONSTRUCT] Structures and have the [TIMBER] to do so it's probably time to switch over.",
+    "Translation": "中的某些[主动|ACTIVE][平民|CIVILIAN][职业|PROFESSION]，如[GATHERER]和[HUNTER]，无需[建筑|STRUCTURE]即可从[矿藏|DEPOSIT]或[森林|FOREST]中[采收|HARVEST][资源|RESOURCE]。不过采集通常不是最有效的[生产|PRODUCE]资源方式；一旦你[学会|LEARN]了能够[建造|CONSTRUCT]建筑的职业并拥有[TIMBER]，大概就该切换过去。",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4091,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts forage help text; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-17"
+},
+{
+    "Assembly": "Common",
+    "Original": "Encamping gives a [Unit|UNIT] or ",
+    "Translation": "扎营会给予[单位|UNIT]或",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4148,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts encamp help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-17"
+},
+{
+    "Assembly": "Common",
+    "Original": " 2 extra ",
+    "Translation": "额外 2 点",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4164,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts encamp help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-17"
+},
+{
+    "Assembly": "Common",
+    "Original": ", which is invaluable during the [winter|SEASON]. A strategy you will often employ during the cold months is to alternate between Encamping on one turn to replenish your Supply and then perform whatever action you were in the middle of on the next (e.g. [Foraging|FORAGE] or [identifying Deposits|UNIDENTIFIED].[BLANK-LINE]This action can only be performed if a Unit hasn't yet spent any ",
+    "Translation": "，这在[冬季|SEASON]极为宝贵。寒冷月份常用策略是交替进行：一回合扎营补充补给，下一回合继续之前的行动（如[采集|FORAGE]或[识别矿藏|UNIDENTIFIED]）。[BLANK-LINE]只有单位尚未花费任何",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4180,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts encamp help text; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-17"
+}
+]

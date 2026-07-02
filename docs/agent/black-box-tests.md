@@ -1,7 +1,8 @@
 # Black-Box Tests
 
-This file stores on-demand in-game baselines and UI-specific scenarios. Startup
-and main-menu coverage is handled by `tools\Test-GameLaunch.ps1`.
+This file stores on-demand in-game baselines and UI-specific scenarios. Startup,
+main-menu, and new-game smoke coverage is handled by
+`tools\Test-GameLaunch.ps1`.
 
 Machine-readable scenarios live in `docs/agent/black-box-scenarios.json`.
 Use that file as the source of truth for repeatable coordinates, evidence
@@ -39,9 +40,10 @@ tooltip/button regions when possible.
 
 ## Default In-Game Baseline
 
-Run this baseline when a change affects in-game text, UI, hover behavior, fonts,
-config text, or DLL text patches. It is not a global gate because
-`Test-GameLaunch.ps1` already covers startup/main-menu smoke behavior.
+Run this baseline when a change affects in-game UI paths beyond smoke, hover
+behavior, fixed saves, layout, or interface-specific text. It is not a global
+gate because `Test-GameLaunch.ps1` already covers startup, main-menu, and a
+basic new-game entry path.
 
 - From the main menu, click `新游戏`.
 - Select the default tribe.

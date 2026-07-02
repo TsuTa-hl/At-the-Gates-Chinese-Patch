@@ -1,0 +1,434 @@
+[
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000122",
+    "ILOffset": 730,
+    "Original": " wants ",
+    "Translation": "想要",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan-card tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000122",
+    "ILOffset": 916,
+    "Original": " of all other ",
+    "Translation": "所有其他",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan-card tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000122",
+    "ILOffset": 932,
+    "Original": " on the same ",
+    "Translation": "在同一",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan-card tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000122",
+    "ILOffset": 948,
+    "Original": " will be reduced by ",
+    "Translation": "将减少",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan-card tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000122",
+    "ILOffset": 1059,
+    "Original": " is punished it is stripped of its ",
+    "Translation": "受到惩罚时会被剥夺其",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan-card tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000122",
+    "ILOffset": 1169,
+    "Original": "You can punish ",
+    "Translation": "你可以惩罚",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan-card tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000122",
+    "ILOffset": 1542,
+    "Original": "You have ordered this ",
+    "Translation": "你已命令这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan-card tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000125",
+    "ILOffset": 260,
+    "Original": " it in advanced ",
+    "Translation": "提前",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan action tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000125",
+    "ILOffset": 294,
+    "Original": " This will cost ",
+    "Translation": "这将花费",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan action tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000125",
+    "ILOffset": 928,
+    "Original": "Remove this ",
+    "Translation": "将这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan action tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000125",
+    "ILOffset": 944,
+    "Original": " from the Tribal Council, allowing it to be ",
+    "Translation": "从部族议会中移除，使其可以被",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan action tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000125",
+    "ILOffset": 1294,
+    "Original": " from its current ",
+    "Translation": "从当前",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog clan action tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000259",
+    "ILOffset": 792,
+    "Original": " you can unlock through ",
+    "Translation": "可通过以下方式解锁",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog world-screen tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000259",
+    "ILOffset": 1982,
+    "Original": "Finish ",
+    "Translation": "完成",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog world-screen button/tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600025d",
+    "ILOffset": 97,
+    "Original": "[Respect|RESPECT] is your reputation within the global community. High Respect improves [Relations|RELATIONS] with of all Leaders, and increases their willingness to make deals which require trust. Respect is hard to earn, but easily lost!",
+    "Translation": "[尊重|RESPECT]代表你在诸族之间的声望。较高的尊重会改善与所有领袖的[关系|RELATIONS]，并提高他们接受需要信任的交易的意愿。尊重难得，却很容易失去！",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog respect panel tooltip."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600026d",
+    "ILOffset": 511,
+    "Original": " if your [SETTLEMENT] is [Packed Up|PACKED].",
+    "Translation": "，如果你的[定居点|SETTLEMENT]已[打包|PACKED]。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog training label tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002a1",
+    "ILOffset": 158,
+    "Original": "The enemy forces lost an extra ",
+    "Translation": "敌军额外损失",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog battle result fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002a1",
+    "ILOffset": 219,
+    "Original": "The enemy forces lost an extra ",
+    "Translation": "敌军额外损失",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog battle result fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002a1",
+    "ILOffset": 369,
+    "Original": "% less.",
+    "Translation": "%。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog battle result fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002a1",
+    "ILOffset": 385,
+    "Original": ", and you lost ",
+    "Translation": "，而你损失了",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog battle result fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002a1",
+    "ILOffset": 515,
+    "Original": "Unfortunately, the battle went ",
+    "Translation": "不幸的是，战斗结果",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog battle result fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002a1",
+    "ILOffset": 583,
+    "Original": "Your forces lost an extra ",
+    "Translation": "你的部队额外损失",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog battle result fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002a1",
+    "ILOffset": 649,
+    "Original": "Your forces lost an extra ",
+    "Translation": "你的部队额外损失",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog battle result fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002a1",
+    "ILOffset": 794,
+    "Original": "% less.",
+    "Translation": "%。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog battle result fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002a1",
+    "ILOffset": 810,
+    "Original": ", and the enemy lost ",
+    "Translation": "，敌人损失了",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog battle result fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002a1",
+    "ILOffset": 909,
+    "Original": "The battle went ",
+    "Translation": "战斗结果",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog battle result fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002c9",
+    "ILOffset": 44,
+    "Original": "Frozen ",
+    "Translation": "冻结的",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog tile mouseover fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002cb",
+    "ILOffset": 262,
+    "Original": "Rumors of ",
+    "Translation": "传闻有",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog tile mouseover fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002cb",
+    "ILOffset": 312,
+    "Original": "Rumors of ",
+    "Translation": "传闻有",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog tile mouseover fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002cc",
+    "ILOffset": 48,
+    "Original": " owned by ",
+    "Translation": "归属于",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog tile mouseover fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002cf",
+    "ILOffset": 181,
+    "Original": "Rumors of ",
+    "Translation": "传闻有",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog structure mouseover fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060002d0",
+    "ILOffset": 95,
+    "Original": "Rumors of ",
+    "Translation": "传闻有",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog goody-hut mouseover fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600035e",
+    "ILOffset": 240,
+    "Original": " to spend each ",
+    "Translation": "每个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000360",
+    "ILOffset": 137,
+    "Original": " reduces an ",
+    "Translation": "会减少一个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000361",
+    "ILOffset": 267,
+    "Original": " reduces an ",
+    "Translation": "会减少一个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000361",
+    "ILOffset": 344,
+    "Original": "If an ",
+    "Translation": "如果一个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000363",
+    "ILOffset": 217,
+    "Original": " suffers ",
+    "Translation": "遭受",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000363",
+    "ILOffset": 293,
+    "Original": " if its ",
+    "Translation": "如果其",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000364",
+    "ILOffset": 196,
+    "Original": "LOSING ",
+    "Translation": "正在失去",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel label fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000365",
+    "ILOffset": 634,
+    "Original": " times",
+    "Translation": "次",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000366",
+    "ILOffset": 209,
+    "Original": " Rate: ",
+    "Translation": "速率：",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel label fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000367",
+    "ILOffset": 393,
+    "Original": " sharing the ",
+    "Translation": "共享",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000368",
+    "ILOffset": 251,
+    "Original": " is currently ",
+    "Translation": "当前",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000368",
+    "ILOffset": 368,
+    "Original": " while ",
+    "Translation": "当",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036b",
+    "ILOffset": 149,
+    "Original": " is being ",
+    "Translation": "正在被",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036b",
+    "ILOffset": 328,
+    "Original": " stationed here has been reduced by ",
+    "Translation": "驻扎于此的数量减少了",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036b",
+    "ILOffset": 424,
+    "Original": " which end the ",
+    "Translation": "从而结束",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036b",
+    "ILOffset": 434,
+    "Original": " here will lose ",
+    "Translation": "在此将失去",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel fragment."
+  }
+]

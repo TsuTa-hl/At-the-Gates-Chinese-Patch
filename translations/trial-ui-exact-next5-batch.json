@@ -1,0 +1,434 @@
+[
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000378",
+    "ILOffset": 683,
+    "Original": " it. This does not alter the ",
+    "Translation": "它。这不会改变",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog army management fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000378",
+    "ILOffset": 729,
+    "Original": "Returns all ",
+    "Translation": "将所有",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog army management fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000378",
+    "ILOffset": 761,
+    "Original": " to your [SETTLEMENT], allowing you to ",
+    "Translation": "送回你的[定居点|SETTLEMENT]，使你可以",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog army management fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000378",
+    "ILOffset": 777,
+    "Original": " them. This does not alter the ",
+    "Translation": "它们。这不会改变",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog army management fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037a",
+    "ILOffset": 85,
+    "Original": "Tells this ",
+    "Translation": "命令这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog skip-turn tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037a",
+    "ILOffset": 402,
+    "Original": " for each [Clan|CLAN] in your [SETTLEMENT]",
+    "Translation": "，每个[氏族|CLAN]位于你的[定居点|SETTLEMENT]中",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog skip-turn tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037b",
+    "ILOffset": 70,
+    "Original": "Tells this ",
+    "Translation": "命令这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog cancel command tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037b",
+    "ILOffset": 146,
+    "Original": " to stop performing its current Command.",
+    "Translation": "停止执行当前命令。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog cancel command tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037c",
+    "ILOffset": 155,
+    "Original": "Heals all [Damage|DAMAGE] this ",
+    "Translation": "治疗这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog heal tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037c",
+    "ILOffset": 165,
+    "Original": " has suffered.",
+    "Translation": "受到的所有[伤害|DAMAGE]。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog heal tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037c",
+    "ILOffset": 193,
+    "Original": "Heals all [Damage|DAMAGE] ",
+    "Translation": "治疗所有[伤害|DAMAGE]",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog heal tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037c",
+    "ILOffset": 225,
+    "Original": " have suffered.",
+    "Translation": "已遭受的伤害。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog heal tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037c",
+    "ILOffset": 428,
+    "Original": " has been taken).",
+    "Translation": "已执行）。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog heal tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037d",
+    "ILOffset": 190,
+    "Original": "Pick a ",
+    "Translation": "选择一个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog reinforce tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037d",
+    "ILOffset": 222,
+    "Original": " to merge into this ",
+    "Translation": "合并到这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog reinforce tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037d",
+    "ILOffset": 286,
+    "Original": "Pick a ",
+    "Translation": "选择一个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog reinforce tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037d",
+    "ILOffset": 318,
+    "Original": " to merge into one of this ",
+    "Translation": "合并到这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog reinforce tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037d",
+    "ILOffset": 350,
+    "Original": ", healing all of its ",
+    "Translation": "，并治疗其所有",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog reinforce tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037e",
+    "ILOffset": 130,
+    "Original": "Restore this ",
+    "Translation": "修复这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog repair tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037e",
+    "ILOffset": 140,
+    "Original": " to its pre-[Pillaged|PILLAGE] state. ",
+    "Translation": "至被[劫掠|PILLAGE]前的状态。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog repair tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600037e",
+    "ILOffset": 315,
+    "Original": "Repairing ",
+    "Translation": "修复",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog repair tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000381",
+    "ILOffset": 184,
+    "Original": " is Dug In its ",
+    "Translation": "处于固守状态时，其",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog dig-in tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000381",
+    "ILOffset": 200,
+    "Original": " increases by ",
+    "Translation": "增加",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog dig-in tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000381",
+    "ILOffset": 282,
+    "Original": "This bonus disappears as soon as the ",
+    "Translation": "该加成会在",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog dig-in tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000381",
+    "ILOffset": 292,
+    "Original": " [Moves|MOVE-POINT] or is given another Command.",
+    "Translation": "[移动|MOVE-POINT]或接到其他命令时消失。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog dig-in tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000382",
+    "ILOffset": 124,
+    "Original": "Pillage ",
+    "Translation": "劫掠",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog pillage tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000383",
+    "ILOffset": 148,
+    "Original": "Orders the ",
+    "Translation": "命令",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog abandon tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000383",
+    "ILOffset": 174,
+    "Original": " which [Constructed|CONSTRUCT] this ",
+    "Translation": "即[建造|CONSTRUCT]了这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog abandon tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000383",
+    "ILOffset": 247,
+    "Original": " None of the Resources spent ",
+    "Translation": "已花费的资源不会",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog abandon tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000383",
+    "ILOffset": 279,
+    "Original": " will be refunded.",
+    "Translation": "返还。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog abandon tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000383",
+    "ILOffset": 307,
+    "Original": "This action takes ",
+    "Translation": "此行动需要",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog abandon tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000384",
+    "ILOffset": 185,
+    "Original": " reduces the amount of ",
+    "Translation": "减少",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog besiege tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000384",
+    "ILOffset": 238,
+    "Original": "When this Army [Besieges|SIEGE] a [Tile|TILE], it reduces the amount of [Supply|SUPPLY] available by ",
+    "Translation": "当这支军队[围攻|SIEGE]一个[地格|TILE]时，会使可用[补给|SUPPLY]减少",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog besiege tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000384",
+    "ILOffset": 307,
+    "Original": "Starving the enemy into submission can reduce or eliminate the need for a bloody frontal [Attack|ATTACK]. However, the enemy ",
+    "Translation": "通过饥饿迫使敌人屈服，可以减少甚至免去血腥正面[攻击|ATTACK]的必要。不过，敌人",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog besiege tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000384",
+    "ILOffset": 367,
+    "Original": "Note that unless a [CATAPULT] is involved a Tile's ",
+    "Translation": "注意，除非动用[CATAPULT]，否则地格的",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog besiege tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000385",
+    "ILOffset": 202,
+    "Original": "Add an [Apprentice Slot|APPRENTICE] to this [Structure|STRUCTURE], allowing an additional [Clan|CLAN] sharing the [Profession|PROFESSION] of this Structure's original [Builder|CONSTRUCT] to join it as an Apprentice.",
+    "Translation": "为此[建筑|STRUCTURE]增加一个[学徒栏位|APPRENTICE]，使一个与该建筑原[建造者|CONSTRUCT]同[职业|PROFESSION]的额外[氏族|CLAN]能以学徒身份加入。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog apprentice slot tooltip."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000386",
+    "ILOffset": 294,
+    "Original": "Orders a [Clan|CLAN] sharing the ",
+    "Translation": "命令一个共享",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog apprentice tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000386",
+    "ILOffset": 326,
+    "Original": "'s original [Builder|CONSTRUCT] to join it as an ",
+    "Translation": "原[建造者|CONSTRUCT]的[氏族|CLAN]以",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog apprentice tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000387",
+    "ILOffset": 128,
+    "Original": "Orders this ",
+    "Translation": "命令这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog dismiss apprentices tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000388",
+    "ILOffset": 123,
+    "Original": "Force ",
+    "Translation": "强制",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog survey tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000388",
+    "ILOffset": 182,
+    "Original": "Identifies the ",
+    "Translation": "识别",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog survey tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000388",
+    "ILOffset": 411,
+    "Original": " will spend ",
+    "Translation": "将花费",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog survey tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000388",
+    "ILOffset": 437,
+    "Original": " it has enough ",
+    "Translation": "它拥有足够",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog survey tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000388",
+    "ILOffset": 476,
+    "Original": "Identifying the ",
+    "Translation": "识别",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog survey tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000389",
+    "ILOffset": 380,
+    "Original": "'s [Resources|RESOURCE] without [Constructing|CONSTRUCT] a ",
+    "Translation": "的[资源|RESOURCE]，无需[建造|CONSTRUCT]一个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog forage tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000389",
+    "ILOffset": 406,
+    "Original": ", which is not just useful but essential in the early game. Convenience always comes at a price though and the per-[Turn|TURN] ",
+    "Translation": "，这在前期不仅有用，而且必不可少。不过便利总有代价，每[回合|TURN]",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog forage tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000389",
+    "ILOffset": 928,
+    "Original": " spent ",
+    "Translation": "花费",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog forage tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000389",
+    "ILOffset": 1040,
+    "Original": " will spend ",
+    "Translation": "将花费",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog forage tooltip fragment."
+  }
+]

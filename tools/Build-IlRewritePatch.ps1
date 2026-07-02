@@ -40,6 +40,58 @@ function ConvertTo-AtGIlRewriteEntries {
     return $entries
 }
 
+function Invoke-AtGIlRewriteWithRetry {
+    param(
+        [string]$DotNet,
+        [string]$ToolDll,
+        [string]$Source,
+        [string]$Output,
+        [string]$Map,
+        [int]$MaxAttempts = 5
+    )
+
+    $lastOutput = ""
+    for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
+        $captured = New-Object System.Collections.Generic.List[string]
+        $oldErrorActionPreference = $ErrorActionPreference
+        try {
+            $ErrorActionPreference = "Continue"
+            & $DotNet $ToolDll `
+                --source $Source `
+                --output $Output `
+                --map $Map 2>&1 | ForEach-Object {
+                    $line = [string]$_
+                    $captured.Add($line)
+                    Write-Host $line
+                }
+        }
+        finally {
+            $ErrorActionPreference = $oldErrorActionPreference
+        }
+
+        $lastOutput = ($captured.ToArray() -join "`n")
+        if ($LASTEXITCODE -eq 0) {
+            return
+        }
+
+        $localizedMappedSection = -join ([char[]](0x7528, 0x6237, 0x6620, 0x5c04, 0x533a, 0x57df))
+        $isMappedFileFailure = $lastOutput -match "user-mapped section" -or
+            $lastOutput.Contains($localizedMappedSection)
+        if ($isMappedFileFailure -and $attempt -lt $MaxAttempts) {
+            $delayMs = [Math]::Min(2000, 250 * [Math]::Pow(2, $attempt - 1))
+            Write-Warning ("IL rewrite output file is temporarily mapped; retrying attempt {0}/{1} after {2} ms." -f ($attempt + 1), $MaxAttempts, $delayMs)
+            [GC]::Collect()
+            [GC]::WaitForPendingFinalizers()
+            Start-Sleep -Milliseconds $delayMs
+            continue
+        }
+
+        throw "IL rewrite failed for $Source"
+    }
+
+    throw "IL rewrite failed for $Source"
+}
+
 if (!(Test-Path -LiteralPath $SourceDll -PathType Leaf)) {
     throw "Source DLL not found: $SourceDll"
 }
@@ -100,10 +152,9 @@ if (Test-Path -LiteralPath $staleAppHost -PathType Leaf) {
     throw "IL rewrite tool unexpectedly produced an apphost executable: $staleAppHost"
 }
 
-& $resolvedDotNet $toolDll `
-    --source $resolvedSource `
-    --output $resolvedOutput `
-    --map $resolvedMap
-if ($LASTEXITCODE -ne 0) {
-    throw "IL rewrite failed for $SourceDll"
-}
+Invoke-AtGIlRewriteWithRetry `
+    -DotNet $resolvedDotNet `
+    -ToolDll $toolDll `
+    -Source $resolvedSource `
+    -Output $resolvedOutput `
+    -Map $resolvedMap

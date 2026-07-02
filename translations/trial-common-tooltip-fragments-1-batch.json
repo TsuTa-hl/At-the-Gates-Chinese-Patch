@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001733",
+    "ILOffset": 204,
+    "Original": "[Reputation|REPUTATION]",
+    "Translation": "[声誉|REPUTATION]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common diplomacy description concept label; preserve concept identifier after pipe.",
+    "EvidenceScenario": "trial-common-tooltip-fragments-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001733",
+    "ILOffset": 346,
+    "Original": "[Influence|INFLUENCE]",
+    "Translation": "[影响力|INFLUENCE]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common diplomacy description concept label; preserve concept identifier after pipe.",
+    "EvidenceScenario": "trial-common-tooltip-fragments-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001733",
+    "ILOffset": 750,
+    "Original": "Possible Responses:",
+    "Translation": "可能回应：",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common diplomacy description heading.",
+    "EvidenceScenario": "trial-common-tooltip-fragments-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600171f",
+    "ILOffset": 806,
+    "Original": "[Damage|DAMAGE]: ",
+    "Translation": "[伤害|DAMAGE]：",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common basic description label; preserve concept identifier after pipe.",
+    "EvidenceScenario": "trial-common-tooltip-fragments-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600171f",
+    "ILOffset": 860,
+    "Original": "[COLOR:BAD-RED]This Clan has been[/COLOR] [Captured|CAPTURED][COLOR:BAD-RED]![/COLOR]",
+    "Translation": "[COLOR:BAD-RED]此氏族已被[/COLOR][俘获|CAPTURED][COLOR:BAD-RED]！[/COLOR]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common captured status sentence; preserve color tags and concept identifier.",
+    "EvidenceScenario": "trial-common-tooltip-fragments-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000358",
+    "ILOffset": 123,
+    "Original": " ... OR ...",
+    "Translation": "……或……",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common production alternatives separator.",
+    "EvidenceScenario": "trial-common-tooltip-fragments-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000358",
+    "ILOffset": 337,
+    "Original": " ... OR ...",
+    "Translation": "……或……",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common production alternatives separator.",
+    "EvidenceScenario": "trial-common-tooltip-fragments-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000358",
+    "ILOffset": 2200,
+    "Original": " per [Level|LEVEL] in [",
+    "Translation": " 每[等级|LEVEL]，位于[",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common production scaling fragment; preserve concept identifier and trailing concatenation bracket.",
+    "EvidenceScenario": "trial-common-tooltip-fragments-1"
+  }
+]

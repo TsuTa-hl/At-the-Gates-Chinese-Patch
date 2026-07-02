@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 30,
+    "Original": "[Stored Turn|STORED-TURN]",
+    "Translation": "[存粮回合|STORED-TURN]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve STORED-TURN identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 40,
+    "Original": "[Stored Turns|STORED-TURN]",
+    "Translation": "[存粮回合|STORED-TURN]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve STORED-TURN identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 70,
+    "Original": "[Terrain|TERRAIN]",
+    "Translation": "[地形|TERRAIN]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve TERRAIN identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 210,
+    "Original": "[Structure|STRUCTURE]",
+    "Translation": "[建筑|STRUCTURE]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve STRUCTURE identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 220,
+    "Original": "[Structures|STRUCTURE]",
+    "Translation": "[建筑|STRUCTURE]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve STRUCTURE identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 330,
+    "Original": "[Profession|PROFESSION]",
+    "Translation": "[职业|PROFESSION]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve PROFESSION identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 340,
+    "Original": "[Professions|PROFESSION]",
+    "Translation": "[职业|PROFESSION]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve PROFESSION identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 380,
+    "Original": "[Families|FAMILY]",
+    "Translation": "[家庭|FAMILY]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve FAMILY identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-2"
+  }
+]

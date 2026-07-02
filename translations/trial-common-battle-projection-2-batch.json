@@ -1,0 +1,92 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 500,
+    "Original": "crippled but still hanging on by a thread",
+    "Translation": "遭受重创但仍一息尚存",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 514,
+    "Original": "mangled but still alive",
+    "Translation": "重伤残破但仍存活",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 528,
+    "Original": "maimed but still able to limp away",
+    "Translation": "伤残不堪但仍能蹒跚撤离",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 542,
+    "Original": "bloodied and sore",
+    "Translation": "浴血负伤",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 556,
+    "Original": "with only a few cuts and bruises",
+    "Translation": "只受了些皮肉伤",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 570,
+    "Original": "with only a few scratches",
+    "Translation": "仅有几处擦伤",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000154",
+    "ILOffset": 8,
+    "Original": "Attackers: ",
+    "Translation": "进攻方：",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection ToString label.",
+    "EvidenceScenario": "trial-common-battle-projection-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000154",
+    "ILOffset": 38,
+    "Original": "Defenders: ",
+    "Translation": "防守方：",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection ToString label.",
+    "EvidenceScenario": "trial-common-battle-projection-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000154",
+    "ILOffset": 80,
+    "Original": "Retreat!",
+    "Translation": "撤退！",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection ToString label.",
+    "EvidenceScenario": "trial-common-battle-projection-2"
+  }
+]

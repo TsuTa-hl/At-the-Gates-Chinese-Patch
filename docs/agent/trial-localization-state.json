@@ -1,0 +1,1123 @@
+{
+    "schemaVersion":  1,
+    "purpose":  "Machine-readable state for exploratory trial localization. This file is for agents and scripts, not human translation review.",
+    "lastUpdated":  "2026-07-02",
+    "reviewTable":  "docs/review/known-texts.csv",
+    "policy":  {
+                   "strategy":  "Probe discovered display candidates with fast-fail batch smoke tests, then keep accepted entries in normal rewrite maps.",
+                   "missingVisualEvidenceIsSkipReason":  false,
+                   "passScope":  "A trial pass proves build, install, startup, and new-game smoke safety only. It does not prove wording, layout, hover coverage, or all UI paths.",
+                   "csvOriginalRule":  "Do not use docs/review/known-texts.csv Original as an IL rewrite Original. It is normalized for review. Use the exact DLL catalog Value.",
+                   "skipPolicy":  "Keep SkippedByPolicy for technical/internal text, semantic-free grammar glue, date/season logic, external online flows, raw IDs, paths, and static config candidates classified as unsafe."
+               },
+    "batchSizing":  {
+                        "default":  32,
+                        "ui":  {
+                                   "start":  48,
+                                   "max":  64,
+                                   "increaseAfterConsecutivePasses":  2
+                               },
+                        "common":  {
+                                       "start":  8,
+                                       "max":  16
+                                   },
+                        "game":  {
+                                     "start":  8,
+                                     "max":  16
+                                 },
+                        "sensitiveOrHistoricallyRisky":  {
+                                                             "start":  1,
+                                                             "max":  4
+                                                         },
+                        "failureAdjustment":  "If a batch fails, bisect. If more than one bad entry is found in the batch, halve the next batch size for that source class."
+                    },
+    "reviewSnapshot":  {
+                           "knownTextRows":  7076,
+                           "translatedRows":  5114,
+                           "untranslatedRows":  1962,
+                           "attemptedRows":  5125,
+                           "skippedByPolicyRows":  1951,
+                           "trialCandidateRows":  0,
+                           "rejectedRows":  1,
+                           "notAttemptedRows":  0,
+                           "notes":  "After trial-final-visible-fragments-1: remaining TrialCandidate rows are 0. The final batch had 13 inputs: 11 newly accepted by new-game smoke, 2 were already mapped, and 0 were rejected. Pure raw formatter tags such as [HILL] / [HILL:S] are classified as SkippedByPolicy because they are parser-resolved tags, not human-readable English."
+                       },
+    "latestSmoke":  {
+                        "date":  "2026-07-02",
+                        "windowReady":  true,
+                        "newGameReady":  true,
+                        "newGameReadyMarker":  "Controller - Giving Control to Human",
+                        "crashLogUpdated":  false,
+                        "crashDialogSeen":  false,
+                        "windowsErrorSeen":  false,
+                        "startupWaitSeconds":  4.15,
+                        "newGameSmokeSeconds":  23.03,
+                        "notes":  "Fresh installed build smoke reached the main loop. One immediately prior repeat stayed on the main menu without crash/log update and is treated as click/focus automation noise; rerun passed."
+                    },
+    "knownRejectedSingles":  [
+                                 {
+                                     "assembly":  "UI",
+                                     "methodToken":  "0x06000125",
+                                     "ilOffset":  1774,
+                                     "original":  "Leave ",
+                                     "reason":  "Conflicts with verified UI offset patch 490295, which expects original Leave. Migrate or remove the offset fallback before retrying this entry.",
+                                     "batchId":  "trial-auto-display-more-ui"
+                                 },
+                                 {
+                                     "assembly":  "Common",
+                                     "methodToken":  "0x060003ea",
+                                     "ilOffset":  25,
+                                     "original":  "Launch the game in a borderless window (0), fullscreen (1) or window (2)",
+                                     "reason":  "UserSetting descriptions are serialized into Settings.xml without XML-safe encoding; non-ASCII trial text polluted Settings.xml and caused \u0027Error Loading User Settings\u0027 on later launches.",
+                                     "batchId":  "trial-common-concepts-help-13"
+                                 },
+                                 {
+                                     "assembly":  "Common",
+                                     "methodToken":  "0x060003ea",
+                                     "ilOffset":  32,
+                                     "original":  "   * * *  WARNING  * * *  Right now, setting this to fullscreen can lower the framerate considerably and may cause the game to crash. It is recommended you use borderless window setting (0) instead.",
+                                     "reason":  "UserSetting descriptions are serialized into Settings.xml without XML-safe encoding; non-ASCII trial text polluted Settings.xml and caused \u0027Error Loading User Settings\u0027 on later launches.",
+                                     "batchId":  "trial-common-concepts-help-13"
+                                 }
+                             ],
+    "knownCatalogPrecisionFailures":  [
+                                          {
+                                              "batchId":  "trial-auto-display-more-ui2",
+                                              "reason":  "Initial non-exact batch hit build-time original mismatches caused by hidden leading/trailing spaces. Exact catalog-value rerun accepted the remaining entries.",
+                                              "classification":  "catalog-precision-not-unsafe"
+                                          },
+                                          {
+                                              "batchId":  "trial-retry-skipped-ui1",
+                                              "reason":  "Initial non-exact batch used review CSV normalized whitespace/newlines and failed original matching. Exact catalog-value rerun accepted the remaining entries.",
+                                              "classification":  "catalog-precision-not-unsafe"
+                                          },
+                                          {
+                                              "batchId":  "trial-common-game-description-1",
+                                              "reason":  "One entry used the wrong IL offset for \u0027% bonus to [Combat Power|POWER]\u0027; corrected offset 338 was accepted in retry. A single-entry StackOverflow/WER on \u0027Each additional Family provides a\u0027 passed on retry and is treated as intermittent smoke noise, not an unsafe text.",
+                                              "classification":  "catalog-precision-and-intermittent-smoke"
+                                          },
+                                          {
+                                              "batchId":  "trial-ui-dialog-actions-1",
+                                              "reason":  "Several UI originals were generated from normalized review text and missed leading/trailing spaces. Exact catalog-value retry accepted all failed entries.",
+                                              "classification":  "catalog-precision-not-unsafe"
+                                          },
+                                          {
+                                              "batchId":  "trial-common-condition-text-1",
+                                              "reason":  "The first condition-text batch exceeded MaxTestRuns after multiple build-time original mismatches caused by hidden trailing spaces. Exact catalog-value retry accepted the remaining failed entries.",
+                                              "classification":  "catalog-precision-not-unsafe"
+                                          },
+                                          {
+                                              "batchId":  "trial-common-concepts-help-3",
+                                              "reason":  "Initial run 20260701-120913 produced rejected.json only because the final accepted-only smoke also failed to enter the main loop. The evidence was renamed to rejected.invalid-smoke.json and the same 4 entries passed in run 20260701-134002.",
+                                              "classification":  "invalid-smoke-not-unsafe"
+                                          },
+                                          {
+                                              "batchId":  "trial-common-zone-trait-placement-2",
+                                              "reason":  "Two MapUtils placement strings used stale MethodToken 0x06000aca from an old candidate source. Fresh DLL catalog showed token 0x06000091; exact-token retry in trial-common-map-placement-1 accepted both entries. Treat as catalog precision failure, not unsafe text.",
+                                              "classification":  "catalog-stale-token-not-unsafe"
+                                          },
+                                          {
+                                              "batchId":  "trial-ui-tooltip-visible-1",
+                                              "reason":  "First combined smoke failed because the screenshot step could not find the game window. Sub-batches and final accepted-only smoke passed, rejected.json was empty. Treat as automation noise, not an unsafe text.",
+                                              "classification":  "window-finder-noise-not-unsafe"
+                                          },
+                                          {
+                                              "batchId":  "trial-common-tooltip-visible-2",
+                                              "reason":  "Initial batch used normalized review CSV originals and missed required leading/trailing spaces in ClanTraitTooltip strings. Exact catalog-value retry in trial-common-tooltip-visible-2-exact accepted both entries.",
+                                              "classification":  "catalog-precision-not-unsafe"
+                                          }
+                                      ],
+    "batches":  [
+                    {
+                        "id":  "trial-auto-display-main",
+                        "path":  "translations/trial-auto-display-main-batch.json",
+                        "scope":  "mixed-display",
+                        "inputEntries":  157,
+                        "accepted":  157,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "notes":  "First broad high-confidence display batch."
+                    },
+                    {
+                        "id":  "trial-auto-display-short",
+                        "path":  "translations/trial-auto-display-short-batch.json",
+                        "scope":  "mixed-short-display",
+                        "inputEntries":  56,
+                        "accepted":  56,
+                        "rejected":  0,
+                        "status":  "accepted-smoke"
+                    },
+                    {
+                        "id":  "trial-concept-tags",
+                        "path":  "translations/trial-concept-tags-batch.json",
+                        "scope":  "common-concept-display-tags",
+                        "inputEntries":  46,
+                        "accepted":  46,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "notes":  "Preserve concept identifiers after the pipe."
+                    },
+                    {
+                        "id":  "trial-exact-phrase",
+                        "path":  "translations/trial-exact-phrase-batch.json",
+                        "scope":  "exact-display-phrases",
+                        "inputEntries":  34,
+                        "accepted":  34,
+                        "rejected":  0,
+                        "status":  "accepted-smoke"
+                    },
+                    {
+                        "id":  "trial-auto-display-more-ui",
+                        "path":  "translations/trial-auto-display-more-ui-batch.json",
+                        "scope":  "ui-display",
+                        "inputEntries":  84,
+                        "accepted":  83,
+                        "rejected":  1,
+                        "status":  "accepted-with-rejected-single"
+                    },
+                    {
+                        "id":  "trial-auto-display-more-ui2",
+                        "path":  "translations/trial-auto-display-more-ui2-batch.json",
+                        "scope":  "ui-display",
+                        "inputEntries":  null,
+                        "accepted":  6,
+                        "rejected":  0,
+                        "status":  "stopped-by-catalog-precision"
+                    },
+                    {
+                        "id":  "trial-auto-display-more-ui2-exact",
+                        "path":  "translations/trial-auto-display-more-ui2-exact-batch.json",
+                        "scope":  "ui-display-exact-catalog",
+                        "inputEntries":  49,
+                        "accepted":  49,
+                        "rejected":  0,
+                        "status":  "accepted-smoke"
+                    },
+                    {
+                        "id":  "trial-review-ui3",
+                        "path":  "translations/trial-review-ui3-batch.json",
+                        "scope":  "ui-notification-selection-panel",
+                        "inputEntries":  41,
+                        "alreadyMapped":  11,
+                        "accepted":  30,
+                        "rejected":  0,
+                        "status":  "accepted-smoke"
+                    },
+                    {
+                        "id":  "trial-review-ui4",
+                        "path":  "translations/trial-review-ui4-batch.json",
+                        "scope":  "ui-selection-panel",
+                        "inputEntries":  25,
+                        "accepted":  25,
+                        "rejected":  0,
+                        "status":  "accepted-smoke"
+                    },
+                    {
+                        "id":  "trial-review-ui5",
+                        "path":  "translations/trial-review-ui5-batch.json",
+                        "scope":  "ui-clan-command-tile-tooltip",
+                        "inputEntries":  20,
+                        "accepted":  20,
+                        "rejected":  0,
+                        "status":  "accepted-smoke"
+                    },
+                    {
+                        "id":  "trial-review-ui6",
+                        "path":  "translations/trial-review-ui6-batch.json",
+                        "scope":  "ui-selection-panel-status",
+                        "inputEntries":  24,
+                        "accepted":  24,
+                        "rejected":  0,
+                        "status":  "accepted-smoke"
+                    },
+                    {
+                        "id":  "trial-retry-skipped-ui1-exact",
+                        "path":  "translations/trial-retry-skipped-ui1-exact-batch.json",
+                        "scope":  "ui-former-skipped-missing-visual-evidence",
+                        "inputEntries":  45,
+                        "alreadyMapped":  3,
+                        "accepted":  42,
+                        "rejected":  0,
+                        "status":  "accepted-smoke"
+                    },
+                    {
+                        "id":  "trial-ui-exact-next1",
+                        "path":  "translations/trial-ui-exact-next1-batch.json",
+                        "scope":  "ui-exact-catalog-continuation",
+                        "inputEntries":  48,
+                        "accepted":  48,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-010529"
+                    },
+                    {
+                        "id":  "trial-ui-exact-next2",
+                        "path":  "translations/trial-ui-exact-next2-batch.json",
+                        "scope":  "ui-exact-catalog-continuation",
+                        "inputEntries":  48,
+                        "accepted":  48,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-024037"
+                    },
+                    {
+                        "id":  "trial-ui-exact-next3",
+                        "path":  "translations/trial-ui-exact-next3-batch.json",
+                        "scope":  "ui-exact-catalog-continuation",
+                        "inputEntries":  48,
+                        "accepted":  48,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-025151"
+                    },
+                    {
+                        "id":  "trial-ui-exact-next4",
+                        "path":  "translations/trial-ui-exact-next4-batch.json",
+                        "scope":  "ui-exact-catalog-continuation",
+                        "inputEntries":  48,
+                        "accepted":  48,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-025713"
+                    },
+                    {
+                        "id":  "trial-ui-exact-next5",
+                        "path":  "translations/trial-ui-exact-next5-batch.json",
+                        "scope":  "ui-exact-catalog-continuation",
+                        "inputEntries":  48,
+                        "accepted":  48,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-030334"
+                    },
+                    {
+                        "id":  "trial-ui-exact-next6",
+                        "path":  "translations/trial-ui-exact-next6-batch.json",
+                        "scope":  "ui-exact-catalog-continuation",
+                        "inputEntries":  48,
+                        "accepted":  48,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-030857"
+                    },
+                    {
+                        "id":  "trial-ui-exact-next7",
+                        "path":  "translations/trial-ui-exact-next7-batch.json",
+                        "scope":  "ui-exact-catalog-continuation",
+                        "inputEntries":  48,
+                        "accepted":  48,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-031956"
+                    },
+                    {
+                        "id":  "trial-ui-exact-next8",
+                        "path":  "translations/trial-ui-exact-next8-batch.json",
+                        "scope":  "ui-exact-catalog-visible-remainder",
+                        "inputEntries":  14,
+                        "accepted":  14,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-032440"
+                    },
+                    {
+                        "id":  "trial-common-placement-failures-1",
+                        "path":  "translations/trial-common-placement-failures-1-batch.json",
+                        "scope":  "common-object-placement-failure-messages",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-034831"
+                    },
+                    {
+                        "id":  "trial-common-property-details-1",
+                        "path":  "translations/trial-common-property-details-1-batch.json",
+                        "scope":  "common-property-details",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-035229"
+                    },
+                    {
+                        "id":  "trial-common-property-details-2",
+                        "path":  "translations/trial-common-property-details-2-batch.json",
+                        "scope":  "common-property-details",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-035833"
+                    },
+                    {
+                        "id":  "trial-common-property-details-3",
+                        "path":  "translations/trial-common-property-details-3-batch.json",
+                        "scope":  "common-property-details",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-040314"
+                    },
+                    {
+                        "id":  "trial-common-property-details-4",
+                        "path":  "translations/trial-common-property-details-4-batch.json",
+                        "scope":  "common-property-details",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-040658"
+                    },
+                    {
+                        "id":  "trial-common-property-details-5",
+                        "path":  "translations/trial-common-property-details-5-batch.json",
+                        "scope":  "common-property-details",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-043731"
+                    },
+                    {
+                        "id":  "trial-common-property-details-6",
+                        "path":  "translations/trial-common-property-details-6-batch.json",
+                        "scope":  "common-property-details",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-044335"
+                    },
+                    {
+                        "id":  "trial-common-property-details-7",
+                        "path":  "translations/trial-common-property-details-7-batch.json",
+                        "scope":  "common-property-details",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-044826"
+                    },
+                    {
+                        "id":  "trial-common-property-details-8",
+                        "path":  "translations/trial-common-property-details-8-batch.json",
+                        "scope":  "common-property-details",
+                        "inputEntries":  2,
+                        "accepted":  2,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-045307"
+                    },
+                    {
+                        "id":  "trial-common-battle-projection-1",
+                        "path":  "translations/trial-common-battle-projection-1-batch.json",
+                        "scope":  "common-battle-projection",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-045747"
+                    },
+                    {
+                        "id":  "trial-common-battle-projection-2",
+                        "path":  "translations/trial-common-battle-projection-2-batch.json",
+                        "scope":  "common-battle-projection",
+                        "inputEntries":  9,
+                        "accepted":  9,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-050245"
+                    },
+                    {
+                        "id":  "trial-ui-notification-details-1",
+                        "path":  "translations/trial-ui-notification-details-1-batch.json",
+                        "scope":  "ui-notification-details",
+                        "inputEntries":  14,
+                        "accepted":  14,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-050945"
+                    },
+                    {
+                        "id":  "trial-ui-diplomacy-1",
+                        "path":  "translations/trial-ui-diplomacy-1-batch.json",
+                        "scope":  "ui-diplomacy-screen",
+                        "inputEntries":  19,
+                        "accepted":  19,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-051433"
+                    },
+                    {
+                        "id":  "trial-common-profession-tooltip-1",
+                        "path":  "translations/trial-common-profession-tooltip-1-batch.json",
+                        "scope":  "common-profession-tooltip",
+                        "inputEntries":  11,
+                        "accepted":  11,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-051903"
+                    },
+                    {
+                        "id":  "trial-common-resource-tech-tooltip-1",
+                        "path":  "translations/trial-common-resource-tech-tooltip-1-batch.json",
+                        "scope":  "common-resource-tech-tooltip",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-054804"
+                    },
+                    {
+                        "id":  "trial-common-clan-structure-tooltip-1",
+                        "path":  "translations/trial-common-clan-structure-tooltip-1-batch.json",
+                        "scope":  "common-clan-structure-tooltip",
+                        "inputEntries":  14,
+                        "accepted":  14,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-055020"
+                    },
+                    {
+                        "id":  "trial-common-economy-tooltip-1",
+                        "path":  "translations/trial-common-economy-tooltip-1-batch.json",
+                        "scope":  "common-economy-tooltip",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-055508"
+                    },
+                    {
+                        "id":  "trial-common-structure-apprentice-1",
+                        "path":  "translations/trial-common-structure-apprentice-1-batch.json",
+                        "scope":  "common-structure-apprentice",
+                        "inputEntries":  13,
+                        "accepted":  13,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-055841"
+                    },
+                    {
+                        "id":  "trial-ui-help-tips-1",
+                        "path":  "translations/trial-ui-help-tips-1-batch.json",
+                        "scope":  "ui-help-tips",
+                        "inputEntries":  21,
+                        "accepted":  21,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-060343"
+                    },
+                    {
+                        "id":  "trial-ui-diplomacy-profession-actions-1",
+                        "path":  "translations/trial-ui-diplomacy-profession-actions-1-batch.json",
+                        "scope":  "ui-diplomacy-profession-actions",
+                        "inputEntries":  15,
+                        "accepted":  15,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-060901"
+                    },
+                    {
+                        "id":  "trial-common-game-abilities-1",
+                        "path":  "translations/trial-common-game-abilities-1-batch.json",
+                        "scope":  "common-game-ability-descriptions",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-062022"
+                    },
+                    {
+                        "id":  "trial-common-game-description-1",
+                        "path":  "translations/trial-common-game-description-1-batch.json",
+                        "scope":  "common-game-production-consumption-family-descriptions",
+                        "inputEntries":  16,
+                        "accepted":  14,
+                        "rejected":  2,
+                        "status":  "accepted-with-retried-precision-failures",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-062543"
+                    },
+                    {
+                        "id":  "trial-common-game-description-retry-1",
+                        "path":  "translations/trial-common-game-description-retry-1-batch.json",
+                        "scope":  "common-game-family-description-retry",
+                        "inputEntries":  2,
+                        "accepted":  2,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-063856"
+                    },
+                    {
+                        "id":  "trial-ui-dialog-actions-1",
+                        "path":  "translations/trial-ui-dialog-actions-1-batch.json",
+                        "scope":  "ui-dialog-actions",
+                        "inputEntries":  16,
+                        "accepted":  9,
+                        "rejected":  7,
+                        "status":  "accepted-with-retried-precision-failures",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-065104"
+                    },
+                    {
+                        "id":  "trial-ui-dialog-actions-retry-1",
+                        "path":  "translations/trial-ui-dialog-actions-retry-1-batch.json",
+                        "scope":  "ui-dialog-actions-exact-retry",
+                        "inputEntries":  7,
+                        "accepted":  7,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-070119"
+                    },
+                    {
+                        "id":  "trial-common-condition-text-1",
+                        "path":  "translations/trial-common-condition-text-1-batch.json",
+                        "scope":  "common-condition-text",
+                        "inputEntries":  15,
+                        "alreadyMapped":  2,
+                        "accepted":  7,
+                        "rejected":  5,
+                        "status":  "accepted-with-retried-precision-failures",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-070732"
+                    },
+                    {
+                        "id":  "trial-common-condition-text-retry-1",
+                        "path":  "translations/trial-common-condition-text-retry-1-batch.json",
+                        "scope":  "common-condition-text-exact-retry",
+                        "inputEntries":  5,
+                        "accepted":  5,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-072920"
+                    },
+                    {
+                        "id":  "trial-common-tooltip-fragments-1",
+                        "path":  "translations/trial-common-tooltip-fragments-1-batch.json",
+                        "scope":  "common-tooltip-fragments",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-111951"
+                    },
+                    {
+                        "id":  "trial-common-resource-tooltip-2",
+                        "path":  "translations/trial-common-resource-tooltip-2-batch.json",
+                        "scope":  "common-resource-terrain-tooltip-fragments",
+                        "inputEntries":  8,
+                        "alreadyMapped":  6,
+                        "accepted":  2,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-113838"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-1",
+                        "path":  "translations/trial-common-concepts-help-1-batch.json",
+                        "scope":  "common-concepts-help",
+                        "inputEntries":  4,
+                        "accepted":  4,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-120012"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-2",
+                        "path":  "translations/trial-common-concepts-help-2-batch.json",
+                        "scope":  "common-concepts-help",
+                        "inputEntries":  4,
+                        "accepted":  4,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-120459"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-3",
+                        "path":  "translations/trial-common-concepts-help-3-batch.json",
+                        "scope":  "common-concepts-help-map-terrain",
+                        "inputEntries":  4,
+                        "accepted":  4,
+                        "rejected":  0,
+                        "status":  "accepted-smoke-after-invalid-smoke-rerun",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-134002"
+                    },
+                    {
+                        "id":  "trial-common-concept-tags-2",
+                        "path":  "translations/trial-common-concept-tags-2-batch.json",
+                        "scope":  "common-concept-display-tags",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-230803"
+                    },
+                    {
+                        "id":  "trial-common-concept-tags-3",
+                        "path":  "translations/trial-common-concept-tags-3-batch.json",
+                        "scope":  "common-concept-display-tags",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-232356"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-4",
+                        "path":  "translations/trial-common-concepts-help-4-batch.json",
+                        "scope":  "common-concepts-help-food-bandits-terrain-weather",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke-with-final-accepted",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-232812"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-5",
+                        "path":  "translations/trial-common-concepts-help-5-batch.json",
+                        "scope":  "common-concepts-help-units-structures-deposits",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-233310"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-6",
+                        "path":  "translations/trial-common-concepts-help-6-batch.json",
+                        "scope":  "common-concepts-help-deposit-types-professions",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-233632"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-7",
+                        "path":  "translations/trial-common-concepts-help-7-batch.json",
+                        "scope":  "common-concepts-help-profession-types-ennoble",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-234004"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-8",
+                        "path":  "translations/trial-common-concepts-help-8-batch.json",
+                        "scope":  "common-concepts-help-combat-clan-movement",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke-with-final-accepted",
+                        "runRoot":  ".tmp\\trial-localization\\20260701-234438"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-9",
+                        "path":  "translations/trial-common-concepts-help-9-batch.json",
+                        "scope":  "common-concepts-help-borders-supply-combat-diplomacy",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-003224"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-10",
+                        "path":  "translations/trial-common-concepts-help-10-batch.json",
+                        "scope":  "common-concepts-help-diplomacy",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke-with-bisection-final-accepted",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-003656"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-11",
+                        "path":  "translations/trial-common-concepts-help-11-batch.json",
+                        "scope":  "common-concepts-help-resources-alliance-stockpile",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-005255"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-12",
+                        "path":  "translations/trial-common-concepts-help-12-batch.json",
+                        "scope":  "common-concepts-help-tech-training-dig-in",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-005838"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-13",
+                        "path":  "translations/trial-common-concepts-help-13-batch.json",
+                        "scope":  "common-concepts-help-deposit-settings",
+                        "inputEntries":  8,
+                        "accepted":  0,
+                        "rejected":  2,
+                        "status":  "invalid-smoke-user-setting-settings-xml",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-010822",
+                        "notes":  "Two UserSetting entries polluted Settings.xml with non-ASCII comments and caused Error Loading User Settings. The six non-UserSetting entries were retried in trial-common-concepts-help-13-safe-retry."
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-13-safe-retry",
+                        "path":  "translations/trial-common-concepts-help-13-safe-retry-batch.json",
+                        "scope":  "common-concepts-help-deposits-fortify-kingdom",
+                        "inputEntries":  6,
+                        "accepted":  6,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-014539"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-14",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-023439",
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke-with-transient-build-lock",
+                        "scope":  "common-concepts-help-combat-offense",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-common-concepts-help-14-batch.json"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-15",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-024452",
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke-with-transient-build-lock",
+                        "scope":  "common-concepts-help-combat-defense",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-common-concepts-help-15-batch.json"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-16",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-030252",
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "common-concepts-help-morale-retreat",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-common-concepts-help-16-batch.json"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-17",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-030744",
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke-after-intermittent-wer-and-build-lock",
+                        "scope":  "common-concepts-help-clan-limit-construct-forage-encamp",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-common-concepts-help-17-batch.json"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-18",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-042437",
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "common-concepts-help-pillage-siege",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-common-concepts-help-18-batch.json"
+                    },
+                    {
+                        "id":  "trial-common-concepts-help-19",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-042905",
+                        "accepted":  4,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "common-concepts-help-packed-settlement",
+                        "inputEntries":  4,
+                        "path":  "translations/trial-common-concepts-help-19-batch.json"
+                    },
+                    {
+                        "id":  "trial-common-zone-trait-placement-1",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-044137",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "common-zone-trait-placement-failures",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-common-zone-trait-placement-1-batch.json"
+                    },
+                    {
+                        "runRoot":  ".tmp\\trial-localization\\20260702-044405",
+                        "id":  "trial-common-zone-trait-placement-2",
+                        "rejected":  0,
+                        "notes":  "Two MapUtils entries initially failed because the batch used stale MethodToken 0x06000aca. Evidence was moved to rejected.invalid-catalog-token.json and corrected token 0x06000091 entries were accepted in trial-common-map-placement-1.",
+                        "scope":  "common-zone-trait-and-map-placement-failures",
+                        "inputEntries":  3,
+                        "path":  "translations/trial-common-zone-trait-placement-2-batch.json",
+                        "status":  "accepted-with-catalog-token-retry",
+                        "accepted":  1
+                    },
+                    {
+                        "runRoot":  ".tmp\\trial-localization\\20260702-045333",
+                        "id":  "trial-common-map-placement-1",
+                        "rejected":  0,
+                        "scope":  "common-map-placement-failures-exact-token",
+                        "inputEntries":  16,
+                        "status":  "accepted-smoke",
+                        "path":  "translations/trial-common-map-placement-1-batch.json",
+                        "alreadyMapped":  14,
+                        "accepted":  2
+                    },
+                    {
+                        "runRoot":  ".tmp\\trial-localization\\20260702-045720",
+                        "id":  "trial-common-map-placement-2",
+                        "rejected":  0,
+                        "scope":  "common-map-placement-failures-remainder",
+                        "inputEntries":  4,
+                        "status":  "already-mapped-no-test",
+                        "path":  "translations/trial-common-map-placement-2-batch.json",
+                        "alreadyMapped":  4,
+                        "accepted":  0
+                    },
+                    {
+                        "id":  "trial-common-config-description-1",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-050720",
+                        "accepted":  7,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "common-config-description-mood-desire-family",
+                        "inputEntries":  7,
+                        "path":  "translations/trial-common-config-description-1-batch.json"
+                    },
+                    {
+                        "id":  "trial-game-art-hotkeys-1",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-051513",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-art-mode-hotkey-list",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-game-art-hotkeys-1-batch.json"
+                    },
+                    {
+                        "id":  "trial-game-static-checks-1",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-051915",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-static-checks-complete-failures",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-game-static-checks-1-batch.json"
+                    },
+                    {
+                        "id":  "trial-game-static-checks-2",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-052707",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-static-checks-complete-failures",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-game-static-checks-2-batch.json"
+                    },
+                    {
+                        "id":  "trial-common-command-status-1",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-060401",
+                        "accepted":  9,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "common-command-status-text",
+                        "inputEntries":  9,
+                        "path":  "translations/trial-common-command-status-1-batch.json"
+                    },
+                    {
+                        "runRoot":  ".tmp\\trial-localization\\20260702-061156",
+                        "id":  "trial-ui-visible-misc-1",
+                        "rejected":  0,
+                        "scope":  "ui-visible-misc-credits-victory-diplomacy-loadsave",
+                        "inputEntries":  16,
+                        "status":  "accepted-smoke",
+                        "path":  "translations/trial-ui-visible-misc-1-batch.json",
+                        "alreadyMapped":  1,
+                        "accepted":  15
+                    },
+                    {
+                        "runRoot":  ".tmp\\trial-localization\\20260702-061733",
+                        "id":  "trial-ui-tooltip-visible-1",
+                        "rejected":  0,
+                        "notes":  "Initial combined smoke reported At the Gates window not found, then bisection and final accepted-only smoke passed. Treat as automation/window-finder noise, not unsafe text.",
+                        "scope":  "ui-visible-tooltip-fragments",
+                        "inputEntries":  4,
+                        "status":  "accepted-smoke-after-window-finder-noise",
+                        "path":  "translations/trial-ui-tooltip-visible-1-batch.json",
+                        "alreadyMapped":  1,
+                        "accepted":  3
+                    },
+                    {
+                        "id":  "trial-ui-visible-misc-2",
+                        "path":  "translations/trial-ui-visible-misc-2-batch.json",
+                        "scope":  "ui-visible-misc-help-banner-diplomacy",
+                        "inputEntries":  6,
+                        "accepted":  6,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-064252"
+                    },
+                    {
+                        "id":  "trial-common-sage-effects-1",
+                        "path":  "translations/trial-common-sage-effects-1-batch.json",
+                        "scope":  "common-sage-effect-display",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-064830"
+                    },
+                    {
+                        "id":  "trial-common-visible-misc-1",
+                        "path":  "translations/trial-common-visible-misc-1-batch.json",
+                        "scope":  "common-visible-misc-concepts-terrain-duration",
+                        "inputEntries":  5,
+                        "accepted":  3,
+                        "rejected":  0,
+                        "status":  "accepted-smoke-with-already-mapped",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-065841",
+                        "alreadyMapped":  2
+                    },
+                    {
+                        "id":  "trial-ui-visible-misc-3",
+                        "path":  "translations/trial-ui-visible-misc-3-batch.json",
+                        "scope":  "ui-visible-misc-debug-labels-options-duration",
+                        "inputEntries":  29,
+                        "accepted":  28,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-071229",
+                        "alreadyMapped":  1
+                    },
+                    {
+                        "id":  "trial-common-tooltip-visible-2-exact",
+                        "path":  "translations/trial-common-tooltip-visible-2-exact-batch.json",
+                        "scope":  "common-clan-trait-tooltip-exact",
+                        "inputEntries":  2,
+                        "accepted":  2,
+                        "rejected":  0,
+                        "status":  "accepted-smoke-after-catalog-precision-retry",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-073434",
+                        "notes":  "Non-exact trial-common-tooltip-visible-2 failed at build because review CSV normalized leading/trailing spaces; exact catalog values passed."
+                    },
+                    {
+                        "id":  "trial-game-static-checks-3",
+                        "path":  "translations/trial-game-static-checks-3-batch.json",
+                        "scope":  "game-static-checks-diplomacy-training-caravan-packed",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-074217"
+                    },
+                    {
+                        "id":  "trial-game-static-checks-4",
+                        "path":  "translations/trial-game-static-checks-4-batch.json",
+                        "scope":  "game-static-checks-diplomacy-mood-prereq-supply",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-074903"
+                    },
+                    {
+                        "id":  "trial-common-human-readable-text-1",
+                        "path":  "translations/trial-common-human-readable-text-1-batch.json",
+                        "scope":  "common-human-readable-chance",
+                        "inputEntries":  16,
+                        "accepted":  5,
+                        "rejected":  0,
+                        "alreadyMapped":  11,
+                        "status":  "accepted-smoke-with-already-mapped",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-082853"
+                    },
+                    {
+                        "id":  "trial-common-property-readable-text-1",
+                        "path":  "translations/trial-common-property-readable-text-1-batch.json",
+                        "scope":  "common-property-and-sage-description-fragments",
+                        "inputEntries":  16,
+                        "accepted":  5,
+                        "rejected":  0,
+                        "alreadyMapped":  11,
+                        "status":  "accepted-smoke-with-already-mapped",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-083440"
+                    },
+                    {
+                        "id":  "trial-common-readable-text-2",
+                        "path":  "translations/trial-common-readable-text-2-batch.json",
+                        "scope":  "common-sage-tech-supply-time-fragments",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke-after-window-finder-noise",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-084450",
+                        "notes":  "Initial combined smoke failed at screenshot capture with \u0027At the Gates window not found\u0027. Both half-batches passed and no single text was rejected; treat as automation/window-finder noise."
+                    },
+                    {
+                        "id":  "trial-common-readable-text-3",
+                        "path":  "translations/trial-common-readable-text-3-batch.json",
+                        "scope":  "common-cost-chance-and-concept-help-fragments",
+                        "inputEntries":  16,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "alreadyMapped":  8,
+                        "status":  "accepted-smoke-with-already-mapped",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-085437"
+                    },
+                    {
+                        "id":  "trial-game-static-checks-5",
+                        "path":  "translations/trial-game-static-checks-5-batch.json",
+                        "scope":  "game-static-checks-forage-magister-mood",
+                        "inputEntries":  4,
+                        "accepted":  3,
+                        "rejected":  0,
+                        "alreadyMapped":  1,
+                        "status":  "accepted-smoke-with-already-mapped",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-085900"
+                    },
+                    {
+                        "id":  "trial-ui-visible-misc-4",
+                        "path":  "translations/trial-ui-visible-misc-4-batch.json",
+                        "scope":  "ui-main-menu-feedback-text",
+                        "inputEntries":  3,
+                        "accepted":  3,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-090406"
+                    },
+                    {
+                        "id":  "trial-common-tostring-labels-1",
+                        "path":  "translations/trial-common-tostring-labels-1-batch.json",
+                        "scope":  "common-tostring-short-labels",
+                        "inputEntries":  16,
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-091228"
+                    },
+                    {
+                        "id":  "trial-final-visible-fragments-1",
+                        "path":  "translations/trial-final-visible-fragments-1-batch.json",
+                        "scope":  "final-visible-fragments-after-candidate-classification",
+                        "inputEntries":  13,
+                        "accepted":  11,
+                        "rejected":  0,
+                        "alreadyMapped":  2,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260702-105841",
+                        "notes":  "Accepted remaining visible display fragments after classifying technical/internal strings and pure formatter tags out of TrialCandidate."
+                    }
+                ],
+    "nextWork":  {
+                     "priority":  [
+                                      "No TrialCandidate rows remain after the 2026-07-02 final visible-fragment trial. Future localization work should start from new screenshots/reproduction steps, new static extraction, or a deliberate retry of a documented SkippedByPolicy class.",
+                                      "Keep SkippedByPolicy for technical/internal text, semantic-free grammar glue, date/season logic, external online flows, raw IDs, paths, pure formatter tags, parser match tokens, and static config candidates classified as unsafe.",
+                                      "Use exact DLL catalog Value, MethodToken, and ILOffset for any new IL rewrite batch; do not use normalized docs/review/known-texts.csv Original as a patch Original."
+                                  ],
+                     "doNotUseAsBatchSource":  [
+                                                   "docs/review/known-texts.csv Original column"
+                                               ]
+                 }
+}

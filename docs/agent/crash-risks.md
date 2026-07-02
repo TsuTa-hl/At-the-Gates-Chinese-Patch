@@ -13,6 +13,33 @@ terms, faction names, dates, or game launch behavior.
 
 - `tools\Build-ChineseXml.ps1` must keep `OmitXmlDeclaration = true`.
 - The first line of `patch\Content\Text\English.xml` must be `<english>`.
+- A silent startup exit can bypass the game's `HE'S DEAD, JIM` dialog and leave
+  `Crash.AtGLog` unchanged. A Windows Application log event with
+  `At The Gates.exe`, `clr.dll`, and exception code `c00000fd` was observed on
+  2026-06-30 before later smoke runs passed. Treat Windows Error Reporting and
+  `.NET Runtime` events as authoritative evidence for this class of failure.
+- The 2026-06-30 review-continuation trial build also hit one new-game smoke
+  WER `c00000fd` exit during map generation (`NewGameReady=False`,
+  `CrashLogUpdated=False`), then passed the next two new-game smoke runs. Treat
+  this as intermittent unless a batch fails repeatedly or the same seed/path
+  becomes reproducible.
+- The 2026-07-02 `trial-common-concepts-help-17` batch also hit one
+  `c00000fd` WER before bisection and final accepted-only smoke both passed.
+  Treat isolated WERs of this class as retryable evidence, not immediate
+  rejection of all texts in the batch.
+- On 2026-07-01, `trial-common-game-description-1` isolated one
+  `StackOverflowException`/WER smoke failure for `Each additional Family
+  provides a`, but the same entry passed in
+  `trial-common-game-description-retry-1`. Treat single new-game WER failures
+  in trial localization as retryable evidence before marking the text unsafe.
+- On 2026-07-02, translating
+  `AtTheGatesCommon.ns_GlobalSystems.UserSetting_WindowedMode` description and
+  warning strings caused the game to write non-ASCII comments into
+  `Settings\Settings.xml`. Later launches showed `Error Loading User Settings`
+  and the program log reported `Settings.xml` invalid characters at line 27.
+  Restore the setting comment to ASCII and keep all `UserSetting_*`
+  descriptions out of trial localization unless a separate XML-safe settings
+  serialization fix exists.
 
 ## Launch Working Directory
 
@@ -42,6 +69,12 @@ Do not remove these generated patch directories:
 Removing these aliases can crash the clan screen with a missing
 `PortraitBackground_*.xnb` file.
 
+When adding PowerShell checks for these generated Chinese paths, avoid raw
+non-ASCII path literals in scripts that may run under Windows PowerShell's ANSI
+fallback decoding. Build the Chinese path component from Unicode code points or
+derive it from the generated directory list, then verify the resulting report
+field against `Test-Path`.
+
 ## Fonts and Icons
 
 - Fonts must be merged fonts that preserve original SpriteFont glyphs and icon
@@ -59,12 +92,17 @@ Removing these aliases can crash the clan screen with a missing
   points elsewhere.
 - `tools\Build-Patch.ps1` must only override the runtime-referenced font
   subset currently used by the patch. Large UI fonts use a smaller UI-display
-  glyph subset instead of the full Chinese corpus. The font marker is
-  `merged-fonts-v3-large-ui-subset`.
+  glyph subset instead of the full Chinese corpus and use zero padding to keep
+  the 32-bit XNA texture memory footprint under budget. The font marker is
+  `merged-fonts-v5-large-ui-pad0`.
+- The Large UI glyph subset must still include all IL rewrite translations
+  from UI, Common, and Game maps. Omitting Game EXE rewrite glyphs previously
+  caused `Test-FontPatchBudget.ps1` to fail after static-check trial batches.
 - Run `tools\Test-FontPatchBudget.ps1` after font or translation charset
 changes. Current budget: 17 patched SpriteFonts and total patched font bytes
-under 120 MB. Latest verified build: 121,292,744 bytes, below the 120 MiB
-binary budget of 125,829,120 bytes.
+under 120 MB. Latest verified build: 121,271,586 bytes, below the 120 MiB
+binary budget of 125,829,120 bytes. Latest marker:
+`merged-fonts-v5-large-ui-pad0`.
 - Latest Quicksave load regression after the v3 font subset kept the game
   alive and did not update `Crash.AtGLog`; keep fixed-save load testing in
   black-box cycles that touch fonts or large text corpora.
@@ -101,6 +139,11 @@ binary budget of 125,829,120 bytes.
   Common concept terms.
 - Keep byte and offset fallback paths available until each migrated UI string
   has build, install, smoke, and targeted UI coverage.
+- Some UI strings are still coupled to verified offset fallbacks. In particular,
+  do not IL-rewrite `ClanCard.AddActionButton` original `Leave ` at
+  `0x06000125` / `ILOffset=1774` while UI offset `490295` still expects
+  original `Leave`; the 2026-06-30 fast-fail batch rejected that entry during
+  build.
 
 ## Game EXE IL String Patches
 

@@ -1,0 +1,74 @@
+[
+{
+    "Assembly": "UI",
+    "Original": "You can appoint 2 Luminaries to be Ministers. While serving in this position they provide a variety of bonuses. Some expect a salary of Treasure to do so.",
+    "Translation": "你可以任命2名贤才担任大臣。任职期间，他们会提供各种加成。有些人会要求财宝作为薪俸。",
+    "MethodToken": "0x0600072f",
+    "ILOffset": 44,
+    "TypeFullName": "AtTheGatesUI.HelpGuideTips.Tip_Sages",
+    "MethodName": "Activate",
+    "Safety": "SafeUI",
+    "Note": "Trial visible help-tip prose.",
+    "EvidenceScenario": "trial-ui-visible-misc-2"
+},
+{
+    "Assembly": "UI",
+    "Original": "Zone Traits",
+    "Translation": "地带特质",
+    "MethodToken": "0x060002dc",
+    "ILOffset": 20,
+    "TypeFullName": "AtTheGatesUI.ns_InGame.MouseoverPanel",
+    "MethodName": "ZoneTraitsDebugInfo",
+    "Safety": "SafeUI",
+    "Note": "Trial mouseover/debug-visible label.",
+    "EvidenceScenario": "trial-ui-visible-misc-2"
+},
+{
+    "Assembly": "UI",
+    "Original": "X Turns Remaining",
+    "Translation": "剩余 X 回合",
+    "MethodToken": "0x060002f0",
+    "ILOffset": 233,
+    "TypeFullName": "AtTheGatesUI.ns_InGame.NewTurnBanner",
+    "MethodName": ".ctor",
+    "Safety": "SafeUI",
+    "Note": "Trial banner placeholder text; preserves X placeholder.",
+    "EvidenceScenario": "trial-ui-visible-misc-2"
+},
+{
+    "Assembly": "UI",
+    "Original": "X Points",
+    "Translation": "X 点数",
+    "MethodToken": "0x060002f0",
+    "ILOffset": 351,
+    "TypeFullName": "AtTheGatesUI.ns_InGame.NewTurnBanner",
+    "MethodName": ".ctor",
+    "Safety": "SafeUI",
+    "Note": "Trial banner placeholder text; preserves X placeholder.",
+    "EvidenceScenario": "trial-ui-visible-misc-2"
+},
+{
+    "Assembly": "UI",
+    "Original": "You fool.",
+    "Translation": "蠢货。",
+    "MethodToken": "0x0600068c",
+    "ILOffset": 69,
+    "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Diplomacy",
+    "MethodName": "Update",
+    "Safety": "SafeUI",
+    "Note": "Trial visible diplomacy response.",
+    "EvidenceScenario": "trial-ui-visible-misc-2"
+},
+{
+    "Assembly": "UI",
+    "Original": "- Jon",
+    "Translation": "- Jon",
+    "MethodToken": "0x060000c3",
+    "ILOffset": 127,
+    "TypeFullName": "AtTheGatesUI.ns_MainMenu.MainMenu",
+    "MethodName": "ShowWelcomeMessage",
+    "Safety": "SafeUI",
+    "Note": "Trial signature display text; keep generated personal name in English.",
+    "EvidenceScenario": "trial-ui-visible-misc-2"
+}
+]

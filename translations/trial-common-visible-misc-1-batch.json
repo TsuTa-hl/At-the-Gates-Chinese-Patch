@@ -1,0 +1,62 @@
+[
+{
+    "Assembly": "Common",
+    "Original": "A Clan is a group of [Families|FAMILY] which act as a single unit. Each Clan can be [Trained|TRAIN] in a [Profession|PROFESSION] in order to grant it the ability to [Harvest|HARVEST] or refine [Resources|RESOURCE], explore the map, [Fight|WARRIOR] enemies, and more. You will usually end up with around 40-50 Clans over the course of a single game.",
+    "Translation": "[氏族|CLAN]由若干[家庭|FAMILY]组成，并作为一个整体行动。每个氏族都可以被[训练|TRAIN]为某种[职业|PROFESSION]，从而获得[采集|HARVEST]或精炼[资源|RESOURCE]、探索地图、与敌人[战斗|WARRIOR]等能力。一局游戏中通常会有约40到50个氏族。",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2551,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial concept help body; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-visible-misc-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "You can Punish a [Clan|CLAN] in your [SETTLEMENT] after it's committed a [Crime|CRIME] or become involved in a [Feud|FEUD]. Doing so settles the matter and any associated penalties, but strips the Clan of their [Profession|PROFESSION] and [Discipline|DISCIPLINE], and gives them a permanent [Mood|MOOD] penalty.",
+    "Translation": "当你的[SETTLEMENT]中的[氏族|CLAN]犯下[罪行|CRIME]或卷入[纷争|FEUD]后，你可以惩罚他们。这样会了结事件及相关惩罚，但会剥夺该氏族的[职业|PROFESSION]和[纪律|DISCIPLINE]，并给予永久[心情|MOOD]惩罚。",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2698,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial concept help body; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-visible-misc-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "the Portrait of this Terrain",
+    "Translation": "此地形的图像",
+    "MethodToken": "0x060002fe",
+    "ILOffset": 250,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.ns_Tooltips.TerrainTooltip",
+    "MethodName": "BuildTooltip",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial terrain tooltip display fragment.",
+    "EvidenceScenario": "trial-common-visible-misc-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "a year and a half",
+    "Translation": "一年半",
+    "MethodToken": "0x06001716",
+    "ILOffset": 66,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.GAME",
+    "MethodName": "GetTimeLength",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial duration display text.",
+    "EvidenceScenario": "trial-common-visible-misc-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "one year",
+    "Translation": "一年",
+    "MethodToken": "0x06001716",
+    "ILOffset": 163,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.GAME",
+    "MethodName": "GetTimeLength",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial duration display text.",
+    "EvidenceScenario": "trial-common-visible-misc-1"
+}
+]

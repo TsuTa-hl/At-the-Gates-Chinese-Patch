@@ -1,0 +1,162 @@
+[
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6223,
+        "Original":  " to [Pillage|PILLAGE] a ",
+        "Translation":  "以[劫掠|PILLAGE]一个",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6270,
+        "Original":  " needed to [Identify|UNIDENTIFIED] ",
+        "Translation":  "[识别|UNIDENTIFIED]所需",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6649,
+        "Original":  "[Identification|UNIDENTIFIED] accuracy",
+        "Translation":  "[识别|UNIDENTIFIED]准确度",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6673,
+        "Original":  "Needs ",
+        "Translation":  "需要",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6711,
+        "Original":  " to [Pack Up|PACKED] before ",
+        "Translation":  "先[打包|PACKED]后才能",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6727,
+        "Original":  " is possible",
+        "Translation":  "才可进行",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6744,
+        "Original":  "Can [Construct|CONSTRUCT] [",
+        "Translation":  "可以[建造|CONSTRUCT][",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment preserving partial tag.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6792,
+        "Original":  "Can [Construct|CONSTRUCT] [",
+        "Translation":  "可以[建造|CONSTRUCT][",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment preserving partial tag.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6840,
+        "Original":  "Consumed after [Constructing|CONSTRUCT] a [",
+        "Translation":  "完成[建造|CONSTRUCT][",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment preserving partial tag.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6904,
+        "Original":  " may be assigned up to ",
+        "Translation":  "最多可分配",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6951,
+        "Original":  "Will suffer [Damage|DAMAGE] on a [Tile|TILE] unless it has a [Supply Level|SUPPLY] of at least ",
+        "Translation":  "位于[Tile|TILE]时，若[Supply Level|SUPPLY]低于",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  7073,
+        "Original":  " within a range of ",
+        "Translation":  "在范围内",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  7128,
+        "Original":  "Extends ",
+        "Translation":  "扩展",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  7199,
+        "Original":  "Extends ",
+        "Translation":  "扩展",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  7215,
+        "Original":  " to a range of ",
+        "Translation":  "至范围",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  7334,
+        "Original":  "Minimum of ",
+        "Translation":  "至少",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-4"
+    }
+]

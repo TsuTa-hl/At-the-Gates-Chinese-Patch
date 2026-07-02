@@ -1,0 +1,42 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1693,
+    "Original": "Maps in AtG are divided into a grid of hex tiles.[BLANK-LINE]You can show or hide the grid by pressing [HOTKEY:G], and pressing [HOTKEY:1] will make it darker or lighter.",
+    "Translation": "AtG 的地图由六边形地格组成。[BLANK-LINE]按 [HOTKEY:G] 可以显示或隐藏网格，按 [HOTKEY:1] 可以让网格变深或变浅。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help map/grid body; preserve hotkey tags.",
+    "EvidenceScenario": "trial-common-concepts-help-3"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1714,
+    "Original": "Each [Tile|TILE] is comprised of at least one type of Terrain and some can have up to four or five.[BLANK-LINE][FERTILE:S], [DRY:S], and [DESERT:S] are 'base' Terrain types which can be found by themselves. A Tile can also have [HILL:S] or vegetation like a [Forest|FOREST] or [BRUSH-LEAFY].[BLANK-LINE]Tiles can also be affected by [Weather|WEATHER] and become [FLOODED] or [SCORCHED]. During the winter a Tile's base Terrain usually becomes [Cold|COLD], and may even turn into [SNOW].",
+    "Translation": "每个[地格|TILE]至少包含一种地形，有些地格可包含四五种。[BLANK-LINE][FERTILE:S]、[DRY:S] 和 [DESERT:S] 是可以单独出现的“基础”地形。地格也可以有 [HILL:S]，或像[森林|FOREST]、[BRUSH-LEAFY] 这样的植被。[BLANK-LINE]地格还会受[天气|WEATHER]影响，变成 [FLOODED] 或 [SCORCHED]。冬季时，地格的基础地形通常会变为[寒冷|COLD]，甚至可能变为 [SNOW]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help terrain body; preserve terrain/deposit tags.",
+    "EvidenceScenario": "trial-common-concepts-help-3"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1735,
+    "Original": "Water is an impassable [Terrain|TERRAIN] type. [SETTLEMENT:S] next to large enough bodies of water can build [GALLEY:S].",
+    "Translation": "水域是一种不可通行的[地形|TERRAIN]。[SETTLEMENT:S] 若毗邻足够大的水体，可以建造 [GALLEY:S]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help water body; preserve tags.",
+    "EvidenceScenario": "trial-common-concepts-help-3"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1756,
+    "Original": "Rivers are a major [Terrain|TERRAIN] barrier. Normally, crossing Small Rivers is difficult and Large Rivers is impossible, but Rivers can freeze in the winter and become as easy to cross as flat ground.",
+    "Translation": "河流是重要的[地形|TERRAIN]障碍。通常，小河难以跨越，大河无法跨越；但河流会在冬季结冰，届时穿越它们会像穿越平地一样容易。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help river body; preserve concept identifier.",
+    "EvidenceScenario": "trial-common-concepts-help-3"
+  }
+]

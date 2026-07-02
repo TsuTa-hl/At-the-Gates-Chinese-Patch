@@ -39,6 +39,12 @@ public static class AtGCaptureWindow {
     [DllImport("user32.dll")]
     public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
+    [DllImport("user32.dll")]
+    public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+    [DllImport("user32.dll")]
+    public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
     [StructLayout(LayoutKind.Sequential)]
     public struct POINT {
         public int X;
@@ -64,6 +70,11 @@ if ($width -le 0 -or $height -le 0) {
     throw "At the Gates window rectangle is empty."
 }
 
+$flags = 0x0001 -bor 0x0002 -bor 0x0040
+[AtGCaptureWindow]::ShowWindow($window.Handle, 9) | Out-Null
+[AtGCaptureWindow]::SetWindowPos($window.Handle, [IntPtr]::new(-1), 0, 0, 0, 0, $flags) | Out-Null
+Start-Sleep -Milliseconds 250
+
 $bitmap = New-Object System.Drawing.Bitmap $width, $height
 $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
 $graphics.CopyFromScreen(
@@ -86,6 +97,8 @@ if ($MarkCursor) {
 $bitmap.Save($OutputPath, [System.Drawing.Imaging.ImageFormat]::Png)
 $graphics.Dispose()
 $bitmap.Dispose()
+
+[AtGCaptureWindow]::SetWindowPos($window.Handle, [IntPtr]::new(-2), 0, 0, 0, 0, $flags) | Out-Null
 
 [pscustomobject]@{
     ProcessId = $window.ProcessId

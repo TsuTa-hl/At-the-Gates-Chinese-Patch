@@ -1,0 +1,434 @@
+[
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036b",
+    "ILOffset": 568,
+    "Original": " remains.",
+    "Translation": "仍会持续。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel siege fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036b",
+    "ILOffset": 598,
+    "Original": " will lose ",
+    "Translation": "将失去",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel siege fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036c",
+    "ILOffset": 224,
+    "Original": " with less than ",
+    "Translation": "少于",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel morale fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036c",
+    "ILOffset": 301,
+    "Original": " recovers by ",
+    "Translation": "恢复",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog selection panel morale fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036d",
+    "ILOffset": 291,
+    "Original": " (stopping at [MOUNTAIN:S], [Rivers|RIVER] and [Water|WATER]) recieve +",
+    "Translation": "（在[MOUNTAIN:S]、[河流|RIVER]和[水域|WATER]处停止）获得+",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply-provided tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036d",
+    "ILOffset": 323,
+    "Original": " - but only if this ",
+    "Translation": "但前提是这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply-provided tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036d",
+    "ILOffset": 407,
+    "Original": " is already in ",
+    "Translation": "已在",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply-provided tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036d",
+    "ILOffset": 417,
+    "Original": " range.",
+    "Translation": "范围内。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply-provided tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036d",
+    "ILOffset": 439,
+    "Original": " Extended",
+    "Translation": "延伸",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply label fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 208,
+    "Original": " requires ",
+    "Translation": "需要",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 284,
+    "Original": " SUPPLY CRITICAL",
+    "Translation": "补给危急",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status label."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 342,
+    "Original": " with less.",
+    "Translation": "且低于该值。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 378,
+    "Original": "If it stays here (or ends its ",
+    "Translation": "如果它留在这里（或结束其",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 410,
+    "Original": " with less than ",
+    "Translation": "时低于",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 504,
+    "Original": " Shortage",
+    "Translation": "短缺",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status label."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 532,
+    "Original": " only provides ",
+    "Translation": "只提供",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 597,
+    "Original": " have a one ",
+    "Translation": "有一",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 645,
+    "Original": " they",
+    "Translation": "他们",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 696,
+    "Original": " Exhausted",
+    "Translation": "耗尽",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status label."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 722,
+    "Original": ", but ended its previous ",
+    "Translation": "，但上一",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 754,
+    "Original": " with less.",
+    "Translation": "时低于。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 792,
+    "Original": " provides ",
+    "Translation": "提供",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 865,
+    "Original": " remains here (or moves to another ",
+    "Translation": "留在这里（或移动到另一个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 913,
+    "Original": " reserve will replenish.",
+    "Translation": "储备会恢复。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 941,
+    "Original": "However, if the ",
+    "Translation": "然而，如果",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036e",
+    "ILOffset": 974,
+    "Original": " with less than ",
+    "Translation": "时低于",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600036f",
+    "ILOffset": 2,
+    "Original": " will lose ",
+    "Translation": "将失去",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog supply penalty fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000370",
+    "ILOffset": 208,
+    "Original": " is currently ",
+    "Translation": "当前",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog current-action fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000370",
+    "ILOffset": 408,
+    "Original": " It will finish ",
+    "Translation": "它将完成",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog current-action fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000372",
+    "ILOffset": 149,
+    "Original": " has been [Pillaged|PILLAGE]! It will be ",
+    "Translation": "已被[劫掠|PILLAGE]！它将",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog pillaged status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000372",
+    "ILOffset": 214,
+    "Original": "until Repaired.",
+    "Translation": "直到修复。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog pillaged status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000372",
+    "ILOffset": 291,
+    "Original": "for 1 more ",
+    "Translation": "再持续1",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog pillaged status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000373",
+    "ILOffset": 224,
+    "Original": " goes ",
+    "Translation": "离开",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog outside-borders status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000374",
+    "ILOffset": 74,
+    "Original": " has been disabled for ",
+    "Translation": "已停用",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog disabled status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000374",
+    "ILOffset": 180,
+    "Original": " It must remain so for ",
+    "Translation": "必须保持此状态",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog disabled status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000374",
+    "ILOffset": 254,
+    "Original": "one more ",
+    "Translation": "再1",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog disabled status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000375",
+    "ILOffset": 91,
+    "Original": "This [",
+    "Translation": "这个[",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog occupied status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000375",
+    "ILOffset": 145,
+    "Original": "It cannot [Move|MOVE-POINT], ",
+    "Translation": "它不能[移动|MOVE-POINT]，",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog occupied status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000375",
+    "ILOffset": 177,
+    "Original": ", and ",
+    "Translation": "，且",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog occupied status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000375",
+    "ILOffset": 193,
+    "Original": " no Resources.",
+    "Translation": "没有资源。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog occupied status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000375",
+    "ILOffset": 221,
+    "Original": " ends unless a [Warrior|WARRIOR] is on the [Tile|TILE].",
+    "Translation": "结束，除非[战士|WARRIOR]位于该[地格|TILE]上。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog occupied status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000375",
+    "ILOffset": 246,
+    "Original": "It will remain in this state",
+    "Translation": "它将保持此状态",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog occupied status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000375",
+    "ILOffset": 375,
+    "Original": " of Resources is suspended while in this state, which it will remain in",
+    "Translation": "资源产出在此状态下暂停，并将持续",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog occupied status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000375",
+    "ILOffset": 402,
+    "Original": " forever, unless reclaimed by the original owner.",
+    "Translation": "永久，除非原主人夺回。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog occupied status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000375",
+    "ILOffset": 473,
+    "Original": "one more ",
+    "Translation": "再1",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog occupied status fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000378",
+    "ILOffset": 338,
+    "Original": "Split Army",
+    "Translation": "拆分军队",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog army management button."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000378",
+    "ILOffset": 651,
+    "Original": "Returns this ",
+    "Translation": "将这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog army management fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000378",
+    "ILOffset": 667,
+    "Original": " to your [SETTLEMENT], allowing you to ",
+    "Translation": "送回你的[定居点|SETTLEMENT]，使你可以",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog army management fragment."
+  }
+]

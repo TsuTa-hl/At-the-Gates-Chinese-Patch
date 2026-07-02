@@ -40,6 +40,12 @@ public static class AtGClickWindow {
     public static extern bool SetForegroundWindow(IntPtr hWnd);
 
     [DllImport("user32.dll")]
+    public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+    [DllImport("user32.dll")]
+    public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
+    [DllImport("user32.dll")]
     public static extern bool SetCursorPos(int X, int Y);
 
     [DllImport("user32.dll")]
@@ -79,8 +85,11 @@ if (![AtGClickWindow]::GetWindowRect($window.Handle, [ref]$rect)) {
 
 $screenX = $rect.Left + $X
 $screenY = $rect.Top + $Y
+$flags = 0x0001 -bor 0x0002 -bor 0x0040
+[AtGClickWindow]::ShowWindow($window.Handle, 9) | Out-Null
+[AtGClickWindow]::SetWindowPos($window.Handle, [IntPtr]::new(-1), 0, 0, 0, 0, $flags) | Out-Null
 [AtGClickWindow]::SetForegroundWindow($window.Handle) | Out-Null
-Start-Sleep -Milliseconds 100
+Start-Sleep -Milliseconds 250
 [AtGClickWindow]::SetCursorPos($screenX, $screenY) | Out-Null
 Start-Sleep -Milliseconds 150
 
@@ -127,6 +136,8 @@ if ($Method -eq "PostMessage" -or $Method -eq "All") {
     Start-Sleep -Milliseconds 80
     [AtGClickWindow]::PostMessage($window.Handle, 0x0202, [IntPtr]::Zero, $lParam) | Out-Null
 }
+
+[AtGClickWindow]::SetWindowPos($window.Handle, [IntPtr]::new(-2), 0, 0, 0, 0, $flags) | Out-Null
 
 [pscustomobject]@{
     ProcessId = $window.ProcessId

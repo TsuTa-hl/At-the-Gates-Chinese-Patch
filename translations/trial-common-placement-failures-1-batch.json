@@ -1,0 +1,162 @@
+[
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  53,
+        "Original":  " - Already Occupied",
+        "Translation":  " - 已被占用",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  103,
+        "Original":  " - Not in Same Area",
+        "Translation":  " - 不在同一区域",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  153,
+        "Original":  " - Area Too Small",
+        "Translation":  " - 区域过小",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  205,
+        "Original":  " - Outside Control",
+        "Translation":  " - 控制范围外",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  257,
+        "Original":  " - Too Far From Friendly City",
+        "Translation":  " - 距友方城市太远",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  309,
+        "Original":  " - Map Edge Too Close",
+        "Translation":  " - 距地图边缘太近",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  465,
+        "Original":  " - Structure Too Close",
+        "Translation":  " - 距建筑太近",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  517,
+        "Original":  " - Friendly City Too Close",
+        "Translation":  " - 友方城市太近",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  569,
+        "Original":  " - Foreign City Too Close",
+        "Translation":  " - 外国城市太近",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  621,
+        "Original":  " - Another Capital Too Close",
+        "Translation":  " - 其他首都太近",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  673,
+        "Original":  " - Roman Capital Too Close",
+        "Translation":  " - 罗马首都太近",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  725,
+        "Original":  " - Invalid Terrain",
+        "Translation":  " - 地形无效",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  777,
+        "Original":  " - Invalid Terrain in Zone",
+        "Translation":  " - 区域内地形无效",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  829,
+        "Original":  " - Lacks Required Terrain",
+        "Translation":  " - 缺少所需地形",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  985,
+        "Original":  " - Water",
+        "Translation":  " - 水域",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  1037,
+        "Original":  " - Impassable",
+        "Translation":  " - 不可通行",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-placement-failures-1"
+    }
+]

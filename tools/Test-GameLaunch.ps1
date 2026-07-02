@@ -1,19 +1,31 @@
 param(
     [string]$GamePath,
     [int]$WaitSeconds = 25,
-    [string]$ScreenshotPath = "$PSScriptRoot\..\.tmp\game-smoke.png"
+    [string]$ScreenshotPath = "$PSScriptRoot\..\.tmp\game-smoke.png",
+    [switch]$SkipNewGame,
+    [int]$NewGameWaitSeconds = 35,
+    [string]$NewGameScreenshotPath = "$PSScriptRoot\..\.tmp\game-smoke-new-game.png",
+    [int]$PostNewGameReadyDelayMs = 1500,
+    [string]$SmokeLockName = "Local\AtGChinesePatch.TestGameLaunch"
 )
 
 $ErrorActionPreference = "Stop"
 . "$PSScriptRoot\AtGPaths.ps1"
 
+$smokeMutex = [System.Threading.Mutex]::new($false, $SmokeLockName)
+$smokeLockTaken = $false
+
+try {
+    $smokeLockTaken = $smokeMutex.WaitOne(0)
+    if (!$smokeLockTaken) {
+        throw "Another At the Gates smoke test is already running. Wait for it to finish before starting a new smoke test."
+    }
+
 $GamePath = Resolve-AtGGamePath $GamePath
 
 function Get-AtGProcess {
     Get-Process | Where-Object {
-        $_.ProcessName -eq "At The Gates" -or
-        $_.MainWindowTitle -like "*At the Gates*" -or
-        $_.MainWindowTitle -like "*HE'S DEAD*"
+        $_.ProcessName -eq "At The Gates"
     }
 }
 
@@ -28,11 +40,13 @@ if (!(Test-Path -LiteralPath $exe)) {
 }
 
 $crashLog = Join-Path $GamePath "Logs\Crash.AtGLog"
+$programLog = Join-Path $GamePath "Logs\Program.AtGLog"
 $beforeCrashTime = $null
 if (Test-Path -LiteralPath $crashLog) {
     $beforeCrashTime = (Get-Item -LiteralPath $crashLog).LastWriteTimeUtc
 }
 
+$eventStartTime = (Get-Date).AddSeconds(-2)
 $process = Start-Process -FilePath $exe -WorkingDirectory $GamePath -PassThru
 $launchWait = [System.Diagnostics.Stopwatch]::StartNew()
 $windowReady = $false
@@ -59,12 +73,90 @@ $launchWait.Stop()
 $windows = @(Get-AtGProcess | Select-Object Id, ProcessName, MainWindowTitle)
 $crashUpdated = $false
 $crashSummary = ""
+$crashDialogSeen = $false
+$newGameAttempted = $false
+$newGameClickCount = 0
+$newGameSmokeSeconds = 0
+$newGameScreenshot = $null
+$newGameReady = $false
+$newGameReadyMarker = ""
+$processExitedBeforeCleanup = $false
+$processExitCode = $null
+$windowsErrorEvents = @()
 
 if (Test-Path -LiteralPath $crashLog) {
     $afterCrashTime = (Get-Item -LiteralPath $crashLog).LastWriteTimeUtc
     $crashUpdated = ($beforeCrashTime -eq $null -or $afterCrashTime -gt $beforeCrashTime)
     if ($crashUpdated) {
         $crashSummary = (Get-Content -LiteralPath $crashLog -Raw -Encoding UTF8) -replace "\s+", " "
+    }
+}
+
+function Update-AtGCrashStatus {
+    $script:windows = @(Get-AtGProcess | Select-Object Id, ProcessName, MainWindowTitle)
+    $script:crashDialogSeen = @($script:windows | Where-Object { $_.MainWindowTitle -like "*HE'S DEAD*" }).Count -gt 0
+    $script:crashUpdated = $false
+    $script:crashSummary = ""
+
+    if (Test-Path -LiteralPath $crashLog) {
+        $afterCrashTime = (Get-Item -LiteralPath $crashLog).LastWriteTimeUtc
+        $script:crashUpdated = ($beforeCrashTime -eq $null -or $afterCrashTime -gt $beforeCrashTime)
+        if ($script:crashUpdated) {
+            $script:crashSummary = (Get-Content -LiteralPath $crashLog -Raw -Encoding UTF8) -replace "\s+", " "
+        }
+    }
+}
+
+function Get-AtGNewGameReadyMarker {
+    if (!(Test-Path -LiteralPath $programLog)) {
+        return ""
+    }
+
+    try {
+        $tail = (Get-Content -LiteralPath $programLog -Tail 60 -Encoding UTF8) -join "`n"
+        if ($tail -match "Controller\s+- Giving Control to Human") {
+            return "Controller - Giving Control to Human"
+        }
+
+        return ""
+    }
+    catch {
+        return ""
+    }
+}
+
+function Get-AtGWindowsErrorEvents {
+    try {
+        $events = Get-WinEvent -FilterHashtable @{
+            LogName = "Application"
+            StartTime = $eventStartTime
+        } -ErrorAction SilentlyContinue
+    }
+    catch {
+        return @()
+    }
+
+    foreach ($event in @($events)) {
+        if ($event.ProviderName -notmatch "Application Error|\.NET Runtime|Windows Error Reporting") {
+            continue
+        }
+
+        if ($event.Message -notmatch "At The Gates\.exe|AtTheGates|At the Gates") {
+            continue
+        }
+
+        $message = ($event.Message -replace "\s+", " ").Trim()
+        if ($message.Length -gt 700) {
+            $message = $message.Substring(0, 700)
+        }
+
+        [pscustomobject]@{
+            TimeCreated = $event.TimeCreated
+            ProviderName = $event.ProviderName
+            Id = $event.Id
+            Level = $event.LevelDisplayName
+            Message = $message
+        }
     }
 }
 
@@ -160,6 +252,88 @@ catch {
     Write-Warning "Screenshot failed: $($_.Exception.Message)"
 }
 
+Update-AtGCrashStatus
+
+if (!$SkipNewGame -and $windowReady -and !$process.HasExited -and !$crashDialogSeen) {
+    $newGameAttempted = $true
+    $newGameStopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+    $newGameSteps = @(
+        @{ Name = "New Game"; X = 1280; Y = 714; WaitMs = 1200 },
+        @{ Name = "Default Tribe"; X = 1280; Y = 526; WaitMs = 1200 },
+        @{ Name = "Normal Difficulty"; X = 1280; Y = 654; WaitMs = 500 }
+    )
+
+    foreach ($step in $newGameSteps) {
+        if ($process.HasExited) {
+            break
+        }
+
+        Update-AtGCrashStatus
+        if ($crashDialogSeen -or $crashUpdated) {
+            break
+        }
+
+        & "$PSScriptRoot\Click-AtGWindow.ps1" -X ([int]$step.X) -Y ([int]$step.Y) | Out-Null
+        $newGameClickCount++
+        Start-Sleep -Milliseconds ([int]$step.WaitMs)
+    }
+
+    $newGameDeadline = [DateTime]::UtcNow.AddSeconds($NewGameWaitSeconds)
+    while ([DateTime]::UtcNow -lt $newGameDeadline) {
+        if ($process.HasExited) {
+            break
+        }
+
+        Update-AtGCrashStatus
+        if ($crashDialogSeen -or $crashUpdated) {
+            break
+        }
+
+        $readyMarker = Get-AtGNewGameReadyMarker
+        if (![string]::IsNullOrWhiteSpace($readyMarker)) {
+            $newGameReady = $true
+            $newGameReadyMarker = $readyMarker
+            break
+        }
+
+        Start-Sleep -Milliseconds 500
+    }
+    $newGameStopwatch.Stop()
+    $newGameSmokeSeconds = [Math]::Round($newGameStopwatch.Elapsed.TotalSeconds, 2)
+
+    if ($newGameReady -and $PostNewGameReadyDelayMs -gt 0 -and !$process.HasExited) {
+        Start-Sleep -Milliseconds $PostNewGameReadyDelayMs
+        Update-AtGCrashStatus
+    }
+
+    $newGameScreenshotDir = Split-Path -Parent $NewGameScreenshotPath
+    if ($newGameScreenshotDir) {
+        New-Item -ItemType Directory -Force -Path $newGameScreenshotDir | Out-Null
+    }
+
+    try {
+        & "$PSScriptRoot\Capture-AtGWindow.ps1" -OutputPath $NewGameScreenshotPath | Out-Null
+        $newGameScreenshot = (Resolve-Path -LiteralPath $NewGameScreenshotPath -ErrorAction SilentlyContinue).Path
+    }
+    catch {
+        Write-Warning "New-game screenshot failed: $($_.Exception.Message)"
+    }
+}
+
+Update-AtGCrashStatus
+
+$processExitedBeforeCleanup = $true
+try {
+    $process.Refresh()
+    $processExitedBeforeCleanup = $process.HasExited
+    if ($processExitedBeforeCleanup) {
+        $processExitCode = $process.ExitCode
+    }
+}
+catch {
+    $processExitedBeforeCleanup = $true
+}
+
 foreach ($atg in @(Get-AtGProcess)) {
     $null = $atg.CloseMainWindow()
 }
@@ -168,19 +342,63 @@ foreach ($atg in @(Get-AtGProcess)) {
     Stop-Process -Id $atg.Id -Force
 }
 
-$programLog = Join-Path $GamePath "Logs\Program.AtGLog"
 $programTail = ""
 if (Test-Path -LiteralPath $programLog) {
     $programTail = ((Get-Content -LiteralPath $programLog -Tail 30 -Encoding UTF8) -join "`n")
+}
+
+$windowsErrorEvents = @(Get-AtGWindowsErrorEvents)
+$failureReasons = New-Object System.Collections.Generic.List[string]
+if (!$windowReady) {
+    $failureReasons.Add("Game window did not become ready.")
+}
+if ($processExitedBeforeCleanup) {
+    if ($null -ne $processExitCode) {
+        $failureReasons.Add("Game process exited before smoke-test cleanup. ExitCode=$processExitCode.")
+    }
+    else {
+        $failureReasons.Add("Game process exited before smoke-test cleanup.")
+    }
+}
+if ($crashDialogSeen) {
+    $failureReasons.Add("Crash dialog was visible.")
+}
+if ($crashUpdated) {
+    $failureReasons.Add("Crash.AtGLog was updated.")
+}
+if (!$SkipNewGame -and (!$newGameAttempted -or !$newGameReady)) {
+    $failureReasons.Add("New-game smoke did not reach the main loop.")
+}
+if ($windowsErrorEvents.Count -gt 0) {
+    $failureReasons.Add("Windows Application Error/.NET/WER event was recorded.")
 }
 
 [pscustomobject]@{
     StartedProcessId = $process.Id
     WindowReady = $windowReady
     StartupWaitSeconds = [Math]::Round($launchWait.Elapsed.TotalSeconds, 2)
+    ProcessExitedBeforeCleanup = $processExitedBeforeCleanup
+    ProcessExitCode = $processExitCode
+    NewGameAttempted = $newGameAttempted
+    NewGameClickCount = $newGameClickCount
+    NewGameReady = $newGameReady
+    NewGameReadyMarker = $newGameReadyMarker
+    NewGameSmokeSeconds = $newGameSmokeSeconds
     CrashLogUpdated = $crashUpdated
+    CrashDialogSeen = $crashDialogSeen
+    WindowsErrorSeen = ($windowsErrorEvents.Count -gt 0)
+    WindowsErrorEvents = $windowsErrorEvents
+    FailureReason = ($failureReasons.ToArray() -join " ")
     WindowsSeen = $windows
     Screenshot = (Resolve-Path -LiteralPath $ScreenshotPath -ErrorAction SilentlyContinue).Path
+    NewGameScreenshot = $newGameScreenshot
     ProgramLogTail = $programTail
     CrashSummary = $crashSummary
+}
+}
+finally {
+    if ($smokeLockTaken) {
+        $smokeMutex.ReleaseMutex()
+    }
+    $smokeMutex.Dispose()
 }

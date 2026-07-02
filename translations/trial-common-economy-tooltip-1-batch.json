@@ -1,0 +1,162 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000b29",
+    "ILOffset": 68,
+    "Original": "You switch to ",
+    "Translation": "你改信",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog transaction description fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000b29",
+    "ILOffset": 97,
+    "Original": "'s current [Religion|RELIGION]",
+    "Translation": "当前的[宗教|RELIGION]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog transaction description fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000b29",
+    "ILOffset": 255,
+    "Original": "Other Leader",
+    "Translation": "另一位领袖",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog transaction description label.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000b29",
+    "ILOffset": 269,
+    "Original": " switches to your current [Religion|RELIGION]",
+    "Translation": "改信你当前的[宗教|RELIGION]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog transaction description fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000b29",
+    "ILOffset": 447,
+    "Original": "Other Player",
+    "Translation": "另一位玩家",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog transaction description label.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000b29",
+    "ILOffset": 461,
+    "Original": " receive ",
+    "Translation": "获得",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog transaction description fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000b29",
+    "ILOffset": 479,
+    "Original": "You receive ",
+    "Translation": "你获得",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog transaction description fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600123b",
+    "ILOffset": 8,
+    "Original": "If your Stockpile of ",
+    "Translation": "如果你的库存",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource deficiency help fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600123b",
+    "ILOffset": 59,
+    "Original": "below 0",
+    "Translation": "低于0",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource deficiency help fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600123b",
+    "ILOffset": 117,
+    "Original": " at the end of this turn ",
+    "Translation": "在本回合结束时",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource deficiency help fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600123b",
+    "ILOffset": 217,
+    "Original": "Population growth reduced by ",
+    "Translation": "人口增长降低",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource deficiency help fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600123b",
+    "ILOffset": 367,
+    "Original": " reduced by ",
+    "Translation": "降低",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource deficiency help fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600123b",
+    "ILOffset": 455,
+    "Original": " reduced by ",
+    "Translation": "降低",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource deficiency help fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000314",
+    "ILOffset": 250,
+    "Original": "the Portrait of this Deposit",
+    "Translation": "此资源点的图像",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog deposit tooltip fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000314",
+    "ILOffset": 515,
+    "Original": "the basic description of this Deposit",
+    "Translation": "此资源点的基本说明",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog deposit tooltip fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000314",
+    "ILOffset": 1065,
+    "Original": "this Deposit's special abilities",
+    "Translation": "此资源点的特殊能力",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog deposit tooltip fragment.",
+    "EvidenceScenario": "trial-common-economy-tooltip-1"
+  }
+]

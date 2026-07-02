@@ -1,0 +1,110 @@
+[
+{
+    "Assembly": "Common",
+    "Original": "No Moves Left",
+    "Translation": "无剩余移动",
+    "MethodToken": "0x0600022a",
+    "ILOffset": 133,
+    "TypeFullName": "AtTheGatesCommon.ns_Text.Text",
+    "MethodName": "GetCommandString",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial command status text.",
+    "EvidenceScenario": "trial-common-command-status-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Skipping This Turn",
+    "Translation": "本回合跳过",
+    "MethodToken": "0x0600022a",
+    "ILOffset": 155,
+    "TypeFullName": "AtTheGatesCommon.ns_Text.Text",
+    "MethodName": "GetCommandString",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial command status text.",
+    "EvidenceScenario": "trial-common-command-status-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Moving Into Tile",
+    "Translation": "移入地格",
+    "MethodToken": "0x0600022a",
+    "ILOffset": 188,
+    "TypeFullName": "AtTheGatesCommon.ns_Text.Text",
+    "MethodName": "GetCommandString",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial command status text.",
+    "EvidenceScenario": "trial-common-command-status-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Digging In",
+    "Translation": "固守中",
+    "MethodToken": "0x0600022a",
+    "ILOffset": 199,
+    "TypeFullName": "AtTheGatesCommon.ns_Text.Text",
+    "MethodName": "GetCommandString",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial command status text.",
+    "EvidenceScenario": "trial-common-command-status-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Chopping Forest",
+    "Translation": "砍伐森林",
+    "MethodToken": "0x0600022a",
+    "ILOffset": 294,
+    "TypeFullName": "AtTheGatesCommon.ns_Text.Text",
+    "MethodName": "GetCommandString",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial command status text.",
+    "EvidenceScenario": "trial-common-command-status-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Packing Up",
+    "Translation": "打包中",
+    "MethodToken": "0x0600022a",
+    "ILOffset": 318,
+    "TypeFullName": "AtTheGatesCommon.ns_Text.Text",
+    "MethodName": "GetCommandString",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial command status text.",
+    "EvidenceScenario": "trial-common-command-status-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Training for Magister Militum",
+    "Translation": "训练为军事统帅",
+    "MethodToken": "0x0600022a",
+    "ILOffset": 350,
+    "TypeFullName": "AtTheGatesCommon.ns_Text.Text",
+    "MethodName": "GetCommandString",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial command status text.",
+    "EvidenceScenario": "trial-common-command-status-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Deploying for Magister Militum",
+    "Translation": "部署为军事统帅",
+    "MethodToken": "0x0600022a",
+    "ILOffset": 358,
+    "TypeFullName": "AtTheGatesCommon.ns_Text.Text",
+    "MethodName": "GetCommandString",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial command status text.",
+    "EvidenceScenario": "trial-common-command-status-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Declaring Kingdom",
+    "Translation": "宣布建国",
+    "MethodToken": "0x0600022a",
+    "ILOffset": 366,
+    "TypeFullName": "AtTheGatesCommon.ns_Text.Text",
+    "MethodName": "GetCommandString",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial command status text.",
+    "EvidenceScenario": "trial-common-command-status-1"
+}
+]

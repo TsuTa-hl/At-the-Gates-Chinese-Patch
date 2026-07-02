@@ -1,0 +1,142 @@
+[
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 286,
+    "Original": " you want to ",
+    "Translation": "你想要",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 428,
+    "Original": " in it.",
+    "Translation": "在其中。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 2256,
+    "Original": " has become ",
+    "Translation": "已变为",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 2429,
+    "Original": "They have ",
+    "Translation": "他们拥有",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 2519,
+    "Original": " of all other ",
+    "Translation": "所有其他",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 2537,
+    "Original": " on the same ",
+    "Translation": "位于同一",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 2555,
+    "Original": " will be reduced by ",
+    "Translation": "将降低",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 2575,
+    "Original": " levels.",
+    "Translation": "级。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 2944,
+    "Original": " which harvests Resources will eventually exhaust its ",
+    "Translation": "采收资源者最终会耗尽",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 3250,
+    "Original": "You've ",
+    "Translation": "你已",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 3337,
+    "Original": " it took ",
+    "Translation": "耗费了",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 3625,
+    "Original": " them took ",
+    "Translation": "它们耗费了",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 4375,
+    "Original": " will be ",
+    "Translation": "将会",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail fragment.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 4472,
+    "Original": "Rumors are circulating among the pitiful Romans that a mighty scourge sent by God is imminent. Our people are virtuous and have nothing to fear - but our 'civilized' friends might not be so lucky. We should be prepared to take advantage of their plight!",
+    "Translation": "可怜的罗马人中正流传传言：上帝派来的可怕灾祸即将降临。我们的人民德行无亏，无所畏惧，但那些“文明”的朋友或许没这么幸运。我们应准备利用他们的困境！",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification detail text.",
+    "EvidenceScenario": "trial-ui-notification-details-1"
+  }
+]

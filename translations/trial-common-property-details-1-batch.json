@@ -1,0 +1,162 @@
+[
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  881,
+        "Original":  " - Lacks Required River",
+        "Translation":  " - 缺少所需河流",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000091",
+        "ILOffset":  933,
+        "Original":  " - Lacks Required Resource",
+        "Translation":  " - 缺少所需资源",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog object placement failure message.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  467,
+        "Original":  "Adds ",
+        "Translation":  "增加",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  498,
+        "Original":  " to the Stockpile",
+        "Translation":  "到库存",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  585,
+        "Original":  "Reveals the location of nearby ",
+        "Translation":  "揭示附近",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  606,
+        "Original":  "Reveals the location of nearby ",
+        "Translation":  "揭示附近",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  755,
+        "Original":  " needed to enter ",
+        "Translation":  "进入所需",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  865,
+        "Original":  " needed to enter ",
+        "Translation":  "进入所需",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  943,
+        "Original":  " impassable",
+        "Translation":  "不可通行",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  967,
+        "Original":  "Doesn\u0027t become trapped in ",
+        "Translation":  "不会陷入",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1098,
+        "Original":  " needed to enter ",
+        "Translation":  "进入所需",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1114,
+        "Original":  " with [RIVER-",
+        "Translation":  "且有[RIVER-",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment preserving partial tag.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1222,
+        "Original":  " needed to enter ",
+        "Translation":  "进入所需",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1238,
+        "Original":  " with [RIVER-",
+        "Translation":  "且有[RIVER-",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment preserving partial tag.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1336,
+        "Original":  " Reserve restored by ",
+        "Translation":  "储备恢复",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1381,
+        "Original":  " Reserve",
+        "Translation":  "储备",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-1"
+    }
+]

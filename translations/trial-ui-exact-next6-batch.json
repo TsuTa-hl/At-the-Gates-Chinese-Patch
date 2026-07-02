@@ -1,0 +1,434 @@
+[
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000389",
+    "ILOffset": 1066,
+    "Original": " it has enough ",
+    "Translation": "它拥有足够",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog forage tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000389",
+    "ILOffset": 1168,
+    "Original": " You can override this behavior by using one of the hotkeys below.",
+    "Translation": "你可以使用下方热键覆盖此行为。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog forage tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000389",
+    "ILOffset": 1381,
+    "Original": "Force ",
+    "Translation": "强制",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog forage button fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000389",
+    "ILOffset": 1762,
+    "Original": "Force ",
+    "Translation": "强制",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog forage button fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038a",
+    "ILOffset": 296,
+    "Original": " This takes ",
+    "Translation": "这需要",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog pack tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038a",
+    "ILOffset": 319,
+    "Original": " full ",
+    "Translation": "完整",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog pack tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038a",
+    "ILOffset": 410,
+    "Original": " you will no longer be able to ",
+    "Translation": "你将无法再",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog pack tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038b",
+    "ILOffset": 257,
+    "Original": " once again.",
+    "Translation": "再次。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog unpack tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038c",
+    "ILOffset": 47,
+    "Original": "Remove Disguise",
+    "Translation": "解除伪装",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog disguise button."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038c",
+    "ILOffset": 91,
+    "Original": "Tells this ",
+    "Translation": "命令这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog disguise tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038c",
+    "ILOffset": 101,
+    "Original": " to pretend to be [Bandits|BANDIT]. This allows them to [Attack|ATTACK] other tribes without a declaration of war. Be wary though, as the reverse will also be true!",
+    "Translation": "假扮为[强盗|BANDIT]。这能让他们不宣战便[攻击|ATTACK]其他部族。但也要警惕，反过来也同样成立！",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog disguise tooltip."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038d",
+    "ILOffset": 123,
+    "Original": "When one of your ",
+    "Translation": "当你的一个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog mercenary tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038d",
+    "ILOffset": 133,
+    "Original": " is adjacent to a Mercenary Camp, you have the option to hire the band into your ranks.",
+    "Translation": "邻近雇佣兵营地时，你可以将这支队伍雇入麾下。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog mercenary tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038d",
+    "ILOffset": 230,
+    "Original": "The cost to hire this group is ",
+    "Translation": "雇佣这支队伍的费用是",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog mercenary tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038d",
+    "ILOffset": 262,
+    "Original": " Treasure.",
+    "Translation": "财宝。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog mercenary tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038e",
+    "ILOffset": 138,
+    "Original": " gives this ",
+    "Translation": "给予这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog encamp tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038e",
+    "ILOffset": 154,
+    "Original": " 2 extra ",
+    "Translation": "额外2点",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog encamp tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038e",
+    "ILOffset": 186,
+    "Original": " have yet been spent this ",
+    "Translation": "尚未在本",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog encamp tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038e",
+    "ILOffset": 203,
+    "Original": ". The ",
+    "Translation": "。该",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog encamp tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038e",
+    "ILOffset": 244,
+    "Original": " will wake up the next ",
+    "Translation": "将在下个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog encamp tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038e",
+    "ILOffset": 260,
+    "Original": " it has enough ",
+    "Translation": "它拥有足够",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog encamp tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038e",
+    "ILOffset": 276,
+    "Original": " to meet its needs.",
+    "Translation": "以满足需求。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog encamp tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600038f",
+    "ILOffset": 49,
+    "Original": "Manage Clans",
+    "Translation": "管理氏族",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog manage clans button."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000391",
+    "ILOffset": 154,
+    "Original": "Removing the [",
+    "Translation": "移除[",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog terrain removal tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000391",
+    "ILOffset": 166,
+    "Original": "] on this ",
+    "Translation": "]，位于这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog terrain removal tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000391",
+    "ILOffset": 255,
+    "Original": " will provide ",
+    "Translation": "将提供",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog terrain removal tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000391",
+    "ILOffset": 404,
+    "Original": "]. Doing so",
+    "Translation": "]。这样做",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog terrain removal tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000391",
+    "ILOffset": 430,
+    "Original": " takes ",
+    "Translation": "需要",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog terrain removal tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000392",
+    "ILOffset": 152,
+    "Original": " resumes its ",
+    "Translation": "恢复其",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog disable tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000392",
+    "ILOffset": 244,
+    "Original": " halts its ",
+    "Translation": "停止其",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog disable tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000392",
+    "ILOffset": 276,
+    "Original": " of Resources.",
+    "Translation": "资源产出。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog disable tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000392",
+    "ILOffset": 344,
+    "Original": " NOTE: Because of the labor involved, when a ",
+    "Translation": "注意：由于需要劳力，当一个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog disable tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000392",
+    "ILOffset": 387,
+    "Original": " is disabled, it must remain so for at least ",
+    "Translation": "被停用时，必须至少保持",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog disable tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 84,
+    "Original": " like other Resources, but any surplus is converted and added to your Stockpile as ",
+    "Translation": "与其他资源类似，但盈余会转换并加入库存为",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 171,
+    "Original": " You gain ",
+    "Translation": "你获得",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 308,
+    "Original": "Your Tribe can support up to ",
+    "Translation": "你的部族最多可支持",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 411,
+    "Original": "Once you reach this limit you will no longer gain any ",
+    "Translation": "达到该上限后，你将不再获得任何",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 456,
+    "Original": "You can increase the number of ",
+    "Translation": "你可以增加",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 466,
+    "Original": " you can support to ",
+    "Translation": "可支持数量至",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 505,
+    "Original": " by clicking the button directly above. This requires ",
+    "Translation": "，点击正上方按钮即可。这需要",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 1069,
+    "Original": " will not change this ",
+    "Translation": "不会改变这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 1208,
+    "Original": "Will lose 1 ",
+    "Translation": "将失去1",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 1306,
+    "Original": "Your Tribe is ",
+    "Translation": "你的部族",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 1350,
+    "Original": "x as much ",
+    "Translation": "倍",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 1482,
+    "Original": "Your Tribe is ",
+    "Translation": "你的部族",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 1562,
+    "Original": " than it ",
+    "Translation": "超过",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 1767,
+    "Original": "Producing a total of ",
+    "Translation": "总计生产",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060003bc",
+    "ILOffset": 2036,
+    "Original": " Stockpile will not change this ",
+    "Translation": "库存不会改变这个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog stockpile tooltip fragment."
+  }
+]

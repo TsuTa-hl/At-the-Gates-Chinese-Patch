@@ -1,0 +1,482 @@
+[
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x060003bc",
+        "ILOffset":  2806,
+        "Original":  " You can increase this by spending ",
+        "Translation":  "可通过花费",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog stockpile tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x060003bc",
+        "ILOffset":  3491,
+        "Original":  " exceeds ",
+        "Translation":  "超过",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog stockpile tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  68,
+        "Original":  "Click this button to ",
+        "Translation":  "点击此按钮以",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  382,
+        "Original":  " will abandon and lose all [Experience|XP] in ",
+        "Translation":  "将放弃并失去全部[Experience|XP]，原纪律：",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  473,
+        "Original":  "This Training project will take ",
+        "Translation":  "此训练项目需要",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  505,
+        "Original":  " [Turn|TURN]. In the meantime your [SETTLEMENT] will be unable to do anything else, just like when Training a Clan in a [Profession|PROFESSION].",
+        "Translation":  "[Turn|TURN]。期间你的[SETTLEMENT]不能执行其他事务，如同训练氏族[Profession|PROFESSION]一样。",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  541,
+        "Original":  "Switching a [Clan|CLAN] to a new Discipline is free (Training time aside). ",
+        "Translation":  "将[Clan|CLAN]切换到新纪律本身免费（训练时间除外）。",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  600,
+        "Original":  " up Clans already in ",
+        "Translation":  "提升已处于",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  739,
+        "Original":  "This Training project",
+        "Translation":  "此训练项目",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  972,
+        "Original":  "NOTE: This will result in ",
+        "Translation":  "注意：这将导致",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  1140,
+        "Original":  "Click this button to ",
+        "Translation":  "点击此按钮以",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  1420,
+        "Original":  "This Training project will take ",
+        "Translation":  "此训练项目需要",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  1452,
+        "Original":  " [Turn|TURN] and in the meantime your [SETTLEMENT] will be unable to do anything else, just like when Training a Clan in a [Profession|PROFESSION].",
+        "Translation":  "[Turn|TURN]。期间你的[SETTLEMENT]不能执行其他事务，如同训练氏族[Profession|PROFESSION]一样。",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  1488,
+        "Original":  "Training a [Clan|CLAN] up to Level ",
+        "Translation":  "将[Clan|CLAN]训练到等级",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  1570,
+        "Original":  " is free (Training time aside).",
+        "Translation":  "本身免费（训练时间除外）。",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  1612,
+        "Original":  "It\u0027s also possible to ",
+        "Translation":  "也可以",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  1638,
+        "Original":  " up Clans already in ",
+        "Translation":  "提升已处于",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  1754,
+        "Original":  "This Training project",
+        "Translation":  "此训练项目",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  1767,
+        "Original":  " also costs ",
+        "Translation":  "还需要",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x0600056a",
+        "ILOffset":  280,
+        "Original":  "Upgrade Caravan",
+        "Translation":  "升级商队",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog caravan screen label.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x0600056b",
+        "ILOffset":  138,
+        "Original":  " to spend.",
+        "Translation":  "可花费。",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog caravan screen tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000573",
+        "ILOffset":  677,
+        "Original":  " profit if sold",
+        "Translation":  "出售利润",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog caravan resource tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000573",
+        "ILOffset":  738,
+        "Original":  " (normally ",
+        "Translation":  "（通常",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog caravan resource tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000573",
+        "ILOffset":  905,
+        "Original":  "It would cost ",
+        "Translation":  "需要花费",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog caravan resource tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000577",
+        "ILOffset":  2032,
+        "Original":  " Sell 1",
+        "Translation":  "出售1",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog caravan buy/sell button fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000577",
+        "ILOffset":  2555,
+        "Original":  " Sell 10",
+        "Translation":  "出售10",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog caravan buy/sell button fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000577",
+        "ILOffset":  3090,
+        "Original":  " Sell ",
+        "Translation":  "出售",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog caravan buy/sell button fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  73,
+        "Original":  "These are the ",
+        "Translation":  "这些是",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen explanation fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  105,
+        "Original":  " serving at your side (as opposed to ",
+        "Translation":  "在你身边效力（不同于",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen explanation fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  206,
+        "Original":  " it, allowing you to train it in advanced ",
+        "Translation":  "它，使其能接受高级",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen explanation fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  270,
+        "Original":  "Tribal Council",
+        "Translation":  "部族议会",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen label.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  411,
+        "Original":  "These are the ",
+        "Translation":  "这些是",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen explanation fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  443,
+        "Original":  " serving at your side (as opposed to ",
+        "Translation":  "在你身边效力（不同于",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen explanation fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  611,
+        "Original":  "These are the ",
+        "Translation":  "这些是",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen explanation fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  643,
+        "Original":  " serving at your side (as opposed to ",
+        "Translation":  "在你身边效力（不同于",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen explanation fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  675,
+        "Original":  ", which can roam the map).\n\nClick on a ",
+        "Translation":  "，后者可以在地图上游走）。\n\n点击",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial UI exact-catalog clans screen explanation fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  693,
+        "Original":  " to see what new ",
+        "Translation":  "查看可学习的新",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen explanation fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  711,
+        "Original":  " it can be ",
+        "Translation":  "它可以被",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen explanation fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  909,
+        "Original":  "Unpack Settlement",
+        "Translation":  "展开定居点",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen button label.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  1190,
+        "Original":  " while the [SETTLEMENT] is [Packed Up|PACKED].",
+        "Translation":  "，当[SETTLEMENT]处于[Packed Up|PACKED]状态时。",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial UI exact-catalog clans screen tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  1257,
+        "Original":  " cannot be ",
+        "Translation":  "不能被",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  1267,
+        "Original":  " while the [SETTLEMENT] is [Packed Up|PACKED].",
+        "Translation":  "，当[SETTLEMENT]处于[Packed Up|PACKED]状态时。",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial UI exact-catalog clans screen tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  1334,
+        "Original":  " cannot be ",
+        "Translation":  "不能被",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  1344,
+        "Original":  " while the [SETTLEMENT] is [Packed Up|PACKED].",
+        "Translation":  "，当[SETTLEMENT]处于[Packed Up|PACKED]状态时。",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial UI exact-catalog clans screen tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  1969,
+        "Original":  "Train Clan in Discipline",
+        "Translation":  "训练氏族纪律",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen button label.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000624",
+        "ILOffset":  65,
+        "Original":  "Tribal Council",
+        "Translation":  "部族议会",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen council label.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000624",
+        "ILOffset":  82,
+        "Original":  " make up your Tribal Council.",
+        "Translation":  "组成你的部族议会。",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen council tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000625",
+        "ILOffset":  302,
+        "Original":  "Note that after ending the ",
+        "Translation":  "注意，在结束",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen council tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next7"
+    }
+]

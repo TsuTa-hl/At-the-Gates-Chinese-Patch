@@ -9,6 +9,9 @@ Prefer startup stability over surface-level completeness.
   lists before making changes.
 - Default cycle for repair work:
   assess/fix -> package/install/smoke -> test/loop -> update knowledge.
+- Default localization policy is safety-first and black-box driven. When the
+  user explicitly asks for trial localization, use the fast-fail batch strategy
+  in `docs/agent/workflows/assess-and-fix.md`.
 - If testing fails, return to assess/fix and repeat the cycle. Do not add a
   separate pre-test knowledge-update phase unless the user explicitly asks for
   documentation-only maintenance.
@@ -46,6 +49,8 @@ Prefer startup stability over surface-level completeness.
   `docs/agent/translation-style.md`
 - Active, deferred, and completed black-box UI scenarios:
   `docs/agent/black-box-tests.md`
+- Trial localization batch state for agent/script resume:
+  `docs/agent/trial-localization-state.json`
 
 ## Completion Rule
 

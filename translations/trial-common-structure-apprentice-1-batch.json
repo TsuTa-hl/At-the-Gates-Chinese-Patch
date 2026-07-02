@@ -1,0 +1,132 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000314",
+    "ILOffset": 1573,
+    "Original": "this Deposit's stats",
+    "Translation": "此资源点的数值",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog deposit tooltip fragment.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000314",
+    "ILOffset": 1943,
+    "Original": "what Resources can be harvested from this Deposit by a Forager or Structure",
+    "Translation": "采集者或建筑可从此资源点采收哪些资源",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog deposit tooltip fragment.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001270",
+    "ILOffset": 245,
+    "Original": "Allows the ",
+    "Translation": "允许",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog tech structure unlock fragment.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001270",
+    "ILOffset": 399,
+    "Original": "s and ",
+    "Translation": "和",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog tech structure unlock plural glue.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001270",
+    "ILOffset": 514,
+    "Original": "s and ",
+    "Translation": "和",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog tech structure unlock plural glue.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001270",
+    "ILOffset": 561,
+    "Original": "several new ",
+    "Translation": "若干新",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog tech structure unlock fragment.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001270",
+    "ILOffset": 571,
+    "Original": ", such as ",
+    "Translation": "，例如",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog tech structure unlock fragment.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001270",
+    "ILOffset": 638,
+    "Original": "s and ",
+    "Translation": "和",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog tech structure unlock plural glue.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001723",
+    "ILOffset": 46,
+    "Original": "Assigning an [Apprentice|APPRENTICE] to this [Structure|STRUCTURE] provides:",
+    "Translation": "为此[建筑|STRUCTURE]分配一名[学徒|APPRENTICE]会提供：",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog apprentice description preserving concept IDs.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001723",
+    "ILOffset": 147,
+    "Original": "Assigning an Apprentice to this Structure requires:",
+    "Translation": "为此建筑分配一名学徒需要：",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog apprentice description.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001723",
+    "ILOffset": 288,
+    "Original": "% for each additional",
+    "Translation": "%，每额外一个",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog apprentice description fragment.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001723",
+    "ILOffset": 351,
+    "Original": "Adding a new [Apprentice Slot|APPRENTICE] to this Structure requires:",
+    "Translation": "为此建筑增加新的[学徒槽位|APPRENTICE]需要：",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog apprentice description preserving concept ID.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001723",
+    "ILOffset": 492,
+    "Original": "% for each additional",
+    "Translation": "%，每额外一个",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog apprentice description fragment.",
+    "EvidenceScenario": "trial-common-structure-apprentice-1"
+  }
+]

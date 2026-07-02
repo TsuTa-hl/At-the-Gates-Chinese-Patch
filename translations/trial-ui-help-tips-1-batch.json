@@ -1,0 +1,212 @@
+[
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000723",
+    "ILOffset": 29,
+    "Original": " can provide you with [Resources|RESOURCE] useful in [Training|TRAIN], [Construction|CONSTRUCT], and trade. You can [Harvest|HARVEST] them through [Foraging|FORAGE] or by Constructing [Structures|STRUCTURE] on them.",
+    "Translation": "可提供用于[训练|TRAIN]、[建造|CONSTRUCT]和贸易的[资源|RESOURCE]。你可以通过[采集|FORAGE]，或在其上建造[建筑|STRUCTURE]来[采收|HARVEST]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog help tip text preserving concept IDs.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000723",
+    "ILOffset": 54,
+    "Original": "[Plants|PLANT] are Harvested by [Farms|FARM], [Animal Herds|ANIMAL] by [Pastures|PASTURE], and [Minerals|MINERAL] by [Mines|MINE].",
+    "Translation": "[植物|PLANT]由[农场|FARM]采收，[兽群|ANIMAL]由[牧场|PASTURE]采收，[矿物|MINERAL]由[矿井|MINE]采掘。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog help tip text preserving concept IDs.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000723",
+    "ILOffset": 74,
+    "Original": " [TIMBER] is Harvested from ",
+    "Translation": "[TIMBER]采自",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog help tip fragment preserving resource token.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000723",
+    "ILOffset": 90,
+    "Original": " both on and NEXT TO [LOGGING-CAMP-1:S], rather than from specific ",
+    "Translation": "既可在[LOGGING-CAMP-1:S]所在格，也可在其相邻格采收，而非来自特定",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog help tip fragment preserving structure token.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000723",
+    "ILOffset": 203,
+    "Original": " of the appropriate ",
+    "Translation": "相应",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog help tip fragment.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000723",
+    "ILOffset": 229,
+    "Original": ": Farms by the [FARMER], Pastures by the [RANCHER], Mines by the [MINER], and so on.",
+    "Translation": "：农场由[农夫|FARMER]运作，牧场由[牧场主|RANCHER]运作，矿井由[矿工|MINER]运作，依此类推。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog help tip text preserving concept IDs.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000723",
+    "ILOffset": 261,
+    "Original": " The Clan can return to the map at any time, but the Structure is destroyed in the process.",
+    "Translation": "该氏族可随时回到地图上，但建筑会在此过程中被毁。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog help tip text.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000723",
+    "ILOffset": 309,
+    "Original": " are eventually [Depleted|DEGRADE] after a couple of years as the supply of [Resources|RESOURCE] on its ",
+    "Translation": "会在数年后因其",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog help tip fragment preserving nearby concept context in following tokens.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000723",
+    "ILOffset": 319,
+    "Original": " is used up.",
+    "Translation": "上的[资源|RESOURCE]耗尽而最终[枯竭|DEGRADE]。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog help tip fragment completing depleted-resource sentence.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000723",
+    "ILOffset": 344,
+    "Original": "You will eventually need to migrate in search of new ",
+    "Translation": "你最终需要迁徙，寻找新的",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog help tip fragment.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000723",
+    "ILOffset": 354,
+    "Original": " to Harvest - but don't worry, that day still lies far in the future!",
+    "Translation": "来采收，但别担心，那一天还很遥远！",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog help tip fragment.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000732",
+    "ILOffset": 24,
+    "Original": "Now that you have a few ",
+    "Translation": "既然你已有几个",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog city economy help tip fragment.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000732",
+    "ILOffset": 34,
+    "Original": " under your belt, let's talk a little bit about the economy of AtG.",
+    "Translation": "在手，我们来谈谈 AtG 的经济。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog city economy help tip fragment.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000732",
+    "ILOffset": 79,
+    "Original": " Most types of Units require 1,000 Villagers, and also eat 1 Food per turn.",
+    "Translation": "大多数单位需要 1000 名村民，并且每回合消耗 1 食物。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog city economy help tip text.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000732",
+    "ILOffset": 134,
+    "Original": " These are the 'gifts' that help grease the wheels of government and secure the loyalty of your lieutenants.",
+    "Translation": "这些就是帮助政务运转、确保副手忠诚的“礼物”。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog city economy help tip text.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000732",
+    "ILOffset": 217,
+    "Original": " The more you have, the more Resources you can collect from a larger area, but don't build so many that you go bankrupt!",
+    "Translation": "数量越多，你能从更大范围收集的资源也越多，但别建太多，以免破产！",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog city economy help tip text.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000732",
+    "ILOffset": 260,
+    "Original": "The Villagers who live in your Settlements also create Treasure through taxation. The larger a Settlement gets the more cash it produces. So what do you do with that money?",
+    "Translation": "定居点中的村民也会通过税收创造财富。定居点越大，产出的现金越多。那么这些钱该用来做什么？",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog city economy help tip text.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000732",
+    "ILOffset": 288,
+    "Original": "Specialized Professions like the Explorer and Surveyor are in high demand even during the Dark Ages, and aren't willing to work for free.",
+    "Translation": "探索者、勘测员这类专门职业，即使在黑暗时代也很抢手，而且不会免费效力。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog city economy help tip text.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000732",
+    "ILOffset": 331,
+    "Original": "Early on, growing one or two Settlements nice and big (~6,000 Villagers) is the most reliable way to pay for those salaries.",
+    "Translation": "早期把一两个定居点发展到足够规模（约 6000 名村民），是支付这些薪酬最可靠的方法。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog city economy help tip text.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000732",
+    "ILOffset": 359,
+    "Original": " You can also bring in more Treasure by moving your Settlements onto rivers and coastlines, where they benefit from trade.",
+    "Translation": "也可以把定居点迁到河流与海岸旁，借助贸易带来更多财富。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog city economy help tip text.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000732",
+    "ILOffset": 387,
+    "Original": " Should you ever find a source of Gold or Gems you can kiss your financial troubles goodbye! Well, for a little while, anyways!",
+    "Translation": "如果找到黄金或宝石来源，你就能暂时告别财政麻烦。至少短时间内如此！",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog city economy help tip text.",
+    "EvidenceScenario": "trial-ui-help-tips-1"
+  }
+]

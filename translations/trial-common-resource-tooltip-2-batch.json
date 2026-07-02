@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x060002fe",
+    "ILOffset": 515,
+    "Original": "the basic description of this Terrain",
+    "Translation": "此地形的基本说明",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common terrain tooltip explanatory label.",
+    "EvidenceScenario": "trial-common-resource-tooltip-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000314",
+    "ILOffset": 515,
+    "Original": "the basic description of this Deposit",
+    "Translation": "此矿藏的基本说明",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common deposit tooltip explanatory label.",
+    "EvidenceScenario": "trial-common-resource-tooltip-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000314",
+    "ILOffset": 1065,
+    "Original": "this Deposit's special abilities",
+    "Translation": "此矿藏的特殊能力",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common deposit tooltip explanatory label.",
+    "EvidenceScenario": "trial-common-resource-tooltip-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000314",
+    "ILOffset": 1573,
+    "Original": "this Deposit's stats",
+    "Translation": "此矿藏的属性",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common deposit tooltip explanatory label.",
+    "EvidenceScenario": "trial-common-resource-tooltip-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000314",
+    "ILOffset": 1943,
+    "Original": "what Resources can be harvested from this Deposit by a Forager or Structure",
+    "Translation": "采集者或建筑可从此矿藏采集哪些资源",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common deposit tooltip harvested-by label.",
+    "EvidenceScenario": "trial-common-resource-tooltip-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600031c",
+    "ILOffset": 1450,
+    "Original": "what it costs to Construct this Structure and what it will Produce for you once built",
+    "Translation": "建造此建筑的花费，以及建成后能提供的产出",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common structure tooltip cost/production label.",
+    "EvidenceScenario": "trial-common-resource-tooltip-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600031c",
+    "ILOffset": 1958,
+    "Original": "the costs and benefits of adding Apprentices to this Structure",
+    "Translation": "为此建筑增加学徒的花费与收益",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common structure tooltip apprentice label.",
+    "EvidenceScenario": "trial-common-resource-tooltip-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000358",
+    "ILOffset": 2500,
+    "Original": " for each [Clan|CLAN] in a [Settled Profession|SETTLED] in [",
+    "Translation": " 每个在[已定居职业|SETTLED]中的[氏族|CLAN]，位于[",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common production scaling fragment; preserve tags and trailing concatenation bracket.",
+    "EvidenceScenario": "trial-common-resource-tooltip-2"
+  }
+]

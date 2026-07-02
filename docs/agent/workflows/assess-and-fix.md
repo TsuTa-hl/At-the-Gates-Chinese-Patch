@@ -11,6 +11,8 @@ mojibake, missing assets, crashes, unsafe English remnants, and layout defects.
 - `docs/agent/translation-style.md`
 - `docs/agent/crash-risks.md`
 - `docs/agent/black-box-tests.md`
+- `docs/agent/trial-localization-state.json` if the user asks for trial or
+  fast-fail localization.
 - `docs/agent/operations.md` if reproducing, building, launching, clicking,
   hovering, or capturing screenshots is required.
 
@@ -44,6 +46,43 @@ mojibake, missing assets, crashes, unsafe English remnants, and layout defects.
    faction names, dates, fonts, or ClanCard assets.
 9. After edits, hand off to `package-and-install.md`. Do not update knowledge
    files before packaging unless the task is explicitly documentation-only.
+
+## Trial Fast-Fail Strategy
+
+Use this strategy only when the user explicitly asks to probe already
+discovered display text beyond the safety-first policy.
+
+1. Build a small batch from discovered display candidates with stable
+   `MethodToken + ILOffset + Original` evidence and real Chinese translations.
+   Missing UI screenshots or visual evidence alone is not a valid reason to
+   skip an already discovered display candidate; use the smoke gate to quickly
+   prove or reject the batch.
+   Use the DLL catalog's exact `Value` for `Original`. Do not generate IL
+   rewrite batch originals from `docs\review\known-texts.csv`, because that
+   review table normalizes whitespace and newlines for human readability.
+2. Read `docs/agent/trial-localization-state.json` before selecting a batch.
+   Use it to avoid already accepted/rejected entries, preserve known catalog
+   precision lessons, and choose the current batch size.
+3. Prefer UI display strings first, then narrowly scoped Common/Game display
+   fragments. Do not include technical paths, IDs, enum keys, broad concept
+   identifiers, faction names, dates, or generated names in the same batch.
+4. Default batch sizing:
+   - UI exact-catalog candidates: start at 48 and cap at 64.
+   - Common or Game display candidates: start at 8 and cap at 16.
+   - Logic-sensitive or historically risky candidates: 1 to 4 only.
+   - If a failed batch contains more than one bad entry, halve the next batch
+     size for that source class.
+5. Run `tools\Invoke-AtGTrialLocalizationBatch.ps1` with the batch file. The
+   tool appends the batch to normal rewrite maps, builds, installs, and runs
+   the smoke gate. If the batch fails, it bisects until failing single entries
+   are isolated.
+6. Keep entries that pass the smoke gate in the normal rewrite maps. Leave
+   failing entries out and record them as unsafe for trial localization.
+7. Carry accepted/rejected batch results forward to `update-knowledge.md` so
+   `trial-localization-state.json` and `docs/review/known-texts.csv` remain
+   synchronized.
+8. A trial pass only proves build, install, startup, and new-game smoke safety.
+   It does not prove wording, layout, hover coverage, or all UI paths.
 
 ## Stop Conditions
 

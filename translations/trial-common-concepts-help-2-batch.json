@@ -1,0 +1,42 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1588,
+    "Original": "Each major [Faction|FACTION] has one or two special rules which make it play differently from the others. The Goths start with extra [FOOD] and [TREASURE], whereas the Huns start with a [HORSE-ARCHER] but can't own [Structures|STRUCTURE].",
+    "Translation": "每个主要[派系|FACTION]都有一两条特殊规则，使其玩法不同于其他派系。哥特人开局拥有额外的 [FOOD] 和 [TREASURE]，而匈人开局拥有一支 [HORSE-ARCHER]，但不能拥有[建筑|STRUCTURE]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1609,
+    "Original": "Every playable [Faction|FACTION] Leader has a unique [Personality|LEADER-TRAIT] which greatly shapes their behavior, particularly their Approach towards you.[BLANK-LINE]Refer to the 'Diplomacy' tip in the Help Screen ([HOTKEY:?]) for more information.",
+    "Translation": "每个可玩[派系|FACTION]领袖都有独特的[性格|LEADER-TRAIT]，会显著影响其行为，尤其是他们对你的态度。[BLANK-LINE]更多信息请查看帮助界面（[HOTKEY:?]）中的“外交”提示。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help body; preserve concept identifiers and hotkey tag.",
+    "EvidenceScenario": "trial-common-concepts-help-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1630,
+    "Original": "Each Leader has two 'Personality Traits', which helps shape which diplomatic [Approaches|APPROACH] and [Interactions|INTERACTION] they choose.",
+    "Translation": "每位领袖都有两个“性格特质”，它们会影响其选择哪些外交[态度|APPROACH]和[互动|INTERACTION]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-2"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1651,
+    "Original": "Borders, or Control, represents the [Tiles|TILE] which a player has direct ownership over and appears as a solid, colored line on the map.[BLANK-LINE]Control is very important, as within it your [Units|UNIT] always have full [Supply|SUPPLY], and it allows [Structures|STRUCTURE] to be [Constructed|CONSTRUCT], which far exceed foraging in their economic ouput.[BLANK-LINE]Control can be expanded by spending [WEAPONS] to [Fortify|FORTIFY] a Structure. [WATCHTOWER:S] are the one type of Structure which can be built outside of your Control, giving you the ability to project your power at a distance, should you be willing to make the investment.",
+    "Translation": "边界，也就是控制范围，代表玩家直接拥有的[地格|TILE]，在地图上显示为实心彩色边线。[BLANK-LINE]控制范围非常重要：在其中你的[单位|UNIT]始终拥有完整[补给|SUPPLY]，并且可以[建造|CONSTRUCT][建筑|STRUCTURE]；建筑的经济产出远胜于采集。[BLANK-LINE]你可以花费 [WEAPONS] 来[加固|FORTIFY]建筑，从而扩大控制范围。[WATCHTOWER:S] 是唯一可以建在控制范围外的建筑；只要愿意投入，它能让你的力量投射到远方。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help body; preserve concept identifiers and layout tags.",
+    "EvidenceScenario": "trial-common-concepts-help-2"
+  }
+]

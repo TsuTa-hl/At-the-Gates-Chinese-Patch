@@ -80,9 +80,71 @@ Launch smoke test:
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-GameLaunch.ps1
 ```
 
+`Test-GameLaunch.ps1` owns the game process for one smoke run and starts the
+game only once. It uses a named single-instance lock
+`Local\AtGChinesePatch.TestGameLaunch`; if another smoke test is already
+running, a second smoke invocation must fail immediately rather than launch a
+second game process.
+
 The smoke test waits until the game window appears, then allows a short stable
-render delay before screenshot capture. `-WaitSeconds` is the maximum startup
-wait, not an unconditional sleep.
+render delay before screenshot capture. It then starts a new game through the
+default tribe and normal difficulty path, waits for the main loop, captures a
+second screenshot, and closes the game. `-WaitSeconds` is the maximum startup
+wait, not an unconditional sleep. Use `-SkipNewGame` only when the caller
+explicitly needs the old main-menu-only smoke.
+The new-game wait is also condition-based: it exits early when
+`Logs\Program.AtGLog` reports `Controller - Giving Control to Human`. Do not
+treat `Game World - New Game Complete` as sufficient; that marker can appear
+before the visible main loop is stable. After the main-loop marker, the smoke
+test keeps the game alive briefly through `-PostNewGameReadyDelayMs` before
+capturing and closing. Record `NewGameReadyMarker` and `NewGameSmokeSeconds`
+when comparing smoke-test cost.
+The result also records `ProcessExitedBeforeCleanup`, `ProcessExitCode`,
+`WindowsErrorSeen`, `WindowsErrorEvents`, and `FailureReason`; use these fields
+to diagnose silent exits that do not show `HE'S DEAD, JIM` and do not update
+`Crash.AtGLog`.
+
+Trial localization batch runner:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Invoke-AtGTrialLocalizationBatch.ps1 -BatchJson .\translations\trial-ui-notification-labels.json
+```
+
+The runner appends a candidate batch to normal IL rewrite maps, builds,
+installs, runs the new-game smoke, and bisects a failing batch down to single
+entries. It writes evidence under `.tmp\trial-localization\<timestamp>`.
+One trial batch command may therefore run several sequential smoke tests when
+the batch fails and needs bisection; this is expected. It must not run smoke
+tests concurrently, and every smoke run must pass through `Test-GameLaunch.ps1`
+so the single-instance lock applies.
+If any trial stage fails during bisection, the runner must run a final
+accepted-only smoke check before reporting accepted entries. This catches
+infrastructure failures such as transient build locks or click/input failures
+that can make a batch appear unsafe. The final check result must be written
+back to `results.json`; if it fails, the run is marked with `invalid.json` and
+any rejected evidence is preserved as `rejected.invalid-smoke.json` rather than
+exported as unsafe text.
+`Build-IlRewritePatch.ps1` retries transient Windows mapped-file write failures
+from dnlib output, including `user-mapped section` and the localized Windows
+message for user-mapped regions. If a whole trial batch fails once at build
+time but smaller reruns and the final accepted-only smoke pass, treat it as
+infrastructure noise, not unsafe text evidence.
+`Build-Patch.ps1` also retries transient failures while removing the generated
+font patch directory before regenerating fonts. If the retry succeeds and later
+static/font tests pass, treat a single access-denied cleanup failure as
+infrastructure noise rather than a localization rejection.
+While a trial batch is running, the tool writes
+`.tmp\trial-localization\active-run.json` with baseline map backups. If the
+process is interrupted before it can write `accepted.json` / `rejected.json`,
+the next trial-batch invocation must restore those baseline maps before
+planning or testing a new batch.
+After a run, record accepted/rejected counts and any isolated failures in
+`docs\agent\trial-localization-state.json` during the knowledge-update step.
+If a trial run reports `Error Loading User Settings`, inspect
+`Settings\Settings.xml` in the game directory before retrying. A 2026-07-02
+UserSetting trial wrote Chinese comments into that file and polluted every
+subsequent smoke run until line 27 was restored to ASCII. Do not treat repeated
+failures with that window title as evidence against unrelated trial entries.
 
 Text tag validation:
 
@@ -114,6 +176,18 @@ Optimization tooling regression:
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-OptimizationTooling.ps1
 ```
 
+IL rewrite mapped-file retry regression:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-IlRewriteMappedFileRetry.ps1
+```
+
+Generated font cleanup retry regression:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-FontPatchRemovalRetry.ps1
+```
+
 IL rewrite map risk check:
 
 ```powershell
@@ -130,6 +204,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Export-DllLdstrCatal
 
 - Try computer-use first when explicitly requested. If XNA window capture
   fails, use the Win32 helper scripts immediately.
+- The Win32 helpers use `Get-AtGWindow.ps1`. It tries `EnumWindows` first, then
+  falls back to the `At The Gates` process `MainWindowHandle` when XNA/window
+  enumeration does not expose the game window reliably. Keep this fallback
+  because smoke tests can otherwise screenshot the main menu but fail before
+  clicking `New Game`.
 - Known computer-use XNA capture failure:
 
   ```text
@@ -234,6 +313,11 @@ The game writes the useful crash details to `Crash.AtGLog` only after the
 4. Treat the newly written `Crash.AtGLog` block as the authoritative error and
    stack trace. If the timestamp does not update, keep the screenshot, process
    state, and pre-click log metadata as failure evidence.
+
+If the game exits without a crash dialog, check the smoke result's
+`WindowsErrorEvents` and Windows Application log for `.NET Runtime`,
+`Application Error`, or `Windows Error Reporting` entries. CLR-level failures
+such as `c00000fd` stack overflow can bypass the game's crash dialog entirely.
 
 ## Verified 2560x1440 Coordinates
 

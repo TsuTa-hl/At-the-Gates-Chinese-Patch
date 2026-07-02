@@ -59,12 +59,62 @@ translated display term:
 - Learn / Learned: `学会` / `已学会`
 - Tech: `技术`
 - Upgrade: `升级`
+- Structure: `建筑`
+- Builder: `建造者`
 - Deposit: `资源点`
 - Stockpile: `库存`
+- Supply: `补给`
+- Supply Reserve: `补给储备`
 - Support Limit: `支持上限`
 - Fame: `声望`
 - Cloth: `布料`
+- Treasure: resource label `财宝`; `财富` is acceptable in prose when it reads
+  more naturally
+- Caravan: `商队`
+- Cargo Space / Cargo: `货舱` / `货物`
 - Ennoble / Ennobled: `册封` / `已册封`
+- Approach: `态度`
+- Relationship Level: `关系等级`
+- Influence: `影响力`
+- Reputation: `声誉`
+- Leverage: `筹码`
+- Leader: `领袖`
+- Emissary: `使者`
+- Mercenary / Mercenaries: `佣兵`
+- Alliance: `同盟`
+- Magister Militum: `军务长官`
+- Luminary / Minister: `贤才` / `大臣`
+- River / Rivers: `河流`
+- Hill / Hills: `丘陵`
+- Road: `道路`
+- Marsh: `沼泽`
+- Border / Borders: `边界`
+- Control / Controlled: `控制区` / `受控`
+- Religion: `宗教`
+- Naval: `水上`
+- Active: `主动`
+- Warrior / Warriors: `战士`
+- Civilian / Civilians: `平民`
+- Apprentice / Apprentices: `学徒`
+- Resident: `驻留者`
+- Family / Families: `家庭`
+- Damage: `伤害`
+- Mood: `心情`
+- Morale: `士气`
+- Retreat: `撤退`
+- Combat XP: `战斗经验`
+- Noble: `贵族`
+- Crime / Crimes: `罪行`
+- Desire / Desires: `愿望`
+- Feud / Feuds: `纷争`
+- Siege / Besiege: `围攻`
+- Encamp: `扎营`
+- Dig In: `固守`
+- Pack Up / Packed Up / Unpack: `打包` / `已打包` / `展开`
+- Pillage / Pillaged / Pillaging: `劫掠` / `已劫掠` / `劫掠中`
+- Spoilage: `腐坏`
+- Degrade / Degraded: `枯竭` / `已枯竭`
+- Offline: `停工`
 
 Update this list when a new recurring term is introduced.
 

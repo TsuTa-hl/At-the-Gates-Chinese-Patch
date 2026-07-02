@@ -1,0 +1,142 @@
+[
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000276",
+        "ILOffset":  57,
+        "Original":  "Finish ",
+        "Translation":  "完成",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog end-turn blocking button fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000277",
+        "ILOffset":  42,
+        "Original":  "Finish ",
+        "Translation":  "完成",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog notification-blocking turn fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000285",
+        "ILOffset":  365,
+        "Original":  "Your Army",
+        "Translation":  "你的军队",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog battle projection label.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x0600036a",
+        "ILOffset":  448,
+        "Original":  "% each ",
+        "Translation":  "％，每",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog digging-in progress label fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000522",
+        "ILOffset":  1277,
+        "Original":  " (from ",
+        "Translation":  "（来自",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog discipline-training popup tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000621",
+        "ILOffset":  970,
+        "Original":  " your ",
+        "Translation":  "你的",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans screen tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000625",
+        "ILOffset":  422,
+        "Original":  "You can have up to ",
+        "Translation":  "你最多可以拥有",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans council tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000625",
+        "ILOffset":  454,
+        "Original":  " on your Tribal Council.",
+        "Translation":  "名部族议会成员。",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans council tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000625",
+        "ILOffset":  492,
+        "Original":  "It is currently full, and to appoint a new ",
+        "Translation":  "目前席位已满，若要任命新的",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans council tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000625",
+        "ILOffset":  502,
+        "Original":  " you must dismiss an existing member.",
+        "Translation":  "，必须先罢免一名现任成员。",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans council tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000625",
+        "ILOffset":  543,
+        "Original":  "There is room for ",
+        "Translation":  "还可容纳",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans council tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000625",
+        "ILOffset":  565,
+        "Original":  " more member",
+        "Translation":  "名成员",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans council tooltip fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000637",
+        "ILOffset":  149,
+        "Original":  " Switch",
+        "Translation":  "切换",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans log fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    },
+    {
+        "Assembly":  "UI",
+        "MethodToken":  "0x06000637",
+        "ILOffset":  177,
+        "Original":  " (from ",
+        "Translation":  "（来自",
+        "Safety":  "SafeUI",
+        "Note":  "Trial UI exact-catalog clans log fragment.",
+        "EvidenceScenario":  "trial-ui-exact-next8"
+    }
+]

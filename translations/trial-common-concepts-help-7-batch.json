@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2296,
+    "Original": " in Active [Professions|PROFESSION] leave the [SETTLEMENT] and appear on the map (as opposed to [Settled|SETTLED] Professions). Some Clans have Traits that make them prefer or dislike such Professions.",
+    "Translation": "处于主动[职业|PROFESSION]时会离开[SETTLEMENT]并出现在地图上（不同于[定居|SETTLED]职业）。有些氏族的特质会让他们偏好或厌恶这类职业。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help active profession fragment; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-7"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2337,
+    "Original": " in Settled [Professions|PROFESSION] remain inside the [SETTLEMENT] (as opposed to [Active|ACTIVE] Professions). Some Clans have Traits that make them prefer or dislike such Professions.",
+    "Translation": "处于定居[职业|PROFESSION]时会留在[SETTLEMENT]内（不同于[主动|ACTIVE]职业）。有些氏族的特质会让他们偏好或厌恶这类职业。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help settled profession fragment; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-7"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2384,
+    "Original": "Advanced [STONE-BLOCKS:SINGULAR]-based [Structures|STRUCTURE] last forever, but their [Production|PRODUCE] can also be greatly increased by adding a [Clan|CLAN] in the same [Profession|PROFESSION] as the Clan which originally built it (e.g. more [FARMER:S] can be added to [Farms|FARM].[BLANK-LINE]To add an Apprentice to a Structure must have an available 'Apprentice Slot'. Structures start with 0, and you must spend [BOARDS] to add slots. Assigning an actual Clan then requires spending [PARCHMENT]. Apprentices can be an expensive investment, but allow you to make your most valuable Structures incredibly productive.",
+    "Translation": "基于[STONE-BLOCKS:SINGULAR]的高级[建筑|STRUCTURE]会永久存在；如果向其中加入与原建造氏族同[职业|PROFESSION]的[氏族|CLAN]，还能大幅提高其[产出|PRODUCE]（例如可向[农场|FARM]加入更多[FARMER:S]）。[BLANK-LINE]要向建筑添加学徒，建筑必须有可用的“学徒槽”。建筑初始没有学徒槽，必须花费[BOARDS]来增加槽位。实际分配氏族还需要花费[PARCHMENT]。学徒投入昂贵，但能让最有价值的建筑产出惊人。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help apprentice body; preserve raw resource/profession tags.",
+    "EvidenceScenario": "trial-common-concepts-help-7"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2405,
+    "Original": "Ennobling a [Clan|CLAN] costs 10 [FINE-CLOTH] and 10 [ARMOR].[BLANK-LINE]Once Ennobled, a Clan permanently gains a +1 [Mood|MOOD] bonus, [Produces|PRODUCE] +5 [FAME] per turn, and immediately gains 5 [Levels|LEVEL] in a [Discipline|DISCIPLINE] of your choice.[BLANK-LINE]Furthermore, some advanced [Professions|PROFESSION] (such as the [HEAVY-CAVALRY]) are themselves 'Noble', meaning that only Clans which have been Ennobled may be [Trained|TRAIN] in them.",
+    "Translation": "册封一个[氏族|CLAN]需要 10 [FINE-CLOTH]和 10 [ARMOR]。[BLANK-LINE]被册封后，氏族永久获得 +1 [心情|MOOD]加成，每回合[产出|PRODUCE] +5 [FAME]，并立即在你选择的一项[纪律|DISCIPLINE]中获得 5 个[等级|LEVEL]。[BLANK-LINE]此外，一些高级[职业|PROFESSION]（如[HEAVY-CAVALRY]）本身属于“贵族”职业，只有已被册封的氏族才能被[训练|TRAIN]为这些职业。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help ennoble body; preserve resource/profession tags.",
+    "EvidenceScenario": "trial-common-concepts-help-7"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2426,
+    "Original": "Some [Professions|PROFESSION] are considered 'Social', which can affect how long it takes to [Train|TRAIN] [Clans|CLAN] in them or alter the effectiveness of a Clan, based on that Clan's [Traits|CLAN-TRAIT]. Most Clans don't need to care about this, but some do, so pay attention. Some Clans will actual refuse to work in Social Professions entirely![BLANK-LINE]Social Professions can be recognized by the ",
+    "Translation": "有些[职业|PROFESSION]属于“社交”职业。根据氏族的[特质|CLAN-TRAIT]，这可能影响[训练|TRAIN][氏族|CLAN]所需时间，或改变氏族在该职业中的效率。多数氏族无需在意这一点，但有些氏族很在意，所以请留心。有些氏族甚至会完全拒绝从事社交职业！[BLANK-LINE]社交职业可通过",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help social profession body fragment; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-7"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2441,
+    "Original": " icon, and are exclusively found in the [HONOR] and [DISCOVERY] [Disciplines|DISCIPLINE].",
+    "Translation": "图标识别，并且只存在于[HONOR]和[DISCOVERY][纪律|DISCIPLINE]中。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help social profession body fragment; preserve discipline raw tags.",
+    "EvidenceScenario": "trial-common-concepts-help-7"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2467,
+    "Original": "Warrior [Professions|PROFESSION] are [Active|ACTIVE] Professions which can fight one another (as opposed to [Civilian|CIVILIAN] Professions). Warriors can also capture Civilian [Units|UNIT], and capture or pillage [Structures|STRUCTURE].",
+    "Translation": "战士[职业|PROFESSION]是可以彼此交战的[主动|ACTIVE]职业（不同于[平民|CIVILIAN]职业）。战士还可以俘获平民[单位|UNIT]，并占领或劫掠[建筑|STRUCTURE]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help warrior body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-7"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2488,
+    "Original": "Civilian [Professions|PROFESSION] are those which do not involve combat or fighting (as opposed to [Warrior|WARRIOR] Professions). Most are [Settled|SETTLED], but a few are [Active|ACTIVE]. Most involve economics or [Resources|RESOURCE] in some way.",
+    "Translation": "平民[职业|PROFESSION]是不涉及战斗或交战的职业（不同于[战士|WARRIOR]职业）。大多数平民职业是[定居|SETTLED]职业，但也有少数是[主动|ACTIVE]职业。它们大多以某种方式与经济或[资源|RESOURCE]相关。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help civilian body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-7"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002d",
+    "ILOffset": 1718,
+    "Original": " has become ",
+    "Translation": "已变为",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification summary fragment.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002d",
+    "ILOffset": 2415,
+    "Original": "You've ",
+    "Translation": "你已",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification summary fragment.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600002d",
+    "ILOffset": 2526,
+    "Original": " is now ",
+    "Translation": "现在是",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog notification summary fragment.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000688",
+    "ILOffset": 86,
+    "Original": "Send a diplomatic Emissary to this leader.",
+    "Translation": "向这位领袖派遣一名外交使者。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy emissary tooltip.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000688",
+    "ILOffset": 118,
+    "Original": "This will increase your [Relationship Level|RL] by +",
+    "Translation": "这会使你的[关系等级|RL]提高+",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy emissary tooltip preserving concept ID.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000688",
+    "ILOffset": 171,
+    "Original": " with major and Roman [Factions|FACTION]. It will increase your RL by +",
+    "Translation": "，针对主要及罗马[派系|FACTION]。它还会使你的关系等级提高+",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy emissary tooltip preserving concept ID.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000688",
+    "ILOffset": 277,
+    "Original": " with minor [Neutral|NEUTRAL] factions.",
+    "Translation": "，针对小型[中立|NEUTRAL]派系。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy emissary tooltip preserving concept ID.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000688",
+    "ILOffset": 396,
+    "Original": "You will acquire a new Emissary upon reaching ",
+    "Translation": "达到以下条件后，你会获得一名新使者：",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy emissary tooltip fragment.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000689",
+    "ILOffset": 80,
+    "Original": "Send a gift of ",
+    "Translation": "赠送礼物：",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy gift tooltip fragment.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000689",
+    "ILOffset": 140,
+    "Original": " to this leader.",
+    "Translation": "给这位领袖。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy gift tooltip fragment.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000689",
+    "ILOffset": 171,
+    "Original": "This will increase your [Influence|INFLUENCE] with them by +",
+    "Translation": "这会使你对他们的[影响力|INFLUENCE]提高+",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy gift tooltip preserving concept ID.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060005bf",
+    "ILOffset": 132,
+    "Original": "Switch Discipline",
+    "Translation": "切换纪律",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog professions screen button.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060005bf",
+    "ILOffset": 322,
+    "Original": "Train in Discipline",
+    "Translation": "训练纪律",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog professions screen button.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060005bf",
+    "ILOffset": 601,
+    "Original": "Ordering a ",
+    "Translation": "命令",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog professions screen tooltip fragment.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060005bf",
+    "ILOffset": 611,
+    "Original": " to Stop Working prevents it from converting [Resources|RESOURCE]. However, working or not they will continue to eat [FOOD]!",
+    "Translation": "停止工作会阻止其转换[资源|RESOURCE]。不过无论是否工作，他们都会继续消耗[FOOD]！",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog professions screen tooltip preserving concept IDs.",
+    "EvidenceScenario": "trial-ui-diplomacy-profession-actions-1"
+  }
+]

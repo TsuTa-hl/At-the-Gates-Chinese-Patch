@@ -1,0 +1,38 @@
+[
+  {
+    "Assembly": "UI",
+    "Original": "The question now is whether EVERYTHING works, as it's not entirely likely. When you're programming stuff you KNOW that SOMETHING is gonna be broken. Just the way life goes. :(",
+    "Translation": "现在要验证的是一切是否正常，但现实往往不会那么顺利。写程序时总会有东西出问题，这就是常态。:(",
+    "MethodToken": "0x060000c2",
+    "ILOffset": 423,
+    "TypeFullName": "AtTheGatesUI.ns_MainMenu.MainMenu",
+    "MethodName": "CreateMenuButtons",
+    "Safety": "SafeUI",
+    "Note": "Trial main-menu test-group explanatory text.",
+    "EvidenceScenario": "trial-ui-visible-misc-4"
+  },
+  {
+    "Assembly": "UI",
+    "Original": "Participate in the discussion afterwards.",
+    "Translation": "之后参与讨论。",
+    "MethodToken": "0x060000c2",
+    "ILOffset": 2147,
+    "TypeFullName": "AtTheGatesUI.ns_MainMenu.MainMenu",
+    "MethodName": "CreateMenuButtons",
+    "Safety": "SafeUI",
+    "Note": "Trial main-menu feedback/discussion text.",
+    "EvidenceScenario": "trial-ui-visible-misc-4"
+  },
+  {
+    "Assembly": "UI",
+    "Original": "Whenever you provide feedback about a specific playthrough please attach the Game Log automatically generated for it, which can be found here:",
+    "Translation": "针对某局游戏提供反馈时，请附上自动生成的游戏日志，位置如下：",
+    "MethodToken": "0x060000c6",
+    "ILOffset": 2,
+    "TypeFullName": "AtTheGatesUI.ns_MainMenu.MainMenu",
+    "MethodName": "AppendGroupGameLocation",
+    "Safety": "SafeUI",
+    "Note": "Trial main-menu feedback log-location text.",
+    "EvidenceScenario": "trial-ui-visible-misc-4"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1291,
+    "Original": "Move your cursor over any yellow text to learn more about the game concept - even from [inside other tooltips!|TOOLTIPS]",
+    "Translation": "将鼠标移到任何黄色文字上，即可了解对应的游戏概念，甚至可以从[其他悬停提示内部继续查看！|TOOLTIPS]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help body; preserve concept identifier.",
+    "EvidenceScenario": "trial-common-concepts-help-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1416,
+    "Original": "There are 2 [ways to win|WINNING] in AtG:[BLANK-LINE][*] Conquering the [Capital City|CAPITAL] of one of the two [Roman Empire Factions|ROME].[BLANK-LINE][*] Becoming 'Magister Militum' and taking over [Rome|ROME] from within by sending five [Clans|CLAN] to become Roman Legions.[BLANK-LINE]Note that there are two Roman [Factions|FACTION]: the Eastern and Western halves of the previously-whole-in-better-days Roman Empire, and either one can satisfy your [Victory Conditions|WINNING].[BLANK-LINE]Conquering a Roman capital will require locating it on the map and significant military preparation. Although various setbacks will befall the Romans they start off quite strong and can put up quite a fight.[BLANK-LINE]Becoming Magister Militum is more of an economic victory, as to send a [Clan|CLAN] to [Rome|ROME] not only means sending it off for a year but also providing it with expensive, late-game equipment.",
+    "Translation": "AtG 中有 2 种[胜利方式|WINNING]：[BLANK-LINE][*]征服两个[罗马帝国派系|ROME]之一的[首都|CAPITAL]。[BLANK-LINE][*]成为“军务长官”，派出五个[氏族|CLAN]成为罗马军团，从内部接管[罗马|ROME]。[BLANK-LINE]注意，罗马有两个[派系|FACTION]：曾经统一而强盛的罗马帝国分裂为东西两半，征服任一方都能满足你的[胜利条件|WINNING]。[BLANK-LINE]征服罗马首都需要先在地图上找到它，并进行充分的军事准备。罗马会遭遇各种挫折，但开局依旧强大，能打出相当顽强的抵抗。[BLANK-LINE]成为军务长官更接近经济胜利，因为派一个[氏族|CLAN]前往[罗马|ROME]不仅要让其离开一年，还要提供昂贵的后期装备。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help body; preserve concept identifiers and layout tags.",
+    "EvidenceScenario": "trial-common-concepts-help-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1437,
+    "Original": "Caravans provide an opportunity to exchange [Resources|RESOURCE] you don't need for those you do.[BLANK-LINE]Caravans visit 3 times per year, in Late March, June, and September. Note that it does NOT  show up during the winter, so plan accordingly![BLANK-LINE]You can visit a Caravan by clicking the button at the top of the screen (after its arrived for the first time), clicking the Notification icon announcing its arrival, or presssing [HOTKEY:F2].",
+    "Translation": "商队提供机会，让你用不需要的[资源|RESOURCE]交换急需的资源。[BLANK-LINE]商队每年到访 3 次，分别在三月下旬、六月和九月。注意，商队不会在冬季出现，请提前规划！[BLANK-LINE]商队首次抵达后，你可以点击屏幕顶部按钮、点击商队到达的通知图标，或按 [HOTKEY:F2] 拜访商队。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help body; preserve concept identifiers and hotkey tag.",
+    "EvidenceScenario": "trial-common-concepts-help-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1546,
+    "Original": "In addition to the major [Factions|FACTION] there are also a number of [Structures|STRUCTURE] owned independently by local people. They mind their own business, but their Structures and [Clans|CLAN] can be captured by a [Warrior|WARRIOR], should you defeat whatever defender is present.",
+    "Translation": "除了主要[派系|FACTION]外，还有一些由本地人独立拥有的[建筑|STRUCTURE]。他们通常只顾自己的事，但只要你击败当地守军，就可以用[战士|WARRIOR]夺取他们的建筑和[氏族|CLAN]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-1"
+  }
+]

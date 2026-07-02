@@ -1,0 +1,112 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000348",
+    "ILOffset": 852,
+    "Original": "the Portrait of this ",
+    "Translation": "此职业的肖像",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog profession tooltip fragment.",
+    "EvidenceScenario": "trial-common-profession-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000348",
+    "ILOffset": 1285,
+    "Original": "the basic description of this ",
+    "Translation": "此职业的基本说明",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog profession tooltip fragment.",
+    "EvidenceScenario": "trial-common-profession-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000348",
+    "ILOffset": 1817,
+    "Original": "what Structures this ",
+    "Translation": "此职业可用的建筑",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog profession tooltip fragment.",
+    "EvidenceScenario": "trial-common-profession-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000348",
+    "ILOffset": 2361,
+    "Original": "the Upgrades unlocked by this ",
+    "Translation": "此职业解锁的升级",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog profession tooltip fragment.",
+    "EvidenceScenario": "trial-common-profession-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000348",
+    "ILOffset": 3858,
+    "Original": "what it costs to Train a Clan in this ",
+    "Translation": "训练氏族从事此职业的花费",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog profession tooltip fragment.",
+    "EvidenceScenario": "trial-common-profession-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000348",
+    "ILOffset": 6155,
+    "Original": "This is a ",
+    "Translation": "这是",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog profession tooltip fragment.",
+    "EvidenceScenario": "trial-common-profession-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000348",
+    "ILOffset": 6250,
+    "Original": " that have at least ",
+    "Translation": "拥有至少",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog profession tooltip fragment.",
+    "EvidenceScenario": "trial-common-profession-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000348",
+    "ILOffset": 6335,
+    "Original": " need only a single ",
+    "Translation": "只需要一个",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog profession tooltip fragment.",
+    "EvidenceScenario": "trial-common-profession-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000348",
+    "ILOffset": 6389,
+    "Original": ". For each ",
+    "Translation": "。每个",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog profession tooltip fragment.",
+    "EvidenceScenario": "trial-common-profession-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000348",
+    "ILOffset": 6407,
+    "Original": " that needs to be made up ",
+    "Translation": "需要补足",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog profession tooltip fragment.",
+    "EvidenceScenario": "trial-common-profession-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000348",
+    "ILOffset": 6425,
+    "Original": " time is increased by 1 additional ",
+    "Translation": "时间额外增加1",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog profession tooltip fragment.",
+    "EvidenceScenario": "trial-common-profession-tooltip-1"
+  }
+]

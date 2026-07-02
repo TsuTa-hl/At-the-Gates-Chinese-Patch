@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2509,
+    "Original": "Cavalry [Units|UNIT] are expensive but powerful [Warriors|WARRIOR] which have a large amount of [Move Points|MOVE-POINT] and require [WARHORSES] to [Train|TRAIN]. Aside from their expense, the primary drawback of Cavalry is that they require 2 [Supply|SUPPLY] from their [Tile|TILE], rather than just 1 like [Infantry|INFANTRY] Units.",
+    "Translation": "骑兵[单位|UNIT]昂贵但强大，属于拥有大量[移动力|MOVE-POINT]的[战士|WARRIOR]，需要[WARHORSES]才能[训练|TRAIN]。除费用高昂外，骑兵的主要缺点是所在[地格|TILE]必须提供 2 点[补给|SUPPLY]，而非像[步兵|INFANTRY]单位那样只需 1 点。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help cavalry body; preserve raw resource/profession tags.",
+    "EvidenceScenario": "trial-common-concepts-help-8"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2530,
+    "Original": "Infantry [Units|UNIT] are the basic [Warriors|WARRIOR] of AtG. They're not especially fancy, but they get the job done. They only require 1 [Supply|SUPPLY] from their [Tile|TILE], making them more flexible than their expensive [Cavalry|CAVALRY] counterparts.",
+    "Translation": "步兵[单位|UNIT]是 AtG 中基础的[战士|WARRIOR]。他们并不花哨，但足以完成任务。他们所在[地格|TILE]只需提供 1 点[补给|SUPPLY]，因此比昂贵的[骑兵|CAVALRY]更灵活。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help infantry body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-8"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2572,
+    "Original": "Each [Clan|CLAN] is made up of one or more Families. Each [Consumes|CONSUME] 0.1 [FOOD] per [Turn|TURN] (more on higher Difficulty Levels) and a new one joins every six months (12 Turns). As a game progresses your Food needs will continue accelerating, so always be thinking about how you're going to keep all of those hungry mouths fed![BLANK-LINE]Each additional Family which joins a Clan provides a 5% bonus to [Resource Production|PRODUCE] and [Combat Power|POWER], so while old, large Clans can be hard to feed they can also be quite useful in important roles.",
+    "Translation": "每个[氏族|CLAN]由一个或多个家庭组成。每个家庭每[回合|TURN][消耗|CONSUME] 0.1 [FOOD]（高难度下更多），每六个月（12 回合）会有一个新家庭加入。随着游戏推进，食物需求会持续加速增长，所以必须时刻考虑如何养活这些饥饿的人口！[BLANK-LINE]每个加入氏族的额外家庭都会提供 5% 的[资源产出|PRODUCE]和[战力|POWER]加成，因此年长而庞大的氏族虽然难以供养，却也能在关键岗位上非常有用。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help family body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-8"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2593,
+    "Original": "Every [Clan|CLAN] has two Traits which shape which [Professions|PROFESSION] it's well-suited for, what kind of [Desires|DESIRE] it might develop, and generally how you'll want to use and manage it.[BLANK-LINE]Some Clans already start in Professions, making them useful but maybe hard to manage later when they don't want to switch [Disciplines|DISCIPLINE]. Other Clans might be inclined to commit [Crimes|CRIME], encouraging you to isolate them so they don't cause annoy anyone. There are around 100 Traits in AtG, so the number of possible combinations is quite large.",
+    "Translation": "每个[氏族|CLAN]都有两个特质，决定其适合哪些[职业|PROFESSION]、可能产生什么样的[愿望|DESIRE]，以及你通常该如何使用和管理它。[BLANK-LINE]有些氏族开局已有职业，立刻有用，但以后若不愿切换[纪律|DISCIPLINE]，可能难以管理。另一些氏族可能倾向于犯下[罪行|CRIME]，你最好将他们隔离，避免他们骚扰他人。AtG 中约有 100 种特质，因此可能的组合非常多。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help clan trait body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-8"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2614,
+    "Original": "A [Clan's|CLAN] Mood is normally 'Content' but this can change if they develop a [Desire|DESIRE] or have a [Trait|CLAN-TRAIT] which alters their default Mood somehow.[BLANK-LINE]A happy Clan receives a bonus to [Resource Production|PRODUCE] and [Morale|MORALE], whereas unhappy Clans suffer a penalty to these.[BLANK-LINE]Clans can temporarily be made happier (and thus productive) by spending Alcohol. A Clan's Mood drops when it has an unsatisfied [Desire|DESIRE], or when sharing a [Tile|TILE] with another Clan which has committed a [Crime|CRIME].",
+    "Translation": "[氏族|CLAN]的心情通常为“满足”，但若他们产生[愿望|DESIRE]，或拥有会改变默认心情的[特质|CLAN-TRAIT]，心情就可能变化。[BLANK-LINE]快乐的氏族会获得[资源产出|PRODUCE]和[士气|MORALE]加成；不快乐的氏族则会受到惩罚。[BLANK-LINE]花费酒类可以暂时提高氏族心情，使其更有产出。当氏族有未满足的[愿望|DESIRE]，或与犯下[罪行|CRIME]的另一个氏族共享[地格|TILE]时，心情会下降。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help mood body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-8"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2656,
+    "Original": "Feuds are a special kind of [Desire|DESIRE] that two [Clans|CLAN] develop together. When this occurs both Clans will start dropping in [Mood|MOOD] until you [Punish|PUNISH] one of them. Most of the time it makes the most strategic sense to Punish the less-useful Clan, but what you choose to do is a question of conscience for you alone!",
+    "Translation": "仇怨是一种特殊的[愿望|DESIRE]，由两个[氏族|CLAN]共同产生。发生仇怨后，两个氏族的[心情|MOOD]都会开始下降，直到你[惩罚|PUNISH]其中一方。多数时候，惩罚较不重要的氏族最有战略价值，但究竟如何选择，只能由你的良心决定。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help feud body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-8"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2719,
+    "Original": "[Units|UNIT] and [SETTLEMENT:S] can move around the map, the rate being determined by what types of [Terrain|TERRAIN] they move through. The base cost to move into a [Tile|TILE] is 1, but a [HILL] adds one extra, while a [Forest|FOREST] consumes them all.",
+    "Translation": "[单位|UNIT]和[SETTLEMENT:S]可以在地图上移动，速度取决于穿越的[地形|TERRAIN]类型。进入一个[地格|TILE]的基础消耗为 1，但[HILL]会额外增加 1 点，而[森林|FOREST]会消耗全部移动力。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help movement body; preserve concept identifiers and raw terrain tag.",
+    "EvidenceScenario": "trial-common-concepts-help-8"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2740,
+    "Original": "Vision is the ability to see what's on a [Tile|TILE]. Tiles in and next to your [Borders|BORDERS] are visible, as are those near your [Units|UNIT]. Some Units can see further, like [EXPLORER:S].",
+    "Translation": "视野是看见[地格|TILE]上内容的能力。你[边界|BORDERS]内及相邻的地格可见，你的[单位|UNIT]附近地格也可见。有些单位视野更远，例如[EXPLORER:S]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help vision body; preserve concept identifiers and raw profession tag.",
+    "EvidenceScenario": "trial-common-concepts-help-8"
+  }
+]

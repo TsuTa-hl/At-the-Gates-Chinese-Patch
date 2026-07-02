@@ -1,0 +1,80 @@
+[
+  {
+    "Assembly": "UI",
+    "Original": "Give Leader Reply",
+    "Translation": "回复领袖",
+    "MethodToken": "0x0600002c",
+    "ILOffset": 108,
+    "StringToken": "0x700011c5",
+    "TypeFullName": "AtTheGatesUI.ns_Notifications.Notification",
+    "MethodName": "GetEndTurnButtonLabel",
+    "Safety": "SafeUI",
+    "Note": "Trial localization: notification/end-turn button label.",
+    "EvidenceScenario": "trial-smoke-new-game"
+  },
+  {
+    "Assembly": "UI",
+    "Original": "Listen to Leader",
+    "Translation": "聆听领袖",
+    "MethodToken": "0x0600002c",
+    "ILOffset": 116,
+    "StringToken": "0x700011e9",
+    "TypeFullName": "AtTheGatesUI.ns_Notifications.Notification",
+    "MethodName": "GetEndTurnButtonLabel",
+    "Safety": "SafeUI",
+    "Note": "Trial localization: notification/end-turn button label.",
+    "EvidenceScenario": "trial-smoke-new-game"
+  },
+  {
+    "Assembly": "UI",
+    "Original": "Clan Has A Message",
+    "Translation": "氏族有消息",
+    "MethodToken": "0x0600002c",
+    "ILOffset": 132,
+    "StringToken": "0x70001233",
+    "TypeFullName": "AtTheGatesUI.ns_Notifications.Notification",
+    "MethodName": "GetEndTurnButtonLabel",
+    "Safety": "SafeUI",
+    "Note": "Trial localization: notification/end-turn button label.",
+    "EvidenceScenario": "trial-smoke-new-game"
+  },
+  {
+    "Assembly": "UI",
+    "Original": "Visit Caravan",
+    "Translation": "拜访商队",
+    "MethodToken": "0x0600002c",
+    "ILOffset": 140,
+    "StringToken": "0x70001259",
+    "TypeFullName": "AtTheGatesUI.ns_Notifications.Notification",
+    "MethodName": "GetEndTurnButtonLabel",
+    "Safety": "SafeUI",
+    "Note": "Trial localization: notification/end-turn button label.",
+    "EvidenceScenario": "trial-smoke-new-game"
+  },
+  {
+    "Assembly": "UI",
+    "Original": "View Council",
+    "Translation": "查看议会",
+    "MethodToken": "0x0600002c",
+    "ILOffset": 148,
+    "StringToken": "0x70001275",
+    "TypeFullName": "AtTheGatesUI.ns_Notifications.Notification",
+    "MethodName": "GetEndTurnButtonLabel",
+    "Safety": "SafeUI",
+    "Note": "Trial localization: notification/end-turn button label.",
+    "EvidenceScenario": "trial-smoke-new-game"
+  },
+  {
+    "Assembly": "UI",
+    "Original": "Switch Disciplines",
+    "Translation": "切换纪律",
+    "MethodToken": "0x0600002c",
+    "ILOffset": 156,
+    "StringToken": "0x7000128f",
+    "TypeFullName": "AtTheGatesUI.ns_Notifications.Notification",
+    "MethodName": "GetEndTurnButtonLabel",
+    "Safety": "SafeUI",
+    "Note": "Trial localization: notification/end-turn button label.",
+    "EvidenceScenario": "trial-smoke-new-game"
+  }
+]

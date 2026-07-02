@@ -1,0 +1,22 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001730",
+    "ILOffset": 318,
+    "Original": " Each additional Family provides a ",
+    "Translation": "每个额外家庭提供",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Retry after one single-entry smoke failed with StackOverflow/WER; this failure class can be intermittent, so retry once before treating as unsafe.",
+    "EvidenceScenario": "trial-common-game-description-retry-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001730",
+    "ILOffset": 338,
+    "Original": "% bonus to [Combat Power|POWER]",
+    "Translation": "%[战斗力|POWER]加成",
+    "Safety": "TooltipFragment",
+    "Note": "Retry with corrected exact-catalog IL offset; previous batch used an invalid offset.",
+    "EvidenceScenario": "trial-common-game-description-retry-1"
+  }
+]

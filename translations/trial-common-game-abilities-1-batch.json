@@ -1,0 +1,162 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 34,
+    "Original": "[Border|BORDERS] range of ",
+    "Translation": "[边界|BORDERS]范围：",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog ability description fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 110,
+    "Original": " if within ",
+    "Translation": "若位于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog ability description fragment.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 141,
+    "Original": " of the Settlement",
+    "Translation": "定居点范围内",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog ability description fragment.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 189,
+    "Original": "Slowly depletes the [Resources|RESOURCE] available on [Tiles|TILE] being harvested.",
+    "Translation": "会缓慢耗尽正在采收的[地格|TILE]上可用的[资源|RESOURCE]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog ability description text preserving concept IDs.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 731,
+    "Original": "[Naval|WATER]",
+    "Translation": "[水上|WATER]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog ability concept display preserving concept ID.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 868,
+    "Original": "Can [Identify|UNIDENTIFIED] ",
+    "Translation": "可[识别|UNIDENTIFIED]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog ability description fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 910,
+    "Original": "any type of ",
+    "Translation": "任意类型的",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog ability description fragment.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 1200,
+    "Original": " needed for any ",
+    "Translation": "任何所需",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog ability description fragment.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 1283,
+    "Original": "Generates ",
+    "Translation": "产生",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog ability description fragment.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 1382,
+    "Original": "Can carry ",
+    "Translation": "可携带",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog ability description fragment.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 1392,
+    "Original": " to a range of ",
+    "Translation": "至范围",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog ability description fragment.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 1493,
+    "Original": "Can [Pillage|PILLAGE] in ",
+    "Translation": "可[劫掠|PILLAGE]于",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog ability description fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 1528,
+    "Original": " (default is ",
+    "Translation": "（默认",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog ability description fragment.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 1603,
+    "Original": " Rate",
+    "Translation": "速率",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog ability description fragment.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 1642,
+    "Original": "Can explore ",
+    "Translation": "可探索",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog ability description fragment.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 1854,
+    "Original": "Continues [Producing|PRODUCE] [Resources|RESOURCE] at ",
+    "Translation": "继续[生产|PRODUCE][资源|RESOURCE]，速率为",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog ability description fragment preserving concept IDs; next fragment carries the degraded-deposit context.",
+    "EvidenceScenario": "trial-common-game-abilities-1"
+  }
+]

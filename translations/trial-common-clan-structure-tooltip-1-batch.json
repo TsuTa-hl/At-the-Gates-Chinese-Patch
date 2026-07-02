@@ -1,0 +1,142 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x060002f0",
+    "ILOffset": 613,
+    "Original": "the Portrait of this Clan",
+    "Translation": "此氏族的肖像",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog clan tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x060002f0",
+    "ILOffset": 1140,
+    "Original": "the basic description of a Clan",
+    "Translation": "氏族的基本说明",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog clan tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x060002f0",
+    "ILOffset": 2249,
+    "Original": "This is a ",
+    "Translation": "这是",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog clan tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x060002f0",
+    "ILOffset": 2349,
+    "Original": " that have at least ",
+    "Translation": "拥有至少",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog clan tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x060002f0",
+    "ILOffset": 2439,
+    "Original": " need only a single ",
+    "Translation": "只需要一个",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog clan tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x060002f0",
+    "ILOffset": 2493,
+    "Original": ". For each ",
+    "Translation": "。每个",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog clan tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x060002f0",
+    "ILOffset": 2511,
+    "Original": " that needs to be made up ",
+    "Translation": "需要补足",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog clan tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x060002f0",
+    "ILOffset": 2529,
+    "Original": " time is increased by 1 additional ",
+    "Translation": "时间额外增加1",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog clan tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600031c",
+    "ILOffset": 250,
+    "Original": "the Portrait of this Structure",
+    "Translation": "此建筑的图像",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog structure tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600031c",
+    "ILOffset": 515,
+    "Original": "the basic description of this Structure",
+    "Translation": "此建筑的基本说明",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog structure tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600031c",
+    "ILOffset": 1065,
+    "Original": "this Structure's stats",
+    "Translation": "此建筑的数值",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog structure tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600031c",
+    "ILOffset": 1450,
+    "Original": "what it costs to Construct this Structure and what it will Produce for you once built",
+    "Translation": "建造此建筑的花费，以及建成后为你产出的内容",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog structure tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600031c",
+    "ILOffset": 1958,
+    "Original": "the costs and benefits of adding Apprentices to this Structure",
+    "Translation": "为此建筑增加学徒的花费与收益",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog structure tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600031c",
+    "ILOffset": 2466,
+    "Original": "this Structure's special abilities",
+    "Translation": "此建筑的特殊能力",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog structure tooltip fragment.",
+    "EvidenceScenario": "trial-common-clan-structure-tooltip-1"
+  }
+]

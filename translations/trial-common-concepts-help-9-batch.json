@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1672,
+    "Original": "Borders, or Control, represents the [Tiles|TILE] which a player has direct ownership over and appears as a solid, colored line on the map.[BLANK-LINE]Control is very important, as within it your [Units|UNIT] always have full [Supply|SUPPLY], and it allows [Structures|STRUCTURE] to be [Constructed|CONSTRUCT], which far exceed foraging in their economic ouput.[BLANK-LINE]Control can be expanded by spending [WEAPONS] to [Fortify|FORTIFY] a Structure. [WATCHTOWER:S] are the one type of Structure which can be built outside of your Control, giving you the ability to project your power at a distance, should you be willing to make the investment.",
+    "Translation": "边界，也就是控制范围，代表玩家直接拥有的[地格|TILE]，在地图上显示为实心彩色线。[BLANK-LINE]控制范围非常重要：在其中，你的[单位|UNIT]始终拥有完整[补给|SUPPLY]，并可[建造|CONSTRUCT][建筑|STRUCTURE]；建筑的经济产出远高于临时采集。[BLANK-LINE]你可以花费[WEAPONS]来[加固|FORTIFY]建筑，从而扩展控制范围。[WATCHTOWER:S]是唯一一种可以建在控制范围外的建筑；只要愿意投入，它能让你的力量投射到远方。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help borders/control body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-9"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2761,
+    "Original": "Supply represents the basic goods needed to keep a [Unit|UNIT] functioning. During the summer most [Clans|CLAN] will be able to freely collect what they need from their [Tile|TILE], but is no longer the case once it becomes [Cold|COLD]. At this point a Unit may need to [Encamp|ENCAMP] to avoid taking [Damage|DAMAGE]. Some [Units|UNIT], like the [LIGHT-CAVALRY], actually require more than 1 Supply Point, so always keep an eye on what a Tile actually provides!",
+    "Translation": "补给代表维持[单位|UNIT]运作所需的基本物资。夏季时，多数[氏族|CLAN]都能在所在[地格|TILE]自由收集所需物资；但一旦变为[寒冷|COLD]，情况就不再如此。此时单位可能需要[扎营|ENCAMP]以避免受到[伤害|DAMAGE]。有些[单位|UNIT]，如[LIGHT-CAVALRY]，实际需要超过 1 点补给，因此务必留意地格到底能提供什么。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help supply body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-9"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2782,
+    "Original": "[GALLEY:S] are able to transport your [SETTLEMENT] or one [Unit|UNIT] at a time over the water as 'Cargo', typically much faster than is possible by land.",
+    "Translation": "[GALLEY:S]可以把你的[SETTLEMENT]或一个[单位|UNIT]作为“货物”一次运过水面，通常比陆路快得多。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help galley cargo body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-9"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3168,
+    "Original": "Each [Clan|CLAN] has 100 Health points. As they suffer Damage their [Combat Power|POWER] decreases (50% Damage = 50% Power).[BLANK-LINE]Damage can be Healed in the [SETTLEMENT] by spending [OIL] and [CLOTH].",
+    "Translation": "每个[氏族|CLAN]有 100 点生命值。受到伤害时，其[战力|POWER]会下降（50% 伤害 = 50% 战力）。[BLANK-LINE]可以在[SETTLEMENT]中花费[OIL]和[CLOTH]治疗伤害。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help health/damage body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-9"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3189,
+    "Original": "Each [Clan|CLAN] has 100 Health points. As they suffer Damage their [Combat Power|POWER] decreases (50% Damage = 50% Power).[BLANK-LINE]Damage can be Healed in the [SETTLEMENT] by spending [OIL] and [CLOTH].",
+    "Translation": "每个[氏族|CLAN]有 100 点生命值。受到伤害时，其[战力|POWER]会下降（50% 伤害 = 50% 战力）。[BLANK-LINE]可以在[SETTLEMENT]中花费[OIL]和[CLOTH]治疗伤害。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help duplicate health/damage body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-9"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3344,
+    "Original": "The number of Combat Experience points a [Warrior|WARRIOR] has earned are added to its [Morale|MORALE] stat, making it tougher and less inclined to [Retreat|RETREAT].",
+    "Translation": "[战士|WARRIOR]获得的战斗经验点数会加入其[士气|MORALE]属性，使其更坚韧，也更不容易[撤退|RETREAT]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help combat experience body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-9"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3365,
+    "Original": "Leaders which share the same Religion receive a [Relationship Level|RL] bonus, while those who do not receive a penalty (the exact amount being determined by each Leader's [Traits|LEADER-TRAIT]). Switching Religions can be a good way of making friends, but also enemies - abandoning the faith of another Leader can make them especially upset.",
+    "Translation": "信奉同一宗教的领袖会获得[关系等级|RL]加成，不同宗教则会受到惩罚（具体数值由各领袖的[特质|LEADER-TRAIT]决定）。改信宗教可以帮助结交朋友，也可能制造敌人；背弃另一位领袖的信仰尤其会激怒对方。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help religion relationship body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-9"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3386,
+    "Original": "Repuation is a Leader's global 'diplomatic currency' that can be spent on future diplomatic interactions with ANY Leader in order to get them to do more than they would normally be willing.[BLANK-LINE]Reputation is a valuable commodity hard to earn - doing so usually involves great risk, sacrifice, or boldness.",
+    "Translation": "声誉是领袖的全局“外交货币”，可在未来与任何领袖的外交互动中花费，使他们愿意做出通常不会接受的让步。[BLANK-LINE]声誉很有价值，也很难获得；获得声誉通常需要承担巨大风险、付出牺牲，或表现出非凡胆识。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help reputation body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-9"
+  }
+]

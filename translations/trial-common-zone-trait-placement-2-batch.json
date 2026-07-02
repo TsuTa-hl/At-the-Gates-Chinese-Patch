@@ -1,0 +1,38 @@
+[
+{
+    "Assembly": "Common",
+    "Original": " - No Romans in Group",
+    "Translation": " - 组内没有罗马人",
+    "MethodToken": "0x06000f2a",
+    "ILOffset": 881,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.ZoneTraitConfig",
+    "MethodName": "BuildTraitPlacementFailedMessage",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial zone-trait placement failure message.",
+    "EvidenceScenario": "trial-common-zone-trait-placement-2"
+},
+{
+    "Assembly": "Common",
+    "Original": " - Too Cold or Warm in Winter",
+    "Translation": " - 冬季过冷或过暖",
+    "MethodToken": "0x06000aca",
+    "ILOffset": 361,
+    "TypeFullName": "AtTheGatesCommon.ns_Enums.MapUtils",
+    "MethodName": "BuildObjectPlacementFailedMessage",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial object placement failure message.",
+    "EvidenceScenario": "trial-common-zone-trait-placement-2"
+},
+{
+    "Assembly": "Common",
+    "Original": " - Not Enough Rainfall",
+    "Translation": " - 降雨不足",
+    "MethodToken": "0x06000aca",
+    "ILOffset": 413,
+    "TypeFullName": "AtTheGatesCommon.ns_Enums.MapUtils",
+    "MethodName": "BuildObjectPlacementFailedMessage",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial object placement failure message.",
+    "EvidenceScenario": "trial-common-zone-trait-placement-2"
+}
+]

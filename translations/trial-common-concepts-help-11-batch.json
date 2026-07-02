@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3575,
+    "Original": "An Alliance is a permanent diplomatic arrangement which binds two [Factions|FACTION] together, and from that point on all wars either is engaged in will be joined by the other. A [Leader|LEADER] will agree to an Alliance if you have at least 5 [Leverage|LEVERAGE] with them.[BLANK-LINE]Forming an Alliance with a Faction is one of the two ways you can unlock that Faction for play in future games (the other being to conquer their [Capital|CAPITAL]).",
+    "Translation": "同盟是一项永久外交安排，会将两个[派系|FACTION]绑定在一起；从此之后，任一方卷入的所有战争，另一方都会加入。若你与一位[领袖|LEADER]至少拥有 5 点[筹码|LEVERAGE]，对方就会同意结盟。[BLANK-LINE]与一个派系结盟，是在未来游戏中解锁该派系的两种方式之一（另一种是征服其[首都|CAPITAL]）。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help alliance body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-11"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3596,
+    "Original": "Resources are the economic currency of AtG, and in conjunction with [Clans|CLAN] are essential to doing just about anything.[BLANK-LINE]There are two basic kinds of Resources: raw and refined. An example of a raw Resource is [IRON], which is [Harvested|HARVEST] from [Deposits|DEPOSIT] but can't actually be used for anything until refined into [WEAPONS] or [TOOLS].[BLANK-LINE]The most important Resource in the game is [FOOD], as without it your Clans will [Starve|STARVE]. [FAME] determines how often new Clans join you. [KNOWLEDGE] determines how fast you can [Study|STUDY] new [Professions|PROFESSION]. [TREASURE] is a versatile Resource that is especially useful for buying other Resources from [Caravans|CARAVAN]. [TIMBER] is required to [Construct|CONSTRUCT] basic [Structures|STRUCTURE], while [STONE-BLOCKS] are needed for more advanced versions which don't ever [Degrade|DEGRADE] and run out.",
+    "Translation": "资源是 AtG 的经济货币，与[氏族|CLAN]一起构成几乎一切行动的基础。[BLANK-LINE]资源分为两类：原料和加工品。[IRON]就是原料资源，可从[矿藏|DEPOSIT]中[采收|HARVEST]，但必须先精炼成[WEAPONS]或[TOOLS]才能真正使用。[BLANK-LINE]游戏中最重要的资源是[FOOD]，没有它，你的氏族会[挨饿|STARVE]。[FAME]决定新氏族加入的频率。[KNOWLEDGE]决定你[研究|STUDY]新[职业|PROFESSION]的速度。[TREASURE]用途广泛，尤其适合从[商队|CARAVAN]购买其他资源。[TIMBER]用于[建造|CONSTRUCT]基础[建筑|STRUCTURE]，更高级且不会[损耗|DEGRADE]枯竭的版本则需要[STONE-BLOCKS]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help resources body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-11"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3617,
+    "Original": "[Resource|RESOURCE] production is a fundamental part of At the Gates.[BLANK-LINE]Initially you will simply [Harvest|HARVEST] them from [Deposits|DEPOSIT] with [Foragers|FORAGE] or buy them from the [Caravan|CARAVAN], but once your tribe is a bit more developed you'll be able to start refining raw Resources like [IRON] into other things like [TOOLS] with the help of [Professions|PROFESSION] like the [BLACKSMITH].[BLANK-LINE]Because you have a limited number of [Clans|CLAN] it's usually best to prioritize the production of one or two Resources rather than try to do everything.",
+    "Translation": "[资源|RESOURCE]生产是《At the Gates》的基础内容。[BLANK-LINE]一开始，你只需让[采集者|FORAGE]从[矿藏|DEPOSIT]中[采收|HARVEST]资源，或从[商队|CARAVAN]购买；但当部族稍有发展后，就能借助[BLACKSMITH]等[职业|PROFESSION]，把[IRON]之类原料精炼成[TOOLS]等物品。[BLANK-LINE]由于[氏族|CLAN]数量有限，通常最好优先生产一两种资源，而不是试图面面俱到。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help resource production body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-11"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3638,
+    "Original": "[Resources|RESOURCE] can be consumed each [Turn|TURN] in two ways:[BLANK-LINE][*]Resources like [FOOD] are automatically consumed based on the number of [Clan|CLAN] [Families|FAMILY] you have.[BLANK-LINE][*]Raw Resources like [IRON] can be refined into more advanced things like [TOOLS] and are consumed in the process.[BLANK-LINE]The consumption of Resources by individual Clans can be disabled by clicking on that Clan in the Clans Screen and then clicking on the 'Stop Work' button. The consumption of 'special' [FOOD] Resources like [OLIVES] and [GRAPES] can be disabled by mousing over that Resource in your [Stockpile|STOCKPILE] and then clicking the 'Disable Substitution for Food' button.",
+    "Translation": "[资源|RESOURCE]每[回合|TURN]会以两种方式消耗：[BLANK-LINE][*][FOOD]等资源会根据你拥有的[氏族|CLAN][家庭|FAMILY]数量自动消耗。[BLANK-LINE][*][IRON]等原料资源可被精炼成[TOOLS]等高级物品，并在过程中消耗。[BLANK-LINE]若要禁止单个氏族消耗资源，可在氏族界面点击该氏族，再点击“停止工作”按钮。若要禁止[OLIVES]和[GRAPES]等“特殊”[FOOD]资源替代食物，可在[库存|STOCKPILE]中悬停该资源，然后点击“禁用食物替代”按钮。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help resource consumption body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-11"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3680,
+    "Original": "Your stockpile of [Resources|RESOURCE] is visible on the left side of the World Screen. Once 'in the bank' you can save Resources for future purposes, or trade them away at the [Caravan|CARAVAN] for other Resources you need.[BLANK-LINE][FOOD] is a special type of Resource that other kinds of Resources like [WHEAT] and [GRAPES] automatically turn into when [Produced|PRODUCE]. [FOOD] also enters your stockpile as ['Stored Turns'|STORED-TURN], rather than a specific quantity like other Resources.",
+    "Translation": "你的[资源|RESOURCE]库存显示在世界界面左侧。资源一旦“入库”，就可以留待将来使用，或在[商队|CARAVAN]处换取你需要的其他资源。[BLANK-LINE][FOOD]是一种特殊资源，[WHEAT]和[GRAPES]等其他资源在[生产|PRODUCE]时会自动转化为食物。[FOOD]进入库存时也会以[“储存回合”|STORED-TURN]形式记录，而不是像其他资源那样记录具体数量。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help stockpile body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-11"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3701,
+    "Original": "If you have at least 24 [FOOD] in your [Stockpile|STOCKPILE] then a percentage of any further [Production|PRODUCE] will start to 'spoil'. The initial penalthy is -50%, and every every additional 12 [FOOD] another half of the remaining Production will be lost. Storing up large quantities of [FOOD] can provide security but isn't the most efficient way to run your economy.",
+    "Translation": "如果你的[库存|STOCKPILE]中至少有 24 点[FOOD]，之后继续[生产|PRODUCE]的部分食物就会开始“腐坏”。初始惩罚为 -50%；之后每增加 12 点[FOOD]，剩余产量还会再损失一半。大量储存[FOOD]能提供安全感，但并不是最高效的经济方式。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help spoil body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-11"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3785,
+    "Original": "A [Structure|STRUCTURE] which normally [Harvests|HARVEST] [Resources|RESOURCE] can go 'offline' and stop doing under a few different circumstances:[BLANK-LINE][*]Most [FOOD] production stops when it gets [Cold|COLD].[BLANK-LINE][*]Random [Weather|WEATHER] effects can temporarily shut down a Structure.[BLANK-LINE][*]A Structure goes offline after it's been [Pillaged|PILLAGE].",
+    "Translation": "通常会[采收|HARVEST][资源|RESOURCE]的[建筑|STRUCTURE]，可能在几种情况下“停用”并停止工作：[BLANK-LINE][*]天气变[寒冷|COLD]时，大多数[FOOD]生产会停止。[BLANK-LINE][*]随机[天气|WEATHER]效果可能暂时关闭建筑。[BLANK-LINE][*]建筑被[劫掠|PILLAGE]后会停用。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help offline structure body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-11"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3806,
+    "Original": "When an enemy [Structure|STRUCTURE] or [Clan|CLAN] is captured from another [Faction|FACTION] it is 'Occupied' for 6 turns, and during this time it will no longer [Harvest|HARVEST] [Resources|RESOURCE].",
+    "Translation": "从另一个[派系|FACTION]手中夺取敌方[建筑|STRUCTURE]或[氏族|CLAN]后，它会处于“占领”状态 6 回合；在此期间，它不再[采收|HARVEST][资源|RESOURCE]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help occupied body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-11"
+  }
+]

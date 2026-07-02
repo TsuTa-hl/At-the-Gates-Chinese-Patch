@@ -1,0 +1,50 @@
+[
+{
+    "Assembly": "Common",
+    "Original": " - Lacks Required River",
+    "Translation": " - 缺少必需河流",
+    "MethodToken": "0x06000091",
+    "ILOffset": 881,
+    "TypeFullName": "AtTheGatesCommon.ns_Enums.MapUtils",
+    "MethodName": "BuildObjectPlacementFailedMessage",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial object placement failure message using exact current DLL catalog token.",
+    "EvidenceScenario": "trial-common-map-placement-2"
+},
+{
+    "Assembly": "Common",
+    "Original": " - Lacks Required Resource",
+    "Translation": " - 缺少必需资源",
+    "MethodToken": "0x06000091",
+    "ILOffset": 933,
+    "TypeFullName": "AtTheGatesCommon.ns_Enums.MapUtils",
+    "MethodName": "BuildObjectPlacementFailedMessage",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial object placement failure message using exact current DLL catalog token.",
+    "EvidenceScenario": "trial-common-map-placement-2"
+},
+{
+    "Assembly": "Common",
+    "Original": " - Water",
+    "Translation": " - 水域",
+    "MethodToken": "0x06000091",
+    "ILOffset": 985,
+    "TypeFullName": "AtTheGatesCommon.ns_Enums.MapUtils",
+    "MethodName": "BuildObjectPlacementFailedMessage",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial object placement failure message using exact current DLL catalog token.",
+    "EvidenceScenario": "trial-common-map-placement-2"
+},
+{
+    "Assembly": "Common",
+    "Original": " - Impassable",
+    "Translation": " - 不可通行",
+    "MethodToken": "0x06000091",
+    "ILOffset": 1037,
+    "TypeFullName": "AtTheGatesCommon.ns_Enums.MapUtils",
+    "MethodName": "BuildObjectPlacementFailedMessage",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial object placement failure message using exact current DLL catalog token.",
+    "EvidenceScenario": "trial-common-map-placement-2"
+}
+]

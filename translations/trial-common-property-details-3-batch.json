@@ -1,0 +1,162 @@
+[
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2367,
+        "Original":  "Switched to ",
+        "Translation":  "已切换为",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2394,
+        "Original":  "the [",
+        "Translation":  "该[",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment preserving partial tag.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2447,
+        "Original":  "Changed into [",
+        "Translation":  "转变为[",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment preserving partial tag.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  3797,
+        "Original":  "Tribe-wide ",
+        "Translation":  "部族全局",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  3813,
+        "Original":  " time for ",
+        "Translation":  "的时间：",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  3917,
+        "Original":  " requires ",
+        "Translation":  "需要",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  3985,
+        "Original":  " fewer",
+        "Translation":  "更少",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  4505,
+        "Original":  " time for ",
+        "Translation":  "的时间：",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  4812,
+        "Original":  " time for ",
+        "Translation":  "的时间：",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5119,
+        "Original":  " time for ",
+        "Translation":  "的时间：",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5437,
+        "Original":  "Gains no ",
+        "Translation":  "不获得",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5453,
+        "Original":  " unless in a ",
+        "Translation":  "除非处于",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5494,
+        "Original":  "Creates a [",
+        "Translation":  "创建一个[",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment preserving partial tag.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5542,
+        "Original":  "Creates an adjacent [Bandit|BANDIT] [",
+        "Translation":  "创建相邻的[强盗|BANDIT][",
+        "Safety":  "TooltipFragment",
+        "Note":  "Trial Common exact-catalog property details fragment preserving partial tag.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5590,
+        "Original":  "Recovered ",
+        "Translation":  "恢复",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    },
+    {
+        "Assembly":  "Common",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5638,
+        "Original":  "Choose From:",
+        "Translation":  "可选择：",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trial Common exact-catalog property details fragment.",
+        "EvidenceScenario":  "trial-common-property-details-3"
+    }
+]

@@ -210,27 +210,34 @@ if ($capturePaths.Count -gt 0) {
     & "$PSScriptRoot\New-AtGContactSheet.ps1" -ImagePath $capturePaths -OutputPath $contactSheetPath | Out-Null
 }
 
-$summary = [ordered]@{
-    ScenarioId = $ScenarioId
-    Title = [string]$scenario.Title
-    Suite = $Suite
-    Status = if (@($results | Where-Object { $_.Status -eq "Failed" }).Count -gt 0) { "Failed" } else { "Completed" }
-    StartedAtLocal = $timestamp
-    DurationMs = [int64]$runStopwatch.ElapsedMilliseconds
-    ClickCount = @($results | Where-Object { $_.Action -like "Click*" }).Count
-    HoverCount = @($results | Where-Object { $_.Action -like "Hover*" }).Count
-    ScreenshotCount = @($results | Where-Object { $_.CapturePath }).Count
-    SkippedCount = @($results | Where-Object { $_.Status -eq "Skipped" }).Count
-    FailedCount = @($results | Where-Object { $_.Status -eq "Failed" }).Count
-    RunDirectory = $runDir
-    ContactSheetPath = $contactSheetPath
-    ComputerUse = [ordered]@{
-        RequestedFirst = [bool]$UseComputerUseFirst
-        Used = $false
-        Note = "This PowerShell runner uses Win32 helpers. If computer-use capture is required, attempt it before invoking this runner and use this as fallback."
-    }
-    Results = @($results)
-}
+$failedCount = @($results | Where-Object { $_.Status -eq "Failed" }).Count
+$skippedCount = @($results | Where-Object { $_.Status -eq "Skipped" }).Count
+$clickCount = @($results | Where-Object { $_.Action -like "Click*" }).Count
+$hoverCount = @($results | Where-Object { $_.Action -like "Hover*" }).Count
+$screenshotCount = @($results | Where-Object { $_.CapturePath }).Count
+$status = if ($failedCount -gt 0) { "Failed" } else { "Completed" }
+
+$computerUse = New-Object psobject
+$computerUse | Add-Member -NotePropertyName RequestedFirst -NotePropertyValue ([bool]$UseComputerUseFirst)
+$computerUse | Add-Member -NotePropertyName Used -NotePropertyValue $false
+$computerUse | Add-Member -NotePropertyName Note -NotePropertyValue "This PowerShell runner uses Win32 helpers. If computer-use capture is required, attempt it before invoking this runner and use this as fallback."
+
+$summary = New-Object psobject
+$summary | Add-Member -NotePropertyName ScenarioId -NotePropertyValue $ScenarioId
+$summary | Add-Member -NotePropertyName Title -NotePropertyValue ([string]$scenario.Title)
+$summary | Add-Member -NotePropertyName Suite -NotePropertyValue $Suite
+$summary | Add-Member -NotePropertyName Status -NotePropertyValue $status
+$summary | Add-Member -NotePropertyName StartedAtLocal -NotePropertyValue $timestamp
+$summary | Add-Member -NotePropertyName DurationMs -NotePropertyValue ([int64]$runStopwatch.ElapsedMilliseconds)
+$summary | Add-Member -NotePropertyName ClickCount -NotePropertyValue $clickCount
+$summary | Add-Member -NotePropertyName HoverCount -NotePropertyValue $hoverCount
+$summary | Add-Member -NotePropertyName ScreenshotCount -NotePropertyValue $screenshotCount
+$summary | Add-Member -NotePropertyName SkippedCount -NotePropertyValue $skippedCount
+$summary | Add-Member -NotePropertyName FailedCount -NotePropertyValue $failedCount
+$summary | Add-Member -NotePropertyName RunDirectory -NotePropertyValue $runDir
+$summary | Add-Member -NotePropertyName ContactSheetPath -NotePropertyValue $contactSheetPath
+$summary | Add-Member -NotePropertyName ComputerUse -NotePropertyValue $computerUse
+$summary | Add-Member -NotePropertyName Results -NotePropertyValue ([object[]]$results.ToArray())
 
 $summaryPath = Join-Path $runDir "run-summary.json"
 $summary | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $summaryPath -Encoding UTF8

@@ -1,0 +1,26 @@
+[
+  {
+    "Assembly": "Common",
+    "Original": "Right-click to spend ",
+    "Translation": "右键花费",
+    "MethodToken": "0x060002f7",
+    "ILOffset": 239,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.ns_Tooltips.ClanTraitTooltip",
+    "MethodName": "BuildTooltip",
+    "Safety": "TooltipFragment",
+    "Note": "Exact retry for clan-trait tooltip fragment; original preserves trailing space.",
+    "EvidenceScenario": "trial-common-tooltip-visible-2-exact"
+  },
+  {
+    "Assembly": "Common",
+    "Original": " and remove this [Trait|CLAN-TRAIT] from this [Clan|CLAN] (can only be performed in the [SETTLEMENT] when you have an [INSTRUCTOR]).",
+    "Translation": "并从该[氏族|CLAN]移除此[特质|CLAN-TRAIT]（只有在[SETTLEMENT]中且拥有[INSTRUCTOR]时才能执行）。",
+    "MethodToken": "0x060002f7",
+    "ILOffset": 261,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.ns_Tooltips.ClanTraitTooltip",
+    "MethodName": "BuildTooltip",
+    "Safety": "TooltipFragment",
+    "Note": "Exact retry for clan-trait tooltip sentence; original preserves leading space and concept IDs.",
+    "EvidenceScenario": "trial-common-tooltip-visible-2-exact"
+  }
+]

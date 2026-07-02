@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3659,
+    "Original": "You can [Produce|PRODUCE] raw [Resources|RESOURCE] from [Plant|PLANT] and [Mineral|MINERAL] [Deposits|DEPOSIT] in two ways: having a [Clan|CLAN] in certain [Professions|PROFESSION] [Forage|FORAGE] it (e.g. [DIGGER]), or by [Constructing|CONSTRUCT] certain [Structures|STRUCTURE] on it (e.g. [IRON-MINE-1]).[BLANK-LINE]Harvesting a Deposit gradually [Depletes|DEGRADE] and eventually exhausts it, after which it can no longer be Harvested. Nearly all Deposits can be Harvested for 18-24 [Turns|TURN] before running out (regardless of how much is actually being Produced) with the exact figure being determined by its type (e.g. 18 for [DEPOSIT-BEEHIVE:A/AN], 24 for [DEPOSIT-IRON:A/AN]).[BLANK-LINE][Animal Herds|ANIMAL] are the third type of Deposit, and function differently. Instead of being Harvested directly like Plants and Minerals Animals can either be Foraged by [HUNTER:A/AN] or [TRAPPER] to Produce [MEAT] or [PARCHMENT], or they can be added to your [Stockpile|STOCKPILE] by Constructing a [Pasture|PASTURE] on them.[BLANK-LINE]Animals in your Stockpile can be eaten directly for much more [FOOD] than a Hunter provides, and can also be used by [Settled|SETTLED] Professions like the [MEAT-CUTTER] and [PARCHMENT-MAKER] which Produce even more than that.",
+    "Translation": "你可以通过两种方式从[植物|PLANT]和[矿物|MINERAL][矿藏|DEPOSIT]中[生产|PRODUCE]原料[资源|RESOURCE]：让从事特定[职业|PROFESSION]的[氏族|CLAN]去[采集|FORAGE]（例如[DIGGER]），或在其上[建造|CONSTRUCT]特定[建筑|STRUCTURE]（例如[IRON-MINE-1]）。[BLANK-LINE]采收矿藏会逐渐使其[枯竭|DEGRADE]并最终耗尽，之后便无法再采收。几乎所有矿藏都能采收 18-24 个[回合|TURN]后才会耗尽（无论实际[生产|PRODUCE]了多少），具体数值由类型决定（例如[DEPOSIT-BEEHIVE:A/AN]为 18，[DEPOSIT-IRON:A/AN]为 24）。[BLANK-LINE][动物群|ANIMAL]是第三类矿藏，运作方式不同。动物不能像植物和矿物那样直接采收；它们可以由[HUNTER:A/AN]或[TRAPPER]采集，以生产[MEAT]或[PARCHMENT]，也可以通过在其上建造[Pasture|PASTURE]加入你的[库存|STOCKPILE]。[BLANK-LINE]库存中的动物可以直接食用，提供远多于猎人的[FOOD]；也可以供[定居|SETTLED]职业使用，例如[MEAT-CUTTER]和[PARCHMENT-MAKER]，其产出会更高。",
+    "Safety": "LogicSensitive",
+    "Note": "Trial Common concept-help harvest/deposit body; display-only paragraph.",
+    "EvidenceScenario": "trial-common-concepts-help-13"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3722,
+    "Original": "[Harvesting|HARVEST] a [Deposit|DEPOSIT] or [Dense Forest|FOREST] gradually Depletes and eventually exhausts it, after which it can no longer be Harvested. Nearly all Deposits can be Harvested for 18-24 [Turns|TURN] before running out (regardless of how much is actually being [Produced|PRODUCE] from it) with the exact figure being determined by its type (e.g. 18 for [DEPOSIT-BEEHIVE:A/AN], 24 for [DEPOSIT-IRON:A/AN]).",
+    "Translation": "[采收|HARVEST][矿藏|DEPOSIT]或[茂密森林|FOREST]会逐渐使其枯竭并最终耗尽，之后便无法再采收。几乎所有矿藏都能采收 18-24 个[回合|TURN]后才会耗尽（无论实际从中[生产|PRODUCE]了多少），具体数值由类型决定（例如[DEPOSIT-BEEHIVE:A/AN]为 18，[DEPOSIT-IRON:A/AN]为 24）。",
+    "Safety": "LogicSensitive",
+    "Note": "Trial Common concept-help deplete dense forest body; display-only paragraph.",
+    "EvidenceScenario": "trial-common-concepts-help-13"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3743,
+    "Original": "[Harvesting|HARVEST] a [Deposit|DEPOSIT] gradually Depletes and eventually exhausts it, after which it can no longer be Harvested. Nearly all Deposits can be Harvested for 18-24 [Turns|TURN] before running out (regardless of how much is actually being [Produced|PRODUCE] from it) with the exact figure being determined by its type (e.g. 18 for [DEPOSIT-BEEHIVE:A/AN], 24 for [DEPOSIT-IRON:A/AN]).",
+    "Translation": "[采收|HARVEST][矿藏|DEPOSIT]会逐渐使其枯竭并最终耗尽，之后便无法再采收。几乎所有矿藏都能采收 18-24 个[回合|TURN]后才会耗尽（无论实际从中[生产|PRODUCE]了多少），具体数值由类型决定（例如[DEPOSIT-BEEHIVE:A/AN]为 18，[DEPOSIT-IRON:A/AN]为 24）。",
+    "Safety": "LogicSensitive",
+    "Note": "Trial Common concept-help deplete deposit body; duplicate context 1.",
+    "EvidenceScenario": "trial-common-concepts-help-13"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3764,
+    "Original": "[Harvesting|HARVEST] a [Deposit|DEPOSIT] gradually Depletes and eventually exhausts it, after which it can no longer be Harvested. Nearly all Deposits can be Harvested for 18-24 [Turns|TURN] before running out (regardless of how much is actually being [Produced|PRODUCE] from it) with the exact figure being determined by its type (e.g. 18 for [DEPOSIT-BEEHIVE:A/AN], 24 for [DEPOSIT-IRON:A/AN]).",
+    "Translation": "[采收|HARVEST][矿藏|DEPOSIT]会逐渐使其枯竭并最终耗尽，之后便无法再采收。几乎所有矿藏都能采收 18-24 个[回合|TURN]后才会耗尽（无论实际从中[生产|PRODUCE]了多少），具体数值由类型决定（例如[DEPOSIT-BEEHIVE:A/AN]为 18，[DEPOSIT-IRON:A/AN]为 24）。",
+    "Safety": "LogicSensitive",
+    "Note": "Trial Common concept-help deplete deposit body; duplicate context 2.",
+    "EvidenceScenario": "trial-common-concepts-help-13"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4530,
+    "Original": "You can spend [WEAPONS] to Fortify your [SETTLEMENT] or any [Structure|STRUCTURE] and increase the range your [Borders|BORDERS] extend from it by 1 ring of [Tiles|TILE]. The cost of doing so increases each time, but this can be a way to reach one or two specific, important [Deposits|DEPOSIT] you just need to have.+",
+    "Translation": "你可以花费[WEAPONS]加固你的[SETTLEMENT]或任意[建筑|STRUCTURE]，使其扩展出的[边界|BORDERS]范围增加 1 圈[地格|TILE]。每次加固的花费都会提高，但这能帮你触及一两个必须拿到的重要[矿藏|DEPOSIT]。+",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help fortify body; preserve trailing plus.",
+    "EvidenceScenario": "trial-common-concepts-help-13"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4551,
+    "Original": "Declaring your Tribe as a Kingdom costs 25 [PARCHMENT] and permanently fixes your [SETTLEMENT] onto its current [Tile|TILE], but offers some significant bonuses in return (+2 [Border Range|BORDERS] for your [SETTLEMENT] and +15 [FAME] per turn).[BLANK-LINE]Because you'll no longer be able to [move|MOVE-POINT] your Settlement after Declaring a Kingdom make sure you're in a good place you can continue to expand from before doing so![BLANK-LINE]As a general rule of thumb you won't want to perform this action until you're at least 50-75 turns into the game.",
+    "Translation": "宣布部族为王国需要花费 25 [PARCHMENT]，并会将你的[SETTLEMENT]永久固定在当前[地格|TILE]上，但会换来显著加成（[SETTLEMENT]的[边界范围|BORDERS] +2，每回合[FAME] +15）。[BLANK-LINE]宣布王国后，你将无法再[移动|MOVE-POINT]定居点，因此行动前务必确认这里适合继续扩张！[BLANK-LINE]一般来说，至少进入游戏 50-75 回合后才适合执行此行动。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help declare kingdom body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-13"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x060003ea",
+    "ILOffset": 25,
+    "Original": "Launch the game in a borderless window (0), fullscreen (1) or window (2)",
+    "Translation": "以无边框窗口(0)、全屏(1)或窗口(2)启动游戏",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common user setting description; display/help text.",
+    "EvidenceScenario": "trial-common-concepts-help-13"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x060003ea",
+    "ILOffset": 32,
+    "Original": "   * * *  WARNING  * * *  Right now, setting this to fullscreen can lower the framerate considerably and may cause the game to crash. It is recommended you use borderless window setting (0) instead.",
+    "Translation": "   * * *  警告  * * *  当前将游戏设为全屏可能显著降低帧率，并可能导致游戏崩溃。建议改用无边框窗口设置(0)。",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common user setting warning; preserve leading spaces.",
+    "EvidenceScenario": "trial-common-concepts-help-13"
+  }
+]

@@ -50,6 +50,46 @@ public static class AtGWindowFinder {
 function Get-AtGWindow {
     $candidates = New-Object System.Collections.Generic.List[object]
 
+    function Add-AtGWindowCandidate {
+        param(
+            [IntPtr]$Handle,
+            [int]$ProcessId,
+            [string]$ProcessName,
+            [string]$Title,
+            [string]$Source
+        )
+
+        if ($Handle -eq [IntPtr]::Zero) {
+            return
+        }
+
+        $rect = New-Object AtGWindowFinder+RECT
+        if (![AtGWindowFinder]::GetWindowRect($Handle, [ref]$rect)) {
+            return
+        }
+
+        $width = $rect.Right - $rect.Left
+        $height = $rect.Bottom - $rect.Top
+        if ($width -lt 200 -or $height -lt 200) {
+            return
+        }
+
+        [void]$candidates.Add([pscustomobject]@{
+            Handle = $Handle
+            ProcessId = $ProcessId
+            ProcessName = $ProcessName
+            Title = $Title
+            Left = $rect.Left
+            Top = $rect.Top
+            Right = $rect.Right
+            Bottom = $rect.Bottom
+            Width = $width
+            Height = $height
+            Area = $width * $height
+            Source = $Source
+        })
+    }
+
     $callback = [AtGWindowFinder+EnumWindowsProc]{
         param([IntPtr]$hWnd, [IntPtr]$lParam)
 
@@ -75,43 +115,35 @@ function Get-AtGWindow {
         [AtGWindowFinder]::GetWindowText($hWnd, $builder, $builder.Capacity) | Out-Null
         $title = $builder.ToString()
 
-        if ($processName -ne "At The Gates" -and $title -notlike "*At the Gates*") {
+        if ($processName -ne "At The Gates") {
             return $true
         }
 
-        $rect = New-Object AtGWindowFinder+RECT
-        if (![AtGWindowFinder]::GetWindowRect($hWnd, [ref]$rect)) {
-            return $true
-        }
-
-        $width = $rect.Right - $rect.Left
-        $height = $rect.Bottom - $rect.Top
-        if ($width -lt 200 -or $height -lt 200) {
-            return $true
-        }
-
-        [void]$candidates.Add([pscustomobject]@{
-            Handle = $hWnd
-            ProcessId = $processId
-            ProcessName = $processName
-            Title = $title
-            Left = $rect.Left
-            Top = $rect.Top
-            Right = $rect.Right
-            Bottom = $rect.Bottom
-            Width = $width
-            Height = $height
-            Area = $width * $height
-        })
+        Add-AtGWindowCandidate `
+            -Handle $hWnd `
+            -ProcessId $processId `
+            -ProcessName $processName `
+            -Title $title `
+            -Source "EnumWindows candidate"
 
         return $true
     }
 
     [AtGWindowFinder]::EnumWindows($callback, [IntPtr]::Zero) | Out-Null
 
+    if ($candidates.Count -eq 0) {
+        foreach ($process in @(Get-Process -ErrorAction SilentlyContinue | Where-Object { $_.ProcessName -eq "At The Gates" -and $_.MainWindowHandle -ne 0 })) {
+            Add-AtGWindowCandidate `
+                -Handle $process.MainWindowHandle `
+                -ProcessId $process.Id `
+                -ProcessName $process.ProcessName `
+                -Title $process.MainWindowTitle `
+                -Source "ProcessHandleFallback"
+        }
+    }
+
     $window = $candidates |
         Sort-Object `
-            @{ Expression = { if ($_.ProcessName -eq "At The Gates") { 0 } else { 1 } } }, `
             @{ Expression = { if ($_.Title -like "*At the Gates*") { 0 } else { 1 } } }, `
             @{ Expression = { $_.Area }; Descending = $true } |
         Select-Object -First 1

@@ -1,0 +1,98 @@
+[
+{
+    "Assembly": "Common",
+    "Original": "When on offense your goal is to reduce the defender's ",
+    "Translation": "进攻时，你的目标是将防守方的",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2833,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment; preserves adjacent concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-14"
+},
+{
+    "Assembly": "Common",
+    "Original": " to 0 as this causes them to [Retreat|RETREAT] to an adjacent ",
+    "Translation": "降至 0，使其[撤退|RETREAT]到相邻的",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2849,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment; preserves retreat concept ID.",
+    "EvidenceScenario": "trial-common-concepts-help-14"
+},
+{
+    "Assembly": "Common",
+    "Original": ", and inflicts a significant amount of ",
+    "Translation": "，并造成大量",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2865,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-14"
+},
+{
+    "Assembly": "Common",
+    "Original": " on them.[BLANK-LINE]Battles between two ",
+    "Translation": "。[BLANK-LINE]两支",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2881,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-14"
+},
+{
+    "Assembly": "Common",
+    "Original": " with equal ",
+    "Translation": "在",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2897,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-14"
+},
+{
+    "Assembly": "Common",
+    "Original": " are usually won by the defender, so always try to outnumber your enemy.[BLANK-LINE]Attacking ",
+    "Translation": "相当时，通常由防守方取胜，所以务必在数量上超过敌人。[BLANK-LINE]进攻方的",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2915,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-14"
+},
+{
+    "Assembly": "Common",
+    "Original": " take much more ",
+    "Translation": "会承受更多",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2933,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-14"
+},
+{
+    "Assembly": "Common",
+    "Original": " than defenders, which unlike ",
+    "Translation": "，远多于防守方；而与",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2951,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-14"
+}
+]

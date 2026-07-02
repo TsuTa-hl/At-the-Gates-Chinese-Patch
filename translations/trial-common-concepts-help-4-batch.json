@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1373,
+    "Original": " like other Resources, but any surplus is converted and added to your Stockpile as 'Stored Turns'. You gain ",
+    "Translation": "类似其他资源，但任何盈余都会转换并加入库存，成为“存粮回合”。你会获得",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help stored-turn body fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-4"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1389,
+    "Original": " when Producing more Food than you're Consuming, and lose them when the opposite is the case.[BLANK-LINE]Each turn that passes your Tribe consumes exactly 1 Stored Turn of Food.",
+    "Translation": "当食物产出高于消耗时会增加，反之则减少。[BLANK-LINE]每过一回合，你的部族会消耗 1 个食物存粮回合。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help stored-turn body fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-4"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1487,
+    "Original": "Bandits aren't very smart, but they're reckless brutes who love killing and [Pillaging|PILLAGE]. Make sure you protect your defenseless ",
+    "Translation": "强盗并不聪明，但鲁莽残暴，热衷杀戮和[劫掠|PILLAGE]。务必保护你毫无防备的",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help bandit body fragment; preserve concept identifier.",
+    "EvidenceScenario": "trial-common-concepts-help-4"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1519,
+    "Original": " from them! You can recognize them by their black flag.",
+    "Translation": "，不要让他们得手！你可以通过黑旗认出他们。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help bandit body fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-4"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1798,
+    "Original": "Roads allow [Armies|ARMY] to ignore any [Terrain|TERRAIN]-based and [Seasonal|SEASON] [Movement|MOVE-POINT] penalties associated with a [Tile|TILE].",
+    "Translation": "道路能让[军队|ARMY]无视[地格|TILE]上由[地形|TERRAIN]和[季节|SEASON]造成的[移动|MOVE-POINT]惩罚。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help road body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-4"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1819,
+    "Original": "The temperature of [Tiles|TILE] change throughout the year and in the winter they will usually become Cold. This shuts down the [Production|PRODUCE] of [Plants|PLANT] by [Farms|FARM] and [Foragers|FORAGE], and usually forces you to subsist off of the [FOOD] you've [Stored|STORED-TURN] earlier in the year.",
+    "Translation": "[地格|TILE]温度会随一年变化，冬季通常会变得寒冷。这会停止[农场|FARM]和[采集者|FORAGE]对[植物|PLANT]的[产出|PRODUCE]，通常迫使你依靠年内早些时候[储存|STORED-TURN]的[FOOD]维持生计。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help seasonal temperature body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-4"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1840,
+    "Original": "The temperature of [Tiles|TILE] change throughout the year and in the winter they will usually become Cold. This shuts down the [Production|PRODUCE] of [Plants|PLANT] by [Farms|FARM] and [Foragers|FORAGE], and usually forces you to subsist off of the [FOOD] you've [Stored|STORED-TURN] earlier in the year.",
+    "Translation": "[地格|TILE]温度会随一年变化，冬季通常会变得寒冷。这会停止[农场|FARM]和[采集者|FORAGE]对[植物|PLANT]的[产出|PRODUCE]，通常迫使你依靠年内早些时候[储存|STORED-TURN]的[FOOD]维持生计。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help seasonal temperature body duplicate at a second concept offset.",
+    "EvidenceScenario": "trial-common-concepts-help-4"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1861,
+    "Original": "Extreme Weather can affect [Tiles|TILE] in a variety of ways. In the summer particularly hot Tiles can become [SCORCHED], in the winter [BLIZZARD:S] can strike, and throughout the year [RAIN] can strike and when particularly intense Tiles can become [FLOODED].",
+    "Translation": "极端天气会以多种方式影响[地格|TILE]。夏季特别炎热的地格可能变为[SCORCHED]，冬季可能遭遇[BLIZZARD:S]，全年都可能降下[RAIN]；雨势特别强时，地格会变为[FLOODED]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help extreme weather body; preserve raw weather tags.",
+    "EvidenceScenario": "trial-common-concepts-help-4"
+  }
+]

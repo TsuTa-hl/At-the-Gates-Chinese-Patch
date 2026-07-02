@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1882,
+    "Original": "A Unit is a [Clan|CLAN] in an [Active|ACTIVE] [Profession|PROFESSION] which can [Move|MOVE-POINT] around between map [Tiles|TILE].",
+    "Translation": "单位是处于[主动|ACTIVE][职业|PROFESSION]的[氏族|CLAN]，可以在地图[地格|TILE]之间[移动|MOVE-POINT]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help unit body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1903,
+    "Original": "A 'Stack' is a group of [Units|UNIT] that move and act together.",
+    "Translation": "“编队”是一组共同移动和行动的[单位|UNIT]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help stack body; preserve concept identifier.",
+    "EvidenceScenario": "trial-common-concepts-help-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1924,
+    "Original": "Armies are groups of [Clans|CLAN] in [Active|ACTIVE] [Professions|PROFESSION] which can [Move|MOVE-POINT] around between map [Tiles|TILE].",
+    "Translation": "军队是由处于[主动|ACTIVE][职业|PROFESSION]的[氏族|CLAN]组成的群体，可以在地图[地格|TILE]之间[移动|MOVE-POINT]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help army body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1945,
+    "Original": "Structures are [Constructed|CONSTRUCT] by [Clans|CLAN] in [Active|ACTIVE] [Professions|PROFESSION], usually to [Harvest|HARVEST] [Resources|RESOURCE] of some kind present on a map [Tile|TILE].[BLANK-LINE]Structures are much better at [Producing|PRODUCE] [Resources|RESOURCE] than [Foragers|FORAGE], and should be prioritized as soon as [TIMBER] and other sources of more advanced [Structure|STRUCTURE]-based [Resources|RESOURCE] are available.[BLANK-LINE]Advanced versions [Constructed|CONSTRUCT] from [STONE-BLOCKS] can be assigned [Apprentices|APPRENTICE] to further increase their [Production|PRODUCE].",
+    "Translation": "建筑由处于[主动|ACTIVE][职业|PROFESSION]的[氏族|CLAN][建造|CONSTRUCT]，通常用于[采收|HARVEST]地图[地格|TILE]上的某种[资源|RESOURCE]。[BLANK-LINE]建筑[产出|PRODUCE][资源|RESOURCE]的效率远高于[采集者|FORAGE]；一旦有[TIMBER]以及其他更高级的建筑型[资源|RESOURCE]来源，就应优先建设。[BLANK-LINE]用[STONE-BLOCKS]建造的高级版本可以分配[学徒|APPRENTICE]，进一步提高其[产出|PRODUCE]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help structure body; preserve concept identifiers and raw resource tags.",
+    "EvidenceScenario": "trial-common-concepts-help-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1966,
+    "Original": "All playable [Factions|FACTION] own only a single [SETTLEMENT], which serves as their Capital. Each of the two [Romans|ROME] Factions owns multiple Cities, one of which is their Capital (Rome for the West and Constantinople for the East). Capturing a Playable Faction's Capital is one way to unlock it so you can play as them in future games.",
+    "Translation": "所有可玩[派系|FACTION]都只拥有一个作为首都的[SETTLEMENT]。两个[罗马|ROME]派系各自拥有多座城市，其中一座是首都（西罗马为罗马，东罗马为君士坦丁堡）。占领一个可玩派系的首都，可以解锁该派系供以后开局使用。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help capital body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1987,
+    "Original": "Deposits are sources of [Resources|RESOURCE] you can [Harvest|HARVEST] with [Forager Units|FORAGE] like the [GATHERER], or by more advanced [Structures|STRUCTURE] like the [WHEAT-FARM-1]. All Deposits are visible at the start of a game, although you won't know the [identity|UNIDENTIFIED] of most of them.[BLANK-LINE][Foragers|FORAGE] and basic [Structures|STRUCTURE] constructed from [TIMBER] slowly [Degrade|DEGRADE] the Resources they're Harvesting, but those constructed from [STONE-BLOCKS] do not, making them very valuable long-term investments.[BLANK-LINE]There are 3 types of Deposits in AtG:[BLANK-LINE][*][Plants|PLANT][END-LINE][*][Animals|ANIMAL][END-LINE][*][Minerals|MINERAL]",
+    "Translation": "资源点是[资源|RESOURCE]来源，可由[GATHERER]等[采集单位|FORAGE][采收|HARVEST]，也可由[WHEAT-FARM-1]等更高级的[建筑|STRUCTURE]利用。所有资源点在开局时都可见，但多数资源点的[身份|UNIDENTIFIED]尚不明确。[BLANK-LINE][采集者|FORAGE]和用[TIMBER]建造的基础[建筑|STRUCTURE]会慢慢[耗竭|DEGRADE]正在采收的资源；用[STONE-BLOCKS]建造的建筑则不会，因此是很有价值的长期投资。[BLANK-LINE]AtG 中有 3 类资源点：[BLANK-LINE][*][植物|PLANT][END-LINE][*][动物|ANIMAL][END-LINE][*][矿物|MINERAL]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help deposit body; preserve concept identifiers and raw config tags.",
+    "EvidenceScenario": "trial-common-concepts-help-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2008,
+    "Original": "Deserted Locations can provide bonuses like free [Resources|RESOURCE], but only if investigated by [EXPLORER:A/AN]. It's also possible for some types to hide hidden danger, like [Bandits|BANDIT], so don't be too reckless!",
+    "Translation": "废弃地点可能提供免费的[资源|RESOURCE]等奖励，但必须由[EXPLORER:A/AN]调查。有些地点也可能暗藏[强盗|BANDIT]等危险，不要过于鲁莽。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help deserted location body; preserve concept identifiers and raw grammar tag.",
+    "EvidenceScenario": "trial-common-concepts-help-5"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2029,
+    "Original": "Farms are a group of [Plant|PLANT]-[Producing|PRODUCE] [Structures|STRUCTURE] that include [WHEAT-FARM-1:S], [BARLEY-FARM-1:S], [FRUIT-FARM-1:S], [FLAX-FARM-1:S], [OLIVE-FARM-1:S], and [VINEYARD-1:S].",
+    "Translation": "农场是一组[产出|PRODUCE][植物|PLANT]的[建筑|STRUCTURE]，包括[WHEAT-FARM-1:S]、[BARLEY-FARM-1:S]、[FRUIT-FARM-1:S]、[FLAX-FARM-1:S]、[OLIVE-FARM-1:S]和[VINEYARD-1:S]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help farm body; preserve raw structure tags.",
+    "EvidenceScenario": "trial-common-concepts-help-5"
+  }
+]

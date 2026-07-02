@@ -1,0 +1,162 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 68,
+    "Original": "One army is wiped out, the other left hanging on by a thread!",
+    "Translation": "一军全灭，另一军也仅剩一息！",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 92,
+    "Original": "Both armies are left crippled!",
+    "Translation": "两军都遭受重创！",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 104,
+    "Original": "Both armies manage to limp away from the battle, but in no shape to rejoin it.",
+    "Translation": "两军都勉强撤离战场，但已无力再战。",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 116,
+    "Original": "Both armies are left bloodied, but still able to fight another day.",
+    "Translation": "两军都浴血负伤，但仍可来日再战。",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 128,
+    "Original": "Both armies suffer a handful of cuts and bruises.",
+    "Translation": "两军都只是受了些皮肉伤。",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 140,
+    "Original": "Neither army suffers more than a few scratches.",
+    "Translation": "双方几乎只受了几处擦伤。",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 169,
+    "Original": "The enemy ",
+    "Translation": "敌军",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 197,
+    "Original": "is wiped out",
+    "Translation": "被全灭",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 237,
+    "Original": "is left ",
+    "Translation": "剩下",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 320,
+    "Original": "seriously wounded",
+    "Translation": "身负重伤",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 334,
+    "Original": "severely shaken",
+    "Translation": "严重动摇",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 362,
+    "Original": "virtually unscathed",
+    "Translation": "几乎毫发无伤",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 392,
+    "Original": ", leaving your victorious army ",
+    "Translation": "，你的胜军",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 413,
+    "Original": " and driven off, your victorious army left ",
+    "Translation": "并被击退，你的胜军",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 427,
+    "Original": ", your army ",
+    "Translation": "，你的军队",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600014e",
+    "ILOffset": 486,
+    "Original": "utterly annihilated",
+    "Translation": "被彻底歼灭",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog battle projection fragment.",
+    "EvidenceScenario": "trial-common-battle-projection-1"
+  }
+]

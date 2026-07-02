@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 620,
+    "Original": "[Move Point|MOVE-POINT]",
+    "Translation": "[移动力|MOVE-POINT]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve MOVE-POINT identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-3"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 630,
+    "Original": "[Move Points|MOVE-POINT]",
+    "Translation": "[移动力|MOVE-POINT]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve MOVE-POINT identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-3"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 690,
+    "Original": "[Defense|DEFENSE]",
+    "Translation": "[防御|DEFENSE]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve DEFENSE identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-3"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 810,
+    "Original": "[Discipline|DISCIPLINE]",
+    "Translation": "[纪律|DISCIPLINE]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve DISCIPLINE identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-3"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 820,
+    "Original": "[Disciplines|DISCIPLINE]",
+    "Translation": "[纪律|DISCIPLINE]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve DISCIPLINE identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-3"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 870,
+    "Original": "[Produced|PRODUCE]",
+    "Translation": "[产出|PRODUCE]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve PRODUCE identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-3"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 890,
+    "Original": "[Production|PRODUCE]",
+    "Translation": "[产出|PRODUCE]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve PRODUCE identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-3"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 1070,
+    "Original": "[Training|TRAIN]",
+    "Translation": "[训练|TRAIN]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept display tag; preserve TRAIN identifier.",
+    "EvidenceScenario": "trial-common-concept-tags-3"
+  }
+]

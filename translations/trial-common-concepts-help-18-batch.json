@@ -1,0 +1,98 @@
+[
+{
+    "Assembly": "Common",
+    "Original": "Pillaging takes 1 [Turn|TURN] and provides a lump sum of [Resources|RESOURCE] as plunder, but damages the target [Structure|STRUCTURE] until it's Repaired. Pillaging a [Farm|FARM] or [SETTLEMENT] also provides free ",
+    "Translation": "劫掠需要 1 [回合|TURN]，并一次性获得一批[资源|RESOURCE]作为战利品，但会损坏目标[建筑|STRUCTURE]，直到其被修复。劫掠[农场|FARM]或[SETTLEMENT]还会免费提供",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4275,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts pillage help text; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-18"
+},
+{
+    "Assembly": "Common",
+    "Original": "Besieging an enemy ",
+    "Translation": "围攻敌方",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4320,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts siege help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-18"
+},
+{
+    "Assembly": "Common",
+    "Original": " reduces the amount of ",
+    "Translation": "会减少其",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4336,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts siege help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-18"
+},
+{
+    "Assembly": "Common",
+    "Original": " available on its ",
+    "Translation": "在自身",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4352,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts siege help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-18"
+},
+{
+    "Assembly": "Common",
+    "Original": " by 1 per ",
+    "Translation": "上的可用量减少 1 / ",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4368,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts siege help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-18"
+},
+{
+    "Assembly": "Common",
+    "Original": ".[BLANK-LINE]Starving the enemy into submission can reduce or eliminate the need for a bloody frontal [Attack|ATTACK]. However, the enemy ",
+    "Translation": "。[BLANK-LINE]将敌人围困到屈服，可以减少甚至免去血腥正面[进攻|ATTACK]的需要。不过敌人",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4384,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts siege help text; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-18"
+},
+{
+    "Assembly": "Common",
+    "Original": " always has the option to withdraw and break the ",
+    "Translation": "始终可以选择撤退并中断",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4402,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts siege help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-18"
+},
+{
+    "Assembly": "Common",
+    "Original": " at any time. Adding a [CATAPULT] to a Siege can greatly accelerate the process.[BLANK-LINE]A Siege can only be performed by an Army which outnumbers its opponent (in terms of number of [Warrior Units|WARRIOR]).",
+    "Translation": "，可随时这样做。为围攻加入[CATAPULT]可以大幅加快进程。[BLANK-LINE]只有在[战士单位|WARRIOR]数量上超过对手的军队才能执行围攻。",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4420,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts siege help text; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-18"
+}
+]

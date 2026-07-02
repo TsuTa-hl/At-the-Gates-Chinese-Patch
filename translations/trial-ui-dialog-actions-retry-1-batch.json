@@ -1,0 +1,72 @@
+[
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060005f6",
+    "ILOffset": 251,
+    "Original": "Meet with ",
+    "Translation": "会见 ",
+    "Safety": "SafeUI",
+    "Note": "Retry with exact-catalog trailing space after previous original mismatch.",
+    "EvidenceScenario": "trial-ui-dialog-actions-retry-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060005f6",
+    "ILOffset": 257,
+    "Original": " in order to make a request or declare war.",
+    "Translation": "才能提出请求或宣战。",
+    "Safety": "SafeUI",
+    "Note": "Retry with exact-catalog leading space after previous original mismatch.",
+    "EvidenceScenario": "trial-ui-dialog-actions-retry-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x0600052f",
+    "ILOffset": 158,
+    "Original": "In the process of being trained as ",
+    "Translation": "正在训练为 ",
+    "Safety": "SafeUI",
+    "Note": "Retry with exact-catalog trailing space after previous original mismatch.",
+    "EvidenceScenario": "trial-ui-dialog-actions-retry-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060004ca",
+    "ILOffset": 374,
+    "Original": " is needed).",
+    "Translation": "才可以）。",
+    "Safety": "SafeUI",
+    "Note": "Retry with exact-catalog leading space after previous original mismatch.",
+    "EvidenceScenario": "trial-ui-dialog-actions-retry-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060004e0",
+    "ILOffset": 9,
+    "Original": "Note attached to ",
+    "Translation": "备注附加于 ",
+    "Safety": "SafeUI",
+    "Note": "Retry with exact-catalog trailing space after previous original mismatch.",
+    "EvidenceScenario": "trial-ui-dialog-actions-retry-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060004e9",
+    "ILOffset": 17,
+    "Original": "Note for ",
+    "Translation": "备注：",
+    "Safety": "SafeUI",
+    "Note": "Retry with exact-catalog trailing space after previous original mismatch.",
+    "EvidenceScenario": "trial-ui-dialog-actions-retry-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x060004f2",
+    "ILOffset": 18,
+    "Original": " shall henceforth be known as...",
+    "Translation": "从此将被称为……",
+    "Safety": "SafeUI",
+    "Note": "Retry with exact-catalog leading space after previous original mismatch.",
+    "EvidenceScenario": "trial-ui-dialog-actions-retry-1"
+  }
+]

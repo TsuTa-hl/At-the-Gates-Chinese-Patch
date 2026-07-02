@@ -1,0 +1,98 @@
+[
+{
+    "Assembly": "Common",
+    "Original": " does not automatically regenerate. Before striking, make sure you're strong enough punch through and drive the enemy back![BLANK-LINE]Defenders who [Dig In|DIG-IN] and on rough [Terrain|TERRAIN] (such as a [Forest|FOREST]) will receive a defensive bonus.",
+    "Translation": "不会自动回升。出击前，请确认你有足够力量突破并击退敌人！[BLANK-LINE][固守|DIG-IN]且处在崎岖[地形|TERRAIN]（如[森林|FOREST]）上的防守方会获得防御加成。",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 2969,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-15"
+},
+{
+    "Assembly": "Common",
+    "Original": "When on defense the goal is to hold out and and keep your ",
+    "Translation": "防守时，目标是坚持住，并确保你的",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3005,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-15"
+},
+{
+    "Assembly": "Common",
+    "Original": " from dropping to 0 as this causes your [Army|ARMY] to [Retreat|RETREAT] to an adjacent ",
+    "Translation": "不要降至 0，否则你的[军队|ARMY]会[撤退|RETREAT]到相邻的",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3021,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment; preserves army and retreat concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-15"
+},
+{
+    "Assembly": "Common",
+    "Original": ", and inflicts a significant amount of ",
+    "Translation": "，并造成大量",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3037,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-15"
+},
+{
+    "Assembly": "Common",
+    "Original": " on it.[BLANK-LINE]Battles between two ",
+    "Translation": "。[BLANK-LINE]两支",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3053,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-15"
+},
+{
+    "Assembly": "Common",
+    "Original": " with equal ",
+    "Translation": "在",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3069,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-15"
+},
+{
+    "Assembly": "Common",
+    "Original": " are usually won by the defender (in part thanks to their ability to [Dig In|DIG-IN], so as long as you have numbers and [Supply|SUPPLY] on your side you'll be fine.[BLANK-LINE]Attacking ",
+    "Translation": "相当时，通常由防守方取胜（部分原因是他们可以[固守|DIG-IN]），所以只要你有人数和[补给|SUPPLY]优势，就不必担心。[BLANK-LINE]进攻方的",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3087,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-15"
+},
+{
+    "Assembly": "Common",
+    "Original": " take much more ",
+    "Translation": "会承受更多",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3105,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts combat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-15"
+}
+]

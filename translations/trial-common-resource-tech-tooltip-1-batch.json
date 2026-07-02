@@ -1,0 +1,162 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600030c",
+    "ILOffset": 250,
+    "Original": "the Portrait of this Resource",
+    "Translation": "此资源的图像",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource stockpile tooltip fragment.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600030c",
+    "ILOffset": 515,
+    "Original": "the basic description of this Resource",
+    "Translation": "此资源的基本说明",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource stockpile tooltip fragment.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600030c",
+    "ILOffset": 827,
+    "Original": "More About This Resource",
+    "Translation": "更多资源说明",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource stockpile tooltip heading.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600030c",
+    "ILOffset": 1006,
+    "Original": "additional information about how this Resource works",
+    "Translation": "此资源运作方式的更多信息",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource stockpile tooltip fragment.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600030c",
+    "ILOffset": 1723,
+    "Original": "Important Info",
+    "Translation": "重要信息",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource stockpile tooltip heading.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600030c",
+    "ILOffset": 1902,
+    "Original": "important info relating to your use of this Resource",
+    "Translation": "与你使用此资源相关的重要信息",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource stockpile tooltip fragment.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600030c",
+    "ILOffset": 2287,
+    "Original": "Disable Substitution for Food",
+    "Translation": "禁用食物替代",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource stockpile tooltip command.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600030c",
+    "ILOffset": 2294,
+    "Original": "Enable Substitution for Food",
+    "Translation": "启用食物替代",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog resource stockpile tooltip command.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600030c",
+    "ILOffset": 2311,
+    "Original": "Click to toggle whether this [Resource|RESOURCE] is allowed to be converted into [FOOD] when no other source is available.",
+    "Translation": "点击切换：当没有其他来源可用时，是否允许将此[资源|RESOURCE]转化为[FOOD]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog resource stockpile tooltip text preserving concept IDs.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600126c",
+    "ILOffset": 61,
+    "Original": "Progress towards ",
+    "Translation": "研究进度：",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog tech research progress tooltip fragment.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600126c",
+    "ILOffset": 336,
+    "Original": " at current pace",
+    "Translation": "按当前速度",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog tech research progress tooltip fragment.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600126c",
+    "ILOffset": 364,
+    "Original": " (must be [Studied|STUDY] for at least ",
+    "Translation": "（必须至少[研究|STUDY]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog tech research progress tooltip fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600126c",
+    "ILOffset": 422,
+    "Original": "Must be [Studied|STUDY] for at least ",
+    "Translation": "必须至少[研究|STUDY]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog tech research progress tooltip fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600126c",
+    "ILOffset": 563,
+    "Original": " at current pace",
+    "Translation": "按当前速度",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog tech research progress tooltip fragment.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600126c",
+    "ILOffset": 666,
+    "Original": " minimum",
+    "Translation": "最低",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog tech research progress tooltip fragment.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600126c",
+    "ILOffset": 797,
+    "Original": " (must be [Studied|STUDY] for at least ",
+    "Translation": "（必须至少[研究|STUDY]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog tech research progress tooltip fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-resource-tech-tooltip-1"
+  }
+]

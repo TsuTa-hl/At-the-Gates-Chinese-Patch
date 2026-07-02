@@ -1,0 +1,98 @@
+[
+{
+    "Assembly": "Common",
+    "Original": "When Minister...",
+    "Translation": "担任大臣时……",
+    "MethodToken": "0x0600156d",
+    "ILOffset": 8,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.SageVariant",
+    "MethodName": "BuildEffectsString",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial sage/ministor effect display text.",
+    "EvidenceScenario": "trial-common-sage-effects-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Resource reward from destroying Bandit structures",
+    "Translation": "摧毁强盗建筑获得的资源奖励",
+    "MethodToken": "0x0600156f",
+    "ILOffset": 43,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.SageVariant",
+    "MethodName": "AppendBanditCampRewardMod",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial sage effect display text.",
+    "EvidenceScenario": "trial-common-sage-effects-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Timber from chopping Forests",
+    "Translation": "砍伐森林获得的木材",
+    "MethodToken": "0x06001570",
+    "ILOffset": 43,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.SageVariant",
+    "MethodName": "AppendTerrainRemovedResourcePercentMod",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial sage effect display text.",
+    "EvidenceScenario": "trial-common-sage-effects-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Population growth in Capital",
+    "Translation": "首都人口增长",
+    "MethodToken": "0x06001571",
+    "ILOffset": 43,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.SageVariant",
+    "MethodName": "AppendCapitalGrowthMod",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial sage effect display text.",
+    "EvidenceScenario": "trial-common-sage-effects-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "Villagers needed when training Units from the Capital",
+    "Translation": "从首都训练单位所需的村民",
+    "MethodToken": "0x06001572",
+    "ILOffset": 43,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.SageVariant",
+    "MethodName": "AppendTrainInCapitalPopCostMod",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial sage effect display text.",
+    "EvidenceScenario": "trial-common-sage-effects-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "increased dramatically",
+    "Translation": "大幅增加",
+    "MethodToken": "0x06001576",
+    "ILOffset": 167,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.SageVariant",
+    "MethodName": "AppendDepositTypeAppearances",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial sage/deposit appearance display text.",
+    "EvidenceScenario": "trial-common-sage-effects-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "increased significantly",
+    "Translation": "显著增加",
+    "MethodToken": "0x06001576",
+    "ILOffset": 199,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.SageVariant",
+    "MethodName": "AppendDepositTypeAppearances",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial sage/deposit appearance display text.",
+    "EvidenceScenario": "trial-common-sage-effects-1"
+},
+{
+    "Assembly": "Common",
+    "Original": "greatly increased",
+    "Translation": "大为增加",
+    "MethodToken": "0x06001576",
+    "ILOffset": 213,
+    "TypeFullName": "AtTheGatesCommon.ns_Config.SageVariant",
+    "MethodName": "AppendDepositTypeAppearances",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial sage/deposit appearance display text.",
+    "EvidenceScenario": "trial-common-sage-effects-1"
+}
+]

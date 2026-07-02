@@ -1,0 +1,98 @@
+[
+{
+    "Assembly": "Common",
+    "Original": " than defenders, which unlike ",
+    "Translation": "，远多于防守方；而与",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3123,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts morale-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-16"
+},
+{
+    "Assembly": "Common",
+    "Original": " does not automatically regenerate.",
+    "Translation": "不会自动回升。",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3141,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts morale-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-16"
+},
+{
+    "Assembly": "Common",
+    "Original": "[Warrior|WARRIOR] [Units|UNIT] each have 100 Morale points, though this can be increased by gaining [Combat Experience|COMBAT-XP] or modified by a [Clan's|CLAN] [Traits|CLAN-TRAIT]. When an [Army|ARMY]'s Morale is reduced to 0 they to Retreat to an adjacent ",
+    "Translation": "[战士|WARRIOR][单位|UNIT]各有 100 点士气，可通过获得[战斗经验|COMBAT-XP]提高，也会受[氏族|CLAN][特质|CLAN-TRAIT]影响。当一支[军队|ARMY]的士气降至 0 时，会撤退到相邻的",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3218,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts morale-help text; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-16"
+},
+{
+    "Assembly": "Common",
+    "Original": " and suffer a significant amount of ",
+    "Translation": "，并在过程中承受大量",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3234,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts morale-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-16"
+},
+{
+    "Assembly": "Common",
+    "Original": " in the process.",
+    "Translation": "。",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3250,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts morale-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-16"
+},
+{
+    "Assembly": "Common",
+    "Original": "When an [Army|ARMY]'s Morale is reduced to 0 they to Retreat to an adjacent ",
+    "Translation": "当一支[军队|ARMY]的士气降至 0 时，会撤退到相邻的",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3285,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts retreat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-16"
+},
+{
+    "Assembly": "Common",
+    "Original": " and suffer a significant amount of ",
+    "Translation": "，并在过程中承受大量",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3301,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts retreat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-16"
+},
+{
+    "Assembly": "Common",
+    "Original": " in the process.",
+    "Translation": "。",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3317,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts retreat-help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-16"
+}
+]

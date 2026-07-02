@@ -1,0 +1,152 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 179,
+    "Original": "Above",
+    "Translation": "高于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 119,
+    "Original": "Below",
+    "Translation": "低于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 297,
+    "Original": "Is Active",
+    "Translation": "已激活",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 75,
+    "Original": "Is Being Trained",
+    "Translation": "正在训练",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 263,
+    "Original": "Is Civilian",
+    "Translation": "为平民",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 331,
+    "Original": "Is Settled",
+    "Translation": "已定居",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 43,
+    "Original": "Is Settlement Packed Up",
+    "Translation": "定居点已打包",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 229,
+    "Original": "Is Warrior",
+    "Translation": "为战士",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 707,
+    "Original": "Profession in",
+    "Translation": "职业位于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 730,
+    "Original": "PROF in",
+    "Translation": "职业位于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text; original uses abbreviation.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000bee",
+    "ILOffset": 29,
+    "Original": "RL being above",
+    "Translation": "关系等级高于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common conditional stance display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000bee",
+    "ILOffset": 76,
+    "Original": "RL being below",
+    "Translation": "关系等级低于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common conditional stance display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 778,
+    "Original": "Shares Tile",
+    "Translation": "共享地格",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000bee",
+    "ILOffset": 113,
+    "Original": "sharing the same Religion",
+    "Translation": "信仰相同宗教",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common conditional stance display text.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 631,
+    "Original": "Trait",
+    "Translation": "特质",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common condition display text; scoped to Condition.ToString_Custom.",
+    "EvidenceScenario": "trial-common-condition-text-1"
+  }
+]

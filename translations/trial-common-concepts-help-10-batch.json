@@ -1,0 +1,82 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3407,
+    "Original": "Influence is a Leader's 'diplomatic currency' that can be spent on future diplomatic interactions with the Leader it was earned with in order to get them to do more than they would normally be willing.[BLANK-LINE]Influence is gained in equal amount any time a Leader's [Relationship Level|RL] increases.",
+    "Translation": "影响力是领袖的“外交货币”，可在未来与获得该影响力的那位领袖互动时花费，使其愿意做出通常不会接受的让步。[BLANK-LINE]每当一位领袖的[关系等级|RL]提升时，你都会获得等量影响力。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help influence body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-10"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3428,
+    "Original": "Relationship Level is a metric measuring how much one Leader likes another.[BLANK-LINE]Having a strong Relationship Level will make another Leader less likely to attack and more inclined to positive diplomatic interactions, but important actions will also often require spending [Influence|INFLUENCE] or [Reputation|REPUTATION].[BLANK-LINE]A Leader's Relationship Level generally starts at 0 and can range from -10 to +10.",
+    "Translation": "关系等级用于衡量一位领袖对另一位领袖的好感。[BLANK-LINE]较高的关系等级会让另一位领袖不太可能攻击你，也更愿意进行正面外交互动；但重要行动通常还需要花费[影响力|INFLUENCE]或[声誉|REPUTATION]。[BLANK-LINE]领袖的关系等级通常从 0 开始，范围为 -10 到 +10。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help relationship level body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-10"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3449,
+    "Original": "Leverage is the sum total of [Relationship Level|RL], [Influence|INFLUENCE], and [Reputation|REPUTATION] being spent or used as part of one possible diplomatic exchange. Influence and Reputation can be held back, in which case they don't contribute to the overall Leverage score.",
+    "Translation": "筹码是一次可能的外交交换中投入或使用的[关系等级|RL]、[影响力|INFLUENCE]和[声誉|REPUTATION]总和。影响力和声誉可以保留不用；若保留，则不会计入总筹码值。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help leverage body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-10"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3470,
+    "Original": "You can spend an Emissary via the Diplomacy Screen with any [Leader|LEADER] to improve your [Relationship Level|RL] with them. Emissaries are acquired by [producing|PRODUCE] [PRESTIGE].",
+    "Translation": "你可以在外交界面对任意[领袖|LEADER]派遣一名使者，以改善与其的[关系等级|RL]。使者通过[生产|PRODUCE][PRESTIGE]获得。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help emissary body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-10"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3491,
+    "Original": "An Interaction is a single exchange between two Leaders. It might be a greeting, a threat, or a gift with a message. The types of Interactions an AI Leader chooses is based on their [Approach|APPROACH].",
+    "Translation": "互动是两位领袖之间的一次交流，可以是问候、威胁，也可以是附带信息的礼物。AI 领袖选择的互动类型取决于其[态度|APPROACH]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help interaction body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-10"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3512,
+    "Original": "Each Leader has an Approach, which determines their diplomatic behavior. The Approach they choose is based on your [Relationship Level|RL] and their [Personality Traits|LEADER-TRAIT].",
+    "Translation": "每位领袖都有一种态度，决定其外交行为。其选择的态度取决于你们的[关系等级|RL]以及他们的[个性特质|LEADER-TRAIT]。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common concept-help approach body; preserve concept identifiers.",
+    "EvidenceScenario": "trial-common-concepts-help-10"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3533,
+    "Original": "A Leader can be Friends with other Leaders, which affects their behavior towards them. Being nice to a Leader's Friends can improve your relationship with the Leader, while being mean to them can hurt it.",
+    "Translation": "领袖可以与其他领袖成为朋友，这会影响其对这些领袖的行为。善待某位领袖的朋友可以改善你与该领袖的关系；苛待他们则会损害关系。",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common concept-help friends body; full display paragraph.",
+    "EvidenceScenario": "trial-common-concepts-help-10"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 3554,
+    "Original": "A Leader can be Enemies with other Leaders, which affects their behavior towards them. Being nice to a Leader's Enemies can hurt your relationship with the Leader, while being mean to them can help improve it.",
+    "Translation": "领袖可以与其他领袖成为敌人，这会影响其对这些领袖的行为。善待某位领袖的敌人会损害你与该领袖的关系；苛待他们反而可能改善关系。",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common concept-help enemies body; full display paragraph.",
+    "EvidenceScenario": "trial-common-concepts-help-10"
+  }
+]

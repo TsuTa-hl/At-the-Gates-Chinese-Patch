@@ -1,0 +1,50 @@
+[
+{
+    "Assembly": "Common",
+    "Original": "Packing Up your [SETTLEMENT] allows it to [Move|MOVE-POINT] around the map like a [Unit|UNIT]. This takes 1 full ",
+    "Translation": "打包你的[SETTLEMENT]后，它可以像[单位|UNIT]一样在地图上[移动|MOVE-POINT]。这需要完整 1 个",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4455,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts packed-settlement help text; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-19"
+},
+{
+    "Assembly": "Common",
+    "Original": ".[BLANK-LINE]While your Settlement is Packed Up you will no longer be able to ",
+    "Translation": "。[BLANK-LINE]定居点处于打包状态时，你将无法",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4471,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts packed-settlement help fragment.",
+    "EvidenceScenario": "trial-common-concepts-help-19"
+},
+{
+    "Assembly": "Common",
+    "Original": " a ",
+    "Translation": "某个",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4487,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts packed-settlement grammar fragment with local context.",
+    "EvidenceScenario": "trial-common-concepts-help-19"
+},
+{
+    "Assembly": "Common",
+    "Original": " in a [Profession|PROFESSION] or [Discipline|DISCIPLINE], however with at least 1 Move Point remaining it may be Unpacked at any time.[BLANK-LINE]Moving your Settlement allows you to shift which [Tiles|TILE] are in your [Borders|BORDERS], making it possible to [Construct|CONSTRUCT] [Structures|STRUCTURE] on nearby [Deposits|DEPOSIT] and extending how far you receive free [Supply|SUPPLY].",
+    "Translation": "去学习[职业|PROFESSION]或[纪律|DISCIPLINE]；不过只要还剩至少 1 点移动力，它可以随时解除打包。[BLANK-LINE]移动定居点会改变哪些[地格|TILE]处于你的[边界|BORDERS]内，从而可以在附近[矿藏|DEPOSIT]上[建造|CONSTRUCT][建筑|STRUCTURE]，并扩大你获得免费[补给|SUPPLY]的范围。",
+    "MethodToken": "0x0600026a",
+    "ILOffset": 4503,
+    "TypeFullName": "AtTheGatesCommon.ns_UI.Concepts",
+    "MethodName": ".cctor",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common Concepts packed-settlement help text; preserves concept IDs.",
+    "EvidenceScenario": "trial-common-concepts-help-19"
+}
+]

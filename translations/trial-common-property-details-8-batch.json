@@ -1,0 +1,22 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 7598,
+    "Original": " [SETTLEMENT] ",
+    "Translation": "[SETTLEMENT]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog property details tag wrapper; preserves the tag and removes artificial surrounding spaces.",
+    "EvidenceScenario": "trial-common-property-details-8"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600011a",
+    "ILOffset": 161,
+    "Original": "% more per additional ",
+    "Translation": "%，每额外一个增加",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property effects fragment.",
+    "EvidenceScenario": "trial-common-property-details-8"
+  }
+]

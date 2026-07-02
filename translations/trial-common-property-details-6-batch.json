@@ -1,0 +1,162 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 8998,
+    "Original": " on the same ",
+    "Translation": "在同一",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 9077,
+    "Original": "Immediately becomes [",
+    "Translation": "立即变为[",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment preserving partial tag boundary.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 9115,
+    "Original": "] if a ",
+    "Translation": "]，若",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment preserving partial tag boundary.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 9131,
+    "Original": " has yet to be granted",
+    "Translation": "尚未授予",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 9180,
+    "Original": "] with every ",
+    "Translation": "]，每个",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment preserving partial tag boundary.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 9201,
+    "Original": "Never has ",
+    "Translation": "永不拥有",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 9355,
+    "Original": " costs",
+    "Translation": "花费",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 9586,
+    "Original": " costs",
+    "Translation": "花费",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 9799,
+    "Original": " across the entire Tribe",
+    "Translation": "全族范围内",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 10229,
+    "Original": " across the Tribe",
+    "Translation": "部族范围内",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 10361,
+    "Original": " from other Resources",
+    "Translation": "来自其他资源",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 10598,
+    "Original": " which already ",
+    "Translation": "其已",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 10776,
+    "Original": "[Resource|RESOURCE] reward",
+    "Translation": "[Resource|RESOURCE]奖励",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog property details fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 10816,
+    "Original": " for [Pillaging|PILLAGE] ",
+    "Translation": "用于[劫掠|PILLAGE]",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog property details fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 10963,
+    "Original": "Cost of buying ",
+    "Translation": "购买成本：",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog property details fragment.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000118",
+    "ILOffset": 11036,
+    "Original": " from [Caravans|CARAVAN]",
+    "Translation": "从[商队|CARAVAN]处",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog property details fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-property-details-6"
+  }
+]

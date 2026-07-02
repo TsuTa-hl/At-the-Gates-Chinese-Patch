@@ -1,0 +1,50 @@
+[
+{
+    "Assembly": "UI",
+    "Original": "Upon reaching [Level|LEVEL] 10 a [Clan|CLAN] receives 1 free Upgrade.",
+    "Translation": "达到[等级|LEVEL]10后，[氏族|CLAN]会获得1次免费升级。",
+    "MethodToken": "0x06000121",
+    "ILOffset": 4189,
+    "TypeFullName": "AtTheGatesUI.ns_InGame.ClanCard",
+    "MethodName": "Rebuild",
+    "Safety": "TooltipFragment",
+    "Note": "Trial visible clan-card tooltip.",
+    "EvidenceScenario": "trial-ui-tooltip-visible-1"
+},
+{
+    "Assembly": "UI",
+    "Original": "Each turn your Tribe is [Starving|STARVE] the [Mood|MOOD] of all of your [Clans|CLAN] will drop by 1.",
+    "Translation": "部族每处于[饥荒|STARVE]1回合，所有[氏族|CLAN]的[心情|MOOD]都会下降1。",
+    "MethodToken": "0x060003b0",
+    "ILOffset": 203,
+    "TypeFullName": "AtTheGatesUI.ns_InGame.StockpileLabel",
+    "MethodName": "Refresh",
+    "Safety": "TooltipFragment",
+    "Note": "Trial visible stockpile tooltip.",
+    "EvidenceScenario": "trial-ui-tooltip-visible-1"
+},
+{
+    "Assembly": "UI",
+    "Original": "Upon reaching [Level|LEVEL] 10 a [Clan|CLAN] receives 1 free Upgrade.",
+    "Translation": "达到[等级|LEVEL]10后，[氏族|CLAN]会获得1次免费升级。",
+    "MethodToken": "0x060003e9",
+    "ILOffset": 560,
+    "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.ClanListEntry",
+    "MethodName": "BuildPanel_Contents_PossibleUpgrades",
+    "Safety": "TooltipFragment",
+    "Note": "Trial visible clan-list tooltip.",
+    "EvidenceScenario": "trial-ui-tooltip-visible-1"
+},
+{
+    "Assembly": "UI",
+    "Original": "These are this Leader's [Traits|LEADER-TRAIT].",
+    "Translation": "这些是该领袖的[特质|LEADER-TRAIT]。",
+    "MethodToken": "0x06000679",
+    "ILOffset": 209,
+    "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Diplomacy",
+    "MethodName": "CreateControls_OnRebuild",
+    "Safety": "TooltipFragment",
+    "Note": "Trial visible diplomacy tooltip.",
+    "EvidenceScenario": "trial-ui-tooltip-visible-1"
+}
+]

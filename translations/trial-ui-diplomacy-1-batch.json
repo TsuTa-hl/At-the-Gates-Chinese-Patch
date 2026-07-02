@@ -1,0 +1,192 @@
+[
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 514,
+    "Original": "A Leader can be Friends with other Leaders, which affects their behavior towards them. Being nice to a Leader's friends can improve your relationship with the Leader, while being mean to them can hurt it.",
+    "Translation": "领袖可以与其他领袖成为朋友，这会影响他们彼此的态度。善待某位领袖的朋友可改善你与该领袖的关系；苛待他们则会伤害关系。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy screen text.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 575,
+    "Original": "A Leader can be Friends with other Leaders, which affects their behavior towards them. Being nice to a Leader's friends can improve your relationship with the Leader, while being mean to them can hurt it.",
+    "Translation": "领袖可以与其他领袖成为朋友，这会影响他们彼此的态度。善待某位领袖的朋友可改善你与该领袖的关系；苛待他们则会伤害关系。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy screen text.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 660,
+    "Original": "A Leader can be Enemies with other Leaders, which affects their behavior towards them. Being nice to a Leader's enemies can hurt your relationship with the Leader, while being mean to them can help improve it.",
+    "Translation": "领袖可以与其他领袖成为敌人，这会影响他们彼此的态度。善待某位领袖的敌人会伤害你与该领袖的关系；苛待他们则可能改善关系。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy screen text.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 721,
+    "Original": "A Leader can be Enemies with other Leaders, which affects their behavior towards them. Being nice to a Leader's enemies can hurt your relationship with the Leader, while being mean to them can help improve it.",
+    "Translation": "领袖可以与其他领袖成为敌人，这会影响他们彼此的态度。善待某位领袖的敌人会伤害你与该领袖的关系；苛待他们则可能改善关系。",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy screen text.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 929,
+    "Original": "Relationship Level",
+    "Translation": "关系等级",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy label.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 952,
+    "Original": "[Relationship Level|RL] is how much this Leader likes you. A higher Relationship Level score makes him more likely to work with and aid you. Unlike [Influence|INFLUENCE] it is a fixed value based on past decisions you've made.",
+    "Translation": "[关系等级|RL]表示这位领袖对你的好感。关系等级越高，他越可能与你合作并提供援助。不同于[影响力|INFLUENCE]，它是基于你过去决策的固定数值。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy tooltip preserving concept IDs.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1013,
+    "Original": "[Relationship Level|RL] is how much this Leader likes you. A higher Relationship Level score makes him more likely to work with and aid you. Unlike [Influence|INFLUENCE] it is a fixed value based on past decisions you've made.",
+    "Translation": "[关系等级|RL]表示这位领袖对你的好感。关系等级越高，他越可能与你合作并提供援助。不同于[影响力|INFLUENCE]，它是基于你过去决策的固定数值。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy tooltip preserving concept IDs.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1098,
+    "Original": "[Influence|INFLUENCE] is the current amount of 'diplomatic currency' you have to spend with this Leader. Unlike [Relationship Level|RL] it is spent and then disappears.",
+    "Translation": "[影响力|INFLUENCE]是你当前可用于这位领袖的“外交货币”。不同于[关系等级|RL]，它会在花费后消失。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy tooltip preserving concept IDs.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1159,
+    "Original": "[Influence|INFLUENCE] is the current amount of 'diplomatic currency' you have to spend with this Leader. Unlike [Relationship Level|RL] it is spent and then disappears.",
+    "Translation": "[影响力|INFLUENCE]是你当前可用于这位领袖的“外交货币”。不同于[关系等级|RL]，它会在花费后消失。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy tooltip preserving concept IDs.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1221,
+    "Original": "Your Global Reputation",
+    "Translation": "全局声誉",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy label.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1244,
+    "Original": "[Reputation|REPUTATION] is your global 'diplomatic currency' earned in special situations (e.g. refusing a Demand made by another Leader).",
+    "Translation": "[声誉|REPUTATION]是你的全局“外交货币”，可在特殊情境中获得，例如拒绝另一位领袖的要求。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy tooltip preserving concept ID.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1305,
+    "Original": "[Reputation|REPUTATION] is your global 'diplomatic currency' earned in special situations (e.g. refusing a Demand made by another Leader).",
+    "Translation": "[声誉|REPUTATION]是你的全局“外交货币”，可在特殊情境中获得，例如拒绝另一位领袖的要求。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy tooltip preserving concept ID.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1390,
+    "Original": "[Leverage|LEVERAGE] is the total amount of 'diplomatic currency' you have to spend with this Leader, right now.",
+    "Translation": "[筹码|LEVERAGE]是你眼下可用于这位领袖的“外交货币”总量。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy tooltip preserving concept ID.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1451,
+    "Original": "[Leverage|LEVERAGE] is the total amount of 'diplomatic currency' you have to spend with this Leader, right now.",
+    "Translation": "[筹码|LEVERAGE]是你眼下可用于这位领袖的“外交货币”总量。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial UI exact-catalog diplomacy tooltip preserving concept ID.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1488,
+    "Original": "Show Me",
+    "Translation": "显示",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy button.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1554,
+    "Original": "Make Alliance",
+    "Translation": "缔结同盟",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy button.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1582,
+    "Original": "Make War",
+    "Translation": "宣战",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy button.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1610,
+    "Original": "Send Emissary",
+    "Translation": "派遣使者",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy button.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  },
+  {
+    "Assembly": "UI",
+    "MethodToken": "0x06000678",
+    "ILOffset": 1638,
+    "Original": "Send Gift",
+    "Translation": "赠送礼物",
+    "Safety": "SafeUI",
+    "Note": "Trial UI exact-catalog diplomacy button.",
+    "EvidenceScenario": "trial-ui-diplomacy-1"
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001724",
+    "ILOffset": 1870,
+    "Original": "% the normal rate after a [Deposit|DEPOSIT] has [Degraded|DEPLETE] once, and then becomes permanently exhausted and shuts down after Degrading a second time.",
+    "Translation": "%正常速率，在[资源点|DEPOSIT]首次[枯竭|DEPLETE]后继续；第二次枯竭后将永久耗尽并停工。",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog ability description fragment preserving concept IDs.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600172a",
+    "ILOffset": 115,
+    "Original": " ... OR ...",
+    "Translation": "……或……",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog production description connector.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600172a",
+    "ILOffset": 406,
+    "Original": " ... OR ...",
+    "Translation": "……或……",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog production description connector.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600172a",
+    "ILOffset": 1099,
+    "Original": " in the Stockpile",
+    "Translation": "在库存中",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog production description fragment.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600172a",
+    "ILOffset": 1396,
+    "Original": " under and next to this ",
+    "Translation": "位于此处及相邻的",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog production description fragment.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600172a",
+    "ILOffset": 1523,
+    "Original": " being harvested",
+    "Translation": "正在被采收",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog production description fragment.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600172a",
+    "ILOffset": 2823,
+    "Original": " per [Level|LEVEL] in [",
+    "Translation": "每个[等级|LEVEL]于[",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog production description fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600172a",
+    "ILOffset": 3098,
+    "Original": " for each [Clan|CLAN] in a [Settled Profession|SETTLED] in [",
+    "Translation": "每个在[定居职业|SETTLED]中的[氏族|CLAN]，位于[",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog production description fragment preserving concept IDs.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600172a",
+    "ILOffset": 3813,
+    "Original": " when next to ",
+    "Translation": "相邻于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog production description fragment.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600172b",
+    "ILOffset": 919,
+    "Original": " if on a ",
+    "Translation": "若位于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog consumption description fragment.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600172b",
+    "ILOffset": 1291,
+    "Original": " if on a ",
+    "Translation": "若位于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog consumption description fragment.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x0600172b",
+    "ILOffset": 1628,
+    "Original": " if next to ",
+    "Translation": "若相邻于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog consumption description fragment.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001730",
+    "ILOffset": 124,
+    "Original": " contains ",
+    "Translation": "包含",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog families description fragment.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001730",
+    "ILOffset": 189,
+    "Original": " which ",
+    "Translation": "其",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog families description fragment.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001730",
+    "ILOffset": 318,
+    "Original": " Each additional Family provides a ",
+    "Translation": "每个额外家庭提供",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Trial Common exact-catalog families description fragment.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06001730",
+    "ILOffset": 331,
+    "Original": "% bonus to [Combat Power|POWER]",
+    "Translation": "%[战斗力|POWER]加成",
+    "Safety": "TooltipFragment",
+    "Note": "Trial Common exact-catalog families description fragment preserving concept ID.",
+    "EvidenceScenario": "trial-common-game-description-1"
+  }
+]

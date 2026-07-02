@@ -29,36 +29,55 @@ static build gate and install smoke gate.
 3. Run text tag validation.
 4. Run generated alias validation.
 5. Run font budget validation with `tools\Test-FontPatchBudget.ps1`.
-6. Confirm key artifacts:
+6. Run IL rewrite mapped-file retry validation with
+   `tools\Test-IlRewriteMappedFileRetry.ps1` when IL rewrite tooling or trial
+   batch infrastructure changed.
+7. Run generated font cleanup retry validation with
+   `tools\Test-FontPatchRemovalRetry.ps1` when font generation or build cleanup
+   infrastructure changed.
+8. Confirm key artifacts:
    - `patch\Content\Text\English.xml` first line is `<english>`.
    - Generated resource, profession, discipline, and deposit aliases exist.
    - `patch\Content\Images\Interface\Components\Fonts\.atg-merged-fonts`
      exists.
    - `patch\Content\Images\Interface\ScreenSpecific\ClanCard\冶金\PortraitBackground_2.xnb`
      exists.
-7. Read `patch\.atg-build-report.json` for the current build summary:
+9. Read `patch\.atg-build-report.json` for the current build summary:
    text entry count, alias counts, rewrite map counts, font cache/budget, key
    artifacts, and timing.
-8. Install with `Install-ChinesePatch.ps1`. The installer automatically
+10. Install with `Install-ChinesePatch.ps1`. The installer automatically
    uninstalls any existing manifest-backed Chinese patch before copying the new
    patch, so removed patch files do not remain in the game directory.
-9. Run `tools\Test-GameLaunch.ps1` as the install smoke test.
-10. Confirm the smoke result:
+11. Run `tools\Test-GameLaunch.ps1` as the install smoke test. By default this
+   launches the game, reaches the main menu, starts a new game, enters the main
+   game loop, captures screenshots, and closes the process. Do not start a
+   second smoke test while one is running; the script's single-instance lock
+   should fail duplicate invocations before a second game process can launch.
+12. Confirm the smoke result:
    - No new `Crash.AtGLog` timestamp.
+   - No process exit before smoke-test cleanup.
+   - No Windows Application Error, .NET Runtime, or WER event for
+     `At The Gates.exe`.
    - Screenshot covers the complete game window.
    - The smoke test closes the game.
-11. Carry forward timing evidence:
+13. Carry forward timing evidence:
    - Build timing table from `Build-Patch.ps1`.
    - Build report path and key counts from `patch\.atg-build-report.json`.
    - Whether the IL rewrite tool used the repo-local dotnet DLL path.
    - Install duration and whether an old manifest-backed patch was uninstalled.
-   - Smoke `StartupWaitSeconds` and total smoke duration.
+   - Smoke `StartupWaitSeconds`, `NewGameSmokeSeconds`, and total smoke
+     duration. `NewGameSmokeSeconds` should normally stop when `Program.AtGLog`
+     reaches `Controller - Giving Control to Human`, not when `Game World - New
+     Game Complete` appears and not when the maximum timeout expires.
+   - Smoke `NewGameReadyMarker`; it must be `Controller - Giving Control to
+     Human` for the default new-game smoke.
 
 ## Scope Boundary
 
-`Test-GameLaunch.ps1` is the startup/main-menu smoke test. This workflow does
-not prove new-game flow or in-game UI behavior unless a caller explicitly asks
-for complete UI regression. `test-and-loop.md` consumes this workflow's result
+`Test-GameLaunch.ps1` is the startup/main-menu/new-game smoke test. This
+workflow proves the patched build can enter a new random game without a smoke
+crash, but it does not prove in-game UI localization, hover text, fixed-save
+loading, or layout quality. `test-and-loop.md` consumes this workflow's result
 instead of redefining or rerunning the same gates by default.
 
 ## Stop Conditions

@@ -1,0 +1,52 @@
+[
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 179,
+    "Original": "Above ",
+    "Translation": "高于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Retry with exact-catalog trailing space after previous original mismatch.",
+    "EvidenceScenario": "trial-common-condition-text-retry-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 119,
+    "Original": "Below ",
+    "Translation": "低于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Retry with exact-catalog trailing space after previous original mismatch.",
+    "EvidenceScenario": "trial-common-condition-text-retry-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000fd5",
+    "ILOffset": 730,
+    "Original": "PROF in ",
+    "Translation": "职业位于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Retry with exact-catalog trailing space after previous original mismatch.",
+    "EvidenceScenario": "trial-common-condition-text-retry-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000bee",
+    "ILOffset": 29,
+    "Original": "RL being above ",
+    "Translation": "关系等级高于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Retry with exact-catalog trailing space after previous original mismatch.",
+    "EvidenceScenario": "trial-common-condition-text-retry-1"
+  },
+  {
+    "Assembly": "Common",
+    "MethodToken": "0x06000bee",
+    "ILOffset": 76,
+    "Original": "RL being below ",
+    "Translation": "关系等级低于",
+    "Safety": "CommonDisplayCandidate",
+    "Note": "Retry with exact-catalog trailing space after previous original mismatch.",
+    "EvidenceScenario": "trial-common-condition-text-retry-1"
+  }
+]
