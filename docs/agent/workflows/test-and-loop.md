@@ -17,6 +17,8 @@ return to assessment/fix work when tests fail.
   English text or translation quality/style issues.
 - `docs/agent/crash-risks.md` if failures include crashes, missing assets,
   fonts/icons, Common concepts, faction names, dates, or notification prefixes.
+- `docs/agent/spark-delegation.md` if this repository is being accessed
+  directly by `GPT-5.3-codex-spark`.
 
 ## Inputs
 

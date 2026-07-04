@@ -65,7 +65,13 @@ function Invoke-AtGPointAction {
         [Parameter(Mandatory = $true)]
         [string]$RunDirectory,
 
-        [int]$DefaultWaitMs
+        [int]$DefaultWaitMs,
+
+        [int]$ClearX = -1,
+
+        [int]$ClearY = -1,
+
+        [int]$ClearWaitMs = 150
     )
 
     $id = [string](Get-AtGPropertyValue -Object $Point -Name "Id")
@@ -76,6 +82,7 @@ function Invoke-AtGPointAction {
     if ($null -eq $waitMs) {
         $waitMs = $DefaultWaitMs
     }
+    $skipClear = [bool](Get-AtGPropertyValue -Object $Point -Name "SkipClear")
 
     $result = [ordered]@{
         Id = $id
@@ -89,7 +96,7 @@ function Invoke-AtGPointAction {
         Error = $null
     }
 
-    if ($null -eq $x -or $null -eq $y) {
+    if (($action -ne "CaptureOnly") -and ($null -eq $x -or $null -eq $y)) {
         $result.Status = "Skipped"
         $result.Error = "Missing coordinates; mark this point during discovery."
         return [pscustomobject]$result
@@ -97,6 +104,13 @@ function Invoke-AtGPointAction {
 
     $pointStopwatch = [System.Diagnostics.Stopwatch]::StartNew()
     try {
+        if (!$skipClear -and $ClearX -ge 0 -and $ClearY -ge 0) {
+            & "$PSScriptRoot\Move-AtGWindow.ps1" -X $ClearX -Y $ClearY | Out-Null
+            if ($ClearWaitMs -gt 0) {
+                Start-Sleep -Milliseconds $ClearWaitMs
+            }
+        }
+
         if ($action -eq "Hover" -or $action -eq "HoverAndCapture") {
             & "$PSScriptRoot\Move-AtGWindow.ps1" -X ([int]$x) -Y ([int]$y) | Out-Null
             Start-Sleep -Milliseconds ([int]$waitMs)
@@ -162,6 +176,22 @@ if ($SkipPassed -and [string]$scenario.Status -eq "Completed" -and [bool](Get-At
 }
 
 $points = @(Get-AtGPropertyValue -Object $scenario -Name "Points")
+$clear = Get-AtGPropertyValue -Object $scenario -Name "ClearBeforeEachPoint"
+$clearX = -1
+$clearY = -1
+$clearWaitMs = 150
+if ($null -ne $clear) {
+    $configuredClearX = Get-AtGPropertyValue -Object $clear -Name "X"
+    $configuredClearY = Get-AtGPropertyValue -Object $clear -Name "Y"
+    $configuredClearWaitMs = Get-AtGPropertyValue -Object $clear -Name "WaitMs"
+    if ($null -ne $configuredClearX -and $null -ne $configuredClearY) {
+        $clearX = [int]$configuredClearX
+        $clearY = [int]$configuredClearY
+    }
+    if ($null -ne $configuredClearWaitMs) {
+        $clearWaitMs = [int]$configuredClearWaitMs
+    }
+}
 $planned = foreach ($point in $points) {
     [pscustomobject]@{
         Id = [string](Get-AtGPropertyValue -Object $point -Name "Id")
@@ -195,7 +225,7 @@ New-Item -ItemType Directory -Force -Path $runDir | Out-Null
 $runStopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 $results = New-Object System.Collections.Generic.List[object]
 foreach ($point in $points) {
-    $results.Add((Invoke-AtGPointAction -Point $point -RunDirectory $runDir -DefaultWaitMs $DefaultWaitMs)) | Out-Null
+    $results.Add((Invoke-AtGPointAction -Point $point -RunDirectory $runDir -DefaultWaitMs $DefaultWaitMs -ClearX $clearX -ClearY $clearY -ClearWaitMs $clearWaitMs)) | Out-Null
 }
 $runStopwatch.Stop()
 

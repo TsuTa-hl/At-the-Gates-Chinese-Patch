@@ -83,6 +83,30 @@ function ConvertTo-AtGRewriteEntry {
     return [pscustomobject]$out
 }
 
+function Get-AtGTrialBatchSafetyError {
+    param([object]$Entry)
+
+    $original = [string]$Entry.Original
+    $translation = [string]$Entry.Translation
+    $typeFullName = [string]$Entry.TypeFullName
+    $methodName = [string]$Entry.MethodName
+    $replacementChar = [string][char]0xfffd
+
+    if ($original.Contains($replacementChar) -or $translation.Contains($replacementChar)) {
+        return "Entry contains Unicode replacement characters, which indicates mojibake or lossy decoding."
+    }
+
+    if ($typeFullName -eq "AtTheGatesCommon.ns_Text.Text" -and $methodName -eq "ConvertTags") {
+        return "Entries from AtTheGatesCommon.ns_Text.Text.ConvertTags are parser tag definitions, not safe trial localization display text."
+    }
+
+    if ($original -match '^\[[A-Za-z][A-Za-z0-9 _\-\|:]*\]$') {
+        return "Bracket-only parser-like tokens are not safe trial localization targets."
+    }
+
+    return ""
+}
+
 function Invoke-AtGTrialCommand {
     param(
         [string]$Name,
@@ -106,7 +130,7 @@ if ($batch.Count -eq 0) {
     throw "Trial localization batch is empty: $batchPath"
 }
 
-$validAssemblies = @("UI", "Common", "Game")
+$validAssemblies = @("UI", "Common", "Game", "ElfTools")
 foreach ($entry in $batch) {
     foreach ($required in @("Assembly", "Original", "Translation", "MethodToken", "ILOffset")) {
         if ($null -eq $entry.PSObject.Properties[$required] -or [string]::IsNullOrWhiteSpace([string]$entry.$required)) {
@@ -116,6 +140,11 @@ foreach ($entry in $batch) {
 
     if ($validAssemblies -notcontains [string]$entry.Assembly) {
         throw "Unsupported Assembly '$($entry.Assembly)'. Expected one of: $($validAssemblies -join ', ')"
+    }
+
+    $safetyError = Get-AtGTrialBatchSafetyError -Entry $entry
+    if (![string]::IsNullOrWhiteSpace($safetyError)) {
+        throw "Unsafe trial localization batch entry: $safetyError Entry: $($entry | ConvertTo-Json -Depth 6)"
     }
 }
 
@@ -129,6 +158,7 @@ $mapPaths = @{
     UI = Join-Path $repoRoot "translations\hardcoded-ui-il-rewrite.json"
     Common = Join-Path $repoRoot "translations\hardcoded-common-il-rewrite.json"
     Game = Join-Path $repoRoot "translations\hardcoded-game-il-rewrite.json"
+    ElfTools = Join-Path $repoRoot "translations\hardcoded-elftools-il-rewrite.json"
 }
 $activeRunPath = Join-Path $repoRoot ".tmp\trial-localization\active-run.json"
 
@@ -323,6 +353,7 @@ function Write-TrialMaps {
         UI = New-Object System.Collections.Generic.List[object]
         Common = New-Object System.Collections.Generic.List[object]
         Game = New-Object System.Collections.Generic.List[object]
+        ElfTools = New-Object System.Collections.Generic.List[object]
     }
 
     foreach ($entry in $accepted.ToArray()) {
@@ -397,10 +428,10 @@ function Test-TrialEntries {
     $smokeJson = Join-Path $stageRoot "smoke.json"
     try {
         $smoke = if ([string]::IsNullOrWhiteSpace($GamePath)) {
-            & "$PSScriptRoot\Test-GameLaunch.ps1" -ScreenshotPath (Join-Path $stageRoot "smoke-main.png") -NewGameScreenshotPath (Join-Path $stageRoot "smoke-new-game.png")
+            & "$PSScriptRoot\Test-GameLaunch.ps1" -IncludeNewGame -ScreenshotPath (Join-Path $stageRoot "smoke-main.png") -NewGameScreenshotPath (Join-Path $stageRoot "smoke-new-game.png")
         }
         else {
-            & "$PSScriptRoot\Test-GameLaunch.ps1" -GamePath $GamePath -ScreenshotPath (Join-Path $stageRoot "smoke-main.png") -NewGameScreenshotPath (Join-Path $stageRoot "smoke-new-game.png")
+            & "$PSScriptRoot\Test-GameLaunch.ps1" -IncludeNewGame -GamePath $GamePath -ScreenshotPath (Join-Path $stageRoot "smoke-main.png") -NewGameScreenshotPath (Join-Path $stageRoot "smoke-new-game.png")
         }
         $smoke | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $smokeJson -Encoding UTF8
         $smoke | Format-List | Out-String | Set-Content -LiteralPath $smokeLog -Encoding UTF8

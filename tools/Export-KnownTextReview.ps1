@@ -1,8 +1,12 @@
 param(
     [string]$CsvOutputPath = ".\docs\review\known-texts.csv",
     [string]$OutputPath = "",
-    [string]$UnmappedDllCsv = ".\.tmp\final-trial-unmapped-dll.csv",
-    [string]$StaticCandidatesCsv = ".\.tmp\static-text-candidates.csv"
+    [string]$UnmappedDllCsv = "",
+    [string]$StaticCandidatesCsv = "",
+    [string]$DiscoveryCacheDirectory = ".\docs\review\generated",
+    [string[]]$AdditionalDllCatalogCsv = @(),
+    [switch]$NoRebuildDiscoveryInputs,
+    [switch]$AggregateDuplicates
 )
 
 $ErrorActionPreference = "Stop"
@@ -35,6 +39,9 @@ function Get-JsonFile {
 }
 
 $records = New-Object System.Collections.Generic.List[object]
+$mappedDllEntryKeys = [System.Collections.Generic.HashSet[string]]::new()
+$mappedDllTranslationsByEntryKey = @{}
+$mappedDllTranslationsByAssemblyOriginal = @{}
 
 if ([string]::IsNullOrWhiteSpace($CsvOutputPath)) {
     if (-not [string]::IsNullOrWhiteSpace($OutputPath)) {
@@ -49,6 +56,139 @@ if ([string]::IsNullOrWhiteSpace($CsvOutputPath)) {
     }
     else {
         $CsvOutputPath = ".\docs\review\known-texts.csv"
+    }
+}
+
+if ([string]::IsNullOrWhiteSpace($DiscoveryCacheDirectory)) {
+    $DiscoveryCacheDirectory = ".\docs\review\generated"
+}
+
+New-Item -ItemType Directory -Force -Path $DiscoveryCacheDirectory | Out-Null
+
+if ([string]::IsNullOrWhiteSpace($StaticCandidatesCsv)) {
+    $StaticCandidatesCsv = Join-Path $DiscoveryCacheDirectory "static-text-candidates.csv"
+}
+
+$defaultDllCatalogs = @(
+    [pscustomobject]@{
+        Assembly = "UI"
+        Source = ".\source\AtTheGatesUI.original.dll"
+        Csv = (Join-Path $DiscoveryCacheDirectory "ui-ldstr-catalog.csv")
+        Json = (Join-Path $DiscoveryCacheDirectory "ui-ldstr-catalog.json")
+    },
+    [pscustomobject]@{
+        Assembly = "Common"
+        Source = ".\source\AtTheGatesCommon.original.dll"
+        Csv = (Join-Path $DiscoveryCacheDirectory "common-ldstr-catalog.csv")
+        Json = (Join-Path $DiscoveryCacheDirectory "common-ldstr-catalog.json")
+    },
+    [pscustomobject]@{
+        Assembly = "Game"
+        Source = ".\source\AtTheGatesGame.original.exe"
+        Csv = (Join-Path $DiscoveryCacheDirectory "game-ldstr-catalog.csv")
+        Json = (Join-Path $DiscoveryCacheDirectory "game-ldstr-catalog.json")
+    },
+    [pscustomobject]@{
+        Assembly = "ElfTools"
+        Source = ".\source\ElfTools.original.dll"
+        Csv = (Join-Path $DiscoveryCacheDirectory "elftools-ldstr-catalog.csv")
+        Json = (Join-Path $DiscoveryCacheDirectory "elftools-ldstr-catalog.json")
+    }
+)
+
+if ($AdditionalDllCatalogCsv.Count -eq 0) {
+    $AdditionalDllCatalogCsv = @($defaultDllCatalogs | ForEach-Object { $_.Csv })
+}
+
+function Test-AtGDiscoveryOutputStale {
+    param(
+        [string]$OutputPath,
+        [string[]]$InputPath
+    )
+
+    if (-not (Test-Path -LiteralPath $OutputPath -PathType Leaf)) {
+        return $true
+    }
+
+    $outputTime = (Get-Item -LiteralPath $OutputPath).LastWriteTimeUtc
+    foreach ($path in @($InputPath)) {
+        if ((Test-Path -LiteralPath $path) -and (Get-Item -LiteralPath $path).LastWriteTimeUtc -gt $outputTime) {
+            return $true
+        }
+    }
+
+    return $false
+}
+
+function Invoke-AtGDiscoveryScript {
+    param(
+        [string]$ScriptPath,
+        [hashtable]$Arguments
+    )
+
+    $resolvedScript = (Resolve-Path -LiteralPath $ScriptPath).Path
+    $splat = @{}
+    foreach ($key in $Arguments.Keys) {
+        $splat[$key] = $Arguments[$key]
+    }
+
+    & $resolvedScript @splat | Out-Host
+}
+
+function Initialize-KnownTextDiscoveryInputs {
+    if ($NoRebuildDiscoveryInputs) {
+        return
+    }
+
+    $configInputs = @(
+        ".\tools\Export-StaticTextCandidates.ps1",
+        ".\translations\config-node-strings.json",
+        ".\translations\config-node-extra-strings.json"
+    ) + @((Get-ChildItem -LiteralPath ".\source\Content\Config\Primary" -Filter "*.original.xml" -File | ForEach-Object { $_.FullName }))
+
+    if (Test-AtGDiscoveryOutputStale -OutputPath $StaticCandidatesCsv -InputPath $configInputs) {
+        $staticJson = [System.IO.Path]::ChangeExtension($StaticCandidatesCsv, ".json")
+        Invoke-AtGDiscoveryScript -ScriptPath ".\tools\Export-StaticTextCandidates.ps1" -Arguments @{
+            OutputCsv = $StaticCandidatesCsv
+            OutputJson = $staticJson
+        }
+    }
+
+    foreach ($catalog in @($defaultDllCatalogs)) {
+        if (Test-AtGDiscoveryOutputStale -OutputPath $catalog.Csv -InputPath @($catalog.Source, ".\tools\Export-DllLdstrCatalog.ps1", ".\tools\AtGManagedMetadata.ps1")) {
+            Invoke-AtGDiscoveryScript -ScriptPath ".\tools\Export-DllLdstrCatalog.ps1" -Arguments @{
+                DllPath = $catalog.Source
+                OutputCsv = $catalog.Csv
+                OutputJson = $catalog.Json
+            }
+        }
+    }
+}
+
+function Add-MappedOriginalTranslation {
+    param(
+        [string]$Assembly,
+        [string]$Original,
+        [string]$Translation
+    )
+
+    $assemblyKey = Get-AssemblyKeyFromSourceName $Assembly
+    if ([string]::IsNullOrWhiteSpace($assemblyKey) -or [string]::IsNullOrWhiteSpace($Original)) {
+        return
+    }
+
+    $key = "$assemblyKey$([char]31)$Original"
+    if (-not $script:mappedDllTranslationsByAssemblyOriginal.ContainsKey($key)) {
+        $script:mappedDllTranslationsByAssemblyOriginal[$key] = [pscustomobject]@{
+            Translation = $Translation
+            Ambiguous = $false
+        }
+        return
+    }
+
+    $existing = $script:mappedDllTranslationsByAssemblyOriginal[$key]
+    if ([string]$existing.Translation -ne [string]$Translation) {
+        $existing.Ambiguous = $true
     }
 }
 
@@ -197,7 +337,8 @@ function New-TrialAttemptIndex {
         ".\translations\trial-game-static-checks-5-batch.json",
         ".\translations\trial-ui-visible-misc-4-batch.json",
         ".\translations\trial-common-tostring-labels-1-batch.json",
-        ".\translations\trial-final-visible-fragments-1-batch.json"
+        ".\translations\trial-final-visible-fragments-1-batch.json",
+        ".\translations\trial-elftools-display-tooltips-1-batch.json"
     )
 
     foreach ($path in $trialBatchPaths) {
@@ -245,6 +386,24 @@ function New-TrialAttemptIndex {
                     Translation = ConvertTo-ReviewLine $entry.Translation
                     Evidence = $path.FullName
                 }
+            }
+        }
+    }
+
+    $trialState = Get-JsonFile ".\docs\agent\trial-localization-state.json"
+    if ($null -ne $trialState) {
+        foreach ($entry in ConvertTo-ReviewArray $trialState.knownRejectedSingles) {
+            $key = Get-ReviewKey -Assembly ([string]$entry.assembly) -MethodToken ([string]$entry.methodToken) -ILOffset $entry.ilOffset
+            if ([string]::IsNullOrWhiteSpace($key)) {
+                continue
+            }
+
+            $index[$key] = [pscustomobject]@{
+                Attempted = "Yes"
+                AttemptStatus = "Rejected"
+                FailureReason = ConvertTo-ReviewLine $entry.reason
+                Translation = ""
+                Evidence = "docs/agent/trial-localization-state.json:$($entry.batchId)"
             }
         }
     }
@@ -302,6 +461,78 @@ function Add-KnownText {
         FailureReason = ConvertTo-ReviewLine $FailureReason
         Notes = ConvertTo-ReviewLine $Notes
     }) | Out-Null
+}
+
+function Get-ReviewState {
+    param([object]$Record)
+
+    $attemptStatus = [string]$Record.AttemptStatus
+    switch ($attemptStatus) {
+        { $_ -in @("Mapped", "MappedByOriginal", "TrialBatch", "AcceptedSmoke") } { return "Translated" }
+        "Rejected" { return "Rejected" }
+        "SkippedByPolicy" { return "Skipped" }
+        "TrialCandidate" { return "NeedsTrial" }
+        "NotAttempted" { return "NeedsTrial" }
+    }
+
+    if ([string]$Record.Status -eq "RejectedTrial") {
+        return "Rejected"
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace([string]$Record.Translation)) {
+        return "Translated"
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace([string]$Record.FailureReason)) {
+        if ([string]$Record.FailureReason -match '^Trial candidate:') {
+            return "NeedsTrial"
+        }
+        return "Skipped"
+    }
+
+    return "NeedsTrial"
+}
+
+function Get-ReviewReasonCode {
+    param(
+        [object]$Record,
+        [string]$ReviewState
+    )
+
+    if ($ReviewState -in @("Translated", "NeedsTrial")) {
+        return ""
+    }
+
+    $reason = [string]$Record.FailureReason
+    $kind = [string]$Record.Kind
+    $safety = [string]$Record.Safety
+    $haystack = "$reason $kind $safety"
+
+    if ($haystack -match '490295|offset fallback|verified UI offset|PatchConflict|conflicts with verified') {
+        return "PatchConflict"
+    }
+
+    if ($haystack -match 'external login|challenge|forum|online-flow|brand|copyright|metadata|developer test-group|registered trademarks|Conifer Games') {
+        return "OutOfScope"
+    }
+
+    if ($haystack -match 'grammar fragment|punctuation glue|semantic-free|formatter tag|legacy tag-conversion|match token|CodeOrAbbreviation|TextKeyReference') {
+        return "FragmentOrToken"
+    }
+
+    if ($haystack -match 'UserSetting|Settings\.xml|serialized|XML-safe|logic-sensitive|ManualOnly|DoNotPatchHere|static candidate safety|date|season|month|faction|Faction|Common concept|config candidate') {
+        return "LogicSensitive"
+    }
+
+    if ($haystack -match 'technical/internal|diagnostic|parser|resource ID|exception|debug|engine/helper|config-validation|raw IDs|paths?|control ID|internal misuse|ToString diagnostic|settings') {
+        return "TechnicalInternal"
+    }
+
+    if ($ReviewState -eq "Rejected") {
+        return "RejectedByTest"
+    }
+
+    return "TechnicalInternal"
 }
 
 function Get-StaticCandidateSkipReason {
@@ -381,10 +612,83 @@ function Test-AtGBroadGrammarFragment {
         $Text -match '^\s*%?\s*(less|more|Range|needed|increased by|decreased by|available on its|within a radius of)\s*$')
 }
 
+function Test-AtGGameInternalOrLogText {
+    param(
+        [string]$TypeFullName,
+        [string]$MethodName,
+        [string]$Text
+    )
+
+    $trimmed = $Text.Trim()
+
+    if ($TypeFullName -match '\.ns_StaticChecks\.' -and $MethodName -eq "PerformCheck") {
+        return $false
+    }
+
+    if ($TypeFullName -eq "AtTheGatesGame.ns_UIControllers.ATGApplication" -and
+        $MethodName -match '^(ShowLoadFailedPopup|ShowLoadFile)$') {
+        return $false
+    }
+
+    if ($TypeFullName -eq "AtTheGatesGame.ns_UIControllers.ATGUI" -and
+        $MethodName -match '^SeizedImp_Create') {
+        return $false
+    }
+
+    if ($TypeFullName -match 'VictoryScreen' -and $MethodName -eq "AddButtons") {
+        return $false
+    }
+
+    if ($trimmed -match '^(-{1,}|[-+*]{3,}|_+)\s' -or
+        $trimmed -match '^(---|\+\+\+\+\+|--------|\*\*\*)' -or
+        $trimmed -match 'RNG Seed|Init_|GameMap\(\)|Loaded|Created|Graphics|Settings\.|Giving Control to Human|TOGGLE DRAWING|PAUSED|Learned Tech|Popped Goody|Trained:|APPLY TO OBJECTS' -or
+        $trimmed -match '^(A map object|A ship is|A tile that|Adding |AI object|An Army has|Assigning |ATG[A-Za-z]+\.|BaseObject\.|Calculated |Calculating |Calling |called |Changing |Chose |Completed Command with no execution defined|Could not load plugin type|Dead object|Deploying a Unit|DepositRevealMgr\.|Docking a unit|Ending the turn|Finished a Construct|Found |Giving player a Tech|Group Rings$|ImmobilizationCount|INITIALIZING -|Leader already has the Trait|MapObject lacks the required CCanAct component\.|Max Importance of a Desire for|Max Partner Importance of a Desire for|Min Importance of a Desire for|Min Partner Importance of a Desire for|Negative harvestable amount|NO NAME$|Object |Object''s |Pillaging an object|Player is |Plague on Turn|Plague Records$|Political Events -|Post Transform Pass$|Removing a BuildableStructure|Removing a Tech|Resource Appearance Manager looking|Second Pass$|Setting |Structure is being exhausted|TerrainNoLongerTrapsCount|Testing |The min num Clans until|The min turns until|Thinking about pillaging|Training a Unit for Magister Militum|Turns Left to Skip|Turns required not specified|Turns to pack are negative|Turns Until Force-Trigger|Turns Until Next Plague|Unable to|Unit that already has a Desire|Unit\.ChooseTraits|was never properly set for|Was unable|Wasn''t able to find a valid plague|Wasn''t able to find a valid tile within a range of|Zone has 0 tiles!|Please show Jon|Please show this to Jon)' -or
+        $trimmed -match '^(i at \(|is being killed by its owner!|is less than or equal to zero\. \()' -or
+        $trimmed -match '^(CCan[A-Za-z]+|CRequiresSupply|MapObject) component''s parent lacks the required CCanAct component\.$' -or
+        $trimmed -match '^PlagueMgr\.') {
+        return $true
+    }
+
+    if ($TypeFullName -match 'AtTheGatesGame\.ns_GameCode\.(LeaderMgr|PoliticalEventMgr|PlagueMgr|PlagueRecord)' -and
+        $MethodName -eq "ToString") {
+        return $true
+    }
+
+    if ($TypeFullName -match 'AtTheGatesGame\.ns_GameCode\.ResourcesMgr' -and
+        $MethodName -eq "CalculateConversionAmounts") {
+        return $true
+    }
+
+    if ($TypeFullName -eq "AtTheGatesGame.ns_Map.ATGZone" -and
+        $MethodName -eq "AddTile") {
+        return $true
+    }
+
+    if ($TypeFullName -match 'AtTheGatesGame\.ns_UIControllers\.DebugText\.') {
+        return $true
+    }
+
+    if ($TypeFullName -match 'AtTheGatesGame\.(GameCore|ns_Map\.ATGMap|ns_GameCode\.WorldCore|ns_UIControllers\.ATGWorldScreen|ns_Map\.DepositRevealMgr)' -and
+        $MethodName -match '^(\.ctor|Init|Init_|Load|LoadData|Create_|Create|NewGame_|Update_NewGame|AssignStartingVisibility|CreateShaders|CreateRenderTargets)') {
+        return $true
+    }
+
+    if ($TypeFullName -match 'AtTheGatesGame\.ns_GameCode\.(ResourcesMgr|ATGUnit|ATGPlayer|ATGCity|TechMgr|DiploMgr)' -and
+        $MethodName -match '^(Recalc|Apply|Calculate|Convert|Cover|Choose|EndTurn|ChangeResearch|ToString|GetTurnsToCreate)') {
+        return ($trimmed -match '^[-*+]|RNG Seed|Shortage|stopped foraging|^\(|^\)|^\]|^\[ Command:|^\+\+\+\+\+|^-----|^Army \(x|^Base:')
+    }
+
+    return $false
+}
+
 function Get-DllSkipReason {
     param([object]$Row)
 
     $assembly = [string]$Row.Assembly
+    if ([string]::IsNullOrWhiteSpace($assembly) -and $Row.PSObject.Properties["AssemblyName"]) {
+        $assembly = [string]$Row.AssemblyName
+    }
+    $assembly = Get-AssemblyKeyFromSourceName $assembly
     $class = [string]$Row.Class
     $type = [string]$Row.TypeFullName
     $method = [string]$Row.MethodName
@@ -397,6 +701,28 @@ function Get-DllSkipReason {
 
     if ($assembly -eq "Common" -and $type -match '^AtTheGatesCommon\.ns_GlobalSystems\.UserSetting_') {
         return "Skipped by policy: user setting descriptions are serialized into Settings.xml without XML-safe encoding; non-ASCII trial text polluted Settings.xml and caused 'Error Loading User Settings'."
+    }
+
+    if ($assembly -eq "ElfTools") {
+        $isElfToolsDisplayCandidate = (
+            ($type -eq "ElfTools.Interfaces.Layout.CollapsibleContainer" -and
+                $method -eq "Init" -and
+                ($trimmed -match '^Click to make this panel disappear completely\.' -or
+                 $trimmed -eq "Click to expand this panel and see" -or
+                 $trimmed -eq "Click to minimize this panel.")) -or
+            ($type -eq "ElfTools.UI.Objects.Dropdown" -and
+                $method -eq ".ctor" -and
+                $trimmed -eq "Click to select...") -or
+            ($type -eq "ElfTools.Dialogs.TwoButtonDialog" -and
+                $method -eq "Initialize" -and
+                ($trimmed -eq "Hotkey: [Y]" -or $trimmed -eq "Hotkey: [ESC]"))
+        )
+
+        if ($isElfToolsDisplayCandidate) {
+            return "Trial candidate: ElfTools display tooltip candidate. Use small fast-fail batches; missing visual coverage alone is not a skip reason."
+        }
+
+        return "Skipped by policy: ElfTools engine/helper text, diagnostics, parser tokens, resource IDs, hotkey labels, or internal exception text; not a standalone localization target."
     }
 
     if ($type -match 'DebugConsole|ns_GlobalSystems\.Log|ns_GlobalSystems\.Settings|TextFormatter' -or
@@ -459,6 +785,10 @@ function Get-DllSkipReason {
     }
 
     if ($assembly -eq "Game") {
+        if (Test-AtGGameInternalOrLogText -TypeFullName $type -MethodName $method -Text $original) {
+            return "Skipped by policy: gameplay EXE log, diagnostic, initialization marker, or automation-dependent program marker; not player-facing display text."
+        }
+
         return "Trial candidate: gameplay EXE display candidate. Use small method-scoped fast-fail batches; do not skip only because targeted regression evidence is missing."
     }
 
@@ -476,7 +806,20 @@ function Get-SourceFromAssemblyName {
         "^UI$|AtTheGatesUI" { return "source\AtTheGatesUI.original.dll" }
         "^Common$|AtTheGatesCommon" { return "source\AtTheGatesCommon.original.dll" }
         "^Game$|AtTheGatesGame" { return "source\AtTheGatesGame.original.exe" }
+        "^ElfTools$" { return "source\ElfTools.original.dll" }
         default { return $Assembly }
+    }
+}
+
+function Get-AssemblyKeyFromSourceName {
+    param([string]$Name)
+
+    switch -Regex ($Name) {
+        "^UI$|AtTheGatesUI" { return "UI" }
+        "^Common$|AtTheGatesCommon" { return "Common" }
+        "^Game$|AtTheGatesGame" { return "Game" }
+        "^ElfTools$|ElfTools" { return "ElfTools" }
+        default { return $Name }
     }
 }
 
@@ -509,6 +852,33 @@ function Add-IlRewriteMap {
             $source = Get-SourceFromAssemblyName ([string]$item.Assembly)
         }
 
+        if ($item.PSObject.Properties["MethodToken"] -and $item.PSObject.Properties["ILOffset"]) {
+            $mappedAssembly = Get-AssemblyKeyFromSourceName $FallbackSource
+            if ($item.PSObject.Properties["Assembly"] -and -not [string]::IsNullOrWhiteSpace([string]$item.Assembly)) {
+                $mappedAssembly = Get-AssemblyKeyFromSourceName ([string]$item.Assembly)
+            }
+            $mappedKey = Get-ReviewKey -Assembly $mappedAssembly -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
+            if (-not [string]::IsNullOrWhiteSpace($mappedKey)) {
+                [void]$script:mappedDllEntryKeys.Add($mappedKey)
+                $script:mappedDllTranslationsByEntryKey[$mappedKey] = [pscustomobject]@{
+                    Translation = [string]$item.Translation
+                    Safety = [string]$item.Safety
+                    Notes = if ($item.PSObject.Properties["EvidenceScenario"] -and -not [string]::IsNullOrWhiteSpace([string]$item.EvidenceScenario)) {
+                        "Trial evidence: $($item.EvidenceScenario)"
+                    }
+                    else {
+                        ""
+                    }
+                }
+            }
+        }
+
+        $assemblyForOriginal = Get-AssemblyKeyFromSourceName $FallbackSource
+        if ($item.PSObject.Properties["Assembly"] -and -not [string]::IsNullOrWhiteSpace([string]$item.Assembly)) {
+            $assemblyForOriginal = Get-AssemblyKeyFromSourceName ([string]$item.Assembly)
+        }
+        Add-MappedOriginalTranslation -Assembly $assemblyForOriginal -Original ([string]$item.Original) -Translation ([string]$item.Translation)
+
         $locatorParts = @()
         foreach ($name in @("TypeFullName", "MethodName", "MethodToken", "ILOffset", "StringToken", "Offset")) {
             $prop = $item.PSObject.Properties[$name]
@@ -532,6 +902,9 @@ function Add-IlRewriteMap {
             }
             if ($null -eq $attempt -and $FallbackSource -match "AtTheGatesGame") {
                 $attempt = Get-TrialAttempt -Assembly "Game" -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
+            }
+            if ($null -eq $attempt -and $FallbackSource -match "ElfTools") {
+                $attempt = Get-TrialAttempt -Assembly "ElfTools" -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
             }
         }
 
@@ -590,6 +963,7 @@ function Add-DictionaryMap {
     }
 
     foreach ($prop in $map.PSObject.Properties) {
+        Add-MappedOriginalTranslation -Assembly $SourceFile -Original ([string]$prop.Name) -Translation ([string]$prop.Value)
         Add-KnownText `
             -SourceFile $SourceFile `
             -Original $prop.Name `
@@ -643,6 +1017,8 @@ function Get-ConfigTranslationMap {
 }
 
 # Primary English.xml text.
+Initialize-KnownTextDiscoveryInputs
+
 $zh = Get-JsonFile ".\translations\zh-CN.json"
 if (Test-Path -LiteralPath ".\translations\entries.csv") {
     foreach ($entry in Import-Csv -LiteralPath ".\translations\entries.csv" -Encoding UTF8) {
@@ -722,22 +1098,48 @@ Add-IlRewriteMap -Path ".\translations\hardcoded-ui-offsets.json" -FallbackSourc
 Add-IlRewriteMap -Path ".\translations\hardcoded-common-il-rewrite.json" -FallbackSource "source\AtTheGatesCommon.original.dll" -Kind "Common IL rewrite"
 Add-IlRewriteMap -Path ".\translations\hardcoded-common-offsets.json" -FallbackSource "source\AtTheGatesCommon.original.dll" -Kind "Common verified offset"
 Add-IlRewriteMap -Path ".\translations\hardcoded-game-il-rewrite.json" -FallbackSource "source\AtTheGatesGame.original.exe" -Kind "Game EXE IL rewrite"
+Add-IlRewriteMap -Path ".\translations\hardcoded-elftools-il-rewrite.json" -FallbackSource "source\ElfTools.original.dll" -Kind "ElfTools IL rewrite"
 
 # Trial batch files are used above only as attempt-status evidence. Do not emit
 # them as separate source rows; normal maps and unmapped candidates provide the
 # actual source-file rows without duplicating review entries.
 
 # Known unmapped DLL display candidates after the most recent trial export.
-if (-not (Test-Path -LiteralPath $UnmappedDllCsv)) {
+if (-not [string]::IsNullOrWhiteSpace($UnmappedDllCsv) -and -not (Test-Path -LiteralPath $UnmappedDllCsv)) {
     $fallbackUnmapped = ".\.tmp\trial-current-unmapped-dll.csv"
     if (Test-Path -LiteralPath $fallbackUnmapped) {
         $UnmappedDllCsv = $fallbackUnmapped
     }
 }
 
-if (Test-Path -LiteralPath $UnmappedDllCsv) {
-    foreach ($row in Import-Csv -LiteralPath $UnmappedDllCsv -Encoding UTF8) {
-        $attempt = Get-TrialAttempt -Assembly ([string]$row.Assembly) -MethodToken ([string]$row.MethodToken) -ILOffset $row.ILOffset
+function Add-UnmappedDllRowsFromCsv {
+    param([string]$Path)
+
+    if ([string]::IsNullOrWhiteSpace($Path)) {
+        return
+    }
+
+    if (-not (Test-Path -LiteralPath $Path)) {
+        return
+    }
+
+    foreach ($row in Import-Csv -LiteralPath $Path -Encoding UTF8) {
+        $assembly = [string]$row.Assembly
+        if ([string]::IsNullOrWhiteSpace($assembly) -and $row.PSObject.Properties["AssemblyName"]) {
+            $assembly = [string]$row.AssemblyName
+        }
+        $assemblyKey = Get-AssemblyKeyFromSourceName $assembly
+        $entryKey = Get-ReviewKey -Assembly $assemblyKey -MethodToken ([string]$row.MethodToken) -ILOffset $row.ILOffset
+
+        $original = [string]$row.Original
+        if ([string]::IsNullOrWhiteSpace($original) -and $row.PSObject.Properties["Value"]) {
+            $original = [string]$row.Value
+        }
+        if ([string]::IsNullOrWhiteSpace($original)) {
+            continue
+        }
+
+        $attempt = Get-TrialAttempt -Assembly $assemblyKey -MethodToken ([string]$row.MethodToken) -ILOffset $row.ILOffset
         $translation = ""
         $attempted = "No"
         $attemptStatus = "NotAttempted"
@@ -745,31 +1147,61 @@ if (Test-Path -LiteralPath $UnmappedDllCsv) {
         $notes = ""
         $status = "UntranslatedDiscovered"
 
-        if ($null -ne $attempt) {
+        if ($null -ne $attempt -and [string]$attempt.AttemptStatus -eq "Rejected") {
             $translation = [string]$attempt.Translation
             $attempted = "Yes"
             $attemptStatus = [string]$attempt.AttemptStatus
             $failureReason = [string]$attempt.FailureReason
             $notes = "Trial evidence: $($attempt.Evidence)"
-            if ($attemptStatus -eq "Rejected") {
-                $status = "RejectedTrial"
-            }
+            $status = "RejectedTrial"
+        }
+        elseif (-not [string]::IsNullOrWhiteSpace($entryKey) -and $script:mappedDllTranslationsByEntryKey.ContainsKey($entryKey)) {
+            $mapped = $script:mappedDllTranslationsByEntryKey[$entryKey]
+            $translation = [string]$mapped.Translation
+            $attempted = "Yes"
+            $attemptStatus = "Mapped"
+            $status = "Translated"
+            $notes = [string]$mapped.Notes
         }
         else {
-            $reviewReason = Get-DllSkipReason -Row $row
-            if ($reviewReason -match '^Trial candidate:') {
-                $attemptStatus = "TrialCandidate"
-                $failureReason = $reviewReason
+            $originalMapKey = "$assemblyKey$([char]31)$original"
+            if ($script:mappedDllTranslationsByAssemblyOriginal.ContainsKey($originalMapKey)) {
+                $mappedByOriginal = $script:mappedDllTranslationsByAssemblyOriginal[$originalMapKey]
+                if (-not [bool]$mappedByOriginal.Ambiguous) {
+                    $translation = [string]$mappedByOriginal.Translation
+                    $attempted = "Yes"
+                    $attemptStatus = "MappedByOriginal"
+                    $status = "Translated"
+                    $notes = "Translation matched by assembly and original text; inspect locator before using as an IL patch source."
+                }
             }
-            elseif (-not [string]::IsNullOrWhiteSpace($reviewReason)) {
-                $attemptStatus = "SkippedByPolicy"
-                $failureReason = $reviewReason
+
+            if ($null -eq $attempt -and [string]::IsNullOrWhiteSpace($translation)) {
+                $reviewReason = Get-DllSkipReason -Row $row
+                if ($reviewReason -match '^Trial candidate:') {
+                    $attemptStatus = "TrialCandidate"
+                    $failureReason = $reviewReason
+                }
+                elseif (-not [string]::IsNullOrWhiteSpace($reviewReason)) {
+                    $attemptStatus = "SkippedByPolicy"
+                    $failureReason = $reviewReason
+                }
+            }
+            elseif ($null -ne $attempt -and [string]::IsNullOrWhiteSpace($translation)) {
+                $translation = [string]$attempt.Translation
+                $attempted = "Yes"
+                $attemptStatus = [string]$attempt.AttemptStatus
+                $failureReason = [string]$attempt.FailureReason
+                $notes = "Trial evidence: $($attempt.Evidence)"
+                if ($attemptStatus -eq "Rejected") {
+                    $status = "RejectedTrial"
+                }
             }
         }
 
         Add-KnownText `
-            -SourceFile (Get-SourceFromAssemblyName ([string]$row.Assembly)) `
-            -Original ([string]$row.Original) `
+            -SourceFile (Get-SourceFromAssemblyName $assemblyKey) `
+            -Original $original `
             -Translation $translation `
             -Kind ([string]$row.Class) `
             -Status $status `
@@ -781,9 +1213,28 @@ if (Test-Path -LiteralPath $UnmappedDllCsv) {
     }
 }
 
-# Aggregate identical source/original/translation/status rows for review.
-$separator = [char]31
-$groups = @{}
+Add-UnmappedDllRowsFromCsv -Path $UnmappedDllCsv
+foreach ($catalogPath in @($AdditionalDllCatalogCsv)) {
+    Add-UnmappedDllRowsFromCsv -Path $catalogPath
+}
+
+$trialStateForRows = Get-JsonFile ".\docs\agent\trial-localization-state.json"
+if ($null -ne $trialStateForRows) {
+    foreach ($entry in ConvertTo-ReviewArray $trialStateForRows.knownRejectedSingles) {
+        Add-KnownText `
+            -SourceFile (Get-SourceFromAssemblyName ([string]$entry.assembly)) `
+            -Original ([string]$entry.original) `
+            -Translation "" `
+            -Kind "Known rejected trial" `
+            -Status "RejectedTrial" `
+            -Locator ("MethodToken=$($entry.methodToken); ILOffset=$($entry.ilOffset)") `
+            -LocalizationAttempted "Yes" `
+            -AttemptStatus "Rejected" `
+            -FailureReason ([string]$entry.reason) `
+            -Notes ("Trial state batch: $($entry.batchId)")
+    }
+}
+
 foreach ($record in $records) {
     if ([string]::IsNullOrWhiteSpace($record.LocalizationAttempted)) {
         if (-not [string]::IsNullOrWhiteSpace($record.Translation)) {
@@ -800,32 +1251,53 @@ foreach ($record in $records) {
         }
     }
 
-    $key = @($record.SourceFile, $record.Original, $record.Translation, $record.Kind, $record.Status, $record.Safety, $record.LocalizationAttempted, $record.AttemptStatus, $record.FailureReason, $record.Notes) -join $separator
-    if (-not $groups.ContainsKey($key)) {
-        $groups[$key] = [pscustomobject]@{
-            SourceFile = $record.SourceFile
-            Original = $record.Original
-            Translation = $record.Translation
-            Kind = $record.Kind
-            Status = $record.Status
-            Safety = $record.Safety
-            LocalizationAttempted = $record.LocalizationAttempted
-            AttemptStatus = $record.AttemptStatus
-            FailureReason = $record.FailureReason
-            Notes = $record.Notes
-            Locators = New-Object System.Collections.Generic.List[string]
-        }
-    }
-    if (-not [string]::IsNullOrWhiteSpace($record.Locator)) {
-        $groups[$key].Locators.Add($record.Locator) | Out-Null
-    }
+    $reviewState = Get-ReviewState -Record $record
+    $reasonCode = Get-ReviewReasonCode -Record $record -ReviewState $reviewState
+    $record | Add-Member -Force -MemberType NoteProperty -Name ReviewState -Value $reviewState
+    $record | Add-Member -Force -MemberType NoteProperty -Name ReasonCode -Value $reasonCode
 }
 
-$items = @($groups.GetEnumerator() | ForEach-Object { $_.Value } | Sort-Object SourceFile, Status, Kind, Original)
+if ($AggregateDuplicates) {
+    $separator = [char]31
+    $groups = @{}
+    foreach ($record in $records) {
+        $key = @($record.SourceFile, $record.Original, $record.Translation, $record.Kind, $record.Status, $record.Safety, $record.ReviewState, $record.ReasonCode, $record.Notes) -join $separator
+        if (-not $groups.ContainsKey($key)) {
+            $groups[$key] = [pscustomobject]@{
+                SourceFile = $record.SourceFile
+                Original = $record.Original
+                Translation = $record.Translation
+                Kind = $record.Kind
+                Status = $record.Status
+                Safety = $record.Safety
+                ReviewState = $record.ReviewState
+                ReasonCode = $record.ReasonCode
+                Notes = $record.Notes
+                Locator = ""
+                Locators = New-Object System.Collections.Generic.List[string]
+            }
+        }
+        if (-not [string]::IsNullOrWhiteSpace($record.Locator)) {
+            $groups[$key].Locators.Add($record.Locator) | Out-Null
+        }
+    }
+
+    $items = @($groups.GetEnumerator() | ForEach-Object {
+        $_.Value.Locator = (@($_.Value.Locators) -join " | ")
+        $_.Value
+    } | Sort-Object SourceFile, Status, Kind, Original, Locator)
+}
+else {
+    $items = @($records | Sort-Object SourceFile, Status, Kind, Original, Locator)
+}
+
 $translatedCount = @($items | Where-Object { -not [string]::IsNullOrWhiteSpace($_.Translation) }).Count
 $untranslatedCount = $items.Count - $translatedCount
-$attemptedCount = @($items | Where-Object { $_.LocalizationAttempted -eq "Yes" }).Count
-$rejectedCount = @($items | Where-Object { $_.AttemptStatus -eq "Rejected" }).Count
+$translatedStateCount = @($items | Where-Object { $_.ReviewState -eq "Translated" }).Count
+$needsTrialCount = @($items | Where-Object { $_.ReviewState -eq "NeedsTrial" }).Count
+$skippedCount = @($items | Where-Object { $_.ReviewState -eq "Skipped" }).Count
+$recheckedSkippedCount = @($items | Where-Object { $_.ReviewState -eq "RecheckedSkipped" }).Count
+$rejectedCount = @($items | Where-Object { $_.ReviewState -eq "Rejected" }).Count
 
 $csvOutputDirectory = Split-Path -Parent $CsvOutputPath
 if (-not [string]::IsNullOrWhiteSpace($csvOutputDirectory)) {
@@ -839,12 +1311,11 @@ $csvRows = foreach ($item in $items) {
         Original = $item.Original
         Translation = $item.Translation
         Status = $item.Status
-        LocalizationAttempted = $item.LocalizationAttempted
-        AttemptStatus = $item.AttemptStatus
-        FailureReason = $item.FailureReason
+        ReviewState = $item.ReviewState
+        ReasonCode = $item.ReasonCode
         Safety = $item.Safety
         Notes = $item.Notes
-        Locators = (@($item.Locators) -join " | ")
+        Locators = $item.Locator
     }
 }
 
@@ -852,10 +1323,14 @@ $csvRows | Export-Csv -LiteralPath $CsvOutputPath -NoTypeInformation -Encoding U
 
 [pscustomobject]@{
     CsvOutputPath = (Resolve-Path -LiteralPath $CsvOutputPath).Path
+    Rows = $items.Count
     UniqueRows = $items.Count
     TranslatedRows = $translatedCount
     UntranslatedRows = $untranslatedCount
-    AttemptedRows = $attemptedCount
+    TranslatedStateRows = $translatedStateCount
+    NeedsTrialRows = $needsTrialCount
+    SkippedRows = $skippedCount
+    RecheckedSkippedRows = $recheckedSkippedCount
     RejectedRows = $rejectedCount
     SourceFileCount = @($items | Select-Object -ExpandProperty SourceFile -Unique).Count
 }

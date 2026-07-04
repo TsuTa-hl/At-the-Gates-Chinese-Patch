@@ -13,6 +13,8 @@ mojibake, missing assets, crashes, unsafe English remnants, and layout defects.
 - `docs/agent/black-box-tests.md`
 - `docs/agent/trial-localization-state.json` if the user asks for trial or
   fast-fail localization.
+- `docs/agent/spark-delegation.md` if this repository is being accessed
+  directly by `GPT-5.3-codex-spark`.
 - `docs/agent/operations.md` if reproducing, building, launching, clicking,
   hovering, or capturing screenshots is required.
 
@@ -64,25 +66,28 @@ discovered display text beyond the safety-first policy.
    Use it to avoid already accepted/rejected entries, preserve known catalog
    precision lessons, and choose the current batch size.
 3. Prefer UI display strings first, then narrowly scoped Common/Game display
-   fragments. Do not include technical paths, IDs, enum keys, broad concept
-   identifiers, faction names, dates, or generated names in the same batch.
+   fragments and narrowly scoped ElfTools helper-display strings. Do not
+   include technical paths, IDs, enum keys, broad concept identifiers, faction
+   names, dates, generated names, parser glue, or diagnostics in the same
+   batch.
 4. Default batch sizing:
    - UI exact-catalog candidates: start at 48 and cap at 64.
-   - Common or Game display candidates: start at 8 and cap at 16.
+   - Common, Game, or ElfTools display candidates: start at 8 and cap at 16.
    - Logic-sensitive or historically risky candidates: 1 to 4 only.
    - If a failed batch contains more than one bad entry, halve the next batch
      size for that source class.
 5. Run `tools\Invoke-AtGTrialLocalizationBatch.ps1` with the batch file. The
    tool appends the batch to normal rewrite maps, builds, installs, and runs
-   the smoke gate. If the batch fails, it bisects until failing single entries
-   are isolated.
+   `Test-GameLaunch.ps1 -IncludeNewGame` as its fast-fail smoke gate. If the
+   batch fails, it bisects until failing single entries are isolated.
 6. Keep entries that pass the smoke gate in the normal rewrite maps. Leave
    failing entries out and record them as unsafe for trial localization.
 7. Carry accepted/rejected batch results forward to `update-knowledge.md` so
    `trial-localization-state.json` and `docs/review/known-texts.csv` remain
    synchronized.
-8. A trial pass only proves build, install, startup, and new-game smoke safety.
-   It does not prove wording, layout, hover coverage, or all UI paths.
+8. A trial pass only proves build, install, startup, and explicitly requested
+   new-game smoke safety. It does not prove wording, layout, hover coverage,
+   fixed-save loading, or all UI paths.
 
 ## Stop Conditions
 

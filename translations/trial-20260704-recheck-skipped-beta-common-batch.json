@@ -1,0 +1,42 @@
+[
+{
+    "Assembly":  "Common",
+    "Original":  "A",
+    "Translation":  "һ��",
+    "MethodToken":  "0x060001e3",
+    "ILOffset":  2,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Common",
+    "Original":  "A",
+    "Translation":  "һ��",
+    "MethodToken":  "0x060001f7",
+    "ILOffset":  2,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Common",
+    "Original":  " it",
+    "Translation":  "��",
+    "MethodToken":  "0x06000118",
+    "ILOffset":  10624,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Common",
+    "Original":  "no",
+    "Translation":  "��",
+    "MethodToken":  "0x060003e4",
+    "ILOffset":  9,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+}
+]

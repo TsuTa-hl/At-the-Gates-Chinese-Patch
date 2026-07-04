@@ -1,0 +1,13 @@
+{
+    "Assembly":  "Game",
+    "Original":  " [Turns|TURN].",
+    "Translation":  "[Turns|TURN]。",
+    "MethodToken":  "0x0600086c",
+    "ILOffset":  192,
+    "StringToken":  "0x7000dc63",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ATGCity",
+    "MethodName":  "BuildTrainingProjectDescription",
+    "Safety":  "TrialFastFail",
+    "Note":  "2026-07-04 Game NeedsTrial exact-catalog batch 22; preserve formatter tag and localize punctuation.",
+    "EvidenceScenario":  "trial-20260704-game-needs-22"
+}

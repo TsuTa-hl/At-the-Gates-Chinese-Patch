@@ -1,270 +1,1168 @@
-{
-  "Version": 1,
-  "Policy": {
-    "DefaultSuite": "Incremental",
-    "FullRegressionIsOptIn": true,
-    "PromotePassedIncrementalToFullRegression": true,
-    "DeduplicateByInterfaceAndPointId": true,
-    "HoverWaitMsDefault": 900,
-    "HoverWaitMsMaximum": 3000,
-    "EvidenceRoot": ".tmp/runs"
-  },
-  "FullRegression": [
-    {
-      "Id": "top-left-clan-support-hover",
-      "Title": "Top-left clan and support hover",
-      "Interface": "Main Loop HUD",
-      "Category": "Hover",
-      "Status": "Completed",
-      "SkipByDefault": true,
-      "Setup": "Load a fixed save or enter the main loop.",
-      "ExpectedNo": [
-        "TEXT.",
-        ":PLURAL",
-        ":SINGULAR",
-        "mojibake",
-        "raw key"
-      ],
-      "Points": [
-        {
-          "Id": "clan_support",
-          "Label": "Clan/support area",
-          "Action": "HoverAndCapture",
-          "X": 78,
-          "Y": 24,
-          "WaitMs": 900,
-          "Crop": {
-            "X": 0,
-            "Y": 0,
-            "Width": 640,
-            "Height": 360
-          }
-        }
-      ],
-      "Evidence": {
-        "LastStatus": "Passed",
-        "LastRunDir": null
-      }
-    },
-    {
-      "Id": "knowledge-screen-hovers",
-      "Title": "Knowledge screen nodes, upgrade icons, footer and close",
-      "Interface": "Knowledge Screen",
-      "Category": "HoverSweep",
-      "Status": "Completed",
-      "SkipByDefault": true,
-      "Setup": "Open the knowledge screen from the main loop.",
-      "ExpectedNo": [
-        "TEXT.Name.Profession.",
-        "TEXT.Name.Discipline.",
-        "TEXT.Name.Deposit.",
-        ":PLURAL",
-        ":SINGULAR",
-        "Learning this Tech will allow",
-        "Can Identify",
-        "Unidentified Deposits"
-      ],
-      "Points": [
-        { "Id": "01_huntsman", "Label": "Huntsman", "Action": "HoverAndCapture", "X": 878, "Y": 202, "WaitMs": 900 },
-        { "Id": "02_watchman", "Label": "Watchman", "Action": "HoverAndCapture", "X": 1148, "Y": 202, "WaitMs": 900 },
-        { "Id": "03_feast_master", "Label": "Feast Master", "Action": "HoverAndCapture", "X": 1416, "Y": 202, "WaitMs": 900 },
-        { "Id": "04_archer", "Label": "Archer", "Action": "HoverAndCapture", "X": 1684, "Y": 202, "WaitMs": 900 },
-        { "Id": "05_honor", "Label": "Honor", "Action": "HoverAndCapture", "X": 1280, "Y": 303, "WaitMs": 900 },
-        { "Id": "06_hunter", "Label": "Hunter", "Action": "HoverAndCapture", "X": 1280, "Y": 400, "WaitMs": 900 },
-        { "Id": "07_harvester", "Label": "Harvester", "Action": "HoverAndCapture", "X": 742, "Y": 651, "WaitMs": 900 },
-        { "Id": "08_bread_maker", "Label": "Bread Maker", "Action": "HoverAndCapture", "X": 1014, "Y": 651, "WaitMs": 900 },
-        { "Id": "09_winemaker", "Label": "Winemaker", "Action": "HoverAndCapture", "X": 1282, "Y": 651, "WaitMs": 900 },
-        { "Id": "10_beekeeper", "Label": "Beekeeper", "Action": "HoverAndCapture", "X": 1550, "Y": 651, "WaitMs": 900 },
-        { "Id": "11_farmer", "Label": "Farmer", "Action": "HoverAndCapture", "X": 1822, "Y": 651, "WaitMs": 900 },
-        { "Id": "12_agriculture", "Label": "Agriculture", "Action": "HoverAndCapture", "X": 1280, "Y": 752, "WaitMs": 900 },
-        { "Id": "13_reaper", "Label": "Reaper", "Action": "HoverAndCapture", "X": 1145, "Y": 850, "WaitMs": 900 },
-        { "Id": "14_gatherer", "Label": "Gatherer", "Action": "HoverAndCapture", "X": 1410, "Y": 850, "WaitMs": 900 },
-        { "Id": "15_sledge_driver", "Label": "Sledge Driver", "Action": "HoverAndCapture", "X": 744, "Y": 1104, "WaitMs": 900 },
-        { "Id": "16_fisherman", "Label": "Fisherman", "Action": "HoverAndCapture", "X": 1014, "Y": 1104, "WaitMs": 900 },
-        { "Id": "17_meat_cutter", "Label": "Meat Cutter", "Action": "HoverAndCapture", "X": 1280, "Y": 1104, "WaitMs": 900 },
-        { "Id": "18_rancher", "Label": "Rancher", "Action": "HoverAndCapture", "X": 1550, "Y": 1104, "WaitMs": 900 },
-        { "Id": "19_trapper", "Label": "Trapper", "Action": "HoverAndCapture", "X": 1815, "Y": 1104, "WaitMs": 900 },
-        { "Id": "20_livestock", "Label": "Livestock", "Action": "HoverAndCapture", "X": 1280, "Y": 1202, "WaitMs": 900 },
-        { "Id": "21_show_all", "Label": "Show All", "Action": "HoverAndCapture", "X": 655, "Y": 1296, "WaitMs": 900 },
-        { "Id": "22_close", "Label": "Close", "Action": "HoverAndCapture", "X": 1933, "Y": 1296, "WaitMs": 900 },
-        { "Id": "23_turn_footer", "Label": "Turn footer", "Action": "HoverAndCapture", "X": 1345, "Y": 1300, "WaitMs": 900 },
-        { "Id": "24_hunter_node", "Label": "Hunter node", "Action": "HoverAndCapture", "X": 1280, "Y": 400, "WaitMs": 900 },
-        { "Id": "25_hunter_icon_1", "Label": "Hunter icon 1", "Action": "HoverAndCapture", "X": 1260, "Y": 428, "WaitMs": 900 },
-        { "Id": "26_hunter_icon_2", "Label": "Hunter icon 2", "Action": "HoverAndCapture", "X": 1285, "Y": 428, "WaitMs": 900 },
-        { "Id": "27_hunter_icon_3", "Label": "Hunter icon 3", "Action": "HoverAndCapture", "X": 1308, "Y": 428, "WaitMs": 900 },
-        { "Id": "28_harvester_node", "Label": "Harvester node", "Action": "HoverAndCapture", "X": 1145, "Y": 850, "WaitMs": 900 },
-        { "Id": "29_harvester_icon_1", "Label": "Harvester icon 1", "Action": "HoverAndCapture", "X": 1115, "Y": 878, "WaitMs": 900 },
-        { "Id": "30_harvester_icon_2", "Label": "Harvester icon 2", "Action": "HoverAndCapture", "X": 1142, "Y": 878, "WaitMs": 900 },
-        { "Id": "31_harvester_icon_3", "Label": "Harvester icon 3", "Action": "HoverAndCapture", "X": 1170, "Y": 878, "WaitMs": 900 },
-        { "Id": "32_gatherer_node", "Label": "Gatherer node", "Action": "HoverAndCapture", "X": 1410, "Y": 850, "WaitMs": 900 },
-        { "Id": "33_gatherer_icon_1", "Label": "Gatherer icon 1", "Action": "HoverAndCapture", "X": 1368, "Y": 878, "WaitMs": 900 },
-        { "Id": "34_gatherer_icon_2", "Label": "Gatherer icon 2", "Action": "HoverAndCapture", "X": 1394, "Y": 878, "WaitMs": 900 },
-        { "Id": "35_gatherer_icon_3", "Label": "Gatherer icon 3", "Action": "HoverAndCapture", "X": 1420, "Y": 878, "WaitMs": 900 },
-        { "Id": "36_gatherer_icon_4", "Label": "Gatherer icon 4", "Action": "HoverAndCapture", "X": 1446, "Y": 878, "WaitMs": 900 },
-        { "Id": "37_gatherer_icon_5", "Label": "Gatherer icon 5", "Action": "HoverAndCapture", "X": 1472, "Y": 878, "WaitMs": 900 }
-      ],
-      "Evidence": {
-        "LastStatus": "Passed",
-        "LastRunDir": ".tmp/knowledge-new-hovers-final2"
-      }
-    },
-    {
-      "Id": "clan-screen-buttons",
-      "Title": "Clan screen action button hovers",
-      "Interface": "Clan Screen",
-      "Category": "HoverSweep",
-      "Status": "Completed",
-      "SkipByDefault": true,
-      "RequiresFixedSave": true,
-      "SaveName": "Quicksave.AtGSave",
-      "Setup": "Load the fixed save and open the clan screen.",
-      "ExpectedNo": [
-        "TEXT.Name.Profession.",
-        "Profession:",
-        "Discipline:",
-        "Family",
-        "Turns",
-        "Ennoble",
-        "You lack sufficient"
-      ],
-      "Points": [
-        { "Id": "train_profession", "Label": "Train clan profession", "Action": "HoverAndCapture", "X": 1280, "Y": 734, "WaitMs": 900 },
-        { "Id": "switch_discipline", "Label": "Switch clan discipline", "Action": "HoverAndCapture", "X": 1280, "Y": 785, "WaitMs": 900 },
-        { "Id": "produce", "Label": "Produce", "Action": "HoverAndCapture", "X": 1280, "Y": 836, "WaitMs": 900 },
-        { "Id": "ennoble_clan", "Label": "Ennoble clan", "Action": "HoverAndCapture", "X": 1050, "Y": 903, "WaitMs": 900 },
-        { "Id": "increase_clan_limit", "Label": "Increase clan limit", "Action": "HoverAndCapture", "X": 1295, "Y": 903, "WaitMs": 900 },
-        { "Id": "declare_kingdom", "Label": "Declare kingdom", "Action": "HoverAndCapture", "X": 1530, "Y": 903, "WaitMs": 1500 },
-        { "Id": "close", "Label": "Close", "Action": "HoverAndCapture", "X": 1685, "Y": 957, "WaitMs": 1500 }
-      ],
-      "Evidence": {
-        "LastStatus": "Passed",
-        "LastRunDir": ".tmp/clan-button-hover-final"
-      }
-    },
-    {
-      "Id": "clan-screen-random-traits",
-      "Title": "Three visible clans and six trait hovers",
-      "Interface": "Clan Screen",
-      "Category": "HoverSweep",
-      "Status": "Discovery",
-      "SkipByDefault": true,
-      "RequiresFixedSave": true,
-      "RequiresSaveBeforeFix": true,
-      "Setup": "Use the saved random start that exposed the three visible clans.",
-      "ExpectedNo": [
-        "TEXT.",
-        ":PLURAL",
-        ":SINGULAR",
-        "Might very rarely",
-        "Feud",
-        "Brawls",
-        "Crime"
-      ],
-      "Points": [
-        { "Id": "clan_1_trait_1", "Label": "Clan 1 trait 1", "Action": "HoverAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "clan_1_trait_2", "Label": "Clan 1 trait 2", "Action": "HoverAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "clan_2_trait_1", "Label": "Clan 2 trait 1", "Action": "HoverAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "clan_2_trait_2", "Label": "Clan 2 trait 2", "Action": "HoverAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "clan_3_trait_1", "Label": "Clan 3 trait 1", "Action": "HoverAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "clan_3_trait_2", "Label": "Clan 3 trait 2", "Action": "HoverAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 }
-      ],
-      "Evidence": {
-        "LastStatus": "Discovery",
-        "LastRunDir": null
-      }
-    },
-    {
-      "Id": "main-loop-button-hovers",
-      "Title": "Main-loop visible button hover sweep",
-      "Interface": "Main Loop HUD",
-      "Category": "HoverSweep",
-      "Status": "Deferred",
-      "SkipByDefault": true,
-      "RequiresFixedSave": true,
-      "Setup": "Load a fixed save that exposes visible command and sidebar buttons.",
-      "ExpectedNo": [
-        "TEXT.",
-        ":PLURAL",
-        ":SINGULAR",
-        "Open up the System Menu",
-        "mojibake"
-      ],
-      "Points": [
-        { "Id": "system_menu", "Label": "System menu", "Action": "HoverAndCapture", "X": 160, "Y": 25, "WaitMs": 900 },
-        { "Id": "world_button", "Label": "World button", "Action": "HoverAndCapture", "X": 190, "Y": 25, "WaitMs": 900 },
-        { "Id": "notes_button", "Label": "Notes button", "Action": "HoverAndCapture", "X": 220, "Y": 25, "WaitMs": 900 },
-        { "Id": "help_button", "Label": "Help button", "Action": "HoverAndCapture", "X": 250, "Y": 25, "WaitMs": 900 },
-        { "Id": "unit_pack_up", "Label": "Pack up", "Action": "HoverAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "unit_fortify", "Label": "Fortify", "Action": "HoverAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "unit_move", "Label": "Move", "Action": "HoverAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "unit_skip", "Label": "Skip", "Action": "HoverAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 }
-      ],
-      "Evidence": {
-        "LastStatus": "Partial",
-        "LastRunDir": ".tmp/main-loop-button-hovers-final2"
-      }
-    },
-    {
-      "Id": "main-loop-tile-click-hover-37",
-      "Title": "Thirty-seven random tile click and lower-right tooltip checks",
-      "Interface": "Main Loop Map",
-      "Category": "TileSweep",
-      "Status": "Discovery",
-      "SkipByDefault": true,
-      "RequiresFixedSave": true,
-      "RequiresSaveBeforeFix": true,
-      "Setup": "Use the saved random start that exposes the target map/tile set.",
-      "ExpectedNo": [
-        "TEXT.",
-        ":PLURAL",
-        ":SINGULAR",
-        "mojibake",
-        "raw key"
-      ],
-      "Points": [
-        { "Id": "tile_01", "Label": "Tile/object 01", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_02", "Label": "Tile/object 02", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_03", "Label": "Tile/object 03", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_04", "Label": "Tile/object 04", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_05", "Label": "Tile/object 05", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_06", "Label": "Tile/object 06", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_07", "Label": "Tile/object 07", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_08", "Label": "Tile/object 08", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_09", "Label": "Tile/object 09", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_10", "Label": "Tile/object 10", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_11", "Label": "Tile/object 11", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_12", "Label": "Tile/object 12", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_13", "Label": "Tile/object 13", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_14", "Label": "Tile/object 14", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_15", "Label": "Tile/object 15", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_16", "Label": "Tile/object 16", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_17", "Label": "Tile/object 17", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_18", "Label": "Tile/object 18", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_19", "Label": "Tile/object 19", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_20", "Label": "Tile/object 20", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_21", "Label": "Tile/object 21", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_22", "Label": "Tile/object 22", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_23", "Label": "Tile/object 23", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_24", "Label": "Tile/object 24", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_25", "Label": "Tile/object 25", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_26", "Label": "Tile/object 26", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_27", "Label": "Tile/object 27", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_28", "Label": "Tile/object 28", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_29", "Label": "Tile/object 29", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_30", "Label": "Tile/object 30", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_31", "Label": "Tile/object 31", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_32", "Label": "Tile/object 32", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_33", "Label": "Tile/object 33", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_34", "Label": "Tile/object 34", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_35", "Label": "Tile/object 35", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_36", "Label": "Tile/object 36", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 },
-        { "Id": "tile_37", "Label": "Tile/object 37", "Action": "ClickAndCapture", "X": null, "Y": null, "Discover": true, "WaitMs": 900 }
-      ],
-      "Evidence": {
-        "LastStatus": "Discovery",
-        "LastRunDir": null
-      }
-    }
-  ],
-  "Incremental": []
+﻿{
+    "Version":  1,
+    "Policy":  {
+                   "DefaultSuite":  "Incremental",
+                   "FullRegressionIsOptIn":  true,
+                   "PromotePassedIncrementalToFullRegression":  true,
+                   "DeduplicateByInterfaceAndPointId":  true,
+                   "HoverWaitMsDefault":  900,
+                   "HoverWaitMsMaximum":  3000,
+                   "EvidenceRoot":  ".tmp/runs"
+               },
+    "FullRegression":  [
+                           {
+                               "Id":  "top-left-clan-support-hover",
+                               "Title":  "Top-left clan and support hover",
+                               "Interface":  "Main Loop HUD",
+                               "Category":  "Hover",
+                               "Status":  "Completed",
+                               "SkipByDefault":  true,
+                               "Setup":  "Load a fixed save or enter the main loop.",
+                               "ExpectedNo":  [
+                                                  "TEXT.",
+                                                  ":PLURAL",
+                                                  ":SINGULAR",
+                                                  "mojibake",
+                                                  "raw key"
+                                              ],
+                               "Points":  [
+                                              {
+                                                  "Id":  "clan_support",
+                                                  "Label":  "Clan/support area",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  78,
+                                                  "Y":  24,
+                                                  "WaitMs":  900,
+                                                  "Crop":  {
+                                                               "X":  0,
+                                                               "Y":  0,
+                                                               "Width":  640,
+                                                               "Height":  360
+                                                           }
+                                              }
+                                          ],
+                               "Evidence":  {
+                                                "LastStatus":  "Passed",
+                                                "LastRunDir":  null
+                                            }
+                           },
+                           {
+                               "Id":  "knowledge-screen-hovers",
+                               "Title":  "Knowledge screen nodes, upgrade icons, footer and close",
+                               "Interface":  "Knowledge Screen",
+                               "Category":  "HoverSweep",
+                               "Status":  "Completed",
+                               "SkipByDefault":  true,
+                               "Setup":  "Open the knowledge screen from the main loop.",
+                               "ExpectedNo":  [
+                                                  "TEXT.Name.Profession.",
+                                                  "TEXT.Name.Discipline.",
+                                                  "TEXT.Name.Deposit.",
+                                                  ":PLURAL",
+                                                  ":SINGULAR",
+                                                  "Learning this Tech will allow",
+                                                  "Can Identify",
+                                                  "Unidentified Deposits"
+                                              ],
+                               "Points":  [
+                                              {
+                                                  "Id":  "01_huntsman",
+                                                  "Label":  "Huntsman",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  878,
+                                                  "Y":  202,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "02_watchman",
+                                                  "Label":  "Watchman",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1148,
+                                                  "Y":  202,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "03_feast_master",
+                                                  "Label":  "Feast Master",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1416,
+                                                  "Y":  202,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "04_archer",
+                                                  "Label":  "Archer",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1684,
+                                                  "Y":  202,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "05_honor",
+                                                  "Label":  "Honor",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1280,
+                                                  "Y":  303,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "06_hunter",
+                                                  "Label":  "Hunter",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1280,
+                                                  "Y":  400,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "07_harvester",
+                                                  "Label":  "Harvester",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  742,
+                                                  "Y":  651,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "08_bread_maker",
+                                                  "Label":  "Bread Maker",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1014,
+                                                  "Y":  651,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "09_winemaker",
+                                                  "Label":  "Winemaker",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1282,
+                                                  "Y":  651,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "10_beekeeper",
+                                                  "Label":  "Beekeeper",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1550,
+                                                  "Y":  651,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "11_farmer",
+                                                  "Label":  "Farmer",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1822,
+                                                  "Y":  651,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "12_agriculture",
+                                                  "Label":  "Agriculture",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1280,
+                                                  "Y":  752,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "13_reaper",
+                                                  "Label":  "Reaper",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1145,
+                                                  "Y":  850,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "14_gatherer",
+                                                  "Label":  "Gatherer",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1410,
+                                                  "Y":  850,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "15_sledge_driver",
+                                                  "Label":  "Sledge Driver",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  744,
+                                                  "Y":  1104,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "16_fisherman",
+                                                  "Label":  "Fisherman",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1014,
+                                                  "Y":  1104,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "17_meat_cutter",
+                                                  "Label":  "Meat Cutter",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1280,
+                                                  "Y":  1104,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "18_rancher",
+                                                  "Label":  "Rancher",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1550,
+                                                  "Y":  1104,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "19_trapper",
+                                                  "Label":  "Trapper",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1815,
+                                                  "Y":  1104,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "20_livestock",
+                                                  "Label":  "Livestock",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1280,
+                                                  "Y":  1202,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "21_show_all",
+                                                  "Label":  "Show All",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  655,
+                                                  "Y":  1296,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "22_close",
+                                                  "Label":  "Close",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1933,
+                                                  "Y":  1296,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "23_turn_footer",
+                                                  "Label":  "Turn footer",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1345,
+                                                  "Y":  1300,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "24_hunter_node",
+                                                  "Label":  "Hunter node",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1280,
+                                                  "Y":  400,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "25_hunter_icon_1",
+                                                  "Label":  "Hunter icon 1",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1260,
+                                                  "Y":  428,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "26_hunter_icon_2",
+                                                  "Label":  "Hunter icon 2",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1285,
+                                                  "Y":  428,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "27_hunter_icon_3",
+                                                  "Label":  "Hunter icon 3",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1308,
+                                                  "Y":  428,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "28_harvester_node",
+                                                  "Label":  "Harvester node",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1145,
+                                                  "Y":  850,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "29_harvester_icon_1",
+                                                  "Label":  "Harvester icon 1",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1115,
+                                                  "Y":  878,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "30_harvester_icon_2",
+                                                  "Label":  "Harvester icon 2",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1142,
+                                                  "Y":  878,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "31_harvester_icon_3",
+                                                  "Label":  "Harvester icon 3",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1170,
+                                                  "Y":  878,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "32_gatherer_node",
+                                                  "Label":  "Gatherer node",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1410,
+                                                  "Y":  850,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "33_gatherer_icon_1",
+                                                  "Label":  "Gatherer icon 1",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1368,
+                                                  "Y":  878,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "34_gatherer_icon_2",
+                                                  "Label":  "Gatherer icon 2",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1394,
+                                                  "Y":  878,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "35_gatherer_icon_3",
+                                                  "Label":  "Gatherer icon 3",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1420,
+                                                  "Y":  878,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "36_gatherer_icon_4",
+                                                  "Label":  "Gatherer icon 4",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1446,
+                                                  "Y":  878,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "37_gatherer_icon_5",
+                                                  "Label":  "Gatherer icon 5",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1472,
+                                                  "Y":  878,
+                                                  "WaitMs":  900
+                                              }
+                                          ],
+                               "Evidence":  {
+                                                "LastStatus":  "Passed",
+                                                "LastRunDir":  ".tmp/knowledge-new-hovers-final2"
+                                            }
+                           },
+                           {
+                               "Id":  "clan-screen-buttons",
+                               "Title":  "Clan screen action button hovers",
+                               "Interface":  "Clan Screen",
+                               "Category":  "HoverSweep",
+                               "Status":  "Completed",
+                               "SkipByDefault":  true,
+                               "RequiresFixedSave":  true,
+                               "SaveName":  "Quicksave.AtGSave",
+                               "Setup":  "Load the fixed save and open the clan screen.",
+                               "ExpectedNo":  [
+                                                  "TEXT.Name.Profession.",
+                                                  "Profession:",
+                                                  "Discipline:",
+                                                  "Family",
+                                                  "Turns",
+                                                  "Ennoble",
+                                                  "You lack sufficient"
+                                              ],
+                               "Points":  [
+                                              {
+                                                  "Id":  "train_profession",
+                                                  "Label":  "Train clan profession",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1280,
+                                                  "Y":  734,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "switch_discipline",
+                                                  "Label":  "Switch clan discipline",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1280,
+                                                  "Y":  785,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "produce",
+                                                  "Label":  "Produce",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1280,
+                                                  "Y":  836,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "ennoble_clan",
+                                                  "Label":  "Ennoble clan",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1050,
+                                                  "Y":  903,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "increase_clan_limit",
+                                                  "Label":  "Increase clan limit",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1295,
+                                                  "Y":  903,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "declare_kingdom",
+                                                  "Label":  "Declare kingdom",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1530,
+                                                  "Y":  903,
+                                                  "WaitMs":  1500
+                                              },
+                                              {
+                                                  "Id":  "close",
+                                                  "Label":  "Close",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1685,
+                                                  "Y":  957,
+                                                  "WaitMs":  1500
+                                              }
+                                          ],
+                               "Evidence":  {
+                                                "LastStatus":  "Passed",
+                                                "LastRunDir":  ".tmp/clan-button-hover-final"
+                                            }
+                           },
+                           {
+                               "Id":  "clan-screen-random-traits",
+                               "Title":  "Three visible clans and six trait hovers",
+                               "Interface":  "Clan Screen",
+                               "Category":  "HoverSweep",
+                               "Status":  "Discovery",
+                               "SkipByDefault":  true,
+                               "RequiresFixedSave":  true,
+                               "RequiresSaveBeforeFix":  true,
+                               "Setup":  "Use the saved random start that exposed the three visible clans.",
+                               "ExpectedNo":  [
+                                                  "TEXT.",
+                                                  ":PLURAL",
+                                                  ":SINGULAR",
+                                                  "Might very rarely",
+                                                  "Feud",
+                                                  "Brawls",
+                                                  "Crime"
+                                              ],
+                               "Points":  [
+                                              {
+                                                  "Id":  "clan_1_trait_1",
+                                                  "Label":  "Clan 1 trait 1",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "clan_1_trait_2",
+                                                  "Label":  "Clan 1 trait 2",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "clan_2_trait_1",
+                                                  "Label":  "Clan 2 trait 1",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "clan_2_trait_2",
+                                                  "Label":  "Clan 2 trait 2",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "clan_3_trait_1",
+                                                  "Label":  "Clan 3 trait 1",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "clan_3_trait_2",
+                                                  "Label":  "Clan 3 trait 2",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              }
+                                          ],
+                               "Evidence":  {
+                                                "LastStatus":  "Discovery",
+                                                "LastRunDir":  null
+                                            }
+                           },
+                           {
+                               "Id":  "main-loop-button-hovers",
+                               "Title":  "Main-loop visible button hover sweep",
+                               "Interface":  "Main Loop HUD",
+                               "Category":  "HoverSweep",
+                               "Status":  "Deferred",
+                               "SkipByDefault":  true,
+                               "RequiresFixedSave":  true,
+                               "Setup":  "Load a fixed save that exposes visible command and sidebar buttons.",
+                               "ExpectedNo":  [
+                                                  "TEXT.",
+                                                  ":PLURAL",
+                                                  ":SINGULAR",
+                                                  "Open up the System Menu",
+                                                  "mojibake"
+                                              ],
+                               "Points":  [
+                                              {
+                                                  "Id":  "system_menu",
+                                                  "Label":  "System menu",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  160,
+                                                  "Y":  25,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "world_button",
+                                                  "Label":  "World button",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  190,
+                                                  "Y":  25,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "notes_button",
+                                                  "Label":  "Notes button",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  220,
+                                                  "Y":  25,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "help_button",
+                                                  "Label":  "Help button",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  250,
+                                                  "Y":  25,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "unit_pack_up",
+                                                  "Label":  "Pack up",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "unit_fortify",
+                                                  "Label":  "Fortify",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "unit_move",
+                                                  "Label":  "Move",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "unit_skip",
+                                                  "Label":  "Skip",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              }
+                                          ],
+                               "Evidence":  {
+                                                "LastStatus":  "Partial",
+                                                "LastRunDir":  ".tmp/main-loop-button-hovers-final2"
+                                            }
+                           },
+                           {
+                               "Id":  "main-loop-tile-click-hover-37",
+                               "Title":  "Thirty-seven random tile click and lower-right tooltip checks",
+                               "Interface":  "Main Loop Map",
+                               "Category":  "TileSweep",
+                               "Status":  "Discovery",
+                               "SkipByDefault":  true,
+                               "RequiresFixedSave":  true,
+                               "RequiresSaveBeforeFix":  true,
+                               "Setup":  "Use the saved random start that exposes the target map/tile set.",
+                               "ExpectedNo":  [
+                                                  "TEXT.",
+                                                  ":PLURAL",
+                                                  ":SINGULAR",
+                                                  "mojibake",
+                                                  "raw key"
+                                              ],
+                               "Points":  [
+                                              {
+                                                  "Id":  "tile_01",
+                                                  "Label":  "Tile/object 01",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_02",
+                                                  "Label":  "Tile/object 02",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_03",
+                                                  "Label":  "Tile/object 03",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_04",
+                                                  "Label":  "Tile/object 04",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_05",
+                                                  "Label":  "Tile/object 05",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_06",
+                                                  "Label":  "Tile/object 06",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_07",
+                                                  "Label":  "Tile/object 07",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_08",
+                                                  "Label":  "Tile/object 08",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_09",
+                                                  "Label":  "Tile/object 09",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_10",
+                                                  "Label":  "Tile/object 10",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_11",
+                                                  "Label":  "Tile/object 11",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_12",
+                                                  "Label":  "Tile/object 12",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_13",
+                                                  "Label":  "Tile/object 13",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_14",
+                                                  "Label":  "Tile/object 14",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_15",
+                                                  "Label":  "Tile/object 15",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_16",
+                                                  "Label":  "Tile/object 16",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_17",
+                                                  "Label":  "Tile/object 17",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_18",
+                                                  "Label":  "Tile/object 18",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_19",
+                                                  "Label":  "Tile/object 19",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_20",
+                                                  "Label":  "Tile/object 20",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_21",
+                                                  "Label":  "Tile/object 21",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_22",
+                                                  "Label":  "Tile/object 22",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_23",
+                                                  "Label":  "Tile/object 23",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_24",
+                                                  "Label":  "Tile/object 24",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_25",
+                                                  "Label":  "Tile/object 25",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_26",
+                                                  "Label":  "Tile/object 26",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_27",
+                                                  "Label":  "Tile/object 27",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_28",
+                                                  "Label":  "Tile/object 28",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_29",
+                                                  "Label":  "Tile/object 29",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_30",
+                                                  "Label":  "Tile/object 30",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_31",
+                                                  "Label":  "Tile/object 31",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_32",
+                                                  "Label":  "Tile/object 32",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_33",
+                                                  "Label":  "Tile/object 33",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_34",
+                                                  "Label":  "Tile/object 34",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_35",
+                                                  "Label":  "Tile/object 35",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_36",
+                                                  "Label":  "Tile/object 36",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "tile_37",
+                                                  "Label":  "Tile/object 37",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  null,
+                                                  "Y":  null,
+                                                  "Discover":  true,
+                                                  "WaitMs":  900
+                                              }
+                                          ],
+                               "Evidence":  {
+                                                "LastStatus":  "Discovery",
+                                                "LastRunDir":  null
+                                            }
+                           },
+                           {
+                               "Id":  "load-save-main-loop-tile-tooltip-20260702",
+                               "Title":  "Main-menu load-save hovers, then fixed-save main-loop toolbar and tile tooltip",
+                               "Interface":  "Load Save / Main Loop HUD / Main Loop Map",
+                               "Category":  "HoverSweep",
+                               "Status":  "Completed",
+                               "SkipByDefault":  true,
+                               "RequiresFixedSave":  true,
+                               "SaveName":  "Quicksave.AtGSave",
+                               "Setup":  "Start from the main menu. Hover the main-menu Load Saved Game button if needed, click it, test the load-save screen hovers there, then load Quicksave.AtGSave and test the main-loop toolbar and target tile from that fixed state. Do not open the load-save screen from the in-game pause/main-loop UI for this scenario.",
+                               "ClearBeforeEachPoint":  {
+                                                            "X":  1280,
+                                                            "Y":  720,
+                                                            "WaitMs":  150
+                                                        },
+                               "ExpectedNo":  [
+                                                  "Switch to or from",
+                                                  "Select and view your Religious beliefs",
+                                                  "Track your progress towards winning",
+                                                  "Click to delete all saved game files",
+                                                  "WARNING: This cannot be undone",
+                                                  "This action can be performed by pressing",
+                                                  "on your keyboard",
+                                                  " Ago",
+                                                  "s前",
+                                                  "S前",
+                                                  "next ",
+                                                  " in ",
+                                                  "TEXT.",
+                                                  ":PLURAL",
+                                                  ":SINGULAR",
+                                                  "mojibake"
+                                              ],
+                               "Points":  [
+                                              {
+                                                  "Id":  "main_menu_load_saved_game",
+                                                  "Label":  "Main-menu Load Saved Game hover",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1280,
+                                                  "Y":  770,
+                                                  "WaitMs":  900,
+                                                  "Crop":  {
+                                                               "X":  1120,
+                                                               "Y":  710,
+                                                               "Width":  520,
+                                                               "Height":  110
+                                                           }
+                                              },
+                                              {
+                                                  "Id":  "main_menu_click_load_saved_game",
+                                                  "Label":  "Open Load Saved Game from main menu",
+                                                  "Action":  "Click",
+                                                  "X":  1280,
+                                                  "Y":  770,
+                                                  "WaitMs":  900
+                                              },
+                                              {
+                                                  "Id":  "load_save_row_age",
+                                                  "Label":  "Load-save row age suffix hover",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1285,
+                                                  "Y":  578,
+                                                  "WaitMs":  900,
+                                                  "Crop":  {
+                                                               "X":  1470,
+                                                               "Y":  535,
+                                                               "Width":  480,
+                                                               "Height":  120
+                                                           }
+                                              },
+                                              {
+                                                  "Id":  "load_save_delete_old",
+                                                  "Label":  "Load-save delete old saves hover",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  1425,
+                                                  "Y":  435,
+                                                  "WaitMs":  900,
+                                                  "Crop":  {
+                                                               "X":  1450,
+                                                               "Y":  390,
+                                                               "Width":  560,
+                                                               "Height":  140
+                                                           }
+                                              },
+                                              {
+                                                  "Id":  "load_save_click_fixed_save",
+                                                  "Label":  "Load the fixed save from the main-menu load screen",
+                                                  "Action":  "Click",
+                                                  "X":  1285,
+                                                  "Y":  578,
+                                                  "WaitMs":  5000
+                                              },
+                                              {
+                                                  "Id":  "main_strategic_view",
+                                                  "Label":  "Main-loop strategic view hover",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  198,
+                                                  "Y":  25,
+                                                  "WaitMs":  900,
+                                                  "Crop":  {
+                                                               "X":  140,
+                                                               "Y":  0,
+                                                               "Width":  620,
+                                                               "Height":  100
+                                                           }
+                                              },
+                                              {
+                                                  "Id":  "main_strategic_hotkey_nested",
+                                                  "Label":  "Nested hotkey tooltip inside strategic view tooltip",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  245,
+                                                  "Y":  25,
+                                                  "WaitMs":  900,
+                                                  "SkipClear":  true,
+                                                  "Crop":  {
+                                                               "X":  120,
+                                                               "Y":  35,
+                                                               "Width":  360,
+                                                               "Height":  90
+                                                           }
+                                              },
+                                              {
+                                                  "Id":  "main_note_mode",
+                                                  "Label":  "Main-loop note mode hover",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  235,
+                                                  "Y":  25,
+                                                  "WaitMs":  900,
+                                                  "Crop":  {
+                                                               "X":  180,
+                                                               "Y":  0,
+                                                               "Width":  620,
+                                                               "Height":  100
+                                                           }
+                                              },
+                                              {
+                                                  "Id":  "main_religion",
+                                                  "Label":  "Main-loop religion hover",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  2100,
+                                                  "Y":  25,
+                                                  "WaitMs":  900,
+                                                  "Crop":  {
+                                                               "X":  1560,
+                                                               "Y":  0,
+                                                               "Width":  620,
+                                                               "Height":  150
+                                                           }
+                                              },
+                                              {
+                                                  "Id":  "main_victory_progress",
+                                                  "Label":  "Main-loop victory progress hover",
+                                                  "Action":  "HoverAndCapture",
+                                                  "X":  2140,
+                                                  "Y":  25,
+                                                  "WaitMs":  900,
+                                                  "Crop":  {
+                                                               "X":  1680,
+                                                               "Y":  0,
+                                                               "Width":  560,
+                                                               "Height":  100
+                                                           }
+                                              },
+                                              {
+                                                  "Id":  "tile_stream_hill_grassland",
+                                                  "Label":  "Fixed-save stream/hill/grassland lower-right tooltip",
+                                                  "Action":  "ClickAndCapture",
+                                                  "X":  1284,
+                                                  "Y":  513,
+                                                  "WaitMs":  900,
+                                                  "Crop":  {
+                                                               "X":  2280,
+                                                               "Y":  1240,
+                                                               "Width":  280,
+                                                               "Height":  200
+                                                           }
+                                              }
+                                          ],
+                               "Evidence":  {
+                                                "LastStatus":  "Passed",
+                                                "LastRunDir":  ".tmp/runs/20260702-221952-load-save-main-loop-tile-tooltip-20260702",
+                                                "LastContactSheet":  ".tmp/runs/20260702-221952-load-save-main-loop-tile-tooltip-20260702/contact.png"
+                                            }
+                           }
+                       ],
+    "Incremental":  [
+
+                    ]
 }

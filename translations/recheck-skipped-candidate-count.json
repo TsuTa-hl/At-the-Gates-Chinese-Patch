@@ -1,0 +1,14 @@
+[
+    {
+        "Assembly":  "Common",
+        "Count":  4
+    },
+    {
+        "Assembly":  "Game",
+        "Count":  15
+    },
+    {
+        "Assembly":  "UI",
+        "Count":  3
+    }
+]

@@ -1,14 +1,19 @@
 {
     "schemaVersion":  1,
     "purpose":  "Machine-readable state for exploratory trial localization. This file is for agents and scripts, not human translation review.",
-    "lastUpdated":  "2026-07-02",
+    "lastUpdated":  "2026-07-04",
     "reviewTable":  "docs/review/known-texts.csv",
     "policy":  {
                    "strategy":  "Probe discovered display candidates with fast-fail batch smoke tests, then keep accepted entries in normal rewrite maps.",
                    "missingVisualEvidenceIsSkipReason":  false,
-                   "passScope":  "A trial pass proves build, install, startup, and new-game smoke safety only. It does not prove wording, layout, hover coverage, or all UI paths.",
+                   "passScope":  "A trial pass proves build, install, startup, and the trial runner\u0027s explicit -IncludeNewGame smoke safety only. It does not prove wording, layout, hover coverage, fixed-save loading, or all UI paths.",
                    "csvOriginalRule":  "Do not use docs/review/known-texts.csv Original as an IL rewrite Original. It is normalized for review. Use the exact DLL catalog Value.",
-                   "skipPolicy":  "Keep SkippedByPolicy for technical/internal text, semantic-free grammar glue, date/season logic, external online flows, raw IDs, paths, and static config candidates classified as unsafe."
+                   "skipPolicy":  "Keep SkippedByPolicy for technical/internal text, semantic-free grammar glue, date/season logic, external online flows, raw IDs, paths, parser match tokens, bracket-only parser-like tags, and static config candidates classified as unsafe.",
+                   "forbiddenTrialInputs":  [
+                                                "AtTheGatesCommon.ns_Text.Text.ConvertTags trial entries",
+                                                "bracket-only parser-like tokens such as [Active] or [HILL:S]",
+                                                "entries whose Original or Translation contains U+FFFD replacement characters"
+                                            ]
                },
     "batchSizing":  {
                         "default":  32,
@@ -32,27 +37,27 @@
                         "failureAdjustment":  "If a batch fails, bisect. If more than one bad entry is found in the batch, halve the next batch size for that source class."
                     },
     "reviewSnapshot":  {
-                           "knownTextRows":  7076,
-                           "translatedRows":  5114,
-                           "untranslatedRows":  1962,
-                           "attemptedRows":  5125,
-                           "skippedByPolicyRows":  1951,
-                           "trialCandidateRows":  0,
-                           "rejectedRows":  1,
-                           "notAttemptedRows":  0,
-                           "notes":  "After trial-final-visible-fragments-1: remaining TrialCandidate rows are 0. The final batch had 13 inputs: 11 newly accepted by new-game smoke, 2 were already mapped, and 0 were rejected. Pure raw formatter tags such as [HILL] / [HILL:S] are classified as SkippedByPolicy because they are parser-resolved tags, not human-readable English."
+                           "knownTextRows":  18645,
+                           "translatedRows":  7801,
+                           "untranslatedRows":  10844,
+                           "translatedStateRows":  7850,
+                           "needsTrialRows":  0,
+                           "skippedRows":  10787,
+                           "recheckedSkippedRows":  0,
+                           "rejectedRows":  8,
+                           "notes":  "Known text review includes 8 rejected trial rows after recheck-skipped-alpha/ beta infra checks; 1 unsafe alpha candidate remains excluded."
                        },
     "latestSmoke":  {
-                        "date":  "2026-07-02",
+                        "date":  "2026-07-04",
                         "windowReady":  true,
                         "newGameReady":  true,
                         "newGameReadyMarker":  "Controller - Giving Control to Human",
                         "crashLogUpdated":  false,
                         "crashDialogSeen":  false,
                         "windowsErrorSeen":  false,
-                        "startupWaitSeconds":  4.15,
-                        "newGameSmokeSeconds":  23.03,
-                        "notes":  "Fresh installed build smoke reached the main loop. One immediately prior repeat stayed on the main menu without crash/log update and is treated as click/focus automation noise; rerun passed."
+                        "startupWaitSeconds":  8.72,
+                        "newGameSmokeSeconds":  19.43,
+                        "notes":  "Latest accepted skip-recheck batch is trial-20260704-recheck-skipped-alpha-accepts (7/0, run .tmp\\\\trial-localization\\\\20260704-172228). Prior direct batch with 8 entries failed final smoke in .tmp\\\\trial-localization\\\\20260704-171743 due isolated unsafe Common|0x06000207|386 (` No `)."
                     },
     "knownRejectedSingles":  [
                                  {
@@ -78,6 +83,14 @@
                                      "original":  "   * * *  WARNING  * * *  Right now, setting this to fullscreen can lower the framerate considerably and may cause the game to crash. It is recommended you use borderless window setting (0) instead.",
                                      "reason":  "UserSetting descriptions are serialized into Settings.xml without XML-safe encoding; non-ASCII trial text polluted Settings.xml and caused \u0027Error Loading User Settings\u0027 on later launches.",
                                      "batchId":  "trial-common-concepts-help-13"
+                                 },
+                                 {
+                                     "assembly":  "Common",
+                                     "methodToken":  "0x06000207",
+                                     "ilOffset":  386,
+                                     "original":  " No ",
+                                     "reason":  "Final-accepted smoke failed when this entry was included; re-failing on final smoke isolated one unsafe entry in 2026-07-04 recheck-skipped batch. Not safe for trial localization without replacement route.",
+                                     "batchId":  "trial-20260704-recheck-skipped-alpha-batch"
                                  }
                              ],
     "knownCatalogPrecisionFailures":  [
@@ -1108,16 +1121,445 @@
                         "status":  "accepted-smoke",
                         "runRoot":  ".tmp\\trial-localization\\20260702-105841",
                         "notes":  "Accepted remaining visible display fragments after classifying technical/internal strings and pure formatter tags out of TrialCandidate."
+                    },
+                    {
+                        "id":  "trial-elftools-display-tooltips-1",
+                        "path":  "translations/trial-elftools-display-tooltips-1-batch.json",
+                        "scope":  "elftools-generic-ui-tooltips",
+                        "inputEntries":  8,
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "runRoot":  ".tmp\\trial-localization\\20260703-030001",
+                        "notes":  "Accepted all newly exposed ElfTools display candidates after classifying engine/helper diagnostics and parser/resource strings as SkippedByPolicy."
+                    },
+                    {
+                        "id":  "trial-20260704-nongame-needs-1",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-023804",
+                        "accepted":  26,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "non-game-needs-trial-common-ui",
+                        "inputEntries":  26,
+                        "path":  "translations/trial-20260704-nongame-needs-1-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-1",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-034509",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-needs-trial",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-1-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-2",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-035444",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-needs-trial",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-2-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-3",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-040626",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-needs-trial",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-3-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-4",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-041531",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-needs-trial",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-4-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-5",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-042456",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-needs-trial",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-5-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-6",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-043405",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-static-checks",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-6-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-7",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-045000",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-static-checks",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-7-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-8",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-045822",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-resource-and-status",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-8-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-9",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-050813",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-resource-event-and-diagnostic",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-9-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-10",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-055220",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-10-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-11",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-060222",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-11-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-12",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-061436",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-12-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-13",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-064234",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-13-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-14",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-065235",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-14-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-15",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-070117",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-15-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-16",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-071035",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-16-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-17",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-072408",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-resource-pillage-victory-fragments",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-17-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-18",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-073327",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-resource-pillage-victory-fragments",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-18-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-19",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-074218",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-resource-pillage-victory-fragments",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-19-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-20",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-075753",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-final-needs-trial",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-20-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-21",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-080831",
+                        "accepted":  16,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-final-needs-trial",
+                        "inputEntries":  16,
+                        "path":  "translations/trial-20260704-game-needs-21-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-game-needs-22",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-081729",
+                        "accepted":  1,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "game-exact-catalog-final-needs-trial",
+                        "inputEntries":  1,
+                        "path":  "translations/trial-20260704-game-needs-22-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-retry-skipped-display-1",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-091927",
+                        "accepted":  4,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "retry-skipped-ui-game-victory-and-hotkey-display",
+                        "inputEntries":  4,
+                        "path":  "translations/trial-20260704-retry-skipped-display-1-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-retry-skipped-display-2",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-093326",
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "retry-skipped-victory-categories-mainmenu-warning-and-welcome-display",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-20260704-retry-skipped-display-2-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-retry-skipped-common-desc-1",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-094348",
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "retry-skipped-common-generated-description-glue",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-20260704-retry-skipped-common-desc-1-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-retry-skipped-ui-fragments-1",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-095746",
+                        "accepted":  6,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "retry-skipped-ui-notification-and-caravan-display-fragments",
+                        "inputEntries":  6,
+                        "path":  "translations/trial-20260704-retry-skipped-ui-fragments-1-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-retry-skipped-fragments-2-catalog-mismatch",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-102721",
+                        "accepted":  0,
+                        "rejected":  0,
+                        "status":  "catalog-precision-failed",
+                        "scope":  "normalized-csv-original-lost-leading-and-trailing-spaces",
+                        "inputEntries":  13,
+                        "path":  "translations/trial-20260704-retry-skipped-fragments-2-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-retry-skipped-fragments-2",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-105117",
+                        "accepted":  13,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "retry-skipped-ui-common-property-and-clan-description-fragments",
+                        "inputEntries":  13,
+                        "path":  "translations/trial-20260704-retry-skipped-fragments-2-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-retry-skipped-ui-glue-2",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-110342",
+                        "accepted":  20,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "retry-skipped-ui-command-tooltip-glue-fragments",
+                        "inputEntries":  20,
+                        "path":  "translations/trial-20260704-retry-skipped-ui-glue-2-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-retry-skipped-game-glue-1",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-111049",
+                        "accepted":  8,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "retry-skipped-game-resource-and-requirement-glue-fragments",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-20260704-retry-skipped-game-glue-1-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260704-recheck-skipped-alpha-batch",
+                        "runRoot":  ".tmp\\\\trial-localization\\\\20260704-171743",
+                        "accepted":  0,
+                        "rejected":  1,
+                        "status":  "invalid-smoke",
+                        "scope":  "retry-skipped-player-visible-glue-fragments",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-20260704-recheck-skipped-alpha-batch.json",
+                        "notes":  "Final accepted smoke failed with isolated unsafe `No` candidate. Rejected single: Common|0x06000207|386|ILOffset 386. "
+                    },
+                    {
+                        "id":  "trial-20260704-recheck-skipped-alpha-accepts",
+                        "runRoot":  ".tmp\\\\trial-localization\\\\20260704-172228",
+                        "accepted":  7,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "retry-skipped-player-visible-glue-fragments-accepts",
+                        "inputEntries":  7,
+                        "path":  "translations/trial-20260704-recheck-skipped-alpha-accepts-batch.json",
+                        "notes":  "Baked 7 safe player-visible glue fragments after removing isolated rejected `No` entry."
+                    },
+                    {
+                        "id":  "trial-20260704-recheck-skipped-beta-common-batch",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-182625",
+                        "accepted":  0,
+                        "rejected":  4,
+                        "status":  "invalid-smoke",
+                        "scope":  "retry-skipped-player-visible-glue-fragments-beta-common",
+                        "inputEntries":  4,
+                        "path":  "translations/trial-20260704-recheck-skipped-beta-common-batch.json",
+                        "notes":  "Failed in local test path due infrastructure-only smoke failure: CopyFromScreen handle invalid and new-game marker did not reach main loop."
+                    },
+                    {
+                        "id":  "trial-20260704-recheck-skipped-beta-ui-batch",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-183947",
+                        "accepted":  0,
+                        "rejected":  3,
+                        "status":  "invalid-smoke",
+                        "scope":  "retry-skipped-player-visible-glue-fragments-beta-ui",
+                        "inputEntries":  3,
+                        "path":  "translations/trial-20260704-recheck-skipped-beta-ui-batch.json",
+                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure."
+                    },
+                    {
+                        "id":  "trial-20260704-recheck-skipped-beta-game-1-batch",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-184643",
+                        "accepted":  0,
+                        "rejected":  4,
+                        "status":  "invalid-smoke",
+                        "scope":  "retry-skipped-player-visible-glue-fragments-beta-game",
+                        "inputEntries":  4,
+                        "path":  "translations/trial-20260704-recheck-skipped-beta-game-1-batch.json",
+                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure, no safe accepted entries isolated."
+                    },
+                    {
+                        "id":  "trial-20260704-recheck-skipped-beta-game-2-batch",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-185456",
+                        "accepted":  0,
+                        "rejected":  4,
+                        "status":  "invalid-smoke",
+                        "scope":  "retry-skipped-player-visible-glue-fragments-beta-game",
+                        "inputEntries":  4,
+                        "path":  "translations/trial-20260704-recheck-skipped-beta-game-2-batch.json",
+                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure, no safe accepted entries isolated."
+                    },
+                    {
+                        "id":  "trial-20260704-recheck-skipped-beta-game-3-batch",
+                        "runRoot":  ".tmp\\trial-localization\\20260704-190405",
+                        "accepted":  0,
+                        "rejected":  7,
+                        "status":  "invalid-smoke",
+                        "scope":  "retry-skipped-player-visible-glue-fragments-beta-game",
+                        "inputEntries":  7,
+                        "path":  "translations/trial-20260704-recheck-skipped-beta-game-3-batch.json",
+                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure, no safe accepted entries isolated."
                     }
                 ],
     "nextWork":  {
                      "priority":  [
-                                      "No TrialCandidate rows remain after the 2026-07-02 final visible-fragment trial. Future localization work should start from new screenshots/reproduction steps, new static extraction, or a deliberate retry of a documented SkippedByPolicy class.",
-                                      "Keep SkippedByPolicy for technical/internal text, semantic-free grammar glue, date/season logic, external online flows, raw IDs, paths, pure formatter tags, parser match tokens, and static config candidates classified as unsafe.",
-                                      "Use exact DLL catalog Value, MethodToken, and ILOffset for any new IL rewrite batch; do not use normalized docs/review/known-texts.csv Original as a patch Original."
+                                      "Latest recheck-skipped-alpha batches complete: batch trial-20260704-recheck-skipped-alpha-accepts accepted 7 entries and maps them in rewrite; Common|0x06000207|386 (` No `) remains rejected. ",
+                                      "Beta recheck batches 20260704-182625, 183947, 184643, 185456, and 190405 all failed as invalid-smoke in the same local smoke path; no new accepted entries were isolated. Pause further recheck attempts until screenshot/window/new-game readiness is stable.",
+                                      "Continue rechecking ReviewState=Skipped player-visible text only; keep logic-sensitive/date/faction/city/generated-name/settings and technical/parser/path cases as SkippedByPolicy unless separately justified.",
+                                      "Do not source batch Originals from docs/review/known-texts.csv Original. Use exact DLL catalog Value + MethodToken + ILOffset and keep trial batches bounded by source class."
                                   ],
                      "doNotUseAsBatchSource":  [
-                                                   "docs/review/known-texts.csv Original column"
+                                                   "docs/review/known-texts.csv Original"
                                                ]
-                 }
+                 },
+    "latestSparkAudit":  {
+                             "date":  "2026-07-04",
+                             "source":  "Spark direct-run audit",
+                             "removedUnsafeMapEntries":  48,
+                             "affectedMap":  "translations/hardcoded-common-il-rewrite.json",
+                             "evidenceScenarios":  [
+                                                       "trial-20260704-spark-recheck-pass2",
+                                                       "trial-20260704-spark-recheck-pass3",
+                                                       "trial-20260704-spark-recheck-pass4"
+                                                   ],
+                             "movedUnsafeBatchFiles":  [
+                                                           ".tmp/spark-review-20260704/unsafe-trial-batches/trial-20260704-spark-recheck-pass2-batch.json",
+                                                           ".tmp/spark-review-20260704/unsafe-trial-batches/trial-20260704-spark-recheck-pass3-batch.json",
+                                                           ".tmp/spark-review-20260704/unsafe-trial-batches/trial-20260704-spark-recheck-pass4-batch.json"
+                                                       ],
+                             "reason":  "Spark trial batches targeted ConvertTags parser definitions; some translations contained mojibake. Removed from active rewrite map and added batch/map safety guards.",
+                             "postCleanupSmoke":  {
+                                                      "date":  "2026-07-04",
+                                                      "command":  "tools/Test-GameLaunch.ps1",
+                                                      "includeNewGame":  false,
+                                                      "windowReady":  true,
+                                                      "startupWaitSeconds":  4.62,
+                                                      "processExitedBeforeCleanup":  false,
+                                                      "crashLogUpdated":  false,
+                                                      "crashDialogSeen":  false,
+                                                      "windowsErrorSeen":  false,
+                                                      "screenshot":  ".tmp/game-smoke.png",
+                                                      "note":  "Post-Spark cleanup install smoke reached main menu only; random new game intentionally disabled."
+                                                  }
+                         }
 }

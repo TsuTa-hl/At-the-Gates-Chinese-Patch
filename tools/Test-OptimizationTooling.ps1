@@ -96,7 +96,7 @@ Assert-AtG ($null -ne $repeatRecord) "Catalog did not include duplicate records 
 Assert-AtG ($null -ne $spaceRecord) "Catalog did not include the whitespace-only record for rewrite testing."
 
 $rewriteMap = Join-Path $TempRoot "ui-il-rewrite-map.json"
-$longTranslation = "中文-This replacement is much longer than the original tooltip text"
+$longTranslation = ([string][char]0x4e2d) + ([string][char]0x6587) + "-This replacement is much longer than the original tooltip text"
 @(
     [pscustomobject]@{
         Original = "Click to see what "

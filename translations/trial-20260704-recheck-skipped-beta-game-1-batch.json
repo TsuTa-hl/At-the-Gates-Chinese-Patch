@@ -1,0 +1,42 @@
+[
+{
+    "Assembly":  "Game",
+    "Original":  "A ",
+    "Translation":  "һ��",
+    "MethodToken":  "0x060009ea",
+    "ILOffset":  11,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Game",
+    "Original":  "a ",
+    "Translation":  "һ��",
+    "MethodToken":  "0x06000da7",
+    "ILOffset":  1132,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Game",
+    "Original":  " a ",
+    "Translation":  "һ��",
+    "MethodToken":  "0x06001265",
+    "ILOffset":  91,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Game",
+    "Original":  " a ",
+    "Translation":  "һ��",
+    "MethodToken":  "0x06001243",
+    "ILOffset":  73,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+}
+]

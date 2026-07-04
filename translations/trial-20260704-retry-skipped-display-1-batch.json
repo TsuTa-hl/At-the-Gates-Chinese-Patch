@@ -1,0 +1,54 @@
+[
+  {
+    "Assembly": "UI",
+    "Original": "There are 2 [ways to win|WINNING] in AtG:[BLANK-LINE][*] Conquering the [Capital City|CAPITAL] of one of the two [Roman Empire Factions|ROME].[BLANK-LINE][*] Becoming 'Magister Militum' and taking over [Rome|ROME] from within by sending five [Clans|CLAN] to become Roman Legions.[BLANK-LINE]Note that there are two Roman [Factions|FACTION]: the Eastern and Western halves of the previously-whole-in-better-days Roman Empire, and either one can satisfy your [Victory Conditions|WINNING].[BLANK-LINE]Conquering a Roman capital will require locating it on the map and significant military preparation. Although various setbacks will befall the Romans they start off quite strong and can put up quite a fight.[BLANK-LINE]Becoming Magister Militum is more of an economic victory, as to send a [Clan|CLAN] to [Rome|ROME] not only means sending it off for a year but also providing it with expensive, late-game equipment.",
+    "Translation": "AtG 中有 2 种[获胜方式|WINNING]：[BLANK-LINE][*]征服两个[罗马帝国派系|ROME]之一的[首都|CAPITAL]。[BLANK-LINE][*]成为“Magister Militum”，派出五个[氏族|CLAN]成为罗马军团，从内部接管[罗马|ROME]。[BLANK-LINE]注意，罗马有两个[派系|FACTION]：东部与西部，源自那个昔日一体的帝国；征服任一方都可以满足你的[胜利条件|WINNING]。[BLANK-LINE]征服罗马首都需要先在地图上找到它，并做好充分军事准备。罗马会遭遇各种挫折，但开局实力仍很强，会顽强抵抗。[BLANK-LINE]成为 Magister Militum 更像经济胜利：把[氏族|CLAN]派往[罗马|ROME]不仅会让他们离开一年，还需要为其提供昂贵的后期装备。",
+    "MethodToken": "0x06000487",
+    "ILOffset": 109,
+    "StringToken": "0x7001579b",
+    "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Screen_VictoryProgress",
+    "MethodName": "CreateControls_OnRebuild",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped logic-sensitive but display-only victory-progress explanation.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-display-1"
+  },
+  {
+    "Assembly": "UI",
+    "Original": "[HOTKEY:Ctrl-E] - Encamp Until Spring",
+    "Translation": "[HOTKEY:Ctrl-E] - 扎营至春季",
+    "MethodToken": "0x0600038e",
+    "ILOffset": 358,
+    "StringToken": "0x700130fc",
+    "TypeFullName": "AtTheGatesUI.ns_InGame.SelectionPanel",
+    "MethodName": "AddButton_Encamp",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped hotkey tooltip display text for encamp command.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-display-1"
+  },
+  {
+    "Assembly": "Game",
+    "Original": "It is said that states never truly die, that they simply change into something else. And while this is true, it misses the fact that for many the story is what matters. It mirrors our own fears, of change and of inevitable death. While the tale of the fall of Rome may not perfectly capture historical reality it's still a story that's important because of the meaning we find in it, and how historical narratives can be used both to inspire and control.",
+    "Translation": "据说国家从未真正死亡，只是转化为另一种形态。这固然有道理，却忽略了对许多人而言，故事本身才最重要。它映照出我们对变化与必然死亡的恐惧。罗马陷落的传说未必完全符合历史现实，但它仍因我们赋予的意义而重要，也因为历史叙事既能激励人，也能控制人。",
+    "MethodToken": "0x0600062e",
+    "ILOffset": 1,
+    "StringToken": "0x7000b7ee",
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.MagisterMilitumVictoryType",
+    "MethodName": "get_Description",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped victory-type description; display text, not code string.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-display-1"
+  },
+  {
+    "Assembly": "Game",
+    "Original": "Violence is a pillar of human history. We are fundamentally a tribal species, and the simplest and most direct way tribes communicate is with blood. Study the birth of any human society, going back hundreds of thousands of years, and you will always find violence. And just as civilizations are born in blood they also die in blood. In the end all empires must fall. For there to be life there must also be death.",
+    "Translation": "暴力是人类历史的支柱。我们本质上是部族性物种，部族之间最简单、最直接的交流方式就是流血。研究任何人类社会的诞生，哪怕追溯到数十万年前，你总能看到暴力。文明诞生于鲜血，也死于鲜血。最终，一切帝国都将倾覆。有生必有死。",
+    "MethodToken": "0x06000637",
+    "ILOffset": 1,
+    "StringToken": "0x7000bbc5",
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ImperialFactionConqueredVictoryType",
+    "MethodName": "get_Description",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped victory-type description; display text, not code string.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-display-1"
+  }
+]

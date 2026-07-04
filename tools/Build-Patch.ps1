@@ -135,6 +135,19 @@ if (Test-Path -LiteralPath $gameExeRewriteMap) {
     }
 }
 
+$elfToolsSource = Join-Path $PSScriptRoot "..\source\ElfTools.original.dll"
+$elfToolsRewriteMap = Join-Path $PSScriptRoot "..\translations\hardcoded-elftools-il-rewrite.json"
+if (Test-Path -LiteralPath $elfToolsRewriteMap) {
+    if (!(Test-Path -LiteralPath $elfToolsSource -PathType Leaf)) {
+        throw "ElfTools rewrite map exists but source\ElfTools.original.dll is missing."
+    }
+
+    $elfToolsOutput = Join-Path $PatchRoot "ElfTools.dll"
+    Measure-AtGStage -Summary $timing -Name "elftools-dll" -ScriptBlock {
+        & "$PSScriptRoot\Build-IlRewritePatch.ps1" -SourceDll $elfToolsSource -OutputDll $elfToolsOutput -MapJson $elfToolsRewriteMap
+    }
+}
+
 $configMap = Join-Path $PSScriptRoot "..\translations\config-strings.json"
 if (Test-Path -LiteralPath $configMap) {
     Measure-AtGStage -Summary $timing -Name "config" -ScriptBlock {
@@ -344,6 +357,7 @@ $fontJsonMapPaths = @(
     (Join-Path $PSScriptRoot "..\translations\hardcoded-ui-il-strings.json"),
     (Join-Path $PSScriptRoot "..\translations\hardcoded-common-il-rewrite.json"),
     (Join-Path $PSScriptRoot "..\translations\hardcoded-game-il-rewrite.json"),
+    (Join-Path $PSScriptRoot "..\translations\hardcoded-elftools-il-rewrite.json"),
     (Join-Path $PSScriptRoot "..\translations\hardcoded-ui-offsets.json")
 )
 foreach ($mapPath in $fontJsonMapPaths) {
@@ -444,6 +458,7 @@ foreach ($mapPath in @(
     (Join-Path $PSScriptRoot "..\translations\hardcoded-ui-il-strings.json"),
     (Join-Path $PSScriptRoot "..\translations\hardcoded-common-il-rewrite.json"),
     (Join-Path $PSScriptRoot "..\translations\hardcoded-game-il-rewrite.json"),
+    (Join-Path $PSScriptRoot "..\translations\hardcoded-elftools-il-rewrite.json"),
     (Join-Path $PSScriptRoot "..\translations\hardcoded-ui-offsets.json")
 )) {
     Add-AtGJsonMapTranslationsToBuilder -Builder $largeFontCharsBuilder -MapPath $mapPath
@@ -698,6 +713,7 @@ $buildReport = [ordered]@{
         CommonByteFallback = Get-AtGJsonArrayCount -Path (Join-Path $PSScriptRoot "..\translations\hardcoded-common-strings.json")
         CommonOffsetsEnabled = [bool]$PatchCommonConceptTerms
         GameExeIlRewrite = Get-AtGJsonArrayCount -Path (Join-Path $PSScriptRoot "..\translations\hardcoded-game-il-rewrite.json")
+        ElfToolsIlRewrite = Get-AtGJsonArrayCount -Path (Join-Path $PSScriptRoot "..\translations\hardcoded-elftools-il-rewrite.json")
     }
     Fonts = [ordered]@{
         CacheHit = [bool]$fontCacheHit
@@ -714,6 +730,7 @@ $buildReport = [ordered]@{
         UiDll = Test-Path -LiteralPath (Join-Path $PatchRoot "AtTheGatesUI.dll") -PathType Leaf
         CommonDll = Test-Path -LiteralPath (Join-Path $PatchRoot "AtTheGatesCommon.dll") -PathType Leaf
         GameExe = Test-Path -LiteralPath (Join-Path $PatchRoot "At The Gates.exe") -PathType Leaf
+        ElfToolsDll = Test-Path -LiteralPath (Join-Path $PatchRoot "ElfTools.dll") -PathType Leaf
         ClanCardMetallurgyAlias = Test-Path -LiteralPath $metallurgyAliasPath -PathType Leaf
     }
     Timing = @($timingReportForJson)

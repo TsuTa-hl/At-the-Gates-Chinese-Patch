@@ -96,11 +96,12 @@ field against `Test-Path`.
   the 32-bit XNA texture memory footprint under budget. The font marker is
   `merged-fonts-v5-large-ui-pad0`.
 - The Large UI glyph subset must still include all IL rewrite translations
-  from UI, Common, and Game maps. Omitting Game EXE rewrite glyphs previously
-  caused `Test-FontPatchBudget.ps1` to fail after static-check trial batches.
+  from UI, Common, Game, and ElfTools maps. Omitting Game EXE rewrite glyphs
+  previously caused `Test-FontPatchBudget.ps1` to fail after static-check
+  trial batches.
 - Run `tools\Test-FontPatchBudget.ps1` after font or translation charset
 changes. Current budget: 17 patched SpriteFonts and total patched font bytes
-under 120 MB. Latest verified build: 121,271,586 bytes, below the 120 MiB
+under 120 MB. Latest verified build: 121,273,748 bytes, below the 120 MiB
 binary budget of 125,829,120 bytes. Latest marker:
 `merged-fonts-v5-large-ui-pad0`.
 - Latest Quicksave load regression after the v3 font subset kept the game
@@ -157,6 +158,20 @@ binary budget of 125,829,120 bytes. Latest marker:
 - Do not broadly patch gameplay EXE strings. Every new EXE patch requires
   build, install, smoke, fixed-save load, and the targeted UI regression that
   exposes the string.
+
+## ElfTools IL String Patches
+
+- `tools\Build-Patch.ps1` may patch `source\ElfTools.original.dll` through
+  `translations\hardcoded-elftools-il-rewrite.json` and install the result as
+  `patch\ElfTools.dll`.
+- Keep ElfTools patches narrowly scoped to display-only helper text with
+  `MethodToken + ILOffset + Original` evidence. Current smoke-accepted
+  classes are `ElfTools.Inputs.Hotkey.BuildTooltip`,
+  `ElfTools.Gui.CollapsibleContainer.Init`, `ElfTools.Gui.Dropdown..ctor`, and
+  `ElfTools.Gui.TwoButtonDialog.Initialize`.
+- Do not broadly patch input handling, parser glue, diagnostics, resource IDs,
+  exception text, or other ElfTools engine helpers without an isolated build,
+  install, smoke, and targeted UI regression.
 
 ## Logic-Sensitive Text
 

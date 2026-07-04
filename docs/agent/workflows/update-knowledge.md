@@ -15,6 +15,8 @@ pre-test synchronization phase during the normal repair cycle.
 - `docs/agent/black-box-tests.md`
 - `docs/agent/trial-localization-state.json` if trial localization batches
   were selected, run, accepted, rejected, or deferred.
+- `docs/agent/spark-delegation.md` if the current cycle was run directly by
+  `GPT-5.3-codex-spark` or produced higher-model review items.
 - The workflow files used in the current cycle.
 
 ## Inputs
@@ -85,11 +87,26 @@ pre-test synchronization phase during the normal repair cycle.
 
    The generated review file is `docs\review\known-texts.csv`: a
    spreadsheet-friendly table with source, kind, original, translation, status,
-   whether localization was attempted, attempt status, failure reason, safety,
-   notes, and locators. Do not keep a generated Markdown duplicate.
+   compact review state, compact reason code, safety, notes, and locators.
+   `ReviewState` is one of `Translated`, `NeedsTrial`, `Skipped`,
+   `RecheckedSkipped`, or `Rejected`; `Skipped` means not revisited in the
+   current skip recheck pass, while `RecheckedSkipped` means re-reviewed and
+   intentionally kept out of trial localization. `ReasonCode` is a short
+   category for skipped or rejected rows rather than a long prose failure
+   explanation. This committed review table
+   must use the default
+   non-deduplicated output so repeated DLL `ldstr` occurrences and repeated XML
+   nodes keep their own locators. `Export-KnownTextReview.ps1` rebuilds stable
+   discovery inputs under `docs\review\generated\`; do not rely on `.tmp`
+   files for the human review table. Do not keep a generated Markdown
+   duplicate.
 9. Update `docs\review\project-inventory.md` when files, generated artifacts,
    test evidence policy, or cleanup decisions change.
-10. Keep `AGENTS.md` short. Put operational details in `operations.md`, workflow
+10. If Spark handled part of the work directly, record only durable outcomes:
+   accepted batches, rejected singles, passed incremental scenarios, and
+   higher-model review items. Do not copy long Spark reasoning into knowledge
+   files.
+11. Keep `AGENTS.md` short. Put operational details in `operations.md`, workflow
    steps in `docs/agent/workflows/`, and domain facts in the topic files.
 
 ## Stop Conditions

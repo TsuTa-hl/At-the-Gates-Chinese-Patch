@@ -1,5 +1,7 @@
 .tmp/
 .tools/
+_trial-game/
+Logs/
 
 # Original game resources and extracted backups are not uploaded.
 source/

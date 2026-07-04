@@ -1,8 +1,9 @@
 # Black-Box Tests
 
-This file stores on-demand in-game baselines and UI-specific scenarios. Startup,
-main-menu, and new-game smoke coverage is handled by
-`tools\Test-GameLaunch.ps1`.
+This file stores on-demand in-game baselines and UI-specific scenarios. Startup
+and main-menu smoke coverage is handled by `tools\Test-GameLaunch.ps1`.
+New-game and fixed-save coverage are explicit black-box baselines, not default
+install smoke.
 
 Machine-readable scenarios live in `docs/agent/black-box-scenarios.json`.
 Use that file as the source of truth for repeatable coordinates, evidence
@@ -42,8 +43,8 @@ tooltip/button regions when possible.
 
 Run this baseline when a change affects in-game UI paths beyond smoke, hover
 behavior, fixed saves, layout, or interface-specific text. It is not a global
-gate because `Test-GameLaunch.ps1` already covers startup, main-menu, and a
-basic new-game entry path.
+gate because default install smoke only proves startup and main-menu rendering.
+Use this baseline explicitly when random new-game entry matters.
 
 - From the main menu, click `新游戏`.
 - Select the default tribe.
@@ -61,6 +62,9 @@ memory pressure, random terrain/clan state, notifications, tile hover, or
 main-loop UI that depends on the current game state.
 
 - Start from the main-menu `读取存档` screen.
+- For fixed-save baselines, open `读取存档` from the main menu. Do not use an
+  in-game pause/main-loop load screen unless the scenario explicitly says it is
+  testing that UI variant.
 - Load the current fixed local save, `Quicksave.AtGSave`, unless the Active
   Focus Test specifies another save.
 - Confirm the game reaches the main loop, the process remains alive, and
@@ -71,6 +75,15 @@ main-loop UI that depends on the current game state.
 - Latest passed evidence: `2026-06-29`, refreshed installed build, loaded
   `Quicksave.AtGSave`, screenshot `.tmp\after-load-quicksave-final2.png`,
   no `Crash.AtGLog` timestamp change.
+- Latest passed evidence: `2026-07-02`, installed build loaded
+  `Quicksave.AtGSave` from the main-menu load screen, not from the in-game
+  pause/load UI. Scenario
+  `load-save-main-loop-tile-tooltip-20260702` completed with 3 clicks,
+  8 hovers, 9 screenshots, and contact sheet
+  `.tmp\runs\20260702-221952-load-save-main-loop-tile-tooltip-20260702\contact.png`.
+  Covered main-menu load hover, load-save row age, delete-old-saves hover,
+  top main-loop strategic/note/religion/victory hovers, nested `[HOTKEY:F11]`
+  tooltip, and the fixed stream/hill/grassland lower-right tile description.
 
 ## Completed / Deferred UI Tests By Interface
 
@@ -184,6 +197,14 @@ config, DLL patch, save/load flow, or UI behavior can affect that interface.
   top-left system menu tooltip in English and it was fixed through UI IL
   rewrite. Targeted retest evidence:
   `.tmp\main-loop-system-menu-final3.png`.
+- Latest targeted evidence: `2026-07-02`, main-menu loaded
+  `Quicksave.AtGSave`, scenario
+  `load-save-main-loop-tile-tooltip-20260702`, contact sheet
+  `.tmp\runs\20260702-221952-load-save-main-loop-tile-tooltip-20260702\contact.png`.
+  Strategic view, note mode, religion, victory progress, and nested hotkey
+  tooltip hovers displayed Chinese. The nested `[HOTKEY:F11]` tooltip is
+  supplied by `ElfTools.Inputs.Hotkey.BuildTooltip` and patched through
+  `translations\hardcoded-elftools-il-rewrite.json`.
 - Deferred within this interface: selected unit command buttons were not
   visible in the current `Quicksave.AtGSave` state after selecting the nearby
   map object. Do not mark unit commands completed until a fixed save exposes
@@ -208,6 +229,11 @@ config, DLL patch, save/load flow, or UI behavior can affect that interface.
   another visible distinct tile instead of rerolling indefinitely.
 - Use lower-right tooltip crops instead of repeated full-window screenshots
   once window capture integrity is established.
+- Latest targeted evidence: `2026-07-02`, fixed-save tile
+  `stream/hill/grassland` click in scenario
+  `load-save-main-loop-tile-tooltip-20260702`; lower-right crop showed Chinese
+  terrain/resource text and no visible `TEXT.*`, `next`, or safely
+  replaceable English fragments.
 
 ### Extended Coverage
 

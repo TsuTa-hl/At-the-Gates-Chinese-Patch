@@ -1,0 +1,114 @@
+[
+{
+    "Original":  "This action can be performed by pressing",
+    "Translation":  "按下",
+    "MethodToken":  "0x060003fa",
+    "ILOffset":  45,
+    "StringToken":  "0x700027e7",
+    "TypeFullName":  "ElfTools.Inputs.Hotkey",
+    "MethodName":  "BuildTooltip",
+    "Safety":  "SafeUI",
+    "Note":  "Generic hotkey tooltip shown when hovering [HOTKEY:*] tags inside UI tooltips.",
+    "EvidenceScenario":  "load-save-main-loop-tile-tooltip-20260702"
+},
+{
+    "Original":  "on your keyboard.",
+    "Translation":  "即可执行此操作。",
+    "MethodToken":  "0x060003fa",
+    "ILOffset":  61,
+    "StringToken":  "0x70002839",
+    "TypeFullName":  "ElfTools.Inputs.Hotkey",
+    "MethodName":  "BuildTooltip",
+    "Safety":  "SafeUI",
+    "Note":  "Generic hotkey tooltip shown when hovering [HOTKEY:*] tags inside UI tooltips.",
+    "EvidenceScenario":  "load-save-main-loop-tile-tooltip-20260702"
+},
+{
+    "Original":  "Click to make this panel disappear completely.\n\nTo undo this, click the thin gold bar which replaces the panel.",
+    "Translation":  "点击可完全隐藏此面板。\n\n若要恢复，请点击替代面板的细金条。",
+    "MethodToken":  "0x06000270",
+    "ILOffset":  306,
+    "TypeFullName":  "ElfTools.Interfaces.Layout.CollapsibleContainer",
+    "MethodName":  "Init",
+    "Safety":  "SafeUI",
+    "Note":  "Generic ElfTools collapsible-panel tooltip.",
+    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+},
+{
+    "Original":  "Click to make this panel disappear completely.\n\nTo undo this, click the thin gold bar which replaces the panel.",
+    "Translation":  "点击可完全隐藏此面板。\n\n若要恢复，请点击替代面板的细金条。",
+    "MethodToken":  "0x06000270",
+    "ILOffset":  418,
+    "TypeFullName":  "ElfTools.Interfaces.Layout.CollapsibleContainer",
+    "MethodName":  "Init",
+    "Safety":  "SafeUI",
+    "Note":  "Generic ElfTools collapsible-panel tooltip.",
+    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+},
+{
+    "Original":  "Click to expand this panel and see ",
+    "Translation":  "点击展开此面板以查看",
+    "MethodToken":  "0x06000270",
+    "ILOffset":  492,
+    "TypeFullName":  "ElfTools.Interfaces.Layout.CollapsibleContainer",
+    "MethodName":  "Init",
+    "Safety":  "SafeUI",
+    "Note":  "Generic ElfTools collapsible-panel tooltip prefix.",
+    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+},
+{
+    "Original":  "Click to expand this panel and see ",
+    "Translation":  "点击展开此面板以查看",
+    "MethodToken":  "0x06000270",
+    "ILOffset":  563,
+    "TypeFullName":  "ElfTools.Interfaces.Layout.CollapsibleContainer",
+    "MethodName":  "Init",
+    "Safety":  "SafeUI",
+    "Note":  "Generic ElfTools collapsible-panel tooltip prefix.",
+    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+},
+{
+    "Original":  "Click to minimize this panel.",
+    "Translation":  "点击最小化此面板。",
+    "MethodToken":  "0x06000270",
+    "ILOffset":  633,
+    "TypeFullName":  "ElfTools.Interfaces.Layout.CollapsibleContainer",
+    "MethodName":  "Init",
+    "Safety":  "SafeUI",
+    "Note":  "Generic ElfTools collapsible-panel tooltip.",
+    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+},
+{
+    "Original":  "Click to select...",
+    "Translation":  "点击选择...",
+    "MethodToken":  "0x060006b3",
+    "ILOffset":  242,
+    "TypeFullName":  "ElfTools.UI.Objects.Dropdown",
+    "MethodName":  ".ctor",
+    "Safety":  "SafeUI",
+    "Note":  "Generic ElfTools dropdown tooltip.",
+    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+},
+{
+    "Original":  "Hotkey: [Y]",
+    "Translation":  "快捷键：[Y]",
+    "MethodToken":  "0x060006ce",
+    "ILOffset":  73,
+    "TypeFullName":  "ElfTools.Dialogs.TwoButtonDialog",
+    "MethodName":  "Initialize",
+    "Safety":  "SafeUI",
+    "Note":  "Generic ElfTools two-button dialog hotkey tooltip.",
+    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+},
+{
+    "Original":  "Hotkey: [ESC]",
+    "Translation":  "快捷键：[ESC]",
+    "MethodToken":  "0x060006ce",
+    "ILOffset":  121,
+    "TypeFullName":  "ElfTools.Dialogs.TwoButtonDialog",
+    "MethodName":  "Initialize",
+    "Safety":  "SafeUI",
+    "Note":  "Generic ElfTools two-button dialog hotkey tooltip.",
+    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+}
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "Assembly": "Game",
+    "Original": " and costs ",
+    "Translation": " 且花费 ",
+    "MethodToken": "0x06000590",
+    "ILOffset": 590,
+    "TypeFullName": "AtTheGatesGame.ns_UIControllers.ATGUI",
+    "MethodName": "SeizedImp_CreatePillageButton",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped game UI display glue fragment.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-game-glue-1"
+  },
+  {
+    "Assembly": "Game",
+    "Original": " for switching ",
+    "Translation": " 用于切换 ",
+    "MethodToken": "0x06000b2c",
+    "ILOffset": 1070,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ATGPlayer",
+    "MethodName": "GetTurnsToCreate",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped game generated-description glue fragment.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-game-glue-1"
+  },
+  {
+    "Assembly": "Game",
+    "Original": " from Desire",
+    "Translation": " 来自诉求",
+    "MethodToken": "0x06000da7",
+    "ILOffset": 771,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ATGUnit",
+    "MethodName": "RecalcMood",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped game mood/resource source fragment.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-game-glue-1"
+  },
+  {
+    "Assembly": "Game",
+    "Original": " from Faction",
+    "Translation": " 来自派系",
+    "MethodToken": "0x06000c64",
+    "ILOffset": 1695,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ResourcesMgr",
+    "MethodName": "RecalcPerTurnBase",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped game resource-source fragment.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-game-glue-1"
+  },
+  {
+    "Assembly": "Game",
+    "Original": " from Faction",
+    "Translation": " 来自派系",
+    "MethodToken": "0x06000c64",
+    "ILOffset": 2281,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ResourcesMgr",
+    "MethodName": "RecalcPerTurnBase",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped game resource-source fragment.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-game-glue-1"
+  },
+  {
+    "Assembly": "Game",
+    "Original": " from Pillaging",
+    "Translation": " 来自劫掠",
+    "MethodToken": "0x06000c64",
+    "ILOffset": 1249,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ResourcesMgr",
+    "MethodName": "RecalcPerTurnBase",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped game resource-source fragment.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-game-glue-1"
+  },
+  {
+    "Assembly": "Game",
+    "Original": " from Upgrades",
+    "Translation": " 来自升级",
+    "MethodToken": "0x06001059",
+    "ILOffset": 270,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_MapObjects.ns_Components.CCanFight",
+    "MethodName": "GetMaxPower",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped game power-source fragment.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-game-glue-1"
+  },
+  {
+    "Assembly": "Game",
+    "Original": " or higher",
+    "Translation": " 或更高",
+    "MethodToken": "0x06001252",
+    "ILOffset": 157,
+    "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasRequiredLevelInDiscipline",
+    "MethodName": "PerformCheck",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped game requirement-text fragment.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-game-glue-1"
+  }
+]

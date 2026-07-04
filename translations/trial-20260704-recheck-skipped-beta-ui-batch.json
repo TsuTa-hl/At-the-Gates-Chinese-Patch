@@ -1,0 +1,32 @@
+[
+{
+    "Assembly":  "UI",
+    "Original":  " as ",
+    "Translation":  "��Ϊ",
+    "MethodToken":  "0x06000504",
+    "ILOffset":  84,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "UI",
+    "Original":  " as ",
+    "Translation":  "��Ϊ",
+    "MethodToken":  "0x0600002f",
+    "ILOffset":  3196,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "UI",
+    "Original":  " as ",
+    "Translation":  "��Ϊ",
+    "MethodToken":  "0x0600002f",
+    "ILOffset":  3494,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+}
+]

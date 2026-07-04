@@ -107,7 +107,8 @@ foreach ($suiteName in @("FullRegression", "Incremental")) {
             }
 
             if ($null -ne $waitMs) {
-                Assert-AtGCondition (($waitMs -is [int] -or $waitMs -is [long]) -and [int]$waitMs -ge 0 -and [int]$waitMs -le 3000) "Scenario $id point $pointId WaitMs must be between 0 and 3000."
+                $maxWaitMs = if ($action -like "Hover*") { 3000 } else { 15000 }
+                Assert-AtGCondition (($waitMs -is [int] -or $waitMs -is [long]) -and [int]$waitMs -ge 0 -and [int]$waitMs -le $maxWaitMs) "Scenario $id point $pointId WaitMs must be between 0 and $maxWaitMs."
             }
 
             $crop = Get-AtGPropertyValue -Object $point -Name "Crop"

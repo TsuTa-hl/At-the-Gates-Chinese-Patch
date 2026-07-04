@@ -23,6 +23,14 @@ if ($source -notmatch "NewGameReadyMarker") {
     throw "Smoke-test output must include NewGameReadyMarker evidence."
 }
 
+if ($source -notmatch '\[switch\]\s*\$IncludeNewGame') {
+    throw "Test-GameLaunch.ps1 must expose an explicit -IncludeNewGame switch for optional new-game smoke."
+}
+
+if ($source -notmatch '\$shouldRunNewGame\s*=\s*\[bool\]\$IncludeNewGame\s+-and\s+!\$SkipNewGame') {
+    throw "Test-GameLaunch.ps1 must keep new-game smoke disabled by default and enable it only through -IncludeNewGame."
+}
+
 if ($source -notmatch "PostNewGameReadyDelayMs") {
     throw "Smoke test must keep the game alive briefly after the main-loop marker before screenshot/cleanup."
 }

@@ -512,6 +512,30 @@ $checks = @(
         )
     },
     @{
+        Path = Join-Path $PatchRoot "ElfTools.dll"
+        Strings = @(
+            "This action can be performed by pressing",
+            "on your keyboard."
+        )
+        LdstrEntries = @(
+            @{
+                MethodToken = "0x060003fa"
+                ILOffset = 45
+                Original = "This action can be performed by pressing"
+                TypeFullName = "ElfTools.Inputs.Hotkey"
+                MethodName = "BuildTooltip"
+            },
+            @{
+                MethodToken = "0x060003fa"
+                ILOffset = 61
+                Original = "on your keyboard."
+                TypeFullName = "ElfTools.Inputs.Hotkey"
+                MethodName = "BuildTooltip"
+            }
+        )
+        StandaloneStrings = @()
+    },
+    @{
         Path = Join-Path $PatchRoot "At The Gates.exe"
         MethodName = "PerformCheck"
         Strings = @()

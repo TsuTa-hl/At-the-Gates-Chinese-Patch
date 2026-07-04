@@ -1,0 +1,80 @@
+[
+  {
+    "Assembly": "UI",
+    "Original": " to buy",
+    "Translation": " 购买",
+    "MethodToken": "0x06000573",
+    "ILOffset": 423,
+    "StringToken": "0x70017824",
+    "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Caravan",
+    "MethodName": "BuildResourceButtonTooltip",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped caravan resource-button tooltip fragment; preserve leading space.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-ui-fragments-1"
+  },
+  {
+    "Assembly": "UI",
+    "Original": " as a playable [Faction|FACTION]! You will be able to choose them to play from the main menu in future games.",
+    "Translation": " 成为可游玩的[派系|FACTION]！你以后可以在主菜单中选择他们。",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 4570,
+    "StringToken": "0x70003aa0",
+    "TypeFullName": "AtTheGatesUI.ns_Notifications.Notification",
+    "MethodName": "AppendDetails",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped notification display sentence; preserve leading space and concept tag.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-ui-fragments-1"
+  },
+  {
+    "Assembly": "UI",
+    "Original": " have ",
+    "Translation": " 已 ",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 2692,
+    "StringToken": "0x70002ed8",
+    "TypeFullName": "AtTheGatesUI.ns_Notifications.Notification",
+    "MethodName": "AppendDetails",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped notification grammar fragment; preserve surrounding spaces.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-ui-fragments-1"
+  },
+  {
+    "Assembly": "UI",
+    "Original": " has ",
+    "Translation": " 已 ",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 2875,
+    "StringToken": "0x7000191e",
+    "TypeFullName": "AtTheGatesUI.ns_Notifications.Notification",
+    "MethodName": "AppendDetails",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped notification grammar fragment; preserve surrounding spaces.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-ui-fragments-1"
+  },
+  {
+    "Assembly": "UI",
+    "Original": " has ",
+    "Translation": " 已 ",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 2912,
+    "StringToken": "0x7000191e",
+    "TypeFullName": "AtTheGatesUI.ns_Notifications.Notification",
+    "MethodName": "AppendDetails",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped notification grammar fragment; preserve surrounding spaces.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-ui-fragments-1"
+  },
+  {
+    "Assembly": "UI",
+    "Original": "Happy",
+    "Translation": "高兴",
+    "MethodToken": "0x0600002f",
+    "ILOffset": 2209,
+    "StringToken": "0x700001df",
+    "TypeFullName": "AtTheGatesUI.ns_Notifications.Notification",
+    "MethodName": "AppendDetails",
+    "Safety": "TrialFastFailRetrySkipped",
+    "Note": "Retry skipped notification display mood word.",
+    "EvidenceScenario": "trial-20260704-retry-skipped-ui-fragments-1"
+  }
+]

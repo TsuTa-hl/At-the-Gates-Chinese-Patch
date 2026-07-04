@@ -1,0 +1,72 @@
+[
+{
+    "Assembly":  "Game",
+    "Original":  "in ",
+    "Translation":  "������",
+    "MethodToken":  "0x0600086c",
+    "ILOffset":  172,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Game",
+    "Original":  " in ",
+    "Translation":  "������",
+    "MethodToken":  "0x06000864",
+    "ILOffset":  396,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Game",
+    "Original":  "No ",
+    "Translation":  "��",
+    "MethodToken":  "0x06001308",
+    "ILOffset":  25,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Game",
+    "Original":  " of ",
+    "Translation":  "��",
+    "MethodToken":  "0x06000c74",
+    "ILOffset":  404,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Game",
+    "Original":  " to ",
+    "Translation":  "����",
+    "MethodToken":  "0x06000f21",
+    "ILOffset":  172,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Game",
+    "Original":  " to ",
+    "Translation":  "����",
+    "MethodToken":  "0x06001255",
+    "ILOffset":  205,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+},
+{
+    "Assembly":  "Game",
+    "Original":  " to ",
+    "Translation":  "����",
+    "MethodToken":  "0x0600124f",
+    "ILOffset":  140,
+    "EvidenceScenario":  "recheck-skipped-beta",
+    "Safety":  "",
+    "Note":  "Recheck skipped text reuse; derived from existing translated duplicate."
+}
+]

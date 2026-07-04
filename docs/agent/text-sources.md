@@ -25,6 +25,8 @@ written, not how the Chinese should sound.
   `translations\hardcoded-common-il-rewrite.json`
 - `source\AtTheGatesGame.original.exe` scoped `ldstr` rewrite entries ->
   `translations\hardcoded-game-il-rewrite.json` -> `patch\At The Gates.exe`
+- `source\ElfTools.original.dll` scoped `ldstr` rewrite entries ->
+  `translations\hardcoded-elftools-il-rewrite.json` -> `patch\ElfTools.dll`
 - `source\Content\Config\Primary\ClanTraits.original.xml` ->
   `translations\config-node-strings.json` and
   `translations\config-node-extra-strings.json`
@@ -69,10 +71,42 @@ For DLL strings, export a method-level `ldstr` catalog before byte searching:
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Export-DllLdstrCatalog.ps1 -DllPath .\source\AtTheGatesUI.original.dll -OutputJson .\.tmp\ui-ldstr-catalog.json -OutputCsv .\.tmp\ui-ldstr-catalog.csv
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Export-DllLdstrCatalog.ps1 -DllPath .\source\AtTheGatesCommon.original.dll -OutputJson .\.tmp\common-ldstr-catalog.json -OutputCsv .\.tmp\common-ldstr-catalog.csv
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Export-DllLdstrCatalog.ps1 -DllPath .\source\ElfTools.original.dll -OutputJson .\.tmp\elftools-ldstr-catalog.json -OutputCsv .\.tmp\elftools-ldstr-catalog.csv
 ```
 
 Use the catalog to map screenshot findings to DLL, type, method, token, and
 risk class before adding a patch.
+
+## Known Text Review Export
+
+The human review table is `docs\review\known-texts.csv`. Generate it with:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Export-KnownTextReview.ps1
+```
+
+The exporter must rebuild its discovery inputs when they are missing or stale.
+It writes stable generated discovery caches under `docs\review\generated\`,
+including static config candidates and UI/Common/Game/ElfTools `ldstr`
+catalogs. Do not depend on `.tmp` files for the review table.
+
+The default review table is intentionally not deduplicated. One row represents
+one known source position or one patch-map record. The same English text may
+appear many times with different method tokens, XML nodes, or patch locators,
+and those rows must remain separate for review and future patch selection. Use
+`-AggregateDuplicates` only for an ad-hoc compact view, not for the committed
+review table.
+
+For human review, `ReviewState` replaces the older attempted/status/failure
+columns. Allowed values are `Translated`, `NeedsTrial`, `Skipped`,
+`RecheckedSkipped`, and `Rejected`. Use `Skipped` for skipped rows that have
+not been revisited in the current review pass; use `RecheckedSkipped` for rows
+that were re-reviewed and intentionally kept out of trial localization.
+`ReasonCode` is intentionally coarse:
+`TechnicalInternal`, `LogicSensitive`, `FragmentOrToken`, `OutOfScope`,
+`PatchConflict`, or `RejectedByTest`. Keep detailed evidence and long failure
+explanations in `docs\agent\trial-localization-state.json` or `Notes`, not in
+the main review columns.
 
 ## DLL Patch Rules
 
@@ -84,6 +118,13 @@ risk class before adding a patch.
 - `tools\Build-IlRewritePatch.ps1` builds `tools\AtG.IlRewrite` with the
   repo-local `.tools\dotnet\dotnet.exe`, disables apphost generation, and runs
   `AtG.IlRewrite.dll`. Do not invoke `AtG.IlRewrite.exe`.
+- `ElfTools.dll` can be patched only for scoped display strings with exact
+  `MethodToken + ILOffset + Original` evidence. Current accepted classes are
+  the nested hotkey tooltip in `ElfTools.Inputs.Hotkey.BuildTooltip`, generic
+  collapsible-panel display tooltips in `ElfTools.Gui.CollapsibleContainer`,
+  the dropdown prompt in `ElfTools.Gui.Dropdown`, and dialog hotkey labels in
+  `ElfTools.Gui.TwoButtonDialog`. Do not treat this as permission to
+  bulk-patch input handling, parser glue, diagnostics, or engine UI helpers.
 - Keep `hardcoded-ui-il-strings.json` as the older in-place `#US` heap patch
   fallback. Its encoded translation must fit within the original user-string
   heap entry.
@@ -216,6 +257,19 @@ Knowledge-screen tooltip sources:
 - `AtTheGatesUI.ns_InGame.WorldScreen.CreateButtons` supplies the main-loop
   top-left system menu tooltip `[HOTKEY:Esc] Open up the System Menu...`; patch
   it through `hardcoded-ui-il-rewrite.json`.
+- `ElfTools.Inputs.Hotkey.BuildTooltip` supplies the second-level tooltip that
+  appears when hovering `[HOTKEY:*]` tokens inside another tooltip. Patch the
+  two fragments `This action can be performed by pressing` and
+  `on your keyboard.` through `hardcoded-elftools-il-rewrite.json`; verified
+  text should read like `按下 [F11] 即可执行此操作。`.
+- `ElfTools.Gui.CollapsibleContainer.Init`,
+  `ElfTools.Gui.Dropdown..ctor`, and
+  `ElfTools.Gui.TwoButtonDialog.Initialize` contain generic UI helper
+  tooltips/prompts. The 2026-07-03 ElfTools discovery exported 811 `ldstr`
+  records; only 8 display entries from these helper classes were trialed and
+  accepted by smoke. The remaining 394 review rows were marked
+  `SkippedByPolicy` as engine/helper diagnostics, parser tokens, resource IDs,
+  hotkey labels, or internal exception text.
 - `AtTheGatesUI.ns_InGame.ns_Popups.Screen_Diplomacy.CreateControls_Fixed`
   supplies diplomacy-screen labels and tooltip prose such as relationship
   level, influence, reputation, leverage, alliance, war, emissary, and gift
@@ -263,8 +317,9 @@ for exploratory batches, accepted/rejected counts, rejected single entries,
 catalog precision failures, latest smoke evidence, and next-batch guidance.
 Keep this section limited to stable source-safety rules.
 
-- A trial pass proves build, install, startup, and new-game smoke safety. It
-  does not prove wording, layout, hover coverage, or all UI paths.
+- A trial pass proves build, install, startup, and the trial runner's explicit
+  `-IncludeNewGame` smoke safety. It does not prove wording, layout, hover
+  coverage, fixed-save loading, or all UI paths.
 - Do not use lack of UI screenshots, targeted visual evidence, or targeted
   regression evidence as a reason to mark discovered display text
   `SkippedByPolicy`. Mark those rows `TrialCandidate` and probe them in small
@@ -274,6 +329,11 @@ Keep this section limited to stable source-safety rules.
   formatter tags such as `[HILL]` / `[HILL:S]`, parser match tokens such as
   `AtTheGatesCommon.ns_Text.Text.ConvertTags`, and static config candidates
   explicitly classified as unsafe.
+- Trial batch input is rejected when it targets
+  `AtTheGatesCommon.ns_Text.Text.ConvertTags`, contains bracket-only
+  parser-like tokens, or contains `U+FFFD` replacement characters. Existing
+  manually reviewed exceptions in rewrite maps must stay explicit and should
+  not be expanded by Spark or other mechanical trial passes.
 - Batch files under `translations\trial-*.json` are historical inputs and
   evidence. Keep them until their accepted/rejected state is reflected in both
   `docs/agent/trial-localization-state.json` and

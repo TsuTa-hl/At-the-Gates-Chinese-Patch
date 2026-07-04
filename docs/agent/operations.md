@@ -87,22 +87,29 @@ running, a second smoke invocation must fail immediately rather than launch a
 second game process.
 
 The smoke test waits until the game window appears, then allows a short stable
-render delay before screenshot capture. It then starts a new game through the
-default tribe and normal difficulty path, waits for the main loop, captures a
-second screenshot, and closes the game. `-WaitSeconds` is the maximum startup
-wait, not an unconditional sleep. Use `-SkipNewGame` only when the caller
-explicitly needs the old main-menu-only smoke.
-The new-game wait is also condition-based: it exits early when
-`Logs\Program.AtGLog` reports `Controller - Giving Control to Human`. Do not
-treat `Game World - New Game Complete` as sufficient; that marker can appear
-before the visible main loop is stable. After the main-loop marker, the smoke
-test keeps the game alive briefly through `-PostNewGameReadyDelayMs` before
-capturing and closing. Record `NewGameReadyMarker` and `NewGameSmokeSeconds`
-when comparing smoke-test cost.
+render delay before screenshot capture, then closes the game. Default smoke is
+startup/main-menu only so it does not create or mutate random game state before
+fixed-save UI tests. `-WaitSeconds` is the maximum startup wait, not an
+unconditional sleep.
+Use `-IncludeNewGame` only when the caller explicitly needs a random new-game
+smoke, such as trial fast-fail localization. That optional path clicks through
+the default tribe and normal difficulty, waits for the main loop, captures a
+second screenshot, and closes the game. The new-game wait is condition-based:
+it exits early when `Logs\Program.AtGLog` reports
+`Controller - Giving Control to Human`. Do not treat `Game World - New Game
+Complete` as sufficient; that marker can appear before the visible main loop
+is stable. After the main-loop marker, the smoke test keeps the game alive
+briefly through `-PostNewGameReadyDelayMs` before capturing and closing. Record
+`IncludeNewGame`, `NewGameReadyMarker`, and `NewGameSmokeSeconds` when
+comparing smoke-test cost.
 The result also records `ProcessExitedBeforeCleanup`, `ProcessExitCode`,
 `WindowsErrorSeen`, `WindowsErrorEvents`, and `FailureReason`; use these fields
 to diagnose silent exits that do not show `HE'S DEAD, JIM` and do not update
 `Crash.AtGLog`.
+For manual UI testing, use `Test-GameLaunch.ps1 -KeepRunning` to reuse the
+smoke script's reliable launch, focus, and screenshot setup while leaving the
+game open for subsequent click/hover scripts. Always close the game manually
+when the UI test finishes.
 
 Trial localization batch runner:
 
@@ -111,8 +118,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Invoke-AtGTrialLocal
 ```
 
 The runner appends a candidate batch to normal IL rewrite maps, builds,
-installs, runs the new-game smoke, and bisects a failing batch down to single
-entries. It writes evidence under `.tmp\trial-localization\<timestamp>`.
+installs, runs `Test-GameLaunch.ps1 -IncludeNewGame`, and bisects a failing
+batch down to single entries. It writes evidence under
+`.tmp\trial-localization\<timestamp>`.
 One trial batch command may therefore run several sequential smoke tests when
 the batch fails and needs bisection; this is expected. It must not run smoke
 tests concurrently, and every smoke run must pass through `Test-GameLaunch.ps1`
@@ -269,8 +277,16 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Invoke-AtGBlackBoxSc
 ```
 
 The scenario runner only executes recorded click/hover/capture points. It does
-not launch the game, choose a tribe, save, or load. Perform setup through the
-workflow first, then run the scenario against the already-open state.
+not launch the game, choose a tribe, or save. It may load a fixed save only when
+the scenario explicitly records the main-menu load path as click points. Perform
+setup through the workflow first, then run the scenario against the already-open
+state.
+
+Use scenario-level `ClearBeforeEachPoint` to move the cursor to a safe location
+before each hover, which prevents stale tooltips from contaminating screenshots.
+For nested tooltip checks, such as hovering a `[HOTKEY:*]` token inside an
+already visible tooltip, set `SkipClear: true` on that point so the parent
+tooltip remains open.
 
 Dual-monitor diagnostic screenshot:
 

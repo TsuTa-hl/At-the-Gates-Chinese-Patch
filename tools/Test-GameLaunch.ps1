@@ -2,11 +2,13 @@ param(
     [string]$GamePath,
     [int]$WaitSeconds = 25,
     [string]$ScreenshotPath = "$PSScriptRoot\..\.tmp\game-smoke.png",
+    [switch]$IncludeNewGame,
     [switch]$SkipNewGame,
     [int]$NewGameWaitSeconds = 35,
     [string]$NewGameScreenshotPath = "$PSScriptRoot\..\.tmp\game-smoke-new-game.png",
     [int]$PostNewGameReadyDelayMs = 1500,
-    [string]$SmokeLockName = "Local\AtGChinesePatch.TestGameLaunch"
+    [string]$SmokeLockName = "Local\AtGChinesePatch.TestGameLaunch",
+    [switch]$KeepRunning
 )
 
 $ErrorActionPreference = "Stop"
@@ -74,6 +76,7 @@ $windows = @(Get-AtGProcess | Select-Object Id, ProcessName, MainWindowTitle)
 $crashUpdated = $false
 $crashSummary = ""
 $crashDialogSeen = $false
+$shouldRunNewGame = [bool]$IncludeNewGame -and !$SkipNewGame
 $newGameAttempted = $false
 $newGameClickCount = 0
 $newGameSmokeSeconds = 0
@@ -82,6 +85,7 @@ $newGameReady = $false
 $newGameReadyMarker = ""
 $processExitedBeforeCleanup = $false
 $processExitCode = $null
+$processKeptRunning = $false
 $windowsErrorEvents = @()
 
 if (Test-Path -LiteralPath $crashLog) {
@@ -235,7 +239,9 @@ public static class AtGWindow {
                 $graphics = $null
             }
         }
-        [AtGWindow]::SetWindowPos($handle, [IntPtr]::new(-2), 0, 0, 0, 0, $flags) | Out-Null
+        if (!$KeepRunning) {
+            [AtGWindow]::SetWindowPos($handle, [IntPtr]::new(-2), 0, 0, 0, 0, $flags) | Out-Null
+        }
     }
 
     if (!(Test-Path -LiteralPath $ScreenshotPath)) {
@@ -254,7 +260,7 @@ catch {
 
 Update-AtGCrashStatus
 
-if (!$SkipNewGame -and $windowReady -and !$process.HasExited -and !$crashDialogSeen) {
+if ($shouldRunNewGame -and $windowReady -and !$process.HasExited -and !$crashDialogSeen) {
     $newGameAttempted = $true
     $newGameStopwatch = [System.Diagnostics.Stopwatch]::StartNew()
     $newGameSteps = @(
@@ -334,12 +340,17 @@ catch {
     $processExitedBeforeCleanup = $true
 }
 
-foreach ($atg in @(Get-AtGProcess)) {
-    $null = $atg.CloseMainWindow()
+if ($KeepRunning) {
+    $processKeptRunning = !$processExitedBeforeCleanup
 }
-Start-Sleep -Seconds 5
-foreach ($atg in @(Get-AtGProcess)) {
-    Stop-Process -Id $atg.Id -Force
+else {
+    foreach ($atg in @(Get-AtGProcess)) {
+        $null = $atg.CloseMainWindow()
+    }
+    Start-Sleep -Seconds 5
+    foreach ($atg in @(Get-AtGProcess)) {
+        Stop-Process -Id $atg.Id -Force
+    }
 }
 
 $programTail = ""
@@ -366,7 +377,7 @@ if ($crashDialogSeen) {
 if ($crashUpdated) {
     $failureReasons.Add("Crash.AtGLog was updated.")
 }
-if (!$SkipNewGame -and (!$newGameAttempted -or !$newGameReady)) {
+if ($shouldRunNewGame -and (!$newGameAttempted -or !$newGameReady)) {
     $failureReasons.Add("New-game smoke did not reach the main loop.")
 }
 if ($windowsErrorEvents.Count -gt 0) {
@@ -379,6 +390,8 @@ if ($windowsErrorEvents.Count -gt 0) {
     StartupWaitSeconds = [Math]::Round($launchWait.Elapsed.TotalSeconds, 2)
     ProcessExitedBeforeCleanup = $processExitedBeforeCleanup
     ProcessExitCode = $processExitCode
+    ProcessKeptRunning = $processKeptRunning
+    IncludeNewGame = $shouldRunNewGame
     NewGameAttempted = $newGameAttempted
     NewGameClickCount = $newGameClickCount
     NewGameReady = $newGameReady

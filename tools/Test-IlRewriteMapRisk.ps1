@@ -75,7 +75,8 @@ if ($null -eq $MapPath -or $MapPath.Count -eq 0) {
     $MapPath = @(
         (Join-Path $PSScriptRoot "..\translations\hardcoded-ui-il-rewrite.json"),
         (Join-Path $PSScriptRoot "..\translations\hardcoded-common-il-rewrite.json"),
-        (Join-Path $PSScriptRoot "..\translations\hardcoded-game-il-rewrite.json")
+        (Join-Path $PSScriptRoot "..\translations\hardcoded-game-il-rewrite.json"),
+        (Join-Path $PSScriptRoot "..\translations\hardcoded-elftools-il-rewrite.json")
     )
 }
 
@@ -104,9 +105,12 @@ foreach ($path in $MapPath) {
         $translation = Get-AtGPropertyValue -Object $item -Name "Translation"
         $methodToken = [string](Get-AtGPropertyValue -Object $item -Name "MethodToken")
         $ilOffset = Get-AtGPropertyValue -Object $item -Name "ILOffset"
+        $typeFullName = [string](Get-AtGPropertyValue -Object $item -Name "TypeFullName")
+        $methodName = [string](Get-AtGPropertyValue -Object $item -Name "MethodName")
         $safety = [string](Get-AtGPropertyValue -Object $item -Name "Safety")
         $note = [string](Get-AtGPropertyValue -Object $item -Name "Note")
         $evidenceScenario = [string](Get-AtGPropertyValue -Object $item -Name "EvidenceScenario")
+        $replacementChar = [string][char]0xfffd
 
         if (!$hasOriginalProperty) {
             $failures.Add("$($path)[$i] is missing Original.") | Out-Null
@@ -116,6 +120,15 @@ foreach ($path in $MapPath) {
         }
         if ($null -eq $ilOffset) {
             $failures.Add("$($path)[$i] is missing ILOffset.") | Out-Null
+        }
+        if ($original.Contains($replacementChar) -or ([string]$translation).Contains($replacementChar)) {
+            $failures.Add("$($path)[$i] contains Unicode replacement characters, indicating mojibake or lossy decoding.") | Out-Null
+        }
+        if ($safety -like "TrialFastFail*" -and $typeFullName -eq "AtTheGatesCommon.ns_Text.Text" -and $methodName -eq "ConvertTags") {
+            $failures.Add("$($path)[$i] trial entry '$original' targets ConvertTags parser definitions.") | Out-Null
+        }
+        if ($safety -like "TrialFastFail*" -and $original -match '^\[[A-Za-z][A-Za-z0-9 _\-\|:]*\]$') {
+            $failures.Add("$($path)[$i] trial entry '$original' is a bracket-only parser-like token.") | Out-Null
         }
 
         $isShort = ($null -ne $original -and $original.Length -le 5)
