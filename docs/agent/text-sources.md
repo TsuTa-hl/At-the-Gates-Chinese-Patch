@@ -27,11 +27,16 @@ written, not how the Chinese should sound.
   `translations\hardcoded-game-il-rewrite.json` -> `patch\At The Gates.exe`
 - `source\ElfTools.original.dll` scoped `ldstr` rewrite entries ->
   `translations\hardcoded-elftools-il-rewrite.json` -> `patch\ElfTools.dll`
+- Final display-only runtime templates and concept display text ->
+  `translations\runtime-display-strings.json` ->
+  `patch\Content\Text\AtG.RuntimeText.tsv`
 - `source\Content\Config\Primary\ClanTraits.original.xml` ->
   `translations\config-node-strings.json` and
   `translations\config-node-extra-strings.json`
 - `source\Content\Config\Primary\Techs.original.xml` ->
   `translations\config-node-extra-strings.json`
+- `source\Content\Config\OnMap\Structures.original.xml` ->
+  `translations\config-node-onmap-strings.json`
 - `source\Content\Config\Primary\FactionTraits.original.xml` and
   `source\Content\Config\Primary\Factions.original.xml` are export-and-review
   sources. Do not bulk-replace them by default.
@@ -48,8 +53,12 @@ written, not how the Chinese should sound.
   - `TEXT.Name.Profession.*:PLURAL`
   - `TEXT.Name.Discipline.*:SINGULAR`
   - `TEXT.Name.Discipline.*:PLURAL`
+  - `TEXT.Name.Structure.*:SINGULAR`
+  - `TEXT.Name.Structure.*:PLURAL`
   - `TEXT.Name.Deposit.*:SINGULAR`
   - `TEXT.Name.Deposit.*:PLURAL`
+  - `TEXT.Name.Terrain.*:SINGULAR`
+  - `TEXT.Name.Terrain.*:PLURAL`
 
 ## Static Discovery
 
@@ -60,7 +69,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Export-StaticTextCan
 ```
 
 Only auto-patch strings classified as `SafeDisplay` with stable `ID`, `XPath`,
-or `Index` metadata. Current static-candidate status:
+or `Index` metadata. The static exporter scans `source\Content\Config`
+recursively and should use the nearest XML element with a direct `ID` child as
+the candidate container. This is required for files such as
+`Content\Config\OnMap\Structures.xml`, where visible `structure/description`
+text sits below category wrappers. Current static-candidate status:
 
 - `ClanTraits.xml` `SafeDisplay` entries are covered.
 - Remaining candidates are mostly `Factions.original.xml` `ManualOnly` faction
@@ -74,35 +87,61 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Export-DllLdstrCatal
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Export-DllLdstrCatalog.ps1 -DllPath .\source\ElfTools.original.dll -OutputJson .\.tmp\elftools-ldstr-catalog.json -OutputCsv .\.tmp\elftools-ldstr-catalog.csv
 ```
 
-Use the catalog to map screenshot findings to DLL, type, method, token, and
-risk class before adding a patch.
+After the required SQLite catalog match step, use the generated DLL catalog to map
+screenshot findings to DLL, type, method, token, and risk class before adding a
+patch.
 
 ## Known Text Review Export
 
-The human review table is `docs\review\known-texts.csv`. Generate it with:
+The generated catalog state store is ignored
+`.cache\atg-catalog.sqlite`. It preserves every `SourceOccurrence`, groups
+normalized text under `SemanticGroup`, and records `TranslationBinding` and
+`Evidence` separately. Do not use Markdown or CSV as the mutable primary state
+for new catalog tooling.
+
+Query the primary store through the PowerShell 5.1-compatible CLI wrapper:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Invoke-AtGPatchCli.ps1 -Command catalog -CatalogAction search -CatalogText '<visible text>' -CatalogLimit 20
+```
+
+Use `-CatalogSource '<source fragment>'` to narrow a known assembly or file.
+The workflow/agent context view is `docs\review\known-texts.md`; the human
+spreadsheet view is `docs\review\known-texts.csv`. Regenerate the database and
+both views with:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Export-KnownTextReview.ps1
 ```
 
-The exporter must rebuild its discovery inputs when they are missing or stale.
-It writes stable generated discovery caches under `docs\review\generated\`,
+The exporter prepares stable discovery caches under `docs\review\generated\`,
 including static config candidates and UI/Common/Game/ElfTools `ldstr`
-catalogs. Do not depend on `.tmp` files for the review table.
+catalogs, imports all non-deduplicated occurrences into SQLite, then emits the
+Markdown and CSV views. Do not depend on `.tmp` files for the committed review
+outputs, and do not treat either generated view as mutable catalog state.
 
-The default review table is intentionally not deduplicated. One row represents
-one known source position or one patch-map record. The same English text may
-appear many times with different method tokens, XML nodes, or patch locators,
-and those rows must remain separate for review and future patch selection. Use
-`-AggregateDuplicates` only for an ad-hoc compact view, not for the committed
-review table.
+When a screenshot exposes English or a raw key, every workflow must first query
+SQLite through `Invoke-AtGPatchCli.ps1` before direct source searches or patch
+edits. Use `known-texts.md` afterward for surrounding source context and group
+inspection. If the match points at a DLL source, use the exact generated
+`ldstr` catalog value from
+`docs\review\generated\*catalog*` for patching. Do not use normalized
+`Original` text from `known-texts.md` or `known-texts.csv` as an IL rewrite
+operand.
 
-For human review, `ReviewState` replaces the older attempted/status/failure
-columns. Allowed values are `Translated`, `NeedsTrial`, `Skipped`,
-`RecheckedSkipped`, and `Rejected`. Use `Skipped` for skipped rows that have
-not been revisited in the current review pass; use `RecheckedSkipped` for rows
-that were re-reviewed and intentionally kept out of trial localization.
-`ReasonCode` is intentionally coarse:
+The default review outputs are intentionally not deduplicated. One row
+represents one known source position or one patch-map record. The same English
+text may appear many times with different method tokens, XML nodes, or patch
+locators, and those rows must remain separate for review and future patch
+selection. Use `-AggregateDuplicates` only for an ad-hoc compact view, not for
+the committed review files.
+
+For review, `ReviewState` replaces the older attempted/status/failure columns.
+Allowed values are `Translated`, `NeedsTrial`, `Skipped`, `RecheckedSkipped`,
+and `Rejected`. Use `Skipped` for skipped rows that have not been revisited in
+the current review pass; use `RecheckedSkipped` for rows that were re-reviewed
+and intentionally kept out of trial localization. `ReasonCode` is intentionally
+coarse:
 `TechnicalInternal`, `LogicSensitive`, `FragmentOrToken`, `OutOfScope`,
 `PatchConflict`, or `RejectedByTest`. Keep detailed evidence and long failure
 explanations in `docs\agent\trial-localization-state.json` or `Notes`, not in
@@ -115,6 +154,22 @@ the main review columns.
   instruction operand by `MethodToken + ILOffset + Original`, so translations
   do not need equal-length padding and do not need to fit the original `#US`
   heap entry.
+- Rich tooltip links use `[display text|CONCEPT-KEY]`. Translate only the
+  display text. The key must be registered by
+  `AtTheGatesCommon.ns_UI.Concepts`; validate all rewritten maps with
+  `tools\Test-ConceptLinkTargets.ps1` before building. A translated key that
+  is not registered renders as raw markup or raises an `invalid CONCEPT` error
+  instead of opening the next tooltip.
+- Preserve raw runtime tags such as `[SETTLEMENT]`, `[FOOD]`,
+  `[HUNTER:S]`, `[COLOR:*]`, `[FONT:*]`, `[HOTKEY:*]`, and `[BLANK-LINE]`.
+  `tools\Test-RichTextTagPreservation.ps1` protects their structure. The
+  shipped `[Upgrades|UPGRADES]` legacy alias must be written as
+  `[升级|UPGRADE]`; `UPGRADES` is not a registered key. `RESPECT` and
+  `RELATIONS` have no registered concepts, so render those two UI labels as
+  ordinary Chinese instead of fabricated links.
+- Do not trial-patch `AtTheGatesCommon.ns_Text.Text.ConvertTags`. The only
+  reviewed display exception is its `[Ennoble]` alias, which must resolve as
+  `[册封|NOBLE]` rather than a bare parser token.
 - `tools\Build-IlRewritePatch.ps1` builds `tools\AtG.IlRewrite` with the
   repo-local `.tools\dotnet\dotnet.exe`, disables apphost generation, and runs
   `AtG.IlRewrite.dll`. Do not invoke `AtG.IlRewrite.exe`.
@@ -179,6 +234,22 @@ include:
   strings for labels, confirmation buttons, and save/load failure messages.
   Leave technical fragments such as version/date strings, save names, paths,
   and `MAP_SIZE_` identifiers untouched.
+- `AtTheGatesUI.ns_InGame.SelectionPanel.AddButton_Pack` supplies the selected
+  settlement/unit `Pack Up` command tooltip. Patch article and profession
+  fragments here through exact UI IL rewrite entries; Chinese normally drops
+  English articles such as `a` and should keep runtime tags like
+  `[Profession|PROFESSION]`.
+- `AtTheGatesUI.ns_InGame.SelectionPanel.AddLabel_Moves` supplies the selected
+  unit/settlement movement tooltip. `TEXT.Name.Terrain.*:SINGULAR/PLURAL`
+  aliases must exist because fragments such as `[MARSH:S]` resolve through
+  terrain text keys.
+- `AtTheGatesUI.ns_InGame.SelectionPanel.AddButton_SkipTurn` supplies selected
+  unit/settlement skip-command tooltips. Keep `[SETTLEMENT]` as a runtime token
+  instead of rewriting it to `[定居点|SETTLEMENT]`.
+- `AtTheGatesGame.ns_GameCode.ResourcesMgr.RecalcPerTurnBase` supplies resource
+  tooltip stockpile/production/consumption lines. A scoped `s` suffix after
+  localized consumer names should translate to an empty string because Chinese
+  has no plural suffix.
 
 Clan-card tooltip labels and concept fragments use Common display patches.
 Prefer `hardcoded-common-il-rewrite.json` for scoped strings and
@@ -223,12 +294,25 @@ Knowledge-screen tooltip sources:
   `Weight_BasicCondition.ToString` contain condition display fragments.
   Several originals include trailing spaces even when the review CSV hides
   them; use the DLL catalog `Value` exactly.
+- `AtTheGatesCommon.ns_Text.Text.BuildCommaSeparatedListOfStrings` and
+  `BuildCommaSeparatedListOfNames` provide display-only list conjunctions used
+  by knowledge-screen prerequisites. Patch exact ` and ` / ` or ` entries by
+  token and offset; do not treat this as permission to localize parser,
+  formatter, or diagnostic text.
 - `AtTheGatesCommon.ns_UI.ns_Tooltips.ProfessionTooltip.BuildTooltip` provides
   profession status labels such as `Cannot ` and ` Right Now`.
   It also contains method-scoped profession-tooltip help fragments such as
   portrait, description, structures, upgrades, training cost, and training-time
   explanatory text. Patch these through `hardcoded-common-il-rewrite.json`
   when exact catalog evidence exists.
+- Large knowledge-screen profession detail panels can use game EXE static
+  checks rather than Common tooltip code for status lines. `Check_CanEverResearch`
+  assembles `Cannot ` + `[Study|STUDY]` + `.`, and
+  `Check_DoesntAlreadyHaveTech` assembles `Already ` + `[Learned|LEARN]` + `.`.
+  Patch these only through `hardcoded-game-il-rewrite.json` with exact
+  `MethodToken + ILOffset + Original` evidence; do not retranslate the
+  `[Study|STUDY]` or `[Learned|LEARN]` concept display tags when they are
+  already localized.
 - `AtTheGatesCommon.ns_UI.Concepts` `LEARN` display strings are safe only when
   patched as display tags (`[Learn|LEARN]`, `[Learning|LEARN]`,
   `[Learned|LEARN]`) while leaving the `LEARN` identifier unchanged.
@@ -275,6 +359,18 @@ Knowledge-screen tooltip sources:
   level, influence, reputation, leverage, alliance, war, emissary, and gift
   actions. Patch these through `hardcoded-ui-il-rewrite.json` by exact
   `MethodToken + ILOffset + Original`.
+- `AtTheGatesUI.ns_InGame.ns_Popups.ClanListEntry.BuildPanel_TitleRowContents`
+  supplies clan-list header labels and their first-level header tooltips. The
+  currently tracked header points are clan name, portrait, profession,
+  discipline/level, families, supply, damage, upgrades, mood, command, and
+  distance. Patch these through `hardcoded-ui-il-rewrite.json` by exact
+  `MethodToken + ILOffset + Original`.
+
+Selected map-object and structure descriptions:
+
+- The selected settlement information panel uses
+  `Content\Config\OnMap\Structures.xml` (`STRUCTURE_SETTLEMENT`) and is patched
+  through `translations\config-node-onmap-strings.json`.
 
 Battle preview and combat result text:
 
@@ -334,6 +430,14 @@ Keep this section limited to stable source-safety rules.
   parser-like tokens, or contains `U+FFFD` replacement characters. Existing
   manually reviewed exceptions in rewrite maps must stay explicit and should
   not be expanded by Spark or other mechanical trial passes.
+- Trial batch input is also rejected for
+  `AtTheGatesCommon.ns_GlobalSystems.UserSetting_*` descriptions/comments and
+  `AtTheGatesGame.DebugConsoleNS.DebugConsole` command/help text. The former
+  can pollute `Settings.xml`; the latter is internal tooling text, not normal
+  player-facing UI.
+- Rewrite maps must contain only baseline entries or entries accepted by the
+  trial runner and recorded in `trial-localization-state.json`. Do not keep
+  rejected, invalid-smoke, or manually copied batch leftovers in normal maps.
 - Batch files under `translations\trial-*.json` are historical inputs and
   evidence. Keep them until their accepted/rejected state is reflected in both
   `docs/agent/trial-localization-state.json` and

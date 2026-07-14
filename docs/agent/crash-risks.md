@@ -40,6 +40,13 @@ terms, faction names, dates, or game launch behavior.
   Restore the setting comment to ASCII and keep all `UserSetting_*`
   descriptions out of trial localization unless a separate XML-safe settings
   serialization fix exists.
+- On 2026-07-05, a Spark recheck left additional `UserSetting_*` trial entries
+  in the normal Common rewrite map. The installed build polluted
+  `Settings\Settings.xml` comment lines 108, 150, 170, 201, and 482; smoke tests
+  showed `Error Loading User Settings` until those comments were restored to
+  ASCII. `tools\Test-GameLaunch.ps1` now reports `SettingsErrorSeen`; any true
+  value is a smoke failure and must be handled before evaluating unrelated text
+  candidates.
 
 ## Launch Working Directory
 
@@ -77,36 +84,59 @@ field against `Test-Path`.
 
 ## Fonts and Icons
 
-- Fonts must be merged fonts that preserve original SpriteFont glyphs and icon
-  glyphs, then append Chinese glyphs.
-- Install only generated fonts with
-  `patch\Content\Images\Interface\Components\Fonts\.atg-merged-fonts`.
-- Old Chinese-only fonts caused resource icons, buttons, and trait icons to
-  become letters or squares.
-- Generating the full Chinese glyph set into all 38 SpriteFonts caused a
-  32-bit XNA `System.OutOfMemoryException` during new-game map generation,
-  while loading textures for generated units/boats.
-- A later save-load OOM was observed in
-  `AtTheGatesGame.ns_Map.ATGTile.RefreshVisibilityCost()` while loading map
-  data. Treat it as the same 32-bit memory-pressure class unless new evidence
-  points elsewhere.
-- `tools\Build-Patch.ps1` must only override the runtime-referenced font
-  subset currently used by the patch. Large UI fonts use a smaller UI-display
-  glyph subset instead of the full Chinese corpus and use zero padding to keep
-  the 32-bit XNA texture memory footprint under budget. The font marker is
-  `merged-fonts-v5-large-ui-pad0`.
-- The Large UI glyph subset must still include all IL rewrite translations
-  from UI, Common, Game, and ElfTools maps. Omitting Game EXE rewrite glyphs
-  previously caused `Test-FontPatchBudget.ps1` to fail after static-check
-  trial batches.
-- Run `tools\Test-FontPatchBudget.ps1` after font or translation charset
-changes. Current budget: 17 patched SpriteFonts and total patched font bytes
-under 120 MB. Latest verified build: 121,273,748 bytes, below the 120 MiB
-binary budget of 125,829,120 bytes. Latest marker:
-`merged-fonts-v5-large-ui-pad0`.
-- Latest Quicksave load regression after the v3 font subset kept the game
-  alive and did not update `Crash.AtGLog`; keep fixed-save load testing in
-  black-box cycles that touch fonts or large text corpora.
+- The default renderer mode is now `DynamicCjk`. It keeps the game's original
+  SpriteFonts for Latin text, numbers, and private-use icon glyphs, and routes
+  CJK glyphs through `AtG.RuntimeText.dll` and two bundled OFL Noto Sans SC
+  font files under `patch\Content\Fonts`.
+- A `DynamicCjk` build must contain `patch\AtG.RuntimeText.dll`, the two
+  bundled font files, and zero generated merged-font XNB files. It does not use
+  `.atg-merged-fonts`; that marker belongs only to the rollback renderer.
+- The shared runtime CJK atlas is limited to eight 1024x1024 RGBA pages, or
+  32 MiB. When a glyph cannot be allocated or rendered, RuntimeText records a
+  diagnostic/fallback event instead of sending that CJK character to
+  `SpriteFont.GetIndexForCharacter` and crashing on a missing XNB glyph.
+- The 2026-07-14 verified `DynamicCjk` build bundles 33,443,913 bytes of font
+  files, redirects 145 runtime calls, and generates no Chinese SpriteFont XNB
+  files. Run `tools\Test-FontPatchBudget.ps1` and
+  `tools\Test-RuntimeBuildReport.ps1` after renderer, font, or translation
+  changes.
+- `MergedFonts` remains a rollback-only mode for one compatibility cycle. In
+  that mode only, install fonts carrying `.atg-merged-fonts`; preserve original
+  icon glyphs and use the 15 Segoe UI subset build. Never restore the older
+  38-font full-corpus build, which caused 32-bit XNA memory exhaustion.
+- The rollback subsets must still cover all IL rewrite text,
+  `TEXT.Description.*`, and config-node `Nodes.Value` strings. Earlier subset
+  omissions crashed on glyphs such as `肃` and `哈`; this is one reason
+  `DynamicCjk` is now the default.
+- Run `tools\Test-FontReferences.ps1` after changing font references or either
+  renderer path. Latin/icon rendering must continue to use the original game
+  SpriteFonts so resource and trait icons do not become letters or squares.
+
+## In-Game Reload Memory Lifecycle
+
+- The 32-bit game previously threw `System.OutOfMemoryException` while loading
+  a save from an already running main loop. Observed stacks included
+  `MapObjectContainer.NEW`, `ATGTile.LoadTerrainLevelData`, and
+  `SpriteSheet.LoadSprite`; these are memory-pressure symptoms rather than
+  proof that the failing allocation itself owns the leak.
+- `tools\Build-GameLoadMemoryPatch.ps1` must keep the generated game EXE Large
+  Address Aware. Before reconstructing a loaded world, the lifecycle patch
+  disposes the previous world SpriteBatch, clears known static world roots,
+  and performs a forced collection at the verified load boundary.
+- `ElfTools.Graphics.IdSpriteBatch.Dispose(bool)` may dispose its owned index
+  buffer, but must not dispose the shared `_defaultEffect`. Disposing that
+  shared effect breaks later SpriteBatch instances and is guarded by
+  `tools\Test-GameLoadMemoryPatch.ps1` and the .NET patch tests.
+- Final patched Game/ElfTools outputs can remain memory-mapped briefly after
+  verification. Use `Copy-AtGFileIfChanged` from `tools\AtGFileOps.ps1`; do
+  not replace its bounded retry with a raw `Copy-Item`.
+- Latest regression evidence: on 2026-07-14 the fixed save
+  `v1.4.1   World [BVT-LCL]   游戏开始.AtGSave` loaded from the main menu and
+  then reloaded five times through the in-game pause menu in one process.
+  `Crash.AtGLog` did not change, handle count returned to 703, and private
+  bytes stabilized near 1.39 GiB after the first reload instead of increasing
+  monotonically. Evidence is under
+  `.tmp\runs\20260714-load-reload-memory-lifecycle-v4`.
 
 ## Common DLL and Concept Terms
 

@@ -1,5 +1,53 @@
 [
 {
+    "Original":  "Cannot ",
+    "Translation":  "无法",
+    "MethodToken":  "0x0600122f",
+    "ILOffset":  39,
+    "StringToken":  "0x70018220",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_CanEverResearch",
+    "MethodName":  "PerformCheck",
+    "Safety":  "TooltipFragment",
+    "Note":  "Knowledge detail panel research status prefix; combines with localized [Study|STUDY].",
+    "EvidenceScenario":  "knowledge-screen-hunter-detail-panel"
+},
+{
+    "Original":  ".",
+    "Translation":  "。",
+    "MethodToken":  "0x0600122f",
+    "ILOffset":  49,
+    "StringToken":  "0x70000404",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_CanEverResearch",
+    "MethodName":  "PerformCheck",
+    "Safety":  "TooltipFragment",
+    "Note":  "Knowledge detail panel research status punctuation for Cannot + [Study|STUDY].",
+    "EvidenceScenario":  "knowledge-screen-hunter-detail-panel"
+},
+{
+    "Original":  "Already ",
+    "Translation":  "",
+    "MethodToken":  "0x06001235",
+    "ILOffset":  50,
+    "StringToken":  "0x700182c1",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_DoesntAlreadyHaveTech",
+    "MethodName":  "PerformCheck",
+    "Safety":  "TooltipFragment",
+    "Note":  "Knowledge detail panel learned status prefix; localized [Learned|LEARN] already carries the full Chinese phrase.",
+    "EvidenceScenario":  "knowledge-screen-hunter-detail-panel"
+},
+{
+    "Original":  ".",
+    "Translation":  "。",
+    "MethodToken":  "0x06001235",
+    "ILOffset":  60,
+    "StringToken":  "0x70000404",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_DoesntAlreadyHaveTech",
+    "MethodName":  "PerformCheck",
+    "Safety":  "TooltipFragment",
+    "Note":  "Knowledge detail panel learned status punctuation for Already + [Learned|LEARN].",
+    "EvidenceScenario":  "knowledge-screen-hunter-detail-panel"
+},
+{
     "Original":  "You lack sufficient ",
     "Translation":  "缺少足够的",
     "MethodToken":  "0x060013e5",
@@ -292,6 +340,18 @@
     "Safety":  "TooltipFragment",
     "Note":  "Main-loop resource tooltip base production fragment.",
     "EvidenceScenario":  "full-regression-main-loop-button-hovers"
+},
+{
+    "Original":  "s",
+    "Translation":  "",
+    "MethodToken":  "0x06000c64",
+    "ILOffset":  2090,
+    "StringToken":  "0x7000abb9",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ResourcesMgr",
+    "MethodName":  "RecalcPerTurnBase",
+    "Safety":  "TooltipFragment",
+    "Note":  "Suppress English plural suffix after localized resource consumer name in Food/resource tooltip.",
+    "EvidenceScenario":  "main-loop-food-tooltip"
 },
 {
     "Original":  "[ ~A ]     Exit Art Mode",
@@ -1186,7 +1246,7 @@
 },
 {
     "Original":  ":S] in the [SETTLEMENT] (",
-    "Translation":  ":S]在[定居点|SETTLEMENT]中（",
+    "Translation":  ":S]在[SETTLEMENT]中（",
     "MethodToken":  "0x0600133b",
     "ILOffset":  266,
     "TypeFullName":  "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_HasClansToBecomeMagisterMilitum",

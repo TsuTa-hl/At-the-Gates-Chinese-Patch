@@ -1,0 +1,12 @@
+{
+  "Content\\Config\\OnMap\\Structures.xml": {
+    "Source": "source\\Content\\Config\\OnMap\\Structures.original.xml",
+    "Container": "structure",
+    "Items": [
+      {
+        "ID": "STRUCTURE_SETTLEMENT",
+        "Description": "定居点是迁徙部族的家园。定居点在[打包|PACKED]后可以在地图上[移动|MOVE-POINT]，并容纳可被[训练|TRAIN]为各类[职业|PROFESSION]的[氏族|CLAN]。"
+      }
+    ]
+  }
+}

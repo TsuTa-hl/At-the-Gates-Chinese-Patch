@@ -1,10 +1,12 @@
 param(
+    [string]$MarkdownOutputPath = "",
     [string]$CsvOutputPath = ".\docs\review\known-texts.csv",
     [string]$OutputPath = "",
     [string]$UnmappedDllCsv = "",
     [string]$StaticCandidatesCsv = "",
     [string]$DiscoveryCacheDirectory = ".\docs\review\generated",
     [string[]]$AdditionalDllCatalogCsv = @(),
+    [string]$CatalogDatabasePath = ".\.cache\atg-catalog.sqlite",
     [switch]$NoRebuildDiscoveryInputs,
     [switch]$AggregateDuplicates
 )
@@ -56,6 +58,15 @@ if ([string]::IsNullOrWhiteSpace($CsvOutputPath)) {
     }
     else {
         $CsvOutputPath = ".\docs\review\known-texts.csv"
+    }
+}
+
+if ([string]::IsNullOrWhiteSpace($MarkdownOutputPath)) {
+    if (-not [string]::IsNullOrWhiteSpace($OutputPath)) {
+        $MarkdownOutputPath = $OutputPath
+    }
+    else {
+        $MarkdownOutputPath = ".\docs\review\known-texts.md"
     }
 }
 
@@ -143,8 +154,9 @@ function Initialize-KnownTextDiscoveryInputs {
     $configInputs = @(
         ".\tools\Export-StaticTextCandidates.ps1",
         ".\translations\config-node-strings.json",
-        ".\translations\config-node-extra-strings.json"
-    ) + @((Get-ChildItem -LiteralPath ".\source\Content\Config\Primary" -Filter "*.original.xml" -File | ForEach-Object { $_.FullName }))
+        ".\translations\config-node-extra-strings.json",
+        ".\translations\config-node-onmap-strings.json"
+    ) + @((Get-ChildItem -LiteralPath ".\source\Content\Config" -Filter "*.original.xml" -File -Recurse | ForEach-Object { $_.FullName }))
 
     if (Test-AtGDiscoveryOutputStale -OutputPath $StaticCandidatesCsv -InputPath $configInputs) {
         $staticJson = [System.IO.Path]::ChangeExtension($StaticCandidatesCsv, ".json")
@@ -978,7 +990,11 @@ function Add-DictionaryMap {
 
 function Get-ConfigTranslationMap {
     $result = @{}
-    foreach ($path in @(".\translations\config-node-strings.json", ".\translations\config-node-extra-strings.json")) {
+    foreach ($path in @(
+        ".\translations\config-node-strings.json",
+        ".\translations\config-node-extra-strings.json",
+        ".\translations\config-node-onmap-strings.json"
+    )) {
         $root = Get-JsonFile $path
         if ($null -eq $root) {
             continue
@@ -1319,10 +1335,30 @@ $csvRows = foreach ($item in $items) {
     }
 }
 
-$csvRows | Export-Csv -LiteralPath $CsvOutputPath -NoTypeInformation -Encoding UTF8
+$catalogImportPath = [System.IO.Path]::GetFullPath("$CsvOutputPath.catalog-import.tmp")
+$catalogDatabaseFullPath = [System.IO.Path]::GetFullPath($CatalogDatabasePath)
+try {
+    $csvRows | Export-Csv -LiteralPath $catalogImportPath -NoTypeInformation -Encoding UTF8
+    & (Join-Path $PSScriptRoot "Invoke-AtGPatchCli.ps1") `
+        -Command catalog `
+        -CommandArguments @(
+            "rebuild",
+            "--input", $catalogImportPath,
+            "--database", $catalogDatabaseFullPath,
+            "--csv", ([System.IO.Path]::GetFullPath($CsvOutputPath)),
+            "--markdown", ([System.IO.Path]::GetFullPath($MarkdownOutputPath))
+        ) | Out-Host
+}
+finally {
+    if (Test-Path -LiteralPath $catalogImportPath -PathType Leaf) {
+        Remove-Item -LiteralPath $catalogImportPath -Force
+    }
+}
 
 [pscustomobject]@{
+    MarkdownOutputPath = (Resolve-Path -LiteralPath $MarkdownOutputPath).Path
     CsvOutputPath = (Resolve-Path -LiteralPath $CsvOutputPath).Path
+    CatalogDatabasePath = (Resolve-Path -LiteralPath $catalogDatabaseFullPath).Path
     Rows = $items.Count
     UniqueRows = $items.Count
     TranslatedRows = $translatedCount

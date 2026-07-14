@@ -6,7 +6,9 @@ param(
         "TEXT.Name.Profession.",
         "TEXT.Name.Discipline.",
         "TEXT.Name.Structure.",
-        "TEXT.Name.Deposit."
+        "TEXT.Name.Deposit.",
+        "TEXT.Name.Terrain.",
+        "TEXT.Name.Tech."
     ),
     [string[]]$Suffixes = @("SINGULAR", "PLURAL")
 )

@@ -1,8 +1,9 @@
 param(
-    [string]$ConfigRoot = "$PSScriptRoot\..\source\Content\Config\Primary",
+    [string]$ConfigRoot = "$PSScriptRoot\..\source\Content\Config",
     [string[]]$ConfigNodeMap = @(
         "$PSScriptRoot\..\translations\config-node-strings.json",
-        "$PSScriptRoot\..\translations\config-node-extra-strings.json"
+        "$PSScriptRoot\..\translations\config-node-extra-strings.json",
+        "$PSScriptRoot\..\translations\config-node-onmap-strings.json"
     ),
     [string]$OutputJson = "$PSScriptRoot\..\.tmp\static-text-candidates.json",
     [string]$OutputCsv = "$PSScriptRoot\..\.tmp\static-text-candidates.csv"
@@ -11,10 +12,22 @@ param(
 $ErrorActionPreference = "Stop"
 
 function Get-AtGRelativeConfigPath {
-    param([string]$SourcePath)
+    param(
+        [string]$SourcePath,
+        [string]$RootPath
+    )
 
-    $name = [System.IO.Path]::GetFileName($SourcePath) -replace "\.original\.xml$", ".xml"
-    return "Content\Config\Primary\$name"
+    $resolvedRoot = (Resolve-Path -LiteralPath $RootPath).Path.TrimEnd("\", "/")
+    $resolvedSource = (Resolve-Path -LiteralPath $SourcePath).Path
+    if ($resolvedSource.StartsWith($resolvedRoot + "\", [System.StringComparison]::OrdinalIgnoreCase)) {
+        $relative = $resolvedSource.Substring($resolvedRoot.Length + 1)
+    }
+    else {
+        $relative = [System.IO.Path]::GetFileName($resolvedSource)
+    }
+
+    $relative = $relative -replace "\.original\.xml$", ".xml"
+    return "Content\Config\" + ($relative -replace "/", "\")
 }
 
 function Get-AtGChildText {
@@ -187,9 +200,9 @@ $patchedIndex = Get-AtGPatchedIndex -MapPath $ConfigNodeMap
 $fieldNames = @("name", "shortName", "description", "text")
 $candidates = New-Object System.Collections.Generic.List[object]
 
-foreach ($file in Get-ChildItem -LiteralPath $ConfigRoot -Filter "*.original.xml" -File) {
+foreach ($file in Get-ChildItem -LiteralPath $ConfigRoot -Filter "*.original.xml" -File -Recurse) {
     $xml = [xml](Get-Content -LiteralPath $file.FullName -Raw -Encoding UTF8)
-    $relativePath = Get-AtGRelativeConfigPath -SourcePath $file.FullName
+    $relativePath = Get-AtGRelativeConfigPath -SourcePath $file.FullName -RootPath $ConfigRoot
 
     $containers = @()
     if ($file.Name -eq "ClanTraits.original.xml") {
@@ -202,7 +215,10 @@ foreach ($file in Get-ChildItem -LiteralPath $ConfigRoot -Filter "*.original.xml
         $containers = @($xml.SelectNodes("//factionTrait"))
     }
     else {
-        $containers = @($xml.DocumentElement.ChildNodes | Where-Object { $_.NodeType -eq [System.Xml.XmlNodeType]::Element })
+        $containers = @($xml.SelectNodes("//*[ID]") | Where-Object { $_.NodeType -eq [System.Xml.XmlNodeType]::Element })
+        if ($containers.Count -eq 0) {
+            $containers = @($xml.DocumentElement.ChildNodes | Where-Object { $_.NodeType -eq [System.Xml.XmlNodeType]::Element })
+        }
     }
 
     foreach ($container in $containers) {

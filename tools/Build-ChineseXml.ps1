@@ -119,6 +119,18 @@ $depositAliasCount = Add-TextKeyAliases `
     -BaseKeyPattern '^TEXT\.Name\.Deposit\.' `
     -Suffixes @("SINGULAR", "PLURAL")
 
+$terrainAliasCount = Add-TextKeyAliases `
+    -Xml $xml `
+    -SourceEntries $entries `
+    -BaseKeyPattern '^TEXT\.Name\.Terrain\.' `
+    -Suffixes @("SINGULAR", "PLURAL")
+
+$techAliasCount = Add-TextKeyAliases `
+    -Xml $xml `
+    -SourceEntries $entries `
+    -BaseKeyPattern '^TEXT\.Name\.Tech\.' `
+    -Suffixes @("SINGULAR", "PLURAL")
+
 $outDir = Split-Path -Parent $OutputXml
 if ($outDir) {
     New-Item -ItemType Directory -Force -Path $outDir | Out-Null
@@ -146,3 +158,5 @@ Write-Host "Added $professionAliasCount generated profession name aliases."
 Write-Host "Added $disciplineAliasCount generated discipline name aliases."
 Write-Host "Added $structureAliasCount generated structure name aliases."
 Write-Host "Added $depositAliasCount generated deposit name aliases."
+Write-Host "Added $terrainAliasCount generated terrain name aliases."
+Write-Host "Added $techAliasCount generated tech name aliases."

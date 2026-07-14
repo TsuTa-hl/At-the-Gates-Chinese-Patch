@@ -1,0 +1,50 @@
+﻿[
+    {
+        "Assembly":  "UI",
+        "Original":  "Main Menu",
+        "Translation":  "主菜单",
+        "MethodToken":  "0x060000bc",
+        "ILOffset":  2,
+        "TypeFullName":  "AtTheGatesUI.ns_MainMenu.MainMenu",
+        "MethodName":  "Init",
+        "Safety":  "SafeUI",
+        "EvidenceScenario":  "trial-recheck-skipped-20260705-main",
+        "Note":  "Recheck skipped UI main menu glue if still visible."
+    },
+    {
+        "Assembly":  "UI",
+        "Original":  " - Showing Patch Notes",
+        "Translation":  " - 查看补丁说明",
+        "MethodToken":  "0x060000c7",
+        "ILOffset":  77,
+        "TypeFullName":  "AtTheGatesUI.ns_MainMenu.MainMenu",
+        "MethodName":  "Try_ShowPatchNotes",
+        "Safety":  "SafeUI",
+        "EvidenceScenario":  "trial-recheck-skipped-20260705-main",
+        "Note":  "Recheck skipped UI main menu patch notes label."
+    },
+    {
+        "Assembly":  "UI",
+        "Original":  "Hello.",
+        "Translation":  "你好。",
+        "MethodToken":  "0x06000679",
+        "ILOffset":  676,
+        "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Diplomacy",
+        "MethodName":  "CreateControls_OnRebuild",
+        "Safety":  "SafeUI",
+        "EvidenceScenario":  "trial-recheck-skipped-20260705-main",
+        "Note":  "Recheck skipped diplomatic popup greeting string."
+    },
+    {
+        "Assembly":  "UI",
+        "Original":  "History is defined by those who dared to dream. To accomplish anything meaningful you must first make it reality within your own mind. How does one become a king? It begins with that most audacious of thoughts: \u0027I should be king, shouldn\u0027t I?\u0027\n\nThe early medieval era was a time when many dreams were born and many dreams died.",
+        "Translation":  "历史由敢于梦想者定义。若要成就有意义之事，必须先在心中塑造它。如何成为君王？\n源于那句最狂野的想法：\u0027我应该成为君王，不是吗？\u0027\n\n早期中世纪是一个许多梦想诞生又逝去的时代。",
+        "MethodToken":  "0x060004bb",
+        "ILOffset":  1,
+        "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.KingdomFoundedScreen",
+        "MethodName":  "AddContent",
+        "Safety":  "SafeUI",
+        "EvidenceScenario":  "trial-recheck-skipped-20260705-main",
+        "Note":  "Recheck skipped kingdom founding narrative prose."
+    }
+]

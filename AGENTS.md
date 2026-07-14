@@ -12,6 +12,10 @@ Prefer startup stability over surface-level completeness.
 - Default localization policy is safety-first and black-box driven. When the
   user explicitly asks for trial localization, use the fast-fail batch strategy
   in `docs/agent/workflows/assess-and-fix.md`.
+- Screenshot-discovered untranslated text or raw keys must first be queried in
+  `.cache/atg-catalog.sqlite` through the catalog CLI. Use the generated
+  `known-texts.md` for grouped context, CSV only for spreadsheet review, and
+  generated source catalogs for exact patch operands.
 - When this repository is opened by `GPT-5.3-codex-spark`, it must read
   `docs/agent/spark-delegation.md` and stay on bounded mechanical tasks.
 - If testing fails, return to assess/fix and repeat the cycle. Do not add a

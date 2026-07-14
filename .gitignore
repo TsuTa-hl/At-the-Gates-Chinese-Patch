@@ -1,4 +1,5 @@
 .tmp/
+.cache/
 .tools/
 _trial-game/
 Logs/
@@ -9,6 +10,8 @@ source/
 # .NET build outputs for the IL rewriter.
 tools/AtG.IlRewrite/bin/
 tools/AtG.IlRewrite/obj/
+tools/**/bin/
+tools/**/obj/
 
 # Local/editor noise.
 .vs/

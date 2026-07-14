@@ -35,4 +35,12 @@ if ($source -notmatch "PostNewGameReadyDelayMs") {
     throw "Smoke test must keep the game alive briefly after the main-loop marker before screenshot/cleanup."
 }
 
+if ($source -notmatch "SettingsErrorSeen") {
+    throw "Smoke-test output must include SettingsErrorSeen evidence."
+}
+
+if ($source -notmatch "Error Loading User Settings") {
+    throw "Smoke test must detect the Error Loading User Settings window."
+}
+
 "Game launch main-loop gate validation passed."

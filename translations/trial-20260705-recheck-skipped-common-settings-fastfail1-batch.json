@@ -1,0 +1,98 @@
+[
+    {
+        "Assembly":  "Common",
+        "Original":  "Disable all game audio.   *** NOTE ***   Try changing this to YES if your game is crashing on launch or when starting a game.",
+        "Translation":  "禁用游戏中的全部音效。*** 注意 *** 若游戏启动或开局时发生崩溃，请尝试将该项设为“是”。",
+        "MethodToken":  "0x060003f2",
+        "ILOffset":  26,
+        "TypeFullName":  "AtTheGatesCommon.ns_GlobalSystems.UserSetting_AudioSystemDisabled",
+        "MethodName":  ".ctor",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-common-settings-fastfail1",
+        "Note":  "Common setting help text candidate from skipped recheck (exact catalog original)."
+    },
+    {
+        "Assembly":  "Common",
+        "Original":  "Disables the flashing effect on the End Turn button, Selection Panel Apprentices count label, Clan Screen Unpack button, etc.",
+        "Translation":  "禁用回合结束按钮、部队选择面板“学徒”计数标签、氏族界面“解包”按钮等处的闪烁效果。",
+        "MethodToken":  "0x06000408",
+        "ILOffset":  26,
+        "TypeFullName":  "AtTheGatesCommon.ns_GlobalSystems.UserSetting_ButtonFlashingEnabled",
+        "MethodName":  ".ctor",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-common-settings-fastfail1",
+        "Note":  "Common setting help text candidate from skipped recheck (exact catalog original)."
+    },
+    {
+        "Assembly":  "Common",
+        "Original":  "End Turn button no longer changes to bring up the Knowledge screen, Caravan screen, etc.",
+        "Translation":  "回合结束按钮将不再自动切换到知识界面、商队界面等。",
+        "MethodToken":  "0x06000454",
+        "ILOffset":  26,
+        "TypeFullName":  "AtTheGatesCommon.ns_GlobalSystems.UserSetting_NeverBlockTurn",
+        "MethodName":  ".ctor",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-common-settings-fastfail1",
+        "Note":  "Common setting help text candidate from skipped recheck (exact catalog original)."
+    },
+    {
+        "Assembly":  "Common",
+        "Original":  "Disables the transition to strategic view when zoomed out.",
+        "Translation":  "缩小视角时禁用切换至战略视图。",
+        "MethodToken":  "0x0600040c",
+        "ILOffset":  26,
+        "TypeFullName":  "AtTheGatesCommon.ns_GlobalSystems.UserSetting_StrategicViewDisabled",
+        "MethodName":  ".ctor",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-common-settings-fastfail1",
+        "Note":  "Common setting help text candidate from skipped recheck (exact catalog original)."
+    },
+    {
+        "Assembly":  "Common",
+        "Original":  "Disables the colored banner which appears at the start of every turn.",
+        "Translation":  "禁用每回合开始时出现的彩色横幅。",
+        "MethodToken":  "0x0600040a",
+        "ILOffset":  26,
+        "TypeFullName":  "AtTheGatesCommon.ns_GlobalSystems.UserSetting_TurnBannerDisabled",
+        "MethodName":  ".ctor",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-common-settings-fastfail1",
+        "Note":  "Common setting help text candidate from skipped recheck (exact catalog original)."
+    },
+    {
+        "Assembly":  "Common",
+        "Original":  "Hides the helper icons displayed beneath the Profession Buttons in the Training and Research Screens.",
+        "Translation":  "在“训练”与“研究”界面中，隐藏职业按钮下方显示的辅助图标。",
+        "MethodToken":  "0x0600042e",
+        "ILOffset":  26,
+        "TypeFullName":  "AtTheGatesCommon.ns_GlobalSystems.UserSetting_HideProfessionButtonIcons",
+        "MethodName":  ".ctor",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-common-settings-fastfail1",
+        "Note":  "Common setting help text candidate from skipped recheck (exact catalog original)."
+    },
+    {
+        "Assembly":  "Common",
+        "Original":  "Disables camera movement when the cursor is near the edge of the screen.",
+        "Translation":  "当指针贴近屏幕边缘时禁用镜头移动。",
+        "MethodToken":  "0x0600040e",
+        "ILOffset":  26,
+        "TypeFullName":  "AtTheGatesCommon.ns_GlobalSystems.UserSetting_CameraEdgeScrollingDisabled",
+        "MethodName":  ".ctor",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-common-settings-fastfail1",
+        "Note":  "Common setting help text candidate from skipped recheck (exact catalog original)."
+    },
+    {
+        "Assembly":  "Common",
+        "Original":  "Allow the turn to be ended even if Units/Settlements haven\u0027t yet been given orders.",
+        "Translation":  "即便单位或聚居尚未下达命令，也允许提前结束回合。",
+        "MethodToken":  "0x06000418",
+        "ILOffset":  26,
+        "TypeFullName":  "AtTheGatesCommon.ns_GlobalSystems.UserSetting_CanEndTurnWithIdle",
+        "MethodName":  ".ctor",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-common-settings-fastfail1",
+        "Note":  "Common setting help text candidate from skipped recheck (exact catalog original)."
+    }
+]

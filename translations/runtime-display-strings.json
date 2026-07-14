@@ -1,0 +1,29 @@
+{
+  "ConceptDisplaySources": [
+    "hardcoded-common-strings.json"
+  ],
+  "Exact": [],
+  "PlainText": [],
+  "ConceptDisplay": [
+    {
+      "ConceptKey": "LEVEL",
+      "Original": "Level",
+      "Translation": "等级"
+    },
+    {
+      "ConceptKey": "LEVEL",
+      "Original": "Levels",
+      "Translation": "等级"
+    },
+    {
+      "ConceptKey": "UPGRADE",
+      "Original": "Upgrade",
+      "Translation": "升级"
+    },
+    {
+      "ConceptKey": "UPGRADE",
+      "Original": "Upgrades",
+      "Translation": "升级"
+    }
+  ]
+}

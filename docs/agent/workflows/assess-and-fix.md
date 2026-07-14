@@ -29,24 +29,39 @@ mojibake, missing assets, crashes, unsafe English remnants, and layout defects.
 
 1. Classify the failure as crash, raw key, mojibake, untranslated English,
    missing asset, icon/font corruption, layout issue, or logic-sensitive text.
-2. Locate the likely source in this order:
-   `English.xml`, config XML, DLL `ldstr` catalog, UI DLL IL string, UI DLL
-   complete UTF-16 string, UI DLL verified offset, Common DLL complete UTF-16
-   string, static candidate export.
-3. If the source is unknown, run static discovery and DLL catalog export before
+2. For screenshot-visible English, raw keys, or untranslated UI text, query the
+   generated SQLite catalog before static discovery, direct source searches,
+   or patch edits:
+
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Invoke-AtGPatchCli.ps1 -Command catalog -CatalogAction search -CatalogText '<visible text>' -CatalogLimit 20
+   ```
+
+   Add `-CatalogSource '<source fragment>'` when the likely assembly or file is
+   known. Use `docs/review/known-texts.md` only to inspect grouped source
+   context, and `docs/review/known-texts.csv` only for human spreadsheet
+   filtering. If a catalog match points at a DLL source, return to the exact
+   generated catalog value in `docs/review/generated/*-ldstr-catalog.*` before
+   writing an IL patch. If no catalog row matches, record that fact before
+   continuing to discovery.
+3. Locate the likely source in this order:
+   SQLite catalog match, `English.xml`, config XML, DLL `ldstr` catalog, UI
+   DLL IL string, UI DLL complete UTF-16 string, UI DLL verified offset, Common
+   DLL complete UTF-16 string, static candidate export.
+4. If the source is unknown, run static discovery and DLL catalog export before
    byte/string searches.
-4. Patch only sources classified as safe display text.
-5. When translating newly discovered safe English text, follow
+5. Patch only sources classified as safe display text.
+6. When translating newly discovered safe English text, follow
    `translation-style.md` before writing to the selected source.
-6. Review existing Chinese only when the source is safe and the change does not
+7. Review existing Chinese only when the source is safe and the change does not
    expand logic risk; do not force Common concepts, faction names, or dates for
    style consistency.
-7. For UI DLL edits, prefer `hardcoded-ui-il-strings.json` when the visible
+8. For UI DLL edits, prefer `hardcoded-ui-il-strings.json` when the visible
    text maps to a complete `ldstr` entry and the translation fits the existing
    `#US` heap entry. Use byte patches and offsets only as fallback.
-8. For crash fixes, check `crash-risks.md` before touching Common concepts,
+9. For crash fixes, check `crash-risks.md` before touching Common concepts,
    faction names, dates, fonts, or ClanCard assets.
-9. After edits, hand off to `package-and-install.md`. Do not update knowledge
+10. After edits, hand off to `package-and-install.md`. Do not update knowledge
    files before packaging unless the task is explicitly documentation-only.
 
 ## Trial Fast-Fail Strategy
@@ -80,8 +95,10 @@ discovered display text beyond the safety-first policy.
    tool appends the batch to normal rewrite maps, builds, installs, and runs
    `Test-GameLaunch.ps1 -IncludeNewGame` as its fast-fail smoke gate. If the
    batch fails, it bisects until failing single entries are isolated.
-6. Keep entries that pass the smoke gate in the normal rewrite maps. Leave
-   failing entries out and record them as unsafe for trial localization.
+6. Keep only entries that the trial runner reports in `accepted.json` and whose
+   batch is recorded in `docs/agent/trial-localization-state.json`. Leave
+   failing, invalid-smoke, manually copied, or unrecorded entries out of the
+   normal rewrite maps.
 7. Carry accepted/rejected batch results forward to `update-knowledge.md` so
    `trial-localization-state.json` and `docs/review/known-texts.csv` remain
    synchronized.

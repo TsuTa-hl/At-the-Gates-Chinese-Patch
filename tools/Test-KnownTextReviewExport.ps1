@@ -9,12 +9,57 @@ $outRoot = Join-Path $repoRoot $OutputDirectory
 New-Item -ItemType Directory -Force -Path $outRoot | Out-Null
 
 $csvPath = Join-Path $outRoot "known-texts.csv"
+$mdPath = Join-Path $outRoot "known-texts.md"
+$catalogPath = Join-Path $outRoot "atg-catalog.sqlite"
 
-& (Join-Path $PSScriptRoot "Export-KnownTextReview.ps1") `
-    -CsvOutputPath $csvPath | Out-Null
+$exportResult = & (Join-Path $PSScriptRoot "Export-KnownTextReview.ps1") `
+    -MarkdownOutputPath $mdPath `
+    -CsvOutputPath $csvPath `
+    -CatalogDatabasePath $catalogPath
 
+if (!(Test-Path -LiteralPath $mdPath -PathType Leaf)) {
+    throw "Markdown review output was not generated: $mdPath"
+}
 if (!(Test-Path -LiteralPath $csvPath -PathType Leaf)) {
     throw "CSV review output was not generated: $csvPath"
+}
+if (!(Test-Path -LiteralPath $catalogPath -PathType Leaf)) {
+    throw "SQLite review catalog was not generated: $catalogPath"
+}
+
+$mdRaw = Get-Content -LiteralPath $mdPath -Raw -Encoding UTF8
+if ($mdRaw -notmatch "# Known Texts AI Index") {
+    throw "Markdown review output is missing the AI index header."
+}
+if ($mdRaw -notmatch "Query the SQLite catalog first") {
+    throw "Markdown review output must direct workflow matching to SQLite first."
+}
+if ($mdRaw -notmatch "Use this Markdown for grouped source context") {
+    throw "Markdown review output must identify itself as the grouped context view."
+}
+if ($mdRaw -match "Use this Markdown first for agent/workflow text matching") {
+    throw "Markdown review output must not supersede the SQLite primary query path."
+}
+if ($mdRaw -notmatch "## Source: source\\English\.original\.xml") {
+    throw "Markdown review output must group rows by source file."
+}
+if ($mdRaw -notmatch 'Original:\r?\n```text' -or $mdRaw -notmatch 'Translation:\r?\n```text') {
+    throw "Markdown review output must expose original and translation text blocks."
+}
+if ($mdRaw -notmatch "Locators:") {
+    throw "Markdown review output must include locators for workflow matching."
+}
+if ($mdRaw -notmatch "SourceOccurrenceId:" -or $mdRaw -notmatch "SemanticGroupId:") {
+    throw "Markdown review output must expose SQLite occurrence and semantic-group identifiers."
+}
+if ($null -eq $exportResult.MarkdownOutputPath -or -not (Test-Path -LiteralPath $exportResult.MarkdownOutputPath -PathType Leaf)) {
+    throw "Exporter result must include MarkdownOutputPath."
+}
+if ($null -eq $exportResult.CsvOutputPath -or -not (Test-Path -LiteralPath $exportResult.CsvOutputPath -PathType Leaf)) {
+    throw "Exporter result must include CsvOutputPath."
+}
+if ($null -eq $exportResult.CatalogDatabasePath -or -not (Test-Path -LiteralPath $exportResult.CatalogDatabasePath -PathType Leaf)) {
+    throw "Exporter result must include CatalogDatabasePath."
 }
 
 $rows = @(Import-Csv -LiteralPath $csvPath -Encoding UTF8)
@@ -24,6 +69,21 @@ if ($rows.Count -lt 1000) {
 
 if ($rows.Count -lt 7000) {
     throw "CSV review output is missing discovered source rows: $($rows.Count). The exporter must rebuild discovery inputs and must not collapse the review table to mapped strings only."
+}
+
+$catalogQueryOutput = & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "Invoke-AtGPatchCli.ps1") `
+    -Command catalog `
+    -CatalogAction search `
+    -CatalogDatabasePath $catalogPath `
+    -CatalogText "Log In" `
+    -CatalogSource "AtTheGatesUI" `
+    -CatalogLimit 5
+if ($LASTEXITCODE -ne 0) {
+    throw "Catalog search command failed with exit code $LASTEXITCODE."
+}
+$catalogMatches = (($catalogQueryOutput | Out-String) | ConvertFrom-Json)
+if (@($catalogMatches).Count -eq 0 -or @($catalogMatches | Where-Object { $_.Original -eq "Log In" }).Count -eq 0) {
+    throw "Catalog search command did not return the expected exact known-text match."
 }
 
 $requiredColumns = @(
@@ -211,6 +271,7 @@ else {
 }
 
 [pscustomobject]@{
+    MarkdownPath = (Resolve-Path -LiteralPath $mdPath).Path
     CsvPath = (Resolve-Path -LiteralPath $csvPath).Path
     RowCount = $rows.Count
 }

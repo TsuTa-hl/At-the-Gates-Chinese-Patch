@@ -1,0 +1,98 @@
+﻿[
+    {
+        "Assembly":  "Game",
+        "Original":  "Retrain [CLAN] as [UNIT]",
+        "Translation":  "重训 [CLAN] 为 [UNIT]",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  1871,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail2",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #2"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "train [CLAN] [UNIT]",
+        "Translation":  "训练 [CLAN] 的 [UNIT]",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  1936,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail2",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #2"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "train [UNIT]",
+        "Translation":  "训练 [UNIT]",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  1894,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail2",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #2"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "trait [CLAN] [TRAIT] remove",
+        "Translation":  "移除 [CLAN] 的 [TRAIT] 特质",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  1715,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail2",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #2"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "watch [FACTION]",
+        "Translation":  "监视 [FACTION]",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  925,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail2",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #2"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "xp [CLAN] [DSPLN] [#]",
+        "Translation":  "经验值 [CLAN] [DSPLN] [#]",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  1638,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail2",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #2"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "zoom in [#]",
+        "Translation":  "放大 [#]",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  876,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail2",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #2"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "zoom out [#]",
+        "Translation":  "缩小 [#]",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  897,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail2",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #2"
+    }
+]

@@ -71,7 +71,12 @@ pre-test synchronization phase during the normal repair cycle.
    - Record catalog-precision failures separately from unsafe text failures.
    - Update the next batch-size guidance only when observed failure density
      changes.
-8. Regenerate the human review table of known text before final reporting when
+   - Confirm normal rewrite maps contain no entries from rejected batches,
+     invalid-smoke batches, or batch files missing from
+     `trial-localization-state.json`.
+   - Remove root-level scratch files created during candidate selection; keep
+     temporary probes under `.tmp` only.
+8. Regenerate the known-text review outputs before final reporting when
    translation maps, static candidates, DLL catalogs, or trial-localization
    results changed:
 
@@ -85,26 +90,31 @@ pre-test synchronization phase during the normal repair cycle.
    powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-KnownTextReviewExport.ps1
    ```
 
-   The generated review file is `docs\review\known-texts.csv`: a
-   spreadsheet-friendly table with source, kind, original, translation, status,
-   compact review state, compact reason code, safety, notes, and locators.
+   The exporter must rebuild `.cache\atg-catalog.sqlite` as the primary
+   non-deduplicated occurrence store, then emit
+   `docs\review\known-texts.md` as an AI/context view and
+   `docs\review\known-texts.csv` as a human spreadsheet view. Both files
+   contain source, kind, original, translation, status, compact
+   review state, compact reason code, safety, notes, and locators.
    `ReviewState` is one of `Translated`, `NeedsTrial`, `Skipped`,
    `RecheckedSkipped`, or `Rejected`; `Skipped` means not revisited in the
    current skip recheck pass, while `RecheckedSkipped` means re-reviewed and
    intentionally kept out of trial localization. `ReasonCode` is a short
    category for skipped or rejected rows rather than a long prose failure
-   explanation. This committed review table
-   must use the default
+   explanation. The committed review outputs must use the default
    non-deduplicated output so repeated DLL `ldstr` occurrences and repeated XML
    nodes keep their own locators. `Export-KnownTextReview.ps1` rebuilds stable
    discovery inputs under `docs\review\generated\`; do not rely on `.tmp`
-   files for the human review table. Do not keep a generated Markdown
-   duplicate.
+   files for the committed review files. Query SQLite through
+   `Invoke-AtGPatchCli.ps1 -Command catalog -CatalogAction search` first when
+   matching screenshot text; use Markdown for grouped context and CSV only for
+   human table review or spreadsheet filtering.
 9. Update `docs\review\project-inventory.md` when files, generated artifacts,
    test evidence policy, or cleanup decisions change.
 10. If Spark handled part of the work directly, record only durable outcomes:
-   accepted batches, rejected singles, passed incremental scenarios, and
-   higher-model review items. Do not copy long Spark reasoning into knowledge
+   accepted batches, rejected singles, and higher-model review items. Spark
+   does not handle screenshot/image-driven incremental localization; those
+   remain in the main workflow. Do not copy long Spark reasoning into knowledge
    files.
 11. Keep `AGENTS.md` short. Put operational details in `operations.md`, workflow
    steps in `docs/agent/workflows/`, and domain facts in the topic files.

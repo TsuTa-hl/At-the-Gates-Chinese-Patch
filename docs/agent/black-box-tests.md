@@ -84,6 +84,15 @@ main-loop UI that depends on the current game state.
   Covered main-menu load hover, load-save row age, delete-old-saves hover,
   top main-loop strategic/note/religion/victory hovers, nested `[HOTKEY:F11]`
   tooltip, and the fixed stream/hill/grassland lower-right tile description.
+- Latest repeated-load evidence: `2026-07-14`, `DynamicCjk` installed build,
+  fixed save `v1.4.1   World [BVT-LCL]   游戏开始.AtGSave`. The harness loaded
+  it once from the main menu and then reloaded the same save five times through
+  the in-game pause menu without restarting the process. No crash or new
+  `Crash.AtGLog` entry appeared. Evidence:
+  `.tmp\runs\20260714-load-reload-memory-lifecycle-v4\run-summary.json` and
+  `in-game-reload-memory-regression-20260712-main_loop_after_reload_1.png`.
+  Private bytes rose from about 1.308 GiB to the first-reload peak of about
+  1.412 GiB, then stabilized around 1.39 GiB; handles returned to 703.
 
 ## Completed / Deferred UI Tests By Interface
 
@@ -93,6 +102,22 @@ layout behavior. If one fails, promote it to `Active Focus Tests` and follow the
 automatic failure loop in `docs/agent/workflows/test-and-loop.md`.
 Do not repeat a passed interface scenario unless the touched source, font,
 config, DLL patch, save/load flow, or UI behavior can affect that interface.
+
+### In-Game Reload Memory Regression
+
+- Load the fixed save from the main menu, then open the pause menu with
+  `Escape`, choose `读取存档`, and load the promoted first row again.
+- Repeat the pause-menu reload five times in the same game process. A fresh
+  process per repetition is not equivalent and must not be used for this test.
+- After every reload, wait for a `World Screen - Children Initialized` marker
+  written after that reload began, then verify the process remains alive.
+- Record private bytes, working set, virtual bytes, and handle count before and
+  after each repetition. The test fails on a crash, OOM, new crash log, or
+  sustained monotonic growth across later repetitions.
+- Completed on `2026-07-14` with the `BVT-LCL` fixed save and five successful
+  reloads. This scenario now belongs to `FullRegression` and is skipped by
+  default. Rerun it only when load lifecycle, runtime renderer resources,
+  Game/ElfTools rewrites, font strategy, or save-loading behavior changes.
 
 ### Top-Left Clan and Support Hover
 
@@ -129,6 +154,11 @@ config, DLL patch, save/load flow, or UI behavior can affect that interface.
   `TEXT.Name.Discipline.*`, raw keys, mojibake, or unresolved tags.
 - Profession, discipline, and status labels should display in Chinese, for
   example `采集者`, `农耕`, `当前无法学会`, and `已学会`.
+- Detail panels for learned or unavailable professions must verify status lines
+  as well as hover text. The Hunter panel must not show mixed lines such as
+  `Cannot 研究.` or `Already 已学会.`; these lines are assembled from Game EXE
+  static-check prefixes plus localized `[Study|STUDY]` / `[Learned|LEARN]`
+  concept tags.
 - Discipline wrapper tooltips must not expose the English
   `Learning this Tech will allow...` description.
 - Latest passed evidence: `2026-06-28`, latest installed build, 22 hovers at
@@ -175,6 +205,31 @@ config, DLL patch, save/load flow, or UI behavior can affect that interface.
   build `7.98s` with font cache hit, install `0.8s`, smoke `11.21s`, UI hover
   sweep `26.4s` plus retry `5.78s`.
 
+### Clan List
+
+- Open the clan list from the top-right clan-list button.
+- Test the first row of header hovers only unless a task explicitly asks for
+  deeper nested hovers.
+- Current tracked header points are the user-scoped 7 icon columns and 3 word
+  columns: clan name, profession, level, families, supply, damage, upgrades,
+  mood, command, and distance.
+- For nested tooltips, only the `Level` secondary tooltip is currently tracked.
+  Do not recursively inspect every nested concept in this scenario by default.
+- The first-level header tooltips must not expose `[Clan|CLAN]`,
+  `[Discipline|DISCIPLINE]`, `[Level|LEVEL]`, `[Upgrades|UPGRADES]`, or other
+  safely patchable English concept display text.
+- 2026-07-10 static fix: header labels and first-level header tooltips were
+  patched through
+  `AtTheGatesUI.ns_InGame.ns_Popups.ClanListEntry.BuildPanel_TitleRowContents`.
+  The `Level` secondary tooltip was patched through
+  `AtTheGatesCommon.ns_UI.Concepts`.
+- 2026-07-10 focused fixed-save regression passed from the main-menu load
+  path: the `Upgrades` primary tooltip renders `[升级|UPGRADE]` as highlighted
+  Chinese without exposing markup, and hovering `等级` in the `Level` primary
+  tooltip opens a Chinese secondary tooltip without an `invalid CONCEPT` error.
+  Evidence: `.tmp/runs/richtext-clan-list-upgrades-primary.png` and
+  `.tmp/runs/richtext-clan-list-level-nested.png`.
+
 ### Main-Loop Button Hover Sweep
 
 - In the main game loop, hover every visible command button and sidebar button
@@ -210,6 +265,17 @@ config, DLL patch, save/load flow, or UI behavior can affect that interface.
   map object. Do not mark unit commands completed until a fixed save exposes
   buttons such as pack up, fortify, move, skip, leave, or profession/clan
   actions and those hover tooltips are visually checked.
+- 2026-07-09 targeted static regression: selected settlement/unit command
+  sources for Pack Up, movement points, Skip, terrain aliases, and Food
+  consumer plural suffix were patched and covered by
+  `Test-HoverLocalizationRegressions.ps1`,
+  `Test-GeneratedTextAliases.ps1`, and install smoke. This does not replace a
+  visual fixed-save selected-command hover sweep.
+- 2026-07-10 targeted static fix: the selected settlement information panel
+  uses `STRUCTURE_SETTLEMENT` from `Content\Config\OnMap\Structures.xml`, now
+  patched through `translations\config-node-onmap-strings.json`. Reopen the
+  selected settlement panel and Pack Up hover on the latest installed build
+  before marking this completed.
 
 ### Main-Loop Tile Hover Sweep
 
@@ -234,6 +300,10 @@ config, DLL patch, save/load flow, or UI behavior can affect that interface.
   `load-save-main-loop-tile-tooltip-20260702`; lower-right crop showed Chinese
   terrain/resource text and no visible `TEXT.*`, `next`, or safely
   replaceable English fragments.
+- 2026-07-10 static fix: terrain description aliases in
+  `patch\Content\Text\English.xml` now use localized `全部` for the previously
+  visible lower-right tooltip `all` fragment. The user planned to test this
+  visually, so do not mark it completed from static evidence alone.
 
 ### Extended Coverage
 

@@ -1,0 +1,62 @@
+﻿[
+  {
+    "Assembly": "Common",
+    "Original": "GAMEPLAY TWEAKS",
+    "Translation": "玩法调整",
+    "MethodToken": "0x06000384",
+    "ILOffset": 73,
+    "TypeFullName": "AtTheGatesCommon.ns_GlobalSystems.PatchNotes",
+    "MethodName": "GetChangeTypeStringFromEnum",
+    "Safety": "SafeUI",
+    "EvidenceScenario": "trial-recheck-skipped-20260705-2",
+    "Note": "Patch notes category header for visible changelog entries."
+  },
+  {
+    "Assembly": "Common",
+    "Original": "MAJOR BUGS FIXED",
+    "Translation": "主要漏洞修复",
+    "MethodToken": "0x06000384",
+    "ILOffset": 49,
+    "TypeFullName": "AtTheGatesCommon.ns_GlobalSystems.PatchNotes",
+    "MethodName": "GetChangeTypeStringFromEnum",
+    "Safety": "SafeUI",
+    "EvidenceScenario": "trial-recheck-skipped-20260705-2",
+    "Note": "Patch notes category header for visible changelog entries."
+  },
+  {
+    "Assembly": "Common",
+    "Original": "MAJOR FEATURES",
+    "Translation": "主要功能",
+    "MethodToken": "0x06000384",
+    "ILOffset": 41,
+    "TypeFullName": "AtTheGatesCommon.ns_GlobalSystems.PatchNotes",
+    "MethodName": "GetChangeTypeStringFromEnum",
+    "Safety": "SafeUI",
+    "EvidenceScenario": "trial-recheck-skipped-20260705-2",
+    "Note": "Patch notes category header for visible changelog entries."
+  },
+  {
+    "Assembly": "Common",
+    "Original": "MINOR BUGS FIXED",
+    "Translation": "次要错误修复",
+    "MethodToken": "0x06000384",
+    "ILOffset": 81,
+    "TypeFullName": "AtTheGatesCommon.ns_GlobalSystems.PatchNotes",
+    "MethodName": "GetChangeTypeStringFromEnum",
+    "Safety": "SafeUI",
+    "EvidenceScenario": "trial-recheck-skipped-20260705-2",
+    "Note": "Patch notes category header for visible changelog entries."
+  },
+  {
+    "Assembly": "UI",
+    "Original": "BUILD ",
+    "Translation": "建造 ",
+    "MethodToken": "0x060000c1",
+    "ILOffset": 180,
+    "TypeFullName": "AtTheGatesUI.ns_MainMenu.MainMenu",
+    "MethodName": "AddText",
+    "Safety": "SafeUI",
+    "EvidenceScenario": "trial-recheck-skipped-20260705-2",
+    "Note": "Main menu build button label fragment; retained trailing space for formatting parity."
+  }
+]

@@ -67,6 +67,40 @@ function Find-AtGUniqueBytes {
     return -1
 }
 
+function Write-AtGBytesWithRetry {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Path,
+
+        [Parameter(Mandatory = $true)]
+        [byte[]]$Bytes
+    )
+
+    $resolvedPath = [IO.Path]::GetFullPath($Path)
+    $tempPath = "$resolvedPath.offsetpatch.tmp"
+    if (Test-Path -LiteralPath $tempPath) {
+        Remove-Item -LiteralPath $tempPath -Force
+    }
+
+    [IO.File]::WriteAllBytes($tempPath, $Bytes)
+    for ($attempt = 1; $attempt -le 5; $attempt++) {
+        try {
+            [GC]::Collect()
+            [GC]::WaitForPendingFinalizers()
+            [GC]::Collect()
+            [IO.File]::Copy($tempPath, $resolvedPath, $true)
+            Remove-Item -LiteralPath $tempPath -Force
+            return
+        }
+        catch {
+            if ($attempt -ge 5) {
+                throw
+            }
+            Start-Sleep -Milliseconds (200 * $attempt)
+        }
+    }
+}
+
 foreach ($entry in @($entries)) {
     $offset = [int]$entry.Offset
     $original = [string]$entry.Original
@@ -119,5 +153,6 @@ if ($outDir) {
     New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 }
 
-[IO.File]::WriteAllBytes((Resolve-Path -LiteralPath $outDir).Path + "\" + [IO.Path]::GetFileName($OutputDll), $bytes)
+$outputPath = Join-Path (Resolve-Path -LiteralPath $outDir).Path ([IO.Path]::GetFileName($OutputDll))
+Write-AtGBytesWithRetry -Path $outputPath -Bytes $bytes
 Write-Host "Built offset string patch: $OutputDll"

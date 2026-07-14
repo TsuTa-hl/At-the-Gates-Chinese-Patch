@@ -370,7 +370,10 @@ $checks = @(
             @{ MethodToken = "0x06000622"; ILOffset = 169; Original = "Click to choose a " },
             @{ MethodToken = "0x06000622"; ILOffset = 185; Original = " you'd like to " },
             @{ MethodToken = "0x06000622"; ILOffset = 421; Original = "You lack sufficient [" },
-            @{ MethodToken = "0x06000622"; ILOffset = 460; Original = " more needed)." }
+            @{ MethodToken = "0x06000622"; ILOffset = 460; Original = " more needed)." },
+            @{ MethodToken = "0x0600035e"; ILOffset = 121; Original = "This " },
+            @{ MethodToken = "0x0600035e"; ILOffset = 200; Original = " has " },
+            @{ MethodToken = "0x0600038a"; ILOffset = 442; Original = ("in a [" + [string]::Concat([char]0x804c, [char]0x4e1a) + "|PROFESSION],") }
         )
         StandaloneStrings = @(
             "You can ",
@@ -425,6 +428,14 @@ $checks = @(
             @{ MethodToken = "0x06000118"; ILOffset = 2797; Original = " gained in " },
             @{ MethodToken = "0x06000118"; ILOffset = 8039; Original = " time for switching " },
             @{ MethodToken = "0x06000118"; ILOffset = 8154; Original = " when switching " },
+            @{ MethodToken = "0x06000118"; ILOffset = 10116; Original = " from " },
+            @{ MethodToken = "0x06000118"; ILOffset = 10183; Original = " from " },
+            @{ MethodToken = "0x06000118"; ILOffset = 13574; Original = " each " },
+            @{ MethodToken = "0x06000118"; ILOffset = 13669; Original = " each " },
+            @{ MethodToken = "0x0600020e"; ILOffset = 100; Original = " and " },
+            @{ MethodToken = "0x0600020e"; ILOffset = 121; Original = " or " },
+            @{ MethodToken = "0x06000210"; ILOffset = 254; Original = " and " },
+            @{ MethodToken = "0x06000210"; ILOffset = 275; Original = " or " },
             @{ MethodToken = "0x06000204"; ILOffset = 302; Original = "Might extremely rarely " },
             @{ MethodToken = "0x06000205"; ILOffset = 300; Original = "Likely to " },
             @{ MethodToken = "0x06000205"; ILOffset = 306; Original = " within a year" },
@@ -450,7 +461,12 @@ $checks = @(
             @{ MethodToken = "0x060012f4"; ILOffset = 412; Original = " ([Crime|CRIME])" },
             @{ MethodToken = "0x06000220"; ILOffset = 720; Original = "[Ennoble]" },
             @{ MethodToken = "0x0600026a"; ILOffset = 500; Original = "[Ennoble|NOBLE]" },
-            @{ MethodToken = "0x0600026a"; ILOffset = 510; Original = "[Ennobled|NOBLE]" }
+            @{ MethodToken = "0x0600026a"; ILOffset = 510; Original = "[Ennobled|NOBLE]" },
+            @{ MethodToken = "0x06000348"; ILOffset = 3864; Original = " and what it will Produce for you while working" },
+            @{ MethodToken = "0x06000348"; ILOffset = 4153; Original = "Cannot " },
+            @{ MethodToken = "0x06000348"; ILOffset = 4201; Original = "Already [Learned|LEARN]" },
+            @{ MethodToken = "0x0600172a"; ILOffset = 115; Original = " ... OR ..." },
+            @{ MethodToken = "0x0600172a"; ILOffset = 406; Original = " ... OR ..." }
         )
         StandaloneStrings = @(
             "[Profession]",
@@ -540,6 +556,10 @@ $checks = @(
         MethodName = "PerformCheck"
         Strings = @()
         LdstrEntries = @(
+            @{ MethodToken = "0x0600122f"; ILOffset = 39; Original = "Cannot "; TypeFullName = "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_CanEverResearch" },
+            @{ MethodToken = "0x0600122f"; ILOffset = 49; Original = "."; TypeFullName = "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_CanEverResearch" },
+            @{ MethodToken = "0x06001235"; ILOffset = 50; Original = "Already "; TypeFullName = "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_DoesntAlreadyHaveTech" },
+            @{ MethodToken = "0x06001235"; ILOffset = 60; Original = "."; TypeFullName = "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_DoesntAlreadyHaveTech" },
             @{ MethodToken = "0x060013e5"; ILOffset = 164; Original = "You lack sufficient " },
             @{ MethodToken = "0x060013e5"; ILOffset = 182; Original = " (" },
             @{ MethodToken = "0x060013e5"; ILOffset = 203; Original = " more needed)." },
@@ -566,7 +586,8 @@ $checks = @(
             @{ MethodToken = "0x060013fa"; ILOffset = 149; Original = " more needed)." },
             @{ MethodToken = "0x060013fd"; ILOffset = 142; Original = "You lack sufficient " },
             @{ MethodToken = "0x060013fd"; ILOffset = 159; Original = " (" },
-            @{ MethodToken = "0x060013fd"; ILOffset = 180; Original = " more needed)." }
+            @{ MethodToken = "0x060013fd"; ILOffset = 180; Original = " more needed)." },
+            @{ MethodToken = "0x06000c64"; ILOffset = 2090; Original = "s"; TypeFullName = "AtTheGatesGame.ns_GameCode.ResourcesMgr"; MethodName = "RecalcPerTurnBase" }
         )
         StandaloneStrings = @()
     }

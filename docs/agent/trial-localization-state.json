@@ -1,13 +1,14 @@
 {
     "schemaVersion":  1,
     "purpose":  "Machine-readable state for exploratory trial localization. This file is for agents and scripts, not human translation review.",
-    "lastUpdated":  "2026-07-04",
+    "lastUpdated":  "2026-07-05",
+    "workflowReviewIndex":  "docs/review/known-texts.md",
     "reviewTable":  "docs/review/known-texts.csv",
     "policy":  {
                    "strategy":  "Probe discovered display candidates with fast-fail batch smoke tests, then keep accepted entries in normal rewrite maps.",
                    "missingVisualEvidenceIsSkipReason":  false,
                    "passScope":  "A trial pass proves build, install, startup, and the trial runner\u0027s explicit -IncludeNewGame smoke safety only. It does not prove wording, layout, hover coverage, fixed-save loading, or all UI paths.",
-                   "csvOriginalRule":  "Do not use docs/review/known-texts.csv Original as an IL rewrite Original. It is normalized for review. Use the exact DLL catalog Value.",
+                   "csvOriginalRule":  "Do not use docs/review/known-texts.md or docs/review/known-texts.csv Original as an IL rewrite Original. They are normalized for review. Use the exact DLL catalog Value.",
                    "skipPolicy":  "Keep SkippedByPolicy for technical/internal text, semantic-free grammar glue, date/season logic, external online flows, raw IDs, paths, parser match tokens, bracket-only parser-like tags, and static config candidates classified as unsafe.",
                    "forbiddenTrialInputs":  [
                                                 "AtTheGatesCommon.ns_Text.Text.ConvertTags trial entries",
@@ -37,27 +38,27 @@
                         "failureAdjustment":  "If a batch fails, bisect. If more than one bad entry is found in the batch, halve the next batch size for that source class."
                     },
     "reviewSnapshot":  {
-                           "knownTextRows":  18645,
-                           "translatedRows":  7801,
-                           "untranslatedRows":  10844,
-                           "translatedStateRows":  7850,
+                           "knownTextRows":  18611,
+                           "translatedRows":  7804,
+                           "untranslatedRows":  10807,
+                           "translatedStateRows":  7843,
                            "needsTrialRows":  0,
-                           "skippedRows":  10787,
+                           "skippedRows":  10750,
                            "recheckedSkippedRows":  0,
-                           "rejectedRows":  8,
-                           "notes":  "Known text review includes 8 rejected trial rows after recheck-skipped-alpha/ beta infra checks; 1 unsafe alpha candidate remains excluded."
+                           "rejectedRows":  18,
+                           "notes":  "Known text review regenerated after 2026-07-05 recheck-skipped trial attempts; no new accepted entries."
                        },
     "latestSmoke":  {
-                        "date":  "2026-07-04",
+                        "date":  "2026-07-05",
                         "windowReady":  true,
                         "newGameReady":  true,
                         "newGameReadyMarker":  "Controller - Giving Control to Human",
                         "crashLogUpdated":  false,
                         "crashDialogSeen":  false,
                         "windowsErrorSeen":  false,
-                        "startupWaitSeconds":  8.72,
-                        "newGameSmokeSeconds":  19.43,
-                        "notes":  "Latest accepted skip-recheck batch is trial-20260704-recheck-skipped-alpha-accepts (7/0, run .tmp\\\\trial-localization\\\\20260704-172228). Prior direct batch with 8 entries failed final smoke in .tmp\\\\trial-localization\\\\20260704-171743 due isolated unsafe Common|0x06000207|386 (` No `)."
+                        "startupWaitSeconds":  4.09,
+                        "newGameSmokeSeconds":  19.34,
+                        "notes":  "Latest accepted pass: trial-20260705-recheck-skipped-ui-fastfail2-batch (5/0), run .tmp\\trial-localization\\20260705-025427."
                     },
     "knownRejectedSingles":  [
                                  {
@@ -1519,47 +1520,108 @@
                         "inputEntries":  7,
                         "path":  "translations/trial-20260704-recheck-skipped-beta-game-3-batch.json",
                         "notes":  "Failed in local smoke path with final-accepted-only smoke failure, no safe accepted entries isolated."
+                    },
+                    {
+                        "id":  "trial-20260705-recheck-skipped-ui-fastfail-batch",
+                        "runRoot":  ".tmp\\\\trial-localization\\\\20260705-023338",
+                        "accepted":  4,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "retry-skipped-player-visible-ui-fastfail",
+                        "inputEntries":  4,
+                        "path":  "translations/trial-20260705-recheck-skipped-ui-fastfail-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260705-recheck-skipped-ui-fastfail2-batch",
+                        "runRoot":  ".tmp\\\\trial-localization\\\\20260705-025427",
+                        "accepted":  5,
+                        "rejected":  0,
+                        "status":  "accepted-smoke",
+                        "scope":  "retry-skipped-player-visible-ui-fastfail",
+                        "inputEntries":  5,
+                        "path":  "translations/trial-20260705-recheck-skipped-ui-fastfail2-batch.json"
+                    },
+                    {
+                        "id":  "trial-20260705-recheck-skipped-game-fastfail1-batch",
+                        "runRoot":  ".tmp\\\\trial-localization\\\\20260705-042431",
+                        "accepted":  0,
+                        "rejected":  6,
+                        "status":  "invalid-smoke",
+                        "scope":  "retry-skipped-player-visible-game-command-fragments-fastfail",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-20260705-recheck-skipped-game-fastfail1-batch.json",
+                        "notes":  "Re-routed with exact catalog spacing; final smoke bisection rejected 6 and no safe accepted entries."
+                    },
+                    {
+                        "id":  "trial-20260705-recheck-skipped-game-fastfail2-batch",
+                        "runRoot":  ".tmp\\\\trial-localization\\\\20260705-043825",
+                        "accepted":  0,
+                        "rejected":  8,
+                        "status":  "invalid-smoke",
+                        "scope":  "retry-skipped-player-visible-game-command-fragments-fastfail",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-20260705-recheck-skipped-game-fastfail2-batch.json",
+                        "notes":  "All 8 entries rejected during smoke bisection; final-accepted smoke reported infrastructure-style failure, but entries isolated as smoke-unsafe."
+                    },
+                    {
+                        "id":  "trial-20260705-recheck-skipped-common-settings-fastfail1-batch",
+                        "runRoot":  ".tmp\\trial-localization\\20260705-052601",
+                        "accepted":  0,
+                        "rejected":  6,
+                        "status":  "invalid-smoke",
+                        "scope":  "retry-skipped-common-settings-fastfail",
+                        "inputEntries":  8,
+                        "path":  "translations/trial-20260705-recheck-skipped-common-settings-fastfail1-batch.json",
+                        "notes":  "All tested common settings strings caused final smoke errors; new-game hit \"Error Loading User Settings\", so entries are treated as settings-serialization risk until safer route is proven."
                     }
                 ],
     "nextWork":  {
                      "priority":  [
-                                      "Latest recheck-skipped-alpha batches complete: batch trial-20260704-recheck-skipped-alpha-accepts accepted 7 entries and maps them in rewrite; Common|0x06000207|386 (` No `) remains rejected. ",
-                                      "Beta recheck batches 20260704-182625, 183947, 184643, 185456, and 190405 all failed as invalid-smoke in the same local smoke path; no new accepted entries were isolated. Pause further recheck attempts until screenshot/window/new-game readiness is stable.",
-                                      "Continue rechecking ReviewState=Skipped player-visible text only; keep logic-sensitive/date/faction/city/generated-name/settings and technical/parser/path cases as SkippedByPolicy unless separately justified.",
-                                      "Do not source batch Originals from docs/review/known-texts.csv Original. Use exact DLL catalog Value + MethodToken + ILOffset and keep trial batches bounded by source class."
+                                      "Stop this pass: two game console command fast-fail batches both resolved to invalid-smoke with all entries rejected/unsafe for this attempt.",
+                                      "Continue recheck-skipped work only on UI/CommonDisplay, keep skipping debug command-list / console-system tokens unless parser-safe evidence appears.",
+                                      "Continue using exact catalog Value + MethodToken + ILOffset; never use normalized known-texts.md/csv Original."
                                   ],
                      "doNotUseAsBatchSource":  [
+                                                   "docs/review/known-texts.md Original",
                                                    "docs/review/known-texts.csv Original"
                                                ]
                  },
     "latestSparkAudit":  {
-                             "date":  "2026-07-04",
-                             "source":  "Spark direct-run audit",
-                             "removedUnsafeMapEntries":  48,
-                             "affectedMap":  "translations/hardcoded-common-il-rewrite.json",
-                             "evidenceScenarios":  [
-                                                       "trial-20260704-spark-recheck-pass2",
-                                                       "trial-20260704-spark-recheck-pass3",
-                                                       "trial-20260704-spark-recheck-pass4"
-                                                   ],
-                             "movedUnsafeBatchFiles":  [
-                                                           ".tmp/spark-review-20260704/unsafe-trial-batches/trial-20260704-spark-recheck-pass2-batch.json",
-                                                           ".tmp/spark-review-20260704/unsafe-trial-batches/trial-20260704-spark-recheck-pass3-batch.json",
-                                                           ".tmp/spark-review-20260704/unsafe-trial-batches/trial-20260704-spark-recheck-pass4-batch.json"
-                                                       ],
-                             "reason":  "Spark trial batches targeted ConvertTags parser definitions; some translations contained mojibake. Removed from active rewrite map and added batch/map safety guards.",
+                             "date":  "2026-07-05",
+                             "source":  "Higher-model review of Spark direct-run output",
+                             "retainedAcceptedMapEntries":  9,
+                             "removedMapEntries":  6,
+                             "removedClasses":  [
+                                                    "Common UserSetting_* settings comments",
+                                                    "Game DebugConsole internal command/help text",
+                                                    "UI entries from unrecorded fastfail3/fastfail4 attempts"
+                                                ],
+                             "removedScratchFiles":  6,
+                             "removedUnrecordedBatchFiles":  [
+                                                                 "translations/trial-20260705-recheck-skipped-ui-fastfail3-batch.json",
+                                                                 "translations/trial-20260705-recheck-skipped-ui-fastfail4-batch.json"
+                                                             ],
+                             "retainedBatchFiles":  [
+                                                        "translations/trial-20260705-recheck-skipped-ui-fastfail-batch.json",
+                                                        "translations/trial-20260705-recheck-skipped-ui-fastfail2-batch.json",
+                                                        "translations/trial-20260705-recheck-skipped-game-fastfail1-batch.json",
+                                                        "translations/trial-20260705-recheck-skipped-game-fastfail2-batch.json",
+                                                        "translations/trial-20260705-recheck-skipped-common-settings-fastfail1-batch.json"
+                                                    ],
+                             "reason":  "Spark produced useful accepted UI/Common patch-note entries, but also left rejected or unrecorded trial leftovers in normal rewrite maps. Formal maps now keep only accepted batches recorded in this state. Batch and map safety guards now reject UserSetting_* and DebugConsole trial targets. Previous 2026-07-04 audit removed ConvertTags parser-definition entries.",
                              "postCleanupSmoke":  {
-                                                      "date":  "2026-07-04",
+                                                      "date":  "2026-07-05",
                                                       "command":  "tools/Test-GameLaunch.ps1",
                                                       "includeNewGame":  false,
                                                       "windowReady":  true,
-                                                      "startupWaitSeconds":  4.62,
+                                                      "startupWaitSeconds":  3.58,
                                                       "processExitedBeforeCleanup":  false,
                                                       "crashLogUpdated":  false,
                                                       "crashDialogSeen":  false,
+                                                      "settingsErrorSeen":  false,
                                                       "windowsErrorSeen":  false,
                                                       "screenshot":  ".tmp/game-smoke.png",
-                                                      "note":  "Post-Spark cleanup install smoke reached main menu only; random new game intentionally disabled."
+                                                      "note":  "After repairing Settings.xml polluted comments and rebuilding from cleaned maps, startup/main-menu smoke passed again with SettingsErrorSeen=false."
                                                   }
                          }
 }

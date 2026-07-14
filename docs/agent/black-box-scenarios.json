@@ -1146,13 +1146,7 @@
                                                   "Action":  "ClickAndCapture",
                                                   "X":  1284,
                                                   "Y":  513,
-                                                  "WaitMs":  900,
-                                                  "Crop":  {
-                                                               "X":  2280,
-                                                               "Y":  1240,
-                                                               "Width":  280,
-                                                               "Height":  200
-                                                           }
+                                                  "WaitMs":  900
                                               }
                                           ],
                                "Evidence":  {
@@ -1160,9 +1154,322 @@
                                                 "LastRunDir":  ".tmp/runs/20260702-221952-load-save-main-loop-tile-tooltip-20260702",
                                                 "LastContactSheet":  ".tmp/runs/20260702-221952-load-save-main-loop-tile-tooltip-20260702/contact.png"
                                             }
-                           }
+                            },
+                            {
+                                "Id":  "in-game-reload-memory-regression-20260712",
+                                "Title":  "Reload a fixed save from the in-game pause menu without OOM",
+                                "Interface":  "Pause Menu / Load Save",
+                                "StateId":  "in-game-reload",
+                                "Category":  "SaveLoad",
+                                "Status":  "Completed",
+                                "SkipByDefault":  true,
+                                "RequiresFixedSave":  true,
+                                "Setup":  "Load the selected fixed save from the main menu, press Escape in the main loop, choose Load Saved Game from the pause menu, and load the promoted first row again. Repeat five times in the same process and wait only for a new World Screen log marker written after each reload began.",
+                                "SetupActions":  [
+                                                     {
+                                                         "Action":  "Repeat",
+                                                         "RepeatCount":  5,
+                                                         "Actions":  [
+                                                                          {
+                                                                              "Action":  "BookmarkProgramLog",
+                                                                              "Bookmark":  "reload-1"
+                                                                          },
+                                                                          {
+                                                                              "Action":  "Key",
+                                                                              "Key":  "Escape",
+                                                                              "WaitMs":  900,
+                                                                              "RequireChange":  true,
+                                                                              "Crop":  {
+                                                                                           "X":  1080,
+                                                                                           "Y":  300,
+                                                                                           "Width":  400,
+                                                                                           "Height":  800
+                                                                                       }
+                                                                          },
+                                                                          {
+                                                                              "Action":  "Click",
+                                                                              "X":  1280,
+                                                                              "Y":  772,
+                                                                              "WaitMs":  900,
+                                                                              "RequireChange":  true,
+                                                                              "Crop":  {
+                                                                                           "X":  900,
+                                                                                           "Y":  250,
+                                                                                           "Width":  760,
+                                                                                           "Height":  850
+                                                                                       }
+                                                                          },
+                                                                          {
+                                                                              "Action":  "Click",
+                                                                              "X":  1280,
+                                                                              "Y":  578,
+                                                                              "WaitMs":  900,
+                                                                              "RequireChange":  false,
+                                                                              "Crop":  {
+                                                                                           "X":  900,
+                                                                                           "Y":  250,
+                                                                                           "Width":  760,
+                                                                                           "Height":  850
+                                                                                       }
+                                                                          },
+                                                                          {
+                                                                              "Action":  "WaitForProgramLogMarker",
+                                                                              "Bookmark":  "reload-1",
+                                                                              "Marker":  "World Screen - Children Initialized",
+                                                                              "WaitMs":  45000
+                                                                          }
+                                                                      ]
+                                                     }
+                                                 ],
+                                "ExpectedNo":  [
+                                                   "TEXT.",
+                                                   ":PLURAL",
+                                                   ":SINGULAR",
+                                                   "mojibake"
+                                               ],
+                                "Points":  [
+                                               {
+                                                   "Id":  "main_loop_after_reload_1",
+                                                   "Label":  "Main loop after in-game reload",
+                                                   "Action":  "CaptureOnly",
+                                                   "Crop":  {
+                                                                "X":  0,
+                                                                "Y":  0,
+                                                                "Width":  2560,
+                                                                "Height":  1440
+                                                            }
+                                               }
+                                           ],
+                                "Evidence":  {
+                                                 "LastStatus":  "Passed",
+                                                 "LastRunDir":  ".tmp/runs/20260714-load-reload-memory-lifecycle-v4",
+                                                 "LastScreenshot":  ".tmp/runs/20260714-load-reload-memory-lifecycle-v4/in-game-reload-memory-regression-20260712-main_loop_after_reload_1.png"
+                                             }
+                            }
                        ],
     "Incremental":  [
-
+                         {
+                             "Id":  "clan-list-header-hover-20260710",
+                            "Title":  "Clan list header first-level hovers and Level nested tooltip",
+                            "Interface":  "Clan List",
+                            "StateId":  "clan-list",
+                            "Category":  "HoverSweep",
+                            "Status":  "Active",
+                            "SkipByDefault":  false,
+                            "Setup":  "Load a fixed save or enter the main loop, then click the top-right clan-list button. Test only the first row of header hovers plus the Level nested tooltip.",
+                            "SetupActions":  [
+                                                 {
+                                                     "Action":  "Click",
+                                                     "X":  2020,
+                                                     "Y":  25,
+                                                     "WaitMs":  900
+                                                 }
+                                             ],
+                            "TeardownActions":  [
+                                                    {
+                                                        "Action":  "Key",
+                                                        "Key":  "Escape",
+                                                        "WaitMs":  500
+                                                    }
+                                                ],
+                            "ClearBeforeEachPoint":  {
+                                                         "X":  1280,
+                                                         "Y":  720,
+                                                         "WaitMs":  150
+                                                     },
+                            "ExpectedNo":  [
+                                               "[Clan|CLAN]",
+                                               "[Discipline|DISCIPLINE]",
+                                               "[Level|LEVEL]",
+                                               "[Upgrades|UPGRADES]",
+                                               "UPGRADES",
+                                               "Clan ",
+                                               "Upgrade",
+                                               "TEXT.",
+                                               ":PLURAL",
+                                               ":SINGULAR",
+                                               "mojibake"
+                                           ],
+                            "Points":  [
+                                           {
+                                               "Id":  "header_clan_name",
+                                               "Label":  "Clan name header",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  820,
+                                               "Y":  82,
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "header_profession",
+                                               "Label":  "Profession header icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1040,
+                                               "Y":  82,
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "header_level",
+                                               "Label":  "Level header",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1135,
+                                               "Y":  82,
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "header_level_nested",
+                                               "Label":  "Nested Level concept tooltip",
+                                               "Action":  "HoverAndCapture",
+                       "X":  1328,
+                       "Y":  84,
+                                               "WaitMs":  900,
+                                               "SkipClear":  true
+                                           },
+                                           {
+                                               "Id":  "header_families",
+                                               "Label":  "Families header icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1225,
+                                               "Y":  82,
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "header_supply",
+                                               "Label":  "Supply header icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1320,
+                                               "Y":  82,
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "header_damage",
+                                               "Label":  "Damage header icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1395,
+                                               "Y":  82,
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "header_upgrades",
+                                               "Label":  "Upgrades header icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1480,
+                                               "Y":  82,
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "header_mood",
+                                               "Label":  "Mood header icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1550,
+                                               "Y":  82,
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "header_command",
+                                               "Label":  "Command header icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1625,
+                                               "Y":  82,
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "header_distance",
+                                               "Label":  "Distance header",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1740,
+                                               "Y":  82,
+                                               "WaitMs":  900
+                                           }
+                                       ],
+                            "Evidence":  {
+                     "LastStatus":  "FocusedPassed",
+                     "LastRunDir":  ".tmp/runs/richtext-clan-list-level-nested.png"
+                                         }
+                        },
+                        {
+                            "Id":  "selected-settlement-panel-pack-hover-20260710",
+                            "Title":  "Selected settlement info panel and Pack Up tooltip",
+                            "Interface":  "Main Loop Selection Panel",
+                            "Category":  "ClickAndHover",
+                            "Status":  "Active",
+                            "SkipByDefault":  false,
+                            "Setup":  "Enter a new game or load a fixed save with a visible central settlement. Click the central settlement to show the left selection panel and command list, then hover Pack Up.",
+                            "ExpectedNo":  [
+                                               "Settlements are the homes",
+                                               "migratory tribal peoples",
+                                               "Packed Up",
+                                               "Clans",
+                                               "Trained",
+                                               "Professions",
+                                               " in ",
+                                               " a ",
+                                               "TEXT.",
+                                               ":PLURAL",
+                                               ":SINGULAR",
+                                               "mojibake"
+                                           ],
+                            "Points":  [
+                                           {
+                                               "Id":  "select_center_settlement",
+                                               "Label":  "Select central settlement",
+                                               "Action":  "ClickAndCapture",
+                           "X":  1280,
+                           "Y":  720,
+                           "AllowUnchanged":  true,
+                           "Crop":  {
+                                        "X":  0,
+                                        "Y":  500,
+                                        "Width":  650,
+                                        "Height":  900
+                                    },
+                           "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "hover_pack_up",
+                                               "Label":  "Pack Up tooltip with settlement selected",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  95,
+                                               "Y":  1070,
+                                               "WaitMs":  900
+                                           }
+                                       ],
+                            "Evidence":  {
+                                             "LastStatus":  "StaticFixOnly",
+                                             "LastRunDir":  null
+                                         }
+                        },
+                        {
+                            "Id":  "terrain-description-all-fragment-20260710",
+                            "Title":  "Lower-right terrain description should not show English all",
+                            "Interface":  "Main Loop Map",
+                            "Category":  "TileTooltip",
+                            "Status":  "Active",
+                            "SkipByDefault":  false,
+                            "Setup":  "Load a fixed save or use the visible start map. Click a tile whose lower-right terrain description previously included the English word all.",
+                            "ExpectedNo":  [
+                                               " all ",
+                                               "all ",
+                                               " all",
+                                               "TEXT.",
+                                               ":PLURAL",
+                                               ":SINGULAR",
+                                               "mojibake"
+                                           ],
+                            "Points":  [
+                                           {
+                                               "Id":  "click_known_terrain_tooltip_tile",
+                                               "Label":  "Click terrain tile that exposes lower-right description",
+                                               "Action":  "ClickAndCapture",
+                                               "X":  null,
+                                               "Y":  null,
+                                               "Discover":  true,
+                                               "WaitMs":  900
+                                           }
+                                       ],
+                            "Evidence":  {
+                                             "LastStatus":  "StaticFixOnly",
+                                             "LastRunDir":  null
+                                         }
+                        }
                     ]
 }

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\AtG.RuntimeText\CjkText.cs" Link="CjkText.cs" />
+    <Compile Include="..\AtG.RuntimeText\CjkLineBreaker.cs" Link="CjkLineBreaker.cs" />
+    <Compile Include="..\AtG.RuntimeText\CjkWordWrapCore.cs" Link="CjkWordWrapCore.cs" />
+    <Compile Include="..\AtG.RuntimeText\RichTextAst.cs" Link="RichTextAst.cs" />
+    <Compile Include="..\AtG.RuntimeText\DisplayStringLocalizer.cs" Link="DisplayStringLocalizer.cs" />
+    <Compile Include="..\AtG.RuntimeText\FontDescriptor.cs" Link="FontDescriptor.cs" />
+    <Compile Include="..\AtG.RuntimeText\GlyphCacheDiagnostics.cs" Link="GlyphCacheDiagnostics.cs" />
+    <Compile Include="..\AtG.RuntimeText\GlyphAtlasAllocator.cs" Link="GlyphAtlasAllocator.cs" />
+    <Compile Include="..\AtG.RuntimeText\GlyphAtlasCacheState.cs" Link="GlyphAtlasCacheState.cs" />
+    <Compile Include="..\AtG.RuntimeText\GlyphAtlasResetDecision.cs" Link="GlyphAtlasResetDecision.cs" />
+    <Compile Include="..\AtG.RuntimeText\TextureBindingSlots.cs" Link="TextureBindingSlots.cs" />
+    <Compile Include="..\AtG.RuntimeText\TraceWriteGuard.cs" Link="TraceWriteGuard.cs" />
+    <Compile Include="..\AtG.RuntimeText\RuntimeTextTrace.cs" Link="RuntimeTextTrace.cs" />
+    <Compile Include="..\AtG.RuntimeText\DeferredGlyphQueue.cs" Link="DeferredGlyphQueue.cs" />
+  </ItemGroup>
+</Project>

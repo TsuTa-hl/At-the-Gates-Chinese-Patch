@@ -127,6 +127,12 @@ foreach ($path in $MapPath) {
         if ($safety -like "TrialFastFail*" -and $typeFullName -eq "AtTheGatesCommon.ns_Text.Text" -and $methodName -eq "ConvertTags") {
             $failures.Add("$($path)[$i] trial entry '$original' targets ConvertTags parser definitions.") | Out-Null
         }
+        if ($safety -like "TrialFastFail*" -and $typeFullName -like "AtTheGatesCommon.ns_GlobalSystems.UserSetting_*") {
+            $failures.Add("$($path)[$i] trial entry '$original' targets UserSetting description/comment text that can pollute Settings.xml.") | Out-Null
+        }
+        if ($safety -like "TrialFastFail*" -and $typeFullName -like "AtTheGatesGame.DebugConsoleNS.DebugConsole*") {
+            $failures.Add("$($path)[$i] trial entry '$original' targets DebugConsole internal command/help text.") | Out-Null
+        }
         if ($safety -like "TrialFastFail*" -and $original -match '^\[[A-Za-z][A-Za-z0-9 _\-\|:]*\]$') {
             $failures.Add("$($path)[$i] trial entry '$original' is a bracket-only parser-like token.") | Out-Null
         }

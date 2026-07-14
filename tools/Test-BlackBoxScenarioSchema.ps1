@@ -59,6 +59,10 @@ Assert-AtGCondition (Test-AtGPropertyExists -Object $root -Name "Incremental") "
 
 $validStatuses = @("Active", "Completed", "Deferred", "Discovery", "ManualOnly")
 $validActions = @("Click", "Hover", "ClickAndCapture", "HoverAndCapture", "CaptureOnly")
+$validControlActions = @(
+    "Click", "Hover", "Move", "Key", "Wait",
+    "BookmarkProgramLog", "WaitForProgramLogMarker", "Repeat"
+)
 $scenarioIds = New-Object 'System.Collections.Generic.HashSet[string]' ([System.StringComparer]::OrdinalIgnoreCase)
 $scenarioCount = 0
 $pointCount = 0
@@ -83,6 +87,38 @@ foreach ($suiteName in @("FullRegression", "Incremental")) {
         Assert-AtGCondition ($validStatuses -contains $status) "Scenario $id has invalid Status '$status'."
         Assert-AtGCondition ($points.Count -gt 0) "Scenario $id must contain at least one point."
 
+        foreach ($phase in @("SetupActions", "TeardownActions")) {
+            foreach ($control in @(Get-AtGPropertyValue -Object $scenario -Name $phase)) {
+                if ($null -eq $control) {
+                    continue
+                }
+                $controlAction = [string](Get-AtGPropertyValue -Object $control -Name "Action")
+                Assert-AtGCondition ($validControlActions -contains $controlAction) "Scenario $id $phase contains invalid Action '$controlAction'."
+                if ($controlAction -eq "BookmarkProgramLog") {
+                    $bookmark = [string](Get-AtGPropertyValue -Object $control -Name "Bookmark")
+                    Assert-AtGCondition (![string]::IsNullOrWhiteSpace($bookmark)) "Scenario $id $phase BookmarkProgramLog requires Bookmark."
+                }
+                if ($controlAction -eq "WaitForProgramLogMarker") {
+                    $bookmark = [string](Get-AtGPropertyValue -Object $control -Name "Bookmark")
+                    $marker = [string](Get-AtGPropertyValue -Object $control -Name "Marker")
+                    $controlWaitMs = Get-AtGPropertyValue -Object $control -Name "WaitMs"
+                    Assert-AtGCondition (![string]::IsNullOrWhiteSpace($bookmark)) "Scenario $id $phase WaitForProgramLogMarker requires Bookmark."
+                    Assert-AtGCondition (![string]::IsNullOrWhiteSpace($marker)) "Scenario $id $phase WaitForProgramLogMarker requires Marker."
+                    Assert-AtGCondition (($controlWaitMs -is [int] -or $controlWaitMs -is [long]) -and [int]$controlWaitMs -gt 0 -and [int]$controlWaitMs -le 120000) "Scenario $id $phase WaitForProgramLogMarker WaitMs must be between 1 and 120000."
+                }
+                if ($controlAction -eq "Repeat") {
+                    $repeatCount = Get-AtGPropertyValue -Object $control -Name "RepeatCount"
+                    $nestedActions = @(Get-AtGPropertyValue -Object $control -Name "Actions")
+                    Assert-AtGCondition (($repeatCount -is [int] -or $repeatCount -is [long]) -and [int]$repeatCount -ge 1 -and [int]$repeatCount -le 10) "Scenario $id $phase RepeatCount must be between 1 and 10."
+                    Assert-AtGCondition ($nestedActions.Count -gt 0) "Scenario $id $phase Repeat requires nested Actions."
+                    foreach ($nested in $nestedActions) {
+                        $nestedAction = [string](Get-AtGPropertyValue -Object $nested -Name "Action")
+                        Assert-AtGCondition ($validControlActions -contains $nestedAction -and $nestedAction -ne "Repeat") "Scenario $id $phase Repeat contains invalid nested Action '$nestedAction'."
+                    }
+                }
+            }
+        }
+
         $pointIds = New-Object 'System.Collections.Generic.HashSet[string]' ([System.StringComparer]::OrdinalIgnoreCase)
         foreach ($point in $points) {
             $pointCount++
@@ -102,7 +138,7 @@ foreach ($suiteName in @("FullRegression", "Incremental")) {
                 Assert-AtGCondition (($x -is [int] -or $x -is [long]) -and ($y -is [int] -or $y -is [long])) "Scenario $id point $pointId coordinates must be integers."
                 Assert-AtGCondition ([int]$x -ge 0 -and [int]$y -ge 0) "Scenario $id point $pointId coordinates must be non-negative."
             }
-            else {
+            elseif ($action -ne "CaptureOnly") {
                 Assert-AtGCondition ($discover -or $status -eq "Discovery") "Scenario $id point $pointId is missing coordinates but is not marked Discover."
             }
 

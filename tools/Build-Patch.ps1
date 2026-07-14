@@ -4,11 +4,15 @@ param(
     [string]$PatchRoot = "$PSScriptRoot\..\patch",
     [string]$OriginalFontDir = "$PSScriptRoot\..\source\fonts-original",
     [switch]$PatchCommonConceptTerms,
-    [switch]$SkipFonts
+    [switch]$SkipFonts,
+    [ValidateSet("MergedFonts", "DynamicCjk")]
+    [string]$RendererMode = "MergedFonts"
 )
 
 $ErrorActionPreference = "Stop"
 . "$PSScriptRoot\AtGTiming.ps1"
+. "$PSScriptRoot\AtGCache.ps1"
+. "$PSScriptRoot\AtGFileOps.ps1"
 
 $timing = New-AtGTimingSummary
 
@@ -40,9 +44,75 @@ function Get-AtGMapOriginals {
 }
 
 $textOut = Join-Path $PatchRoot "Content\Text\English.xml"
+Measure-AtGStage -Summary $timing -Name "rich-text-tags" -ScriptBlock {
+    $richTextMaps = @(
+        "hardcoded-ui-il-rewrite.json",
+        "hardcoded-common-il-rewrite.json",
+        "hardcoded-game-il-rewrite.json",
+        "hardcoded-elftools-il-rewrite.json",
+        "hardcoded-strings.json",
+        "hardcoded-common-strings.json",
+        "hardcoded-ui-il-strings.json"
+    ) | ForEach-Object { Join-Path $PSScriptRoot "..\translations\$_" }
+    $richTextInputs = @(
+        $richTextMaps
+        (Join-Path $PSScriptRoot "Test-RichTextTagPreservation.ps1")
+        (Join-Path $PSScriptRoot "Test-ConceptLinkTargets.ps1")
+        (Join-Path $PSScriptRoot "AtGManagedMetadata.ps1")
+        (Join-Path $PSScriptRoot "..\source\AtTheGatesCommon.original.dll")
+    )
+    [void](Invoke-AtGCachedValidation `
+        -Name "rich-text and concept-link validation" `
+        -InputPaths $richTextInputs `
+        -StampPath (Join-Path $PSScriptRoot "..\.cache\validation\rich-text.sha256") `
+        -Version "rich-text-v1" `
+        -ScriptBlock {
+            & "$PSScriptRoot\Test-RichTextTagPreservation.ps1"
+            & "$PSScriptRoot\Test-ConceptLinkTargets.ps1"
+        })
+}
 Measure-AtGStage -Summary $timing -Name "text-xml" -ScriptBlock {
-    & "$PSScriptRoot\Build-ChineseXml.ps1" -SourceXml $SourceXml -TranslationJson $TranslationJson -OutputXml $textOut
-    & "$PSScriptRoot\Test-TextTags.ps1" -SourceXml $SourceXml -PatchedXml $textOut
+    [void](Invoke-AtGCachedStage `
+        -Name "Chinese text XML" `
+        -InputPaths @(
+            $SourceXml,
+            $TranslationJson,
+            (Join-Path $PSScriptRoot "Build-ChineseXml.ps1"),
+            (Join-Path $PSScriptRoot "Test-TextTags.ps1")
+        ) `
+        -OutputPaths @($textOut) `
+        -StampPath (Join-Path $PSScriptRoot "..\.cache\build-stages\text-xml.json") `
+        -Version "text-xml-v1" `
+        -ScriptBlock {
+            & "$PSScriptRoot\Build-ChineseXml.ps1" -SourceXml $SourceXml -TranslationJson $TranslationJson -OutputXml $textOut
+            & "$PSScriptRoot\Test-TextTags.ps1" -SourceXml $SourceXml -PatchedXml $textOut
+        })
+}
+
+$managedRewriteDirectory = Join-Path $PSScriptRoot "..\.cache\managed-rewrite"
+$managedRewriteMaps = @(
+    "hardcoded-ui-il-rewrite.json",
+    "hardcoded-common-il-rewrite.json",
+    "hardcoded-game-il-rewrite.json",
+    "hardcoded-elftools-il-rewrite.json"
+) | ForEach-Object { Join-Path $PSScriptRoot "..\translations\$_" } | Where-Object { Test-Path -LiteralPath $_ -PathType Leaf }
+if ($managedRewriteMaps.Count -gt 0) {
+    Measure-AtGStage -Summary $timing -Name "managed-rewrite" -ScriptBlock {
+        & "$PSScriptRoot\Invoke-AtGPatchCli.ps1" -Command rewrite
+    }
+}
+if ($RendererMode -eq "DynamicCjk") {
+    Measure-AtGStage -Summary $timing -Name "runtime-text" -ScriptBlock {
+        & "$PSScriptRoot\Build-RuntimeText.ps1" -PatchRoot $PatchRoot
+    }
+}
+
+$loadLifecycleDirectory = Join-Path $PSScriptRoot "..\.cache\load-lifecycle"
+Measure-AtGStage -Summary $timing -Name "load-lifecycle" -ScriptBlock {
+    & "$PSScriptRoot\Invoke-AtGPatchCli.ps1" `
+        -Command load-lifecycle `
+        -RendererMode $RendererMode `
+        -SummaryPath (Join-Path $PSScriptRoot "..\.cache\load-lifecycle-summary.json")
 }
 
 $hardcodedSource = Join-Path $PSScriptRoot "..\source\AtTheGatesUI.original.dll"
@@ -54,9 +124,16 @@ if (Test-Path -LiteralPath $hardcodedSource) {
         $uiCoveredSources = @()
         $uiDllInput = $hardcodedSource
         if (Test-Path -LiteralPath $uiRewriteMap) {
-            & "$PSScriptRoot\Build-IlRewritePatch.ps1" -SourceDll $uiDllInput -OutputDll $hardcodedOutput -MapJson $uiRewriteMap
+            $managedUiOutput = if ($RendererMode -eq "DynamicCjk") {
+                Join-Path $PSScriptRoot "..\.cache\runtime-hook\AtTheGatesUI.dll"
+            } else {
+                Join-Path $managedRewriteDirectory "AtTheGatesUI.dll"
+            }
+            if (!(Test-Path -LiteralPath $managedUiOutput -PathType Leaf)) {
+                throw "Managed UI rewrite output is missing: $managedUiOutput"
+            }
             $uiCoveredSources += Get-AtGMapOriginals -MapPath $uiRewriteMap
-            $uiDllInput = $hardcodedOutput
+            $uiDllInput = $managedUiOutput
         }
 
         if (Test-Path -LiteralPath $uiIlMap) {
@@ -100,9 +177,15 @@ if ((Test-Path -LiteralPath $hardcodedCommonSource) -and (Test-Path -LiteralPath
         $commonCoveredSources = @()
         $commonDllInput = $hardcodedCommonSource
         if (Test-Path -LiteralPath $commonRewriteMap) {
-            & "$PSScriptRoot\Build-IlRewritePatch.ps1" -SourceDll $commonDllInput -OutputDll $hardcodedCommonOutput -MapJson $commonRewriteMap
+            $managedCommonOutput = Join-Path $managedRewriteDirectory "AtTheGatesCommon.dll"
+            if ($RendererMode -eq "DynamicCjk") {
+                $managedCommonOutput = Join-Path $PSScriptRoot "..\.cache\runtime-hook\AtTheGatesCommon.dll"
+            }
+            if (!(Test-Path -LiteralPath $managedCommonOutput -PathType Leaf)) {
+                throw "Managed Common rewrite output is missing: $managedCommonOutput"
+            }
             $commonCoveredSources += Get-AtGMapOriginals -MapPath $commonRewriteMap
-            $commonDllInput = $hardcodedCommonOutput
+            $commonDllInput = $managedCommonOutput
         }
 
         & "$PSScriptRoot\Build-HardcodedPatch.ps1" `
@@ -131,7 +214,11 @@ if (Test-Path -LiteralPath $gameExeRewriteMap) {
 
     $gameExeOutput = Join-Path $PatchRoot "At The Gates.exe"
     Measure-AtGStage -Summary $timing -Name "game-exe" -ScriptBlock {
-        & "$PSScriptRoot\Build-IlRewritePatch.ps1" -SourceDll $gameExeSource -OutputDll $gameExeOutput -MapJson $gameExeRewriteMap
+        $managedGameOutput = Join-Path $loadLifecycleDirectory "At The Gates.exe"
+        if (!(Test-Path -LiteralPath $managedGameOutput -PathType Leaf)) {
+            throw "Managed game rewrite output is missing: $managedGameOutput"
+        }
+        [void](Copy-AtGFileIfChanged -Source $managedGameOutput -Destination $gameExeOutput)
     }
 }
 
@@ -144,7 +231,11 @@ if (Test-Path -LiteralPath $elfToolsRewriteMap) {
 
     $elfToolsOutput = Join-Path $PatchRoot "ElfTools.dll"
     Measure-AtGStage -Summary $timing -Name "elftools-dll" -ScriptBlock {
-        & "$PSScriptRoot\Build-IlRewritePatch.ps1" -SourceDll $elfToolsSource -OutputDll $elfToolsOutput -MapJson $elfToolsRewriteMap
+        $managedElfToolsOutput = Join-Path $loadLifecycleDirectory "ElfTools.dll"
+        if (!(Test-Path -LiteralPath $managedElfToolsOutput -PathType Leaf)) {
+            throw "Managed ElfTools rewrite output is missing: $managedElfToolsOutput"
+        }
+        [void](Copy-AtGFileIfChanged -Source $managedElfToolsOutput -Destination $elfToolsOutput)
     }
 }
 
@@ -160,7 +251,8 @@ else {
 
 $configNodeMaps = @(
     (Join-Path $PSScriptRoot "..\translations\config-node-strings.json"),
-    (Join-Path $PSScriptRoot "..\translations\config-node-extra-strings.json")
+    (Join-Path $PSScriptRoot "..\translations\config-node-extra-strings.json"),
+    (Join-Path $PSScriptRoot "..\translations\config-node-onmap-strings.json")
 ) | Where-Object { Test-Path -LiteralPath $_ }
 if ($configNodeMaps.Count -gt 0) {
     Measure-AtGStage -Summary $timing -Name "config-node" -ScriptBlock {
@@ -297,12 +389,14 @@ function Remove-AtGGeneratedFontPatch {
 
 $fontOutDir = Join-Path $PatchRoot "Content\Images\Interface\Components\Fonts"
 $fontMarker = Join-Path $fontOutDir ".atg-merged-fonts"
-if ($SkipFonts) {
+if ($SkipFonts -or $RendererMode -eq "DynamicCjk") {
     Remove-AtGGeneratedFontPatch -FontDirectory $fontOutDir -RootDirectory $PatchRoot
-    Write-Host "Skipping font generation. Removed stale generated SpriteFont files from patch output."
-    return
+    Write-Host "Skipping merged font generation for renderer mode '$RendererMode'. Removed stale generated SpriteFont files from patch output."
+    $fontCacheHit = $false
+    $fontInputHash = $null
+    $fontCharacterSetsPath = Join-Path $fontOutDir ".atg-font-character-sets.json"
 }
-
+else {
 if (!(Test-Path -LiteralPath $OriginalFontDir)) {
     throw "Original font directory not found: $OriginalFontDir. Restore it from the game backup or run with -SkipFonts."
 }
@@ -321,7 +415,8 @@ else {
 function Add-AtGJsonMapTranslationsToBuilder {
     param(
         [System.Text.StringBuilder]$Builder,
-        [string]$MapPath
+        [string]$MapPath,
+        [int]$MaxTranslationLength = 0
     )
 
     if (!(Test-Path -LiteralPath $MapPath)) {
@@ -335,7 +430,10 @@ function Add-AtGJsonMapTranslationsToBuilder {
         }
 
         if ($null -ne $item.PSObject.Properties["Translation"]) {
-            [void]$Builder.Append([string]$item.Translation)
+            $translation = [string]$item.Translation
+            if ($MaxTranslationLength -le 0 -or $translation.Length -le $MaxTranslationLength) {
+                [void]$Builder.Append($translation)
+            }
             continue
         }
 
@@ -381,7 +479,8 @@ if (Test-Path -LiteralPath $configMapPath) {
 
 $configNodeMapPaths = @(
     (Join-Path $PSScriptRoot "..\translations\config-node-strings.json"),
-    (Join-Path $PSScriptRoot "..\translations\config-node-extra-strings.json")
+    (Join-Path $PSScriptRoot "..\translations\config-node-extra-strings.json"),
+    (Join-Path $PSScriptRoot "..\translations\config-node-onmap-strings.json")
 ) | Where-Object { Test-Path -LiteralPath $_ }
 foreach ($configNodeMapPath in $configNodeMapPaths) {
     $configNodeTextMap = Get-Content -LiteralPath $configNodeMapPath -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -420,8 +519,32 @@ function Add-AtGShortEnglishXmlTextToBuilder {
     }
 }
 
+function Add-AtGEnglishXmlTextByKeyPatternToBuilder {
+    param(
+        [System.Text.StringBuilder]$Builder,
+        [string]$XmlText,
+        [string]$KeyPattern
+    )
+
+    $matches = [regex]::Matches($XmlText, '<e\s+ntry\s*=\s*"(?<key>[^"]+)">\s*(?<value>.*?)\s*</e>', [System.Text.RegularExpressions.RegexOptions]::Singleline)
+    foreach ($match in $matches) {
+        $key = $match.Groups["key"].Value
+        if ($key -notmatch $KeyPattern) {
+            continue
+        }
+
+        $value = [System.Net.WebUtility]::HtmlDecode($match.Groups["value"].Value).Trim()
+        [void]$Builder.Append($value)
+    }
+}
+
 function Get-AtGConfigNodeDisplayText {
-    param([string[]]$MapPaths)
+    param(
+        [string[]]$MapPaths,
+        [int]$MaxTextLength = 0,
+        [switch]$IncludeNodes,
+        [switch]$IncludeAllNodeText
+    )
 
     $builder = New-Object System.Text.StringBuilder
     foreach ($mapPath in @($MapPaths)) {
@@ -433,10 +556,28 @@ function Get-AtGConfigNodeDisplayText {
         foreach ($fileEntry in $configNodeTextMap.PSObject.Properties) {
             foreach ($item in @($fileEntry.Value.Items)) {
                 if ($null -ne $item.PSObject.Properties["Name"]) {
-                    [void]$builder.Append([string]$item.Name)
+                    $name = [string]$item.Name
+                    if ($MaxTextLength -le 0 -or $name.Length -le $MaxTextLength) {
+                        [void]$builder.Append($name)
+                    }
                 }
                 if ($null -ne $item.PSObject.Properties["Description"]) {
-                    [void]$builder.Append([string]$item.Description)
+                    $description = [string]$item.Description
+                    if ($MaxTextLength -le 0 -or $description.Length -le $MaxTextLength) {
+                        [void]$builder.Append($description)
+                    }
+                }
+                if ($IncludeNodes -and $null -ne $item.PSObject.Properties["Nodes"]) {
+                    foreach ($nodePatch in @($item.Nodes)) {
+                        if ($null -eq $nodePatch.PSObject.Properties["Value"]) {
+                            continue
+                        }
+
+                        $value = [string]$nodePatch.Value
+                        if ($IncludeAllNodeText -or $MaxTextLength -le 0 -or $value.Length -le $MaxTextLength) {
+                            [void]$builder.Append($value)
+                        }
+                    }
                 }
             }
         }
@@ -445,26 +586,92 @@ function Get-AtGConfigNodeDisplayText {
     return $builder.ToString()
 }
 
-# Large SpriteFonts are expensive in a 32-bit XNA process. They are used for
-# titles, labels, and buttons, so keep them on a UI-focused glyph set while
-# smaller body fonts retain the full localized corpus for long text.
-$largeFontCharsBuilder = New-Object System.Text.StringBuilder
-[void]$largeFontCharsBuilder.Append([char]0x200B)
-Add-AtGShortEnglishXmlTextToBuilder -Builder $largeFontCharsBuilder -XmlText $text
-foreach ($mapPath in @(
-    (Join-Path $PSScriptRoot "..\translations\hardcoded-strings.json"),
-    (Join-Path $PSScriptRoot "..\translations\hardcoded-common-strings.json"),
-    (Join-Path $PSScriptRoot "..\translations\hardcoded-ui-il-rewrite.json"),
-    (Join-Path $PSScriptRoot "..\translations\hardcoded-ui-il-strings.json"),
-    (Join-Path $PSScriptRoot "..\translations\hardcoded-common-il-rewrite.json"),
-    (Join-Path $PSScriptRoot "..\translations\hardcoded-game-il-rewrite.json"),
-    (Join-Path $PSScriptRoot "..\translations\hardcoded-elftools-il-rewrite.json"),
-    (Join-Path $PSScriptRoot "..\translations\hardcoded-ui-offsets.json")
-)) {
-    Add-AtGJsonMapTranslationsToBuilder -Builder $largeFontCharsBuilder -MapPath $mapPath
+# SpriteFonts are expensive in a 32-bit XNA process. Generate a character
+# subset per runtime font role instead of copying the same large glyph corpus
+# into every patched font.
+function New-AtGFontCharacterText {
+    param(
+        [int]$MaxXmlTextLength,
+        [int]$MaxMapTranslationLength,
+        [int]$MaxConfigTextLength,
+        [switch]$IncludeDescriptionText,
+        [switch]$IncludeConfigStringMap,
+        [switch]$IncludeConfigNodeNodes,
+        [switch]$IncludeAllConfigNodeText,
+        [switch]$IncludeAllMapTranslations
+    )
+
+    $builder = New-Object System.Text.StringBuilder
+    [void]$builder.Append($extraCharacters)
+    [void]$builder.Append([char]0x200B)
+    Add-AtGShortEnglishXmlTextToBuilder -Builder $builder -XmlText $text -MaxLength $MaxXmlTextLength
+
+    if ($IncludeDescriptionText) {
+        # Long descriptions render in body-size tooltip/detail panels. Missing
+        # glyphs here crash SpriteFont at runtime, so Body fonts must include
+        # every generated TEXT.Description.* value instead of only short labels.
+        Add-AtGEnglishXmlTextByKeyPatternToBuilder -Builder $builder -XmlText $text -KeyPattern '^TEXT\.Description\.'
+    }
+
+    foreach ($mapPath in $fontJsonMapPaths) {
+        $limit = if ($IncludeAllMapTranslations) { 0 } else { $MaxMapTranslationLength }
+        Add-AtGJsonMapTranslationsToBuilder -Builder $builder -MapPath $mapPath -MaxTranslationLength $limit
+    }
+    if ($PatchCommonConceptTerms -and (Test-Path -LiteralPath $hardcodedCommonOffsetMapPath)) {
+        $limit = if ($IncludeAllMapTranslations) { 0 } else { $MaxMapTranslationLength }
+        Add-AtGJsonMapTranslationsToBuilder -Builder $builder -MapPath $hardcodedCommonOffsetMapPath -MaxTranslationLength $limit
+    }
+
+    if ($IncludeConfigStringMap -and (Test-Path -LiteralPath $configMapPath)) {
+        $configTextMap = Get-Content -LiteralPath $configMapPath -Raw -Encoding UTF8 | ConvertFrom-Json
+        foreach ($fileEntry in $configTextMap.PSObject.Properties) {
+            foreach ($replacement in $fileEntry.Value.Replacements.PSObject.Properties) {
+                [void]$builder.Append([string]$replacement.Value)
+            }
+        }
+    }
+
+    [void]$builder.Append((Get-AtGConfigNodeDisplayText `
+        -MapPaths $configNodeMapPaths `
+        -MaxTextLength $MaxConfigTextLength `
+        -IncludeNodes:$IncludeConfigNodeNodes `
+        -IncludeAllNodeText:$IncludeAllConfigNodeText))
+    return $builder.ToString()
 }
-[void]$largeFontCharsBuilder.Append((Get-AtGConfigNodeDisplayText -MapPaths $configNodeMapPaths))
-$largeFontChars = $largeFontCharsBuilder.ToString()
+
+$bodyFontChars = New-AtGFontCharacterText `
+    -MaxXmlTextLength 96 `
+    -MaxMapTranslationLength 0 `
+    -MaxConfigTextLength 96 `
+    -IncludeDescriptionText `
+    -IncludeConfigStringMap `
+    -IncludeConfigNodeNodes `
+    -IncludeAllConfigNodeText `
+    -IncludeAllMapTranslations
+$mediumFontChars = New-AtGFontCharacterText `
+    -MaxXmlTextLength 64 `
+    -MaxMapTranslationLength 96 `
+    -MaxConfigTextLength 64
+$smallFontChars = New-AtGFontCharacterText `
+    -MaxXmlTextLength 48 `
+    -MaxMapTranslationLength 64 `
+    -MaxConfigTextLength 48
+$tinyFontChars = New-AtGFontCharacterText `
+    -MaxXmlTextLength 24 `
+    -MaxMapTranslationLength 48 `
+    -MaxConfigTextLength 32
+$largeFontChars = New-AtGFontCharacterText `
+    -MaxXmlTextLength 24 `
+    -MaxMapTranslationLength 32 `
+    -MaxConfigTextLength 32
+$microFontChars = New-AtGFontCharacterText `
+    -MaxXmlTextLength 16 `
+    -MaxMapTranslationLength 32 `
+    -MaxConfigTextLength 32
+$hugeTitleFontChars = New-AtGFontCharacterText `
+    -MaxXmlTextLength 16 `
+    -MaxMapTranslationLength 32 `
+    -MaxConfigTextLength 16
 
 function Get-AtGUniqueCharacters {
     param([string]$Text)
@@ -477,40 +684,68 @@ function Get-AtGUniqueCharacters {
     return [string]::Join("", $set)
 }
 
-# Only override SpriteFonts referenced by the managed runtime catalogs. Leaving
-# unreferenced fonts untouched avoids a large 32-bit XNA memory tax during map
-# generation while preserving the original game fonts for unused assets.
+# Only override the 15 Segoe UI SpriteFonts used by the normal managed runtime
+# UI. Fixed-width/debug and speech fonts remain original assets in this
+# current build.
 $fontSpecs = @(
-    @{ Name = "Leelawalee_10"; Size = 10; Bold = $false },
-    @{ Name = "LucidaConsole_10_AtG"; Size = 10; Bold = $false },
-    @{ Name = "SegoeUI_UltraTiny"; Size = 8; Bold = $false },
-    @{ Name = "SegoeUI_9"; Size = 9; Bold = $false },
-    @{ Name = "SegoeUI_9_Bold"; Size = 9; Bold = $true },
-    @{ Name = "SegoeUI_11"; Size = 11; Bold = $false },
-    @{ Name = "SegoeUI_11_Bold"; Size = 11; Bold = $true },
-    @{ Name = "SegoeUI_13"; Size = 13; Bold = $false },
-    @{ Name = "SegoeUI_13_Bold"; Size = 13; Bold = $true },
-    @{ Name = "SegoeUI_15"; Size = 15; Bold = $false },
-    @{ Name = "SegoeUI_15_Bold"; Size = 15; Bold = $true },
-    @{ Name = "SegoeUI_16"; Size = 16; Bold = $false; Profile = "LargeUi" },
+    @{ Name = "SegoeUI_UltraTiny"; Size = 8; Bold = $false; Profile = "MicroUi" },
+    @{ Name = "SegoeUI_9"; Size = 9; Bold = $false; Profile = "MicroUi" },
+    @{ Name = "SegoeUI_9_Bold"; Size = 9; Bold = $true; Profile = "TinyUi" },
+    @{ Name = "SegoeUI_11"; Size = 11; Bold = $false; Profile = "SmallUi" },
+    @{ Name = "SegoeUI_11_Bold"; Size = 11; Bold = $true; Profile = "TinyUi" },
+    @{ Name = "SegoeUI_13"; Size = 13; Bold = $false; Profile = "Body" },
+    @{ Name = "SegoeUI_13_Bold"; Size = 13; Bold = $true; Profile = "SmallUi" },
+    @{ Name = "SegoeUI_15"; Size = 15; Bold = $false; Profile = "Body" },
+    @{ Name = "SegoeUI_15_Bold"; Size = 15; Bold = $true; Profile = "Body" },
+    @{ Name = "SegoeUI_16"; Size = 16; Bold = $false; Profile = "MediumUi" },
     @{ Name = "SegoeUI_16_Bold"; Size = 16; Bold = $true; Profile = "LargeUi" },
-    @{ Name = "SegoeUI_18"; Size = 18; Bold = $false; Profile = "LargeUi" },
+    @{ Name = "SegoeUI_18"; Size = 18; Bold = $false; Profile = "MediumUi" },
     @{ Name = "SegoeUI_18_Bold"; Size = 18; Bold = $true; Profile = "LargeUi" },
     @{ Name = "SegoeUI_22_Bold"; Size = 22; Bold = $true; Profile = "LargeUi" },
-    @{ Name = "SegoeUI_36_Bold"; Size = 36; Bold = $true; Profile = "LargeUi" }
+    @{ Name = "SegoeUI_36_Bold"; Size = 36; Bold = $true; Profile = "HugeTitle" }
 )
+
+function Get-AtGFontCharactersForProfile {
+    param([string]$Profile)
+
+    switch ($Profile) {
+        "HugeTitle" { return $hugeTitleFontChars }
+        "LargeUi" { return $largeFontChars }
+        "MediumUi" { return $mediumFontChars }
+        "MicroUi" { return $microFontChars }
+        "SmallUi" { return $smallFontChars }
+        "TinyUi" { return $tinyFontChars }
+        default { return $bodyFontChars }
+    }
+}
+
+$fontCharactersByName = [ordered]@{}
+foreach ($spec in $fontSpecs) {
+    $profile = if ($null -ne $spec.Profile) { [string]$spec.Profile } else { "Body" }
+    $fontCharactersByName[$spec.Name] = Get-AtGFontCharactersForProfile -Profile $profile
+}
 
 $fontStopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 $fontCachePath = Join-Path $fontOutDir ".atg-font-cache.json"
 $fontCharacterSetsPath = Join-Path $fontOutDir ".atg-font-character-sets.json"
-$fontCacheVersion = "merged-fonts-cache-v5-large-ui-pad0"
-$fontMarkerVersion = "merged-fonts-v5-large-ui-pad0"
+$fontCacheVersion = "merged-fonts-cache-v18-15-segoe-config-node-nodes"
+$fontMarkerVersion = "merged-fonts-v18-15-segoe-config-node-nodes"
 $fontHashBuilder = New-Object System.Text.StringBuilder
 [void]$fontHashBuilder.AppendLine($fontCacheVersion)
-[void]$fontHashBuilder.AppendLine("full:")
-[void]$fontHashBuilder.AppendLine($chars)
+[void]$fontHashBuilder.AppendLine("body:")
+[void]$fontHashBuilder.AppendLine($bodyFontChars)
+[void]$fontHashBuilder.AppendLine("medium-ui:")
+[void]$fontHashBuilder.AppendLine($mediumFontChars)
+[void]$fontHashBuilder.AppendLine("small-ui:")
+[void]$fontHashBuilder.AppendLine($smallFontChars)
+[void]$fontHashBuilder.AppendLine("tiny-ui:")
+[void]$fontHashBuilder.AppendLine($tinyFontChars)
 [void]$fontHashBuilder.AppendLine("large-ui:")
 [void]$fontHashBuilder.AppendLine($largeFontChars)
+[void]$fontHashBuilder.AppendLine("micro-ui:")
+[void]$fontHashBuilder.AppendLine($microFontChars)
+[void]$fontHashBuilder.AppendLine("huge-title:")
+[void]$fontHashBuilder.AppendLine($hugeTitleFontChars)
 
 $expectedFontOutputs = New-Object System.Collections.Generic.List[string]
 foreach ($spec in $fontSpecs) {
@@ -520,9 +755,10 @@ foreach ($spec in $fontSpecs) {
     }
 
     $sourceFontItem = Get-Item -LiteralPath $sourceFont
-    $profile = if ($null -ne $spec.Profile) { [string]$spec.Profile } else { "Full" }
-    $glyphPadding = if ($profile -eq "LargeUi") { 0 } else { 2 }
+    $profile = if ($null -ne $spec.Profile) { [string]$spec.Profile } else { "Body" }
+    $glyphPadding = 0
     [void]$fontHashBuilder.AppendLine("$($spec.Name)|$($spec.Size)|$($spec.Bold)|$profile|padding=$glyphPadding|$($sourceFontItem.Length)|$($sourceFontItem.LastWriteTimeUtc.Ticks)")
+    [void]$fontHashBuilder.AppendLine($fontCharactersByName[$spec.Name])
     $expectedFontOutputs.Add((Join-Path $fontOutDir ($spec.Name + ".xnb"))) | Out-Null
     $expectedFontOutputs.Add((Join-Path $fontOutDir ($spec.Name + ".png"))) | Out-Null
 }
@@ -565,8 +801,8 @@ else {
         $xnb = Join-Path $fontOutDir ($spec.Name + ".xnb")
         $png = Join-Path $fontOutDir ($spec.Name + ".png")
         Write-Host "Generating merged font $($spec.Name)..."
-        $charactersForFont = if ($spec.Profile -eq "LargeUi") { $largeFontChars } else { $chars }
-        $glyphPadding = if ($spec.Profile -eq "LargeUi") { 0 } else { 2 }
+        $charactersForFont = [string]$fontCharactersByName[$spec.Name]
+        $glyphPadding = 0
         $args = @{
             SourcePath     = $sourceFont
             OutputPath     = $xnb
@@ -594,10 +830,22 @@ else {
     } | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $fontCachePath -Encoding UTF8
 }
 
+$perFontCharacterSets = [ordered]@{}
+foreach ($spec in $fontSpecs) {
+    $perFontCharacterSets[$spec.Name] = Get-AtGUniqueCharacters -Text ([string]$fontCharactersByName[$spec.Name])
+}
+
 [pscustomobject]@{
     Version = $fontCacheVersion
-    FullCharacters = Get-AtGUniqueCharacters -Text $chars
+    FullCharacters = Get-AtGUniqueCharacters -Text $bodyFontChars
+    BodyCharacters = Get-AtGUniqueCharacters -Text $bodyFontChars
+    MediumUiCharacters = Get-AtGUniqueCharacters -Text $mediumFontChars
+    SmallUiCharacters = Get-AtGUniqueCharacters -Text $smallFontChars
+    TinyUiCharacters = Get-AtGUniqueCharacters -Text $tinyFontChars
     LargeUiCharacters = Get-AtGUniqueCharacters -Text $largeFontChars
+    MicroUiCharacters = Get-AtGUniqueCharacters -Text $microFontChars
+    HugeTitleCharacters = Get-AtGUniqueCharacters -Text $hugeTitleFontChars
+    PerFontCharacters = $perFontCharacterSets
 } | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $fontCharacterSetsPath -Encoding UTF8
 
 $fontStopwatch.Stop()
@@ -605,6 +853,7 @@ $timing.Stages += [pscustomobject]@{
     Name = if ($fontCacheHit) { "fonts-cache-hit" } else { "fonts-generate" }
     DurationMs = [int64]$fontStopwatch.ElapsedMilliseconds
     Duration = $fontStopwatch.Elapsed
+}
 }
 
 function Get-AtGJsonArrayCount {
@@ -680,6 +929,17 @@ if (Test-Path -LiteralPath $fontCharacterSetsPath -PathType Leaf) {
     $fontCharacterSets = Get-Content -LiteralPath $fontCharacterSetsPath -Raw -Encoding UTF8 | ConvertFrom-Json
 }
 
+$perFontCharacterSetCount = 0
+if ($null -ne $fontCharacterSets -and $null -ne $fontCharacterSets.PSObject.Properties["PerFontCharacters"]) {
+    $perFontCharacterSetsForReport = $fontCharacterSets.PerFontCharacters
+    if ($perFontCharacterSetsForReport -is [System.Collections.IDictionary]) {
+        $perFontCharacterSetCount = $perFontCharacterSetsForReport.Count
+    }
+    elseif ($null -ne $perFontCharacterSetsForReport) {
+        $perFontCharacterSetCount = @($perFontCharacterSetsForReport.PSObject.Properties | Where-Object { $_.MemberType -eq "NoteProperty" }).Count
+    }
+}
+
 $timingReportForJson = foreach ($timingStage in @(Get-AtGTimingReport -Summary $timing)) {
     [ordered]@{
         Stage = [string]$timingStage.Stage
@@ -691,9 +951,48 @@ $timingReportForJson = foreach ($timingStage in @(Get-AtGTimingReport -Summary $
 $metallurgyAliasName = -join ([char[]](0x51B6, 0x91D1))
 $metallurgyAliasPath = Join-Path $PatchRoot ("Content\Images\Interface\ScreenSpecific\ClanCard\{0}\PortraitBackground_2.xnb" -f $metallurgyAliasName)
 
+$runtimeTextReport = $null
+if ($RendererMode -eq "DynamicCjk") {
+    $runtimeSummaryPath = Join-Path $PSScriptRoot "..\.cache\runtime-hook-summary.json"
+    $runtimeMapPath = Join-Path $PatchRoot "Content\Text\AtG.RuntimeText.tsv"
+    if (!(Test-Path -LiteralPath $runtimeSummaryPath -PathType Leaf)) {
+        throw "Runtime hook summary is missing: $runtimeSummaryPath"
+    }
+    if (!(Test-Path -LiteralPath $runtimeMapPath -PathType Leaf)) {
+        throw "Runtime display map is missing: $runtimeMapPath"
+    }
+    $runtimeSummary = Get-Content -LiteralPath $runtimeSummaryPath -Raw -Encoding UTF8 | ConvertFrom-Json
+    $runtimeMapCounts = @{ K = 0; E = 0; P = 0; C = 0 }
+    foreach ($line in Get-Content -LiteralPath $runtimeMapPath -Encoding UTF8) {
+        if ([string]::IsNullOrEmpty($line) -or $line.StartsWith("#")) {
+            continue
+        }
+        $recordType = ($line -split "`t", 2)[0]
+        if ($runtimeMapCounts.ContainsKey($recordType)) {
+            $runtimeMapCounts[$recordType]++
+        }
+    }
+    $runtimeTextReport = [ordered]@{
+        RedirectedCount = [int]$runtimeSummary.RedirectedCount
+        RenderingRedirectCount = [int]$runtimeSummary.RenderingRedirectCount
+        FontLoadRedirectCount = [int]$runtimeSummary.FontLoadRedirectCount
+        LifecycleRedirectCount = [int]$runtimeSummary.LifecycleRedirectCount
+        LayoutRedirectCount = [int]$runtimeSummary.LayoutRedirectCount
+        LocalizationRedirectCount = [int]$runtimeSummary.LocalizationRedirectCount
+        ConceptKeyCount = [int]$runtimeMapCounts.K
+        ExactCount = [int]$runtimeMapCounts.E
+        PlainTextCount = [int]$runtimeMapCounts.P
+        ConceptDisplayCount = [int]$runtimeMapCounts.C
+        AtlasPageSize = 1024
+        MaximumAtlasPages = 8
+        AtlasBudgetBytes = 33554432
+    }
+}
+
 $buildReport = [ordered]@{
     GeneratedAtUtc = [DateTime]::UtcNow.ToString("o")
     PatchRoot = (Resolve-Path -LiteralPath $PatchRoot).Path
+    RendererMode = $RendererMode
     Text = [ordered]@{
         EnglishXml = Get-AtGBuildArtifactStatus -Path $textOut -ExpectedFirstLine "<english>"
         EntryCount = Get-AtGXmlEntryCount -Path $textOut
@@ -702,6 +1001,7 @@ $buildReport = [ordered]@{
             Profession = Get-AtGTextAliasCount -Path $textOut -Prefix "TEXT.Name.Profession."
             Discipline = Get-AtGTextAliasCount -Path $textOut -Prefix "TEXT.Name.Discipline."
             Deposit = Get-AtGTextAliasCount -Path $textOut -Prefix "TEXT.Name.Deposit."
+            Tech = Get-AtGTextAliasCount -Path $textOut -Prefix "TEXT.Name.Tech."
         }
     }
     RewriteMaps = [ordered]@{
@@ -713,9 +1013,12 @@ $buildReport = [ordered]@{
         CommonByteFallback = Get-AtGJsonArrayCount -Path (Join-Path $PSScriptRoot "..\translations\hardcoded-common-strings.json")
         CommonOffsetsEnabled = [bool]$PatchCommonConceptTerms
         GameExeIlRewrite = Get-AtGJsonArrayCount -Path (Join-Path $PSScriptRoot "..\translations\hardcoded-game-il-rewrite.json")
+        GameExeLoadMemoryPatch = Test-Path -LiteralPath (Join-Path $PatchRoot "At The Gates.exe") -PathType Leaf
         ElfToolsIlRewrite = Get-AtGJsonArrayCount -Path (Join-Path $PSScriptRoot "..\translations\hardcoded-elftools-il-rewrite.json")
     }
+    RuntimeText = $runtimeTextReport
     Fonts = [ordered]@{
+        Mode = $RendererMode
         CacheHit = [bool]$fontCacheHit
         InputHash = $fontInputHash
         MarkerExists = Test-Path -LiteralPath $fontMarker -PathType Leaf
@@ -724,13 +1027,24 @@ $buildReport = [ordered]@{
         TotalBytes = $fontTotalBytes
         BudgetBytes = 125829120
         FullCharacterCount = if ($null -ne $fontCharacterSets) { ([string]$fontCharacterSets.FullCharacters).Length } else { 0 }
+        BodyCharacterCount = if ($null -ne $fontCharacterSets -and $null -ne $fontCharacterSets.PSObject.Properties["BodyCharacters"]) { ([string]$fontCharacterSets.BodyCharacters).Length } else { 0 }
+        MediumUiCharacterCount = if ($null -ne $fontCharacterSets -and $null -ne $fontCharacterSets.PSObject.Properties["MediumUiCharacters"]) { ([string]$fontCharacterSets.MediumUiCharacters).Length } else { 0 }
+        SmallUiCharacterCount = if ($null -ne $fontCharacterSets -and $null -ne $fontCharacterSets.PSObject.Properties["SmallUiCharacters"]) { ([string]$fontCharacterSets.SmallUiCharacters).Length } else { 0 }
+        TinyUiCharacterCount = if ($null -ne $fontCharacterSets -and $null -ne $fontCharacterSets.PSObject.Properties["TinyUiCharacters"]) { ([string]$fontCharacterSets.TinyUiCharacters).Length } else { 0 }
         LargeUiCharacterCount = if ($null -ne $fontCharacterSets) { ([string]$fontCharacterSets.LargeUiCharacters).Length } else { 0 }
+        MicroUiCharacterCount = if ($null -ne $fontCharacterSets -and $null -ne $fontCharacterSets.PSObject.Properties["MicroUiCharacters"]) { ([string]$fontCharacterSets.MicroUiCharacters).Length } else { 0 }
+        HugeTitleCharacterCount = if ($null -ne $fontCharacterSets -and $null -ne $fontCharacterSets.PSObject.Properties["HugeTitleCharacters"]) { ([string]$fontCharacterSets.HugeTitleCharacters).Length } else { 0 }
+        PerFontCount = $perFontCharacterSetCount
+        DynamicFontBytes = if (Test-Path -LiteralPath (Join-Path $PatchRoot "Content\Fonts")) {
+            [int64]((Get-ChildItem -LiteralPath (Join-Path $PatchRoot "Content\Fonts") -File | Measure-Object Length -Sum).Sum)
+        } else { 0 }
     }
     Artifacts = [ordered]@{
         UiDll = Test-Path -LiteralPath (Join-Path $PatchRoot "AtTheGatesUI.dll") -PathType Leaf
         CommonDll = Test-Path -LiteralPath (Join-Path $PatchRoot "AtTheGatesCommon.dll") -PathType Leaf
         GameExe = Test-Path -LiteralPath (Join-Path $PatchRoot "At The Gates.exe") -PathType Leaf
         ElfToolsDll = Test-Path -LiteralPath (Join-Path $PatchRoot "ElfTools.dll") -PathType Leaf
+        RuntimeTextDll = Test-Path -LiteralPath (Join-Path $PatchRoot "AtG.RuntimeText.dll") -PathType Leaf
         ClanCardMetallurgyAlias = Test-Path -LiteralPath $metallurgyAliasPath -PathType Leaf
     }
     Timing = @($timingReportForJson)

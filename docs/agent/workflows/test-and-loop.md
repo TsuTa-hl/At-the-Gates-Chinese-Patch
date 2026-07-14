@@ -68,6 +68,10 @@ return to assessment/fix work when tests fail.
    `HE'S DEAD, JIM` crash dialog, follow the crash-dialog handling procedure in
    `operations.md`: screenshot first, click OK to allow `Crash.AtGLog` to flush,
    then read the newly written log block as the authoritative stack/error text.
+   For visible English/raw-key failures, the test workflow must query
+   `.cache/atg-catalog.sqlite` through the catalog CLI first and record the
+   first match, or explicitly state that no catalog row matched, before
+   entering `assess-and-fix.md`. Use `known-texts.md` only for grouped context.
 7. Record UI-test timing: clicks, hovers, screenshots, total duration, and the
    largest time sink.
 8. If every selected test passes, hand off to `update-knowledge.md`.

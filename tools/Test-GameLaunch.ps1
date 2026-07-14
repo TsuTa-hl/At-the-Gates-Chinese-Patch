@@ -87,6 +87,7 @@ $processExitedBeforeCleanup = $false
 $processExitCode = $null
 $processKeptRunning = $false
 $windowsErrorEvents = @()
+$settingsErrorSeen = @($windows | Where-Object { $_.MainWindowTitle -like "*Error Loading User Settings*" }).Count -gt 0
 
 if (Test-Path -LiteralPath $crashLog) {
     $afterCrashTime = (Get-Item -LiteralPath $crashLog).LastWriteTimeUtc
@@ -99,6 +100,7 @@ if (Test-Path -LiteralPath $crashLog) {
 function Update-AtGCrashStatus {
     $script:windows = @(Get-AtGProcess | Select-Object Id, ProcessName, MainWindowTitle)
     $script:crashDialogSeen = @($script:windows | Where-Object { $_.MainWindowTitle -like "*HE'S DEAD*" }).Count -gt 0
+    $script:settingsErrorSeen = @($script:windows | Where-Object { $_.MainWindowTitle -like "*Error Loading User Settings*" }).Count -gt 0
     $script:crashUpdated = $false
     $script:crashSummary = ""
 
@@ -260,7 +262,7 @@ catch {
 
 Update-AtGCrashStatus
 
-if ($shouldRunNewGame -and $windowReady -and !$process.HasExited -and !$crashDialogSeen) {
+if ($shouldRunNewGame -and $windowReady -and !$process.HasExited -and !$crashDialogSeen -and !$settingsErrorSeen) {
     $newGameAttempted = $true
     $newGameStopwatch = [System.Diagnostics.Stopwatch]::StartNew()
     $newGameSteps = @(
@@ -357,6 +359,9 @@ $programTail = ""
 if (Test-Path -LiteralPath $programLog) {
     $programTail = ((Get-Content -LiteralPath $programLog -Tail 30 -Encoding UTF8) -join "`n")
 }
+if ($programTail -match "Error loading Settings\.xml|Error Loading User Settings") {
+    $settingsErrorSeen = $true
+}
 
 $windowsErrorEvents = @(Get-AtGWindowsErrorEvents)
 $failureReasons = New-Object System.Collections.Generic.List[string]
@@ -376,6 +381,9 @@ if ($crashDialogSeen) {
 }
 if ($crashUpdated) {
     $failureReasons.Add("Crash.AtGLog was updated.")
+}
+if ($settingsErrorSeen) {
+    $failureReasons.Add("Error Loading User Settings was detected.")
 }
 if ($shouldRunNewGame -and (!$newGameAttempted -or !$newGameReady)) {
     $failureReasons.Add("New-game smoke did not reach the main loop.")
@@ -399,6 +407,7 @@ if ($windowsErrorEvents.Count -gt 0) {
     NewGameSmokeSeconds = $newGameSmokeSeconds
     CrashLogUpdated = $crashUpdated
     CrashDialogSeen = $crashDialogSeen
+    SettingsErrorSeen = $settingsErrorSeen
     WindowsErrorSeen = ($windowsErrorEvents.Count -gt 0)
     WindowsErrorEvents = $windowsErrorEvents
     FailureReason = ($failureReasons.ToArray() -join " ")

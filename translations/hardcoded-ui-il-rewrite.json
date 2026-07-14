@@ -56,14 +56,15 @@
 },
 {
     "Original":  " a ",
-    "Translation":  "一个",
+    "Translation":  "",
     "MethodToken":  "0x0600038a",
     "ILOffset":  426,
     "StringToken":  "0x700013e6",
     "TypeFullName":  "AtTheGatesUI.ns_InGame.SelectionPanel",
     "MethodName":  "AddButton_Pack",
     "Safety":  "SafeUI",
-    "Note":  "Generated from existing UI hardcoded maps and ldstr catalog to avoid equal-length padding."
+    "Note":  "Suppress English article in Pack Up tooltip; Chinese sentence does not need an article.",
+    "EvidenceScenario":  "main-loop-settlement-actions"
 },
 {
     "Original":  " a ",
@@ -738,7 +739,7 @@
 },
 {
     "Original":  " in.\n\nThis is one of two approaches for doing so, and ideal when you either already have a Profession picked out that you know [COLOR:EMPHASIS]someone[/COLOR] is going to end up with but not who that someone is (\"I need an Explorer, who would be a good fit...\"), or when you don\u0027t have anything in mind just yet and want to explore your options.\n\nThe other approach is first choosing [COLOR:EMPHASIS]who[/COLOR] to Train by clicking on their Clan card above and then selecting its new Profession from the screen which appears. This is helpful when faced with the opposite dilemma (\"This Clan needs something to do, let\u0027s see what they\u0027d be good at...\").",
-    "Translation":  "。\n\n先选职业再挑合适的氏族，适合你已确定需要某职业，但还没决定由谁担任时。\n\n也可以先点击上方氏族卡片，再从弹出的界面选择新职业；适合先看某个氏族适合做什么时。",
+    "Translation":  "。\n\n先选职业再挑合适的氏族，适合你已确定需要某职业，但还没决定由[COLOR:EMPHASIS]谁[/COLOR]担任时。\n\n也可以先点击上方氏族卡片，再从弹出的界面选择新职业；适合先看[COLOR:EMPHASIS]谁[/COLOR]适合做什么时。",
     "MethodToken":  "0x06000621",
     "ILOffset":  1619,
     "StringToken":  "0x700196d7",
@@ -1761,7 +1762,7 @@
 },
 {
     "Original":  "Be the first to capture 2 Bandit Camps, without capturing anything else (Clans, Structures, or Settlements), or reloading to optimize your results.",
-    "Translation":  "率先占领 2 个[强盗营地|BANDIT-CAMP]，且不得占领其他任何目标，也不得反复读档优化结果。",
+    "Translation":  "率先占领 2 个强盗营地，且不得占领其他任何目标，也不得反复读档优化结果。",
     "MethodToken":  "0x060000c2",
     "ILOffset":  2538,
     "StringToken":  "0x70005fe2",
@@ -2839,7 +2840,7 @@
 },
 {
     "Original":  "Produce as much Treasure as possible in 100 turns without capturing anything (Clans, Structures, or Settlements), or reloading to optimize your results.",
-    "Translation":  "在 100 回合内尽可能多地产出[财富|TREASURE]，不得占领任何氏族、建筑或定居点，也不得反复读档优化结果。",
+    "Translation":  "在 100 回合内尽可能多地产出财富，不得占领任何氏族、建筑或定居点，也不得反复读档优化结果。",
     "MethodToken":  "0x060000c2",
     "ILOffset":  1542,
     "StringToken":  "0x700057dd",
@@ -4499,15 +4500,15 @@
 },
 {
     "Original":  " in a [Profession|PROFESSION],",
-    "Translation":  "in a [职业|PROFESSION],",
+    "Translation":  "为[职业|PROFESSION]，",
     "MethodToken":  "0x0600038a",
     "ILOffset":  442,
     "StringToken":  "0x700129f4",
     "TypeFullName":  "AtTheGatesUI.ns_InGame.SelectionPanel",
     "MethodName":  "AddButton_Pack",
     "Safety":  "TooltipFragment",
-    "Note":  "Trial fast-fail auto batch generated from glossary and high-confidence phrase rules; smoke safety only.",
-    "EvidenceScenario":  "trial-smoke-new-game"
+    "Note":  "Main-loop Pack Up tooltip training target fragment; removes residual English in/a.",
+    "EvidenceScenario":  "main-loop-settlement-actions"
 },
 {
     "Original":  "[Health|DAMAGE]",
@@ -4595,7 +4596,7 @@
 },
 {
     "Original":  "You can give your [SETTLEMENT] the {Skip} Command if there isn\u0027t a ",
-    "Translation":  "如果没有合适目标，你可以让[定居点|SETTLEMENT]执行{跳过}命令 a",
+    "Translation":  "如果没有合适目标，你可以让[SETTLEMENT]执行{跳过}命令",
     "MethodToken":  "0x0600002f",
     "ILOffset":  270,
     "StringToken":  "0x70002106",
@@ -5027,7 +5028,7 @@
 },
 {
     "Original":  "A Leader has asked you to destroy a nearby [BANDIT-CAMP].",
-    "Translation":  "一位领袖请求你摧毁附近的[强盗营地|BANDIT-CAMP]。",
+    "Translation":  "一位领袖请求你摧毁附近的[BANDIT-CAMP]。",
     "MethodToken":  "0x0600002f",
     "ILOffset":  4264,
     "StringToken":  "0x7000368d",
@@ -6671,7 +6672,7 @@
 },
 {
     "Original":  "\n\nA Caravan is visiting this [Turn|TURN]!",
-    "Translation":  "\n\n本[Turn|TURN]有[Caravan|CARAVAN]来访！",
+    "Translation":  "\n\n本[回合|TURN]有商队来访！",
     "MethodToken":  "0x06000267",
     "ILOffset":  74,
     "StringToken":  "0x7000cbad",
@@ -7054,8 +7055,20 @@
     "EvidenceScenario":  "trial-fast-fail-new-game-smoke-20260630-more-ui"
 },
 {
+    "Original":  "Level",
+    "Translation":  "等级",
+    "MethodToken":  "0x060003e7",
+    "ILOffset":  361,
+    "StringToken":  "0x70014262",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.ClanListEntry",
+    "MethodName":  "BuildPanel_TitleRowContents",
+    "Safety":  "SafeUI",
+    "Note":  "Clan list title-row header label.",
+    "EvidenceScenario":  "clan-list-header-hover-20260710"
+},
+{
     "Original":  "The name of a [Clan|CLAN].",
-    "Translation":  "[Clan|CLAN]的名称。",
+    "Translation":  "[氏族|CLAN]的名称。",
     "MethodToken":  "0x060003e7",
     "ILOffset":  103,
     "StringToken":  "0x700140fe",
@@ -7067,7 +7080,7 @@
 },
 {
     "Original":  "The portrait for a [Clan|CLAN].",
-    "Translation":  "[Clan|CLAN]的肖像。",
+    "Translation":  "[氏族|CLAN]的肖像。",
     "MethodToken":  "0x060003e7",
     "ILOffset":  203,
     "StringToken":  "0x70014174",
@@ -7079,7 +7092,7 @@
 },
 {
     "Original":  "A [Clan\u0027s|CLAN] current [Profession|PROFESSION].",
-    "Translation":  "[Clan|CLAN]当前的[Profession|PROFESSION]。",
+    "Translation":  "[氏族|CLAN]当前的[职业|PROFESSION]。",
     "MethodToken":  "0x060003e7",
     "ILOffset":  308,
     "StringToken":  "0x70014200",
@@ -7091,7 +7104,7 @@
 },
 {
     "Original":  "A [Clan\u0027s|CLAN] current [Discipline|DISCIPLINE] and [Level|LEVEL] in it.",
-    "Translation":  "[Clan|CLAN]当前的[Discipline|DISCIPLINE]及其[Level|LEVEL]。",
+    "Translation":  "[氏族|CLAN]当前所属[纪律|DISCIPLINE]及其[等级|LEVEL]。",
     "MethodToken":  "0x060003e7",
     "ILOffset":  404,
     "StringToken":  "0x700142b2",
@@ -7103,7 +7116,7 @@
 },
 {
     "Original":  "The number of [Families|FAMILY] which make up a [Clan|CLAN].",
-    "Translation":  "组成该[Clan|CLAN]的[Families|FAMILY]数量。",
+    "Translation":  "组成该[氏族|CLAN]的[家庭|FAMILY]数量。",
     "MethodToken":  "0x060003e7",
     "ILOffset":  501,
     "StringToken":  "0x7001438f",
@@ -7115,7 +7128,7 @@
 },
 {
     "Original":  "A [Clan\u0027s|CLAN] current [Supply|SUPPLY] situation.",
-    "Translation":  "[Clan|CLAN]当前的[Supply|SUPPLY]状况。",
+    "Translation":  "[氏族|CLAN]当前的[补给|SUPPLY]状况。",
     "MethodToken":  "0x060003e7",
     "ILOffset":  598,
     "StringToken":  "0x7001444f",
@@ -7127,7 +7140,7 @@
 },
 {
     "Original":  "A [Clan\u0027s|CLAN] current [Damage|DAMAGE] situation.",
-    "Translation":  "[Clan|CLAN]当前的[Damage|DAMAGE]状况。",
+    "Translation":  "[氏族|CLAN]当前的[伤害|DAMAGE]状况。",
     "MethodToken":  "0x060003e7",
     "ILOffset":  695,
     "StringToken":  "0x700144fb",
@@ -7139,7 +7152,7 @@
 },
 {
     "Original":  "The currently available [Upgrades|UPGRADES] for a [Clan|CLAN]. Clicking on a button will purchase the Upgrade.",
-    "Translation":  "[Clan|CLAN]当前可用的[Upgrades|UPGRADES]。点击按钮可购买升级。",
+    "Translation":  "该[氏族|CLAN]当前可用的[升级|UPGRADE]。点击按钮即可购买升级。",
     "MethodToken":  "0x060003e7",
     "ILOffset":  792,
     "StringToken":  "0x700145ab",
@@ -7151,7 +7164,7 @@
 },
 {
     "Original":  "A [Clan\u0027s|CLAN] current [Mood|MOOD].",
-    "Translation":  "[Clan|CLAN]当前的[Mood|MOOD]。",
+    "Translation":  "[氏族|CLAN]当前的[心情|MOOD]。",
     "MethodToken":  "0x060003e7",
     "ILOffset":  889,
     "StringToken":  "0x700146cc",
@@ -7163,7 +7176,7 @@
 },
 {
     "Original":  "A [Clan\u0027s|CLAN] current command.",
-    "Translation":  "[Clan|CLAN]当前的命令。",
+    "Translation":  "[氏族|CLAN]当前的命令。",
     "MethodToken":  "0x060003e7",
     "ILOffset":  986,
     "StringToken":  "0x7001475c",
@@ -7174,8 +7187,20 @@
     "EvidenceScenario":  "trial-fast-fail-new-game-smoke-20260630-more-ui"
 },
 {
+    "Original":  "Distance",
+    "Translation":  "距离",
+    "MethodToken":  "0x060003e7",
+    "ILOffset":  1035,
+    "StringToken":  "0x7001479e",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.ClanListEntry",
+    "MethodName":  "BuildPanel_TitleRowContents",
+    "Safety":  "SafeUI",
+    "Note":  "Clan list title-row header label.",
+    "EvidenceScenario":  "clan-list-header-hover-20260710"
+},
+{
     "Original":  "A [Clan\u0027s|CLAN] current distance from the [SETTLEMENT]. Clicking on a button will select the Clan.",
-    "Translation":  "[Clan|CLAN]当前距离[SETTLEMENT]的远近。点击按钮可选中该氏族。",
+    "Translation":  "[氏族|CLAN]与[SETTLEMENT]的当前距离。点击按钮可选中该氏族。",
     "MethodToken":  "0x060003e7",
     "ILOffset":  1065,
     "StringToken":  "0x700147b0",
@@ -7391,7 +7416,7 @@
 },
 {
     "Original":  "You hear [Rumors|RUMOR] of ",
-    "Translation":  "你听到了关于",
+    "Translation":  "你听到了关于[传闻|RUMOR]的消息",
     "MethodToken":  "0x0600002f",
     "ILOffset":  3691,
     "StringToken":  "0x70003340",
@@ -7403,7 +7428,7 @@
 },
 {
     "Original":  " nearby! You should send a [Clan|CLAN] to [Identify|UNIDENTIFIED] it.",
-    "Translation":  "的[Rumors|RUMOR]就在附近！应派遣[Clan|CLAN]去[Identify|UNIDENTIFIED]。",
+    "Translation":  "就在附近！应派遣[氏族|CLAN]前去[识别|UNIDENTIFIED]。",
     "MethodToken":  "0x0600002f",
     "ILOffset":  3747,
     "StringToken":  "0x70003378",
@@ -8177,7 +8202,7 @@
 },
 {
     "Original":  "! You can [Harvest|HARVEST] it by having a [Clan|CLAN] ",
-    "Translation":  "！你可以让一个[氏族|CLAN]",
+    "Translation":  "！你可以让一个[氏族|CLAN]在此[采集|HARVEST]",
     "MethodToken":  "0x0600002f",
     "ILOffset":  3853,
     "StringToken":  "0x70003405",
@@ -8189,7 +8214,7 @@
 },
 {
     "Original":  " from or [Construct|CONSTRUCT] a [Structure|STRUCTURE] on it.",
-    "Translation":  "从中[采集|HARVEST]，或在其上[建造|CONSTRUCT]一座[建筑|STRUCTURE]。",
+    "Translation":  "，或在其上[建造|CONSTRUCT]一座[建筑|STRUCTURE]。",
     "MethodToken":  "0x0600002f",
     "ILOffset":  3863,
     "StringToken":  "0x70003475",
@@ -8201,7 +8226,7 @@
 },
 {
     "Original":  "! You can [Harvest|HARVEST] them by having [Clans|CLAN] ",
-    "Translation":  "！你可以让[氏族|CLAN]",
+    "Translation":  "！你可以让[氏族|CLAN]在此[采集|HARVEST]",
     "MethodToken":  "0x0600002f",
     "ILOffset":  3908,
     "StringToken":  "0x700034f1",
@@ -8213,7 +8238,7 @@
 },
 {
     "Original":  " from or [Construct|CONSTRUCT] a [Structures|STRUCTURE] on them.",
-    "Translation":  "从中[采集|HARVEST]，或在其上[建造|CONSTRUCT][建筑|STRUCTURE]。",
+    "Translation":  "，或在其上[建造|CONSTRUCT][建筑|STRUCTURE]。",
     "MethodToken":  "0x0600002f",
     "ILOffset":  3924,
     "StringToken":  "0x70003563",
@@ -8237,7 +8262,7 @@
 },
 {
     "Original":  " from or [Construct|CONSTRUCT] a [Structure|STRUCTURE] on it.",
-    "Translation":  "从中[采集|HARVEST]，或在其上[建造|CONSTRUCT]一座[建筑|STRUCTURE]。",
+    "Translation":  "，或在其上[建造|CONSTRUCT]一座[建筑|STRUCTURE]。",
     "MethodToken":  "0x0600002f",
     "ILOffset":  4069,
     "StringToken":  "0x70003475",
@@ -8249,7 +8274,7 @@
 },
 {
     "Original":  "The elders have been watching the sky closely and believe the [Weather|WEATHER] during the upcoming ",
-    "Translation":  "长老们一直密切观察天空，并认为即将到来的",
+    "Translation":  "长老们一直密切观察天空，并认为即将到来的[天气|WEATHER]",
     "MethodToken":  "0x0600002f",
     "ILOffset":  4281,
     "StringToken":  "0x70003701",
@@ -8309,7 +8334,7 @@
 },
 {
     "Original":  " can ONLY be healed by using the \u0027Heal\u0027 Command while a [Clan|CLAN] is on the same [Tile|TILE] as your [SETTLEMENT]",
-    "Translation":  "只能在[氏族|CLAN]与[定居点|SETTLEMENT]处于同一[地格|TILE]时，通过“治疗”命令恢复。",
+    "Translation":  "只能在[氏族|CLAN]与[SETTLEMENT]处于同一[地格|TILE]时，通过“治疗”命令恢复。",
     "MethodToken":  "0x06000360",
     "ILOffset":  208,
     "StringToken":  "0x7000e7e9",
@@ -8438,6 +8463,30 @@
     "Safety":  "TrialDisplay",
     "Note":  "Generated from known-text review continuation; smoke-tested by trial runner before merge.",
     "EvidenceScenario":  "trial-review-ui4"
+},
+{
+    "Original":  "This ",
+    "Translation":  "此",
+    "MethodToken":  "0x0600035e",
+    "ILOffset":  121,
+    "StringToken":  "0x7000863f",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.SelectionPanel",
+    "MethodName":  "AddLabel_Moves",
+    "Safety":  "TooltipFragment",
+    "Note":  "Main-loop movement tooltip subject fragment.",
+    "EvidenceScenario":  "main-loop-settlement-actions"
+},
+{
+    "Original":  " has ",
+    "Translation":  "有",
+    "MethodToken":  "0x0600035e",
+    "ILOffset":  200,
+    "StringToken":  "0x7000191e",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.SelectionPanel",
+    "MethodName":  "AddLabel_Moves",
+    "Safety":  "TooltipFragment",
+    "Note":  "Main-loop movement tooltip possession fragment.",
+    "EvidenceScenario":  "main-loop-settlement-actions"
 },
 {
     "Original":  " determines how much ",
@@ -9125,7 +9174,7 @@
 },
 {
     "Original":  " has just started Digging In, and once the ",
-    "Translation":  "刚开始[固守|DIG-IN]，一旦",
+    "Translation":  "刚开始固守，一旦",
     "MethodToken":  "0x0600036a",
     "ILOffset":  187,
     "StringToken":  "0x7000f97f",
@@ -9161,7 +9210,7 @@
 },
 {
     "Original":  " has been Digging In for ",
-    "Translation":  "已经[固守|DIG-IN]了",
+    "Translation":  "已经固守了",
     "MethodToken":  "0x0600036a",
     "ILOffset":  251,
     "StringToken":  "0x7000fa1b",
@@ -9735,7 +9784,7 @@
 },
 {
     "Original":  " allows it to [Move|MOVE-POINT] around the map like an ",
-    "Translation":  "使其能像",
+    "Translation":  "使其能在地图上[移动|MOVE-POINT]，如同一名",
     "MethodToken":  "0x0600038a",
     "ILOffset":  241,
     "StringToken":  "0x700128dc",
@@ -11047,7 +11096,7 @@
 },
 {
     "Original":  "[Respect|RESPECT] is your reputation within the global community. High Respect improves [Relations|RELATIONS] with of all Leaders, and increases their willingness to make deals which require trust. Respect is hard to earn, but easily lost!",
-    "Translation":  "[尊重|RESPECT]代表你在诸族之间的声望。较高的尊重会改善与所有领袖的[关系|RELATIONS]，并提高他们接受需要信任的交易的意愿。尊重难得，却很容易失去！",
+    "Translation":  "尊重代表你在诸族之间的声望。较高的尊重会改善与所有领袖的关系，并提高他们接受需要信任的交易意愿。尊重难得，却很容易失去！",
     "MethodToken":  "0x0600025d",
     "ILOffset":  97,
     "Safety":  "SafeUI",
@@ -11055,7 +11104,7 @@
 },
 {
     "Original":  " if your [SETTLEMENT] is [Packed Up|PACKED].",
-    "Translation":  "，如果你的[定居点|SETTLEMENT]已[打包|PACKED]。",
+    "Translation":  "，如果你的[SETTLEMENT]已[打包|PACKED]。",
     "MethodToken":  "0x0600026d",
     "ILOffset":  511,
     "Safety":  "SafeUI",
@@ -11191,11 +11240,12 @@
 },
 {
     "Original":  " to spend each ",
-    "Translation":  "每个",
+    "Translation":  "可用于每个",
     "MethodToken":  "0x0600035e",
     "ILOffset":  240,
     "Safety":  "SafeUI",
-    "Note":  "Trial UI exact-catalog selection panel fragment."
+    "Note":  "Main-loop movement tooltip fragment after possession phrase.",
+    "EvidenceScenario":  "main-loop-settlement-actions"
 },
 {
     "Original":  " reduces an ",
@@ -11695,7 +11745,7 @@
 },
 {
     "Original":  " to your [SETTLEMENT], allowing you to ",
-    "Translation":  "送回你的[定居点|SETTLEMENT]，使你可以",
+    "Translation":  "送回你的[SETTLEMENT]，使你可以",
     "MethodToken":  "0x06000378",
     "ILOffset":  667,
     "Safety":  "SafeUI",
@@ -11719,7 +11769,7 @@
 },
 {
     "Original":  " to your [SETTLEMENT], allowing you to ",
-    "Translation":  "送回你的[定居点|SETTLEMENT]，使你可以",
+    "Translation":  "送回你的[SETTLEMENT]，使你可以",
     "MethodToken":  "0x06000378",
     "ILOffset":  761,
     "Safety":  "SafeUI",
@@ -11743,11 +11793,15 @@
 },
 {
     "Original":  " for each [Clan|CLAN] in your [SETTLEMENT]",
-    "Translation":  "，每个[氏族|CLAN]位于你的[定居点|SETTLEMENT]中",
+    "Translation":  "，按你[SETTLEMENT]中的每个[氏族|CLAN]计算",
     "MethodToken":  "0x0600037a",
     "ILOffset":  402,
+    "StringToken":  "0x70010fe9",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.SelectionPanel",
+    "MethodName":  "AddButton_SkipTurn",
     "Safety":  "SafeUI",
-    "Note":  "Trial UI exact-catalog skip-turn tooltip fragment."
+    "Note":  "Main-loop Skip tooltip settlement fragment; keep SETTLEMENT token for runtime display.",
+    "EvidenceScenario":  "main-loop-settlement-actions"
 },
 {
     "Original":  "Tells this ",
@@ -11767,7 +11821,7 @@
 },
 {
     "Original":  "Heals all [Damage|DAMAGE] this ",
-    "Translation":  "治疗这个",
+    "Translation":  "治疗所有[伤害|DAMAGE]，包括该",
     "MethodToken":  "0x0600037c",
     "ILOffset":  155,
     "Safety":  "SafeUI",
@@ -11775,7 +11829,7 @@
 },
 {
     "Original":  " has suffered.",
-    "Translation":  "受到的所有[伤害|DAMAGE]。",
+    "Translation":  "所受的伤害。",
     "MethodToken":  "0x0600037c",
     "ILOffset":  165,
     "Safety":  "SafeUI",
@@ -11991,7 +12045,7 @@
 },
 {
     "Original":  "Orders a [Clan|CLAN] sharing the ",
-    "Translation":  "命令一个共享",
+    "Translation":  "命令一个[氏族|CLAN]共享",
     "MethodToken":  "0x06000386",
     "ILOffset":  294,
     "Safety":  "SafeUI",
@@ -11999,7 +12053,7 @@
 },
 {
     "Original":  "\u0027s original [Builder|CONSTRUCT] to join it as an ",
-    "Translation":  "原[建造者|CONSTRUCT]的[氏族|CLAN]以",
+    "Translation":  "原[建造者|CONSTRUCT]加入其中，成为",
     "MethodToken":  "0x06000386",
     "ILOffset":  326,
     "Safety":  "SafeUI",
@@ -13371,7 +13425,7 @@
 },
 {
     "Original":  ": Farms by the [FARMER], Pastures by the [RANCHER], Mines by the [MINER], and so on.",
-    "Translation":  "：农场由[农夫|FARMER]运作，牧场由[牧场主|RANCHER]运作，矿井由[矿工|MINER]运作，依此类推。",
+    "Translation":  "：农场由[FARMER]运作，牧场由[RANCHER]运作，矿井由[MINER]运作，依此类推。",
     "MethodToken":  "0x06000723",
     "ILOffset":  229,
     "Safety":  "TooltipFragment",
@@ -13389,7 +13443,7 @@
 },
 {
     "Original":  " are eventually [Depleted|DEGRADE] after a couple of years as the supply of [Resources|RESOURCE] on its ",
-    "Translation":  "会在数年后因其",
+    "Translation":  "会在数年后因其地块上的[资源|RESOURCE]供应耗尽而最终[枯竭|DEGRADE]",
     "MethodToken":  "0x06000723",
     "ILOffset":  309,
     "Safety":  "TooltipFragment",
@@ -13398,7 +13452,7 @@
 },
 {
     "Original":  " is used up.",
-    "Translation":  "上的[资源|RESOURCE]耗尽而最终[枯竭|DEGRADE]。",
+    "Translation":  "。",
     "MethodToken":  "0x06000723",
     "ILOffset":  319,
     "Safety":  "SafeUI",
@@ -14421,7 +14475,7 @@
 },
 {
     "Original":  " Clan will take [Damage|DAMAGE] if not moved to a tile with at least ",
-    "Translation":  "氏族若未移动到至少有",
+    "Translation":  "氏族将受到[伤害|DAMAGE]，若未移动至至少拥有",
     "MethodToken":  "0x060003e8",
     "ILOffset":  1042,
     "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.ClanListEntry",
@@ -15380,5 +15434,60 @@
     "Safety":  "SafeUI",
     "Note":  "Recheck skipped glue fragment: SelectionPanel",
     "EvidenceScenario":  "recheck-skipped-alpha-20260704"
+},
+{
+    "Original":  "Main Menu",
+    "Translation":  "主菜单",
+    "MethodToken":  "0x060000bc",
+    "ILOffset":  2,
+    "TypeFullName":  "AtTheGatesUI.ns_MainMenu.MainMenu",
+    "MethodName":  "Init",
+    "Safety":  "SafeUI",
+    "Note":  "Recheck skipped UI main menu glue if still visible.",
+    "EvidenceScenario":  "trial-recheck-skipped-20260705-main"
+},
+{
+    "Original":  " - Showing Patch Notes",
+    "Translation":  " - 查看补丁说明",
+    "MethodToken":  "0x060000c7",
+    "ILOffset":  77,
+    "TypeFullName":  "AtTheGatesUI.ns_MainMenu.MainMenu",
+    "MethodName":  "Try_ShowPatchNotes",
+    "Safety":  "SafeUI",
+    "Note":  "Recheck skipped UI main menu patch notes label.",
+    "EvidenceScenario":  "trial-recheck-skipped-20260705-main"
+},
+{
+    "Original":  "Hello.",
+    "Translation":  "你好。",
+    "MethodToken":  "0x06000679",
+    "ILOffset":  676,
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Diplomacy",
+    "MethodName":  "CreateControls_OnRebuild",
+    "Safety":  "SafeUI",
+    "Note":  "Recheck skipped diplomatic popup greeting string.",
+    "EvidenceScenario":  "trial-recheck-skipped-20260705-main"
+},
+{
+    "Original":  "History is defined by those who dared to dream. To accomplish anything meaningful you must first make it reality within your own mind. How does one become a king? It begins with that most audacious of thoughts: \u0027I should be king, shouldn\u0027t I?\u0027\n\nThe early medieval era was a time when many dreams were born and many dreams died.",
+    "Translation":  "历史由敢于梦想者定义。若要成就有意义之事，必须先在心中塑造它。如何成为君王？\n源于那句最狂野的想法：\u0027我应该成为君王，不是吗？\u0027\n\n早期中世纪是一个许多梦想诞生又逝去的时代。",
+    "MethodToken":  "0x060004bb",
+    "ILOffset":  1,
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.KingdomFoundedScreen",
+    "MethodName":  "AddContent",
+    "Safety":  "SafeUI",
+    "Note":  "Recheck skipped kingdom founding narrative prose.",
+    "EvidenceScenario":  "trial-recheck-skipped-20260705-main"
+},
+{
+    "Original":  "BUILD ",
+    "Translation":  "建造 ",
+    "MethodToken":  "0x060000c1",
+    "ILOffset":  180,
+    "TypeFullName":  "AtTheGatesUI.ns_MainMenu.MainMenu",
+    "MethodName":  "AddText",
+    "Safety":  "SafeUI",
+    "Note":  "Main menu build button label fragment; retained trailing space for formatting parity.",
+    "EvidenceScenario":  "trial-recheck-skipped-20260705-2"
 }
 ]

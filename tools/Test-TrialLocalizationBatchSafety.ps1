@@ -88,6 +88,34 @@ $mojibake = @(
     }
 )
 
+$unsafeUserSetting = @(
+    [pscustomobject]@{
+        Assembly = "Common"
+        Original = "Disables the colored banner which appears at the start of every turn."
+        Translation = "Unsafe setting translation"
+        MethodToken = "0x0600040a"
+        ILOffset = 26
+        TypeFullName = "AtTheGatesCommon.ns_GlobalSystems.UserSetting_TurnBannerDisabled"
+        MethodName = ".ctor"
+        Safety = "TrialFastFail"
+        EvidenceScenario = "test-unsafe-user-setting"
+    }
+)
+
+$unsafeDebugConsole = @(
+    [pscustomobject]@{
+        Assembly = "Game"
+        Original = "You can execute a debug command by typing it into the field below and pressing [Enter]."
+        Translation = "Unsafe debug console translation"
+        MethodToken = "0x06000410"
+        ILOffset = 610
+        TypeFullName = "AtTheGatesGame.DebugConsoleNS.DebugConsole"
+        MethodName = "Init"
+        Safety = "TrialFastFail"
+        EvidenceScenario = "test-unsafe-debug-console"
+    }
+)
+
 $safe = @(
     [pscustomobject]@{
         Assembly = "UI"
@@ -104,6 +132,8 @@ $safe = @(
 
 Assert-BatchFails -Name "unsafe-convert-tags" -Items $unsafeConvertTags -Pattern "ConvertTags|parser"
 Assert-BatchFails -Name "mojibake" -Items $mojibake -Pattern "replacement|mojibake|乱码"
+Assert-BatchFails -Name "unsafe-user-setting" -Items $unsafeUserSetting -Pattern "UserSetting|Settings.xml"
+Assert-BatchFails -Name "unsafe-debug-console" -Items $unsafeDebugConsole -Pattern "DebugConsole|internal"
 Assert-BatchPasses -Name "safe" -Items $safe
 
 Write-Host "Trial localization batch safety checks passed."

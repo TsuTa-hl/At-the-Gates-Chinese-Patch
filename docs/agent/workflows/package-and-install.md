@@ -29,6 +29,10 @@ static build gate and install smoke gate.
 3. Run text tag validation.
 4. Run generated alias validation.
 5. Run font budget validation with `tools\Test-FontPatchBudget.ps1`.
+   - For `DynamicCjk`, this verifies the two bundled runtime fonts, the
+     32 MiB atlas limit recorded in the build report, and the absence of
+     generated merged-font XNB files.
+   - For `MergedFonts`, it verifies the rollback marker and patched XNB budget.
 6. Run IL rewrite mapped-file retry validation with
    `tools\Test-IlRewriteMappedFileRetry.ps1` when IL rewrite tooling or trial
    batch infrastructure changed.
@@ -38,36 +42,44 @@ static build gate and install smoke gate.
 8. Run generated font cleanup retry validation with
    `tools\Test-FontPatchRemovalRetry.ps1` when font generation or build cleanup
    infrastructure changed.
-9. Confirm key artifacts:
+9. Run `tools\Test-GameLoadMemoryPatch.ps1` when Game/ElfTools lifecycle
+   rewriting, renderer redirects, save loading, or final managed-output copy
+   behavior changed.
+10. Confirm key artifacts:
    - `patch\Content\Text\English.xml` first line is `<english>`.
    - Generated resource, profession, discipline, and deposit aliases exist.
-   - `patch\Content\Images\Interface\Components\Fonts\.atg-merged-fonts`
+   - For `DynamicCjk`, `patch\AtG.RuntimeText.dll` and both
+     `patch\Content\Fonts\NotoSansSC-*.ttf` files exist, while generated
+     merged-font XNB files and `.atg-merged-fonts` do not.
+   - For `MergedFonts`,
+     `patch\Content\Images\Interface\Components\Fonts\.atg-merged-fonts`
      exists.
    - `patch\ElfTools.dll` exists when
      `translations\hardcoded-elftools-il-rewrite.json` is present.
    - `patch\Content\Images\Interface\ScreenSpecific\ClanCard\冶金\PortraitBackground_2.xnb`
      exists.
-10. Read `patch\.atg-build-report.json` for the current build summary:
+11. Read `patch\.atg-build-report.json` for the current build summary:
    text entry count, alias counts, rewrite map counts, font cache/budget, key
-   artifacts, and timing.
-11. Install with `Install-ChinesePatch.ps1`. The installer automatically
+   artifacts, runtime redirect counts, renderer mode, atlas budget, load-memory
+   patch status, and timing.
+12. Install with `Install-ChinesePatch.ps1`. The installer automatically
    uninstalls any existing manifest-backed Chinese patch before copying the new
    patch, so removed patch files do not remain in the game directory.
-12. Run `tools\Test-GameLaunch.ps1` as the install smoke test. By default this
+13. Run `tools\Test-GameLaunch.ps1` as the install smoke test. By default this
    launches the game, reaches the main menu, captures a screenshot, and closes
    the process. It must not start a new random game unless the caller
    explicitly passes `-IncludeNewGame`; this keeps fixed-save UI tests from
    being affected by smoke-test state. Do not start a second smoke test while
    one is running; the script's single-instance lock should fail duplicate
    invocations before a second game process can launch.
-13. Confirm the smoke result:
+14. Confirm the smoke result:
    - No new `Crash.AtGLog` timestamp.
    - No process exit before smoke-test cleanup.
    - No Windows Application Error, .NET Runtime, or WER event for
      `At The Gates.exe`.
    - Screenshot covers the complete game window.
    - The smoke test closes the game.
-14. Carry forward timing evidence:
+15. Carry forward timing evidence:
    - Build timing table from `Build-Patch.ps1`.
    - Build report path and key counts from `patch\.atg-build-report.json`.
    - Whether the IL rewrite tool used the repo-local dotnet DLL path.

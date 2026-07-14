@@ -5,12 +5,14 @@
 Use this file when the project is opened directly in a separate
 `GPT-5.3-codex-spark` conversation. Spark is suitable for bounded mechanical
 localization work: review-table filtering, trial batch generation, safe-source
-translation edits, existing script execution, and narrow incremental tests.
+translation edits, and existing script execution.
 
 Spark is not the escalation model for ambiguous visual reasoning, new patch
-architecture, crash analysis, UI/layout code changes, or unknown text-source
-discovery. When those appear, Spark should record a precise stop reason and
-leave the issue for a higher-capability model.
+architecture, crash analysis, UI/layout code changes, unknown text-source
+discovery, or screenshot/image-driven localization. Spark does not support
+image input in this project workflow. When those appear, Spark should record a
+precise stop reason and leave the issue for the main workflow or a
+higher-capability model.
 
 ## Read First
 
@@ -30,7 +32,9 @@ For trial localization, also read:
 - `docs/agent/text-sources.md`
 - `docs/agent/translation-style.md`
 - `docs/agent/trial-localization-state.json`
-- `docs/review/known-texts.csv`
+- `docs/review/known-texts.md`
+- `docs/review/known-texts.csv` only when spreadsheet-style filtering is
+  needed.
 - `docs/review/generated/*-ldstr-catalog.csv` or `.json` as needed.
 
 ## Global Spark Rules
@@ -39,9 +43,15 @@ For trial localization, also read:
 - Do not run full black-box regression unless the user explicitly asks.
 - Do not skip discovered display text only because no screenshot evidence
   exists. Use trial fast-fail or record a concrete risk reason.
+- Spark must not handle screenshot/image-driven incremental localization. If a
+  request depends on reading a screenshot, hover image, or visual UI state,
+  stop and record a higher-model/main-workflow review item. If the user or a
+  higher-capability model has already extracted exact text and supplied source
+  rows, Spark may handle the resulting text-only batch task.
 - For DLL IL rewrite entries, use exact catalog `Value + MethodToken +
   ILOffset`. Do not use the normalized `Original` column from
-  `docs/review/known-texts.csv` as a patch original.
+  `docs/review/known-texts.md` or `docs/review/known-texts.csv` as a patch
+  original.
 - Preserve tags, variables, placeholders, hotkeys, file paths, URLs, and
   parser markers.
 - Do not bulk-patch Common concept terms, dates, month/season text, faction
@@ -51,6 +61,15 @@ For trial localization, also read:
   bracket-only parser-like tokens such as `[Active]` or `[HILL:S]`, or any
   entry whose original/translation contains the Unicode replacement character
   `U+FFFD`. These are rejected by the trial batch runner.
+- Do not trial-localize `AtTheGatesCommon.ns_GlobalSystems.UserSetting_*`
+  description/comment strings or `AtTheGatesGame.DebugConsoleNS.DebugConsole`
+  command/help strings.
+- Only entries accepted by `Invoke-AtGTrialLocalizationBatch.ps1` may remain in
+  the normal rewrite maps. Rejected entries, invalid-smoke entries, and entries
+  from batch files that are not recorded in `trial-localization-state.json`
+  must be removed before handoff.
+- Do not leave scratch files in the repository root. Temporary CSV/PS1 probes
+  belong under `.tmp` and are not part of the deliverable.
 - On crash dialogs, screenshot first, click OK, then read the newest
   `Crash.AtGLog` block. If the crash cause is not a directly isolated trial
   entry, stop and record an upgrade-required item.
@@ -110,11 +129,20 @@ Spark can run this task directly.
    powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-IlRewriteMapRisk.ps1
    ```
 
-5. If the batch passes, keep accepted entries and regenerate
+5. Also run the batch-safety guard before handoff:
+
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-TrialLocalizationBatchSafety.ps1
+   ```
+
+6. If the batch passes, keep accepted entries and regenerate
    `docs/review/known-texts.csv`.
-6. If the batch fails, allow the existing script to bisect. Record rejected
+7. If the batch fails, allow the existing script to bisect. Record rejected
    single entries with exact assembly, method token, IL offset, original, and
    failure reason.
+8. Before finishing, compare map additions against accepted batch results. Any
+   entry without accepted batch evidence is a higher-model review item, not a
+   committed map change.
 
 ### Spark Stop Conditions
 
@@ -126,52 +154,11 @@ Spark can run this task directly.
 - A meaningful pass over candidate classes is complete and remaining skipped
   rows all have concrete skip reasons.
 
-## Task B: Screenshot-Driven Incremental Localization
+## Spark Must Stop for Higher-Model Review When
 
-Spark may run this task only when the screenshot issue is narrow and the user
-provides a reproducible path.
-
-### Required User Input
-
-- Screenshot containing the untranslated text or raw key.
-- Keyframe screenshots or clear steps from the start state to the target state.
-- Situation description and target interface.
-- For tile, clan, notification, random command, or generated-start issues: a
-  fixed save name or instruction to create and reuse one before fixing.
-
-### Spark Workflow
-
-1. Create an incremental scenario entry in notes or
-   `docs/agent/black-box-scenarios.json` only for the reported interface/path.
-2. Extract the visible problem text from the screenshot. If the text is not
-   readable, stop and request higher-model review.
-3. Match in this order:
-   - `docs/review/known-texts.csv`;
-   - `docs/review/generated/*-ldstr-catalog.csv` or `.json`;
-   - existing translation maps under `translations/`.
-4. If exactly one safe source is found, patch the corresponding source:
-   - `translations/zh-CN.json` for `English.xml`;
-   - `translations/config-node-strings.json` or
-     `translations/config-node-extra-strings.json` for safe config nodes;
-   - `translations/hardcoded-*-il-rewrite.json` for DLL/exe/ElfTools `ldstr`
-     entries.
-5. Build and install:
-
-   ```powershell
-   powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Build-Patch.ps1
-   powershell -NoProfile -ExecutionPolicy Bypass -File .\Install-ChinesePatch.ps1
-   ```
-
-6. Run only the relevant smoke or incremental black-box test. Do not run full
-   regression by default.
-7. If the scenario passes, merge the incremental case into the matching
-   full-regression interface scenario during knowledge update and remove the
-   duplicate incremental entry.
-
-### Spark Must Stop for Higher-Model Review When
-
-- The screenshot text cannot be read confidently.
-- The text does not match known sources or generated catalogs.
+- The request requires reading or interpreting a screenshot, image, hover
+  capture, UI layout, or visual state.
+- Extracted text does not match known sources or generated catalogs.
 - Multiple plausible sources exist and risk differs by source.
 - A new text-containing file must be discovered.
 - UI layout, renderer, font metrics, or game logic code must be changed.
@@ -185,7 +172,7 @@ Use this structure when starting a new Spark conversation:
 
 ```text
 Model: GPT-5.3-codex-spark
-Task: <recheck-skipped-text | screenshot-incremental-localization>
+Task: recheck-skipped-text
 Goal: <one sentence>
 Repository: C:\Users\98538\Documents\AtTheGateChinese
 
@@ -195,7 +182,7 @@ Read first:
 - <workflow/topic files>
 
 Inputs:
-- <CSV rows, screenshot paths, scenario steps, or batch scope>
+- <known-text rows, catalog rows, or batch scope>
 
 Allowed actions:
 - <specific files/scripts Spark may touch>
@@ -210,7 +197,7 @@ Stop and record higher-model review item if:
 
 Expected output:
 - Changed files
-- Batch IDs or scenario IDs
+- Batch IDs
 - Test commands and results
 - Review table counts
 - Higher-model review items
@@ -224,7 +211,7 @@ Spark should finish with:
 Status: passed | stopped-higher-model-required | stopped-budget | failed
 Changed files:
 - <path>
-Batches or scenarios:
+Batches:
 - <id and result>
 Tests:
 - <command>: <pass/fail/not run>

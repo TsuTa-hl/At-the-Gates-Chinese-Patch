@@ -100,6 +100,14 @@ function Get-AtGTrialBatchSafetyError {
         return "Entries from AtTheGatesCommon.ns_Text.Text.ConvertTags are parser tag definitions, not safe trial localization display text."
     }
 
+    if ($typeFullName -like "AtTheGatesCommon.ns_GlobalSystems.UserSetting_*") {
+        return "UserSetting description/comment strings are serialized into Settings.xml and are not safe trial localization targets."
+    }
+
+    if ($typeFullName -like "AtTheGatesGame.DebugConsoleNS.DebugConsole*") {
+        return "DebugConsole command/help strings are internal tooling text and are not safe trial localization targets."
+    }
+
     if ($original -match '^\[[A-Za-z][A-Za-z0-9 _\-\|:]*\]$') {
         return "Bracket-only parser-like tokens are not safe trial localization targets."
     }
@@ -442,6 +450,7 @@ function Test-TrialEntries {
             $smoke.NewGameReady -and
             !$smoke.CrashLogUpdated -and
             !$smoke.CrashDialogSeen -and
+            !$smoke.SettingsErrorSeen -and
             !$smoke.WindowsErrorSeen)
         $results.Add([pscustomobject]@{
             Label = $Label

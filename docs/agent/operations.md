@@ -48,6 +48,28 @@ dotnet host as `AtG.IlRewrite.dll`; do not run or depend on an
 directly running the exe can fail when no system-level .NET runtime is
 installed.
 
+The current architecture is grouped in `AtG.Patch.sln`:
+
+- `AtG.Patch.Core` and `AtG.Patch.Cli`: build/cache/report primitives and the
+  compatibility CLI entry point.
+- `AtG.ManagedRewrite`: one compiled dnlib implementation for managed string,
+  runtime-renderer, and load-lifecycle rewrites.
+- `AtG.RuntimeText`: the .NET Framework 4.0/x86 DynamicCjk renderer.
+- `AtG.Catalog`: SQLite-backed text occurrence catalog.
+- `AtG.TestHarness`: one-process Win32 scenario/state runner with memory and
+  program-log telemetry.
+
+Windows PowerShell 5.1 Desktop remains the supported public and development
+compatibility baseline. Scripts and documented commands must not require
+`pwsh`, PowerShell 7, or PS7-only syntax. PowerShell should call the compiled
+tools rather than reimplementing their business logic; any local PS7 use must
+still leave the PowerShell 5.1 path passing.
+
+Repository text files use UTF-8 without requiring a BOM. Windows PowerShell
+5.1 must therefore pass `-Encoding UTF8` when reading Chinese text with
+`Get-Content`; otherwise the console can show mojibake even though the file is
+valid. Hash stamps and other known-ASCII files are exempt.
+
 Standard build:
 
 ```powershell
@@ -103,9 +125,9 @@ briefly through `-PostNewGameReadyDelayMs` before capturing and closing. Record
 `IncludeNewGame`, `NewGameReadyMarker`, and `NewGameSmokeSeconds` when
 comparing smoke-test cost.
 The result also records `ProcessExitedBeforeCleanup`, `ProcessExitCode`,
-`WindowsErrorSeen`, `WindowsErrorEvents`, and `FailureReason`; use these fields
-to diagnose silent exits that do not show `HE'S DEAD, JIM` and do not update
-`Crash.AtGLog`.
+`SettingsErrorSeen`, `WindowsErrorSeen`, `WindowsErrorEvents`, and
+`FailureReason`; use these fields to diagnose settings-load failures and silent
+exits that do not show `HE'S DEAD, JIM` and do not update `Crash.AtGLog`.
 For manual UI testing, use `Test-GameLaunch.ps1 -KeepRunning` to reuse the
 smoke script's reliable launch, focus, and screenshot setup while leaving the
 game open for subsequent click/hover scripts. Always close the game manually
@@ -141,6 +163,11 @@ infrastructure noise, not unsafe text evidence.
 font patch directory before regenerating fonts. If the retry succeeds and later
 static/font tests pass, treat a single access-denied cleanup failure as
 infrastructure noise rather than a localization rejection.
+Final Game/ElfTools lifecycle outputs are copied through
+`Copy-AtGFileIfChanged` in `tools\AtGFileOps.ps1`. It skips identical files and
+retries Windows sharing, lock-violation, and user-mapped-section failures with
+bounded backoff. Do not replace this final copy with raw `Copy-Item`; dnlib or
+verification can leave the output image mapped briefly.
 While a trial batch is running, the tool writes
 `.tmp\trial-localization\active-run.json` with baseline map backups. If the
 process is interrupted before it can write `accepted.json` / `rejected.json`,
@@ -148,11 +175,12 @@ the next trial-batch invocation must restore those baseline maps before
 planning or testing a new batch.
 After a run, record accepted/rejected counts and any isolated failures in
 `docs\agent\trial-localization-state.json` during the knowledge-update step.
-If a trial run reports `Error Loading User Settings`, inspect
-`Settings\Settings.xml` in the game directory before retrying. A 2026-07-02
-UserSetting trial wrote Chinese comments into that file and polluted every
-subsequent smoke run until line 27 was restored to ASCII. Do not treat repeated
-failures with that window title as evidence against unrelated trial entries.
+If a trial run reports `Error Loading User Settings` or `SettingsErrorSeen`,
+inspect `Settings\Settings.xml` in the game directory before retrying. A
+2026-07-02 UserSetting trial polluted line 27, and a 2026-07-05 Spark pass
+polluted setting-comment lines 108, 150, 170, 201, and 482. Restore comments to
+ASCII before retesting. Do not treat repeated failures with that window title as
+evidence against unrelated trial entries.
 
 Text tag validation:
 
@@ -196,6 +224,18 @@ Generated font cleanup retry regression:
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-FontPatchRemovalRetry.ps1
 ```
 
+Shared managed-output file-operation regression:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-AtGFileOps.ps1
+```
+
+Game/ElfTools load-lifecycle patch regression:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-GameLoadMemoryPatch.ps1
+```
+
 IL rewrite map risk check:
 
 ```powershell
@@ -207,6 +247,17 @@ DLL `ldstr` catalog export:
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Export-DllLdstrCatalog.ps1 -DllPath .\source\AtTheGatesUI.original.dll -OutputJson .\.tmp\ui-ldstr-catalog.json -OutputCsv .\.tmp\ui-ldstr-catalog.csv
 ```
+
+SQLite known-text search (run before direct source searches for screenshot
+findings):
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Invoke-AtGPatchCli.ps1 -Command catalog -CatalogAction search -CatalogText '<visible text>' -CatalogLimit 20
+```
+
+Add `-CatalogSource '<source fragment>'` when the likely assembly or file is
+known. Use `known-texts.md` for grouped context after the query, not as the
+mutable primary store.
 
 ## Screenshot and Input Automation
 
@@ -287,6 +338,24 @@ before each hover, which prevents stale tooltips from contaminating screenshots.
 For nested tooltip checks, such as hovering a `[HOTKEY:*]` token inside an
 already visible tooltip, set `SkipClear: true` on that point so the parent
 tooltip remains open.
+
+For an owned one-process fixed-save session, use `AtG.TestHarness`. It starts
+the game once, loads the named save from the main menu, executes the selected
+scenario, records memory samples and `Program.AtGLog` bookmarks, then closes
+the process:
+
+```powershell
+$env:NUGET_PACKAGES = (Resolve-Path '.\.tools\nuget-cache').Path
+$env:DOTNET_CLI_HOME = (Resolve-Path '.\.tools\dotnet-home').Path
+& '.\.tools\dotnet\dotnet.exe' run --no-build --project '.\tools\AtG.TestHarness\AtG.TestHarness.csproj' -- run-owned `
+  --game-path <game-path> --setup fixed-save --save-name <save-file> `
+  --scenarios '.\docs\agent\black-box-scenarios.json' --suite FullRegression `
+  --scenario <scenario-id> --output '.\.tmp\runs\<run-id>'
+```
+
+Use this path for repeated in-game reload tests. A `Repeat` action must stay in
+the same owned process; launching a fresh game for each repetition does not
+exercise the failure mode.
 
 Dual-monitor diagnostic screenshot:
 

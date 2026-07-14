@@ -1,0 +1,98 @@
+﻿[
+    {
+        "Assembly":  "Game",
+        "Original":  "Toggles the [NeverBlockTurn] setting",
+        "Translation":  "切换 [NeverBlockTurn] 设置。",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  419,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail1",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #1"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "train [UNIT] [i#]",
+        "Translation":  "训练 [UNIT] [i#]",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  1915,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail1",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #1"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "trait [CLAN] [TRAIT]",
+        "Translation":  "特质 [CLAN] [TRAIT]",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  1694,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail1",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #1"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "unit [UNIT]",
+        "Translation":  "单位 [UNIT]",
+        "MethodToken":  "0x06000412",
+        "ILOffset":  2221,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "BuildCommandList",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail1",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #1"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "Usage: INV STATUS [INVASION ID]",
+        "Translation":  "用法：INV STATUS [INVASION ID]",
+        "MethodToken":  "0x06000471",
+        "ILOffset":  102,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "TryCommandInvStatusDetails",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail1",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #1"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "Use the  [Left] / [Right]  keys to cycle through previously-entered commands.",
+        "Translation":  "按 [Left] / [Right] 键可循环浏览先前输入过的命令。",
+        "MethodToken":  "0x06000410",
+        "ILOffset":  658,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "Init",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail1",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #1"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "Use the  [Up] / [Down] / [PageUp] / [PageDown]  keys to scroll through this window\u0027s contents.",
+        "Translation":  "按 [Up] / [Down] / [PageUp] / [PageDown] 键可滚动此窗口内容。",
+        "MethodToken":  "0x06000410",
+        "ILOffset":  646,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "Init",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail1",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #1"
+    },
+    {
+        "Assembly":  "Game",
+        "Original":  "You can execute a debug command by typing it into the field below and pressing [Enter].",
+        "Translation":  "在下方输入框中输入调试命令并按 [Enter] 执行。",
+        "MethodToken":  "0x06000410",
+        "ILOffset":  610,
+        "TypeFullName":  "AtTheGatesGame.DebugConsoleNS.DebugConsole",
+        "MethodName":  "Init",
+        "Safety":  "TrialFastFail",
+        "EvidenceScenario":  "trial-20260705-recheck-skipped-game-fastfail1",
+        "Note":  "Game command/UI command-fragment help from skipped recheck; fast-fail probe #1"
+    }
+]
