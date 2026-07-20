@@ -24,7 +24,7 @@ namespace AtG.RuntimeText
                 var family = Collection.Families.Length > 0
                     ? Collection.Families[Math.Min(descriptor.Bold ? 1 : 0, Collection.Families.Length - 1)]
                     : new FontFamily("Microsoft YaHei");
-                font = new Font(family, descriptor.Size, style, GraphicsUnit.Pixel);
+                font = new Font(family, descriptor.RasterSize, style, GraphicsUnit.Pixel);
                 Fonts.Add(descriptor.CacheKey, font);
                 return font;
             }

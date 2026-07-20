@@ -340,3 +340,48 @@
 - 本轮已用 Windows PowerShell 5.1 通过场景 schema、文件操作重试、读档生命周期、
   运行时报告、缓存行为、文本标签、别名、字体预算、悬停回归、概念链接、富文本
   标签和优化工具测试；107 点全量 UI 回归未重复执行。
+
+## 2026-07-16 DynamicCjk 字号与基线校准
+
+- `AtG.RuntimeText` 现将中文栅格字号设为原逻辑 SpriteFont 尺寸的 1.15 倍，
+  并按 9-40 px 字号与粗体属性使用经过截图对比校准的向上基线偏移。测量、行高、
+  字形缓存和绘制共享同一 `FontDescriptor`；拉丁字符、数字、热键和图标仍使用原始
+  SpriteFont，不受中文缩放与偏移影响。
+- 原版与汉化版视觉对比覆盖主菜单、读档、主循环 HUD、知识界面和氏族列表；
+  汉化版帮助界面另行检查了裁切与对齐。证据集中在 `.tmp/font-compare`。当前结果
+  未见中文普遍偏小、偏下或控件裁切。
+- 字号/基线单元测试、场景 schema（11 场景、122 点）、文本标签、别名、悬停回归、
+  字体预算、字体引用、运行时构建报告、578 条富文本标签和优化工具测试均通过。
+- 本轮最终缓存构建约 7.1 秒、自动卸载后安装约 0.56 秒、主菜单烟测约 11.43 秒；
+  多界面固定存档会话约 7.46 秒，修正氏族列表入口后的聚焦复测约 1.72 秒。
+- 修正 `clan-list-header-hover-20260710` 的 2560x1440 入口坐标为 `1985,25`；旧坐标
+  `2020,25` 会误开外交界面。该场景尚未因此自动标记为全量完成。
+- 构建报告改为 UTF-8 无 BOM 且不带尾随空白；`Test-RuntimeBuildReport.ps1` 会阻止
+  生成器回退到 Windows PowerShell 5.1 的带 BOM `Set-Content -Encoding UTF8` 行为。
+
+## 2026-07-16 SQLite 未汉化文本重审与 Structures 全覆盖
+
+- 重新遍历 `.cache/atg-catalog.sqlite` 中当时的 10,734 条 `Skipped` 出现位置。
+  UI、Common、Game 和 ElfTools 的剩余大类仍是日志/诊断、控件或资源标识、解析器
+  token、原始 text key、日期/派系等逻辑敏感内容；没有以“缺少 UI 截图”作为跳过
+  理由。
+- 找到一组此前分类过于保守的玩家可见文本：
+  `source/Content/Config/OnMap/Structures.original.xml` 中 57 条未覆盖的稳定 ID
+  `description`。它们已加入 `translations/config-node-onmap-strings.json`；连同既有
+  `STRUCTURE_SETTLEMENT`，当前共覆盖 58/58 条结构描述。
+- 配置节点富文本回归现在同时检查标签签名和概念键。源文中的裸运行时 token
+  （例如 `[FARMER:S]`、`[TIMBER]`）必须保持裸 token，不能伪造为概念链接；58 条
+  映射的标签语义签名均精确匹配源 XML。
+- 审查目录重新生成后仍有 18,743 个非去重出现位置和 9,809 个语义组；
+  `TranslatedStateRows` 从 7,991 增至 8,048，`Skipped` 从 10,734 降至 10,677，
+  `NeedsTrial` 为 0，`Rejected` 为 18。
+- 本轮验证通过：完整构建、`Test-TextTags.ps1`、
+  `Test-GeneratedTextAliases.ps1`、`Test-HoverLocalizationRegressions.ps1`、
+  `Test-OptimizationTooling.ps1`、富文本标签/概念链接校验和
+  `Test-KnownTextReviewExport.ps1`。安装前自动卸载旧补丁，随后新游戏烟测进入主
+  循环，`CrashLogUpdated=False`、`CrashDialogSeen=False`。
+- 本轮精确耗时：构建约 7.62 秒，安装刷新约 0.56 秒，新游戏烟测约 31.99 秒
+  （其中主循环就绪约 17.43 秒）。审查目录首次重建约 26.7 秒；更新分类规则后，
+  首次覆盖 `known-texts.md` 遇到一次 Windows user-mapped 瞬时占用，等待 2 秒后
+  复跑约 24.4 秒通过；最终审查导出验证约 27.1 秒。人工静态筛选/翻译未单独
+  计时；未运行 107 点全量 UI 回归。

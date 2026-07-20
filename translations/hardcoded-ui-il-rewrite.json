@@ -15489,5 +15489,29 @@
     "Safety":  "SafeUI",
     "Note":  "Main menu build button label fragment; retained trailing space for formatting parity.",
     "EvidenceScenario":  "trial-recheck-skipped-20260705-2"
+},
+{
+    "Original":  "Religion",
+    "Translation":  "宗教",
+    "MethodToken":  "0x0600063d",
+    "ILOffset":  10,
+    "StringToken":  "0x7001a711",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Religion",
+    "MethodName":  "CreateControls_OnRebuild",
+    "Safety":  "SafeUI",
+    "Note":  "Religion screen title; keep religion IDs and config logic unchanged.",
+    "EvidenceScenario":  "religion-screen-20260718"
+},
+{
+    "Original":  "Religion",
+    "Translation":  "宗教",
+    "MethodToken":  "0x0600063d",
+    "ILOffset":  378,
+    "StringToken":  "0x7001a711",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Religion",
+    "MethodName":  "CreateControls_OnRebuild",
+    "Safety":  "SafeUI",
+    "Note":  "Religion screen title redraw; keep religion IDs and config logic unchanged.",
+    "EvidenceScenario":  "religion-screen-20260718"
 }
 ]

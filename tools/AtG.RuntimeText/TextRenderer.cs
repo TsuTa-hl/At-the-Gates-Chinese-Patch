@@ -28,7 +28,7 @@ namespace AtG.RuntimeText
             {
                 var width = 0f;
                 var maximumWidth = 0f;
-                var height = Math.Max(font.LineSpacing, descriptor.Size);
+                var height = Math.Max(font.LineSpacing, descriptor.RasterSize);
                 var currentLineHeight = height;
                 var missingGlyphs = 0;
                 var originalRun = new StringBuilder();
@@ -43,7 +43,7 @@ namespace AtG.RuntimeText
                         maximumWidth = Math.Max(maximumWidth, width);
                         width = 0;
                         height += currentLineHeight;
-                        currentLineHeight = Math.Max(font.LineSpacing, descriptor.Size);
+                        currentLineHeight = Math.Max(font.LineSpacing, descriptor.RasterSize);
                     }
                     else if (CjkText.RequiresDynamicGlyph(character))
                     {
@@ -111,7 +111,7 @@ namespace AtG.RuntimeText
                 var x = 0f;
                 var y = 0f;
                 var maximumWidth = 0f;
-                var lineHeight = Math.Max(font.LineSpacing, descriptor.Size);
+                var lineHeight = Math.Max(font.LineSpacing, descriptor.RasterSize);
                 var missingGlyphs = 0;
                 var originalRun = new StringBuilder();
                 for (var index = 0; index < text.Length; index++)
@@ -149,7 +149,9 @@ namespace AtG.RuntimeText
                         missingGlyphs++;
                         continue;
                     }
-                    var glyphPosition = Transform(new Vector2(x + 1, y + 1), position, origin, rotation, scale);
+                    var glyphPosition = Transform(
+                        new Vector2(x + 1, y + 1 + descriptor.CjkBaselineOffset),
+                        position, origin, rotation, scale);
                     batch.Draw(glyph.Texture, glyphPosition, glyph.Source, color, rotation,
                         Vector2.Zero, scale, effects, layerDepth);
                     x += glyph.Advance;

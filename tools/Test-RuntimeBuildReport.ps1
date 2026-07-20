@@ -3,7 +3,17 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$report = Get-Content -LiteralPath $ReportPath -Raw -Encoding UTF8 | ConvertFrom-Json
+$resolvedReportPath = (Resolve-Path -LiteralPath $ReportPath).Path
+$reportBytes = [System.IO.File]::ReadAllBytes($resolvedReportPath)
+if ($reportBytes.Length -ge 3 -and
+    $reportBytes[0] -eq 0xEF -and $reportBytes[1] -eq 0xBB -and $reportBytes[2] -eq 0xBF) {
+    throw "Runtime build report must use UTF-8 without BOM."
+}
+$reportJson = [System.IO.File]::ReadAllText($resolvedReportPath, [System.Text.Encoding]::UTF8)
+if ($reportJson.Length -gt 0 -and [char]::IsWhiteSpace($reportJson[$reportJson.Length - 1])) {
+    throw "Runtime build report must not end with whitespace."
+}
+$report = $reportJson | ConvertFrom-Json
 if ($report.RendererMode -ne "DynamicCjk") {
     throw "Runtime build report test requires a DynamicCjk build report."
 }

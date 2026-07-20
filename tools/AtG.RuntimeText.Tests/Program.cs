@@ -10,12 +10,15 @@ var tests = new (string Name, Action Body)[]
     ("Rich localization changes display text but preserves keys and raw tags", RichLocalizationPreservesStructure),
     ("Display registrations reject conflicts and markup injection", DisplayRegistrationsRejectUnsafeValues),
     ("Runtime display map loads exact and concept-scoped translations", RuntimeDisplayMapLoads),
+    ("Runtime display fragments localize plain nodes without breaking concept links", RuntimeDisplayFragmentsPreserveLinks),
     ("CJK line breaks respect punctuation", CjkBreaksRespectPunctuation),
     ("CJK fitting breaks preserve punctuation and grapheme clusters", CjkFittingBreaksPreserveTextElements),
     ("CJK word layout splits only at invisible line boundaries", CjkWordLayoutUsesLineBoundaries),
     ("CJK word bridge preserves ASCII and wraps CJK without spaces", CjkWordBridgePreservesOriginalPath),
     ("Display templates localize only exact approved strings", ExactTemplatesOnly),
     ("SpriteFont asset names map to exact runtime descriptors", SpriteFontAssetsMapExactly),
+    ("CJK raster size is calibrated independently from the SpriteFont asset size", CjkRasterSizeIsCalibrated),
+    ("CJK baselines are calibrated against the original SpriteFont sizes", CjkBaselineIsCalibrated),
     ("Zero-width format characters are ignored by runtime text", ZeroWidthFormatCharactersAreIgnored),
     ("Shelf packing crosses to a new atlas page", ShelfPackingCrossesToNewPage),
     ("Atlas allocation stops at eight pages", AtlasAllocationStopsAtEightPages),
@@ -113,6 +116,7 @@ static void RuntimeDisplayMapLoads()
     {
         "K\t" + B64("CLAN"),
         "P\t" + B64("Train ") + "\t" + B64("\u8bad\u7ec3"),
+        "F\t" + B64("engage in ") + "\t" + B64("\u5377\u5165"),
         "C\t" + B64("CLAN") + "\t" + B64("Clan") + "\t" + B64("\u6c0f\u65cf"),
         "E\t" + B64("Close") + "\t" + B64("\u5173\u95ed"),
     });
@@ -121,6 +125,30 @@ static void RuntimeDisplayMapLoads()
     Equal("\u5173\u95ed", DisplayStringLocalizer.LocalizeDisplayString("Close"));
     Equal("\u8bad\u7ec3[\u6c0f\u65cf|CLAN]",
         DisplayStringLocalizer.LocalizeRichText("Train [Clan|CLAN]"));
+    Equal("\u5377\u5165Brawls",
+        DisplayStringLocalizer.LocalizeRichText("engage in Brawls"));
+}
+
+static void RuntimeDisplayFragmentsPreserveLinks()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterConceptKey("CLAN");
+    DisplayStringLocalizer.RegisterConceptKey("UPGRADE");
+    DisplayStringLocalizer.RegisterConceptDisplay("CLAN", "Clan", "\u6c0f\u65cf");
+    DisplayStringLocalizer.RegisterConceptDisplay("UPGRADE", "Upgrade", "\u5347\u7ea7");
+    DisplayStringLocalizer.RegisterPlainTextFragment("there's another ", "\u53e6\u6709");
+    DisplayStringLocalizer.RegisterPlainTextFragment("engage in ", "\u5377\u5165");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Brawls", "\u6597\u6bb4");
+    DisplayStringLocalizer.RegisterPlainTextFragment("into", "\u8fdb\u5165");
+    DisplayStringLocalizer.RegisterPlainTextFragment("forced into a ", "\u88ab\u8feb\u4ece\u4e8b");
+
+    Equal("\u53e6\u6709[\u6c0f\u65cf|CLAN]\u5377\u5165\u6597\u6bb4",
+        DisplayStringLocalizer.LocalizeRichText(
+            "there's another [Clan|CLAN]engage in Brawls"));
+    Equal("\u88ab\u8feb\u4ece\u4e8b[\u6c0f\u65cf|CLAN]",
+        DisplayStringLocalizer.LocalizeRichText("forced into a [Clan|CLAN]"));
+    Equal("[\u5347\u7ea7|UPGRADE]",
+        DisplayStringLocalizer.LocalizeRichText("[Upgrade|UPGRADE]"));
 }
 
 static void CjkBreaksRespectPunctuation()
@@ -190,6 +218,25 @@ static void SpriteFontAssetsMapExactly()
     True(!tiny.Bold);
 
     True(!FontDescriptor.TryFromAssetName("Images/Interface/Icons/Unknown", out _));
+}
+
+static void CjkRasterSizeIsCalibrated()
+{
+    var descriptor = new FontDescriptor("SegoeUI_15_Bold", 15f, true);
+    Equal(FontDescriptor.DefaultCjkScale, descriptor.CjkScale);
+    Equal(15f * FontDescriptor.DefaultCjkScale, descriptor.RasterSize);
+    True(descriptor.CacheKey.IndexOf("|cjk=1.15", StringComparison.Ordinal) >= 0);
+}
+
+static void CjkBaselineIsCalibrated()
+{
+    Equal(-2f, new FontDescriptor("SegoeUI_9", 9f, false).CjkBaselineOffset);
+    Equal(-3f, new FontDescriptor("SegoeUI_11_Bold", 11f, true).CjkBaselineOffset);
+    Equal(-2f, new FontDescriptor("SegoeUI_13", 13f, false).CjkBaselineOffset);
+    Equal(-3f, new FontDescriptor("SegoeUI_15_Bold", 15f, true).CjkBaselineOffset);
+    Equal(-2f, new FontDescriptor("SegoeUI_18", 18f, false).CjkBaselineOffset);
+    Equal(-1f, new FontDescriptor("SegoeUI_24_Bold", 24f, true).CjkBaselineOffset);
+    Equal(0f, new FontDescriptor("SegoeUI_40_Bold", 40f, true).CjkBaselineOffset);
 }
 
 static void ZeroWidthFormatCharactersAreIgnored()
@@ -429,7 +476,7 @@ static void RuntimeTraceRecordsMetrics()
     using var document = System.Text.Json.JsonDocument.Parse(line);
     var root = document.RootElement;
     Equal("Final text", root.GetProperty("text").GetString());
-    Equal("SegoeUI_15_Bold|15|True", root.GetProperty("font").GetString());
+    Equal("SegoeUI_15_Bold|15|True|cjk=1.15", root.GetProperty("font").GetString());
     Equal(12.5f, root.GetProperty("x").GetSingle());
     Equal(90.25f, root.GetProperty("width").GetSingle());
     Equal(2, root.GetProperty("missingGlyphs").GetInt32());

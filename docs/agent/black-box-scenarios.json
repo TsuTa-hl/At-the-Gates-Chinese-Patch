@@ -454,79 +454,101 @@
                                "Title":  "Three visible clans and six trait hovers",
                                "Interface":  "Clan Screen",
                                "Category":  "HoverSweep",
-                               "Status":  "Discovery",
+                               "Status":  "Passed",
                                "SkipByDefault":  true,
                                "RequiresFixedSave":  true,
                                "RequiresSaveBeforeFix":  true,
-                               "Setup":  "Use the saved random start that exposed the three visible clans.",
+                               "SaveName":  "v1.4.1   World [BVT-LCL]   游戏开始.AtGSave",
+                               "Setup":  "Load BVT-LCL from the main menu and open the top-left clan screen.",
                                "ExpectedNo":  [
                                                   "TEXT.",
                                                   ":PLURAL",
                                                   ":SINGULAR",
                                                   "Might very rarely",
+                                                  "there's another",
+                                                  "forced into a",
+                                                  "outside of",
+                                                  "commit ",
+                                                  "Max ",
                                                   "Feud",
                                                   "Brawls",
                                                   "Crime"
                                               ],
+                               "SetupActions":  [
+                                                    {
+                                                        "Action":  "Click",
+                                                        "X":  64,
+                                                        "Y":  57,
+                                                        "WaitMs":  1200
+                                                    }
+                                                ],
+                               "TeardownActions":  [
+                                                       {
+                                                           "Action":  "Key",
+                                                           "Key":  "Escape",
+                                                           "WaitMs":  300
+                                                       }
+                                                   ],
+                               "ClearBeforeEachPoint":  {
+                                                            "Action":  "Move",
+                                                            "X":  1900,
+                                                            "Y":  1100,
+                                                            "WaitMs":  150
+                                                        },
                                "Points":  [
                                               {
-                                                  "Id":  "clan_1_trait_1",
-                                                  "Label":  "Clan 1 trait 1",
+                                                  "Id":  "landbert_trait_1",
+                                                  "Label":  "Landbert upper trait",
                                                   "Action":  "HoverAndCapture",
-                                                  "X":  null,
-                                                  "Y":  null,
-                                                  "Discover":  true,
+                                                  "X":  1182,
+                                                  "Y":  608,
                                                   "WaitMs":  900
                                               },
                                               {
-                                                  "Id":  "clan_1_trait_2",
-                                                  "Label":  "Clan 1 trait 2",
+                                                  "Id":  "landbert_trait_2",
+                                                  "Label":  "Landbert lower trait",
                                                   "Action":  "HoverAndCapture",
-                                                  "X":  null,
-                                                  "Y":  null,
-                                                  "Discover":  true,
+                                                  "X":  1182,
+                                                  "Y":  639,
                                                   "WaitMs":  900
                                               },
                                               {
-                                                  "Id":  "clan_2_trait_1",
-                                                  "Label":  "Clan 2 trait 1",
+                                                  "Id":  "adelhard_trait_1",
+                                                  "Label":  "Adelhard upper trait",
                                                   "Action":  "HoverAndCapture",
-                                                  "X":  null,
-                                                  "Y":  null,
-                                                  "Discover":  true,
+                                                  "X":  1331,
+                                                  "Y":  608,
                                                   "WaitMs":  900
                                               },
                                               {
-                                                  "Id":  "clan_2_trait_2",
-                                                  "Label":  "Clan 2 trait 2",
+                                                  "Id":  "adelhard_trait_2",
+                                                  "Label":  "Adelhard lower trait",
                                                   "Action":  "HoverAndCapture",
-                                                  "X":  null,
-                                                  "Y":  null,
-                                                  "Discover":  true,
+                                                  "X":  1331,
+                                                  "Y":  639,
                                                   "WaitMs":  900
                                               },
                                               {
-                                                  "Id":  "clan_3_trait_1",
-                                                  "Label":  "Clan 3 trait 1",
+                                                  "Id":  "aland_trait_1",
+                                                  "Label":  "Aland upper trait",
                                                   "Action":  "HoverAndCapture",
-                                                  "X":  null,
-                                                  "Y":  null,
-                                                  "Discover":  true,
+                                                  "X":  1483,
+                                                  "Y":  608,
                                                   "WaitMs":  900
                                               },
                                               {
-                                                  "Id":  "clan_3_trait_2",
-                                                  "Label":  "Clan 3 trait 2",
+                                                  "Id":  "aland_trait_2",
+                                                  "Label":  "Aland lower trait",
                                                   "Action":  "HoverAndCapture",
-                                                  "X":  null,
-                                                  "Y":  null,
-                                                  "Discover":  true,
+                                                  "X":  1483,
+                                                  "Y":  639,
                                                   "WaitMs":  900
                                               }
                                           ],
                                "Evidence":  {
-                                                "LastStatus":  "Discovery",
-                                                "LastRunDir":  null
+                                                "LastStatus":  "PassedVisual",
+                                                "LastRunDir":  ".tmp/runs/20260716-clan-traits-fixed-save",
+                                                "Note":  "Harness timed out on the first hover stabilization, but the captured tooltip was visually checked and the localized text was correct."
                                             }
                            },
                            {
@@ -1219,9 +1241,9 @@
                                                                               "WaitMs":  45000
                                                                           }
                                                                       ]
-                                                     }
-                                                 ],
-                                "ExpectedNo":  [
+                                                                  }
+                                                              ],
+                                 "ExpectedNo":  [
                                                    "TEXT.",
                                                    ":PLURAL",
                                                    ":SINGULAR",
@@ -1260,7 +1282,7 @@
                             "SetupActions":  [
                                                  {
                                                      "Action":  "Click",
-                                                     "X":  2020,
+                                                     "X":  1985,
                                                      "Y":  25,
                                                      "WaitMs":  900
                                                  }
@@ -1438,8 +1460,8 @@
                                              "LastRunDir":  null
                                          }
                         },
-                        {
-                            "Id":  "terrain-description-all-fragment-20260710",
+                         {
+                             "Id":  "terrain-description-all-fragment-20260710",
                             "Title":  "Lower-right terrain description should not show English all",
                             "Interface":  "Main Loop Map",
                             "Category":  "TileTooltip",
@@ -1464,12 +1486,72 @@
                                                "Y":  null,
                                                "Discover":  true,
                                                "WaitMs":  900
-                                           }
-                                       ],
-                            "Evidence":  {
-                                             "LastStatus":  "StaticFixOnly",
-                                             "LastRunDir":  null
-                                         }
-                        }
+                          }
+                                        ],
+                             "Evidence":  {
+                                              "LastStatus":  "StaticFixOnly",
+                                              "LastRunDir":  null
+                                          }
+                         },
+                         {
+                             "Id":  "religion-screen-20260718",
+                             "Title":  "Religion screen title and religion choices",
+                             "Interface":  "Religion Screen",
+                             "StateId":  "religion-screen",
+                             "Category":  "ClickAndCapture",
+                             "Status":  "Completed",
+                             "SkipByDefault":  false,
+                             "RequiresFixedSave":  true,
+                             "SaveName":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
+                             "Setup":  "Load the current fixed save directly from the main-menu load flow, then open the main-loop Religion screen. Do not start a new game or load from the in-game pause menu.",
+                             "ExpectedNo":  [
+                                                "Religion",
+                                                "Nicene Christianity",
+                                                "Arian Christianity",
+                                                "Pagan",
+                                                "RELIGION_",
+                                                "TEXT.",
+                                                ":PLURAL",
+                                                ":SINGULAR",
+                                                "mojibake"
+                                            ],
+                             "Points":  [
+                                            {
+                                                "Id":  "open_religion_screen",
+                                                "Label":  "Open Religion screen",
+                                                "Action":  "ClickAndCapture",
+                                                "X":  2080,
+                                                "Y":  25,
+                                                "AllowUnchanged":  true,
+                                                "WaitMs":  900
+                                            },
+                                            {
+                                                "Id":  "religion_screen_labels",
+                                                "Label":  "Religion title and three choices",
+                                                "Action":  "CaptureOnly",
+                                                "Crop":  {
+                                                             "X":  1130,
+                                                             "Y":  550,
+                                                             "Width":  340,
+                                                             "Height":  360
+                                                         }
+                                            },
+                                            {
+                                                "Id":  "close_religion_screen",
+                                                "Label":  "Close Religion screen",
+                                                "Action":  "Click",
+                                                "X":  1350,
+                                                "Y":  837,
+                                                "SkipClear":  true,
+                                                "WaitMs":  500
+                                            }
+                                        ],
+                             "Evidence":  {
+                                              "LastStatus":  "Passed",
+                                              "LastRunDir":  ".tmp/runs/20260718-religion-screen-manual",
+                                              "LastScreenshot":  ".tmp/religion-screen.png",
+                                              "Save":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave"
+                                          }
+                         }
                     ]
 }

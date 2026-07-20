@@ -289,6 +289,7 @@ static void RuntimeDisplayMapPreservesConceptKeys()
         {
           "Exact": [{ "Original": "Close", "Translation": "\u5173\u95ed" }],
           "PlainText": [{ "Original": "Train ", "Translation": "\u8bad\u7ec3" }],
+          "PlainTextFragments": [{ "Original": "engage in ", "Translation": "\u5377\u5165" }],
           "ConceptDisplay": [{ "ConceptKey": "CLAN", "Original": "Clan", "Translation": "\u6c0f\u65cf" }]
         }
         """);
@@ -304,6 +305,9 @@ static void RuntimeDisplayMapPreservesConceptKeys()
     Assert.True(lines.Any(line => line == "K\t" + RuntimeMapConceptFixture.Encode("TURN")));
     Assert.True(lines.Any(line => line == "C\t" + RuntimeMapConceptFixture.Encode("CLAN") + "\t" +
         RuntimeMapConceptFixture.Encode("Clan") + "\t" + RuntimeMapConceptFixture.Encode("\u6c0f\u65cf")));
+    Assert.Equal(1, result.PlainTextFragmentCount);
+    Assert.True(lines.Any(line => line == "F\t" + RuntimeMapConceptFixture.Encode("engage in ") + "\t" +
+        RuntimeMapConceptFixture.Encode("\u5377\u5165")));
 }
 
 static void RuntimeDisplayMapImportsConceptTags()

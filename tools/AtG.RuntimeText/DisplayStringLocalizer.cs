@@ -12,6 +12,8 @@ namespace AtG.RuntimeText
             new Dictionary<string, string>(StringComparer.Ordinal);
         private static readonly Dictionary<string, string> PlainText =
             new Dictionary<string, string>(StringComparer.Ordinal);
+        private static readonly Dictionary<string, string> PlainTextFragments =
+            new Dictionary<string, string>(StringComparer.Ordinal);
         private static readonly Dictionary<string, Dictionary<string, string>> ConceptDisplay =
             new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
         private static readonly HashSet<string> ConceptKeys =
@@ -28,6 +30,16 @@ namespace AtG.RuntimeText
             ValidateDisplayValue(source, "source");
             ValidateDisplayValue(translation, "translation");
             lock (Gate) RegisterValue(PlainText, source, translation, true);
+        }
+
+        public static void RegisterPlainTextFragment(string source, string translation)
+        {
+            ValidateDisplayValue(source, "source");
+            if (translation == null) throw new ArgumentNullException("translation");
+            if (translation.IndexOf('[') >= 0 || translation.IndexOf(']') >= 0 ||
+                translation.IndexOf('|') >= 0)
+                throw new ArgumentException("Display text must not contain rich-text markup.", "translation");
+            lock (Gate) RegisterValue(PlainTextFragments, source, translation, true);
         }
 
         public static void RegisterConceptKey(string conceptKey)
@@ -68,6 +80,7 @@ namespace AtG.RuntimeText
             if (value == null) return null;
             EnsureDefaultLoaded();
             Dictionary<string, string> plain;
+            Dictionary<string, string> fragments;
             Dictionary<string, Dictionary<string, string>> concepts;
             HashSet<string> keys;
             lock (Gate)
@@ -75,6 +88,7 @@ namespace AtG.RuntimeText
                 string exact;
                 if (ExactStrings.TryGetValue(value, out exact)) return exact;
                 plain = new Dictionary<string, string>(PlainText, StringComparer.Ordinal);
+                fragments = new Dictionary<string, string>(PlainTextFragments, StringComparer.Ordinal);
                 concepts = new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
                 foreach (var pair in ConceptDisplay)
                     concepts.Add(pair.Key,
@@ -96,7 +110,16 @@ namespace AtG.RuntimeText
                         mapped.Add(new PlainTextNode(translated));
                         changed = true;
                     }
-                    else mapped.Add(text);
+                    else
+                    {
+                        translated = ApplyPlainTextFragments(text.Text, fragments);
+                        if (!StringComparer.Ordinal.Equals(translated, text.Text))
+                        {
+                            mapped.Add(new PlainTextNode(translated));
+                            changed = true;
+                        }
+                        else mapped.Add(text);
+                    }
                     continue;
                 }
 
@@ -142,6 +165,9 @@ namespace AtG.RuntimeText
                         case "P" when fields.Length == 3:
                             RegisterPlainText(Decode(fields[1]), Decode(fields[2]));
                             break;
+                        case "F" when fields.Length == 3:
+                            RegisterPlainTextFragment(Decode(fields[1]), Decode(fields[2]));
+                            break;
                         case "C" when fields.Length == 4:
                             RegisterConceptDisplay(Decode(fields[1]), Decode(fields[2]), Decode(fields[3]));
                             break;
@@ -163,6 +189,7 @@ namespace AtG.RuntimeText
             {
                 ExactStrings.Clear();
                 PlainText.Clear();
+                PlainTextFragments.Clear();
                 ConceptDisplay.Clear();
                 ConceptKeys.Clear();
                 DefaultLoadAttempted = false;
@@ -192,6 +219,46 @@ namespace AtG.RuntimeText
         private static string Decode(string value)
         {
             return Encoding.UTF8.GetString(Convert.FromBase64String(value));
+        }
+
+        private static string ApplyPlainTextFragments(string value, Dictionary<string, string> fragments)
+        {
+            if (value.Length == 0 || fragments.Count == 0) return value;
+            var ordered = new List<KeyValuePair<string, string>>(fragments);
+            ordered.Sort((left, right) =>
+            {
+                var length = right.Key.Length.CompareTo(left.Key.Length);
+                return length != 0 ? length : StringComparer.Ordinal.Compare(left.Key, right.Key);
+            });
+
+            var builder = new StringBuilder(value.Length);
+            var index = 0;
+            while (index < value.Length)
+            {
+                KeyValuePair<string, string>? match = null;
+                foreach (var entry in ordered)
+                {
+                    if (entry.Key.Length == 0) continue;
+                    if (index + entry.Key.Length > value.Length) continue;
+                    if (string.CompareOrdinal(value, index, entry.Key, 0, entry.Key.Length) == 0)
+                    {
+                        match = entry;
+                        break;
+                    }
+                }
+
+                if (match.HasValue)
+                {
+                    builder.Append(match.Value.Value);
+                    index += match.Value.Key.Length;
+                }
+                else
+                {
+                    builder.Append(value[index]);
+                    index++;
+                }
+            }
+            return builder.ToString();
         }
 
         private static void RegisterValue(Dictionary<string, string> values,

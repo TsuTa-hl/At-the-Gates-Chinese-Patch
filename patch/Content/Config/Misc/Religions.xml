@@ -1,0 +1,35 @@
+<religions>
+  <!--*****************************************-->
+  <!--*                                       *-->
+  <!--*                NICENE                 *-->
+  <!--*                                       *-->
+  <!--*****************************************-->
+  <religion>
+    <ID>RELIGION_NICENE</ID>
+    <name>尼西亚基督教</name>
+    <description>TODO</description>
+    <adjective>尼西亚基督徒</adjective>
+  </religion>
+  <!--*****************************************-->
+  <!--*                                       *-->
+  <!--*                ARIAN                  *-->
+  <!--*                                       *-->
+  <!--*****************************************-->
+  <religion>
+    <ID>RELIGION_ARIAN</ID>
+    <name>阿里乌派基督教</name>
+    <description>TODO</description>
+    <adjective>阿里乌派基督徒</adjective>
+  </religion>
+  <!--*****************************************-->
+  <!--*                                       *-->
+  <!--*                PAGAN                  *-->
+  <!--*                                       *-->
+  <!--*****************************************-->
+  <religion>
+    <ID>RELIGION_PAGAN</ID>
+    <name>异教</name>
+    <description>TODO</description>
+    <adjective>异教徒</adjective>
+  </religion>
+</religions>

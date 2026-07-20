@@ -155,7 +155,8 @@ function Initialize-KnownTextDiscoveryInputs {
         ".\tools\Export-StaticTextCandidates.ps1",
         ".\translations\config-node-strings.json",
         ".\translations\config-node-extra-strings.json",
-        ".\translations\config-node-onmap-strings.json"
+        ".\translations\config-node-onmap-strings.json",
+        ".\translations\config-node-misc-strings.json"
     ) + @((Get-ChildItem -LiteralPath ".\source\Content\Config" -Filter "*.original.xml" -File -Recurse | ForEach-Object { $_.FullName }))
 
     if (Test-AtGDiscoveryOutputStale -OutputPath $StaticCandidatesCsv -InputPath $configInputs) {
@@ -993,7 +994,8 @@ function Get-ConfigTranslationMap {
     foreach ($path in @(
         ".\translations\config-node-strings.json",
         ".\translations\config-node-extra-strings.json",
-        ".\translations\config-node-onmap-strings.json"
+        ".\translations\config-node-onmap-strings.json",
+        ".\translations\config-node-misc-strings.json"
     )) {
         $root = Get-JsonFile $path
         if ($null -eq $root) {

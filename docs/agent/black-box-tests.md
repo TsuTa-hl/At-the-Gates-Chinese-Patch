@@ -65,8 +65,9 @@ main-loop UI that depends on the current game state.
 - For fixed-save baselines, open `读取存档` from the main menu. Do not use an
   in-game pause/main-loop load screen unless the scenario explicitly says it is
   testing that UI variant.
-- Load the current fixed local save, `Quicksave.AtGSave`, unless the Active
-  Focus Test specifies another save.
+- Load the fixed save named by the scenario. Use `Quicksave.AtGSave` only when
+  it exists and no scenario-specific save is recorded; the Religion screen
+  scenario uses `v1.4.1   World [OAA-JUH]   游戏开始.AtGSave`.
 - Confirm the game reaches the main loop, the process remains alive, and
   `Crash.AtGLog` does not receive a new timestamp.
 - Use this same loaded state for failure reproduction and retesting. If a new
@@ -94,6 +95,22 @@ main-loop UI that depends on the current game state.
   Private bytes rose from about 1.308 GiB to the first-reload peak of about
   1.412 GiB, then stabilized around 1.39 GiB; handles returned to 703.
 
+### Religion Screen
+
+- Load the scenario-specific save from the main-menu load screen, then click
+  the top-right Religion icon in the main loop. Do not start a new game and do
+  not use the in-game pause/load menu for this scenario.
+- Verify the title and all three choices: `宗教`, `尼西亚基督教`, `阿里乌派基督教`,
+  and `异教`. No original English labels, `RELIGION_*` IDs, raw `TEXT.*` keys,
+  unresolved tags, or mojibake may appear.
+- Close the panel and confirm the game process remains alive. The current
+  scenario is `religion-screen-20260718`; its fixed save is
+  `v1.4.1   World [OAA-JUH]   游戏开始.AtGSave`.
+- Completed on `2026-07-18` after the refreshed build was installed. The main
+  menu load path reached the main loop, the Religion panel was opened and
+  visually checked, and no new crash log entry appeared. Evidence:
+  `.tmp\runs\20260718-religion-screen-manual\religion-screen.png`.
+
 ## Completed / Deferred UI Tests By Interface
 
 These scenarios are not permanent required tests. Run them when the touched code
@@ -102,6 +119,27 @@ layout behavior. If one fails, promote it to `Active Focus Tests` and follow the
 automatic failure loop in `docs/agent/workflows/test-and-loop.md`.
 Do not repeat a passed interface scenario unless the touched source, font,
 config, DLL patch, save/load flow, or UI behavior can affect that interface.
+
+### Cross-Interface Font Calibration
+
+- Completed on `2026-07-16` for the default `DynamicCjk` renderer. Chinese
+  glyphs use a 1.15 raster scale plus per-size vertical baseline offsets; Latin
+  characters, numbers, hotkey glyphs, and private-use icons remain on the
+  original SpriteFont path.
+- Original/localized visual comparisons covered the main menu, load screen,
+  main-loop HUD, knowledge screen, and clan list. The localized help screen was
+  also checked for clipping and alignment; its direct original help capture was
+  unavailable, so its mapped font families were cross-checked through the
+  other original interfaces rather than claimed as a one-to-one help pair.
+- Evidence is under `.tmp\font-compare`, including
+  `original-clean-main.png`, `original-clean-load.png`,
+  `original-fixed-save-main-loop.png`, `original-knowledge-screen.png`,
+  `original-clan-list.png`, `localized-main-baseline.png`,
+  `localized-load-baseline.png`, `localized-fixed-save-baseline.png`, and the
+  `localized-baseline-run` / `localized-clan-list-corrected` scenario folders.
+- Result: the checked Chinese text is no longer generally smaller or visibly
+  lower than the original UI text, and no checked button, row, title, tooltip,
+  or HUD label clipped after calibration.
 
 ### In-Game Reload Memory Regression
 
@@ -204,10 +242,35 @@ config, DLL patch, save/load flow, or UI behavior can affect that interface.
   the checked button tooltips. Close shows only hotkey markers. Timing:
   build `7.98s` with font cache hit, install `0.8s`, smoke `11.21s`, UI hover
   sweep `26.4s` plus retry `5.78s`.
+- Latest random-trait hover evidence: `2026-07-16`, `DynamicCjk` installed
+  build, fixed save `v1.4.1   World [BVT-LCL]   游戏开始.AtGSave`, opened from
+  the top-left clan button. The six trait hovers for Landbert, Adelhard, and
+  Aland were captured from `.tmp\runs\20260716-clan-traits-fixed-save`.
+  The harness timed out on the first hover stabilization, but the captured
+  tooltip was visually checked and localized. The remaining five points passed
+  the automated hover capture. Previously exposed composed fragments including
+  `engage in`, `Brawls`, `commit Theft`, `Max`, `forced into a`, and
+  `outside of` were fixed through runtime rich-text plain-node fragments.
+
+- Latest random-new-start trait sweep: `2026-07-17`, `DynamicCjk` installed
+  build, scenario `clan-screen-new-game-traits`, three consecutive new-game
+  starts. Each run opened the clan screen from the top-left clan button and
+  hovered the two visible trait icons on each of the three generated clan
+  cards. All 18 hover points passed the automated expected-text check; contact
+  sheets were visually reviewed and did not show raw `TEXT.*`, plural suffix
+  keys, or safely patchable English trait prose. Evidence folders:
+  `.tmp\runs\20260717-171115-clan-traits-newgame-1`,
+  `.tmp\runs\20260717-171115-clan-traits-newgame-2`, and
+  `.tmp\runs\20260717-171115-clan-traits-newgame-3`. The right-side
+  `Clan <Name>` join-notification prefix remains an accepted generated-name
+  residual and is outside this trait-hover scenario.
 
 ### Clan List
 
 - Open the clan list from the top-right clan-list button.
+- At 2560x1440 the verified clan-list button center is approximately
+  `1985,25`. The earlier `2020,25` setup coordinate opens diplomacy and must not
+  be reused for this scenario.
 - Test the first row of header hovers only unless a task explicitly asks for
   deeper nested hovers.
 - Current tracked header points are the user-scoped 7 icon columns and 3 word

@@ -7,7 +7,7 @@
     <structure>
       <ID>STRUCTURE_LOGGING_CAMP_1</ID>
       <name>TEXT.Name.Structure.LoggingCamp</name>
-      <description>Logging Camps are [Constructed|CONSTRUCT] by [LOGGER:S] on [Forests|FOREST] and [Harvest|HARVEST] [TIMBER] from that Tile and all adjacent ones. A Logging Camp eventually depletes its [Tile's|TILE] available [TIMBER], and when this happens it shuts down and the [Forest|FOREST] is replaced with [BRUSH-LEAFY].[BLANK-LINE]Note that Logging Camps are less efficient than [WOOD-COLLECTOR:S] over the long-term, and are generally not ideal when you only have a few tiles of [Forest|FOREST] nearby.</description>
+      <description>伐木营由[LOGGER:S]在[森林|FOREST]中[建造|CONSTRUCT]，从所在及相邻地块[采伐|HARVEST][TIMBER]。伐木营最终会耗尽所在[地块|TILE]的可用[TIMBER]；届时营地停工，[森林|FOREST]也会退化为[BRUSH-LEAFY]。[BLANK-LINE]长期来看，伐木营的效率低于[WOOD-COLLECTOR:S]；若附近只有少量[森林|FOREST]地块，通常不宜建造。</description>
       <texturePath>Images/Structures/Harvesters/LoggingCamp</texturePath>
       <sketchPath>Images/Structures/Harvesters/LoggingCamp_Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -90,7 +90,7 @@
     <structure>
       <ID>STRUCTURE_LOGGING_CAMP_2</ID>
       <name>TEXT.Name.Structure.Woodworks</name>
-      <description>Woodworks are [Constructed|CONSTRUCT] by [LOGGER:S] on [Forests|FOREST] and [Harvest|HARVEST] [TIMBER] from that Tile and all adjacent ones.[BLANK-LINE]Unlike the [LOGGING-CAMP-1] a Woodworks does not [Degrade|DEGRADE] the [Resources|RESOURCE] it Harvests. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>木工作坊由[LOGGER:S]在[森林|FOREST]中[建造|CONSTRUCT]，从所在及相邻地块[采伐|HARVEST][TIMBER]。[BLANK-LINE]与[LOGGING-CAMP-1]不同，木工作坊不会[耗竭|DEGRADE]所采伐的[资源|RESOURCE]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/LoggingCamp_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/LoggingCamp_Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -187,7 +187,7 @@
     <structure>
       <ID>STRUCTURE_WHEAT_FARM_1</ID>
       <name>TEXT.Name.Structure.WheatFarm</name>
-      <description>Wheat Farms are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [WHEAT], except during [Cold|COLD] months or when affected by [Weather|WEATHER].</description>
+      <description>小麦农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][WHEAT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Wheat</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -330,7 +330,7 @@
     <structure>
       <ID>STRUCTURE_WHEAT_FARM_2</ID>
       <name>TEXT.Name.Structure.WheatFarm2</name>
-      <description>Wheat Plantations are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [WHEAT], except during [Cold|COLD] months or when affected by [Weather|WEATHER].[BLANK-LINE]Unlike the [WHEAT-FARM-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>小麦种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][WHEAT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[WHEAT-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Wheat_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -485,7 +485,7 @@
     <structure>
       <ID>STRUCTURE_BARLEY_FARM_1</ID>
       <name>TEXT.Name.Structure.BarleyFarm</name>
-      <description>Barley Farms are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [BARLEY], except when their [Tile|TILE] is [Cold|COLD] or affected by [Weather|WEATHER].</description>
+      <description>大麦农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][BARLEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Barley</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -624,7 +624,7 @@
     <structure>
       <ID>STRUCTURE_BARLEY_FARM_2</ID>
       <name>TEXT.Name.Structure.BarleyFarm2</name>
-      <description>Barley Plantations are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [BARLEY], except when their [Tile|TILE] is [Cold|COLD] or affected by [Weather|WEATHER].[BLANK-LINE]Unlike the [BARLEY-FARM-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>大麦种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][BARLEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[BARLEY-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Barley_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -775,7 +775,7 @@
     <structure>
       <ID>STRUCTURE_FRUIT_FARM_1</ID>
       <name>TEXT.Name.Structure.Orchard</name>
-      <description>Orchards are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [FRUIT], except during [Cold|COLD] months or when affected by [Weather|WEATHER].[BLANK-LINE]Note that Orchards cannot be constructed on [DEPOSIT-BERRIES:S] (only [GATHERER:S] can [Harvest|HARVEST] them).</description>
+      <description>果园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FRUIT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]果园不能建在[DEPOSIT-BERRIES:S]上；只有[GATHERER:S]能[采集|HARVEST]它们。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Fruit</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -914,7 +914,7 @@
     <structure>
       <ID>STRUCTURE_FRUIT_FARM_2</ID>
       <name>TEXT.Name.Structure.Orchard2</name>
-      <description>Fruit Plantations are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [FRUIT], except during [Cold|COLD] months or when affected by [Weather|WEATHER].[BLANK-LINE]Unlike the [FRUIT-FARM-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].[BLANK-LINE]Note that Orchards cannot be constructed on [DEPOSIT-BERRIES:S] (only [GATHERER:S] can [Harvest|HARVEST] them).</description>
+      <description>果树种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FRUIT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[FRUIT-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。[BLANK-LINE]果园不能建在[DEPOSIT-BERRIES:S]上；只有[GATHERER:S]能[采集|HARVEST]它们。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Fruit_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1065,7 +1065,7 @@
     <structure>
       <ID>STRUCTURE_VINEYARD_1</ID>
       <name>TEXT.Name.Structure.Vineyard</name>
-      <description>Vineyards are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [GRAPES], except when their [Tile|TILE] is [Cold|COLD] or affected by [Weather|WEATHER].</description>
+      <description>葡萄园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][GRAPES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Grapes</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1204,7 +1204,7 @@
     <structure>
       <ID>STRUCTURE_VINEYARD_2</ID>
       <name>TEXT.Name.Structure.Vineyard2</name>
-      <description>Grape Plantations are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [GRAPES], except when their [Tile|TILE] is [Cold|COLD] or affected by [Weather|WEATHER].[BLANK-LINE]Unlike the [VINEYARD-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>葡萄种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][GRAPES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[VINEYARD-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Grapes_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1355,7 +1355,7 @@
     <structure>
       <ID>STRUCTURE_OLIVE_FARM_1</ID>
       <name>TEXT.Name.Structure.OliveFarm</name>
-      <description>Olive Farms are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [OLIVES], except when their [Tile|TILE] is [Cold|COLD] or affected by [Weather|WEATHER].</description>
+      <description>橄榄农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][OLIVES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Olives</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1494,7 +1494,7 @@
     <structure>
       <ID>STRUCTURE_OLIVE_FARM_2</ID>
       <name>TEXT.Name.Structure.OliveFarm2</name>
-      <description>Olive Granges are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [OLIVES], except when their [Tile|TILE] is [Cold|COLD] or affected by [Weather|WEATHER].[BLANK-LINE]Unlike the [OLIVE-FARM-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>橄榄庄园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][OLIVES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[OLIVE-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Olives_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1645,7 +1645,7 @@
     <structure>
       <ID>STRUCTURE_FLAX_FARM_1</ID>
       <name>TEXT.Name.Structure.FlaxFarm</name>
-      <description>Flax Farms are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [FLAX], except when their [Tile|TILE] is [Cold|COLD] or affected by [Weather|WEATHER].</description>
+      <description>亚麻农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FLAX]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Flax</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1784,7 +1784,7 @@
     <structure>
       <ID>STRUCTURE_FLAX_FARM_2</ID>
       <name>TEXT.Name.Structure.FlaxFarm2</name>
-      <description>Flax Plantations are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [FLAX], except when their [Tile|TILE] is [Cold|COLD] or affected by [Weather|WEATHER].[BLANK-LINE]Unlike the [FLAX-FARM-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>亚麻种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FLAX]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[FLAX-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Flax_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1937,7 +1937,7 @@
     <structure>
       <ID>STRUCTURE_APIARY_1</ID>
       <name>TEXT.Name.Structure.Apiary</name>
-      <description>Apiaries are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [HONEY], except when their [Tile|TILE] is [Cold|COLD] or affected by [Weather|WEATHER].</description>
+      <description>养蜂场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][HONEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Apiary</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -2071,7 +2071,7 @@
     <structure>
       <ID>STRUCTURE_APIARY_2</ID>
       <name>TEXT.Name.Structure.Apiary2</name>
-      <description>Honey Plantations are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [FARMER:S] which [Harvest|HARVEST] [HONEY], except when their [Tile|TILE] is [Cold|COLD] or affected by [Weather|WEATHER].[BLANK-LINE]Unlike the [APIARY-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>蜂蜜种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][HONEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[APIARY-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Apiary_2</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -2216,7 +2216,7 @@
     <structure>
       <ID>STRUCTURE_CATTLE_PASTURE_1</ID>
       <name>TEXT.Name.Structure.CattlePasture</name>
-      <description>Cattle Pastures are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [RANCHER:S] which add a [Tile's|TILE] Herd of [CATTLE] to your [Stockpile|STOCKPILE].</description>
+      <description>牛牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[CATTLE]纳入你的[存栏|STOCKPILE]。</description>
       <texturePath>Images/Structures/Harvesters/Pasture_Cattle</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>VERY_LOW+</valuePriorityID>
@@ -2293,7 +2293,7 @@
     <structure>
       <ID>STRUCTURE_CATTLE_PASTURE_2</ID>
       <name>TEXT.Name.Structure.CattlePasture2</name>
-      <description>Cattle Ranches are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [RANCHER:S] which add a [Tile's|TILE] Herd of [CATTLE] to your [Stockpile|STOCKPILE].[BLANK-LINE]Unlike Pastures, Ranches actually also increase the size of the herd over time. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>大型牛牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[CATTLE]纳入你的[存栏|STOCKPILE]。[BLANK-LINE]与普通牧场不同，大型牧场还会随时间增加畜群规模。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Pasture_Cattle_2</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>VERY_LOW+</valuePriorityID>
@@ -2387,7 +2387,7 @@
     <structure>
       <ID>STRUCTURE_SHEEP_PASTURE_1</ID>
       <name>TEXT.Name.Structure.SheepPasture</name>
-      <description>Sheep Pastures are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [RANCHER:S] which add a [Tile's|TILE] Herd of [SHEEP] to your [Stockpile|STOCKPILE].</description>
+      <description>羊牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[SHEEP]纳入你的[存栏|STOCKPILE]。</description>
       <texturePath>Images/Structures/Harvesters/Pasture_Sheep</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>VERY_LOW+</valuePriorityID>
@@ -2459,7 +2459,7 @@
     <structure>
       <ID>STRUCTURE_SHEEP_PASTURE_2</ID>
       <name>TEXT.Name.Structure.SheepPasture2</name>
-      <description>Sheep Ranches are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [RANCHER:S] which add a [Tile's|TILE] Herd of [SHEEP] to your [Stockpile|STOCKPILE].[BLANK-LINE]Unlike Pastures, Ranches actually also increase the size of the herd over time. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>大型羊牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[SHEEP]纳入你的[存栏|STOCKPILE]。[BLANK-LINE]与普通牧场不同，大型牧场还会随时间增加畜群规模。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Pasture_Sheep_2</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>VERY_LOW+</valuePriorityID>
@@ -2548,7 +2548,7 @@
     <structure>
       <ID>STRUCTURE_PIG_PASTURE_1</ID>
       <name>TEXT.Name.Structure.PigPasture</name>
-      <description>Pig Pastures are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [RANCHER:S] which add a [Tile's|TILE] Herd of [PIGS] to your [Stockpile|STOCKPILE].</description>
+      <description>猪牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[PIGS]纳入你的[存栏|STOCKPILE]。</description>
       <texturePath>Images/Structures/Harvesters/Pasture_Pigs</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>VERY_LOW+</valuePriorityID>
@@ -2612,7 +2612,7 @@
     <structure>
       <ID>STRUCTURE_PIG_PASTURE_2</ID>
       <name>TEXT.Name.Structure.PigPasture2</name>
-      <description>Pig Ranches are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [RANCHER:S] which add a [Tile's|TILE] Herd of [PIGS] to your [Stockpile|STOCKPILE].[BLANK-LINE]Unlike Pastures, Ranches actually also increase the size of the herd over time. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>大型猪牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[PIGS]纳入你的[存栏|STOCKPILE]。[BLANK-LINE]与普通牧场不同，大型牧场还会随时间增加畜群规模。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Pasture_Pigs_2</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>VERY_LOW+</valuePriorityID>
@@ -2693,7 +2693,7 @@
     <structure>
       <ID>STRUCTURE_HORSE_PASTURE_1</ID>
       <name>TEXT.Name.Structure.HorsePasture</name>
-      <description>Horse Pastures are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [RANCHER:S] which add a [Tile's|TILE] Herd of [HORSES] to your [Stockpile|STOCKPILE].</description>
+      <description>马牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[HORSES]纳入你的[存栏|STOCKPILE]。</description>
       <texturePath>Images/Structures/Harvesters/Pasture_Horses</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -2769,7 +2769,7 @@
     <structure>
       <ID>STRUCTURE_HORSE_PASTURE_2</ID>
       <name>TEXT.Name.Structure.HorsePasture2</name>
-      <description>Horse Ranches are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [RANCHER:S] which add a [Tile's|TILE] Herd of [HORSES] to your [Stockpile|STOCKPILE].[BLANK-LINE]Unlike Pastures, Ranches actually also increase the size of the herd over time. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>大型马牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[HORSES]纳入你的[存栏|STOCKPILE]。[BLANK-LINE]与普通牧场不同，大型牧场还会随时间增加畜群规模。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Pasture_Horses_2</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -2864,7 +2864,7 @@
     <structure>
       <ID>STRUCTURE_GOLD_MINE_1</ID>
       <name>TEXT.Name.Structure.GoldMine</name>
-      <description>Gold Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] huge amounts of [TREASURE], making them very valuable.</description>
+      <description>金矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]大量[TREASURE]的[建筑|STRUCTURE]，价值很高。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Gold</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -2938,7 +2938,7 @@
     <structure>
       <ID>STRUCTURE_GOLD_MINE_2</ID>
       <name>TEXT.Name.Structure.GoldMine2</name>
-      <description>Gold Shaft Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] large amounts of [TREASURE], making them very valuable.[BLANK-LINE]Unlike the [GOLD-MINE-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>金矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]大量[TREASURE]的[建筑|STRUCTURE]，价值很高。[BLANK-LINE]与[GOLD-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Gold_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3022,7 +3022,7 @@
     <structure>
       <ID>STRUCTURE_GEM_MINE_1</ID>
       <name>TEXT.Name.Structure.GemMine</name>
-      <description>Gem Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] massive amounts of [TREASURE], making them extremely valuable.</description>
+      <description>宝石矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]巨量[TREASURE]的[建筑|STRUCTURE]，价值极高。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Gems</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3096,7 +3096,7 @@
     <structure>
       <ID>STRUCTURE_GEM_MINE_2</ID>
       <name>TEXT.Name.Structure.GemMine2</name>
-      <description>Gem Shaft Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] massive amounts of [TREASURE], making them extremely valuable.[BLANK-LINE]Unlike the [GEM-MINE-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>宝石矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]巨量[TREASURE]的[建筑|STRUCTURE]，价值极高。[BLANK-LINE]与[GEM-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Gems_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3180,7 +3180,7 @@
     <structure>
       <ID>STRUCTURE_MINE_METEORITE</ID>
       <name>TEXT.Name.Structure.MeteoriteMine</name>
-      <description>Meteorites are exceptionally rare! Mining them produces a truly massive amount of [IRON], but only for a short period of time. [Construct|CONSTRUCT] an [IRON-MINE-1] on them with a [MINER].</description>
+      <description>陨石极为罕见！开采它们能在短期内产出巨量[IRON]。派[MINER]在其上[建造|CONSTRUCT][IRON-MINE-1]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Iron</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>MEDIUM</valuePriorityID>
@@ -3254,7 +3254,7 @@
     <structure>
       <ID>STRUCTURE_IRON_MINE_1</ID>
       <name>TEXT.Name.Structure.IronMine</name>
-      <description>Iron Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] [IRON], which can be refined into [TOOLS], [WEAPONS], and a variety of other Resources necessary to [Train|TRAIN] and [Upgrade|UPGRADE] [Clans|CLAN] in [Warrior|WARRIOR] [Professions|PROFESSION].</description>
+      <description>铁矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][IRON]的[建筑|STRUCTURE]。铁可精炼为[TOOLS]、[WEAPONS]及其他资源，用于将[氏族|CLAN][训练|TRAIN]或[升级|UPGRADE]为[战士|WARRIOR][职业|PROFESSION]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Iron</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3333,7 +3333,7 @@
     <structure>
       <ID>STRUCTURE_IRON_MINE_2</ID>
       <name>TEXT.Name.Structure.IronMine2</name>
-      <description>Iron Shaft Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] [IRON], which can be refined into [TOOLS], [WEAPONS], and a variety of other Resources necessary to [Train|TRAIN] and upgrade [Clans|CLAN] in [Warrior|WARRIOR] [Professions|PROFESSION].[BLANK-LINE]Unlike the [IRON-MINE-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>铁矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][IRON]的[建筑|STRUCTURE]。铁可精炼为[TOOLS]、[WEAPONS]及其他资源，用于将[氏族|CLAN][训练|TRAIN]或升级为[战士|WARRIOR][职业|PROFESSION]。[BLANK-LINE]与[IRON-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Iron_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3422,7 +3422,7 @@
     <structure>
       <ID>STRUCTURE_STONE_QUARRY_1</ID>
       <name>TEXT.Name.Structure.StoneQuarry</name>
-      <description>Stone Quarries are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] [STONE], which is used to [Construct|CONSTRUCT] advanced [Structures|STRUCTURE] that Produce far more than their [TIMBER]-based counterparts.</description>
+      <description>采石场是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][STONE]的[建筑|STRUCTURE]。石料可用于[建造|CONSTRUCT]高级[建筑|STRUCTURE]，其产出远高于以[TIMBER]建造的同类设施。</description>
       <texturePath>Images/Structures/Harvesters/Quarry</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3501,7 +3501,7 @@
     <structure>
       <ID>STRUCTURE_STONE_QUARRY_2</ID>
       <name>TEXT.Name.Structure.StoneQuarry2</name>
-      <description>Stone Shaft Quarries are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] [STONE], which is used to [Construct|CONSTRUCT] advanced [Structures|STRUCTURE] that Produce far more than their [TIMBER]-based counterparts.[BLANK-LINE]Unlike the [STONE-QUARRY-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>采石矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][STONE]的[建筑|STRUCTURE]。石料可用于[建造|CONSTRUCT]高级[建筑|STRUCTURE]，其产出远高于以[TIMBER]建造的同类设施。[BLANK-LINE]与[STONE-QUARRY-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Quarry_2</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3590,7 +3590,7 @@
     <structure>
       <ID>STRUCTURE_COAL_MINE_1</ID>
       <name>TEXT.Name.Structure.CoalMine</name>
-      <description>Coal Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] [COAL], which can be converted into [STEEL] along with [IRON] by a [STEELMAKER], or used in other misc ways (e.g. for the [BAKER]).</description>
+      <description>煤矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Coal</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3669,7 +3669,7 @@
     <structure>
       <ID>STRUCTURE_COAL_MINE_2</ID>
       <name>TEXT.Name.Structure.CoalMine2</name>
-      <description>Coal Shaft Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] [COAL], which can be converted into [STEEL] along with [IRON] by a [STEELMAKER], or used in other misc ways (e.g. for the [BAKER]).[BLANK-LINE]Unlike the [COAL-MINE-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>煤矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。[BLANK-LINE]与[COAL-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Coal_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3758,7 +3758,7 @@
     <structure>
       <ID>STRUCTURE_PEAT_MINE_1</ID>
       <name>TEXT.Name.Structure.PeatMine</name>
-      <description>Peat Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] a small amount of [COAL], which can be converted into [STEEL] along with [IRON] by a [STEELMAKER], or used in other misc ways (e.g. for the [BAKER]).</description>
+      <description>泥炭矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]少量[COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Peat</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3837,7 +3837,7 @@
     <structure>
       <ID>STRUCTURE_PEAT_MINE_2</ID>
       <name>TEXT.Name.Structure.PeatMine2</name>
-      <description>Peat Shaft Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] a small amount of [COAL], which can be converted into [STEEL] along with [IRON] by a [STEELMAKER], or used in other misc ways (e.g. for the [BAKER]).[BLANK-LINE]Unlike the [PEAT-MINE-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>泥炭矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]少量[COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。[BLANK-LINE]与[PEAT-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Peat_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3926,7 +3926,7 @@
     <structure>
       <ID>STRUCTURE_SALT_MINE_1</ID>
       <name>TEXT.Name.Structure.SaltMine</name>
-      <description>Salt Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] [SALT], a valuable and flexible Resource that can be sold to the [Caravan|CARAVAN] or used to boost [FOOD] Production.</description>
+      <description>盐矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][SALT]的[建筑|STRUCTURE]。盐用途广泛且价值不菲，可出售给[商队|CARAVAN]，也可用于提高[FOOD]产出。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Salt</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -4005,7 +4005,7 @@
     <structure>
       <ID>STRUCTURE_SALT_MINE_2</ID>
       <name>TEXT.Name.Structure.SaltMine2</name>
-      <description>Salt Shaft Mines are a [Structure|STRUCTURE] [Constructed|CONSTRUCT] by [MINER:S] which [Harvest|HARVEST] [SALT], a valuable and flexible Resource that can be sold to the [Caravan|CARAVAN] or used to boost [FOOD] Production.[BLANK-LINE]Unlike the [SALT-MINE-1] this Structure does not [Degrade|DEGRADE] the [Resource Deposit|DEPOSIT] on its Tile. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>盐矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][SALT]的[建筑|STRUCTURE]。盐用途广泛且价值不菲，可出售给[商队|CARAVAN]，也可用于提高[FOOD]产出。[BLANK-LINE]与[SALT-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Salt_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -4096,7 +4096,7 @@
     <structure>
       <ID>STRUCTURE_TRADING_POST_1</ID>
       <name>TEXT.Name.Structure.TradingPost</name>
-      <description>Trading Posts [Produce|PRODUCE] [TREASURE]. They can only be [Constructed|CONSTRUCT] by [TRADER:S] on [Tiles|TILE] where two [Small Rivers|RIVER] meet or where a Small River empties into a large [Body of Water|WATER], and cannot be Constructed next to one another.</description>
+      <description>贸易站[产出|PRODUCE][TREASURE]。只有[TRADER:S]能在两条[小河|RIVER]交汇处，或小河注入大型[水域|WATER]的[地块|TILE]上[建造|CONSTRUCT]贸易站；贸易站之间不能相邻。</description>
       <texturePath>Images/Structures/Other/TradingPost</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -4157,7 +4157,7 @@
     <structure>
       <ID>STRUCTURE_TRADING_POST_2</ID>
       <name>TEXT.Name.Structure.TradingPost2</name>
-      <description>Trading Post Depots [Produce|PRODUCE] a massive amount of [TREASURE]. They can only be [Constructed|CONSTRUCT] by [TRADER:S] on [Tiles|TILE] where two [Small Rivers|RIVER] meet or where a Small River empties into a large [Body of Water|WATER], and cannot be Constructed next to one another. Structures built from [STONE-BLOCKS] can also be given [Apprentices|APPRENTICE] to greatly increase their [Production|PRODUCE].</description>
+      <description>贸易站仓库[产出|PRODUCE]巨量[TREASURE]。只有[TRADER:S]能在两条[小河|RIVER]交汇处，或小河注入大型[水域|WATER]的[地块|TILE]上[建造|CONSTRUCT]贸易站；贸易站之间不能相邻。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Other/TradingPost_2</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -4227,7 +4227,7 @@
     <structure>
       <ID>STRUCTURE_SUPPLY_DEPOT</ID>
       <name>TEXT.Name.Structure.SupplyDepot</name>
-      <description>Supply Depots can extend your [Supply|SUPPLY] range beyond [Tiles|TILE] you [Control|CONTROL]. Each one increases the range by 4 [Tiles|TILE], and can be extended to any distance if 'chained' together.[NEWLINE]Supply Depots are essential if you expect to be campaigning far from home over the winter.</description>
+      <description>补给站可将你的[补给|SUPPLY]范围延伸到[控制|CONTROL]之外的[地块|TILE]。每座补给站将范围延伸 4 个[地块|TILE]；连续修建即可将补给线延伸到任意距离。[NEWLINE]若要在远离家园的地区越冬作战，补给站不可或缺。</description>
       <texturePath>Images/Structures/Other/TradingPost</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>MEDIUM</valuePriorityID>
@@ -4278,7 +4278,7 @@
     <structure>
       <ID>STRUCTURE_WATCHTOWER</ID>
       <name>TEXT.Name.Structure.Watchtower</name>
-      <description>Watchtowers extend your [Borders|BORDERS] by 3 [Tiles|TILE], and can [Produce|PRODUCE] [FAME] if assigned [Apprentices|APPRENTICE]. Unlike other [Structures|STRUCTURE] they can be [Constructed|CONSTRUCT] by [WATCHMAN:S] anywhere on the map, even outside of your existing [Borders|BORDERS].</description>
+      <description>瞭望塔将你的[边界|BORDERS]向外延伸 3 个[地块|TILE]；安排[学徒|APPRENTICE]后还可[产出|PRODUCE][FAME]。与其他[建筑|STRUCTURE]不同，[WATCHMAN:S]可在地图任意位置[建造|CONSTRUCT]瞭望塔，即使那里位于现有[边界|BORDERS]之外。</description>
       <texturePath>Images/Structures/Other/Watchtower</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>MEDIUM</valuePriorityID>
@@ -4338,7 +4338,7 @@
     <structure>
       <ID>STRUCTURE_FORT</ID>
       <name>TEXT.Name.Structure.Fort</name>
-      <description>Forts extend a Faction's [Control|CONTROL] by 2 [Tiles|TILE], double the [Defense|DEFENSE] of any [Warriors|WARRIOR] stationed there, and can [Produce|PRODUCE] [FAME] if assigned [Apprentices|APPRENTICE].</description>
+      <description>要塞将派系的[控制|CONTROL]范围延伸 2 个[地块|TILE]，使驻扎其中的[战士|WARRIOR][防御|DEFENSE]翻倍；安排[学徒|APPRENTICE]后还可[产出|PRODUCE][FAME]。</description>
       <texturePath>Images/Structures/Other/BarbarianFort</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>MEDIUM</valuePriorityID>
@@ -4393,7 +4393,7 @@
     <structure>
       <ID>STRUCTURE_ROMAN_FORT</ID>
       <name>TEXT.Name.Structure.RomanFort</name>
-      <description>Roman Forts extend a Faction's [Control|CONTROL] by 2 [Tiles|TILE], triple the [Defense|DEFENSE] of any [Warriors|WARRIOR] stationed there, and can [Produce|PRODUCE] [FAME] if assigned [Apprentices|APPRENTICE].</description>
+      <description>罗马要塞将派系的[控制|CONTROL]范围延伸 2 个[地块|TILE]，使驻扎其中的[战士|WARRIOR][防御|DEFENSE]增至三倍；安排[学徒|APPRENTICE]后还可[产出|PRODUCE][FAME]。</description>
       <texturePath>Images/Structures/Other/RomanFort</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>MEDIUM</valuePriorityID>
@@ -4526,7 +4526,7 @@
     <structure>
       <ID>STRUCTURE_CITY</ID>
       <name>TEXT.Name.Structure.RomanCity</name>
-      <description>One of the few remaining enclaves of Roman civilization.[NEWLINE]Capturing them is difficult, but doing so allows you to [Learn|LEARN] a [Profession|PROFESSION] of your choice for free! Roman Cities also produce a decent amount of [TREASURE].</description>
+      <description>少数仍存的罗马文明据点之一。[NEWLINE]攻占它十分困难，但成功后可免费选择[学会|LEARN]一种[职业|PROFESSION]！罗马城市还会产出可观的[TREASURE]。</description>
       <!-- Art -->
       <texturePath>Images/Structures/Other/RomanCity</texturePath>
       <sketchPath>Images/Structures/Other/RomanCity_Sketch</sketchPath>
@@ -4594,7 +4594,7 @@
     <structure>
       <ID>STRUCTURE_BANDIT_CAMP</ID>
       <name>TEXT.Name.Structure.BanditCamp</name>
-      <description>Bandit Camps are home to [Bandits|BANDIT], vile raiders looking for blood, riches and glory.[NEWLINE]They will occasionally produce new [Warriors|WARRIOR] until [Pillaged|PILLAGE] and destroyed.</description>
+      <description>强盗营地是[强盗|BANDIT]的巢穴，这些残暴的劫掠者渴求鲜血、财富与荣耀。[NEWLINE]营地会不时产生新的[战士|WARRIOR]，直至被[劫掠|PILLAGE]并摧毁。</description>
       <texturePath>Images/Structures/Other/BanditCamp</texturePath>
       <sketchPath>Images/Structures/Other/BanditCamp_Sketch</sketchPath>
       <valuePriorityID>LOW</valuePriorityID>
@@ -4651,7 +4651,7 @@
     <structure>
       <ID>STRUCTURE_BANDIT_FORT</ID>
       <name>TEXT.Name.Structure.BanditFort</name>
-      <description>Bandit Forts are the heavily armed headquarters of powerful [Bandit|BANDIT] raiding groups.[NEWLINE]They frequently produce new [Warriors|WARRIOR] until [Pillaged|PILLAGE] and destroyed. Be wary, should you find one nearby!</description>
+      <description>强盗堡垒是强大[强盗|BANDIT]团伙戒备森严的总部。[NEWLINE]堡垒会频繁产生新的[战士|WARRIOR]，直至被[劫掠|PILLAGE]并摧毁。若在附近发现一座，务必小心！</description>
       <texturePath>Images/Structures/Other/BanditFort</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW+</valuePriorityID>
@@ -4708,7 +4708,7 @@
     <structure>
       <ID>STRUCTURE_SLAVE_CAMP</ID>
       <name>TEXT.Name.Structure.SlaveCamp</name>
-      <description>Slave Camps are populated by large number of recently-escaped and highly aggressive slaves which now seek to terrorize the countryside.[NEWLINE]Slave [Warriors|WARRIOR] are weak individually, but usually appear in large numbers.</description>
+      <description>奴隶营地聚集着大批刚刚逃亡、极具攻击性的奴隶，他们正四处恐吓乡野。[NEWLINE]奴隶[战士|WARRIOR]单体孱弱，却通常成群出现。</description>
       <texturePath>Images/Structures/Other/SlaveCamp</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW+</valuePriorityID>
@@ -4759,7 +4759,7 @@
     <structure>
       <ID>STRUCTURE_MONASTERY</ID>
       <name>TEXT.Name.Structure.Monastery</name>
-      <description>Monasteries are the secluded compounds of early Christianity's most pious men.[NEWLINE][Pillaging|PILLAGE] them provides significant amount of [TREASURE], but lowers your [FAME] and hurts relations with other Christian leaders.</description>
+      <description>修道院是早期基督教虔诚信徒隐居修行的院落。[NEWLINE][劫掠|PILLAGE]修道院可获得大量[TREASURE]，但会降低你的[FAME]，并损害与其他基督教领袖的关系。</description>
       <texturePath>Images/Structures/Other/Monastery</texturePath>
       <sketchPath>Images/Structures/Other/Monastery_Sketch</sketchPath>
       <terrainTexturePath>
@@ -4817,7 +4817,7 @@
     <structure>
       <ID>STRUCTURE_ANCIENT_SHRINE</ID>
       <name>TEXT.Name.Structure.AncientShrine</name>
-      <description>Ancient Shrines are places for contemplation and worship established by distant ancestors.[NEWLINE]Its inspirational qualities allow adjacent [Clans|CLAN] recover all lost [Morale|MORALE] in a single turn. [Pillaging|PILLAGE] them provides [TIMBER], but hurts your [FAME]</description>
+      <description>古老圣祠是远祖建立的沉思与礼拜场所。[NEWLINE]其感召力可使相邻[氏族|CLAN]在一回合内恢复全部[士气|MORALE]。[劫掠|PILLAGE]圣祠可获得[TIMBER]，但会损害你的[FAME]。</description>
       <texturePath>Images/Structures/Other/AncientShrine</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <terrainTexturePath>
@@ -4865,7 +4865,7 @@
     <structure>
       <ID>STRUCTURE_DESTROYED_BRIDGE</ID>
       <name>TEXT.Name.Structure.DestroyedBridge</name>
-      <description>Destroyed Bridges are all that remains of a once-mighty feat of Roman engineering.[NEWLINE][Pillaging|PILLAGE] them provides a small amount of [STONE].</description>
+      <description>毁坏的桥梁是一项昔日宏伟罗马工程的残迹。[NEWLINE][劫掠|PILLAGE]它可获得少量[STONE]。</description>
       <texturePath>Images/TEMP</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -4892,7 +4892,7 @@
     <structure>
       <ID>STRUCTURE_PILLAGED_BRIDGE</ID>
       <name>TEXT.Name.Structure.PillagedBridge</name>
-      <description>Destroyed Bridges are all that remains of a once-mighty feat of Roman engineering.[NEWLINE][Pillaging|PILLAGE] them normally provides a small amount of [STONE], but this one has already been stripped of anything useful.</description>
+      <description>毁坏的桥梁是一项昔日宏伟罗马工程的残迹。[NEWLINE][劫掠|PILLAGE]它通常可获得少量[STONE]，但这座桥已被搜刮一空。</description>
       <texturePath>Images/TEMP</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <!-- MapObject -->
@@ -4909,7 +4909,7 @@
     <structure>
       <ID>STRUCTURE_ROMAN_DAM</ID>
       <name>TEXT.Name.Structure.RomanDam</name>
-      <description>Roman Dams are incredible feats of engineering designed to create artificial lakes for irrigation.[NEWLINE][Pillaging|PILLAGE] them provides a large amount of [STONE].</description>
+      <description>罗马水坝是为灌溉而建造人工湖的宏伟工程。[NEWLINE][劫掠|PILLAGE]它可获得大量[STONE]。</description>
       <texturePath>Images/TEMP</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -4937,7 +4937,7 @@
     <structure>
       <ID>STRUCTURE_PILLAGED_ROMAN_DAM</ID>
       <name>TEXT.Name.Structure.PillagedRomanDam</name>
-      <description>Roman Dams are incredible feats of engineering designed to create artificial lakes for irrigation.[NEWLINE][Pillaging|PILLAGE] them normally provides a large amount of [STONE], but this one has already been stripped of anything useful.</description>
+      <description>罗马水坝是为灌溉而建造人工湖的宏伟工程。[NEWLINE][劫掠|PILLAGE]它通常可获得大量[STONE]，但这座水坝已被搜刮一空。</description>
       <texturePath>Images/TEMP</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <!-- MapObject -->
@@ -4956,7 +4956,7 @@
     <structure>
       <ID>STRUCTURE_BURNING_WRECKAGE</ID>
       <name>TEXT.Name.Structure.BurningWreckage</name>
-      <description>The still-burning remains of a recently-destroyed [Structure|STRUCTURE]</description>
+      <description>一座刚被摧毁、仍在燃烧的[建筑|STRUCTURE]残骸。</description>
       <texturePath>Images/Structures/Other/Wreckage_Burning</texturePath>
       <sketchPath>Images/Structures/Other/Wreckage_Sketch</sketchPath>
       <!-- Transform -->
@@ -4976,7 +4976,7 @@
     <structure>
       <ID>STRUCTURE_WRECKAGE</ID>
       <name>TEXT.Name.Structure.Wreckage</name>
-      <description>The destroyed remains of a once-useful [Structure|STRUCTURE]</description>
+      <description>一座昔日尚可使用的[建筑|STRUCTURE]如今留下的残骸。</description>
       <texturePath>Images/Structures/Other/Wreckage</texturePath>
       <sketchPath>Images/Structures/Other/Wreckage_Sketch</sketchPath>
       <!-- Transform -->

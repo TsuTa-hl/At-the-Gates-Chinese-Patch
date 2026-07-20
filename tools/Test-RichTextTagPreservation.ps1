@@ -7,6 +7,10 @@ param(
         "$PSScriptRoot\..\translations\hardcoded-strings.json",
         "$PSScriptRoot\..\translations\hardcoded-common-strings.json",
         "$PSScriptRoot\..\translations\hardcoded-ui-il-strings.json"
+    ),
+    [string[]]$ConfigMapPaths = @(
+        "$PSScriptRoot\..\translations\config-node-onmap-strings.json",
+        "$PSScriptRoot\..\translations\config-node-misc-strings.json"
     )
 )
 
@@ -82,6 +86,57 @@ foreach ($mapPath in $MapPaths) {
         if ($entry.PSObject.Properties["MethodToken"]) { $location += [string]$entry.MethodToken }
         if ($entry.PSObject.Properties["ILOffset"]) { $location += "IL_$($entry.ILOffset)" }
         $errors.Add("$(Split-Path -Leaf $mapPath) :: $($location -join ' / ') :: '$($entry.Original)' -> '$($entry.Translation)'")
+    }
+}
+
+foreach ($mapPath in $ConfigMapPaths) {
+    if (!(Test-Path -LiteralPath $mapPath)) {
+        throw "Config translation map not found: $mapPath"
+    }
+
+    $map = Get-Content -LiteralPath $mapPath -Raw -Encoding UTF8 | ConvertFrom-Json
+    foreach ($fileEntry in $map.PSObject.Properties) {
+        $config = $fileEntry.Value
+        $sourcePath = Join-Path "$PSScriptRoot\.." ([string]$config.Source)
+        $container = [string]$config.Container
+        if (!(Test-Path -LiteralPath $sourcePath)) {
+            throw "Config source not found: $sourcePath"
+        }
+
+        [xml]$sourceXml = Get-Content -LiteralPath $sourcePath -Raw -Encoding UTF8
+        foreach ($item in @($config.Items)) {
+            $id = [string]$item.ID
+            $sourceNode = $sourceXml.SelectSingleNode("//$container[ID='$id']")
+            if (!$sourceNode) {
+                throw "Unable to find //$container[ID='$id'] in $sourcePath"
+            }
+
+            foreach ($propertyName in @("Name", "Description")) {
+                $property = $item.PSObject.Properties[$propertyName]
+                if ($null -eq $property) {
+                    continue
+                }
+
+                $nodeName = $propertyName.ToLowerInvariant()
+                $originalNode = $sourceNode.SelectSingleNode($nodeName)
+                if (!$originalNode) {
+                    throw "Unable to find $nodeName for ID '$id' in $sourcePath"
+                }
+
+                $sourceTags = @(Get-TagSignatures ([string]$originalNode.InnerText))
+                if ($sourceTags.Count -eq 0) {
+                    continue
+                }
+
+                $checked++
+                $translationTags = @(Get-TagSignatures ([string]$property.Value))
+                if (($sourceTags -join [char]31) -eq ($translationTags -join [char]31)) {
+                    continue
+                }
+
+                $errors.Add("$(Split-Path -Leaf $mapPath) :: $id / $propertyName :: '$($originalNode.InnerText)' -> '$($property.Value)'")
+            }
+        }
     }
 }
 

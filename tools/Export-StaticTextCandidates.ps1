@@ -3,7 +3,8 @@ param(
     [string[]]$ConfigNodeMap = @(
         "$PSScriptRoot\..\translations\config-node-strings.json",
         "$PSScriptRoot\..\translations\config-node-extra-strings.json",
-        "$PSScriptRoot\..\translations\config-node-onmap-strings.json"
+        "$PSScriptRoot\..\translations\config-node-onmap-strings.json",
+        "$PSScriptRoot\..\translations\config-node-misc-strings.json"
     ),
     [string]$OutputJson = "$PSScriptRoot\..\.tmp\static-text-candidates.json",
     [string]$OutputCsv = "$PSScriptRoot\..\.tmp\static-text-candidates.csv"
@@ -132,6 +133,26 @@ function Get-AtGStaticTextClass {
         }
     }
 
+    if ($FileName -eq "Structures.original.xml" -and
+        $ContainerName -eq "structure" -and
+        $XPath -eq "description") {
+        return @{
+            Class = "StructureDescription"
+            Safety = "SafeDisplay"
+            Reason = "Player-facing structure description under a stable structure ID; config-node patch and new-game smoke verified."
+        }
+    }
+
+    if ($FileName -eq "Religions.original.xml" -and
+        $ContainerName -eq "religion" -and
+        ($XPath -eq "name" -or $XPath -eq "adjective")) {
+        return @{
+            Class = "ReligionDisplay"
+            Safety = "SafeDisplay"
+            Reason = "Player-facing religion label or adjective under a stable religion ID."
+        }
+    }
+
     if ($FileName -eq "Factions.original.xml") {
         return @{
             Class = "FactionNameOrLabel"
@@ -197,7 +218,7 @@ if (!(Test-Path -LiteralPath $ConfigRoot)) {
 }
 
 $patchedIndex = Get-AtGPatchedIndex -MapPath $ConfigNodeMap
-$fieldNames = @("name", "shortName", "description", "text")
+$fieldNames = @("name", "shortName", "description", "text", "adjective")
 $candidates = New-Object System.Collections.Generic.List[object]
 
 foreach ($file in Get-ChildItem -LiteralPath $ConfigRoot -Filter "*.original.xml" -File -Recurse) {
@@ -228,7 +249,7 @@ foreach ($file in Get-ChildItem -LiteralPath $ConfigRoot -Filter "*.original.xml
         }
 
         $pathCounts = @{}
-        $nodes = @($container.SelectNodes(".//*[local-name()='name' or local-name()='shortName' or local-name()='description' or local-name()='text']"))
+        $nodes = @($container.SelectNodes(".//*[local-name()='name' or local-name()='shortName' or local-name()='description' or local-name()='text' or local-name()='adjective']"))
         foreach ($node in $nodes) {
             if ($fieldNames -notcontains $node.LocalName) {
                 continue

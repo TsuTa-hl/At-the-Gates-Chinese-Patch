@@ -6,7 +6,7 @@ param(
     [switch]$PatchCommonConceptTerms,
     [switch]$SkipFonts,
     [ValidateSet("MergedFonts", "DynamicCjk")]
-    [string]$RendererMode = "MergedFonts"
+    [string]$RendererMode = "DynamicCjk"
 )
 
 $ErrorActionPreference = "Stop"
@@ -252,7 +252,8 @@ else {
 $configNodeMaps = @(
     (Join-Path $PSScriptRoot "..\translations\config-node-strings.json"),
     (Join-Path $PSScriptRoot "..\translations\config-node-extra-strings.json"),
-    (Join-Path $PSScriptRoot "..\translations\config-node-onmap-strings.json")
+    (Join-Path $PSScriptRoot "..\translations\config-node-onmap-strings.json"),
+    (Join-Path $PSScriptRoot "..\translations\config-node-misc-strings.json")
 ) | Where-Object { Test-Path -LiteralPath $_ }
 if ($configNodeMaps.Count -gt 0) {
     Measure-AtGStage -Summary $timing -Name "config-node" -ScriptBlock {
@@ -480,7 +481,8 @@ if (Test-Path -LiteralPath $configMapPath) {
 $configNodeMapPaths = @(
     (Join-Path $PSScriptRoot "..\translations\config-node-strings.json"),
     (Join-Path $PSScriptRoot "..\translations\config-node-extra-strings.json"),
-    (Join-Path $PSScriptRoot "..\translations\config-node-onmap-strings.json")
+    (Join-Path $PSScriptRoot "..\translations\config-node-onmap-strings.json"),
+    (Join-Path $PSScriptRoot "..\translations\config-node-misc-strings.json")
 ) | Where-Object { Test-Path -LiteralPath $_ }
 foreach ($configNodeMapPath in $configNodeMapPaths) {
     $configNodeTextMap = Get-Content -LiteralPath $configNodeMapPath -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -962,7 +964,7 @@ if ($RendererMode -eq "DynamicCjk") {
         throw "Runtime display map is missing: $runtimeMapPath"
     }
     $runtimeSummary = Get-Content -LiteralPath $runtimeSummaryPath -Raw -Encoding UTF8 | ConvertFrom-Json
-    $runtimeMapCounts = @{ K = 0; E = 0; P = 0; C = 0 }
+    $runtimeMapCounts = @{ K = 0; E = 0; P = 0; F = 0; C = 0 }
     foreach ($line in Get-Content -LiteralPath $runtimeMapPath -Encoding UTF8) {
         if ([string]::IsNullOrEmpty($line) -or $line.StartsWith("#")) {
             continue
@@ -982,6 +984,7 @@ if ($RendererMode -eq "DynamicCjk") {
         ConceptKeyCount = [int]$runtimeMapCounts.K
         ExactCount = [int]$runtimeMapCounts.E
         PlainTextCount = [int]$runtimeMapCounts.P
+        PlainTextFragmentCount = [int]$runtimeMapCounts.F
         ConceptDisplayCount = [int]$runtimeMapCounts.C
         AtlasPageSize = 1024
         MaximumAtlasPages = 8
@@ -1051,7 +1054,11 @@ $buildReport = [ordered]@{
 }
 
 $buildReportPath = Join-Path $PatchRoot ".atg-build-report.json"
-$buildReport | ConvertTo-Json -Depth 6 -Compress | Set-Content -LiteralPath $buildReportPath -Encoding UTF8
+$buildReportJson = $buildReport | ConvertTo-Json -Depth 6 -Compress
+[System.IO.File]::WriteAllText(
+    $buildReportPath,
+    $buildReportJson,
+    (New-Object System.Text.UTF8Encoding($false)))
 Write-Host "Build report: $buildReportPath"
 
 Write-Host "Build timing summary:"

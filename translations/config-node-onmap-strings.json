@@ -4,8 +4,236 @@
     "Container": "structure",
     "Items": [
       {
+        "ID": "STRUCTURE_LOGGING_CAMP_1",
+        "Description": "伐木营由[LOGGER:S]在[森林|FOREST]中[建造|CONSTRUCT]，从所在及相邻地块[采伐|HARVEST][TIMBER]。伐木营最终会耗尽所在[地块|TILE]的可用[TIMBER]；届时营地停工，[森林|FOREST]也会退化为[BRUSH-LEAFY]。[BLANK-LINE]长期来看，伐木营的效率低于[WOOD-COLLECTOR:S]；若附近只有少量[森林|FOREST]地块，通常不宜建造。"
+      },
+      {
+        "ID": "STRUCTURE_LOGGING_CAMP_2",
+        "Description": "木工作坊由[LOGGER:S]在[森林|FOREST]中[建造|CONSTRUCT]，从所在及相邻地块[采伐|HARVEST][TIMBER]。[BLANK-LINE]与[LOGGING-CAMP-1]不同，木工作坊不会[耗竭|DEGRADE]所采伐的[资源|RESOURCE]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_WHEAT_FARM_1",
+        "Description": "小麦农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][WHEAT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。"
+      },
+      {
+        "ID": "STRUCTURE_WHEAT_FARM_2",
+        "Description": "小麦种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][WHEAT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[WHEAT-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_BARLEY_FARM_1",
+        "Description": "大麦农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][BARLEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。"
+      },
+      {
+        "ID": "STRUCTURE_BARLEY_FARM_2",
+        "Description": "大麦种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][BARLEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[BARLEY-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_FRUIT_FARM_1",
+        "Description": "果园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FRUIT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]果园不能建在[DEPOSIT-BERRIES:S]上；只有[GATHERER:S]能[采集|HARVEST]它们。"
+      },
+      {
+        "ID": "STRUCTURE_FRUIT_FARM_2",
+        "Description": "果树种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FRUIT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[FRUIT-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。[BLANK-LINE]果园不能建在[DEPOSIT-BERRIES:S]上；只有[GATHERER:S]能[采集|HARVEST]它们。"
+      },
+      {
+        "ID": "STRUCTURE_VINEYARD_1",
+        "Description": "葡萄园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][GRAPES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。"
+      },
+      {
+        "ID": "STRUCTURE_VINEYARD_2",
+        "Description": "葡萄种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][GRAPES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[VINEYARD-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_OLIVE_FARM_1",
+        "Description": "橄榄农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][OLIVES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。"
+      },
+      {
+        "ID": "STRUCTURE_OLIVE_FARM_2",
+        "Description": "橄榄庄园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][OLIVES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[OLIVE-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_FLAX_FARM_1",
+        "Description": "亚麻农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FLAX]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。"
+      },
+      {
+        "ID": "STRUCTURE_FLAX_FARM_2",
+        "Description": "亚麻种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FLAX]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[FLAX-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_APIARY_1",
+        "Description": "养蜂场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][HONEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。"
+      },
+      {
+        "ID": "STRUCTURE_APIARY_2",
+        "Description": "蜂蜜种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][HONEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[APIARY-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_CATTLE_PASTURE_1",
+        "Description": "牛牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[CATTLE]纳入你的[存栏|STOCKPILE]。"
+      },
+      {
+        "ID": "STRUCTURE_CATTLE_PASTURE_2",
+        "Description": "大型牛牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[CATTLE]纳入你的[存栏|STOCKPILE]。[BLANK-LINE]与普通牧场不同，大型牧场还会随时间增加畜群规模。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_SHEEP_PASTURE_1",
+        "Description": "羊牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[SHEEP]纳入你的[存栏|STOCKPILE]。"
+      },
+      {
+        "ID": "STRUCTURE_SHEEP_PASTURE_2",
+        "Description": "大型羊牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[SHEEP]纳入你的[存栏|STOCKPILE]。[BLANK-LINE]与普通牧场不同，大型牧场还会随时间增加畜群规模。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_PIG_PASTURE_1",
+        "Description": "猪牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[PIGS]纳入你的[存栏|STOCKPILE]。"
+      },
+      {
+        "ID": "STRUCTURE_PIG_PASTURE_2",
+        "Description": "大型猪牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[PIGS]纳入你的[存栏|STOCKPILE]。[BLANK-LINE]与普通牧场不同，大型牧场还会随时间增加畜群规模。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_HORSE_PASTURE_1",
+        "Description": "马牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[HORSES]纳入你的[存栏|STOCKPILE]。"
+      },
+      {
+        "ID": "STRUCTURE_HORSE_PASTURE_2",
+        "Description": "大型马牧场是由[RANCHER:S][建造|CONSTRUCT]的[建筑|STRUCTURE]，可将所在[地块|TILE]的[HORSES]纳入你的[存栏|STOCKPILE]。[BLANK-LINE]与普通牧场不同，大型牧场还会随时间增加畜群规模。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_GOLD_MINE_1",
+        "Description": "金矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]大量[TREASURE]的[建筑|STRUCTURE]，价值很高。"
+      },
+      {
+        "ID": "STRUCTURE_GOLD_MINE_2",
+        "Description": "金矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]大量[TREASURE]的[建筑|STRUCTURE]，价值很高。[BLANK-LINE]与[GOLD-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_GEM_MINE_1",
+        "Description": "宝石矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]巨量[TREASURE]的[建筑|STRUCTURE]，价值极高。"
+      },
+      {
+        "ID": "STRUCTURE_GEM_MINE_2",
+        "Description": "宝石矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]巨量[TREASURE]的[建筑|STRUCTURE]，价值极高。[BLANK-LINE]与[GEM-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_MINE_METEORITE",
+        "Description": "陨石极为罕见！开采它们能在短期内产出巨量[IRON]。派[MINER]在其上[建造|CONSTRUCT][IRON-MINE-1]。"
+      },
+      {
+        "ID": "STRUCTURE_IRON_MINE_1",
+        "Description": "铁矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][IRON]的[建筑|STRUCTURE]。铁可精炼为[TOOLS]、[WEAPONS]及其他资源，用于将[氏族|CLAN][训练|TRAIN]或[升级|UPGRADE]为[战士|WARRIOR][职业|PROFESSION]。"
+      },
+      {
+        "ID": "STRUCTURE_IRON_MINE_2",
+        "Description": "铁矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][IRON]的[建筑|STRUCTURE]。铁可精炼为[TOOLS]、[WEAPONS]及其他资源，用于将[氏族|CLAN][训练|TRAIN]或升级为[战士|WARRIOR][职业|PROFESSION]。[BLANK-LINE]与[IRON-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_STONE_QUARRY_1",
+        "Description": "采石场是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][STONE]的[建筑|STRUCTURE]。石料可用于[建造|CONSTRUCT]高级[建筑|STRUCTURE]，其产出远高于以[TIMBER]建造的同类设施。"
+      },
+      {
+        "ID": "STRUCTURE_STONE_QUARRY_2",
+        "Description": "采石矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][STONE]的[建筑|STRUCTURE]。石料可用于[建造|CONSTRUCT]高级[建筑|STRUCTURE]，其产出远高于以[TIMBER]建造的同类设施。[BLANK-LINE]与[STONE-QUARRY-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_COAL_MINE_1",
+        "Description": "煤矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。"
+      },
+      {
+        "ID": "STRUCTURE_COAL_MINE_2",
+        "Description": "煤矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。[BLANK-LINE]与[COAL-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_PEAT_MINE_1",
+        "Description": "泥炭矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]少量[COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。"
+      },
+      {
+        "ID": "STRUCTURE_PEAT_MINE_2",
+        "Description": "泥炭矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]少量[COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。[BLANK-LINE]与[PEAT-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_SALT_MINE_1",
+        "Description": "盐矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][SALT]的[建筑|STRUCTURE]。盐用途广泛且价值不菲，可出售给[商队|CARAVAN]，也可用于提高[FOOD]产出。"
+      },
+      {
+        "ID": "STRUCTURE_SALT_MINE_2",
+        "Description": "盐矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][SALT]的[建筑|STRUCTURE]。盐用途广泛且价值不菲，可出售给[商队|CARAVAN]，也可用于提高[FOOD]产出。[BLANK-LINE]与[SALT-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_TRADING_POST_1",
+        "Description": "贸易站[产出|PRODUCE][TREASURE]。只有[TRADER:S]能在两条[小河|RIVER]交汇处，或小河注入大型[水域|WATER]的[地块|TILE]上[建造|CONSTRUCT]贸易站；贸易站之间不能相邻。"
+      },
+      {
+        "ID": "STRUCTURE_TRADING_POST_2",
+        "Description": "贸易站仓库[产出|PRODUCE]巨量[TREASURE]。只有[TRADER:S]能在两条[小河|RIVER]交汇处，或小河注入大型[水域|WATER]的[地块|TILE]上[建造|CONSTRUCT]贸易站；贸易站之间不能相邻。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。"
+      },
+      {
+        "ID": "STRUCTURE_SUPPLY_DEPOT",
+        "Description": "补给站可将你的[补给|SUPPLY]范围延伸到[控制|CONTROL]之外的[地块|TILE]。每座补给站将范围延伸 4 个[地块|TILE]；连续修建即可将补给线延伸到任意距离。[NEWLINE]若要在远离家园的地区越冬作战，补给站不可或缺。"
+      },
+      {
+        "ID": "STRUCTURE_WATCHTOWER",
+        "Description": "瞭望塔将你的[边界|BORDERS]向外延伸 3 个[地块|TILE]；安排[学徒|APPRENTICE]后还可[产出|PRODUCE][FAME]。与其他[建筑|STRUCTURE]不同，[WATCHMAN:S]可在地图任意位置[建造|CONSTRUCT]瞭望塔，即使那里位于现有[边界|BORDERS]之外。"
+      },
+      {
+        "ID": "STRUCTURE_FORT",
+        "Description": "要塞将派系的[控制|CONTROL]范围延伸 2 个[地块|TILE]，使驻扎其中的[战士|WARRIOR][防御|DEFENSE]翻倍；安排[学徒|APPRENTICE]后还可[产出|PRODUCE][FAME]。"
+      },
+      {
+        "ID": "STRUCTURE_ROMAN_FORT",
+        "Description": "罗马要塞将派系的[控制|CONTROL]范围延伸 2 个[地块|TILE]，使驻扎其中的[战士|WARRIOR][防御|DEFENSE]增至三倍；安排[学徒|APPRENTICE]后还可[产出|PRODUCE][FAME]。"
+      },
+      {
         "ID": "STRUCTURE_SETTLEMENT",
         "Description": "定居点是迁徙部族的家园。定居点在[打包|PACKED]后可以在地图上[移动|MOVE-POINT]，并容纳可被[训练|TRAIN]为各类[职业|PROFESSION]的[氏族|CLAN]。"
+      },
+      {
+        "ID": "STRUCTURE_CITY",
+        "Description": "少数仍存的罗马文明据点之一。[NEWLINE]攻占它十分困难，但成功后可免费选择[学会|LEARN]一种[职业|PROFESSION]！罗马城市还会产出可观的[TREASURE]。"
+      },
+      {
+        "ID": "STRUCTURE_BANDIT_CAMP",
+        "Description": "强盗营地是[强盗|BANDIT]的巢穴，这些残暴的劫掠者渴求鲜血、财富与荣耀。[NEWLINE]营地会不时产生新的[战士|WARRIOR]，直至被[劫掠|PILLAGE]并摧毁。"
+      },
+      {
+        "ID": "STRUCTURE_BANDIT_FORT",
+        "Description": "强盗堡垒是强大[强盗|BANDIT]团伙戒备森严的总部。[NEWLINE]堡垒会频繁产生新的[战士|WARRIOR]，直至被[劫掠|PILLAGE]并摧毁。若在附近发现一座，务必小心！"
+      },
+      {
+        "ID": "STRUCTURE_SLAVE_CAMP",
+        "Description": "奴隶营地聚集着大批刚刚逃亡、极具攻击性的奴隶，他们正四处恐吓乡野。[NEWLINE]奴隶[战士|WARRIOR]单体孱弱，却通常成群出现。"
+      },
+      {
+        "ID": "STRUCTURE_MONASTERY",
+        "Description": "修道院是早期基督教虔诚信徒隐居修行的院落。[NEWLINE][劫掠|PILLAGE]修道院可获得大量[TREASURE]，但会降低你的[FAME]，并损害与其他基督教领袖的关系。"
+      },
+      {
+        "ID": "STRUCTURE_ANCIENT_SHRINE",
+        "Description": "古老圣祠是远祖建立的沉思与礼拜场所。[NEWLINE]其感召力可使相邻[氏族|CLAN]在一回合内恢复全部[士气|MORALE]。[劫掠|PILLAGE]圣祠可获得[TIMBER]，但会损害你的[FAME]。"
+      },
+      {
+        "ID": "STRUCTURE_DESTROYED_BRIDGE",
+        "Description": "毁坏的桥梁是一项昔日宏伟罗马工程的残迹。[NEWLINE][劫掠|PILLAGE]它可获得少量[STONE]。"
+      },
+      {
+        "ID": "STRUCTURE_PILLAGED_BRIDGE",
+        "Description": "毁坏的桥梁是一项昔日宏伟罗马工程的残迹。[NEWLINE][劫掠|PILLAGE]它通常可获得少量[STONE]，但这座桥已被搜刮一空。"
+      },
+      {
+        "ID": "STRUCTURE_ROMAN_DAM",
+        "Description": "罗马水坝是为灌溉而建造人工湖的宏伟工程。[NEWLINE][劫掠|PILLAGE]它可获得大量[STONE]。"
+      },
+      {
+        "ID": "STRUCTURE_PILLAGED_ROMAN_DAM",
+        "Description": "罗马水坝是为灌溉而建造人工湖的宏伟工程。[NEWLINE][劫掠|PILLAGE]它通常可获得大量[STONE]，但这座水坝已被搜刮一空。"
+      },
+      {
+        "ID": "STRUCTURE_BURNING_WRECKAGE",
+        "Description": "一座刚被摧毁、仍在燃烧的[建筑|STRUCTURE]残骸。"
+      },
+      {
+        "ID": "STRUCTURE_WRECKAGE",
+        "Description": "一座昔日尚可使用的[建筑|STRUCTURE]如今留下的残骸。"
       }
     ]
   }

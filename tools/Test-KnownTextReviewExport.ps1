@@ -147,6 +147,7 @@ $requiredSources = @(
     "source\Content\Config\Primary\Factions.original.xml",
     "source\Content\Config\Primary\FactionTraits.original.xml",
     "source\Content\Config\Primary\Techs.original.xml",
+    "source\Content\Config\Misc\Religions.original.xml",
     "source\AtTheGatesUI.original.dll",
     "source\AtTheGatesCommon.original.dll",
     "source\AtTheGatesGame.original.exe",

@@ -4,6 +4,40 @@
   ],
   "Exact": [],
   "PlainText": [],
+  "PlainTextFragments": [
+    {
+      "Original": "forced into a ",
+      "Translation": "被迫从事"
+    },
+    {
+      "Original": " outside of ",
+      "Translation": "，且不属于"
+    },
+    {
+      "Original": "there's another ",
+      "Translation": "另有"
+    },
+    {
+      "Original": "engage in ",
+      "Translation": "卷入"
+    },
+    {
+      "Original": "commit ",
+      "Translation": "犯下"
+    },
+    {
+      "Original": "Brawls",
+      "Translation": "斗殴"
+    },
+    {
+      "Original": "Theft",
+      "Translation": "盗窃"
+    },
+    {
+      "Original": "Max ",
+      "Translation": "最高"
+    }
+  ],
   "ConceptDisplay": [
     {
       "ConceptKey": "LEVEL",

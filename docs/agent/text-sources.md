@@ -37,6 +37,9 @@ written, not how the Chinese should sound.
   `translations\config-node-extra-strings.json`
 - `source\Content\Config\OnMap\Structures.original.xml` ->
   `translations\config-node-onmap-strings.json`
+- `source\Content\Config\Misc\Religions.original.xml` ->
+  `translations\config-node-misc-strings.json` ->
+  `patch\Content\Config\Misc\Religions.xml`
 - `source\Content\Config\Primary\FactionTraits.original.xml` and
   `source\Content\Config\Primary\Factions.original.xml` are export-and-review
   sources. Do not bulk-replace them by default.
@@ -76,8 +79,26 @@ the candidate container. This is required for files such as
 text sits below category wrappers. Current static-candidate status:
 
 - `ClanTraits.xml` `SafeDisplay` entries are covered.
+- `Structures.original.xml` has 58 stable-ID `description` display strings.
+  `translations\config-node-onmap-strings.json` now covers all 58; 57 were
+  added after the 2026-07-16 SQLite skip re-review and passed new-game smoke.
 - Remaining candidates are mostly `Factions.original.xml` `ManualOnly` faction
   names or labels and must not be force-patched by default.
+
+### Religion Screen
+
+- `source\Content\Config\Misc\Religions.original.xml` mirrors the installed
+  `Content\Config\Misc\Religions.xml`. The safe map patches only the
+  display-facing `name` and `adjective` fields for `RELIGION_NICENE`,
+  `RELIGION_ARIAN`, and `RELIGION_PAGAN`; IDs remain unchanged and the current
+  `description=TODO` placeholders remain untouched.
+- The Religion screen title is emitted by
+  `AtTheGatesUI.ns_InGame.ns_Popups.Screen_Religion.CreateControls_OnRebuild`,
+  MethodToken `0x0600063d`, at IL offsets `10` and `378`. These two `Religion`
+  operands are patched through `hardcoded-ui-il-rewrite.json` as `宗教`.
+- `TEXT.Concepts.Religion` is an identifier/reference and must remain a key;
+  do not translate it as a raw string. The config names and UI title are the
+  user-visible display layer.
 
 For DLL strings, export a method-level `ldstr` catalog before byte searching:
 
@@ -160,9 +181,22 @@ the main review columns.
   `tools\Test-ConceptLinkTargets.ps1` before building. A translated key that
   is not registered renders as raw markup or raises an `invalid CONCEPT` error
   instead of opening the next tooltip.
+- `translations\runtime-display-strings.json` can contain
+  `PlainTextFragments` for generated final-display rich text when the source is
+  assembled from many small fragments and no stable full template exists. These
+  replacements apply only to parsed plain text nodes; they must not rewrite
+  concept-link keys, raw runtime tags, or markup. Use this for composed
+  clan-trait hover phrases such as `engage in`, `Brawls`, `commit Theft`,
+  `Max`, `forced into a`, and `outside of` after screenshot text has first been
+  checked against the catalog.
 - Preserve raw runtime tags such as `[SETTLEMENT]`, `[FOOD]`,
   `[HUNTER:S]`, `[COLOR:*]`, `[FONT:*]`, `[HOTKEY:*]`, and `[BLANK-LINE]`.
-  `tools\Test-RichTextTagPreservation.ps1` protects their structure. The
+  `tools\Test-RichTextTagPreservation.ps1` protects their structure. The rule
+  also applies to config-node maps: a bare source token such as `[FARMER:S]`,
+  `[TIMBER]`, or `[IRON-MINE-1]` must remain bare and must not be rewritten as
+  `[Chinese display|KEY]`. Only source tags that already contain a concept key
+  may retain that key with translated display text. Both the rich-text
+  preservation and concept-link target tests scan the OnMap config map. The
   shipped `[Upgrades|UPGRADES]` legacy alias must be written as
   `[升级|UPGRADE]`; `UPGRADES` is not a registered key. `RESPECT` and
   `RELATIONS` have no registered concepts, so render those two UI labels as
@@ -368,9 +402,11 @@ Knowledge-screen tooltip sources:
 
 Selected map-object and structure descriptions:
 
-- The selected settlement information panel uses
-  `Content\Config\OnMap\Structures.xml` (`STRUCTURE_SETTLEMENT`) and is patched
-  through `translations\config-node-onmap-strings.json`.
+- Selected structure information panels use
+  `Content\Config\OnMap\Structures.xml`. All 58 stable-ID descriptions,
+  including settlements, production structures, camps, ruins, and Roman map
+  objects, are patched through
+  `translations\config-node-onmap-strings.json`.
 
 Battle preview and combat result text:
 

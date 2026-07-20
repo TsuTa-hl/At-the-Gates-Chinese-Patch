@@ -1,0 +1,38 @@
+{
+  "Content\\Config\\Misc\\Religions.xml": {
+    "Source": "source\\Content\\Config\\Misc\\Religions.original.xml",
+    "Container": "religion",
+    "Items": [
+      {
+        "ID": "RELIGION_NICENE",
+        "Name": "尼西亚基督教",
+        "Nodes": [
+          {
+            "XPath": "adjective",
+            "Value": "尼西亚基督徒"
+          }
+        ]
+      },
+      {
+        "ID": "RELIGION_ARIAN",
+        "Name": "阿里乌派基督教",
+        "Nodes": [
+          {
+            "XPath": "adjective",
+            "Value": "阿里乌派基督徒"
+          }
+        ]
+      },
+      {
+        "ID": "RELIGION_PAGAN",
+        "Name": "异教",
+        "Nodes": [
+          {
+            "XPath": "adjective",
+            "Value": "异教徒"
+          }
+        ]
+      }
+    ]
+  }
+}

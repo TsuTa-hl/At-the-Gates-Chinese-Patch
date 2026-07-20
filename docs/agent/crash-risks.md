@@ -100,6 +100,14 @@ field against `Test-Path`.
   files. Run `tools\Test-FontPatchBudget.ps1` and
   `tools\Test-RuntimeBuildReport.ps1` after renderer, font, or translation
   changes.
+- The 2026-07-16 visual calibration rasterizes CJK at 1.15 times the logical
+  SpriteFont size and applies a small per-size upward baseline offset. Keep
+  measurement, line height, glyph cache keys, and drawing on the same calibrated
+  descriptor; changing only drawing or only measurement can reintroduce
+  clipping, incorrect centering, or text that sits too low.
+- The scale and baseline adjustment apply only to dynamic CJK glyphs. Do not
+  apply them to the original SpriteFont path: Latin text, numbers, hotkeys, and
+  private-use icon glyphs depend on the original metrics.
 - `MergedFonts` remains a rollback-only mode for one compatibility cycle. In
   that mode only, install fonts carrying `.atg-merged-fonts`; preserve original
   icon glyphs and use the 15 Segoe UI subset build. Never restore the older
@@ -111,6 +119,16 @@ field against `Test-Path`.
 - Run `tools\Test-FontReferences.ps1` after changing font references or either
   renderer path. Latin/icon rendering must continue to use the original game
   SpriteFonts so resource and trait icons do not become letters or squares.
+
+## Religion Configuration
+
+- Religion `name` and `adjective` fields are safe display text when patched by
+  stable religion ID. Keep `RELIGION_*` IDs unchanged and leave `description`
+  placeholders unchanged unless a separate source and UI regression prove the
+  field is display-safe.
+- The 2026-07-18 Religion-screen patch loaded the current fixed save and opened
+  the screen without a crash or new `Crash.AtGLog` entry. DynamicCjk handled the
+  Chinese glyphs; no merged-font fallback was needed.
 
 ## In-Game Reload Memory Lifecycle
 

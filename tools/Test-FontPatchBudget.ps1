@@ -257,7 +257,8 @@ $configNodeText = New-Object System.Text.StringBuilder
 foreach ($mapName in @(
     "config-node-strings.json",
     "config-node-extra-strings.json",
-    "config-node-onmap-strings.json"
+    "config-node-onmap-strings.json",
+    "config-node-misc-strings.json"
 )) {
     $mapPath = Join-Path $TranslationDirectory $mapName
     Add-AtGConfigNodeDisplayTextToBuilder -Builder $configNodeText -MapPath $mapPath

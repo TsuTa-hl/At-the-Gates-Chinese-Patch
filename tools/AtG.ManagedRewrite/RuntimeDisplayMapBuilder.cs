@@ -8,6 +8,7 @@ public sealed record RuntimeDisplayMapBuildResult(
     int ConceptKeyCount,
     int ExactCount,
     int PlainTextCount,
+    int PlainTextFragmentCount,
     int ConceptDisplayCount,
     string OutputPath);
 
@@ -37,11 +38,13 @@ public static class RuntimeDisplayMapBuilder
             ?? new RuntimeDisplayMapModel();
         var exact = model.Exact ?? [];
         var plain = model.PlainText ?? [];
+        var plainFragments = model.PlainTextFragments ?? [];
         var configuredConceptDisplay = model.ConceptDisplay ?? [];
         var conceptDisplay = configuredConceptDisplay.ToList();
 
         ValidateUnique(exact, entry => entry.Original, "exact");
         ValidateUnique(plain, entry => entry.Original, "plain-text");
+        ValidateUnique(plainFragments, entry => entry.Original, "plain-text-fragment");
         ValidateUnique(configuredConceptDisplay,
             entry => entry.ConceptKey + "\u001F" + entry.Original, "concept-display");
         ImportConceptDisplaySources(mapPath, model.ConceptDisplaySources,
@@ -62,6 +65,11 @@ public static class RuntimeDisplayMapBuilder
         {
             ValidateDisplay(entry.Original, "PlainText.Original");
             ValidateDisplay(entry.Translation, "PlainText.Translation");
+        }
+        foreach (var entry in plainFragments)
+        {
+            ValidateDisplay(entry.Original, "PlainTextFragments.Original");
+            ValidateFragmentTranslation(entry.Translation, "PlainTextFragments.Translation");
         }
         foreach (var entry in conceptDisplay)
         {
@@ -84,6 +92,9 @@ public static class RuntimeDisplayMapBuilder
             .Select(entry => "E\t" + Encode(entry.Original) + "\t" + Encode(entry.Translation)));
         lines.AddRange(plain.OrderBy(entry => entry.Original, StringComparer.Ordinal)
             .Select(entry => "P\t" + Encode(entry.Original) + "\t" + Encode(entry.Translation)));
+        lines.AddRange(plainFragments.OrderByDescending(entry => entry.Original.Length)
+            .ThenBy(entry => entry.Original, StringComparer.Ordinal)
+            .Select(entry => "F\t" + Encode(entry.Original) + "\t" + Encode(entry.Translation)));
         lines.AddRange(conceptDisplay
             .OrderBy(entry => entry.ConceptKey, StringComparer.Ordinal)
             .ThenBy(entry => entry.Original, StringComparer.Ordinal)
@@ -94,7 +105,7 @@ public static class RuntimeDisplayMapBuilder
         Directory.CreateDirectory(Path.GetDirectoryName(output)!);
         File.WriteAllLines(output, lines, new UTF8Encoding(false));
         return new RuntimeDisplayMapBuildResult(conceptKeys.Count, exact.Length,
-            plain.Length, conceptDisplay.Count, output);
+            plain.Length, plainFragments.Length, conceptDisplay.Count, output);
     }
 
     private static void ImportConceptDisplaySources(string mapPath,
@@ -203,6 +214,14 @@ public static class RuntimeDisplayMapBuilder
             throw new InvalidDataException(description + " must not contain rich-text markup.");
     }
 
+    private static void ValidateFragmentTranslation(string value, string description)
+    {
+        if (value is null)
+            throw new InvalidDataException(description + " is required.");
+        if (value.IndexOfAny(['[', ']', '|']) >= 0)
+            throw new InvalidDataException(description + " must not contain rich-text markup.");
+    }
+
     private static string Encode(string value) =>
         Convert.ToBase64String(Encoding.UTF8.GetBytes(value));
 
@@ -210,6 +229,7 @@ public static class RuntimeDisplayMapBuilder
     {
         public RuntimeDisplayEntry[]? Exact { get; set; }
         public RuntimeDisplayEntry[]? PlainText { get; set; }
+        public RuntimeDisplayEntry[]? PlainTextFragments { get; set; }
         public RuntimeConceptDisplayEntry[]? ConceptDisplay { get; set; }
         public string[]? ConceptDisplaySources { get; set; }
     }
