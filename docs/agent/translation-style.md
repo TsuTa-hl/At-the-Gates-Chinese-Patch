@@ -46,6 +46,13 @@ translated display term:
   World IDs, and generated names
 - Punctuation required by the token or tag format
 
+For composed or rich-text templates,
+`translations/composite-text-rules.json` owns argument ordering, structural
+preservation, and reusable rule selection. Generate a temporary `Composite` CSV
+only when filtering or sorting its navigation context is useful. Keep the term and voice decisions
+here, but do not introduce a word-level patch when the composition catalog
+identifies a full display template.
+
 ## Core Terms
 
 - Clan: `氏族`

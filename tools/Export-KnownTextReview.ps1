@@ -1,6 +1,5 @@
 param(
-    [string]$MarkdownOutputPath = "",
-    [string]$CsvOutputPath = ".\docs\review\known-texts.csv",
+    [string]$CsvOutputPath = ".\.tmp\review-views\known-texts.csv",
     [string]$OutputPath = "",
     [string]$UnmappedDllCsv = "",
     [string]$StaticCandidatesCsv = "",
@@ -57,17 +56,12 @@ if ([string]::IsNullOrWhiteSpace($CsvOutputPath)) {
         }
     }
     else {
-        $CsvOutputPath = ".\docs\review\known-texts.csv"
+        $CsvOutputPath = ".\.tmp\review-views\known-texts.csv"
     }
 }
 
-if ([string]::IsNullOrWhiteSpace($MarkdownOutputPath)) {
-    if (-not [string]::IsNullOrWhiteSpace($OutputPath)) {
-        $MarkdownOutputPath = $OutputPath
-    }
-    else {
-        $MarkdownOutputPath = ".\docs\review\known-texts.md"
-    }
+if (![string]::Equals([System.IO.Path]::GetExtension($CsvOutputPath), ".csv", [System.StringComparison]::OrdinalIgnoreCase)) {
+    throw "Known-text review output must be a CSV file: $CsvOutputPath"
 }
 
 if ([string]::IsNullOrWhiteSpace($DiscoveryCacheDirectory)) {
@@ -1347,8 +1341,7 @@ try {
             "rebuild",
             "--input", $catalogImportPath,
             "--database", $catalogDatabaseFullPath,
-            "--csv", ([System.IO.Path]::GetFullPath($CsvOutputPath)),
-            "--markdown", ([System.IO.Path]::GetFullPath($MarkdownOutputPath))
+            "--csv", ([System.IO.Path]::GetFullPath($CsvOutputPath))
         ) | Out-Host
 }
 finally {
@@ -1358,7 +1351,6 @@ finally {
 }
 
 [pscustomobject]@{
-    MarkdownOutputPath = (Resolve-Path -LiteralPath $MarkdownOutputPath).Path
     CsvOutputPath = (Resolve-Path -LiteralPath $CsvOutputPath).Path
     CatalogDatabasePath = (Resolve-Path -LiteralPath $catalogDatabaseFullPath).Path
     Rows = $items.Count

@@ -2,16 +2,66 @@
   "ConceptDisplaySources": [
     "hardcoded-common-strings.json"
   ],
+  "CompositeExactSources": [
+    "composite-text-rules.json"
+  ],
+  "CompositeFragmentSources": [
+    "composite-text-rules.json"
+  ],
+  "CompositeTemplateSources": [
+    "composite-text-rules.json"
+  ],
   "Exact": [],
-  "PlainText": [],
+  "PlainText": [
+    {
+      "Original": "Content",
+      "Translation": "满足"
+    },
+    {
+      "Original": "Angry",
+      "Translation": "愤怒"
+    },
+    {
+      "Original": "Obsessed",
+      "Translation": "痴迷"
+    },
+    {
+      "Original": ",",
+      "Translation": "、"
+    },
+    {
+      "Original": ", or",
+      "Translation": "、或"
+    },
+    {
+      "Original": "Range",
+      "Translation": "范围"
+    }
+  ],
   "PlainTextFragments": [
+    {
+      "Original": "Content",
+      "Translation": "满足"
+    },
     {
       "Original": "forced into a ",
       "Translation": "被迫从事"
     },
     {
+      "Original": "forced into an ",
+      "Translation": "被迫从事"
+    },
+    {
+      "Original": " within the ",
+      "Translation": "，且在"
+    },
+    {
       "Original": " outside of ",
       "Translation": "，且不属于"
+    },
+    {
+      "Original": " outside the ",
+      "Translation": "，且不在"
     },
     {
       "Original": "there's another ",
@@ -36,9 +86,36 @@
     {
       "Original": "Max ",
       "Translation": "最高"
+    },
+    {
+      "Original": " on the same ",
+      "Translation": "位于同一"
+    },
+    {
+      "Original": "No",
+      "Translation": "无"
+    },
+    {
+      "Original": " decreased by ",
+      "Translation": "降低"
     }
   ],
   "ConceptDisplay": [
+    {
+      "ConceptKey": "ACTIVE",
+      "Original": "Active",
+      "Translation": "主动"
+    },
+    {
+      "ConceptKey": "ACTIVE",
+      "Original": "Active Profession",
+      "Translation": "主动职业"
+    },
+    {
+      "ConceptKey": "ACTIVE",
+      "Original": "Active Professions",
+      "Translation": "主动职业"
+    },
     {
       "ConceptKey": "LEVEL",
       "Original": "Level",
@@ -48,6 +125,21 @@
       "ConceptKey": "LEVEL",
       "Original": "Levels",
       "Translation": "等级"
+    },
+    {
+      "ConceptKey": "SETTLED",
+      "Original": "Settled",
+      "Translation": "定居"
+    },
+    {
+      "ConceptKey": "SETTLED",
+      "Original": "Settled Profession",
+      "Translation": "定居职业"
+    },
+    {
+      "ConceptKey": "SETTLED",
+      "Original": "Settled Professions",
+      "Translation": "定居职业"
     },
     {
       "ConceptKey": "UPGRADE",

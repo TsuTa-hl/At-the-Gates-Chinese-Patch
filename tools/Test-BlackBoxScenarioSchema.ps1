@@ -87,6 +87,46 @@ foreach ($suiteName in @("FullRegression", "Incremental")) {
         Assert-AtGCondition ($validStatuses -contains $status) "Scenario $id has invalid Status '$status'."
         Assert-AtGCondition ($points.Count -gt 0) "Scenario $id must contain at least one point."
 
+        $traitPoints = @($points | Where-Object { [string](Get-AtGPropertyValue -Object $_ -Name "Id") -match "^card_[1-3]_trait_(upper|lower)$" })
+        if ($traitPoints.Count -gt 0) {
+            Assert-AtGCondition ($traitPoints.Count -eq 6) "Scenario $id must cover the upper and lower trait icon on all three visible clan cards."
+            # Trait points are expressed in canonical 2560x1440 client coordinates.
+            # Couple point IDs to slots so an upper/lower swap or a second vertical
+            # coordinate system cannot pass validation.
+            $expectedTraitCoordinates = @(
+                "card_1_trait_upper=1182,610", "card_1_trait_lower=1182,639",
+                "card_2_trait_upper=1331,610", "card_2_trait_lower=1331,639",
+                "card_3_trait_upper=1483,610", "card_3_trait_lower=1483,639"
+            )
+            $actualTraitCoordinates = @($traitPoints | ForEach-Object {
+                "{0}={1},{2}" -f (Get-AtGPropertyValue -Object $_ -Name "Id"),
+                    (Get-AtGPropertyValue -Object $_ -Name "X"),
+                    (Get-AtGPropertyValue -Object $_ -Name "Y")
+            })
+            foreach ($coordinate in $expectedTraitCoordinates) {
+                Assert-AtGCondition ($actualTraitCoordinates -contains $coordinate) "Scenario $id is missing calibrated trait icon coordinate $coordinate."
+            }
+            foreach ($traitPoint in $traitPoints) {
+                $traitCrop = Get-AtGPropertyValue -Object $traitPoint -Name "Crop"
+                Assert-AtGCondition ($null -ne $traitCrop) "Scenario $id trait point $([string](Get-AtGPropertyValue -Object $traitPoint -Name 'Id')) must declare a tooltip crop."
+                Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $traitCrop -Name "Width") -le 640) "Scenario $id trait tooltip crop must exclude the animated world map."
+                Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $traitCrop -Name "Height") -le 480) "Scenario $id trait tooltip crop must exclude the animated world map."
+            }
+        }
+
+        if ($id -eq "clan-screen-random-traits") {
+            $dynamicDiscovery = Get-AtGPropertyValue -Object $scenario -Name "DynamicTraitDiscovery"
+            $traitScope = @(Get-AtGPropertyValue -Object $scenario -Name "TraitScope")
+            Assert-AtGCondition ([bool](Get-AtGPropertyValue -Object $scenario -Name "RequiresFixedSave")) "Scenario $id must retain fixed-save replay for coordinate smoke points."
+            Assert-AtGCondition ((@($traitScope | Where-Object { [string]$_ -match "Non-personality traits" })).Count -gt 0) "Scenario $id must include non-personality traits in TraitScope."
+            Assert-AtGCondition ($null -ne $dynamicDiscovery) "Scenario $id is missing DynamicTraitDiscovery."
+            Assert-AtGCondition ([bool](Get-AtGPropertyValue -Object $dynamicDiscovery -Name "Required")) "Scenario $id DynamicTraitDiscovery must be required."
+            Assert-AtGCondition ([string](Get-AtGPropertyValue -Object $dynamicDiscovery -Name "Mode") -eq "ManualRandomDiscovery") "Scenario $id must use ManualRandomDiscovery for random layouts."
+            Assert-AtGCondition ([string](Get-AtGPropertyValue -Object $dynamicDiscovery -Name "SetupMode") -eq "new-game") "Scenario $id random discovery must use new-game setup."
+            Assert-AtGCondition ([bool](Get-AtGPropertyValue -Object $dynamicDiscovery -Name "StableIconCoordinates")) "Scenario $id must define the calibrated reusable icon coordinates."
+            Assert-AtGCondition (@(Get-AtGPropertyValue -Object $dynamicDiscovery -Name "RecordBeforeVerification").Count -ge 1) "Scenario $id random discovery must define evidence fields."
+        }
+
         foreach ($phase in @("SetupActions", "TeardownActions")) {
             foreach ($control in @(Get-AtGPropertyValue -Object $scenario -Name $phase)) {
                 if ($null -eq $control) {
@@ -145,6 +185,14 @@ foreach ($suiteName in @("FullRegression", "Incremental")) {
             if ($null -ne $waitMs) {
                 $maxWaitMs = if ($action -like "Hover*") { 3000 } else { 15000 }
                 Assert-AtGCondition (($waitMs -is [int] -or $waitMs -is [long]) -and [int]$waitMs -ge 0 -and [int]$waitMs -le $maxWaitMs) "Scenario $id point $pointId WaitMs must be between 0 and $maxWaitMs."
+            }
+
+            $readyMarker = [string](Get-AtGPropertyValue -Object $point -Name "ReadyMarker")
+            $readyTimeoutMs = Get-AtGPropertyValue -Object $point -Name "ReadyTimeoutMs"
+            if (![string]::IsNullOrWhiteSpace($readyMarker) -or $null -ne $readyTimeoutMs) {
+                Assert-AtGCondition (![string]::IsNullOrWhiteSpace($readyMarker)) "Scenario $id point $pointId ReadyTimeoutMs requires ReadyMarker."
+                Assert-AtGCondition ($action -ne "CaptureOnly") "Scenario $id point $pointId ReadyMarker requires an action."
+                Assert-AtGCondition (($readyTimeoutMs -is [int] -or $readyTimeoutMs -is [long]) -and [int]$readyTimeoutMs -gt 0 -and [int]$readyTimeoutMs -le 120000) "Scenario $id point $pointId ReadyTimeoutMs must be between 1 and 120000."
             }
 
             $crop = Get-AtGPropertyValue -Object $point -Name "Crop"

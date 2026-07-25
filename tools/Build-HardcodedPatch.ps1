@@ -7,6 +7,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+. "$PSScriptRoot\AtGFileOps.ps1"
 
 if (!(Test-Path -LiteralPath $SourceDll)) {
     throw "Source DLL not found: $SourceDll"
@@ -109,5 +110,15 @@ if ($outDir) {
     New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 }
 
-[IO.File]::WriteAllBytes($OutputDll, $bytes)
+$resolvedOutput = [IO.Path]::GetFullPath($OutputDll)
+$tempOutput = "$resolvedOutput.hardcoded.$([guid]::NewGuid().ToString('N')).tmp"
+[IO.File]::WriteAllBytes($tempOutput, $bytes)
+try {
+    [void](Copy-AtGFileIfChanged -Source $tempOutput -Destination $resolvedOutput)
+}
+finally {
+    if (Test-Path -LiteralPath $tempOutput -PathType Leaf) {
+        Remove-Item -LiteralPath $tempOutput -Force
+    }
+}
 Write-Host "Built hardcoded string patch: $OutputDll"

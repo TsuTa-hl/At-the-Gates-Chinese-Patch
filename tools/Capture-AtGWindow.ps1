@@ -1,12 +1,13 @@
 param(
     [string]$OutputPath = "$PSScriptRoot\..\.tmp\atg-window.png",
-    [switch]$MarkCursor
+    [switch]$MarkCursor,
+    [switch]$AllowCrashDialog
 )
 
 $ErrorActionPreference = "Stop"
 
 . "$PSScriptRoot\Get-AtGWindow.ps1"
-$window = Get-AtGWindow
+$window = Get-AtGWindow -AllowCrashDialog:$AllowCrashDialog
 
 $screenshotDir = Split-Path -Parent $OutputPath
 if ($screenshotDir) {
@@ -42,9 +43,6 @@ public static class AtGCaptureWindow {
     [DllImport("user32.dll")]
     public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
-    [DllImport("user32.dll")]
-    public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
-
     [StructLayout(LayoutKind.Sequential)]
     public struct POINT {
         public int X;
@@ -59,6 +57,12 @@ public static class AtGCaptureWindow {
 [AtGCaptureWindow]::SetProcessDpiAwarenessContext([IntPtr]::new(-4)) | Out-Null
 [AtGCaptureWindow]::SetProcessDPIAware() | Out-Null
 
+if (!$window.IsVisible) {
+    # Restore only a minimized XNA game window; do not alter its z-order.
+    [AtGCaptureWindow]::ShowWindow($window.Handle, 9) | Out-Null
+    Start-Sleep -Milliseconds 350
+}
+
 $rect = New-Object AtGCaptureWindow+RECT
 if (![AtGCaptureWindow]::GetWindowRect($window.Handle, [ref]$rect)) {
     throw "Failed to read At the Gates window rectangle."
@@ -69,11 +73,6 @@ $height = $rect.Bottom - $rect.Top
 if ($width -le 0 -or $height -le 0) {
     throw "At the Gates window rectangle is empty."
 }
-
-$flags = 0x0001 -bor 0x0002 -bor 0x0040
-[AtGCaptureWindow]::ShowWindow($window.Handle, 9) | Out-Null
-[AtGCaptureWindow]::SetWindowPos($window.Handle, [IntPtr]::new(-1), 0, 0, 0, 0, $flags) | Out-Null
-Start-Sleep -Milliseconds 250
 
 $bitmap = New-Object System.Drawing.Bitmap $width, $height
 $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
@@ -97,8 +96,6 @@ if ($MarkCursor) {
 $bitmap.Save($OutputPath, [System.Drawing.Imaging.ImageFormat]::Png)
 $graphics.Dispose()
 $bitmap.Dispose()
-
-[AtGCaptureWindow]::SetWindowPos($window.Handle, [IntPtr]::new(-2), 0, 0, 0, 0, $flags) | Out-Null
 
 [pscustomobject]@{
     ProcessId = $window.ProcessId

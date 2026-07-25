@@ -34,5 +34,19 @@
         ]
       }
     ]
+  },
+  "Content\\Config\\Misc\\Moods.xml": {
+    "Source": "source\\Content\\Config\\Misc\\Moods.original.xml",
+    "Container": "mood",
+    "Items": [
+      {
+        "ID": "MOOD_UPSET",
+        "Name": "不悦"
+      },
+      {
+        "ID": "MOOD_HAPPY",
+        "Name": "高兴"
+      }
+    ]
   }
 }

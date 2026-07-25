@@ -11,6 +11,7 @@ namespace AtG.RuntimeText
         // visually aligned with the original Latin SpriteFonts without changing
         // the original font or control coordinates.
         public const float DefaultCjkScale = 1.15f;
+        private readonly string _cacheKey;
 
         public FontDescriptor(string name, float size, bool bold)
             : this(name, size, bold, DefaultCjkScale)
@@ -27,6 +28,9 @@ namespace AtG.RuntimeText
             Size = size;
             Bold = bold;
             CjkScale = cjkScale;
+            _cacheKey = Name + "|" +
+                Size.ToString("0.###", CultureInfo.InvariantCulture) + "|" + Bold +
+                "|cjk=" + CjkScale.ToString("0.###", CultureInfo.InvariantCulture);
         }
 
         public string Name { get; private set; }
@@ -37,11 +41,7 @@ namespace AtG.RuntimeText
         public float CjkBaselineOffset { get { return ResolveCjkBaselineOffset(Size, Bold); } }
         public string CacheKey
         {
-            get
-            {
-                return Name + "|" + Size.ToString("0.###") + "|" + Bold +
-                    "|cjk=" + CjkScale.ToString("0.###", CultureInfo.InvariantCulture);
-            }
+            get { return _cacheKey; }
         }
 
         public static bool TryFromAssetName(string assetName, out FontDescriptor descriptor)

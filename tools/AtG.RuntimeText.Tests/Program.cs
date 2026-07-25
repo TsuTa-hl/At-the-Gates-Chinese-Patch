@@ -9,15 +9,18 @@ var tests = new (string Name, Action Body)[]
     ("Only allowlisted keys become concept links", OnlyAllowlistedKeysBecomeConceptLinks),
     ("Rich localization changes display text but preserves keys and raw tags", RichLocalizationPreservesStructure),
     ("Display registrations reject conflicts and markup injection", DisplayRegistrationsRejectUnsafeValues),
-    ("Runtime display map loads exact and concept-scoped translations", RuntimeDisplayMapLoads),
+    ("Runtime display map localizes exact and standalone dynamic values", RuntimeDisplayMapLoads),
     ("Runtime display fragments localize plain nodes without breaking concept links", RuntimeDisplayFragmentsPreserveLinks),
+    ("Runtime display templates preserve runtime arguments", RuntimeDisplayTemplatesPreserveArguments),
     ("CJK line breaks respect punctuation", CjkBreaksRespectPunctuation),
     ("CJK fitting breaks preserve punctuation and grapheme clusters", CjkFittingBreaksPreserveTextElements),
     ("CJK word layout splits only at invisible line boundaries", CjkWordLayoutUsesLineBoundaries),
     ("CJK word bridge preserves ASCII and wraps CJK without spaces", CjkWordBridgePreservesOriginalPath),
     ("Display templates localize only exact approved strings", ExactTemplatesOnly),
+    ("Localization cache invalidates as one generation", LocalizationCacheInvalidatesGeneration),
     ("SpriteFont asset names map to exact runtime descriptors", SpriteFontAssetsMapExactly),
     ("CJK raster size is calibrated independently from the SpriteFont asset size", CjkRasterSizeIsCalibrated),
+    ("Font descriptor cache keys are stable allocations", FontDescriptorCacheKeyIsStable),
     ("CJK baselines are calibrated against the original SpriteFont sizes", CjkBaselineIsCalibrated),
     ("Zero-width format characters are ignored by runtime text", ZeroWidthFormatCharactersAreIgnored),
     ("Shelf packing crosses to a new atlas page", ShelfPackingCrossesToNewPage),
@@ -33,6 +36,16 @@ var tests = new (string Name, Action Body)[]
     ("Trace write failures never escape the rendering boundary", TraceWriteFailuresNeverEscape),
     ("Runtime trace JSON records final text bounds and missing glyphs", RuntimeTraceRecordsMetrics),
     ("Deferred glyph uploads are deduplicated and drained atomically", DeferredGlyphsAreDeduplicated),
+    ("Priority glyph queue deduplicates and promotes live requests", PriorityGlyphQueuePromotesLiveRequests),
+    ("Priority glyph queue peek preserves the next request", PriorityGlyphQueuePeekPreservesRequest),
+    ("Frame upload budget is shared across pumps", FrameBudgetIsSharedAcrossPumps),
+    ("Glyph alpha conversion handles positive and negative stride", GlyphAlphaConversionPreservesRows),
+    ("Provisional glyph metrics remain stable after raster measurement", ProvisionalMetricsRemainStable),
+    ("Glyph metric cache reports only the first reservation as cold", GlyphMetricReservationIsColdOnce),
+    ("Runtime glyph warmset parser validates deterministic v1 records", RuntimeGlyphWarmsetParses),
+    ("Prefix-width CJK wrapping avoids repeated substring measurement", PrefixWidthCjkWrapping),
+    ("Atlas allocator enforces warm page and frame creation limits", AtlasAllocatorHonorsPageLimits),
+    ("Performance JSON records scheduler frame counters", PerformanceTraceRecordsSchedulerCounters),
 };
 var failures = 0;
 foreach (var test in tests)
@@ -116,6 +129,11 @@ static void RuntimeDisplayMapLoads()
     {
         "K\t" + B64("CLAN"),
         "P\t" + B64("Train ") + "\t" + B64("\u8bad\u7ec3"),
+        "P\t" + B64("Content") + "\t" + B64("\u6ee1\u8db3"),
+        "P\t" + B64(",") + "\t" + B64("\u3001"),
+        "P\t" + B64(", or") + "\t" + B64("\u3001\u6216"),
+        "P\t" + B64("Range") + "\t" + B64("\u8303\u56f4"),
+        "F\t" + B64("Content") + "\t" + B64("\u6ee1\u8db3"),
         "F\t" + B64("engage in ") + "\t" + B64("\u5377\u5165"),
         "C\t" + B64("CLAN") + "\t" + B64("Clan") + "\t" + B64("\u6c0f\u65cf"),
         "E\t" + B64("Close") + "\t" + B64("\u5173\u95ed"),
@@ -123,6 +141,12 @@ static void RuntimeDisplayMapLoads()
     DisplayStringLocalizer.Load(new StringReader(lines));
 
     Equal("\u5173\u95ed", DisplayStringLocalizer.LocalizeDisplayString("Close"));
+    Equal("\u6ee1\u8db3", DisplayStringLocalizer.LocalizeDisplayString("Content"));
+    Equal("\u3001", DisplayStringLocalizer.LocalizeDisplayString(","));
+    Equal("\u3001\u6216", DisplayStringLocalizer.LocalizeDisplayString(", or"));
+    Equal("\u8303\u56f4", DisplayStringLocalizer.LocalizeDisplayString("Range"));
+    Equal("\u59cb\u7ec8\u6ee1\u8db3", DisplayStringLocalizer.LocalizeDisplayString("\u59cb\u7ec8Content"));
+    Equal("\u59cb\u7ec8[Content|MOOD]", DisplayStringLocalizer.LocalizeDisplayString("\u59cb\u7ec8[Content|MOOD]"));
     Equal("\u8bad\u7ec3[\u6c0f\u65cf|CLAN]",
         DisplayStringLocalizer.LocalizeRichText("Train [Clan|CLAN]"));
     Equal("\u5377\u5165Brawls",
@@ -134,21 +158,52 @@ static void RuntimeDisplayFragmentsPreserveLinks()
     DisplayStringLocalizer.ResetForTests();
     DisplayStringLocalizer.RegisterConceptKey("CLAN");
     DisplayStringLocalizer.RegisterConceptKey("UPGRADE");
+    DisplayStringLocalizer.RegisterConceptKey("ACTIVE");
+    DisplayStringLocalizer.RegisterConceptKey("SETTLED");
+    DisplayStringLocalizer.RegisterConceptKey("SETTLEMENT");
     DisplayStringLocalizer.RegisterConceptDisplay("CLAN", "Clan", "\u6c0f\u65cf");
     DisplayStringLocalizer.RegisterConceptDisplay("UPGRADE", "Upgrade", "\u5347\u7ea7");
+    DisplayStringLocalizer.RegisterConceptDisplay("ACTIVE", "Active", "\u4e3b\u52a8");
+    DisplayStringLocalizer.RegisterConceptDisplay("SETTLED", "Settled", "\u5b9a\u5c45");
+    DisplayStringLocalizer.RegisterConceptDisplay("SETTLEMENT", "Settlement", "\u5b9a\u5c45\u70b9");
     DisplayStringLocalizer.RegisterPlainTextFragment("there's another ", "\u53e6\u6709");
     DisplayStringLocalizer.RegisterPlainTextFragment("engage in ", "\u5377\u5165");
     DisplayStringLocalizer.RegisterPlainTextFragment("Brawls", "\u6597\u6bb4");
     DisplayStringLocalizer.RegisterPlainTextFragment("into", "\u8fdb\u5165");
     DisplayStringLocalizer.RegisterPlainTextFragment("forced into a ", "\u88ab\u8feb\u4ece\u4e8b");
+    DisplayStringLocalizer.RegisterPlainTextFragment("forced into an ", "\u88ab\u8feb\u4ece\u4e8b");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" within the ", "\uff0c\u4e14\u5728");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" outside the ", "\uff0c\u4e14\u4e0d\u5728");
+    DisplayStringLocalizer.RegisterPlainTextFragment("No", "\u65e0");
 
     Equal("\u53e6\u6709[\u6c0f\u65cf|CLAN]\u5377\u5165\u6597\u6bb4",
         DisplayStringLocalizer.LocalizeRichText(
             "there's another [Clan|CLAN]engage in Brawls"));
     Equal("\u88ab\u8feb\u4ece\u4e8b[\u6c0f\u65cf|CLAN]",
         DisplayStringLocalizer.LocalizeRichText("forced into a [Clan|CLAN]"));
+    Equal("\u88ab\u8feb\u4ece\u4e8b[\u5b9a\u5c45|SETTLED][\u4e3b\u52a8|ACTIVE]\uff0c\u4e14\u5728[\u6c0f\u65cf|CLAN]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "forced into an [Settled|SETTLED][Active|ACTIVE] within the [Clan|CLAN]"));
+    Equal("\u88ab\u8feb\u4ece\u4e8b[\u4e3b\u52a8|ACTIVE]\uff0c\u4e14\u4e0d\u5728[\u5b9a\u5c45\u70b9|SETTLEMENT]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "forced into an [Active|ACTIVE] outside the [Settlement|SETTLEMENT]"));
     Equal("[\u5347\u7ea7|UPGRADE]",
         DisplayStringLocalizer.LocalizeRichText("[Upgrade|UPGRADE]"));
+    Equal("\u65e0[\u5347\u7ea7|UPGRADE]",
+        DisplayStringLocalizer.LocalizeRichText("No[Upgrade|UPGRADE]"));
+}
+
+static void RuntimeDisplayTemplatesPreserveArguments()
+{
+    DisplayStringLocalizer.ResetForTests();
+    var lines = "T\t" + B64("Cannot {arg:1}.") + "\t" +
+        B64("\u65e0\u6cd5{arg:1}\u3002");
+    DisplayStringLocalizer.Load(new StringReader(lines));
+
+    Equal("\u65e0\u6cd5Train\u3002",
+        DisplayStringLocalizer.LocalizeDisplayString("Cannot Train."));
+    Equal("\u65e0\u6cd5[Study|STUDY]\u3002",
+        DisplayStringLocalizer.LocalizeRichText("Cannot [Study|STUDY]."));
 }
 
 static void CjkBreaksRespectPunctuation()
@@ -204,6 +259,14 @@ static void ExactTemplatesOnly()
     Equal("and", DisplayStringLocalizer.LocalizeDisplayString("and"));
 }
 
+static void LocalizationCacheInvalidatesGeneration()
+{
+    DisplayStringLocalizer.ResetForTests();
+    Equal("Status", DisplayStringLocalizer.LocalizeDisplayString("Status"));
+    DisplayStringLocalizer.RegisterPlainText("Status", "\u72b6\u6001");
+    Equal("\u72b6\u6001", DisplayStringLocalizer.LocalizeDisplayString("Status"));
+}
+
 static void SpriteFontAssetsMapExactly()
 {
     True(FontDescriptor.TryFromAssetName(
@@ -226,6 +289,15 @@ static void CjkRasterSizeIsCalibrated()
     Equal(FontDescriptor.DefaultCjkScale, descriptor.CjkScale);
     Equal(15f * FontDescriptor.DefaultCjkScale, descriptor.RasterSize);
     True(descriptor.CacheKey.IndexOf("|cjk=1.15", StringComparison.Ordinal) >= 0);
+}
+
+static void FontDescriptorCacheKeyIsStable()
+{
+    var descriptor = new FontDescriptor("SegoeUI_15", 15f, false);
+    var first = descriptor.CacheKey;
+    var second = descriptor.CacheKey;
+    True(ReferenceEquals(first, second));
+    Equal("SegoeUI_15|15|False|cjk=1.15", first);
 }
 
 static void CjkBaselineIsCalibrated()
@@ -493,6 +565,205 @@ static void DeferredGlyphsAreDeduplicated()
     True(drained.SequenceEqual(new[] { "first", "second" }));
     Equal(0, queue.Count);
     Equal(0, queue.Drain().Count);
+}
+
+static void PriorityGlyphQueuePromotesLiveRequests()
+{
+    var queue = new PriorityDeduplicatingQueue<string>(4, 3);
+    True(queue.Enqueue("warm", "warm", 2));
+    True(queue.Enqueue("background", "background", 3));
+    True(!queue.Enqueue("warm", "duplicate", 1));
+    True(queue.Promote("background", 0));
+    True(queue.Enqueue("middle", "middle", 1));
+    True(!queue.Enqueue("full", "full", 0));
+
+    True(queue.TryDequeue(out var firstKey, out var first, out var firstPriority));
+    Equal("background", firstKey);
+    Equal("background", first);
+    Equal(0, firstPriority);
+    True(queue.TryDequeue(out _, out var second, out var secondPriority));
+    Equal("warm", second);
+    Equal(1, secondPriority);
+    True(queue.TryDequeue(out _, out var third, out var thirdPriority));
+    Equal("middle", third);
+    Equal(1, thirdPriority);
+}
+
+static void PriorityGlyphQueuePeekPreservesRequest()
+{
+    var queue = new PriorityDeduplicatingQueue<string>(4, 3);
+    True(queue.Enqueue("warm", "warm", 2));
+    True(queue.Enqueue("live", "live", 0));
+
+    True(queue.TryPeek(out var peekedKey, out var peeked, out var peekedPriority));
+    Equal("live", peekedKey);
+    Equal("live", peeked);
+    Equal(0, peekedPriority);
+    Equal(2, queue.Count);
+
+    True(queue.TryDequeue(out var dequeuedKey, out var dequeued, out var dequeuedPriority));
+    Equal(peekedKey, dequeuedKey);
+    Equal(peeked, dequeued);
+    Equal(peekedPriority, dequeuedPriority);
+    Equal(1, queue.Count);
+}
+
+static void FrameBudgetIsSharedAcrossPumps()
+{
+    var budget = new FrameUploadBudget(2d, 1000L, 16, 1);
+    budget.BeginFrame();
+    True(budget.CanAttempt(requiresPageCreation: true));
+    budget.RecordOperation(1L, pageCreated: true);
+    True(!budget.CanAttempt(requiresPageCreation: true));
+    True(budget.CanAttempt(requiresPageCreation: false));
+    budget.RecordOperation(1L, pageCreated: false);
+    True(!budget.CanAttempt(requiresPageCreation: false));
+
+    budget.BeginFrame();
+    for (var index = 0; index < 16; index++)
+    {
+        True(budget.CanAttempt(requiresPageCreation: false));
+        budget.RecordOperation(0L, pageCreated: false);
+    }
+    True(!budget.CanAttempt(requiresPageCreation: false));
+}
+
+static void GlyphAlphaConversionPreservesRows()
+{
+    var positive = new byte[]
+    {
+        1, 2, 3, 10, 4, 5, 6, 20,
+        7, 8, 9, 30, 10, 11, 12, 40,
+    };
+    var converted = GlyphAlphaConverter.FromBgra(positive, 2, 2, 8);
+    True(converted.SequenceEqual(new byte[]
+    {
+        10, 10, 10, 10, 20, 20, 20, 20,
+        30, 30, 30, 30, 40, 40, 40, 40,
+    }));
+    var negative = GlyphAlphaConverter.FromBgra(positive, 2, 2, -8);
+    True(negative.SequenceEqual(new byte[]
+    {
+        30, 30, 30, 30, 40, 40, 40, 40,
+        10, 10, 10, 10, 20, 20, 20, 20,
+    }));
+
+    var memory = System.Runtime.InteropServices.Marshal.AllocHGlobal(8);
+    try
+    {
+        var bottomUp = new byte[]
+        {
+            7, 8, 9, 30,
+            1, 2, 3, 10,
+        };
+        System.Runtime.InteropServices.Marshal.Copy(bottomUp, 0, memory, bottomUp.Length);
+        var scan0 = IntPtr.Add(memory, 4);
+        var pointerConverted = GlyphAlphaConverter.FromBgra(scan0, 1, 2, -4);
+        True(pointerConverted.SequenceEqual(new byte[]
+        {
+            10, 10, 10, 10,
+            30, 30, 30, 30,
+        }));
+    }
+    finally
+    {
+        System.Runtime.InteropServices.Marshal.FreeHGlobal(memory);
+    }
+}
+
+static void ProvisionalMetricsRemainStable()
+{
+    GlyphMetricsCache.ResetForTests();
+    var descriptor = new FontDescriptor("SegoeUI_15", 15f, false);
+    var provisional = GlyphMetricsCache.GetOrReserve(descriptor, '\u6c49');
+    True(provisional.Provisional);
+    var measured = GlyphMetricsCache.PublishMeasured(descriptor, '\u6c49', 99f, 88f);
+    True(ReferenceEquals(provisional, measured));
+    Equal(provisional.Advance, measured.Advance);
+    Equal(provisional.LineHeight, measured.LineHeight);
+
+    var warmMeasured = GlyphMetricsCache.PublishMeasured(descriptor, '\u5b57', 17f, 20f);
+    True(!warmMeasured.Provisional);
+    Equal(17f, warmMeasured.Advance);
+    Equal(20f, warmMeasured.LineHeight);
+}
+
+static void GlyphMetricReservationIsColdOnce()
+{
+    GlyphMetricsCache.ResetForTests();
+    var descriptor = new FontDescriptor("SegoeUI_15", 15f, false);
+    var first = GlyphMetricsCache.GetOrReserve(descriptor, '\u6c49', out var firstReserved);
+    var second = GlyphMetricsCache.GetOrReserve(descriptor, '\u6c49', out var secondReserved);
+
+    True(firstReserved);
+    True(!secondReserved);
+    True(ReferenceEquals(first, second));
+}
+
+static void RuntimeGlyphWarmsetParses()
+{
+    var fontName = B64("SegoeUI_15_Bold");
+    var characters = B64("\u4e2d\u6587");
+    var text = "# AtG.RuntimeGlyphWarmset v1\n" +
+               "W\t1\t" + fontName + "\t15\t1\t" + characters +
+               "\tknowledge-screen-hovers,clan-screen-buttons\n";
+    var entries = RuntimeGlyphWarmsetCatalog.Load(new StringReader(text));
+    Equal(1, entries.Count);
+    Equal(1, entries[0].Priority);
+    Equal("SegoeUI_15_Bold", entries[0].FontName);
+    Equal(15f, entries[0].Size);
+    True(entries[0].Bold);
+    Equal("\u4e2d\u6587", entries[0].Characters);
+    Throws<InvalidDataException>(() => RuntimeGlyphWarmsetCatalog.Load(
+        new StringReader("W\t0\t" + fontName + "\t15\t1\t" +
+                         B64("\u4e2d\u4e2d") + "\tduplicate\n")));
+}
+
+static void PrefixWidthCjkWrapping()
+{
+    var text = "\u6c49\u5b57\u6d4b\u8bd5";
+    var prefix = new[] { 0f, 1f, 2f, 3f, 4f };
+    var pieces = CjkLineBreaker.SplitWord(text, 2f, 2f, prefix);
+    True(pieces.SequenceEqual(new[] { "\u6c49\u5b57", "\u6d4b\u8bd5" }));
+
+    var punctuationText = "\u6c49\uff0c\u5b57";
+    var punctuationPrefix = new[] { 0f, 1f, 2f, 3f };
+    Equal(2, CjkText.FindLongestFittingBreak(
+        punctuationText, 0, 1f, punctuationPrefix));
+}
+
+static void AtlasAllocatorHonorsPageLimits()
+{
+    var allocator = new GlyphAtlasAllocator(4, 4, 2);
+    True(allocator.TryAllocate(4, 4, 1, true, out var first));
+    Equal(0, first.PageIndex);
+    True(!allocator.TryAllocate(1, 1, 1, true, out _));
+    True(!allocator.TryAllocate(1, 1, 2, false, out _));
+    True(allocator.TryAllocate(1, 1, 2, true, out var second));
+    Equal(1, second.PageIndex);
+}
+
+static void PerformanceTraceRecordsSchedulerCounters()
+{
+    var line = RuntimeTextPerformance.FormatLine(
+        42L,
+        new DateTime(2026, 7, 24, 1, 2, 3, DateTimeKind.Utc),
+        "Budgeted",
+        System.Diagnostics.Stopwatch.Frequency / 1000,
+        System.Diagnostics.Stopwatch.Frequency / 2000,
+        System.Diagnostics.Stopwatch.Frequency / 100,
+        System.Diagnostics.Stopwatch.Frequency / 4000,
+        4, 5, 6, 20, 14, 6, 7, 8, 9, 1, 2, 10, 11, 3);
+    using var document = System.Text.Json.JsonDocument.Parse(line);
+    var root = document.RootElement;
+    Equal(42L, root.GetProperty("frame").GetInt64());
+    Equal("Budgeted", root.GetProperty("mode").GetString());
+    Equal(4, root.GetProperty("uploads").GetInt32());
+    Equal(20, root.GetProperty("lookups").GetInt32());
+    Equal(14, root.GetProperty("hits").GetInt32());
+    Equal(0.7d, root.GetProperty("hitRate").GetDouble());
+    Equal(11, root.GetProperty("maxReady").GetInt32());
+    Equal(3, root.GetProperty("atlasPages").GetInt32());
 }
 
 static bool Overlaps(GlyphAtlasAllocation left, GlyphAtlasAllocation right)

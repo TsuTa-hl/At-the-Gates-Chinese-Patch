@@ -61,7 +61,7 @@ public static class SessionExecutor
                             $"{state.Id}/point-{planned.Point.Id}/clear");
                     results.Add(await ExecutePointAsync(
                         planned, driver, outputDirectory, policy, firstPoint,
-                        cancellationToken, textProbe));
+                        cancellationToken, textProbe, programLogProbe));
                     firstPoint = false;
                 }
             }
@@ -105,7 +105,8 @@ public static class SessionExecutor
         ScenarioPolicy policy,
         bool stateChanged,
         CancellationToken cancellationToken,
-        IRenderTextProbe? textProbe)
+        IRenderTextProbe? textProbe,
+        IProgramLogProbe? programLogProbe)
     {
         var stopwatch = Stopwatch.StartNew();
         string? evidencePath = null;
@@ -116,6 +117,11 @@ public static class SessionExecutor
         {
             var point = planned.Point;
             var textBookmark = textProbe?.Bookmark() ?? 0;
+            var programLogBookmark = string.IsNullOrWhiteSpace(point.ReadyMarker)
+                ? 0
+                : programLogProbe?.Bookmark()
+                    ?? throw new InvalidOperationException(
+                        "A point ReadyMarker requires an owned game session.");
             if (!point.Action.Equals("CaptureOnly", StringComparison.OrdinalIgnoreCase) &&
                 (point.X is null || point.Y is null))
             {
@@ -136,6 +142,18 @@ public static class SessionExecutor
                 else if (point.Action.StartsWith("Click", StringComparison.OrdinalIgnoreCase))
                     driver.Click(point.X!.Value, point.Y!.Value);
 
+                if (!string.IsNullOrWhiteSpace(point.ReadyMarker))
+                {
+                    var ready = await programLogProbe!.WaitForMarkerAfterAsync(
+                        programLogBookmark,
+                        point.ReadyMarker,
+                        TimeSpan.FromMilliseconds(point.ReadyTimeoutMs ?? 45000),
+                        cancellationToken);
+                    if (!ready)
+                        throw new TimeoutException(
+                            $"Program log marker '{point.ReadyMarker}' did not appear after point '{point.Id}'.");
+                }
+
                 if (hasAction)
                 {
                     var wait = await AdaptiveWaiter.WaitForStableAsync(
@@ -148,7 +166,7 @@ public static class SessionExecutor
                         requireChangeFromBaseline: !point.AllowUnchanged,
                         cancellationToken: cancellationToken);
                     timedOut = wait.TimedOut;
-                    if (timedOut && !point.AllowUnchanged)
+                    if (timedOut && !point.AllowUnchanged && !wait.ChangedFromBaseline)
                     {
                         status = "Failed";
                         error = "The UI did not change and stabilize before the action timeout.";

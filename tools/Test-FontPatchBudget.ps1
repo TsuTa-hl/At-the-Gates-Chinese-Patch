@@ -30,7 +30,12 @@ if ($RendererMode -eq "DynamicCjk") {
     $patchRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot "..\patch"))
     $runtimeDll = Join-Path $patchRoot "AtG.RuntimeText.dll"
     $dynamicFontDirectory = Join-Path $patchRoot "Content\Fonts"
-    $requiredDynamicFiles = @("NotoSansSC-Regular.otf", "NotoSansSC-Bold.otf", "OFL.txt")
+    $requiredDynamicFiles = @(
+        "NotoSansSC-Regular.otf",
+        "NotoSansSC-Bold.otf",
+        "OFL.txt",
+        "AtG.RuntimeGlyphWarmset.tsv"
+    )
     Assert-AtG (Test-Path -LiteralPath $runtimeDll -PathType Leaf) "Dynamic CJK runtime DLL is missing: $runtimeDll"
     foreach ($fileName in $requiredDynamicFiles) {
         Assert-AtG (Test-Path -LiteralPath (Join-Path $dynamicFontDirectory $fileName) -PathType Leaf) "Dynamic CJK font asset is missing: $fileName"

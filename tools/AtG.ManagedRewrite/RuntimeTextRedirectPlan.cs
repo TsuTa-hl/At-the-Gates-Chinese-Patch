@@ -9,26 +9,33 @@ public sealed record RuntimeRedirectJob(
     string RuntimeAssemblyPath,
     IReadOnlyList<CallRedirectSpec> Specs,
     IReadOnlyList<StringFieldFilterSpec> StringFieldFilters,
+    IReadOnlyList<MethodEntryHookSpec> MethodEntryHooks,
     int ExpectedRenderingRedirectCount,
     int ExpectedFontLoadRedirectCount,
     int ExpectedLifecycleRedirectCount,
     int ExpectedLayoutRedirectCount,
-    int ExpectedLocalizationRedirectCount);
+    int ExpectedLocalizationRedirectCount,
+    int ExpectedFrameBoundaryHookCount,
+    int ExpectedWarmsetStartupHookCount,
+    int ExpectedStartupGraphicsHookCount);
 
 public sealed record RuntimeRedirectJobResult(
     string Name,
     string OutputPath,
     int RedirectedCount,
+    int FrameBoundaryHookCount,
+    int WarmsetStartupHookCount,
+    int StartupGraphicsHookCount,
     bool CacheHit);
 
 public static class RuntimeTextRedirectPlan
 {
     private static readonly RedirectDefinition[] Definitions =
     [
-        new("elftools", "ElfTools.dll", "ElfTools.original.dll", 17, 5, 14, 1, 0),
-        new("common", "AtTheGatesCommon.dll", "AtTheGatesCommon.original.dll", 11, 26, 4, 0, 1),
-        new("game", "At The Gates.exe", "AtTheGatesGame.original.exe", 6, 4, 44, 0, 0),
-        new("ui", "AtTheGatesUI.dll", "AtTheGatesUI.original.dll", 0, 0, 12, 0, 0),
+        new("elftools", "ElfTools.dll", "ElfTools.original.dll", 17, 5, 14, 1, 0, 0, 0, 0),
+        new("common", "AtTheGatesCommon.dll", "AtTheGatesCommon.original.dll", 11, 26, 4, 0, 1, 0, 0, 0),
+        new("game", "At The Gates.exe", "AtTheGatesGame.original.exe", 6, 4, 44, 0, 0, 1, 1, 1),
+        new("ui", "AtTheGatesUI.dll", "AtTheGatesUI.original.dll", 0, 0, 12, 0, 0, 0, 0, 0),
     ];
 
     public static IReadOnlyList<RuntimeRedirectJob> Create(string repositoryRoot, string runtimeAssemblyPath)
@@ -47,6 +54,7 @@ public static class RuntimeTextRedirectPlan
             if (!File.Exists(source)) continue;
             var specs = BuildSpecs(ManagedCallCatalog.Read(source), targetMethods);
             var filters = BuildStringFieldFilters(definition, source, targetMethods);
+            var entryHooks = BuildMethodEntryHooks(definition, source, targetMethods);
             var expectedCount = definition.ExpectedRenderingCount + definition.ExpectedFontLoadCount +
                 definition.ExpectedLifecycleCount + definition.ExpectedLayoutCount;
             if (specs.Count != expectedCount)
@@ -59,11 +67,15 @@ public static class RuntimeTextRedirectPlan
                 runtime,
                 specs,
                 filters,
+                entryHooks,
                 definition.ExpectedRenderingCount,
                 definition.ExpectedFontLoadCount,
                 definition.ExpectedLifecycleCount,
                 definition.ExpectedLayoutCount,
-                definition.ExpectedLocalizationCount));
+                definition.ExpectedLocalizationCount,
+                definition.ExpectedFrameBoundaryHookCount,
+                definition.ExpectedWarmsetStartupHookCount,
+                definition.ExpectedStartupGraphicsHookCount));
         }
         return jobs;
     }
@@ -109,6 +121,50 @@ public static class RuntimeTextRedirectPlan
         ];
     }
 
+    private static IReadOnlyList<MethodEntryHookSpec> BuildMethodEntryHooks(
+        RedirectDefinition definition,
+        string sourceAssemblyPath,
+        IReadOnlyList<ManagedMethodEntry> targetMethods)
+    {
+        if (definition.ExpectedFrameBoundaryHookCount == 0 &&
+            definition.ExpectedWarmsetStartupHookCount == 0 &&
+            definition.ExpectedStartupGraphicsHookCount == 0) return [];
+        var sourceMethods = ManagedMethodCatalog.Read(sourceAssemblyPath);
+        var hooks = new List<MethodEntryHookSpec>();
+        if (definition.ExpectedWarmsetStartupHookCount > 0)
+        {
+            var caller = sourceMethods.Single(method =>
+                method.MetadataToken.Equals("0x0600000F", StringComparison.OrdinalIgnoreCase) &&
+                method.FullName == "System.Void AtTheGatesGame.GameCore::.ctor()");
+            var target = targetMethods.Single(method => method.FullName ==
+                "System.Void AtG.RuntimeText.RuntimeGlyphScheduler::PrimeWarmset()");
+            hooks.Add(new MethodEntryHookSpec(caller.MetadataToken, target.MetadataToken,
+                definition.ExpectedWarmsetStartupHookCount));
+        }
+        if (definition.ExpectedStartupGraphicsHookCount > 0)
+        {
+            var caller = sourceMethods.Single(method =>
+                method.MetadataToken.Equals("0x06000011", StringComparison.OrdinalIgnoreCase) &&
+                method.FullName == "System.Void AtTheGatesGame.GameCore::LoadContent()");
+            var target = targetMethods.Single(method => method.FullName ==
+                "System.Void AtG.RuntimeText.RuntimeGlyphScheduler::PrepareStartupGraphics(System.Object)");
+            hooks.Add(new MethodEntryHookSpec(caller.MetadataToken, target.MetadataToken,
+                definition.ExpectedStartupGraphicsHookCount, true));
+        }
+        if (definition.ExpectedFrameBoundaryHookCount > 0)
+        {
+            var caller = sourceMethods.Single(method =>
+                method.MetadataToken.Equals("0x06000022", StringComparison.OrdinalIgnoreCase) &&
+                method.FullName ==
+                "System.Void AtTheGatesGame.GameCore::Draw(Microsoft.Xna.Framework.GameTime)");
+            var target = targetMethods.Single(method => method.FullName ==
+                "System.Void AtG.RuntimeText.RuntimeGlyphScheduler::BeginFrame()");
+            hooks.Add(new MethodEntryHookSpec(caller.MetadataToken, target.MetadataToken,
+                definition.ExpectedFrameBoundaryHookCount));
+        }
+        return hooks;
+    }
+
     private static string? ResolveTargetFullName(string source)
     {
         if (source == "Microsoft.Xna.Framework.Vector2 Microsoft.Xna.Framework.Graphics.SpriteFont::MeasureString(System.String)")
@@ -142,7 +198,10 @@ public static class RuntimeTextRedirectPlan
         int ExpectedFontLoadCount,
         int ExpectedLifecycleCount,
         int ExpectedLayoutCount,
-        int ExpectedLocalizationCount);
+        int ExpectedLocalizationCount,
+        int ExpectedFrameBoundaryHookCount,
+        int ExpectedWarmsetStartupHookCount,
+        int ExpectedStartupGraphicsHookCount);
 }
 
 public static class RuntimeTextRedirectCoordinator
@@ -159,36 +218,69 @@ public static class RuntimeTextRedirectCoordinator
                 "runtime-text-redirect-v2|" + string.Join("|", job.Specs.Select(spec =>
                     spec.CallerMethodToken + ":" + spec.IlOffset + ":" + spec.SourceTargetFullName)) +
                 "|filters=" + string.Join("|", job.StringFieldFilters.Select(spec =>
-                    spec.CallerMethodToken + ":" + spec.FieldFullName + ":" + spec.TargetMethodToken)));
+                    spec.CallerMethodToken + ":" + spec.FieldFullName + ":" + spec.TargetMethodToken)) +
+                "|entry-hooks=" + string.Join("|", job.MethodEntryHooks.Select(spec =>
+                    spec.CallerMethodToken + ":" + spec.TargetMethodToken + ":" +
+                    (spec.PassCallerInstance ? "instance" : "none"))));
             var stage = "runtime-hook-" + job.Name;
             if (cache.IsCurrent(stage, hash, [job.OutputPath]))
             {
                 RuntimeTextRedirectVerifier.Verify(job.OutputPath,
                     job.ExpectedRenderingRedirectCount, job.ExpectedFontLoadRedirectCount,
                     job.ExpectedLifecycleRedirectCount, job.ExpectedLayoutRedirectCount,
-                    job.ExpectedLocalizationRedirectCount);
+                    job.ExpectedLocalizationRedirectCount,
+                    job.ExpectedFrameBoundaryHookCount,
+                    job.ExpectedWarmsetStartupHookCount,
+                    job.ExpectedStartupGraphicsHookCount);
                 return new RuntimeRedirectJobResult(job.Name, job.OutputPath,
-                    job.Specs.Count + job.StringFieldFilters.Count, true);
+                    job.Specs.Count + job.StringFieldFilters.Count,
+                    job.ExpectedFrameBoundaryHookCount,
+                    job.ExpectedWarmsetStartupHookCount,
+                    job.ExpectedStartupGraphicsHookCount, true);
             }
-            var callOutput = job.StringFieldFilters.Count == 0
+            var hasPostCallInjection =
+                job.StringFieldFilters.Count > 0 || job.MethodEntryHooks.Count > 0;
+            var callOutput = !hasPostCallInjection
                 ? job.OutputPath
                 : job.OutputPath + ".calls.tmp";
             var result = ManagedCallRedirector.Redirect(job.SourcePath, callOutput,
                 job.RuntimeAssemblyPath, job.Specs);
             var injected = 0;
+            var filteredOutput = job.MethodEntryHooks.Count == 0
+                ? job.OutputPath
+                : job.OutputPath + ".filters.tmp";
             if (job.StringFieldFilters.Count > 0)
             {
-                injected = ManagedStringFieldFilterInjector.Inject(callOutput, job.OutputPath,
+                injected = ManagedStringFieldFilterInjector.Inject(callOutput, filteredOutput,
                     job.RuntimeAssemblyPath, job.StringFieldFilters).InjectedCount;
                 File.Delete(callOutput);
+            }
+            else if (job.MethodEntryHooks.Count > 0)
+            {
+                if (File.Exists(filteredOutput)) File.Delete(filteredOutput);
+                File.Move(callOutput, filteredOutput);
+            }
+            var entryHookCount = 0;
+            if (job.MethodEntryHooks.Count > 0)
+            {
+                entryHookCount = ManagedMethodEntryInjector.Inject(
+                    filteredOutput, job.OutputPath,
+                    job.RuntimeAssemblyPath, job.MethodEntryHooks).InjectedCount;
+                File.Delete(filteredOutput);
             }
             RuntimeTextRedirectVerifier.Verify(job.OutputPath,
                 job.ExpectedRenderingRedirectCount, job.ExpectedFontLoadRedirectCount,
                 job.ExpectedLifecycleRedirectCount, job.ExpectedLayoutRedirectCount,
-                job.ExpectedLocalizationRedirectCount);
+                job.ExpectedLocalizationRedirectCount,
+                job.ExpectedFrameBoundaryHookCount,
+                job.ExpectedWarmsetStartupHookCount,
+                job.ExpectedStartupGraphicsHookCount);
             cache.Record(stage, hash, [job.OutputPath]);
             return new RuntimeRedirectJobResult(job.Name, job.OutputPath,
-                result.RedirectedCount + injected, false);
+                result.RedirectedCount + injected,
+                job.ExpectedFrameBoundaryHookCount,
+                job.ExpectedWarmsetStartupHookCount,
+                job.ExpectedStartupGraphicsHookCount, false);
         }, cancellationToken)));
     }
 }
@@ -201,7 +293,10 @@ public static class RuntimeTextRedirectVerifier
         int expectedFontLoadRedirectCount,
         int expectedLifecycleRedirectCount,
         int expectedLayoutRedirectCount,
-        int expectedLocalizationRedirectCount)
+        int expectedLocalizationRedirectCount,
+        int expectedFrameBoundaryHookCount,
+        int expectedWarmsetStartupHookCount,
+        int expectedStartupGraphicsHookCount)
     {
         var calls = ManagedCallCatalog.Read(assemblyPath);
         var renderingCalls = calls.Count(call =>
@@ -214,6 +309,15 @@ public static class RuntimeTextRedirectVerifier
             call.TargetFullName.Contains(" AtG.RuntimeText.CjkWordWrapBridge::", StringComparison.Ordinal));
         var localizationCalls = calls.Count(call =>
             call.TargetFullName.Contains(" AtG.RuntimeText.DisplayStringLocalizer::LocalizeRichText(", StringComparison.Ordinal));
+        var frameBoundaryCalls = calls.Count(call =>
+            call.TargetFullName ==
+            "System.Void AtG.RuntimeText.RuntimeGlyphScheduler::BeginFrame()");
+        var warmsetStartupCalls = calls.Count(call =>
+            call.TargetFullName ==
+            "System.Void AtG.RuntimeText.RuntimeGlyphScheduler::PrimeWarmset()");
+        var startupGraphicsCalls = calls.Count(call =>
+            call.TargetFullName ==
+            "System.Void AtG.RuntimeText.RuntimeGlyphScheduler::PrepareStartupGraphics(System.Object)");
         var originalRenderingCalls = calls.Count(call =>
             call.TargetFullName.Contains("Microsoft.Xna.Framework.Graphics.SpriteFont::MeasureString", StringComparison.Ordinal) ||
             call.TargetFullName.Contains("Microsoft.Xna.Framework.Graphics.SpriteBatch::DrawString", StringComparison.Ordinal));
@@ -229,6 +333,9 @@ public static class RuntimeTextRedirectVerifier
             lifecycleCalls != expectedLifecycleRedirectCount ||
             layoutCalls != expectedLayoutRedirectCount ||
             localizationCalls != expectedLocalizationRedirectCount ||
+            frameBoundaryCalls != expectedFrameBoundaryHookCount ||
+            warmsetStartupCalls != expectedWarmsetStartupHookCount ||
+            startupGraphicsCalls != expectedStartupGraphicsHookCount ||
             originalRenderingCalls != 0 || originalFontLoadCalls != 0 || originalLifecycleCalls != 0 ||
             originalLayoutCalls != 0)
             throw new InvalidDataException(
@@ -238,6 +345,9 @@ public static class RuntimeTextRedirectVerifier
                 $"lifecycle={lifecycleCalls}/{expectedLifecycleRedirectCount}, " +
                 $"layout={layoutCalls}/{expectedLayoutRedirectCount}, " +
                 $"localization={localizationCalls}/{expectedLocalizationRedirectCount}, " +
+                $"frame-boundary={frameBoundaryCalls}/{expectedFrameBoundaryHookCount}, " +
+                $"warmset-startup={warmsetStartupCalls}/{expectedWarmsetStartupHookCount}, " +
+                $"startup-graphics={startupGraphicsCalls}/{expectedStartupGraphicsHookCount}, " +
                 $"original-rendering={originalRenderingCalls}, original-font-load={originalFontLoadCalls}, " +
                 $"original-lifecycle={originalLifecycleCalls}, original-layout={originalLayoutCalls}.");
     }

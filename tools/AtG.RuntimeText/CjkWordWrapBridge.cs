@@ -13,6 +13,9 @@ namespace AtG.RuntimeText
                 {
                     var size = TextRenderer.MeasureString((SpriteFont)font, text);
                     return new CjkMeasuredText(size.X, size.Y);
+                }, delegate(object font, string text)
+                {
+                    return TextRenderer.MeasurePrefixWidths((SpriteFont)font, text);
                 });
             }
             catch (Exception ex)

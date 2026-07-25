@@ -1,0 +1,140 @@
+{
+  "SchemaVersion": 1,
+  "Entries": [
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000118:IL_2C34",
+      "LocalizedFormat": "{arg:0}的",
+      "Notes": "Static special rule: PropertyBlueprint possessive phrase uses 的 rather than the conflicting generic of-fragment translations."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000118:IL_33B6",
+      "LocalizedFormat": "{arg:0}的",
+      "Notes": "Static special rule: PropertyBlueprint possessive phrase uses 的 rather than the conflicting generic of-fragment translations."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600031C:IL_0A98",
+      "LocalizedFormat": "当前无法{arg:1}",
+      "Notes": "Static special rule: StructureTooltip cannot-now template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600172C:IL_015E",
+      "LocalizedFormat": "{arg:1}用于",
+      "Notes": "Static special rule: Cost description places the target before 用于."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001739:IL_00D3",
+      "LocalizedFormat": "所有{arg:1}中的",
+      "Notes": "Static special rule: Unit-property scope phrase."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001739:IL_0171",
+      "LocalizedFormat": "所有{arg:1}中的",
+      "Notes": "Static special rule: Unit-property scope phrase."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060004B1:IL_000C",
+      "LocalizedFormat": "“{arg:1}”无法加载，因为",
+      "Notes": "Static special rule: load-failure prefix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060004B1:IL_0020",
+      "LocalizedFormat": "{arg:0}该文件不存在。",
+      "Notes": "Static special rule: load-failure missing-file suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060004B1:IL_0036",
+      "LocalizedFormat": "{arg:0}该存档由旧版本游戏创建，已不再有效。你可以在 Steam 中使用“unstable_old”测试分支完成当前游戏，然后再升级到此版本。",
+      "Notes": "Static special rule: load-failure obsolete-save explanation."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060004B1:IL_004C",
+      "LocalizedFormat": "{arg:0}该文件似乎已损坏，或因未知原因无效。",
+      "Notes": "Static special rule: load-failure corrupt-file suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000DD7:IL_007D",
+      "LocalizedFormat": "+{arg:1} 战斗经验",
+      "Notes": "Static special rule: combat experience gain label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600122F:IL_0036",
+      "LocalizedFormat": "无法{arg:1}。",
+      "Notes": "Static special rule: research prerequisite failure."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600129E:IL_013F",
+      "LocalizedFormat": "无法在{arg:1}上",
+      "Notes": "Static special rule: terrain placement failure."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060012FF:IL_0135",
+      "LocalizedFormat": "被占用时无法{arg:1}。",
+      "Notes": "Static special rule: occupied action failure."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:0600002D:IL_087C",
+      "LocalizedFormat": "已{arg:1}，即将停工！",
+      "Notes": "Static special rule: notification shutdown warning."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:0600002D:IL_0899",
+      "LocalizedFormat": "已{arg:1}！",
+      "Notes": "Static special rule: notification status sentence."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:0600002F:IL_0B4A",
+      "LocalizedFormat": "{arg:1}已显著降低！其可采集的[资源|RESOURCE]即将耗尽，[生产|PRODUCE]将完全停工。",
+      "Notes": "Static special rule: notification detail with preserved concept keys."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:0600016B:IL_01A1",
+      "LocalizedFormat": "{arg:0}的",
+      "Notes": "Static special rule: tile-tooltip possessive phrase."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000365:IL_0261",
+      "LocalizedFormat": "{arg:0}拥有{arg:2}",
+      "Notes": "Static special rule: resource status sentence."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:0600036A:IL_01CF",
+      "LocalizedFormat": "%，每{arg:1}，最高+",
+      "Notes": "Static special rule: digging-in percentage cadence."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:0600036E:IL_03D3",
+      "LocalizedFormat": " [移动|MOVE-POINT]至{arg:1}时，若少于",
+      "Notes": "Static special rule: supply-status movement condition with preserved concept key."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060003BC:IL_0EAC",
+      "LocalizedFormat": "{arg:1}{arg:2}因原料短缺而放缓。",
+      "Notes": "Static special rule: stockpile production shortage sentence."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:0600051F:IL_0019",
+      "LocalizedFormat": "{arg:0}中的{arg:2}",
+      "Notes": "Static special rule: discipline level-up context."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060006AA:IL_000C",
+      "LocalizedFormat": "“{arg:1}”无法加载，因为",
+      "Notes": "Static special rule: system-menu load-failure prefix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060006AA:IL_0020",
+      "LocalizedFormat": "{arg:0}该文件不存在。",
+      "Notes": "Static special rule: system-menu missing-file suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060006AA:IL_0036",
+      "LocalizedFormat": "{arg:0}该存档由旧版本游戏创建，已不再有效。你可以在 Steam 中使用“unstable_old”测试分支完成当前游戏，然后再升级到此版本。",
+      "Notes": "Static special rule: system-menu obsolete-save explanation."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060006AA:IL_004C",
+      "LocalizedFormat": "{arg:0}该文件似乎已损坏，或因未知原因无效。",
+      "Notes": "Static special rule: system-menu corrupt-file suffix."
+    }
+  ]
+}

@@ -43,8 +43,10 @@ public sealed class FileProgramLogProbe : IProgramLogProbe
             throw new ArgumentException("A program-log marker is required.", nameof(marker));
 
         var deadline = DateTime.UtcNow + timeout;
-        while (DateTime.UtcNow < deadline)
+        var firstProbe = true;
+        while (firstProbe || DateTime.UtcNow < deadline)
         {
+            firstProbe = false;
             cancellationToken.ThrowIfCancellationRequested();
             try
             {
@@ -53,7 +55,11 @@ public sealed class FileProgramLogProbe : IProgramLogProbe
                     using var stream = new FileStream(
                         _path, FileMode.Open, FileAccess.Read,
                         FileShare.ReadWrite | FileShare.Delete);
-                    stream.Seek(Math.Min(Math.Max(bookmark, 0), stream.Length), SeekOrigin.Begin);
+                    // Program.AtGLog is normally append-only. If the game
+                    // rotates it during load, the shorter replacement is new
+                    // content and must be read from its beginning.
+                    var start = stream.Length < bookmark ? 0 : Math.Max(bookmark, 0);
+                    stream.Seek(Math.Min(start, stream.Length), SeekOrigin.Begin);
                     using var reader = new StreamReader(stream);
                     if ((await reader.ReadToEndAsync()).Contains(marker, StringComparison.Ordinal))
                         return true;
@@ -63,6 +69,7 @@ public sealed class FileProgramLogProbe : IProgramLogProbe
             {
                 // The game may rotate or replace the log while loading a save.
             }
+            if (DateTime.UtcNow >= deadline) break;
             await Task.Delay(_pollInterval, cancellationToken);
         }
         return false;

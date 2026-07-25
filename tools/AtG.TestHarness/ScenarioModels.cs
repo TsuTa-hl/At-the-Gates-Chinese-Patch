@@ -65,6 +65,8 @@ public sealed class TestPoint
     public int? X { get; init; }
     public int? Y { get; init; }
     public int? WaitMs { get; init; }
+    public string? ReadyMarker { get; init; }
+    public int? ReadyTimeoutMs { get; init; }
     public CropRegion? Crop { get; init; }
     public bool SkipClear { get; init; }
     public bool AllowUnchanged { get; init; }

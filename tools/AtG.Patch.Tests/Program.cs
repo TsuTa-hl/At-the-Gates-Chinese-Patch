@@ -17,8 +17,13 @@ var tests = new (string Name, Action Body)[]
     ("Managed rewriter registers a returned value with exact metadata", ManagedRewriterRegistersReturnedValue),
     ("Managed rewriter redirects a constructed generic call", ManagedRewriterRedirectsConstructedGenericCall),
     ("Managed rewriter filters one string field at method entry", ManagedRewriterFiltersStringField),
+    ("Managed rewriter injects one static frame hook at method entry", ManagedRewriterInjectsMethodEntryHook),
+    ("Managed rewriter injects caller instance for startup hook", ManagedRewriterInjectsInstanceEntryHook),
     ("Runtime display map preserves all valid concept keys", RuntimeDisplayMapPreservesConceptKeys),
     ("Runtime display map imports approved single concept tags", RuntimeDisplayMapImportsConceptTags),
+    ("Runtime display map imports composite exact entries", RuntimeDisplayMapImportsCompositeExactEntries),
+    ("Runtime display map imports only uniform composite fragments", RuntimeDisplayMapImportsUniformCompositeFragments),
+    ("Composite catalog discovers templates and preserves approved rules", CompositeCatalogDiscoversTemplatesAndPreservesRules),
     ("Load lifecycle patch releases only IdSpriteBatch owned resources", LoadLifecyclePatchReleasesOwnedResources),
     ("Load lifecycle patch clears stale world roots before loading", LoadLifecyclePatchClearsStaleWorldRoots),
 };
@@ -282,6 +287,56 @@ static void ManagedRewriterFiltersStringField()
     Assert.True(injected.TargetFullName.Contains(nameof(FieldFilterTarget), StringComparison.Ordinal));
 }
 
+static void ManagedRewriterInjectsMethodEntryHook()
+{
+    using var temp = new TempDirectory();
+    var source = typeof(MethodEntryFixture).Assembly.Location;
+    var output = Path.Combine(temp.Path, "method-entry-hooked.dll");
+    var caller = ManagedMethodCatalog.Read(source).Single(method =>
+        method.DeclaringType.EndsWith(nameof(MethodEntryFixture), StringComparison.Ordinal) &&
+        method.Name == nameof(MethodEntryFixture.Draw));
+    var target = ManagedMethodCatalog.Read(source).Single(method =>
+        method.DeclaringType.EndsWith(nameof(MethodEntryTarget), StringComparison.Ordinal) &&
+        method.Name == nameof(MethodEntryTarget.BeginFrame));
+
+    var result = ManagedMethodEntryInjector.Inject(source, output, source,
+    [
+        new MethodEntryHookSpec(caller.MetadataToken, target.MetadataToken, 1),
+    ]);
+
+    Assert.Equal(1, result.InjectedCount);
+    var injected = ManagedCallCatalog.Read(output).Single(call =>
+        call.CallerType.EndsWith(nameof(MethodEntryFixture), StringComparison.Ordinal) &&
+        call.CallerMethod == nameof(MethodEntryFixture.Draw) &&
+        call.TargetFullName.Contains(nameof(MethodEntryTarget), StringComparison.Ordinal));
+    Assert.Equal("call", injected.OpCode);
+}
+
+static void ManagedRewriterInjectsInstanceEntryHook()
+{
+    using var temp = new TempDirectory();
+    var source = typeof(MethodEntryFixture).Assembly.Location;
+    var output = Path.Combine(temp.Path, "instance-entry-hooked.dll");
+    var caller = ManagedMethodCatalog.Read(source).Single(method =>
+        method.DeclaringType.EndsWith(nameof(MethodEntryFixture), StringComparison.Ordinal) &&
+        method.Name == nameof(MethodEntryFixture.LoadContent));
+    var target = ManagedMethodCatalog.Read(source).Single(method =>
+        method.DeclaringType.EndsWith(nameof(MethodEntryTarget), StringComparison.Ordinal) &&
+        method.Name == nameof(MethodEntryTarget.PrepareStartupGraphics));
+
+    var result = ManagedMethodEntryInjector.Inject(source, output, source,
+    [
+        new MethodEntryHookSpec(caller.MetadataToken, target.MetadataToken, 1, PassCallerInstance: true),
+    ]);
+
+    Assert.Equal(1, result.InjectedCount);
+    using var module = ModuleDefMD.Load(output);
+    var hookedCaller = module.GetTypes().SelectMany(type => type.Methods).Single(method =>
+        method.MDToken.Raw == uint.Parse(caller.MetadataToken[2..], System.Globalization.NumberStyles.HexNumber));
+    Assert.Equal(OpCodes.Ldarg_0, hookedCaller.Body.Instructions[0].OpCode);
+    Assert.Equal(OpCodes.Call, hookedCaller.Body.Instructions[1].OpCode);
+}
+
 static void RuntimeDisplayMapPreservesConceptKeys()
 {
     using var temp = new TempDirectory();
@@ -340,6 +395,239 @@ static void RuntimeDisplayMapImportsConceptTags()
         RuntimeMapConceptFixture.Encode("Turn") + "\t" +
         RuntimeMapConceptFixture.Encode("\u56de\u5408")));
 }
+
+static void RuntimeDisplayMapImportsCompositeExactEntries()
+{
+    using var temp = new TempDirectory();
+    temp.Write("composite-text-rules.json", """
+        {
+          "Entries": [
+            {
+              "EntryPointId": "managed:fixture:IL_0001",
+              "Source": { "Kind": "Managed" },
+              "OriginalFormat": "A Clan is idle.",
+              "LocalizedFormat": "\u6709\u6C0F\u65CF\u5904\u4E8E\u7A7A\u95F2\u72B6\u6001\u3002",
+              "Classification": "DisplayComposite",
+              "Status": "Trial",
+              "RuleId": "runtime-display-exact",
+              "Stale": false
+            },
+            {
+              "EntryPointId": "managed:stale:IL_0002",
+              "Source": { "Kind": "Managed" },
+              "OriginalFormat": "Stale text.",
+              "LocalizedFormat": "\u8FC7\u671F\u6587\u672C\u3002",
+              "Classification": "DisplayComposite",
+              "Status": "Stale",
+              "RuleId": "runtime-display-exact",
+              "Stale": true
+            }
+          ]
+        }
+        """);
+    var map = temp.Write("runtime-display.json", """
+        {
+          "CompositeExactSources": ["composite-text-rules.json"]
+        }
+        """);
+    var output = Path.Combine(temp.Path, "AtG.RuntimeText.tsv");
+
+    var result = RuntimeDisplayMapBuilder.Build(
+        typeof(RuntimeMapConceptFixture).Assembly.Location,
+        typeof(RuntimeMapConceptFixture).FullName!, map, output);
+
+    Assert.Equal(1, result.ExactCount);
+    var lines = File.ReadAllLines(output);
+    Assert.True(lines.Any(line => line == "E\t" + RuntimeMapConceptFixture.Encode("A Clan is idle.") +
+        "\t" + RuntimeMapConceptFixture.Encode("\u6709\u6C0F\u65CF\u5904\u4E8E\u7A7A\u95F2\u72B6\u6001\u3002")));
+    Assert.False(lines.Any(line => line.Contains(RuntimeMapConceptFixture.Encode("Stale text."),
+        StringComparison.Ordinal)));
+}
+
+static void RuntimeDisplayMapImportsUniformCompositeFragments()
+{
+    using var temp = new TempDirectory();
+    temp.Write("composite-text-rules.json", """
+        {
+          "Entries": [
+            {
+              "EntryPointId": "managed:one",
+              "Source": { "Kind": "Managed" },
+              "Parts": [
+                { "Position": 0, "Kind": "Literal", "Value": "Can explore " },
+                { "Position": 1, "Kind": "Argument", "Value": "" }
+              ]
+            },
+            {
+              "EntryPointId": "managed:two",
+              "Source": { "Kind": "Managed" },
+              "Parts": [
+                { "Position": 0, "Kind": "Literal", "Value": "Can explore " },
+                { "Position": 1, "Kind": "Argument", "Value": "" }
+              ]
+            },
+            {
+              "EntryPointId": "managed:conflict",
+              "Source": { "Kind": "Managed" },
+              "Parts": [
+                { "Position": 0, "Kind": "Literal", "Value": "Cannot " },
+                { "Position": 1, "Kind": "Argument", "Value": "" }
+              ]
+            },
+            {
+              "EntryPointId": "managed:empty",
+              "Source": { "Kind": "Managed" },
+              "Parts": [
+                { "Position": 0, "Kind": "Literal", "Value": "Already " },
+                { "Position": 1, "Kind": "Argument", "Value": "" }
+              ]
+            },
+            {
+              "EntryPointId": "rewrite:one",
+              "Source": { "Kind": "ManagedRewriteMap" },
+              "OriginalFormat": "Can explore ",
+              "LocalizedFormat": "\u53ef\u63a2\u7d22",
+              "Stale": false
+            },
+            {
+              "EntryPointId": "rewrite:two",
+              "Source": { "Kind": "ManagedRewriteMap" },
+              "OriginalFormat": "Cannot ",
+              "LocalizedFormat": "\u65e0\u6cd5",
+              "Stale": false
+            },
+            {
+              "EntryPointId": "rewrite:three",
+              "Source": { "Kind": "ManagedRewriteMap" },
+              "OriginalFormat": "Cannot ",
+              "LocalizedFormat": "\u5f53\u524d\u65e0\u6cd5",
+              "Stale": false
+            },
+            {
+              "EntryPointId": "rewrite:empty",
+              "Source": { "Kind": "ManagedRewriteMap" },
+              "OriginalFormat": "Already ",
+              "LocalizedFormat": "",
+              "Stale": false
+            }
+          ]
+        }
+        """);
+    var map = temp.Write("runtime-display.json", """
+        {
+          "CompositeFragmentSources": ["composite-text-rules.json"]
+        }
+        """);
+    var output = Path.Combine(temp.Path, "AtG.RuntimeText.tsv");
+
+    var result = RuntimeDisplayMapBuilder.Build(
+        typeof(RuntimeMapConceptFixture).Assembly.Location,
+        typeof(RuntimeMapConceptFixture).FullName!, map, output);
+
+    Assert.Equal(1, result.PlainTextFragmentCount);
+    var lines = File.ReadAllLines(output);
+    Assert.True(lines.Any(line => line == "F\t" + RuntimeMapConceptFixture.Encode("Can explore ") +
+        "\t" + RuntimeMapConceptFixture.Encode("\u53ef\u63a2\u7d22")));
+    Assert.False(lines.Any(line => line.Contains(RuntimeMapConceptFixture.Encode("Cannot "),
+        StringComparison.Ordinal)));
+    Assert.False(lines.Any(line => line.StartsWith("F\t" +
+        RuntimeMapConceptFixture.Encode("Already ") + "\t", StringComparison.Ordinal)));
+}
+
+static void CompositeCatalogDiscoversTemplatesAndPreservesRules()
+{
+    using var temp = new TempDirectory();
+    var sourceAssembly = typeof(CompositeCatalogFixture).Assembly.Location;
+    var sourcePath = Path.Combine(temp.Path, "source", "AtTheGatesUI.original.dll");
+    Directory.CreateDirectory(Path.GetDirectoryName(sourcePath)!);
+    File.Copy(sourceAssembly, sourcePath);
+    temp.Write("source/Fixture.original.xml", """
+        <root>
+          <entry>[Producing|PRODUCE] during [Turn|TURN]: {0}</entry>
+          <plural>|Turn|Turns|</plural>
+        </root>
+        """);
+    temp.Write("patch/Content/Fixture.xml", """
+        <root>
+          <entry>每[回合|TURN]产出{0} [产出|PRODUCE]</entry>
+          <plural>|回合|回合|</plural>
+        </root>
+        """);
+
+    var rulesPath = Path.Combine(temp.Path, "translations", "composite-text-rules.json");
+    var result = CompositeTextCatalog.Build(temp.Path, rulesPath);
+    Assert.True(result.ManagedEntryCount >= 4);
+
+    var first = ReadCompositeCatalog(rulesPath);
+
+    foreach (var callKind in new[] { "String.Concat", "String.Format", "String.Join", "StringBuilder.Append" })
+        Assert.True(first.Entries.Any(entry => entry.Source.Kind == "Managed" &&
+            entry.Source.CallKind == callKind));
+    var xmlEntry = first.Entries.Single(entry => entry.Source.Kind == "Xml" &&
+        entry.OriginalFormat.Contains("[Producing|PRODUCE]", StringComparison.Ordinal));
+    Assert.Equal("每[回合|TURN]产出{0} [产出|PRODUCE]", xmlEntry.LocalizedFormat);
+    Assert.True(first.Entries.Any(entry => entry.Source.Kind == "Xml" &&
+        entry.OriginalFormat == "|Turn|Turns|" && entry.LocalizedFormat == "|回合|回合|"));
+
+    CompositeTextCatalog.Validate(
+    [
+        new CompositeTextEntry
+        {
+            EntryPointId = "fixture:legacy-ennoble",
+            OriginalFormat = "[Ennoble]",
+            LocalizedFormat = "[册封|NOBLE]",
+        },
+        new CompositeTextEntry
+        {
+            EntryPointId = "fixture:plain-respect",
+            OriginalFormat = "[Respect|RESPECT]",
+            LocalizedFormat = "尊重",
+        },
+    ], []);
+
+    xmlEntry.RuleId = "fixture-manual";
+    xmlEntry.Status = "Approved";
+    xmlEntry.Notes = "Fixture validates manual composite format preservation.";
+    first.Rules.Add(new CompositeLocalizationRule
+    {
+        RuleId = "fixture-manual",
+        Kind = "ManualTemplate",
+        Status = "Active",
+        EntryPointId = xmlEntry.EntryPointId,
+        Description = "Fixture manual rule must survive regeneration.",
+        Source = "tests",
+    });
+    WriteCompositeCatalog(rulesPath, first);
+
+    CompositeTextCatalog.Build(temp.Path, rulesPath);
+    var regenerated = ReadCompositeCatalog(rulesPath);
+    var preserved = regenerated.Entries.Single(entry => entry.EntryPointId == xmlEntry.EntryPointId);
+    Assert.Equal("fixture-manual", preserved.RuleId);
+    Assert.Equal("Approved", preserved.Status);
+    Assert.True(regenerated.Rules.Any(rule => rule.RuleId == "fixture-manual" &&
+        rule.Description == "Fixture manual rule must survive regeneration."));
+
+    preserved.LocalizedFormat = "[错误|WRONG]{0}";
+    WriteCompositeCatalog(rulesPath, regenerated);
+    var rejected = false;
+    try
+    {
+        CompositeTextCatalog.Build(temp.Path, rulesPath);
+    }
+    catch (InvalidDataException)
+    {
+        rejected = true;
+    }
+    Assert.True(rejected);
+}
+
+static CompositeCatalogDocument ReadCompositeCatalog(string path) =>
+    System.Text.Json.JsonSerializer.Deserialize<CompositeCatalogDocument>(File.ReadAllText(path))
+    ?? throw new InvalidDataException("Composite catalog fixture could not be read.");
+
+static void WriteCompositeCatalog(string path, CompositeCatalogDocument document) =>
+    File.WriteAllText(path, System.Text.Json.JsonSerializer.Serialize(document,
+        new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
 
 static void LoadLifecyclePatchReleasesOwnedResources()
 {
@@ -548,11 +836,50 @@ static class FieldFilterTarget
     public static string Filter(string value) => "filtered:" + value;
 }
 
+sealed class MethodEntryFixture
+{
+    public static void Draw()
+    {
+    }
+
+    public void LoadContent()
+    {
+    }
+}
+
+static class MethodEntryTarget
+{
+    public static void BeginFrame()
+    {
+    }
+
+    public static void PrepareStartupGraphics(object game)
+    {
+    }
+}
+
 static class RuntimeMapConceptFixture
 {
     public static readonly string[] Values = ["[Clan|CLAN]", "TURN"];
     public static string Encode(string value) =>
         Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(value));
+}
+
+static class CompositeCatalogFixture
+{
+    public static string Concat(string clan) => string.Concat("Clan ", clan);
+
+    public static string Format(string clan) => string.Format("Clan {0}", clan);
+
+    public static string Join(string[] clans) => string.Join(", ", clans);
+
+    public static string Append(string clan)
+    {
+        var builder = new System.Text.StringBuilder();
+        builder.Append("Clan ");
+        builder.Append(clan);
+        return builder.ToString();
+    }
 }
 
 static class Assert

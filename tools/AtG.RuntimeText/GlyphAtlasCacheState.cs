@@ -27,6 +27,12 @@ namespace AtG.RuntimeText
 
         public bool TryAllocate(int width, int height, out GlyphAtlasAllocation allocation)
         {
+            return TryAllocate(width, height, int.MaxValue, true, true, out allocation);
+        }
+
+        public bool TryAllocate(int width, int height, int maximumPageCount,
+            bool allowNewPage, bool countRejection, out GlyphAtlasAllocation allocation)
+        {
             lock (_gate)
             {
                 if (_isFaulted)
@@ -34,9 +40,19 @@ namespace AtG.RuntimeText
                     allocation = null;
                     return false;
                 }
-                if (_allocator.TryAllocate(width, height, out allocation)) return true;
-                _rejectionCount++;
+                if (_allocator.TryAllocate(width, height, maximumPageCount,
+                        allowNewPage, out allocation)) return true;
+                if (countRejection) _rejectionCount++;
                 return false;
+            }
+        }
+
+        public bool CanAllocateOnExistingPage(int width, int height, int maximumPageCount)
+        {
+            lock (_gate)
+            {
+                return !_isFaulted &&
+                       _allocator.CanAllocateOnExistingPage(width, height, maximumPageCount);
             }
         }
 

@@ -13,6 +13,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 . "$PSScriptRoot\AtGManagedMetadata.ps1"
+. "$PSScriptRoot\AtGFileOps.ps1"
 
 function Convert-AtGToken {
     param([object]$Value)
@@ -121,11 +122,21 @@ for ($i = 0; $i -lt $specs.Count; $i++) {
     $specArray[$i] = $specs[$i]
 }
 
-$results = [AtG.ManagedMetadataReader]::PatchLdstr(
-    (Resolve-Path -LiteralPath $SourceDll).Path,
-    $OutputDll,
-    $specArray
-)
+$resolvedOutput = [IO.Path]::GetFullPath($OutputDll)
+$tempOutput = "$resolvedOutput.ilstrings.$([guid]::NewGuid().ToString('N')).tmp"
+try {
+    $results = [AtG.ManagedMetadataReader]::PatchLdstr(
+        (Resolve-Path -LiteralPath $SourceDll).Path,
+        $tempOutput,
+        $specArray
+    )
+    [void](Copy-AtGFileIfChanged -Source $tempOutput -Destination $resolvedOutput)
+}
+finally {
+    if (Test-Path -LiteralPath $tempOutput -PathType Leaf) {
+        Remove-Item -LiteralPath $tempOutput -Force
+    }
+}
 
 foreach ($result in @($results)) {
     Write-Host "IL patched '$($result.Original)' -> '$($result.Translation)' ($($result.MatchCount) ldstr occurrence(s), $($result.HeapPatchCount) heap entrie(s))."

@@ -34,10 +34,7 @@ public sealed class Win32WindowDriver : IWindowDriver
 
     public void Click(int referenceX, int referenceY)
     {
-        const uint positionFlags = SetWindowPosNoMove | SetWindowPosNoSize | SetWindowPosShowWindow;
         var window = ResolveWindow();
-        ShowWindow(window, ShowWindowRestore);
-        SetWindowPos(window, WindowTopMost, 0, 0, 0, 0, positionFlags);
         SetForegroundWindow(window);
         Thread.Sleep(100);
         Move(referenceX, referenceY);
@@ -50,11 +47,24 @@ public sealed class Win32WindowDriver : IWindowDriver
         Thread.Sleep(80);
         mouse_event(MouseEventLeftUp, 0, 0, 0, UIntPtr.Zero);
         Thread.Sleep(40);
-        SetWindowPos(window, WindowNotTopMost, 0, 0, 0, 0, positionFlags);
     }
 
     public void KeyPress(string key)
     {
+        if (key.Equals("Ctrl+S", StringComparison.OrdinalIgnoreCase) ||
+            key.Equals("CtrlS", StringComparison.OrdinalIgnoreCase))
+        {
+            SetForegroundWindow(ResolveWindow());
+            keybd_event(VirtualKeyControl, 0, 0, UIntPtr.Zero);
+            Thread.Sleep(30);
+            keybd_event((byte)'S', 0, 0, UIntPtr.Zero);
+            Thread.Sleep(80);
+            keybd_event((byte)'S', 0, KeyEventKeyUp, UIntPtr.Zero);
+            Thread.Sleep(30);
+            keybd_event(VirtualKeyControl, 0, KeyEventKeyUp, UIntPtr.Zero);
+            return;
+        }
+
         var virtualKey = key.ToUpperInvariant() switch
         {
             "ESC" or "ESCAPE" => (byte)0x1B,
@@ -244,12 +254,7 @@ public sealed class Win32WindowDriver : IWindowDriver
     private const uint MouseEventLeftDown = 0x0002;
     private const uint MouseEventLeftUp = 0x0004;
     private const uint KeyEventKeyUp = 0x0002;
-    private const int ShowWindowRestore = 9;
-    private const uint SetWindowPosNoSize = 0x0001;
-    private const uint SetWindowPosNoMove = 0x0002;
-    private const uint SetWindowPosShowWindow = 0x0040;
-    private static readonly IntPtr WindowTopMost = new(-1);
-    private static readonly IntPtr WindowNotTopMost = new(-2);
+    private const byte VirtualKeyControl = 0x11;
 
     [StructLayout(LayoutKind.Sequential)] private struct NativePoint { public int X; public int Y; }
     [StructLayout(LayoutKind.Sequential)] private struct NativeRect { public int Left; public int Top; public int Right; public int Bottom; }
@@ -267,8 +272,6 @@ public sealed class Win32WindowDriver : IWindowDriver
     [DllImport("user32.dll")] private static extern bool ClientToScreen(IntPtr hWnd, ref NativePoint point);
     [DllImport("user32.dll")] private static extern bool SetCursorPos(int x, int y);
     [DllImport("user32.dll")] private static extern bool SetForegroundWindow(IntPtr hWnd);
-    [DllImport("user32.dll")] private static extern bool ShowWindow(IntPtr hWnd, int command);
-    [DllImport("user32.dll")] private static extern bool SetWindowPos(IntPtr hWnd, IntPtr insertAfter, int x, int y, int width, int height, uint flags);
     [DllImport("user32.dll")] private static extern void mouse_event(uint flags, uint dx, uint dy, uint data, UIntPtr extraInfo);
     [DllImport("user32.dll")] private static extern void keybd_event(byte virtualKey, byte scanCode, uint flags, UIntPtr extraInfo);
 }

@@ -501,13 +501,33 @@
     },
     {
         "Original":  " gained in ",
-        "Translation":  "获得于",
+        "Translation":  "：",
         "MethodToken":  "0x06000118",
         "ILOffset":  2797,
         "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
         "MethodName":  "BuildDetailsString",
         "Safety":  "CommonDisplayCandidate",
-        "Note":  "Clan trait/property tooltip gained-in fragment."
+        "Note":  "Clan trait/property tooltip experience-scope separator."
+    },
+    {
+        "Original":  "all ",
+        "Translation":  "所有",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2881,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Clan trait/property tooltip all-disciplines scope; exact catalog operand."
+    },
+    {
+        "Original":  "any ",
+        "Translation":  "：任意",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2849,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Clan trait/property tooltip no-experience scope; exact catalog operand."
     },
     {
         "Original":  " time for switching ",
@@ -1063,7 +1083,7 @@
     },
     {
         "Original":  "Cannot be ",
-        "Translation":  "当前无法be",
+        "Translation":  "当前无法",
         "MethodToken":  "0x06000118",
         "ILOffset":  4410,
         "StringToken":  "0x70002386",
@@ -1075,7 +1095,7 @@
     },
     {
         "Original":  "Cannot be ",
-        "Translation":  "当前无法be",
+        "Translation":  "当前无法",
         "MethodToken":  "0x06000118",
         "ILOffset":  4717,
         "StringToken":  "0x70002386",
@@ -1087,7 +1107,7 @@
     },
     {
         "Original":  "Cannot be ",
-        "Translation":  "当前无法be",
+        "Translation":  "当前无法",
         "MethodToken":  "0x06000118",
         "ILOffset":  5024,
         "StringToken":  "0x70002386",
@@ -1099,7 +1119,7 @@
     },
     {
         "Original":  " to [Identify|UNIDENTIFIED] ",
-        "Translation":  "to [识别|UNIDENTIFIED]",
+        "Translation":  "用于[识别|UNIDENTIFIED]",
         "MethodToken":  "0x06000118",
         "ILOffset":  6349,
         "StringToken":  "0x70002580",
@@ -1111,7 +1131,7 @@
     },
     {
         "Original":  " to [Identify|UNIDENTIFIED] an ",
-        "Translation":  "to [识别|UNIDENTIFIED] an",
+        "Translation":  "用于[识别|UNIDENTIFIED]",
         "MethodToken":  "0x06000118",
         "ILOffset":  6618,
         "StringToken":  "0x700025e8",
@@ -1123,7 +1143,7 @@
     },
     {
         "Original":  "Cannot be ",
-        "Translation":  "当前无法be",
+        "Translation":  "当前无法",
         "MethodToken":  "0x06000118",
         "ILOffset":  7679,
         "StringToken":  "0x70002386",
@@ -1183,7 +1203,7 @@
     },
     {
         "Original":  "Cannot be ",
-        "Translation":  "当前无法be",
+        "Translation":  "当前无法",
         "MethodToken":  "0x06000118",
         "ILOffset":  11514,
         "StringToken":  "0x70002386",
@@ -1195,7 +1215,7 @@
     },
     {
         "Original":  "Cannot be ",
-        "Translation":  "当前无法be",
+        "Translation":  "当前无法",
         "MethodToken":  "0x06000118",
         "ILOffset":  11821,
         "StringToken":  "0x70002386",
@@ -1207,14 +1227,14 @@
     },
     {
         "Original":  "Cannot be ",
-        "Translation":  "当前无法be",
+    "Translation":  "当前无法",
         "MethodToken":  "0x06000118",
         "ILOffset":  12128,
         "StringToken":  "0x70002386",
         "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
         "MethodName":  "BuildDetailsString",
         "Safety":  "CommonDisplayCandidate",
-        "Note":  "Trial fast-fail auto batch generated from glossary and high-confidence phrase rules; smoke safety only.",
+    "Note":  "Remove the English suffix from the localized Cannot be fragment; applies to trait tooltips.",
         "EvidenceScenario":  "trial-smoke-new-game"
     },
     {
@@ -8834,5 +8854,379 @@
         "Safety":  "CommonDisplayCandidate",
         "Note":  "Display-only list conjunction for prerequisite names; avoids raw 'or' in knowledge tooltips.",
         "EvidenceScenario":  "knowledge-tax-collector-preserver-tooltip-20260706"
+    },
+    {
+        "Original":  " when ",
+        "Translation":  "时",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1583,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip condition connector; removes visible English fragment.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  3214,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " if ",
+        "Translation":  "若",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  3698,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip condition connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  3904,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " when ",
+        "Translation":  "时",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  4122,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip condition connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  4160,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  4426,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " to ",
+        "Translation":  "用于",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  4606,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip training connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  4632,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip profession connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  4733,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " to ",
+        "Translation":  "用于",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  4913,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip training connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  4939,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip profession connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5040,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " to ",
+        "Translation":  "用于",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5220,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip training connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5246,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip profession connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " gained in ",
+        "Translation":  "获得于",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5326,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip gained-in connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+    "Original":  "from",
+        "Translation":  "来自",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  5734,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip source connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+    "Original":  " and",
+        "Translation":  "和",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  6084,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip conjunction.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " to ",
+        "Translation":  "至",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  7941,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property switching connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " to ",
+        "Translation":  "至",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  8138,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property switching connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  11530,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " to ",
+        "Translation":  "用于",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  11710,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip training connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  11736,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip profession connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  11837,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " to ",
+        "Translation":  "用于",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  12017,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip training connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  12043,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip profession connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  12144,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " to ",
+        "Translation":  "用于",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  12324,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip training connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "中的",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  12350,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip profession connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  " when ",
+        "Translation":  "时",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  13695,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property tooltip condition connector.",
+        "EvidenceScenario":  "clan-trait-verification"
+    },
+    {
+        "Original":  ",",
+        "Translation":  "、",
+        "MethodToken":  "0x06000210",
+        "ILOffset":  235,
+        "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+        "MethodName":  "BuildCommaSeparatedListOfNames",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Display-only Oxford-list separator for localized config names.",
+        "EvidenceScenario":  "clan-trait-random-discovery-20260725"
+    },
+    {
+        "Original":  ", ",
+        "Translation":  "、",
+        "MethodToken":  "0x06000210",
+        "ILOffset":  289,
+        "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+        "MethodName":  "BuildCommaSeparatedListOfNames",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Display-only list separator for localized config names.",
+        "EvidenceScenario":  "clan-trait-random-discovery-20260725"
+    },
+    {
+        "Original":  ", ",
+        "Translation":  "、",
+        "MethodToken":  "0x06000210",
+        "ILOffset":  315,
+        "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+        "MethodName":  "BuildCommaSeparatedListOfNames",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Display-only list separator for localized config names.",
+        "EvidenceScenario":  "clan-trait-random-discovery-20260725"
+    },
+    {
+        "Original":  " Range",
+        "Translation":  "范围",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  1315,
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Trait/property view-range suffix; replaces observed English Range token.",
+        "EvidenceScenario":  "clan-trait-random-discovery-20260725"
     }
 ]

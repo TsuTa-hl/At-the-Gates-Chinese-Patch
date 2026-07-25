@@ -957,14 +957,18 @@ $runtimeTextReport = $null
 if ($RendererMode -eq "DynamicCjk") {
     $runtimeSummaryPath = Join-Path $PSScriptRoot "..\.cache\runtime-hook-summary.json"
     $runtimeMapPath = Join-Path $PatchRoot "Content\Text\AtG.RuntimeText.tsv"
+    $runtimeWarmsetPath = Join-Path $PatchRoot "Content\Fonts\AtG.RuntimeGlyphWarmset.tsv"
     if (!(Test-Path -LiteralPath $runtimeSummaryPath -PathType Leaf)) {
         throw "Runtime hook summary is missing: $runtimeSummaryPath"
     }
     if (!(Test-Path -LiteralPath $runtimeMapPath -PathType Leaf)) {
         throw "Runtime display map is missing: $runtimeMapPath"
     }
+    if (!(Test-Path -LiteralPath $runtimeWarmsetPath -PathType Leaf)) {
+        throw "Runtime glyph warmset is missing: $runtimeWarmsetPath"
+    }
     $runtimeSummary = Get-Content -LiteralPath $runtimeSummaryPath -Raw -Encoding UTF8 | ConvertFrom-Json
-    $runtimeMapCounts = @{ K = 0; E = 0; P = 0; F = 0; C = 0 }
+    $runtimeMapCounts = @{ K = 0; E = 0; P = 0; F = 0; T = 0; C = 0 }
     foreach ($line in Get-Content -LiteralPath $runtimeMapPath -Encoding UTF8) {
         if ([string]::IsNullOrEmpty($line) -or $line.StartsWith("#")) {
             continue
@@ -974,6 +978,27 @@ if ($RendererMode -eq "DynamicCjk") {
             $runtimeMapCounts[$recordType]++
         }
     }
+    $runtimeWarmsetPairCount = 0
+    $runtimeWarmsetVersion = 0
+    foreach ($line in Get-Content -LiteralPath $runtimeWarmsetPath -Encoding UTF8) {
+        if ($line -eq "# AtG.RuntimeGlyphWarmset v1") {
+            $runtimeWarmsetVersion = 1
+            continue
+        }
+        if ([string]::IsNullOrEmpty($line) -or $line.StartsWith("#")) {
+            continue
+        }
+        $fields = $line.Split("`t")
+        if ($fields.Count -ne 7 -or $fields[0] -ne "W") {
+            throw "Invalid runtime glyph warmset record: $line"
+        }
+        $runtimeWarmsetPairCount += [Text.Encoding]::UTF8.GetString(
+            [Convert]::FromBase64String($fields[5])
+        ).Length
+    }
+    if ($runtimeWarmsetVersion -ne 1) {
+        throw "Runtime glyph warmset version is not v1."
+    }
     $runtimeTextReport = [ordered]@{
         RedirectedCount = [int]$runtimeSummary.RedirectedCount
         RenderingRedirectCount = [int]$runtimeSummary.RenderingRedirectCount
@@ -981,14 +1006,23 @@ if ($RendererMode -eq "DynamicCjk") {
         LifecycleRedirectCount = [int]$runtimeSummary.LifecycleRedirectCount
         LayoutRedirectCount = [int]$runtimeSummary.LayoutRedirectCount
         LocalizationRedirectCount = [int]$runtimeSummary.LocalizationRedirectCount
+        FrameBoundaryHookCount = [int]$runtimeSummary.FrameBoundaryHookCount
+        WarmsetStartupHookCount = [int]$runtimeSummary.WarmsetStartupHookCount
+        StartupGraphicsHookCount = [int]$runtimeSummary.StartupGraphicsHookCount
         ConceptKeyCount = [int]$runtimeMapCounts.K
         ExactCount = [int]$runtimeMapCounts.E
         PlainTextCount = [int]$runtimeMapCounts.P
         PlainTextFragmentCount = [int]$runtimeMapCounts.F
+        TemplateCount = [int]$runtimeMapCounts.T
         ConceptDisplayCount = [int]$runtimeMapCounts.C
         AtlasPageSize = 1024
         MaximumAtlasPages = 8
+        MaximumWarmAtlasPages = 6
         AtlasBudgetBytes = 33554432
+        UploadBudgetMilliseconds = 2
+        MaximumUploadsPerFrame = 16
+        WarmsetVersion = $runtimeWarmsetVersion
+        WarmGlyphPairCount = $runtimeWarmsetPairCount
     }
 }
 

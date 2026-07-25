@@ -9,15 +9,19 @@ var tests = new (string Name, Func<Task> Body)[]
     ("Coordinates scale from the canonical 2560 by 1440 window", CoordinatesScale),
     ("Window handle recovery replaces a stale handle", WindowHandleRecoveryReplacesStaleHandle),
     ("Session executor uses one driver and adaptive waits", SessionExecutorUsesOneDriver),
+    ("Session executor honors an explicit hover crop", SessionExecutorHonorsExplicitHoverCrop),
     ("Capture-only points do not wait for a changing frame to stabilize", CaptureOnlySkipsAdaptiveWait),
     ("Owned session launches and sets up exactly once", OwnedSessionLaunchesAndSetsUpOnce),
+    ("Owned session repeats plans without restarting the game", OwnedSessionRepeatsPlanInOneProcess),
     ("Program log waiter blocks until the requested marker appears", ProgramLogWaiterBlocksUntilMarker),
     ("Program log probe ignores markers before its bookmark", ProgramLogProbeIgnoresExistingMarker),
+    ("Program log probe reads a rotated log from its beginning", ProgramLogProbeReadsRotatedLog),
     ("Session planner groups shared setup into one state", SessionPlannerGroupsSharedState),
     ("Session planner preserves repeated actions inside one setup sequence", SessionPlannerPreservesRepeatedSetupActions),
     ("Session executor runs setup and teardown around state points", SessionExecutorRunsStateActions),
     ("A changed state action may proceed even while animation remains unstable", ChangedStateActionMayRemainUnstable),
     ("Session executor can wait for a program-log marker after a named bookmark", SessionExecutorWaitsForBookmarkedProgramLog),
+    ("A point can wait for a program-log marker emitted by its action", PointWaitsForProgramLogMarker),
     ("Session executor repeats a bounded setup action group", SessionExecutorRepeatsActionGroup),
     ("Session executor records memory around each repeat iteration", SessionExecutorRecordsRepeatMemory),
     ("Fixed-save preparation promotes and restores the requested save", FixedSavePreparationPromotesAndRestores),
@@ -27,7 +31,12 @@ var tests = new (string Name, Func<Task> Body)[]
     ("Rendered-text probe fails a point on forbidden visible text", RenderedTextProbeFindsForbiddenText),
     ("Owned session forwards its rendered-text probe", OwnedSessionForwardsTextProbe),
     ("Owned session enables runtime text tracing only when requested", OwnedSessionTextTraceIsOptIn),
+    ("Owned session configures runtime glyph performance modes deterministically", OwnedSessionGlyphPerformanceOptions),
+    ("Owned session records a new-game save only when requested", OwnedSessionSaveAfterNewGameIsOptIn),
+    ("Performance evidence splits cold and hot pass intervals", PerformanceEvidenceSplitsPassIntervals),
+    ("Performance evidence splits a one-pass cold interval", PerformanceEvidenceSplitsSinglePassInterval),
     ("A point that never changes the UI fails instead of passing", TimedOutActionFails),
+    ("A changed point may pass while its animation remains unstable", ChangedPointMayRemainUnstable),
     ("An explicitly idempotent point can pass without a UI change", IdempotentActionCanPass),
     ("Rendered text filtering ignores unrelated screen regions", RenderedTextFilteringUsesPointRegion),
 };
@@ -64,6 +73,90 @@ static Task OwnedSessionTextTraceIsOptIn()
     True(tracedOwner.TextProbe is JsonlRenderTextProbe);
     var tracedStartInfo = Win32GameSessionOwner.CreateStartInfo(Path.GetTempPath(), enableTextTrace: true);
     Equal("1", tracedStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_TRACE"]);
+    return Task.CompletedTask;
+}
+
+static Task OwnedSessionGlyphPerformanceOptions()
+{
+    var defaultStartInfo = Win32GameSessionOwner.CreateStartInfo(
+        Path.GetTempPath(), enableTextTrace: false);
+    True(!defaultStartInfo.EnvironmentVariables.ContainsKey("ATG_RUNTIME_TEXT_PERF"));
+    Equal("Budgeted", defaultStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_GLYPH_MODE"]);
+    Equal("1", defaultStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_WARMSET"]);
+
+    var legacyStartInfo = Win32GameSessionOwner.CreateStartInfo(
+        Path.GetTempPath(),
+        enableTextTrace: true,
+        enablePerformanceTrace: true,
+        glyphMode: "legacysync",
+        disableWarmset: true);
+    Equal("1", legacyStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_TRACE"]);
+    Equal("1", legacyStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_PERF"]);
+    Equal("LegacySync", legacyStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_GLYPH_MODE"]);
+    Equal("0", legacyStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_WARMSET"]);
+
+    Throws<ArgumentException>(() => Win32GameSessionOwner.CreateStartInfo(
+        Path.GetTempPath(), enableTextTrace: false, glyphMode: "unknown"));
+    return Task.CompletedTask;
+}
+
+static Task OwnedSessionSaveAfterNewGameIsOptIn()
+{
+    using var defaultOwner = new Win32GameSessionOwner(Path.GetTempPath());
+    using var savingOwner = new Win32GameSessionOwner(
+        Path.GetTempPath(), saveAfterNewGame: true,
+        saveEvidencePath: Path.Combine(Path.GetTempPath(), "atg-save-evidence.json"));
+    True(defaultOwner is not null);
+    True(savingOwner is not null);
+    return Task.CompletedTask;
+}
+
+static Task PerformanceEvidenceSplitsPassIntervals()
+{
+    using var temp = new TempDirectory();
+    var trace = Path.Combine(temp.Path, "runtime-performance.jsonl");
+    var start = new DateTime(2026, 7, 24, 12, 0, 0, DateTimeKind.Utc);
+    File.WriteAllLines(trace,
+    [
+        $"{{\"time\":\"{start.AddMilliseconds(500):o}\",\"frame\":1}}",
+        $"{{\"time\":\"{start.AddMilliseconds(1500):o}\",\"frame\":2}}",
+        $"{{\"time\":\"{start.AddMilliseconds(3500):o}\",\"frame\":3}}",
+        $"{{\"time\":\"{start.AddMilliseconds(5500):o}\",\"frame\":4}}",
+    ]);
+    var sessions = new[]
+    {
+        new SessionResult(start.AddSeconds(1), 1000, [], []),
+        new SessionResult(start.AddSeconds(3), 1000, [], []),
+    };
+
+    var outputs = RuntimePerformanceEvidence.SplitBySession(
+        trace, temp.Path, sessions);
+
+    Equal(2, outputs.Count);
+    Equal(1, File.ReadAllLines(outputs[0]).Length);
+    Equal(1, File.ReadAllLines(outputs[1]).Length);
+    True(File.ReadAllText(outputs[0]).Contains("\"frame\":2", StringComparison.Ordinal));
+    True(File.ReadAllText(outputs[1]).Contains("\"frame\":3", StringComparison.Ordinal));
+    return Task.CompletedTask;
+}
+
+static Task PerformanceEvidenceSplitsSinglePassInterval()
+{
+    using var temp = new TempDirectory();
+    var trace = Path.Combine(temp.Path, "runtime-performance.jsonl");
+    var start = new DateTime(2026, 7, 24, 12, 0, 0, DateTimeKind.Utc);
+    File.WriteAllLines(trace,
+    [
+        $"{{\"time\":\"{start.AddMilliseconds(500):o}\",\"frame\":1}}",
+        $"{{\"time\":\"{start.AddMilliseconds(1500):o}\",\"frame\":2}}",
+    ]);
+
+    var outputs = RuntimePerformanceEvidence.SplitBySession(
+        trace, temp.Path, [new SessionResult(start.AddSeconds(1), 1000, [], [])]);
+
+    Equal(1, outputs.Count);
+    True(outputs[0].EndsWith("runtime-performance.pass-1.jsonl", StringComparison.Ordinal));
+    True(File.ReadAllText(outputs[0]).Contains("\"frame\":2", StringComparison.Ordinal));
     return Task.CompletedTask;
 }
 
@@ -143,6 +236,33 @@ static async Task SessionExecutorUsesOneDriver()
     True(result.Points[0].DurationMs < 3000);
 }
 
+static async Task SessionExecutorHonorsExplicitHoverCrop()
+{
+    using var temp = new TempDirectory();
+    using var driver = new FakeWindowDriver();
+    var crop = new CropRegion(1100, 500, 550, 400);
+    var scenario = new TestScenario
+    {
+        Id = "hover-crop",
+        Interface = "Clan Screen",
+        Points =
+        [
+            new TestPoint
+            {
+                Id = "trait", Action = "HoverAndCapture", X = 1182, Y = 639,
+                WaitMs = 300, Crop = crop,
+            },
+        ],
+    };
+
+    var result = await SessionExecutor.ExecuteAsync(
+        SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy());
+
+    Equal("Passed", result.Points[0].Status);
+    True(driver.FingerprintRegions.Count >= 2);
+    True(driver.FingerprintRegions.All(region => region == crop));
+}
+
 static async Task CaptureOnlySkipsAdaptiveWait()
 {
     using var temp = new TempDirectory();
@@ -179,8 +299,35 @@ static async Task OwnedSessionLaunchesAndSetsUpOnce()
     Equal(1, owner.StartCount);
     Equal(1, owner.SetupCount);
     Equal(GameSetupMode.NewGame, owner.LastSetupMode);
+    Equal(1, owner.CompleteCount);
     Equal(1, owner.DisposeCount);
     Equal(1, result.Points.Count);
+}
+
+static async Task OwnedSessionRepeatsPlanInOneProcess()
+{
+    using var temp = new TempDirectory();
+    using var owner = new FakeGameSessionOwner();
+    var scenario = new TestScenario
+    {
+        Id = "repeat-owned",
+        Interface = "HUD",
+        Points = [new TestPoint { Id = "one", Action = "CaptureOnly" }],
+    };
+
+    var results = await OwnedSessionExecutor.ExecutePassesAsync(
+        SessionPlanner.Create([scenario]), owner, GameSetupMode.FixedSave,
+        temp.Path, new ScenarioPolicy(), passCount: 2);
+
+    Equal(2, results.Count);
+    Equal(1, owner.StartCount);
+    Equal(1, owner.SetupCount);
+    Equal(1, owner.CompleteCount);
+    Equal(1, owner.DisposeCount);
+    Equal(1, results[0].Points.Count);
+    Equal(1, results[1].Points.Count);
+    True(File.Exists(Path.Combine(temp.Path, "pass-1", "run-summary.json")));
+    True(File.Exists(Path.Combine(temp.Path, "pass-2", "run-summary.json")));
 }
 
 static async Task ProgramLogWaiterBlocksUntilMarker()
@@ -214,6 +361,22 @@ static async Task ProgramLogProbeIgnoresExistingMarker()
     True(!waiting.IsCompleted);
 
     await File.AppendAllTextAsync(logPath, "World Screen - Children Initialized\n");
+    True(await waiting);
+}
+
+static async Task ProgramLogProbeReadsRotatedLog()
+{
+    using var temp = new TempDirectory();
+    var logPath = System.IO.Path.Combine(temp.Path, "Program.AtGLog");
+    await File.WriteAllTextAsync(logPath, new string('x', 128));
+    var probe = new FileProgramLogProbe(logPath, TimeSpan.FromMilliseconds(10));
+    var bookmark = probe.Bookmark();
+
+    var waiting = probe.WaitForMarkerAfterAsync(
+        bookmark, "Controller   - Giving Control to Human",
+        TimeSpan.FromSeconds(2), CancellationToken.None);
+    await Task.Delay(30);
+    await File.WriteAllTextAsync(logPath, "Controller   - Giving Control to Human\n");
     True(await waiting);
 }
 
@@ -327,6 +490,37 @@ static async Task SessionExecutorWaitsForBookmarkedProgramLog()
         SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy(),
         programLogProbe: probe);
 
+    Equal(1, probe.BookmarkCount);
+    Equal(1, probe.WaitCount);
+    Equal(45000, probe.LastTimeoutMs);
+    Equal("World Screen - Children Initialized", probe.LastMarker);
+    Equal("Passed", result.Points[0].Status);
+}
+
+static async Task PointWaitsForProgramLogMarker()
+{
+    using var temp = new TempDirectory();
+    using var driver = new FakeWindowDriver();
+    var probe = new FakeProgramLogProbe();
+    var scenario = new TestScenario
+    {
+        Id = "load", Interface = "Load Save",
+        Points =
+        [
+            new TestPoint
+            {
+                Id = "load-save", Action = "Click", X = 100, Y = 200,
+                ReadyMarker = "World Screen - Children Initialized",
+                ReadyTimeoutMs = 45000,
+            },
+        ],
+    };
+
+    var result = await SessionExecutor.ExecuteAsync(
+        SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy(),
+        programLogProbe: probe);
+
+    Equal(1, driver.ClickCount);
     Equal(1, probe.BookmarkCount);
     Equal(1, probe.WaitCount);
     Equal(45000, probe.LastTimeoutMs);
@@ -518,6 +712,24 @@ static async Task TimedOutActionFails()
     True(result.Points[0].WaitTimedOut);
 }
 
+static async Task ChangedPointMayRemainUnstable()
+{
+    using var temp = new TempDirectory();
+    using var driver = new ChangingWindowDriver();
+    var scenario = new TestScenario
+    {
+        Id = "animated-click", Interface = "HUD", StateId = "hud",
+        Points =
+        [
+            new TestPoint { Id = "target", Action = "ClickAndCapture", X = 10, Y = 20, WaitMs = 200 },
+        ],
+    };
+    var result = await SessionExecutor.ExecuteAsync(
+        SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy());
+    Equal("Passed", result.Points[0].Status);
+    True(result.Points[0].WaitTimedOut);
+}
+
 static async Task IdempotentActionCanPass()
 {
     using var temp = new TempDirectory();
@@ -561,6 +773,19 @@ static void Equal<T>(T expected, T actual)
     if (!EqualityComparer<T>.Default.Equals(expected, actual))
         throw new InvalidOperationException($"Expected '{expected}', actual '{actual}'.");
 }
+static void Throws<TException>(Action action) where TException : Exception
+{
+    try
+    {
+        action();
+    }
+    catch (TException)
+    {
+        return;
+    }
+    throw new InvalidOperationException(
+        $"Expected exception {typeof(TException).Name}.");
+}
 
 sealed class FakeClock : IWaitClock
 {
@@ -582,6 +807,8 @@ sealed class FakeWindowDriver : IWindowDriver
     public int KeyCount { get; private set; }
     public string? LastKey { get; private set; }
     public int CaptureCount { get; private set; }
+    public List<CropRegion?> FingerprintRegions { get; } = [];
+    public CropRegion? LastCaptureRegion { get; private set; }
     public void Move(int referenceX, int referenceY)
     {
         MoveCount++;
@@ -598,10 +825,15 @@ sealed class FakeWindowDriver : IWindowDriver
         LastKey = key;
         _operationCount++;
     }
-    public string ReadFingerprint(CropRegion? referenceRegion) => _operationCount.ToString();
+    public string ReadFingerprint(CropRegion? referenceRegion)
+    {
+        FingerprintRegions.Add(referenceRegion);
+        return _operationCount.ToString();
+    }
     public void Capture(string outputPath, CropRegion? referenceRegion, bool markCursor)
     {
         CaptureCount++;
+        LastCaptureRegion = referenceRegion;
         File.WriteAllText(outputPath, "evidence");
     }
     public void Dispose() { }
@@ -644,6 +876,7 @@ sealed class FakeGameSessionOwner : IGameSessionOwner
     public IProcessMemoryProbe? ProcessMemoryProbe => null;
     public int StartCount { get; private set; }
     public int SetupCount { get; private set; }
+    public int CompleteCount { get; private set; }
     public int DisposeCount { get; private set; }
     public GameSetupMode LastSetupMode { get; private set; }
     public Task<IWindowDriver> StartAsync(CancellationToken cancellationToken)
@@ -655,6 +888,11 @@ sealed class FakeGameSessionOwner : IGameSessionOwner
     {
         SetupCount++;
         LastSetupMode = mode;
+        return Task.CompletedTask;
+    }
+    public Task CompleteAsync(CancellationToken cancellationToken)
+    {
+        CompleteCount++;
         return Task.CompletedTask;
     }
     public void Dispose()

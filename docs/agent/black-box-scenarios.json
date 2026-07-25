@@ -1,4 +1,4 @@
-﻿{
+{
     "Version":  1,
     "Policy":  {
                    "DefaultSuite":  "Incremental",
@@ -42,8 +42,7 @@
                                               }
                                           ],
                                "Evidence":  {
-                                                "LastStatus":  "Passed",
-                                                "LastRunDir":  null
+                                                "LastStatus":  "Passed"
                                             }
                            },
                            {
@@ -54,6 +53,21 @@
                                "Status":  "Completed",
                                "SkipByDefault":  true,
                                "Setup":  "Open the knowledge screen from the main loop.",
+                               "SetupActions":  [
+                                                    {
+                                                        "Action":  "Key",
+                                                        "Key":  "F1",
+                                                        "WaitMs":  900,
+                                                        "RequireChange":  true
+                                                    }
+                                                ],
+                               "TeardownActions":  [
+                                                       {
+                                                           "Action":  "Key",
+                                                           "Key":  "Escape",
+                                                           "WaitMs":  500
+                                                       }
+                                                   ],
                                "ExpectedNo":  [
                                                   "TEXT.Name.Profession.",
                                                   "TEXT.Name.Discipline.",
@@ -364,7 +378,8 @@
                                           ],
                                "Evidence":  {
                                                 "LastStatus":  "Passed",
-                                                "LastRunDir":  ".tmp/knowledge-new-hovers-final2"
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
                                             }
                            },
                            {
@@ -375,8 +390,24 @@
                                "Status":  "Completed",
                                "SkipByDefault":  true,
                                "RequiresFixedSave":  true,
-                               "SaveName":  "Quicksave.AtGSave",
+                               "SaveName":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
                                "Setup":  "Load the fixed save and open the clan screen.",
+                               "SetupActions":  [
+                                                    {
+                                                        "Action":  "Click",
+                                                        "X":  64,
+                                                        "Y":  57,
+                                                        "WaitMs":  1200,
+                                                        "RequireChange":  true
+                                                    }
+                                                ],
+                               "TeardownActions":  [
+                                                       {
+                                                           "Action":  "Key",
+                                                           "Key":  "Escape",
+                                                           "WaitMs":  500
+                                                       }
+                                                   ],
                                "ExpectedNo":  [
                                                   "TEXT.Name.Profession.",
                                                   "Profession:",
@@ -446,18 +477,41 @@
                                           ],
                                "Evidence":  {
                                                 "LastStatus":  "Passed",
-                                                "LastRunDir":  ".tmp/clan-button-hover-final"
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
                                             }
                            },
                            {
                                "Id":  "clan-screen-random-traits",
-                               "Title":  "Three visible clans and six trait hovers",
+                               "Title":  "Three visible clan cards and all trait-icon hovers",
                                "Interface":  "Clan Screen",
                                "Category":  "HoverSweep",
-                               "Status":  "Passed",
+                               "Status":  "Active",
                                "SkipByDefault":  true,
                                "RequiresFixedSave":  true,
                                "RequiresSaveBeforeFix":  true,
+                               "TraitScope":  [
+                                                  "Personality traits (92)",
+                                                  "Non-personality traits (14; isNotPersonalityTrait=true)"
+                                              ],
+                               "CoverageRule":  "Every trait that appears on the three visible clan cards is in scope, regardless of the IsPersonality flag. Record the trait ID before marking its tooltip Verified.",
+                               "DynamicTraitDiscovery":  {
+                                                             "Required":  true,
+                                                             "Scope":  "All trait icons visible on all three clan cards, including non-personality traits",
+                                                             "Mode":  "ManualRandomDiscovery",
+                                                             "SetupMode":  "new-game",
+                                                             "StableIconCoordinates":  true,
+                                                             "CoordinateRule":  "All trait coordinates use the 2560x1440 game-client reference space and are scaled to the live client before moving the cursor. Each card has an upper icon at y=610 and a lower icon at y=639. The three cards use x=1182, 1331, and 1483. These coordinates target icon slots only; the trait ID remains random and must be identified from a visible trait tooltip before persistence.",
+                                                             "RecordBeforeVerification":  [
+                                                                                              "TraitId",
+                                                                                              "ClanName",
+                                                                                              "TraitHoverCoordinate",
+                                                                                              "ScreenshotPath",
+                                                                                              "SaveName"
+                                                                                          ],
+                                                             "SaveBeforeFix":  true,
+                                                             "ReloadSameSaveForVerification":  true
+                                                         },
                                "SaveName":  "v1.4.1   World [BVT-LCL]   游戏开始.AtGSave",
                                "Setup":  "Load BVT-LCL from the main menu and open the top-left clan screen.",
                                "ExpectedNo":  [
@@ -465,7 +519,7 @@
                                                   ":PLURAL",
                                                   ":SINGULAR",
                                                   "Might very rarely",
-                                                  "there's another",
+                                                  "there\u0027s another",
                                                   "forced into a",
                                                   "outside of",
                                                   "commit ",
@@ -497,58 +551,118 @@
                                                         },
                                "Points":  [
                                               {
-                                                  "Id":  "landbert_trait_1",
-                                                  "Label":  "Landbert upper trait",
+                                                  "Id":  "card_1_trait_upper",
+                                                  "Label":  "Card 1 upper trait icon",
                                                   "Action":  "HoverAndCapture",
                                                   "X":  1182,
-                                                  "Y":  608,
+                                                  "Y":  610,
+                                                  "Crop":  {
+                                                               "X":  1100,
+                                                               "Y":  500,
+                                                               "Width":  550,
+                                                               "Height":  400
+                                                           },
                                                   "WaitMs":  900
                                               },
                                               {
-                                                  "Id":  "landbert_trait_2",
-                                                  "Label":  "Landbert lower trait",
+                                                  "Id":  "card_1_trait_lower",
+                                                  "Label":  "Card 1 lower trait icon",
                                                   "Action":  "HoverAndCapture",
                                                   "X":  1182,
                                                   "Y":  639,
+                                                  "Crop":  {
+                                                               "X":  1100,
+                                                               "Y":  500,
+                                                               "Width":  550,
+                                                               "Height":  400
+                                                           },
                                                   "WaitMs":  900
                                               },
                                               {
-                                                  "Id":  "adelhard_trait_1",
-                                                  "Label":  "Adelhard upper trait",
+                                                  "Id":  "card_2_trait_upper",
+                                                  "Label":  "Card 2 upper trait icon",
                                                   "Action":  "HoverAndCapture",
                                                   "X":  1331,
-                                                  "Y":  608,
+                                                  "Y":  610,
+                                                  "Crop":  {
+                                                               "X":  1250,
+                                                               "Y":  500,
+                                                               "Width":  550,
+                                                               "Height":  400
+                                                           },
                                                   "WaitMs":  900
                                               },
                                               {
-                                                  "Id":  "adelhard_trait_2",
-                                                  "Label":  "Adelhard lower trait",
+                                                  "Id":  "card_2_trait_lower",
+                                                  "Label":  "Card 2 lower trait icon",
                                                   "Action":  "HoverAndCapture",
                                                   "X":  1331,
                                                   "Y":  639,
+                                                  "Crop":  {
+                                                               "X":  1250,
+                                                               "Y":  500,
+                                                               "Width":  550,
+                                                               "Height":  400
+                                                           },
                                                   "WaitMs":  900
                                               },
                                               {
-                                                  "Id":  "aland_trait_1",
-                                                  "Label":  "Aland upper trait",
+                                                  "Id":  "card_3_trait_upper",
+                                                  "Label":  "Card 3 upper trait icon",
                                                   "Action":  "HoverAndCapture",
                                                   "X":  1483,
-                                                  "Y":  608,
+                                                  "Y":  610,
+                                                  "Crop":  {
+                                                               "X":  1400,
+                                                               "Y":  500,
+                                                               "Width":  550,
+                                                               "Height":  400
+                                                           },
                                                   "WaitMs":  900
                                               },
                                               {
-                                                  "Id":  "aland_trait_2",
-                                                  "Label":  "Aland lower trait",
+                                                  "Id":  "card_3_trait_lower",
+                                                  "Label":  "Card 3 lower trait icon",
                                                   "Action":  "HoverAndCapture",
                                                   "X":  1483,
                                                   "Y":  639,
+                                                  "Crop":  {
+                                                               "X":  1400,
+                                                               "Y":  500,
+                                                               "Width":  550,
+                                                               "Height":  400
+                                                           },
                                                   "WaitMs":  900
                                               }
                                           ],
                                "Evidence":  {
-                                                "LastStatus":  "PassedVisual",
-                                                "LastRunDir":  ".tmp/runs/20260716-clan-traits-fixed-save",
-                                                "Note":  "Harness timed out on the first hover stabilization, but the captured tooltip was visually checked and the localized text was correct."
+                                                "LastStatus":  "Partial",
+                                                "VisibleTraitIdsLastRun":  [
+                                                                               "TRAIT_Craven",
+                                                                               "TRAIT_Eloquent",
+                                                                               "TRAIT_Stubborn",
+                                                                               "TRAIT_Frail",
+                                                                               "TRAIT_Impulsive"
+                                                                           ],
+                                                "RandomDiscoveryLastRun":  {
+                                                                               "Status":  "Partial",
+                                                                               "Setup":  "new-game",
+                                                                               "GeneratedClans":  [
+                                                                                                      "Keil",
+                                                                                                      "Imre",
+                                                                                                      "Vander"
+                                                                                                  ],
+                                                                               "ConfirmedNonPersonalityIds":  [
+
+                                                                                                              ],
+                                                                               "StateChanged":  false,
+                                                                               "Note":  "The random layout did not expose a confirmed non-personality trait. Fixed-save coordinates hit a clan detail card on one point and were not reused or counted as random coverage.",
+                                                                               "EvidenceHandoff":  "20260723-composite-governance",
+                                                                               "EvidenceRetention":  "TextOnly"
+                                                                           },
+                                                "Note":  "The 2026-07-23 fixed-save calibration proved the stable six icon slots: (1182,610), (1182,639), (1331,610), (1331,639), (1483,610), and (1483,639). The previous y=608 and y=666 points hit portrait/detail UI or fell below the trait icon and are invalid. Random clan cards may show any of the 92 personality or 14 non-personality traits; every visible trait must be recorded by ID, hovered, and verified. Non-personality traits are in scope and are never skipped because IsPersonality is false.",
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
                                             }
                            },
                            {
@@ -639,7 +753,8 @@
                                           ],
                                "Evidence":  {
                                                 "LastStatus":  "Partial",
-                                                "LastRunDir":  ".tmp/main-loop-button-hovers-final2"
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
                                             }
                            },
                            {
@@ -995,8 +1110,7 @@
                                               }
                                           ],
                                "Evidence":  {
-                                                "LastStatus":  "Discovery",
-                                                "LastRunDir":  null
+                                                "LastStatus":  "Discovery"
                                             }
                            },
                            {
@@ -1007,8 +1121,8 @@
                                "Status":  "Completed",
                                "SkipByDefault":  true,
                                "RequiresFixedSave":  true,
-                               "SaveName":  "Quicksave.AtGSave",
-                               "Setup":  "Start from the main menu. Hover the main-menu Load Saved Game button if needed, click it, test the load-save screen hovers there, then load Quicksave.AtGSave and test the main-loop toolbar and target tile from that fixed state. Do not open the load-save screen from the in-game pause/main-loop UI for this scenario.",
+                               "SaveName":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
+                               "Setup":  "Start from the main menu. Hover the main-menu Load Saved Game button if needed, click it, test the load-save screen hovers there, then load v1.4.1 World [OAA-JUH] 游戏开始.AtGSave and test the main-loop toolbar and target tile from that fixed state. Do not open the load-save screen from the in-game pause/main-loop UI for this scenario.",
                                "ClearBeforeEachPoint":  {
                                                             "X":  1280,
                                                             "Y":  720,
@@ -1089,7 +1203,9 @@
                                                   "Action":  "Click",
                                                   "X":  1285,
                                                   "Y":  578,
-                                                  "WaitMs":  5000
+                                                  "WaitMs":  5000,
+                                                  "ReadyMarker":  "World Screen - Children Initialized",
+                                                  "ReadyTimeoutMs":  45000
                                               },
                                               {
                                                   "Id":  "main_strategic_view",
@@ -1173,105 +1289,105 @@
                                           ],
                                "Evidence":  {
                                                 "LastStatus":  "Passed",
-                                                "LastRunDir":  ".tmp/runs/20260702-221952-load-save-main-loop-tile-tooltip-20260702",
-                                                "LastContactSheet":  ".tmp/runs/20260702-221952-load-save-main-loop-tile-tooltip-20260702/contact.png"
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
                                             }
-                            },
-                            {
-                                "Id":  "in-game-reload-memory-regression-20260712",
-                                "Title":  "Reload a fixed save from the in-game pause menu without OOM",
-                                "Interface":  "Pause Menu / Load Save",
-                                "StateId":  "in-game-reload",
-                                "Category":  "SaveLoad",
-                                "Status":  "Completed",
-                                "SkipByDefault":  true,
-                                "RequiresFixedSave":  true,
-                                "Setup":  "Load the selected fixed save from the main menu, press Escape in the main loop, choose Load Saved Game from the pause menu, and load the promoted first row again. Repeat five times in the same process and wait only for a new World Screen log marker written after each reload began.",
-                                "SetupActions":  [
-                                                     {
-                                                         "Action":  "Repeat",
-                                                         "RepeatCount":  5,
-                                                         "Actions":  [
-                                                                          {
-                                                                              "Action":  "BookmarkProgramLog",
-                                                                              "Bookmark":  "reload-1"
-                                                                          },
-                                                                          {
-                                                                              "Action":  "Key",
-                                                                              "Key":  "Escape",
-                                                                              "WaitMs":  900,
-                                                                              "RequireChange":  true,
-                                                                              "Crop":  {
-                                                                                           "X":  1080,
-                                                                                           "Y":  300,
-                                                                                           "Width":  400,
-                                                                                           "Height":  800
-                                                                                       }
-                                                                          },
-                                                                          {
-                                                                              "Action":  "Click",
-                                                                              "X":  1280,
-                                                                              "Y":  772,
-                                                                              "WaitMs":  900,
-                                                                              "RequireChange":  true,
-                                                                              "Crop":  {
-                                                                                           "X":  900,
-                                                                                           "Y":  250,
-                                                                                           "Width":  760,
-                                                                                           "Height":  850
-                                                                                       }
-                                                                          },
-                                                                          {
-                                                                              "Action":  "Click",
-                                                                              "X":  1280,
-                                                                              "Y":  578,
-                                                                              "WaitMs":  900,
-                                                                              "RequireChange":  false,
-                                                                              "Crop":  {
-                                                                                           "X":  900,
-                                                                                           "Y":  250,
-                                                                                           "Width":  760,
-                                                                                           "Height":  850
-                                                                                       }
-                                                                          },
-                                                                          {
-                                                                              "Action":  "WaitForProgramLogMarker",
-                                                                              "Bookmark":  "reload-1",
-                                                                              "Marker":  "World Screen - Children Initialized",
-                                                                              "WaitMs":  45000
-                                                                          }
-                                                                      ]
-                                                                  }
-                                                              ],
-                                 "ExpectedNo":  [
-                                                   "TEXT.",
-                                                   ":PLURAL",
-                                                   ":SINGULAR",
-                                                   "mojibake"
-                                               ],
-                                "Points":  [
-                                               {
-                                                   "Id":  "main_loop_after_reload_1",
-                                                   "Label":  "Main loop after in-game reload",
-                                                   "Action":  "CaptureOnly",
-                                                   "Crop":  {
-                                                                "X":  0,
-                                                                "Y":  0,
-                                                                "Width":  2560,
-                                                                "Height":  1440
-                                                            }
-                                               }
-                                           ],
-                                "Evidence":  {
-                                                 "LastStatus":  "Passed",
-                                                 "LastRunDir":  ".tmp/runs/20260714-load-reload-memory-lifecycle-v4",
-                                                 "LastScreenshot":  ".tmp/runs/20260714-load-reload-memory-lifecycle-v4/in-game-reload-memory-regression-20260712-main_loop_after_reload_1.png"
-                                             }
-                            }
+                           },
+                           {
+                               "Id":  "in-game-reload-memory-regression-20260712",
+                               "Title":  "Reload a fixed save from the in-game pause menu without OOM",
+                               "Interface":  "Pause Menu / Load Save",
+                               "StateId":  "in-game-reload",
+                               "Category":  "SaveLoad",
+                               "Status":  "Completed",
+                               "SkipByDefault":  true,
+                               "RequiresFixedSave":  true,
+                               "Setup":  "Load the selected fixed save from the main menu, press Escape in the main loop, choose Load Saved Game from the pause menu, and load the promoted first row again. Repeat five times in the same process and wait only for a new World Screen log marker written after each reload began.",
+                               "SetupActions":  [
+                                                    {
+                                                        "Action":  "Repeat",
+                                                        "RepeatCount":  5,
+                                                        "Actions":  [
+                                                                        {
+                                                                            "Action":  "BookmarkProgramLog",
+                                                                            "Bookmark":  "reload-1"
+                                                                        },
+                                                                        {
+                                                                            "Action":  "Key",
+                                                                            "Key":  "Escape",
+                                                                            "WaitMs":  900,
+                                                                            "RequireChange":  true,
+                                                                            "Crop":  {
+                                                                                         "X":  1080,
+                                                                                         "Y":  300,
+                                                                                         "Width":  400,
+                                                                                         "Height":  800
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "Action":  "Click",
+                                                                            "X":  1280,
+                                                                            "Y":  772,
+                                                                            "WaitMs":  900,
+                                                                            "RequireChange":  true,
+                                                                            "Crop":  {
+                                                                                         "X":  900,
+                                                                                         "Y":  250,
+                                                                                         "Width":  760,
+                                                                                         "Height":  850
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "Action":  "Click",
+                                                                            "X":  1280,
+                                                                            "Y":  578,
+                                                                            "WaitMs":  900,
+                                                                            "RequireChange":  false,
+                                                                            "Crop":  {
+                                                                                         "X":  900,
+                                                                                         "Y":  250,
+                                                                                         "Width":  760,
+                                                                                         "Height":  850
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "Action":  "WaitForProgramLogMarker",
+                                                                            "Bookmark":  "reload-1",
+                                                                            "Marker":  "World Screen - Children Initialized",
+                                                                            "WaitMs":  45000
+                                                                        }
+                                                                    ]
+                                                    }
+                                                ],
+                               "ExpectedNo":  [
+                                                  "TEXT.",
+                                                  ":PLURAL",
+                                                  ":SINGULAR",
+                                                  "mojibake"
+                                              ],
+                               "Points":  [
+                                              {
+                                                  "Id":  "main_loop_after_reload_1",
+                                                  "Label":  "Main loop after in-game reload",
+                                                  "Action":  "CaptureOnly",
+                                                  "Crop":  {
+                                                               "X":  0,
+                                                               "Y":  0,
+                                                               "Width":  2560,
+                                                               "Height":  1440
+                                                           }
+                                              }
+                                          ],
+                               "Evidence":  {
+                                                "LastStatus":  "Passed",
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
+                                            }
+                           }
                        ],
     "Incremental":  [
-                         {
-                             "Id":  "clan-list-header-hover-20260710",
+                        {
+                            "Id":  "clan-list-header-hover-20260710",
                             "Title":  "Clan list header first-level hovers and Level nested tooltip",
                             "Interface":  "Clan List",
                             "StateId":  "clan-list",
@@ -1341,8 +1457,8 @@
                                                "Id":  "header_level_nested",
                                                "Label":  "Nested Level concept tooltip",
                                                "Action":  "HoverAndCapture",
-                       "X":  1328,
-                       "Y":  84,
+                                               "X":  1328,
+                                               "Y":  84,
                                                "WaitMs":  900,
                                                "SkipClear":  true
                                            },
@@ -1404,8 +1520,9 @@
                                            }
                                        ],
                             "Evidence":  {
-                     "LastStatus":  "FocusedPassed",
-                     "LastRunDir":  ".tmp/runs/richtext-clan-list-level-nested.png"
+                                             "LastStatus":  "FocusedPassed",
+                                             "EvidenceHandoff":  "20260723-composite-governance",
+                                             "EvidenceRetention":  "TextOnly"
                                          }
                         },
                         {
@@ -1435,16 +1552,16 @@
                                                "Id":  "select_center_settlement",
                                                "Label":  "Select central settlement",
                                                "Action":  "ClickAndCapture",
-                           "X":  1280,
-                           "Y":  720,
-                           "AllowUnchanged":  true,
-                           "Crop":  {
-                                        "X":  0,
-                                        "Y":  500,
-                                        "Width":  650,
-                                        "Height":  900
-                                    },
-                           "WaitMs":  900
+                                               "X":  1280,
+                                               "Y":  720,
+                                               "AllowUnchanged":  true,
+                                               "Crop":  {
+                                                            "X":  0,
+                                                            "Y":  500,
+                                                            "Width":  650,
+                                                            "Height":  900
+                                                        },
+                                               "WaitMs":  900
                                            },
                                            {
                                                "Id":  "hover_pack_up",
@@ -1456,12 +1573,11 @@
                                            }
                                        ],
                             "Evidence":  {
-                                             "LastStatus":  "StaticFixOnly",
-                                             "LastRunDir":  null
+                                             "LastStatus":  "StaticFixOnly"
                                          }
                         },
-                         {
-                             "Id":  "terrain-description-all-fragment-20260710",
+                        {
+                            "Id":  "terrain-description-all-fragment-20260710",
                             "Title":  "Lower-right terrain description should not show English all",
                             "Interface":  "Main Loop Map",
                             "Category":  "TileTooltip",
@@ -1486,72 +1602,185 @@
                                                "Y":  null,
                                                "Discover":  true,
                                                "WaitMs":  900
-                          }
-                                        ],
-                             "Evidence":  {
-                                              "LastStatus":  "StaticFixOnly",
-                                              "LastRunDir":  null
-                                          }
-                         },
-                         {
-                             "Id":  "religion-screen-20260718",
-                             "Title":  "Religion screen title and religion choices",
-                             "Interface":  "Religion Screen",
-                             "StateId":  "religion-screen",
-                             "Category":  "ClickAndCapture",
-                             "Status":  "Completed",
-                             "SkipByDefault":  false,
-                             "RequiresFixedSave":  true,
-                             "SaveName":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
-                             "Setup":  "Load the current fixed save directly from the main-menu load flow, then open the main-loop Religion screen. Do not start a new game or load from the in-game pause menu.",
-                             "ExpectedNo":  [
-                                                "Religion",
-                                                "Nicene Christianity",
-                                                "Arian Christianity",
-                                                "Pagan",
-                                                "RELIGION_",
-                                                "TEXT.",
-                                                ":PLURAL",
-                                                ":SINGULAR",
-                                                "mojibake"
-                                            ],
-                             "Points":  [
-                                            {
-                                                "Id":  "open_religion_screen",
-                                                "Label":  "Open Religion screen",
-                                                "Action":  "ClickAndCapture",
-                                                "X":  2080,
-                                                "Y":  25,
-                                                "AllowUnchanged":  true,
-                                                "WaitMs":  900
-                                            },
-                                            {
-                                                "Id":  "religion_screen_labels",
-                                                "Label":  "Religion title and three choices",
-                                                "Action":  "CaptureOnly",
-                                                "Crop":  {
-                                                             "X":  1130,
-                                                             "Y":  550,
-                                                             "Width":  340,
-                                                             "Height":  360
-                                                         }
-                                            },
-                                            {
-                                                "Id":  "close_religion_screen",
-                                                "Label":  "Close Religion screen",
-                                                "Action":  "Click",
-                                                "X":  1350,
-                                                "Y":  837,
-                                                "SkipClear":  true,
-                                                "WaitMs":  500
-                                            }
-                                        ],
-                             "Evidence":  {
-                                              "LastStatus":  "Passed",
-                                              "LastRunDir":  ".tmp/runs/20260718-religion-screen-manual",
-                                              "LastScreenshot":  ".tmp/religion-screen.png",
-                                              "Save":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave"
-                                          }
-                         }
+                                           }
+                                       ],
+                            "Evidence":  {
+                                             "LastStatus":  "StaticFixOnly"
+                                         }
+                        },
+                        {
+                            "Id":  "religion-screen-20260718",
+                            "Title":  "Religion screen title and religion choices",
+                            "Interface":  "Religion Screen",
+                            "StateId":  "religion-screen",
+                            "Category":  "ClickAndCapture",
+                            "Status":  "Completed",
+                            "SkipByDefault":  false,
+                            "RequiresFixedSave":  true,
+                            "SaveName":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
+                            "Setup":  "Load the current fixed save directly from the main-menu load flow, then open the main-loop Religion screen. Do not start a new game or load from the in-game pause menu.",
+                            "ExpectedNo":  [
+                                               "Religion",
+                                               "Nicene Christianity",
+                                               "Arian Christianity",
+                                               "Pagan",
+                                               "RELIGION_",
+                                               "TEXT.",
+                                               ":PLURAL",
+                                               ":SINGULAR",
+                                               "mojibake"
+                                           ],
+                            "Points":  [
+                                           {
+                                               "Id":  "open_religion_screen",
+                                               "Label":  "Open Religion screen",
+                                               "Action":  "ClickAndCapture",
+                                               "X":  2080,
+                                               "Y":  25,
+                                               "AllowUnchanged":  true,
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "religion_screen_labels",
+                                               "Label":  "Religion title and three choices",
+                                               "Action":  "CaptureOnly",
+                                               "Crop":  {
+                                                            "X":  1130,
+                                                            "Y":  550,
+                                                            "Width":  340,
+                                                            "Height":  360
+                                                        }
+                                           },
+                                           {
+                                               "Id":  "close_religion_screen",
+                                               "Label":  "Close Religion screen",
+                                               "Action":  "Click",
+                                               "X":  1350,
+                                               "Y":  837,
+                                               "SkipClear":  true,
+                                               "WaitMs":  500
+                                           }
+                                       ],
+                            "Evidence":  {
+                                             "LastStatus":  "Passed",
+                                             "Save":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
+                                             "EvidenceHandoff":  "20260723-composite-governance",
+                                             "EvidenceRetention":  "TextOnly"
+                                         }
+                        },
+                        {
+                            "Id":  "clan-trait-random-discovery",
+                            "Title":  "Random new-game clan trait discovery",
+                            "Interface":  "Clan Screen",
+                            "StateId":  "clan-trait-random-discovery",
+                            "Category":  "HoverSweep",
+                            "Status":  "Discovery",
+                            "SkipByDefault":  true,
+                            "RequiresSaveBeforeFix":  true,
+                            "Setup":  "Start a new game, open the clan screen, then inspect the six stable trait slots. Persist every identified trait before changing the patch. If any residual is found, use the new-game save captured by the owned session for the later fixed-save retest.",
+                            "SetupActions":  [
+                                                 {
+                                                     "Action":  "Click",
+                                                     "X":  64,
+                                                     "Y":  57,
+                                                     "WaitMs":  1200
+                                                 }
+                                             ],
+                            "ClearBeforeEachPoint":  {
+                                                         "Action":  "Move",
+                                                         "X":  1900,
+                                                         "Y":  1100,
+                                                         "WaitMs":  150
+                                                     },
+                            "Points":  [
+                                           {
+                                               "Id":  "card_1_trait_upper",
+                                               "Label":  "Card 1 upper trait icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1182,
+                                               "Y":  610,
+                                               "Crop":  {
+                                                            "X":  1100,
+                                                            "Y":  500,
+                                                            "Width":  550,
+                                                            "Height":  400
+                                                        },
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "card_1_trait_lower",
+                                               "Label":  "Card 1 lower trait icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1182,
+                                               "Y":  639,
+                                               "Crop":  {
+                                                            "X":  1100,
+                                                            "Y":  500,
+                                                            "Width":  550,
+                                                            "Height":  400
+                                                        },
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "card_2_trait_upper",
+                                               "Label":  "Card 2 upper trait icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1331,
+                                               "Y":  610,
+                                               "Crop":  {
+                                                            "X":  1250,
+                                                            "Y":  500,
+                                                            "Width":  550,
+                                                            "Height":  400
+                                                        },
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "card_2_trait_lower",
+                                               "Label":  "Card 2 lower trait icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1331,
+                                               "Y":  639,
+                                               "Crop":  {
+                                                            "X":  1250,
+                                                            "Y":  500,
+                                                            "Width":  550,
+                                                            "Height":  400
+                                                        },
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "card_3_trait_upper",
+                                               "Label":  "Card 3 upper trait icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1483,
+                                               "Y":  610,
+                                               "Crop":  {
+                                                            "X":  1400,
+                                                            "Y":  500,
+                                                            "Width":  550,
+                                                            "Height":  400
+                                                        },
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "card_3_trait_lower",
+                                               "Label":  "Card 3 lower trait icon",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1483,
+                                               "Y":  639,
+                                               "Crop":  {
+                                                            "X":  1400,
+                                                            "Y":  500,
+                                                            "Width":  550,
+                                                            "Height":  400
+                                                        },
+                                               "WaitMs":  900
+                                           }
+                                       ],
+                            "Evidence":  {
+                                             "LastStatus":  "NotRun"
+                                         }
+                        }
                     ]
 }

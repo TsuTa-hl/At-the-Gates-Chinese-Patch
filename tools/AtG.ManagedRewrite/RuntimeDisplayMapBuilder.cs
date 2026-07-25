@@ -36,15 +36,21 @@ public static class RuntimeDisplayMapBuilder
             File.ReadAllText(Path.GetFullPath(mapPath)),
             new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
             ?? new RuntimeDisplayMapModel();
-        var exact = model.Exact ?? [];
+        var exact = (model.Exact ?? []).ToList();
         var plain = model.PlainText ?? [];
-        var plainFragments = model.PlainTextFragments ?? [];
+        var plainFragments = (model.PlainTextFragments ?? []).ToList();
+        var templates = new List<RuntimeDisplayEntry>();
         var configuredConceptDisplay = model.ConceptDisplay ?? [];
         var conceptDisplay = configuredConceptDisplay.ToList();
 
+        ImportCompositeExactSources(mapPath, model.CompositeExactSources, exact);
+        ImportCompositeFragmentSources(mapPath, model.CompositeFragmentSources,
+            plainFragments);
+        ImportCompositeTemplateSources(mapPath, model.CompositeTemplateSources, templates);
         ValidateUnique(exact, entry => entry.Original, "exact");
         ValidateUnique(plain, entry => entry.Original, "plain-text");
         ValidateUnique(plainFragments, entry => entry.Original, "plain-text-fragment");
+        ValidateUnique(templates, entry => entry.Original, "template");
         ValidateUnique(configuredConceptDisplay,
             entry => entry.ConceptKey + "\u001F" + entry.Original, "concept-display");
         ImportConceptDisplaySources(mapPath, model.ConceptDisplaySources,
@@ -71,6 +77,11 @@ public static class RuntimeDisplayMapBuilder
             ValidateDisplay(entry.Original, "PlainTextFragments.Original");
             ValidateFragmentTranslation(entry.Translation, "PlainTextFragments.Translation");
         }
+        foreach (var entry in templates)
+        {
+            ValidateRequired(entry.Original, "Template.Original");
+            ValidateRequired(entry.Translation, "Template.Translation");
+        }
         foreach (var entry in conceptDisplay)
         {
             ValidateRequired(entry.ConceptKey, "ConceptDisplay.ConceptKey");
@@ -81,7 +92,7 @@ public static class RuntimeDisplayMapBuilder
             ValidateDisplay(entry.Translation, "ConceptDisplay.Translation");
         }
 
-        var lines = new List<string>(conceptKeys.Count + exact.Length + plain.Length +
+        var lines = new List<string>(conceptKeys.Count + exact.Count + plain.Length +
             conceptDisplay.Count + 1)
         {
             "# AtG.RuntimeText display map v1",
@@ -95,6 +106,9 @@ public static class RuntimeDisplayMapBuilder
         lines.AddRange(plainFragments.OrderByDescending(entry => entry.Original.Length)
             .ThenBy(entry => entry.Original, StringComparer.Ordinal)
             .Select(entry => "F\t" + Encode(entry.Original) + "\t" + Encode(entry.Translation)));
+        lines.AddRange(templates.OrderByDescending(entry => entry.Original.Length)
+            .ThenBy(entry => entry.Original, StringComparer.Ordinal)
+            .Select(entry => "T\t" + Encode(entry.Original) + "\t" + Encode(entry.Translation)));
         lines.AddRange(conceptDisplay
             .OrderBy(entry => entry.ConceptKey, StringComparer.Ordinal)
             .ThenBy(entry => entry.Original, StringComparer.Ordinal)
@@ -104,8 +118,8 @@ public static class RuntimeDisplayMapBuilder
         var output = Path.GetFullPath(outputPath);
         Directory.CreateDirectory(Path.GetDirectoryName(output)!);
         File.WriteAllLines(output, lines, new UTF8Encoding(false));
-        return new RuntimeDisplayMapBuildResult(conceptKeys.Count, exact.Length,
-            plain.Length, plainFragments.Length, conceptDisplay.Count, output);
+        return new RuntimeDisplayMapBuildResult(conceptKeys.Count, exact.Count,
+            plain.Length, plainFragments.Count, conceptDisplay.Count, output);
     }
 
     private static void ImportConceptDisplaySources(string mapPath,
@@ -161,6 +175,158 @@ public static class RuntimeDisplayMapBuilder
                 destination.Add(entry);
             }
         }
+    }
+
+    private static void ImportCompositeExactSources(string mapPath,
+        string[]? sourcePaths, List<RuntimeDisplayEntry> destination)
+    {
+        if (sourcePaths is null || sourcePaths.Length == 0) return;
+        var mapDirectory = Path.GetDirectoryName(Path.GetFullPath(mapPath))!;
+        var known = destination.ToDictionary(entry => entry.Original,
+            entry => entry.Translation, StringComparer.Ordinal);
+        foreach (var configuredPath in sourcePaths)
+        {
+            ValidateRequired(configuredPath, "CompositeExactSources entry");
+            var sourcePath = Path.IsPathRooted(configuredPath)
+                ? Path.GetFullPath(configuredPath)
+                : Path.GetFullPath(Path.Combine(mapDirectory, configuredPath));
+            var document = JsonSerializer.Deserialize<CompositeCatalogDocument>(
+                File.ReadAllText(sourcePath),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+                ?? throw new InvalidDataException(
+                    $"Composite exact source is empty: {sourcePath}");
+            foreach (var composite in document.Entries)
+            {
+                if (composite.Stale || composite.LocalizedFormat is null ||
+                    composite.Source.Kind != "Managed" ||
+                    !StringComparer.Ordinal.Equals(composite.Classification, "DisplayComposite") ||
+                    !StringComparer.Ordinal.Equals(composite.RuleId, "runtime-display-exact"))
+                    continue;
+
+                var entry = new RuntimeDisplayEntry
+                {
+                    Original = composite.OriginalFormat,
+                    Translation = composite.LocalizedFormat,
+                };
+                ValidateRequired(entry.Original, "Composite exact OriginalFormat");
+                ValidateRequired(entry.Translation, "Composite exact LocalizedFormat");
+                if (known.TryGetValue(entry.Original, out var existing))
+                {
+                    if (!StringComparer.Ordinal.Equals(existing, entry.Translation))
+                        throw new InvalidDataException(
+                            $"Conflicting composite exact display text '{entry.Original}'.");
+                    continue;
+                }
+                known.Add(entry.Original, entry.Translation);
+                destination.Add(entry);
+            }
+        }
+    }
+
+    private static void ImportCompositeFragmentSources(string mapPath,
+        string[]? sourcePaths, List<RuntimeDisplayEntry> destination)
+    {
+        if (sourcePaths is null || sourcePaths.Length == 0) return;
+        var mapDirectory = Path.GetDirectoryName(Path.GetFullPath(mapPath))!;
+        var known = destination.GroupBy(entry => entry.Original, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => group.First().Translation,
+                StringComparer.Ordinal);
+
+        foreach (var configuredPath in sourcePaths)
+        {
+            ValidateRequired(configuredPath, "CompositeFragmentSources entry");
+            var sourcePath = Path.IsPathRooted(configuredPath)
+                ? Path.GetFullPath(configuredPath)
+                : Path.GetFullPath(Path.Combine(mapDirectory, configuredPath));
+            var document = JsonSerializer.Deserialize<CompositeCatalogDocument>(
+                File.ReadAllText(sourcePath),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+                ?? throw new InvalidDataException(
+                    $"Composite fragment source is empty: {sourcePath}");
+
+            var rewriteTranslations = document.Entries
+                .Where(entry => !entry.Stale &&
+                    StringComparer.Ordinal.Equals(entry.Source.Kind, "ManagedRewriteMap") &&
+                    entry.LocalizedFormat is not null)
+                .GroupBy(entry => entry.OriginalFormat, StringComparer.Ordinal)
+                .ToDictionary(
+                    group => group.Key,
+                    group => group.Select(entry => entry.LocalizedFormat!)
+                        .Distinct(StringComparer.Ordinal).ToArray(),
+                    StringComparer.Ordinal);
+
+            var referencedLiterals = document.Entries
+                .Where(entry => !entry.Stale &&
+                    StringComparer.Ordinal.Equals(entry.Source.Kind, "Managed") &&
+                    entry.Parts.Count > 1)
+                .SelectMany(entry => entry.Parts)
+                .Where(part => StringComparer.Ordinal.Equals(part.Kind, "Literal") &&
+                    IsRuntimeSafeFragment(part.Value))
+                .Select(part => part.Value)
+                .Distinct(StringComparer.Ordinal);
+
+            foreach (var original in referencedLiterals)
+            {
+                if (!rewriteTranslations.TryGetValue(original, out var translations) ||
+                    translations.Length != 1 || string.IsNullOrEmpty(translations[0]))
+                    continue;
+                if (known.ContainsKey(original)) continue;
+                known.Add(original, translations[0]);
+                destination.Add(new RuntimeDisplayEntry
+                {
+                    Original = original,
+                    Translation = translations[0],
+                });
+            }
+        }
+    }
+
+    private static void ImportCompositeTemplateSources(string mapPath,
+        string[]? sourcePaths, List<RuntimeDisplayEntry> destination)
+    {
+        if (sourcePaths is null || sourcePaths.Length == 0) return;
+        var mapDirectory = Path.GetDirectoryName(Path.GetFullPath(mapPath))!;
+        var known = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var configuredPath in sourcePaths)
+        {
+            ValidateRequired(configuredPath, "CompositeTemplateSources entry");
+            var sourcePath = Path.IsPathRooted(configuredPath)
+                ? Path.GetFullPath(configuredPath)
+                : Path.GetFullPath(Path.Combine(mapDirectory, configuredPath));
+            var document = JsonSerializer.Deserialize<CompositeCatalogDocument>(
+                File.ReadAllText(sourcePath),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+                ?? throw new InvalidDataException(
+                    $"Composite template source is empty: {sourcePath}");
+            foreach (var composite in document.Entries.Where(entry =>
+                         !entry.Stale && entry.LocalizedFormat is not null &&
+                         StringComparer.Ordinal.Equals(entry.Source.Kind, "Managed") &&
+                         StringComparer.Ordinal.Equals(entry.RuleId, "runtime-display-template")))
+            {
+                if (known.TryGetValue(composite.OriginalFormat, out var existing))
+                {
+                    if (!StringComparer.Ordinal.Equals(existing, composite.LocalizedFormat))
+                        throw new InvalidDataException(
+                            $"Conflicting composite display template '{composite.OriginalFormat}'.");
+                    continue;
+                }
+                known.Add(composite.OriginalFormat, composite.LocalizedFormat!);
+                destination.Add(new RuntimeDisplayEntry
+                {
+                    Original = composite.OriginalFormat,
+                    Translation = composite.LocalizedFormat!,
+                });
+            }
+        }
+    }
+
+    private static bool IsRuntimeSafeFragment(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value) ||
+            value.IndexOfAny(['[', ']', '|']) >= 0)
+            return false;
+        return value.Any(character => (character >= 'A' && character <= 'Z') ||
+            (character >= 'a' && character <= 'z'));
     }
 
     private static HashSet<string> DiscoverConceptKeys(string assemblyPath,
@@ -232,6 +398,9 @@ public static class RuntimeDisplayMapBuilder
         public RuntimeDisplayEntry[]? PlainTextFragments { get; set; }
         public RuntimeConceptDisplayEntry[]? ConceptDisplay { get; set; }
         public string[]? ConceptDisplaySources { get; set; }
+        public string[]? CompositeExactSources { get; set; }
+        public string[]? CompositeFragmentSources { get; set; }
+        public string[]? CompositeTemplateSources { get; set; }
     }
 
     private class RuntimeDisplayEntry

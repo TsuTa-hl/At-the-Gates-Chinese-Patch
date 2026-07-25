@@ -25,6 +25,13 @@ namespace AtG.RuntimeText
         public static void ProcessWord(object processor,
             Func<object, string, CjkMeasuredText> measure)
         {
+            ProcessWord(processor, measure, null);
+        }
+
+        public static void ProcessWord(object processor,
+            Func<object, string, CjkMeasuredText> measure,
+            Func<object, string, float[]> measurePrefixes)
+        {
             if (processor == null) throw new ArgumentNullException("processor");
             if (measure == null) throw new ArgumentNullException("measure");
             var access = Resolve(processor.GetType());
@@ -46,8 +53,11 @@ namespace AtG.RuntimeText
             var prefixWidth = appendSpace ? widthOfSpace : 0f;
             var firstAvailable = maxWidth - currentX - currentWidth - prefixWidth;
             var fullAvailable = Math.Max(0f, maxWidth - wrappedShift);
-            var pieces = CjkLineBreaker.SplitWord(word, firstAvailable, fullAvailable,
-                value => measure(font, value).Width);
+            var prefixWidths = measurePrefixes == null ? null : measurePrefixes(font, word);
+            var pieces = prefixWidths == null
+                ? CjkLineBreaker.SplitWord(word, firstAvailable, fullAvailable,
+                    value => measure(font, value).Width)
+                : CjkLineBreaker.SplitWord(word, firstAvailable, fullAvailable, prefixWidths);
 
             if (pieces.Count > 0 && measure(font, pieces[0]).Width > firstAvailable &&
                 builder.Length > 0)
@@ -56,8 +66,10 @@ namespace AtG.RuntimeText
                 builder = (StringBuilder)access.TextSoFar.GetValue(processor);
                 appendSpace = false;
                 currentWidth = GetFloat(access.WidthOfTextSoFar, processor);
-                pieces = CjkLineBreaker.SplitWord(word, fullAvailable, fullAvailable,
-                    value => measure(font, value).Width);
+                pieces = prefixWidths == null
+                    ? CjkLineBreaker.SplitWord(word, fullAvailable, fullAvailable,
+                        value => measure(font, value).Width)
+                    : CjkLineBreaker.SplitWord(word, fullAvailable, fullAvailable, prefixWidths);
             }
 
             for (var index = 0; index < pieces.Count; index++)

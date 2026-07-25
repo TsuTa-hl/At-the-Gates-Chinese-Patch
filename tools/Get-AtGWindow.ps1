@@ -48,6 +48,10 @@ public static class AtGWindowFinder {
 [AtGWindowFinder]::SetProcessDPIAware() | Out-Null
 
 function Get-AtGWindow {
+    param(
+        [switch]$AllowCrashDialog
+    )
+
     $candidates = New-Object System.Collections.Generic.List[object]
 
     function Add-AtGWindowCandidate {
@@ -74,11 +78,20 @@ function Get-AtGWindow {
             return
         }
 
+        $isCrashDialog = $Title -like "*HE'S DEAD*" -or $Title -like "*HE’S DEAD*"
+        # The crash title sometimes contains repeated spaces. Normalize it so
+        # normal input is never sent to a crash dialog by mistake.
+        $normalizedTitle = ($Title -replace "\s+", " ").Trim()
+        $isCrashDialog = $isCrashDialog -or $normalizedTitle -like "*HE'S DEAD*"
+        $isVisible = [AtGWindowFinder]::IsWindowVisible($Handle)
         [void]$candidates.Add([pscustomobject]@{
             Handle = $Handle
             ProcessId = $ProcessId
             ProcessName = $ProcessName
             Title = $Title
+            NormalizedTitle = $normalizedTitle
+            IsCrashDialog = $isCrashDialog
+            IsVisible = $isVisible
             Left = $rect.Left
             Top = $rect.Top
             Right = $rect.Right
@@ -92,10 +105,6 @@ function Get-AtGWindow {
 
     $callback = [AtGWindowFinder+EnumWindowsProc]{
         param([IntPtr]$hWnd, [IntPtr]$lParam)
-
-        if (![AtGWindowFinder]::IsWindowVisible($hWnd)) {
-            return $true
-        }
 
         $processId = 0
         [AtGWindowFinder]::GetWindowThreadProcessId($hWnd, [ref]$processId) | Out-Null
@@ -142,8 +151,18 @@ function Get-AtGWindow {
         }
     }
 
-    $window = $candidates |
+    $eligible = @($candidates.ToArray())
+    if (!$AllowCrashDialog) {
+        $eligible = @($eligible | Where-Object { !$_.IsCrashDialog })
+    }
+
+    if ($eligible.Count -eq 0 -and @($candidates | Where-Object { $_.IsCrashDialog }).Count -gt 0) {
+        throw "At the Gates crash dialog is visible. Handle it explicitly before sending normal game input."
+    }
+
+    $window = $eligible |
         Sort-Object `
+            @{ Expression = { if ($_.IsVisible) { 0 } else { 1 } } }, `
             @{ Expression = { if ($_.Title -like "*At the Gates*") { 0 } else { 1 } } }, `
             @{ Expression = { $_.Area }; Descending = $true } |
         Select-Object -First 1

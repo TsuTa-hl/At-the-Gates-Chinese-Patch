@@ -44,20 +44,66 @@ namespace AtG.RuntimeText
             if (!ContainsCjkTextElement(text, starts)) return text.Length;
             if (measure(text) <= availableWidth) return text.Length;
 
-            var fitting = -1;
-            var firstAllowedAfterFit = -1;
+            var boundaries = new System.Collections.Generic.List<int>();
             for (var element = 1; element < starts.Length; element++)
             {
                 var boundary = starts[element];
                 if (!CanBreakBetweenElements(text, starts[element - 1], boundary, starts,
                     element)) continue;
-                if (measure(text.Substring(0, boundary)) <= availableWidth)
-                    fitting = boundary;
-                else if (firstAllowedAfterFit < 0)
-                    firstAllowedAfterFit = boundary;
+                boundaries.Add(boundary);
             }
-            if (fitting > 0) return fitting;
-            if (firstAllowedAfterFit > 0) return firstAllowedAfterFit;
+            if (boundaries.Count == 0) return text.Length;
+
+            var low = 0;
+            var high = boundaries.Count - 1;
+            var fittingIndex = -1;
+            while (low <= high)
+            {
+                var middle = low + (high - low) / 2;
+                var boundary = boundaries[middle];
+                if (measure(text.Substring(0, boundary)) <= availableWidth)
+                {
+                    fittingIndex = middle;
+                    low = middle + 1;
+                }
+                else high = middle - 1;
+            }
+            return fittingIndex >= 0 ? boundaries[fittingIndex] : boundaries[0];
+        }
+
+        public static int FindLongestFittingBreak(string text, int start,
+            float availableWidth, float[] prefixWidths)
+        {
+            if (text == null) throw new ArgumentNullException("text");
+            if (prefixWidths == null) throw new ArgumentNullException("prefixWidths");
+            if (start < 0 || start > text.Length) throw new ArgumentOutOfRangeException("start");
+            if (prefixWidths.Length != text.Length + 1)
+                throw new ArgumentException("Prefix widths must contain one value per UTF-16 boundary.",
+                    "prefixWidths");
+            if (start == text.Length) return text.Length;
+            if (prefixWidths[text.Length] - prefixWidths[start] <= availableWidth)
+                return text.Length;
+
+            var starts = StringInfo.ParseCombiningCharacters(text);
+            var firstElement = Array.BinarySearch(starts, start);
+            if (firstElement < 0) firstElement = ~firstElement;
+            var firstAllowed = -1;
+            var fitting = -1;
+            for (var element = Math.Max(1, firstElement + 1);
+                 element < starts.Length;
+                 element++)
+            {
+                var boundary = starts[element];
+                if (boundary <= start) continue;
+                if (!CanBreakBetweenElements(text, starts[element - 1], boundary, starts,
+                        element)) continue;
+                if (firstAllowed < 0) firstAllowed = boundary;
+                if (prefixWidths[boundary] - prefixWidths[start] <= availableWidth)
+                    fitting = boundary;
+                else break;
+            }
+            if (fitting > start) return fitting;
+            if (firstAllowed > start) return firstAllowed;
             return text.Length;
         }
 
@@ -84,14 +130,13 @@ namespace AtG.RuntimeText
         private static bool CanBreakBetweenElements(string text, int previousStart,
             int nextStart, int[] starts, int nextElementIndex)
         {
-            var previousLength = nextStart - previousStart;
+            if (nextStart - previousStart == 1 && text[previousStart] == '\u00A0')
+                return false;
             var nextLength = nextElementIndex + 1 < starts.Length
                 ? starts[nextElementIndex + 1] - nextStart
                 : text.Length - nextStart;
-            var previous = text.Substring(previousStart, previousLength);
-            var next = text.Substring(nextStart, nextLength);
-            if (previous == "\u00A0" || next == "\u00A0") return false;
-            return CanBreakBetween(previous[previous.Length - 1], next[0]);
+            if (nextLength == 1 && text[nextStart] == '\u00A0') return false;
+            return CanBreakBetween(text[nextStart - 1], text[nextStart]);
         }
     }
 }

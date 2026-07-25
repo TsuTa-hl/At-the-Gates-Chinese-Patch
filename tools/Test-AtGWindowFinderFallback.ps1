@@ -21,4 +21,12 @@ if ($source -notmatch "ProcessHandleFallback") {
     throw "Get-AtGWindow.ps1 fallback candidates must identify themselves as ProcessHandleFallback for diagnostics."
 }
 
+if ($source -notmatch "AllowCrashDialog" -or $source -notmatch "IsCrashDialog") {
+    throw "Get-AtGWindow.ps1 must reject a visible crash dialog by default and support an explicit crash-dialog path."
+}
+
+if ($source -match '\$eligible\s*=\s*@\(\$candidates\)') {
+    throw "Get-AtGWindow.ps1 must expand its generic candidate list explicitly for Windows PowerShell 5.1."
+}
+
 "AtG window finder fallback validation passed."
