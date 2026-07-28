@@ -20,7 +20,7 @@
     <tech>
       <ID>TECH_WRAPPER_HONOR</ID>
       <name>TEXT.Name.Discipline.Honor</name>
-      <description>[学会|LEARN]此[技术|TECH]后，可以在[HONOR]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[HONOR]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。</description>
+      <description>[学会|LEARN]此[技术|TECH]后，可以在[HONOR]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[HONOR]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。</description>
       <fontIcon>55</fontIcon>
       <iconPath>Images/Interface/Icons/Professions/_Honor</iconPath>
       <!-- Tree Placement -->
@@ -46,7 +46,7 @@
     <tech>
       <ID>TECH_WRAPPER_AGRICULTURE</ID>
       <name>TEXT.Name.Discipline.Agriculture</name>
-      <description>[学会|LEARN]此[技术|TECH]后，可以在[AGRICULTURE]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[AGRICULTURE]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。</description>
+      <description>[学会|LEARN]此[技术|TECH]后，可以在[AGRICULTURE]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[AGRICULTURE]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。</description>
       <fontIcon>56</fontIcon>
       <iconPath>Images/Interface/Icons/Professions/_Agriculture</iconPath>
       <!-- Tree Placement -->
@@ -72,7 +72,7 @@
     <tech>
       <ID>TECH_WRAPPER_LIVESTOCK</ID>
       <name>TEXT.Name.Discipline.Livestock</name>
-      <description>[学会|LEARN]此[技术|TECH]后，可以在[LIVESTOCK]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[LIVESTOCK]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。</description>
+      <description>[学会|LEARN]此[技术|TECH]后，可以在[LIVESTOCK]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[LIVESTOCK]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。</description>
       <fontIcon>57</fontIcon>
       <iconPath>Images/Interface/Icons/Professions/_Livestock</iconPath>
       <!-- Tree Placement -->
@@ -98,7 +98,7 @@
     <tech>
       <ID>TECH_WRAPPER_METALWORKING</ID>
       <name>TEXT.Name.Discipline.Metalworking</name>
-      <description>[学会|LEARN]此[技术|TECH]后，可以在[METALWORKING]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[METALWORKING]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。</description>
+      <description>[学会|LEARN]此[技术|TECH]后，可以在[METALWORKING]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[METALWORKING]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。</description>
       <fontIcon>58</fontIcon>
       <iconPath>Images/Interface/Icons/Professions/_Metalworking</iconPath>
       <!-- Tree Placement -->
@@ -124,7 +124,7 @@
     <tech>
       <ID>TECH_WRAPPER_CRAFTING</ID>
       <name>TEXT.Name.Discipline.Crafting</name>
-      <description>[学会|LEARN]此[技术|TECH]后，可以在[CRAFTING]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[CRAFTING]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。</description>
+      <description>[学会|LEARN]此[技术|TECH]后，可以在[CRAFTING]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[CRAFTING]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。</description>
       <fontIcon>59</fontIcon>
       <iconPath>Images/Interface/Icons/Professions/_Crafting</iconPath>
       <!-- Tree Placement -->
@@ -150,7 +150,7 @@
     <tech>
       <ID>TECH_WRAPPER_DISCOVERY</ID>
       <name>TEXT.Name.Discipline.Discovery</name>
-      <description>[学会|LEARN]此[技术|TECH]后，可以在[DISCOVERY]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[DISCOVERY]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。</description>
+      <description>[学会|LEARN]此[技术|TECH]后，可以在[DISCOVERY]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[DISCOVERY]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。</description>
       <fontIcon>60</fontIcon>
       <iconPath>Images/Interface/Icons/Professions/_Discovery</iconPath>
       <!-- Tree Placement -->
@@ -195,12 +195,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_WEAPONS</resourceID>
           <cost>5</cost>
-          <fromDescription>[HUNTER] [MEAT] Upgrade</fromDescription>
+          <fromDescription>[HUNTER] [MEAT] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>2</num>
             <resourceID>RESOURCE_MEAT</resourceID>
-            <fromDescription>[HUNTER] [MEAT] Upgrade</fromDescription>
+            <fromDescription>[HUNTER] [MEAT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -221,11 +221,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_WEAPONS</resourceID>
           <cost>5</cost>
-          <fromDescription>[HUNTER] [Power|POWER] Upgrade</fromDescription>
+          <fromDescription>[HUNTER] [Power|POWER] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>2</num>
-            <fromDescription>[HUNTER] [Power|POWER] Upgrade</fromDescription>
+            <fromDescription>[HUNTER] [Power|POWER] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -252,11 +252,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_WEAPONS</resourceID>
           <cost>10</cost>
-          <fromDescription>[ARCHER] [WEAPONS] Upgrade</fromDescription>
+          <fromDescription>[ARCHER] [WEAPONS] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>2</num>
-            <fromDescription>[ARCHER] [WEAPONS] Upgrade</fromDescription>
+            <fromDescription>[ARCHER] [WEAPONS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -276,11 +276,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_ARMOR</resourceID>
           <cost>5</cost>
-          <fromDescription>[ARCHER] [ARMOR] Upgrade</fromDescription>
+          <fromDescription>[ARCHER] [ARMOR] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>4</num>
-            <fromDescription>[ARCHER] [ARMOR] Upgrade</fromDescription>
+            <fromDescription>[ARCHER] [ARMOR] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -304,12 +304,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TREASURE</resourceID>
           <cost>120</cost>
-          <fromDescription>[FEAST-MASTER] [TREASURE] Upgrade</fromDescription>
+          <fromDescription>[FEAST-MASTER] [TREASURE] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>7</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[FEAST-MASTER] [TREASURE] Upgrade</fromDescription>
+            <fromDescription>[FEAST-MASTER] [TREASURE] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -329,12 +329,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_ALCOHOL</resourceID>
           <cost>10</cost>
-          <fromDescription>[FEAST-MASTER] [ALCOHOL] Upgrade</fromDescription>
+          <fromDescription>[FEAST-MASTER] [ALCOHOL] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>7</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[FEAST-MASTER] [ALCOHOL] Upgrade</fromDescription>
+            <fromDescription>[FEAST-MASTER] [ALCOHOL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -363,13 +363,13 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TREASURE</resourceID>
           <cost>20</cost>
-          <fromDescription>[HUNTSMAN] [TREASURE] Upgrade</fromDescription>
+          <fromDescription>[HUNTSMAN] [TREASURE] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <unitID>UNIT_HUNTER</unitID>
             <resourceID>RESOURCE_MEAT</resourceID>
-            <fromDescription>[HUNTSMAN] [TREASURE] Upgrade</fromDescription>
+            <fromDescription>[HUNTSMAN] [TREASURE] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -389,13 +389,13 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_ALCOHOL</resourceID>
           <cost>5</cost>
-          <fromDescription>[HUNTSMAN] [ALCOHOL] Upgrade</fromDescription>
+          <fromDescription>[HUNTSMAN] [ALCOHOL] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <unitID>UNIT_HUNTER</unitID>
             <resourceID>RESOURCE_MEAT</resourceID>
-            <fromDescription>[HUNTSMAN] [ALCOHOL] Upgrade</fromDescription>
+            <fromDescription>[HUNTSMAN] [ALCOHOL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -419,7 +419,7 @@
         <property>
           <propertyID>MORALE</propertyID>
           <percent>25</percent>
-          <fromDescription>[Learned|LEARN] 'Militia Training'</fromDescription>
+          <fromDescription>已[学会|LEARN]“民兵训练”</fromDescription>
         </property>
       </givePropertyToUnits>
     </tech>
@@ -445,11 +445,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_WEAPONS</resourceID>
           <cost>30</cost>
-          <fromDescription>[SPEARMAN] [WEAPONS] Upgrade</fromDescription>
+          <fromDescription>[SPEARMAN] [WEAPONS] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>5</num>
-            <fromDescription>[SPEARMAN] [WEAPONS] Upgrade</fromDescription>
+            <fromDescription>[SPEARMAN] [WEAPONS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -469,11 +469,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_ARMOR</resourceID>
           <cost>20</cost>
-          <fromDescription>[SPEARMAN] [ARMOR] Upgrade</fromDescription>
+          <fromDescription>[SPEARMAN] [ARMOR] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>10</num>
-            <fromDescription>[SPEARMAN] [ARMOR] Upgrade</fromDescription>
+            <fromDescription>[SPEARMAN] [ARMOR] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -497,11 +497,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_WEAPONS</resourceID>
           <cost>30</cost>
-          <fromDescription>[LIGHT-CAVALRY] [WEAPONS] Upgrade</fromDescription>
+          <fromDescription>[LIGHT-CAVALRY] [WEAPONS] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>5</num>
-            <fromDescription>[LIGHT-CAVALRY] [WEAPONS] Upgrade</fromDescription>
+            <fromDescription>[LIGHT-CAVALRY] [WEAPONS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -521,11 +521,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_ARMOR</resourceID>
           <cost>20</cost>
-          <fromDescription>[LIGHT-CAVALRY] [ARMOR] Upgrade</fromDescription>
+          <fromDescription>[LIGHT-CAVALRY] [ARMOR] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>10</num>
-            <fromDescription>[LIGHT-CAVALRY] [ARMOR] Upgrade</fromDescription>
+            <fromDescription>[LIGHT-CAVALRY] [ARMOR] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -549,12 +549,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_WEAPONS</resourceID>
           <cost>20</cost>
-          <fromDescription>[HONOR-GUARD] [WEAPONS] Upgrade</fromDescription>
+          <fromDescription>[HONOR-GUARD] [WEAPONS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>15</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[HONOR-GUARD] [WEAPONS] Upgrade</fromDescription>
+            <fromDescription>[HONOR-GUARD] [WEAPONS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -574,12 +574,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_OIL</resourceID>
           <cost>20</cost>
-          <fromDescription>[HONOR-GUARD] [OIL] Upgrade</fromDescription>
+          <fromDescription>[HONOR-GUARD] [OIL] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>15</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[HONOR-GUARD] [OIL] Upgrade</fromDescription>
+            <fromDescription>[HONOR-GUARD] [OIL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -603,12 +603,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_OIL</resourceID>
           <cost>20</cost>
-          <fromDescription>[PRIEST] [OIL] Upgrade</fromDescription>
+          <fromDescription>[PRIEST] [OIL] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>10</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[PRIEST] [OIL] Upgrade</fromDescription>
+            <fromDescription>[PRIEST] [OIL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -628,12 +628,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_CLOTH</resourceID>
           <cost>20</cost>
-          <fromDescription>[PRIEST] [CLOTH] Upgrade</fromDescription>
+          <fromDescription>[PRIEST] [CLOTH] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>10</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[PRIEST] [CLOTH] Upgrade</fromDescription>
+            <fromDescription>[PRIEST] [CLOTH] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -657,12 +657,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_WEAPONS</resourceID>
           <cost>30</cost>
-          <fromDescription>[GUILDMASTER] [WEAPONS] Upgrade</fromDescription>
+          <fromDescription>[GUILDMASTER] [WEAPONS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_TREASURE</resourceID>
-            <fromDescription>[GUILDMASTER] [WEAPONS] Upgrade</fromDescription>
+            <fromDescription>[GUILDMASTER] [WEAPONS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -682,12 +682,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_PARCHMENT</resourceID>
           <cost>40</cost>
-          <fromDescription>[GUILDMASTER] [PARCHMENT] Upgrade</fromDescription>
+          <fromDescription>[GUILDMASTER] [PARCHMENT] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION</propertyID>
             <num>10</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[GUILDMASTER] [PARCHMENT] Upgrade</fromDescription>
+            <fromDescription>[GUILDMASTER] [PARCHMENT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -710,7 +710,7 @@
         <property>
           <propertyID>Ennoble_Cost</propertyID>
           <percent>-25</percent>
-          <fromDescription>[Learned|LEARN] 'Ceremonial Rites'</fromDescription>
+          <fromDescription>已[学会|LEARN]“仪式礼制”</fromDescription>
         </property>
       </givePropertyToUnits>
     </tech>
@@ -736,11 +736,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_WEAPONS</resourceID>
           <cost>15</cost>
-          <fromDescription>[HEAVY-INFANTRY] [STEEL-WEAPONS] Upgrade</fromDescription>
+          <fromDescription>[HEAVY-INFANTRY] [STEEL-WEAPONS] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>15</num>
-            <fromDescription>[HEAVY-INFANTRY] [STEEL-WEAPONS] Upgrade</fromDescription>
+            <fromDescription>[HEAVY-INFANTRY] [STEEL-WEAPONS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -760,11 +760,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_ARMOR</resourceID>
           <cost>10</cost>
-          <fromDescription>[HEAVY-INFANTRY] [STEEL-ARMOR] Upgrade</fromDescription>
+          <fromDescription>[HEAVY-INFANTRY] [STEEL-ARMOR] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>30</num>
-            <fromDescription>[HEAVY-INFANTRY] [STEEL-ARMOR] Upgrade</fromDescription>
+            <fromDescription>[HEAVY-INFANTRY] [STEEL-ARMOR] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -788,14 +788,14 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_PARCHMENT</resourceID>
           <cost>20</cost>
-          <fromDescription>[TARIFF-COLLECTOR] [PARCHMENT] Upgrade</fromDescription>
+          <fromDescription>[TARIFF-COLLECTOR] [PARCHMENT] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <structureID>STRUCTURE_TRADING_POST_1</structureID>
             <structureID>STRUCTURE_TRADING_POST_2</structureID>
             <resourceID>RESOURCE_TREASURE</resourceID>
-            <fromDescription>[TARIFF-COLLECTOR] [PARCHMENT] Upgrade</fromDescription>
+            <fromDescription>[TARIFF-COLLECTOR] [PARCHMENT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -815,14 +815,14 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>20</cost>
-          <fromDescription>[TARIFF-COLLECTOR] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[TARIFF-COLLECTOR] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <structureID>STRUCTURE_TRADING_POST_1</structureID>
             <structureID>STRUCTURE_TRADING_POST_2</structureID>
             <resourceID>RESOURCE_TREASURE</resourceID>
-            <fromDescription>[TARIFF-COLLECTOR] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[TARIFF-COLLECTOR] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -846,12 +846,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TREASURE</resourceID>
           <cost>150</cost>
-          <fromDescription>[MASTER-OF-CEREMONIES] [TREASURE] Upgrade</fromDescription>
+          <fromDescription>[MASTER-OF-CEREMONIES] [TREASURE] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>40</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[MASTER-OF-CEREMONIES] [TREASURE] Upgrade</fromDescription>
+            <fromDescription>[MASTER-OF-CEREMONIES] [TREASURE] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -871,12 +871,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_FINE_CLOTH</resourceID>
           <cost>40</cost>
-          <fromDescription>[MASTER-OF-CEREMONIES] [FINE-CLOTH] Upgrade</fromDescription>
+          <fromDescription>[MASTER-OF-CEREMONIES] [FINE-CLOTH] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>20</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[MASTER-OF-CEREMONIES] [FINE-CLOTH] Upgrade</fromDescription>
+            <fromDescription>[MASTER-OF-CEREMONIES] [FINE-CLOTH] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -903,11 +903,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_WEAPONS</resourceID>
           <cost>30</cost>
-          <fromDescription>[HEAVY-CAVALRY] [STEEL-WEAPONS] Upgrade</fromDescription>
+          <fromDescription>[HEAVY-CAVALRY] [STEEL-WEAPONS] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>30</num>
-            <fromDescription>[HEAVY-CAVALRY] [STEEL-WEAPONS] Upgrade</fromDescription>
+            <fromDescription>[HEAVY-CAVALRY] [STEEL-WEAPONS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -927,11 +927,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_ARMOR</resourceID>
           <cost>30</cost>
-          <fromDescription>[HEAVY-CAVALRY] [STEEL-ARMOR] Upgrade</fromDescription>
+          <fromDescription>[HEAVY-CAVALRY] [STEEL-ARMOR] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>60</num>
-            <fromDescription>[HEAVY-CAVALRY] [STEEL-ARMOR] Upgrade</fromDescription>
+            <fromDescription>[HEAVY-CAVALRY] [STEEL-ARMOR] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -955,12 +955,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TREASURE</resourceID>
           <cost>250</cost>
-          <fromDescription>[CLERIC] [TREASURE] Upgrade</fromDescription>
+          <fromDescription>[CLERIC] [TREASURE] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>30</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[CLERIC] [TREASURE] Upgrade</fromDescription>
+            <fromDescription>[CLERIC] [TREASURE] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -980,12 +980,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_FINE_CLOTH</resourceID>
           <cost>40</cost>
-          <fromDescription>[CLERIC] [FINE-CLOTH] Upgrade</fromDescription>
+          <fromDescription>[CLERIC] [FINE-CLOTH] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>30</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[CLERIC] [FINE-CLOTH] Upgrade</fromDescription>
+            <fromDescription>[CLERIC] [FINE-CLOTH] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1009,11 +1009,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[QUARTERMASTER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[QUARTERMASTER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>15</num>
-            <fromDescription>[QUARTERMASTER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[QUARTERMASTER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1033,11 +1033,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[QUARTERMASTER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[QUARTERMASTER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>15</num>
-            <fromDescription>[QUARTERMASTER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[QUARTERMASTER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1069,7 +1069,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[GATHERER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[GATHERER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
@@ -1077,7 +1077,7 @@
             <resourceID>RESOURCE_GRAPES</resourceID>
             <resourceID>RESOURCE_OLIVES</resourceID>
             <resourceID>RESOURCE_HONEY</resourceID>
-            <fromDescription>[GATHERER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[GATHERER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1098,7 +1098,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_CLOTH</resourceID>
           <cost>5</cost>
-          <fromDescription>[GATHERER] [CLOTH] Upgrade</fromDescription>
+          <fromDescription>[GATHERER] [CLOTH] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
@@ -1106,7 +1106,7 @@
             <resourceID>RESOURCE_GRAPES</resourceID>
             <resourceID>RESOURCE_OLIVES</resourceID>
             <resourceID>RESOURCE_HONEY</resourceID>
-            <fromDescription>[GATHERER] [CLOTH] Upgrade</fromDescription>
+            <fromDescription>[GATHERER] [CLOTH] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1131,14 +1131,14 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[REAPER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[REAPER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_WHEAT</resourceID>
             <resourceID>RESOURCE_BARLEY</resourceID>
             <resourceID>RESOURCE_FLAX</resourceID>
-            <fromDescription>[REAPER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[REAPER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1159,14 +1159,14 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_CLOTH</resourceID>
           <cost>5</cost>
-          <fromDescription>[REAPER] [CLOTH] Upgrade</fromDescription>
+          <fromDescription>[REAPER] [CLOTH] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_WHEAT</resourceID>
             <resourceID>RESOURCE_BARLEY</resourceID>
             <resourceID>RESOURCE_FLAX</resourceID>
-            <fromDescription>[REAPER] [CLOTH] Upgrade</fromDescription>
+            <fromDescription>[REAPER] [CLOTH] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1193,7 +1193,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[FARMER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[FARMER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>2</num>
@@ -1204,7 +1204,7 @@
             <resourceID>RESOURCE_GRAPES</resourceID>
             <resourceID>RESOURCE_OLIVES</resourceID>
             <resourceID>RESOURCE_HONEY</resourceID>
-            <fromDescription>[FARMER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[FARMER] [TOOLS] 升级</fromDescription>
             <usage>ForStructure</usage>
           </property>
         </property>
@@ -1225,7 +1225,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>5</cost>
-          <fromDescription>[FARMER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[FARMER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>2</num>
@@ -1236,7 +1236,7 @@
             <resourceID>RESOURCE_GRAPES</resourceID>
             <resourceID>RESOURCE_OLIVES</resourceID>
             <resourceID>RESOURCE_HONEY</resourceID>
-            <fromDescription>[FARMER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[FARMER] [BOARDS] 升级</fromDescription>
             <usage>ForStructure</usage>
           </property>
         </property>
@@ -1261,12 +1261,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[BEEKEEPER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BEEKEEPER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_HONEY</resourceID>
-            <fromDescription>[BEEKEEPER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BEEKEEPER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1286,12 +1286,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_CLOTH</resourceID>
           <cost>20</cost>
-          <fromDescription>[BEEKEEPER] [CLOTH] Upgrade</fromDescription>
+          <fromDescription>[BEEKEEPER] [CLOTH] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_HONEY</resourceID>
-            <fromDescription>[BEEKEEPER] [CLOTH] Upgrade</fromDescription>
+            <fromDescription>[BEEKEEPER] [CLOTH] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1315,12 +1315,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[WINEMAKER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[WINEMAKER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[WINEMAKER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[WINEMAKER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1340,12 +1340,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>5</cost>
-          <fromDescription>[WINEMAKER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[WINEMAKER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[WINEMAKER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[WINEMAKER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1369,13 +1369,13 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[BREAD-MAKER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BREAD-MAKER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_WHEAT</resourceID>
             <resourceID>RESOURCE_BARLEY</resourceID>
-            <fromDescription>[BREAD-MAKER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BREAD-MAKER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1395,13 +1395,13 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>5</cost>
-          <fromDescription>[BREAD-MAKER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[BREAD-MAKER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_WHEAT</resourceID>
             <resourceID>RESOURCE_BARLEY</resourceID>
-            <fromDescription>[BREAD-MAKER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[BREAD-MAKER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1425,13 +1425,13 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[HARVESTER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[HARVESTER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <unitID>UNIT_GATHERER</unitID>
             <unitID>UNIT_REAPER</unitID>
-            <fromDescription>[HARVESTER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[HARVESTER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1451,13 +1451,13 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_CLOTH</resourceID>
           <cost>10</cost>
-          <fromDescription>[HARVESTER] [CLOTH] Upgrade</fromDescription>
+          <fromDescription>[HARVESTER] [CLOTH] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <unitID>UNIT_GATHERER</unitID>
             <unitID>UNIT_REAPER</unitID>
-            <fromDescription>[HARVESTER] [CLOTH] Upgrade</fromDescription>
+            <fromDescription>[HARVESTER] [CLOTH] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1484,12 +1484,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[OIL-PRESSER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[OIL-PRESSER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>2</num>
             <resourceID>RESOURCE_OIL</resourceID>
-            <fromDescription>[OIL-PRESSER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[OIL-PRESSER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1509,12 +1509,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>10</cost>
-          <fromDescription>[OIL-PRESSER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[OIL-PRESSER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>2</num>
             <resourceID>RESOURCE_OIL</resourceID>
-            <fromDescription>[OIL-PRESSER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[OIL-PRESSER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1538,12 +1538,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[ALE-MAKER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[ALE-MAKER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[ALE-MAKER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[ALE-MAKER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1563,12 +1563,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>5</cost>
-          <fromDescription>[ALE-MAKER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[ALE-MAKER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[ALE-MAKER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[ALE-MAKER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1592,12 +1592,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[BRINER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BRINER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_FOOD</resourceID>
-            <fromDescription>[BRINER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BRINER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1617,11 +1617,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[BRINER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BRINER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
-            <fromDescription>[BRINER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BRINER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1645,30 +1645,30 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>10</cost>
-          <fromDescription>[GARDENER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[GARDENER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_FRUIT</resourceID>
-            <fromDescription>[GARDENER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[GARDENER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_HONEY</resourceID>
-            <fromDescription>[GARDENER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[GARDENER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_GRAPES</resourceID>
-            <fromDescription>[GARDENER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[GARDENER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_OLIVES</resourceID>
-            <fromDescription>[GARDENER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[GARDENER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1688,30 +1688,30 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[GARDENER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[GARDENER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_FRUIT</resourceID>
-            <fromDescription>[GARDENER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[GARDENER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_HONEY</resourceID>
-            <fromDescription>[GARDENER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[GARDENER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_GRAPES</resourceID>
-            <fromDescription>[GARDENER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[GARDENER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_OLIVES</resourceID>
-            <fromDescription>[GARDENER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[GARDENER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1735,14 +1735,14 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>20</cost>
-          <fromDescription>[TILLER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[TILLER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <structureID>STRUCTURE_WHEAT_FARM_1</structureID>
             <structureID>STRUCTURE_WHEAT_FARM_2</structureID>
             <resourceID>RESOURCE_WHEAT</resourceID>
-            <fromDescription>[TILLER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -1750,7 +1750,7 @@
             <structureID>STRUCTURE_BARLEY_FARM_1</structureID>
             <structureID>STRUCTURE_BARLEY_FARM_2</structureID>
             <resourceID>RESOURCE_BARLEY</resourceID>
-            <fromDescription>[TILLER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -1758,7 +1758,7 @@
             <structureID>STRUCTURE_FRUIT_FARM_1</structureID>
             <structureID>STRUCTURE_FRUIT_FARM_2</structureID>
             <resourceID>RESOURCE_FRUIT</resourceID>
-            <fromDescription>[TILLER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -1766,7 +1766,7 @@
             <structureID>STRUCTURE_VINEYARD_1</structureID>
             <structureID>STRUCTURE_VINEYARD_2</structureID>
             <resourceID>RESOURCE_GRAPES</resourceID>
-            <fromDescription>[TILLER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -1774,7 +1774,7 @@
             <structureID>STRUCTURE_OLIVE_FARM_1</structureID>
             <structureID>STRUCTURE_OLIVE_FARM_2</structureID>
             <resourceID>RESOURCE_OLIVES</resourceID>
-            <fromDescription>[TILLER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -1782,7 +1782,7 @@
             <structureID>STRUCTURE_FLAX_FARM_1</structureID>
             <structureID>STRUCTURE_FLAX_FARM_2</structureID>
             <resourceID>RESOURCE_FLAX</resourceID>
-            <fromDescription>[TILLER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1802,14 +1802,14 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[TILLER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[TILLER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <structureID>STRUCTURE_WHEAT_FARM_1</structureID>
             <structureID>STRUCTURE_WHEAT_FARM_2</structureID>
             <resourceID>RESOURCE_WHEAT</resourceID>
-            <fromDescription>[TILLER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -1817,7 +1817,7 @@
             <structureID>STRUCTURE_BARLEY_FARM_1</structureID>
             <structureID>STRUCTURE_BARLEY_FARM_2</structureID>
             <resourceID>RESOURCE_BARLEY</resourceID>
-            <fromDescription>[TILLER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -1825,7 +1825,7 @@
             <structureID>STRUCTURE_FRUIT_FARM_1</structureID>
             <structureID>STRUCTURE_FRUIT_FARM_2</structureID>
             <resourceID>RESOURCE_FRUIT</resourceID>
-            <fromDescription>[TILLER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -1833,7 +1833,7 @@
             <structureID>STRUCTURE_VINEYARD_1</structureID>
             <structureID>STRUCTURE_VINEYARD_2</structureID>
             <resourceID>RESOURCE_GRAPES</resourceID>
-            <fromDescription>[TILLER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -1841,7 +1841,7 @@
             <structureID>STRUCTURE_OLIVE_FARM_1</structureID>
             <structureID>STRUCTURE_OLIVE_FARM_2</structureID>
             <resourceID>RESOURCE_OLIVES</resourceID>
-            <fromDescription>[TILLER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -1849,7 +1849,7 @@
             <structureID>STRUCTURE_FLAX_FARM_1</structureID>
             <structureID>STRUCTURE_FLAX_FARM_2</structureID>
             <resourceID>RESOURCE_FLAX</resourceID>
-            <fromDescription>[TILLER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[TILLER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1876,12 +1876,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[BREWER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BREWER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>3</num>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[BREWER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BREWER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1901,12 +1901,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>30</cost>
-          <fromDescription>[BREWER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[BREWER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>3</num>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[BREWER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[BREWER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1930,12 +1930,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[WINE-VINTNER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[WINE-VINTNER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>3</num>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[WINE-VINTNER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[WINE-VINTNER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1955,12 +1955,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>30</cost>
-          <fromDescription>[WINE-VINTNER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[WINE-VINTNER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>3</num>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[WINE-VINTNER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[WINE-VINTNER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -1984,13 +1984,13 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>30</cost>
-          <fromDescription>[BAKER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[BAKER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>100</percent>
             <resourceID>RESOURCE_WHEAT</resourceID>
             <resourceID>RESOURCE_BARLEY</resourceID>
-            <fromDescription>[BAKER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[BAKER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2010,13 +2010,13 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>30</cost>
-          <fromDescription>[BAKER] [STONE-BLOCKS] Upgrade</fromDescription>
+          <fromDescription>[BAKER] [STONE-BLOCKS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>100</percent>
             <resourceID>RESOURCE_WHEAT</resourceID>
             <resourceID>RESOURCE_BARLEY</resourceID>
-            <fromDescription>[BAKER] [STONE-BLOCKS] Upgrade</fromDescription>
+            <fromDescription>[BAKER] [STONE-BLOCKS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2043,12 +2043,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>30</cost>
-          <fromDescription>[OIL-CULTIVAR] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[OIL-CULTIVAR] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_OIL</resourceID>
-            <fromDescription>[OIL-CULTIVAR] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[OIL-CULTIVAR] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2068,12 +2068,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>50</cost>
-          <fromDescription>[OIL-CULTIVAR] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[OIL-CULTIVAR] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_OIL</resourceID>
-            <fromDescription>[OIL-CULTIVAR] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[OIL-CULTIVAR] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2097,12 +2097,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>40</cost>
-          <fromDescription>[PRESERVER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[PRESERVER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>50</num>
             <resourceID>RESOURCE_FOOD</resourceID>
-            <fromDescription>[PRESERVER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[PRESERVER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2122,12 +2122,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>60</cost>
-          <fromDescription>[PRESERVER] [STONE-BLOCKS] Upgrade</fromDescription>
+          <fromDescription>[PRESERVER] [STONE-BLOCKS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>50</num>
             <resourceID>RESOURCE_FOOD</resourceID>
-            <fromDescription>[PRESERVER] [STONE-BLOCKS] Upgrade</fromDescription>
+            <fromDescription>[PRESERVER] [STONE-BLOCKS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2158,11 +2158,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[TRAPPER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[TRAPPER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <percent>50</percent>
-            <fromDescription>[TRAPPER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[TRAPPER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2182,11 +2182,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TIMBER</resourceID>
           <cost>10</cost>
-          <fromDescription>[TRAPPER] [TIMBER] Upgrade</fromDescription>
+          <fromDescription>[TRAPPER] [TIMBER] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <percent>50</percent>
-            <fromDescription>[TRAPPER] [TIMBER] Upgrade</fromDescription>
+            <fromDescription>[TRAPPER] [TIMBER] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2262,12 +2262,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>15</cost>
-          <fromDescription>[MEAT-CUTTER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[MEAT-CUTTER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>10</num>
             <resourceID>RESOURCE_MEAT</resourceID>
-            <fromDescription>[MEAT-CUTTER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[MEAT-CUTTER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2287,12 +2287,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[MEAT-CUTTER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[MEAT-CUTTER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>10</num>
             <resourceID>RESOURCE_MEAT</resourceID>
-            <fromDescription>[MEAT-CUTTER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[MEAT-CUTTER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2316,12 +2316,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[FISHERMAN] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[FISHERMAN] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_FISH</resourceID>
-            <fromDescription>[FISHERMAN] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[FISHERMAN] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2341,12 +2341,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_CLOTH</resourceID>
           <cost>10</cost>
-          <fromDescription>[FISHERMAN] [CLOTH] Upgrade</fromDescription>
+          <fromDescription>[FISHERMAN] [CLOTH] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_FISH</resourceID>
-            <fromDescription>[FISHERMAN] [CLOTH] Upgrade</fromDescription>
+            <fromDescription>[FISHERMAN] [CLOTH] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2370,12 +2370,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[SLEDGE-DRIVER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[SLEDGE-DRIVER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_TIMBER</resourceID>
-            <fromDescription>[SLEDGE-DRIVER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[SLEDGE-DRIVER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2395,12 +2395,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>10</cost>
-          <fromDescription>[SLEDGE-DRIVER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[SLEDGE-DRIVER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_TIMBER</resourceID>
-            <fromDescription>[SLEDGE-DRIVER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[SLEDGE-DRIVER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2427,12 +2427,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[PARCHMENT-MAKER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[PARCHMENT-MAKER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>3</num>
             <resourceID>RESOURCE_PARCHMENT</resourceID>
-            <fromDescription>[PARCHMENT-MAKER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[PARCHMENT-MAKER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2452,12 +2452,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[PARCHMENT-MAKER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[PARCHMENT-MAKER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>3</num>
             <resourceID>RESOURCE_PARCHMENT</resourceID>
-            <fromDescription>[PARCHMENT-MAKER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[PARCHMENT-MAKER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2481,12 +2481,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[WOOL-COLLECTOR] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[WOOL-COLLECTOR] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_WOOL</resourceID>
-            <fromDescription>[WOOL-COLLECTOR] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[WOOL-COLLECTOR] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2506,12 +2506,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[WOOL-COLLECTOR] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[WOOL-COLLECTOR] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_WOOL</resourceID>
-            <fromDescription>[WOOL-COLLECTOR] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[WOOL-COLLECTOR] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2535,12 +2535,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[HORSE-TRAINER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[HORSE-TRAINER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_WARHORSES</resourceID>
-            <fromDescription>[HORSE-TRAINER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[HORSE-TRAINER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2560,12 +2560,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>10</cost>
-          <fromDescription>[HORSE-TRAINER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[HORSE-TRAINER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_WARHORSES</resourceID>
-            <fromDescription>[HORSE-TRAINER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[HORSE-TRAINER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2589,12 +2589,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>10</cost>
-          <fromDescription>[TRAWLER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[TRAWLER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_FISH</resourceID>
-            <fromDescription>[TRAWLER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[TRAWLER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2614,12 +2614,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[TRAWLER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[TRAWLER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_FISH</resourceID>
-            <fromDescription>[TRAWLER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[TRAWLER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2643,14 +2643,14 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>30</cost>
-          <fromDescription>[PLOUGHER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[PLOUGHER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <structureID>STRUCTURE_WHEAT_FARM_1</structureID>
             <structureID>STRUCTURE_WHEAT_FARM_2</structureID>
             <resourceID>RESOURCE_WHEAT</resourceID>
-            <fromDescription>[PLOUGHER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -2658,7 +2658,7 @@
             <structureID>STRUCTURE_BARLEY_FARM_1</structureID>
             <structureID>STRUCTURE_BARLEY_FARM_2</structureID>
             <resourceID>RESOURCE_BARLEY</resourceID>
-            <fromDescription>[PLOUGHER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -2666,7 +2666,7 @@
             <structureID>STRUCTURE_FRUIT_FARM_1</structureID>
             <structureID>STRUCTURE_FRUIT_FARM_2</structureID>
             <resourceID>RESOURCE_FRUIT</resourceID>
-            <fromDescription>[PLOUGHER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -2674,7 +2674,7 @@
             <structureID>STRUCTURE_VINEYARD_1</structureID>
             <structureID>STRUCTURE_VINEYARD_2</structureID>
             <resourceID>RESOURCE_GRAPES</resourceID>
-            <fromDescription>[PLOUGHER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -2682,7 +2682,7 @@
             <structureID>STRUCTURE_OLIVE_FARM_1</structureID>
             <structureID>STRUCTURE_OLIVE_FARM_2</structureID>
             <resourceID>RESOURCE_OLIVES</resourceID>
-            <fromDescription>[PLOUGHER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -2690,7 +2690,7 @@
             <structureID>STRUCTURE_FLAX_FARM_1</structureID>
             <structureID>STRUCTURE_FLAX_FARM_2</structureID>
             <resourceID>RESOURCE_FLAX</resourceID>
-            <fromDescription>[PLOUGHER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
         <!--
@@ -2722,14 +2722,14 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>20</cost>
-          <fromDescription>[PLOUGHER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[PLOUGHER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <structureID>STRUCTURE_WHEAT_FARM_1</structureID>
             <structureID>STRUCTURE_WHEAT_FARM_2</structureID>
             <resourceID>RESOURCE_WHEAT</resourceID>
-            <fromDescription>[PLOUGHER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -2737,7 +2737,7 @@
             <structureID>STRUCTURE_BARLEY_FARM_1</structureID>
             <structureID>STRUCTURE_BARLEY_FARM_2</structureID>
             <resourceID>RESOURCE_BARLEY</resourceID>
-            <fromDescription>[PLOUGHER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -2745,7 +2745,7 @@
             <structureID>STRUCTURE_FRUIT_FARM_1</structureID>
             <structureID>STRUCTURE_FRUIT_FARM_2</structureID>
             <resourceID>RESOURCE_FRUIT</resourceID>
-            <fromDescription>[PLOUGHER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -2753,7 +2753,7 @@
             <structureID>STRUCTURE_VINEYARD_1</structureID>
             <structureID>STRUCTURE_VINEYARD_2</structureID>
             <resourceID>RESOURCE_GRAPES</resourceID>
-            <fromDescription>[PLOUGHER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -2761,7 +2761,7 @@
             <structureID>STRUCTURE_OLIVE_FARM_1</structureID>
             <structureID>STRUCTURE_OLIVE_FARM_2</structureID>
             <resourceID>RESOURCE_OLIVES</resourceID>
-            <fromDescription>[PLOUGHER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
@@ -2769,7 +2769,7 @@
             <structureID>STRUCTURE_FLAX_FARM_1</structureID>
             <structureID>STRUCTURE_FLAX_FARM_2</structureID>
             <resourceID>RESOURCE_FLAX</resourceID>
-            <fromDescription>[PLOUGHER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[PLOUGHER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2865,12 +2865,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>100</cost>
-          <fromDescription>[BUTCHER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BUTCHER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>50</num>
             <resourceID>RESOURCE_MEAT</resourceID>
-            <fromDescription>[BUTCHER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BUTCHER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2890,12 +2890,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[BUTCHER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BUTCHER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>50</num>
             <resourceID>RESOURCE_MEAT</resourceID>
-            <fromDescription>[BUTCHER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BUTCHER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2919,12 +2919,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>100</cost>
-          <fromDescription>[MEAT-CURER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[MEAT-CURER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>150</percent>
             <resourceID>RESOURCE_MEAT</resourceID>
-            <fromDescription>[MEAT-CURER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[MEAT-CURER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2944,12 +2944,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[MEAT-CURER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[MEAT-CURER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>150</percent>
             <resourceID>RESOURCE_MEAT</resourceID>
-            <fromDescription>[MEAT-CURER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[MEAT-CURER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2973,12 +2973,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>80</cost>
-          <fromDescription>[CHEESEMAKER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[CHEESEMAKER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_CHEESE</resourceID>
-            <fromDescription>[CHEESEMAKER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[CHEESEMAKER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -2998,12 +2998,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>60</cost>
-          <fromDescription>[CHEESEMAKER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[CHEESEMAKER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_CHEESE</resourceID>
-            <fromDescription>[CHEESEMAKER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[CHEESEMAKER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3030,12 +3030,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>30</cost>
-          <fromDescription>[VELLUM-MAKER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[VELLUM-MAKER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>15</num>
             <resourceID>RESOURCE_PARCHMENT</resourceID>
-            <fromDescription>[VELLUM-MAKER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[VELLUM-MAKER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3055,12 +3055,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>100</cost>
-          <fromDescription>[VELLUM-MAKER] [BOARDS Upgrade</fromDescription>
+          <fromDescription>[VELLUM-MAKER] [BOARDS 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>15</num>
             <resourceID>RESOURCE_PARCHMENT</resourceID>
-            <fromDescription>[VELLUM-MAKER] [BOARDS Upgrade</fromDescription>
+            <fromDescription>[VELLUM-MAKER] [BOARDS 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3084,12 +3084,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>30</cost>
-          <fromDescription>[SHEARER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[SHEARER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>10</num>
             <resourceID>RESOURCE_WOOL</resourceID>
-            <fromDescription>[SHEARER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[SHEARER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3109,12 +3109,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>80</cost>
-          <fromDescription>[SHEARER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[SHEARER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>10</num>
             <resourceID>RESOURCE_WOOL</resourceID>
-            <fromDescription>[SHEARER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[SHEARER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3138,12 +3138,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[MEAT-SMOKER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[MEAT-SMOKER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>250</percent>
             <resourceID>RESOURCE_MEAT</resourceID>
-            <fromDescription>[MEAT-SMOKER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[MEAT-SMOKER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3163,12 +3163,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>50</cost>
-          <fromDescription>[MEAT-SMOKER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[MEAT-SMOKER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <percent>250</percent>
             <resourceID>RESOURCE_MEAT</resourceID>
-            <fromDescription>[MEAT-SMOKER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[MEAT-SMOKER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3192,12 +3192,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>30</cost>
-          <fromDescription>[FISHMONGER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[FISHMONGER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <percent>500</percent>
             <resourceID>RESOURCE_FISH</resourceID>
-            <fromDescription>[FISHMONGER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[FISHMONGER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3217,11 +3217,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>80</cost>
-          <fromDescription>[FISHMONGER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[FISHMONGER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <percent>500</percent>
-            <fromDescription>[FISHMONGER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[FISHMONGER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3253,7 +3253,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[DIGGER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[DIGGER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
@@ -3261,13 +3261,13 @@
             <resourceID>RESOURCE_STONE</resourceID>
             <resourceID>RESOURCE_SALT</resourceID>
             <resourceID>RESOURCE_COAL</resourceID>
-            <fromDescription>[DIGGER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[DIGGER] [TOOLS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_TREASURE</resourceID>
-            <fromDescription>[DIGGER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[DIGGER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3288,7 +3288,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>5</cost>
-          <fromDescription>[DIGGER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[DIGGER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
@@ -3296,13 +3296,13 @@
             <resourceID>RESOURCE_STONE</resourceID>
             <resourceID>RESOURCE_SALT</resourceID>
             <resourceID>RESOURCE_COAL</resourceID>
-            <fromDescription>[DIGGER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[DIGGER] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_TREASURE</resourceID>
-            <fromDescription>[DIGGER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[DIGGER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3329,7 +3329,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[MINER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[MINER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>2</num>
@@ -3337,14 +3337,14 @@
             <resourceID>RESOURCE_IRON</resourceID>
             <resourceID>RESOURCE_COAL</resourceID>
             <resourceID>RESOURCE_SALT</resourceID>
-            <fromDescription>[MINER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[MINER] [TOOLS] 升级</fromDescription>
             <usage>ForStructure</usage>
           </property>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>6</num>
             <resourceID>RESOURCE_TREASURE</resourceID>
-            <fromDescription>[MINER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[MINER] [TOOLS] 升级</fromDescription>
             <usage>ForStructure</usage>
           </property>
         </property>
@@ -3365,7 +3365,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>5</cost>
-          <fromDescription>[MINER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[MINER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>2</num>
@@ -3373,14 +3373,14 @@
             <resourceID>RESOURCE_IRON</resourceID>
             <resourceID>RESOURCE_COAL</resourceID>
             <resourceID>RESOURCE_SALT</resourceID>
-            <fromDescription>[MINER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[MINER] [BOARDS] 升级</fromDescription>
             <usage>ForStructure</usage>
           </property>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>6</num>
             <resourceID>RESOURCE_TREASURE</resourceID>
-            <fromDescription>[MINER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[MINER] [BOARDS] 升级</fromDescription>
             <usage>ForStructure</usage>
           </property>
         </property>
@@ -3405,12 +3405,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[WEAPONSMITH] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[WEAPONSMITH] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_WEAPONS</resourceID>
-            <fromDescription>[WEAPONSMITH] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[WEAPONSMITH] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3430,12 +3430,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>5</cost>
-          <fromDescription>[WEAPONSMITH] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[WEAPONSMITH] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_WEAPONS</resourceID>
-            <fromDescription>[WEAPONSMITH] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[WEAPONSMITH] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3459,12 +3459,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>5</cost>
-          <fromDescription>[BLACKSMITH] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[BLACKSMITH] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_TOOLS</resourceID>
-            <fromDescription>[BLACKSMITH] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[BLACKSMITH] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3484,12 +3484,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL</resourceID>
           <cost>5</cost>
-          <fromDescription>[BLACKSMITH] [STEEL] Upgrade</fromDescription>
+          <fromDescription>[BLACKSMITH] [STEEL] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_TOOLS</resourceID>
-            <fromDescription>[Upgrade|UPGRADE]</fromDescription>
+            <fromDescription>[升级|UPGRADE]</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3513,7 +3513,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[GLASSMAKER] [FOOD] Upgrade</fromDescription>
+          <fromDescription>[GLASSMAKER] [FOOD] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
@@ -3523,7 +3523,7 @@
             <resourceID>RESOURCE_OLIVES</resourceID>
             <resourceID>RESOURCE_GRAPES</resourceID>
             <resourceID>RESOURCE_HONEY</resourceID>
-            <fromDescription>[GLASSMAKER] [FOOD] Upgrade</fromDescription>
+            <fromDescription>[GLASSMAKER] [FOOD] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3543,12 +3543,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[GLASSMAKER] [ALCOHOL] Upgrade</fromDescription>
+          <fromDescription>[GLASSMAKER] [ALCOHOL] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[GLASSMAKER] [ALCOHOL] Upgrade</fromDescription>
+            <fromDescription>[GLASSMAKER] [ALCOHOL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3572,12 +3572,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>15</cost>
-          <fromDescription>[DREDGER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[DREDGER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <unitID>UNIT_DIGGER</unitID>
-            <fromDescription>[DREDGER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[DREDGER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3597,12 +3597,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>10</cost>
-          <fromDescription>[DREDGER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[DREDGER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <unitID>UNIT_DIGGER</unitID>
-            <fromDescription>[DREDGER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[DREDGER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3629,12 +3629,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>40</cost>
-          <fromDescription>[COAL-MAKER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[COAL-MAKER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>2</num>
             <resourceID>RESOURCE_COAL</resourceID>
-            <fromDescription>[COAL-MAKER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[COAL-MAKER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3654,12 +3654,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[COAL-MAKER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[COAL-MAKER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>2</num>
             <resourceID>RESOURCE_COAL</resourceID>
-            <fromDescription>[COAL-MAKER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[COAL-MAKER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3683,12 +3683,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>20</cost>
-          <fromDescription>[TOOLSMITH] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[TOOLSMITH] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_TOOLS</resourceID>
-            <fromDescription>[TOOLSMITH] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[TOOLSMITH] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3708,12 +3708,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[TOOLSMITH] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[TOOLSMITH] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_TOOLS</resourceID>
-            <fromDescription>[TOOLSMITH] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[TOOLSMITH] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3737,12 +3737,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>40</cost>
-          <fromDescription>[ARMORSMITH] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[ARMORSMITH] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_ARMOR</resourceID>
-            <fromDescription>[ARMORSMITH] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[ARMORSMITH] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3762,12 +3762,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[ARMORSMITH] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[ARMORSMITH] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_ARMOR</resourceID>
-            <fromDescription>[ARMORSMITH] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[ARMORSMITH] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3791,12 +3791,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>40</cost>
-          <fromDescription>[SMELTER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[SMELTER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>200</percent>
             <resourceID>RESOURCE_IRON</resourceID>
-            <fromDescription>[SMELTER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[SMELTER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3816,12 +3816,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>20</cost>
-          <fromDescription>[SMELTER] [STONE-BLOCKS] Upgrade</fromDescription>
+          <fromDescription>[SMELTER] [STONE-BLOCKS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>200</percent>
             <resourceID>RESOURCE_IRON</resourceID>
-            <fromDescription>[SMELTER] [STONE-BLOCKS] Upgrade</fromDescription>
+            <fromDescription>[SMELTER] [STONE-BLOCKS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3845,12 +3845,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>10</cost>
-          <fromDescription>[ANVIL-MAKER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[ANVIL-MAKER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>100</percent>
             <resourceID>RESOURCE_TOOLS</resourceID>
-            <fromDescription>[ANVIL-MAKER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[ANVIL-MAKER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3870,12 +3870,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>10</cost>
-          <fromDescription>[ANVIL-MAKER] [WEAPONS] Upgrade</fromDescription>
+          <fromDescription>[ANVIL-MAKER] [WEAPONS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>100</percent>
             <resourceID>RESOURCE_WEAPONS</resourceID>
-            <fromDescription>[ANVIL-MAKER] [WEAPONS] Upgrade</fromDescription>
+            <fromDescription>[ANVIL-MAKER] [WEAPONS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3956,12 +3956,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>30</cost>
-          <fromDescription>[STEELMAKER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[STEELMAKER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STEEL</resourceID>
-            <fromDescription>[Upgrade|UPGRADE]</fromDescription>
+            <fromDescription>[升级|UPGRADE]</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -3981,12 +3981,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>15</cost>
-          <fromDescription>[STEELMAKER] [STONE-BLOCKS] Upgrade</fromDescription>
+          <fromDescription>[STEELMAKER] [STONE-BLOCKS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STEEL</resourceID>
-            <fromDescription>[STEELMAKER] [STONE-BLOCKS] Upgrade</fromDescription>
+            <fromDescription>[STEELMAKER] [STONE-BLOCKS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4010,12 +4010,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>40</cost>
-          <fromDescription>[BLADESMITH] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BLADESMITH] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_WEAPONS</resourceID>
-            <fromDescription>[BLADESMITH] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BLADESMITH] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4035,12 +4035,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[BLADESMITH] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BLADESMITH] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_WEAPONS</resourceID>
-            <fromDescription>[BLADESMITH] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BLADESMITH] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4064,12 +4064,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>15</cost>
-          <fromDescription>[STEEL-WEAPONSMITH] [STONE-BLOCKS] Upgrade</fromDescription>
+          <fromDescription>[STEEL-WEAPONSMITH] [STONE-BLOCKS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STEEL_WEAPONS</resourceID>
-            <fromDescription>[STEEL-WEAPONSMITH] [STONE-BLOCKS] Upgrade</fromDescription>
+            <fromDescription>[STEEL-WEAPONSMITH] [STONE-BLOCKS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4089,12 +4089,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[STEEL-WEAPONSMITH] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[STEEL-WEAPONSMITH] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STEEL_WEAPONS</resourceID>
-            <fromDescription>[STEEL-WEAPONSMITH] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[STEEL-WEAPONSMITH] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4118,12 +4118,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>30</cost>
-          <fromDescription>[STEEL-TOOLSMITH] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[STEEL-TOOLSMITH] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
-            <fromDescription>[STEEL-TOOLSMITH] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[STEEL-TOOLSMITH] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4143,12 +4143,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>15</cost>
-          <fromDescription>[STEEL-TOOLSMITH] [STONE-BLOCKS] Upgrade</fromDescription>
+          <fromDescription>[STEEL-TOOLSMITH] [STONE-BLOCKS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
-            <fromDescription>[STEEL-TOOLSMITH] [STONE-BLOCKS] Upgrade</fromDescription>
+            <fromDescription>[STEEL-TOOLSMITH] [STONE-BLOCKS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4175,12 +4175,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>30</cost>
-          <fromDescription>[COLLIER] [STONE-BLOCKS] Upgrade</fromDescription>
+          <fromDescription>[COLLIER] [STONE-BLOCKS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_COAL</resourceID>
-            <fromDescription>[COLLIER] [STONE-BLOCKS] Upgrade</fromDescription>
+            <fromDescription>[COLLIER] [STONE-BLOCKS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4200,12 +4200,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[COLLIER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[COLLIER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_COAL</resourceID>
-            <fromDescription>[COLLIER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[COLLIER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4283,12 +4283,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[STEEL-ARMORSMITH] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[STEEL-ARMORSMITH] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STEEL_ARMOR</resourceID>
-            <fromDescription>[STEEL-ARMORSMITH] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[STEEL-ARMORSMITH] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4308,12 +4308,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>60</cost>
-          <fromDescription>[STEEL-ARMORSMITH] [STONE-BLOCKS] Upgrade</fromDescription>
+          <fromDescription>[STEEL-ARMORSMITH] [STONE-BLOCKS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STEEL_ARMOR</resourceID>
-            <fromDescription>[STEEL-ARMORSMITH] [STONE-BLOCKS] Upgrade</fromDescription>
+            <fromDescription>[STEEL-ARMORSMITH] [STONE-BLOCKS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4337,12 +4337,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[COIN-MAKER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[COIN-MAKER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>50</num>
             <resourceID>RESOURCE_TREASURE</resourceID>
-            <fromDescription>[COIN-MAKER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[COIN-MAKER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4377,12 +4377,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>40</cost>
-          <fromDescription>[COIN-MAKER] [STONE-BLOCKS] Upgrade</fromDescription>
+          <fromDescription>[COIN-MAKER] [STONE-BLOCKS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>50</num>
             <resourceID>RESOURCE_TREASURE</resourceID>
-            <fromDescription>[COIN-MAKER] [STONE-BLOCKS] Upgrade</fromDescription>
+            <fromDescription>[COIN-MAKER] [STONE-BLOCKS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4421,7 +4421,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>30</cost>
-          <fromDescription>[GLASSBLOWER] [FOOD] Upgrade</fromDescription>
+          <fromDescription>[GLASSBLOWER] [FOOD] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>200</percent>
@@ -4431,7 +4431,7 @@
             <resourceID>RESOURCE_OLIVES</resourceID>
             <resourceID>RESOURCE_GRAPES</resourceID>
             <resourceID>RESOURCE_HONEY</resourceID>
-            <fromDescription>[GLASSBLOWER] [FOOD] Upgrade</fromDescription>
+            <fromDescription>[GLASSBLOWER] [FOOD] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4451,12 +4451,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>30</cost>
-          <fromDescription>[GLASSBLOWER] [ALCOHOL] Upgrade</fromDescription>
+          <fromDescription>[GLASSBLOWER] [ALCOHOL] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>200</percent>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[GLASSBLOWER] [ALCOHOL] Upgrade</fromDescription>
+            <fromDescription>[GLASSBLOWER] [ALCOHOL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4488,12 +4488,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[WOOD-COLLECTOR] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[WOOD-COLLECTOR] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_TIMBER</resourceID>
-            <fromDescription>[WOOD-COLLECTOR] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[WOOD-COLLECTOR] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4514,12 +4514,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_HORSES</resourceID>
           <cost>5</cost>
-          <fromDescription>[WOOD-COLLECTOR] [HORSES] Upgrade</fromDescription>
+          <fromDescription>[WOOD-COLLECTOR] [HORSES] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_TIMBER</resourceID>
-            <fromDescription>[WOOD-COLLECTOR] [HORSES] Upgrade</fromDescription>
+            <fromDescription>[WOOD-COLLECTOR] [HORSES] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4546,12 +4546,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[LOGGER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[LOGGER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>3</num>
             <resourceID>RESOURCE_TIMBER</resourceID>
-            <fromDescription>[LOGGER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[LOGGER] [TOOLS] 升级</fromDescription>
             <usage>ForStructure</usage>
           </property>
         </property>
@@ -4572,12 +4572,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_HORSES</resourceID>
           <cost>5</cost>
-          <fromDescription>[LOGGER] [HORSES] Upgrade</fromDescription>
+          <fromDescription>[LOGGER] [HORSES] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>3</num>
             <resourceID>RESOURCE_TIMBER</resourceID>
-            <fromDescription>[LOGGER] [HORSES] Upgrade</fromDescription>
+            <fromDescription>[LOGGER] [HORSES] 升级</fromDescription>
             <usage>ForStructure</usage>
           </property>
         </property>
@@ -4602,12 +4602,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[WEAVER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[WEAVER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_CLOTH</resourceID>
-            <fromDescription>[WEAVER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[WEAVER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4627,12 +4627,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>10</cost>
-          <fromDescription>[WEAVER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[WEAVER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_CLOTH</resourceID>
-            <fromDescription>[WEAVER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[WEAVER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4656,12 +4656,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>40</cost>
-          <fromDescription>[WOODCARVER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[WOODCARVER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>10</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[WOODCARVER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[WOODCARVER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4681,12 +4681,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL</resourceID>
           <cost>10</cost>
-          <fromDescription>[WOODCARVER] [STEEL] Upgrade</fromDescription>
+          <fromDescription>[WOODCARVER] [STEEL] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>10</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[WOODCARVER] [STEEL] Upgrade</fromDescription>
+            <fromDescription>[WOODCARVER] [STEEL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4710,13 +4710,13 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[WOOD-BUNDLER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[WOOD-BUNDLER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <unitID>UNIT_WOOD_COLLECTOR</unitID>
             <resourceID>RESOURCE_TIMBER</resourceID>
-            <fromDescription>[WOOD-BUNDLER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[WOOD-BUNDLER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4736,13 +4736,13 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_HORSES</resourceID>
           <cost>10</cost>
-          <fromDescription>[WOOD-BUNDLER] [HORSES] Upgrade</fromDescription>
+          <fromDescription>[WOOD-BUNDLER] [HORSES] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <unitID>UNIT_WOOD_COLLECTOR</unitID>
             <resourceID>RESOURCE_TIMBER</resourceID>
-            <fromDescription>[WOOD-BUNDLER] [HORSES] Upgrade</fromDescription>
+            <fromDescription>[WOOD-BUNDLER] [HORSES] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4766,14 +4766,14 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[POTTER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[POTTER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <unitID>UNIT_HUNTER</unitID>
             <unitID>UNIT_GATHERER</unitID>
             <unitID>UNIT_REAPER</unitID>
-            <fromDescription>[POTTER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[POTTER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4793,14 +4793,14 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE</resourceID>
           <cost>10</cost>
-          <fromDescription>[POTTER] [STONE] Upgrade</fromDescription>
+          <fromDescription>[POTTER] [STONE] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
             <unitID>UNIT_HUNTER</unitID>
             <unitID>UNIT_GATHERER</unitID>
             <unitID>UNIT_REAPER</unitID>
-            <fromDescription>[POTTER] [STONE] Upgrade</fromDescription>
+            <fromDescription>[POTTER] [STONE] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4827,12 +4827,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[WOODSPLITTER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[WOODSPLITTER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_BOARDS</resourceID>
-            <fromDescription>[WOODSPLITTER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[WOODSPLITTER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4852,12 +4852,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
           <cost>20</cost>
-          <fromDescription>[WOODSPLITTER] [STONE-BLOCKS] Upgrade</fromDescription>
+          <fromDescription>[WOODSPLITTER] [STONE-BLOCKS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_BOARDS</resourceID>
-            <fromDescription>[WOODSPLITTER] [STONE-BLOCKS] Upgrade</fromDescription>
+            <fromDescription>[WOODSPLITTER] [STONE-BLOCKS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4881,12 +4881,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>40</cost>
-          <fromDescription>[BLOCK-CUTTER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BLOCK-CUTTER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
-            <fromDescription>[BLOCK-CUTTER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BLOCK-CUTTER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4906,12 +4906,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[BLOCK-CUTTER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BLOCK-CUTTER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
-            <fromDescription>[BLOCK-CUTTER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BLOCK-CUTTER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4935,12 +4935,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[BRICKMAKER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[BRICKMAKER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
-            <fromDescription>[BRICKMAKER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[BRICKMAKER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4960,12 +4960,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>20</cost>
-          <fromDescription>[BRICKMAKER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[BRICKMAKER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
-            <fromDescription>[BRICKMAKER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[BRICKMAKER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -4989,12 +4989,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>50</cost>
-          <fromDescription>[STONECARVER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[STONECARVER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>20</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[STONECARVER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[STONECARVER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5014,12 +5014,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>5</cost>
-          <fromDescription>[STONECARVER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[STONECARVER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>20</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[STONECARVER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[STONECARVER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5046,12 +5046,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>80</cost>
-          <fromDescription>[HEWER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[HEWER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_BOARDS</resourceID>
-            <fromDescription>[HEWER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[HEWER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5071,12 +5071,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[HEWER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[HEWER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_BOARDS</resourceID>
-            <fromDescription>[HEWER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[HEWER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5100,12 +5100,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>80</cost>
-          <fromDescription>[TAILOR] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[TAILOR] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_CLOTH</resourceID>
-            <fromDescription>[TAILOR] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[TAILOR] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5125,12 +5125,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[TAILOR] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[TAILOR] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>4</num>
             <resourceID>RESOURCE_CLOTH</resourceID>
-            <fromDescription>[TAILOR] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[TAILOR] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5154,12 +5154,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>40</cost>
-          <fromDescription>[DYER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[DYER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_FINE_CLOTH</resourceID>
-            <fromDescription>[DYER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[DYER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5179,12 +5179,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>20</cost>
-          <fromDescription>[DYER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[DYER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_FINE_CLOTH</resourceID>
-            <fromDescription>[DYER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[DYER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5208,12 +5208,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>80</cost>
-          <fromDescription>[LUTHIER] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[LUTHIER] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>20</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[LUTHIER] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[LUTHIER] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5233,12 +5233,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[LUTHIER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[LUTHIER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>20</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[LUTHIER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[LUTHIER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5262,7 +5262,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>50</cost>
-          <fromDescription>[COOPER] [FOOD] Upgrade</fromDescription>
+          <fromDescription>[COOPER] [FOOD] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>100</percent>
@@ -5272,7 +5272,7 @@
             <resourceID>RESOURCE_OLIVES</resourceID>
             <resourceID>RESOURCE_GRAPES</resourceID>
             <resourceID>RESOURCE_HONEY</resourceID>
-            <fromDescription>[COOPER] [FOOD] Upgrade</fromDescription>
+            <fromDescription>[COOPER] [FOOD] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5292,12 +5292,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>50</cost>
-          <fromDescription>[COOPER] [ALCOHOL] Upgrade</fromDescription>
+          <fromDescription>[COOPER] [ALCOHOL] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>100</percent>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[COOPER] [ALCOHOL] Upgrade</fromDescription>
+            <fromDescription>[COOPER] [ALCOHOL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5324,12 +5324,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>40</cost>
-          <fromDescription>[MASTER-BLOCK-CUTTER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[MASTER-BLOCK-CUTTER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
-            <fromDescription>[MASTER-BLOCK-CUTTER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[MASTER-BLOCK-CUTTER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5349,12 +5349,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>100</cost>
-          <fromDescription>[MASTER-BLOCK-CUTTER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[MASTER-BLOCK-CUTTER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
-            <fromDescription>[MASTER-BLOCK-CUTTER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[MASTER-BLOCK-CUTTER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5378,12 +5378,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[KILN-MASTER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[KILN-MASTER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
-            <fromDescription>[KILN-MASTER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[KILN-MASTER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5403,12 +5403,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>80</cost>
-          <fromDescription>[KILN-MASTER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[KILN-MASTER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_STONE_BLOCKS</resourceID>
-            <fromDescription>[KILN-MASTER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[KILN-MASTER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5432,12 +5432,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[COUTURIER] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[COUTURIER] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_FINE_CLOTH</resourceID>
-            <fromDescription>[COUTURIER] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[COUTURIER] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5457,12 +5457,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>100</cost>
-          <fromDescription>[COUTURIER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[COUTURIER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_FINE_CLOTH</resourceID>
-            <fromDescription>[COUTURIER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[COUTURIER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5486,12 +5486,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[SCULPTOR] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[SCULPTOR] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>50</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[SCULPTOR] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[SCULPTOR] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5511,12 +5511,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>100</cost>
-          <fromDescription>[SCULPTOR] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[SCULPTOR] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>50</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[SCULPTOR] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[SCULPTOR] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5540,7 +5540,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>100</cost>
-          <fromDescription>[ARCHITECT] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[ARCHITECT] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
@@ -5564,7 +5564,7 @@
             <structureID>STRUCTURE_PEAT_MINE_2</structureID>
             <structureID>STRUCTURE_SALT_MINE_2</structureID>
             <structureID>STRUCTURE_TRADING_POST_2</structureID>
-            <fromDescription>[ARCHITECT] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[ARCHITECT] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5584,7 +5584,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>30</cost>
-          <fromDescription>[ARCHITECT] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[ARCHITECT] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
@@ -5608,7 +5608,7 @@
             <structureID>STRUCTURE_PEAT_MINE_2</structureID>
             <structureID>STRUCTURE_SALT_MINE_2</structureID>
             <structureID>STRUCTURE_TRADING_POST_2</structureID>
-            <fromDescription>[ARCHITECT] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[ARCHITECT] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5694,11 +5694,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_HORSES</resourceID>
           <cost>5</cost>
-          <fromDescription>[EXPLORER] [Movement|MOVE-POINT] Upgrade</fromDescription>
+          <fromDescription>[EXPLORER] [Movement|MOVE-POINT] 升级</fromDescription>
           <property>
             <propertyID>MOVES</propertyID>
             <num>1</num>
-            <fromDescription>[EXPLORER] [Movement|MOVE-POINT] Upgrade</fromDescription>
+            <fromDescription>[EXPLORER] [Movement|MOVE-POINT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5719,11 +5719,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_WEAPONS</resourceID>
           <cost>5</cost>
-          <fromDescription>[EXPLORER] [Power|POWER] Upgrade</fromDescription>
+          <fromDescription>[EXPLORER] [Power|POWER] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>2</num>
-            <fromDescription>[EXPLORER] [Power|POWER] Upgrade</fromDescription>
+            <fromDescription>[EXPLORER] [Power|POWER] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5750,11 +5750,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_HORSES</resourceID>
           <cost>5</cost>
-          <fromDescription>[SURVEYOR] [Movement|MOVE-POINT] Upgrade</fromDescription>
+          <fromDescription>[SURVEYOR] [Movement|MOVE-POINT] 升级</fromDescription>
           <property>
             <propertyID>MOVES</propertyID>
             <num>1</num>
-            <fromDescription>[SURVEYOR] [Movement|MOVE-POINT] Upgrade</fromDescription>
+            <fromDescription>[SURVEYOR] [Movement|MOVE-POINT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5774,11 +5774,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[SURVEYOR] [Deposit ID Speed|UNIDENTIFIED] Upgrade</fromDescription>
+          <fromDescription>[SURVEYOR] [Deposit ID Speed|UNIDENTIFIED] 升级</fromDescription>
           <property>
             <propertyID>TURNS_TO_SURVEY</propertyID>
             <percent>-33</percent>
-            <fromDescription>[SURVEYOR] [Deposit ID Speed|UNIDENTIFIED] Upgrade</fromDescription>
+            <fromDescription>[SURVEYOR] [Deposit ID Speed|UNIDENTIFIED] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5802,12 +5802,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_HORSES</resourceID>
           <cost>10</cost>
-          <fromDescription>[TRADER] [HORSES] Upgrade</fromDescription>
+          <fromDescription>[TRADER] [HORSES] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_TREASURE</resourceID>
-            <fromDescription>[TRADER] [HORSES] Upgrade</fromDescription>
+            <fromDescription>[TRADER] [HORSES] 升级</fromDescription>
             <usage>ForStructure</usage>
           </property>
         </property>
@@ -5828,12 +5828,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>20</cost>
-          <fromDescription>[TRADER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[TRADER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_TREASURE</resourceID>
-            <fromDescription>[TRADER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[TRADER] [BOARDS] 升级</fromDescription>
             <usage>ForStructure</usage>
           </property>
         </property>
@@ -5858,12 +5858,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_ALCOHOL</resourceID>
           <cost>10</cost>
-          <fromDescription>[BARD] [ALCOHOL] Upgrade</fromDescription>
+          <fromDescription>[BARD] [ALCOHOL] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[BARD] [ALCOHOL] Upgrade</fromDescription>
+            <fromDescription>[BARD] [ALCOHOL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5883,12 +5883,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_WEAPONS</resourceID>
           <cost>10</cost>
-          <fromDescription>[BARD] [WEAPONS] Upgrade</fromDescription>
+          <fromDescription>[BARD] [WEAPONS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>5</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[BARD] [WEAPONS] Upgrade</fromDescription>
+            <fromDescription>[BARD] [WEAPONS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5912,12 +5912,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_ALCOHOL</resourceID>
           <cost>10</cost>
-          <fromDescription>[LOREKEEPER] [ALCOHOL] Upgrade</fromDescription>
+          <fromDescription>[LOREKEEPER] [ALCOHOL] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>3</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[LOREKEEPER] [ALCOHOL] Upgrade</fromDescription>
+            <fromDescription>[LOREKEEPER] [ALCOHOL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5937,12 +5937,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_PARCHMENT</resourceID>
           <cost>10</cost>
-          <fromDescription>[LOREKEEPER] [PARCHMENT] Upgrade</fromDescription>
+          <fromDescription>[LOREKEEPER] [PARCHMENT] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>3</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[LOREKEEPER] [PARCHMENT] Upgrade</fromDescription>
+            <fromDescription>[LOREKEEPER] [PARCHMENT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5966,7 +5966,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[GUIDE] [TOOLS] Upgrade</fromDescription>
+          <fromDescription>[GUIDE] [TOOLS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
@@ -5977,7 +5977,7 @@
             <unitID>UNIT_FISHERMAN</unitID>
             <unitID>UNIT_DIGGER</unitID>
             <unitID>UNIT_WOOD_COLLECTOR</unitID>
-            <fromDescription>[GUIDE] [TOOLS] Upgrade</fromDescription>
+            <fromDescription>[GUIDE] [TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -5997,7 +5997,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_PARCHMENT</resourceID>
           <cost>10</cost>
-          <fromDescription>[GUIDE] [PARCHMENT] Upgrade</fromDescription>
+          <fromDescription>[GUIDE] [PARCHMENT] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
@@ -6008,7 +6008,7 @@
             <unitID>UNIT_FISHERMAN</unitID>
             <unitID>UNIT_DIGGER</unitID>
             <unitID>UNIT_WOOD_COLLECTOR</unitID>
-            <fromDescription>[GUIDE] [PARCHMENT] Upgrade</fromDescription>
+            <fromDescription>[GUIDE] [PARCHMENT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6035,11 +6035,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_CLOTH</resourceID>
           <cost>10</cost>
-          <fromDescription>[GALLEY] [Movement|MOVE-POINT] Upgrade</fromDescription>
+          <fromDescription>[GALLEY] [Movement|MOVE-POINT] 升级</fromDescription>
           <property>
             <propertyID>MOVES</propertyID>
             <num>2</num>
-            <fromDescription>[GALLEY] [Movement|MOVE-POINT] Upgrade</fromDescription>
+            <fromDescription>[GALLEY] [Movement|MOVE-POINT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6059,11 +6059,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_WEAPONS</resourceID>
           <cost>10</cost>
-          <fromDescription>[GALLEY] [Power|POWER] Upgrade</fromDescription>
+          <fromDescription>[GALLEY] [Power|POWER] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>3</num>
-            <fromDescription>[GALLEY] [Power|POWER] Upgrade</fromDescription>
+            <fromDescription>[GALLEY] [Power|POWER] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6087,12 +6087,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_PARCHMENT</resourceID>
           <cost>20</cost>
-          <fromDescription>[TINKERER] [PARCHMENT] Upgrade</fromDescription>
+          <fromDescription>[TINKERER] [PARCHMENT] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>7</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[TINKERER] [PARCHMENT] Upgrade</fromDescription>
+            <fromDescription>[TINKERER] [PARCHMENT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6112,12 +6112,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL</resourceID>
           <cost>10</cost>
-          <fromDescription>[TINKERER] [STEEL] Upgrade</fromDescription>
+          <fromDescription>[TINKERER] [STEEL] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>7</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[TINKERER] [STEEL] Upgrade</fromDescription>
+            <fromDescription>[TINKERER] [STEEL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6141,24 +6141,24 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_HORSES</resourceID>
           <cost>10</cost>
-          <fromDescription>[MERCHANT] [HORSES] Upgrade</fromDescription>
+          <fromDescription>[MERCHANT] [HORSES] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_CLOTH</resourceID>
-            <fromDescription>[MERCHANT] [HORSES] Upgrade</fromDescription>
+            <fromDescription>[MERCHANT] [HORSES] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[MERCHANT] [HORSES] Upgrade</fromDescription>
+            <fromDescription>[MERCHANT] [HORSES] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_OIL</resourceID>
-            <fromDescription>[MERCHANT] [HORSES] Upgrade</fromDescription>
+            <fromDescription>[MERCHANT] [HORSES] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6178,24 +6178,24 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>30</cost>
-          <fromDescription>[MERCHANT] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[MERCHANT] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_CLOTH</resourceID>
-            <fromDescription>[MERCHANT] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[MERCHANT] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_ALCOHOL</resourceID>
-            <fromDescription>[MERCHANT] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[MERCHANT] [BOARDS] 升级</fromDescription>
           </property>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>50</percent>
             <resourceID>RESOURCE_OIL</resourceID>
-            <fromDescription>[MERCHANT] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[MERCHANT] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6219,7 +6219,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>30</cost>
-          <fromDescription>[ENGINEER] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[ENGINEER] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
@@ -6237,7 +6237,7 @@
             <structureID>STRUCTURE_COAL_MINE_1</structureID>
             <structureID>STRUCTURE_PEAT_MINE_1</structureID>
             <structureID>STRUCTURE_SALT_MINE_1</structureID>
-            <fromDescription>[ENGINEER] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[ENGINEER] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6257,7 +6257,7 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL</resourceID>
           <cost>10</cost>
-          <fromDescription>[ENGINEER] [STEEL] Upgrade</fromDescription>
+          <fromDescription>[ENGINEER] [STEEL] 升级</fromDescription>
           <property>
             <propertyID>GLOBAL_RESOURCE_PRODUCTION</propertyID>
             <percent>25</percent>
@@ -6275,7 +6275,7 @@
             <structureID>STRUCTURE_COAL_MINE_1</structureID>
             <structureID>STRUCTURE_PEAT_MINE_1</structureID>
             <structureID>STRUCTURE_SALT_MINE_1</structureID>
-            <fromDescription>[ENGINEER] [STEEL] Upgrade</fromDescription>
+            <fromDescription>[ENGINEER] [STEEL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6299,12 +6299,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_PARCHMENT</resourceID>
           <cost>20</cost>
-          <fromDescription>[CONSUL] [PARCHMENT] Upgrade</fromDescription>
+          <fromDescription>[CONSUL] [PARCHMENT] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_PRESTIGE</resourceID>
-            <fromDescription>[CONSUL] [PARCHMENT] Upgrade</fromDescription>
+            <fromDescription>[CONSUL] [PARCHMENT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6324,12 +6324,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_OIL</resourceID>
           <cost>10</cost>
-          <fromDescription>[CONSUL] [OIL] Upgrade</fromDescription>
+          <fromDescription>[CONSUL] [OIL] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>1</num>
             <resourceID>RESOURCE_PRESTIGE</resourceID>
-            <fromDescription>[CONSUL] [OIL] Upgrade</fromDescription>
+            <fromDescription>[CONSUL] [OIL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6410,12 +6410,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_BOARDS</resourceID>
           <cost>100</cost>
-          <fromDescription>[MINSTREL] [BOARDS] Upgrade</fromDescription>
+          <fromDescription>[MINSTREL] [BOARDS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>25</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[MINSTREL] [BOARDS] Upgrade</fromDescription>
+            <fromDescription>[MINSTREL] [BOARDS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6435,12 +6435,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_ALCOHOL</resourceID>
           <cost>100</cost>
-          <fromDescription>[MINSTREL] [ALCOHOL] Upgrade</fromDescription>
+          <fromDescription>[MINSTREL] [ALCOHOL] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>25</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[MINSTREL] [ALCOHOL] Upgrade</fromDescription>
+            <fromDescription>[MINSTREL] [ALCOHOL] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6464,12 +6464,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_PARCHMENT</resourceID>
           <cost>100</cost>
-          <fromDescription>[SCRIBE] [PARCHMENT] Upgrade</fromDescription>
+          <fromDescription>[SCRIBE] [PARCHMENT] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>20</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[SCRIBE] [PARCHMENT] Upgrade</fromDescription>
+            <fromDescription>[SCRIBE] [PARCHMENT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6489,12 +6489,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[SCRIBE] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[SCRIBE] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>20</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[SCRIBE] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[SCRIBE] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6575,11 +6575,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_HORSES</resourceID>
           <cost>20</cost>
-          <fromDescription>[CATAPULT] [Movement|MOVE-POINT] Upgrade</fromDescription>
+          <fromDescription>[CATAPULT] [Movement|MOVE-POINT] 升级</fromDescription>
           <property>
             <propertyID>MOVES</propertyID>
             <num>2</num>
-            <fromDescription>[CATAPULT] [Movement|MOVE-POINT] Upgrade</fromDescription>
+            <fromDescription>[CATAPULT] [Movement|MOVE-POINT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6599,11 +6599,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL</resourceID>
           <cost>30</cost>
-          <fromDescription>[CATAPULT] [Power|POWER] Upgrade</fromDescription>
+          <fromDescription>[CATAPULT] [Power|POWER] 升级</fromDescription>
           <property>
             <propertyID>POWER</propertyID>
             <num>10</num>
-            <fromDescription>[CATAPULT] [Power|POWER] Upgrade</fromDescription>
+            <fromDescription>[CATAPULT] [Power|POWER] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6627,12 +6627,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_PARCHMENT</resourceID>
           <cost>300</cost>
-          <fromDescription>[SCHOLAR] [PARCHMENT] Upgrade</fromDescription>
+          <fromDescription>[SCHOLAR] [PARCHMENT] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>40</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[SCHOLAR] [PARCHMENT] Upgrade</fromDescription>
+            <fromDescription>[SCHOLAR] [PARCHMENT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6652,12 +6652,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>20</cost>
-          <fromDescription>[SCHOLAR] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[SCHOLAR] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>40</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[SCHOLAR] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[SCHOLAR] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6681,12 +6681,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_PARCHMENT</resourceID>
           <cost>200</cost>
-          <fromDescription>[INVENTOR] [PARCHMENT] Upgrade</fromDescription>
+          <fromDescription>[INVENTOR] [PARCHMENT] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>40</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[INVENTOR] [PARCHMENT] Upgrade</fromDescription>
+            <fromDescription>[INVENTOR] [PARCHMENT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6706,12 +6706,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_STEEL_TOOLS</resourceID>
           <cost>30</cost>
-          <fromDescription>[INVENTOR] [STEEL-TOOLS] Upgrade</fromDescription>
+          <fromDescription>[INVENTOR] [STEEL-TOOLS] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>40</num>
             <resourceID>RESOURCE_KNOWLEDGE</resourceID>
-            <fromDescription>[INVENTOR] [STEEL-TOOLS] Upgrade</fromDescription>
+            <fromDescription>[INVENTOR] [STEEL-TOOLS] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6735,12 +6735,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_PARCHMENT</resourceID>
           <cost>200</cost>
-          <fromDescription>[PATRON] [PARCHMENT] Upgrade</fromDescription>
+          <fromDescription>[PATRON] [PARCHMENT] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>50</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[PATRON] [PARCHMENT] Upgrade</fromDescription>
+            <fromDescription>[PATRON] [PARCHMENT] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>
@@ -6760,12 +6760,12 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_FINE_CLOTH</resourceID>
           <cost>100</cost>
-          <fromDescription>[PATRON] [FINE-CLOTH] Upgrade</fromDescription>
+          <fromDescription>[PATRON] [FINE-CLOTH] 升级</fromDescription>
           <property>
             <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
             <num>50</num>
             <resourceID>RESOURCE_FAME</resourceID>
-            <fromDescription>[PATRON] [FINE-CLOTH] Upgrade</fromDescription>
+            <fromDescription>[PATRON] [FINE-CLOTH] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>

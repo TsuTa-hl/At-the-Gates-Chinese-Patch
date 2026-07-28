@@ -135,6 +135,1241 @@
       "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060006AA:IL_004C",
       "LocalizedFormat": "{arg:0}该文件似乎已损坏，或因未知原因无效。",
       "Notes": "Static special rule: system-menu corrupt-file suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000118:IL_074A",
+      "LocalizedFormat": "最大{arg:1}",
+      "Notes": "Composite review: maximum-property label; the final template keeps the dynamic property name intact."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000118:IL_0770",
+      "LocalizedFormat": "{arg:0}最大{arg:2}",
+      "Notes": "Composite review: maximum-property label with a leading dynamic prefix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000118:IL_087F",
+      "LocalizedFormat": "{arg:0}对{arg:2}单位",
+      "Notes": "Composite review: property comparison against a unit type."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000204:IL_00A6",
+      "LocalizedFormat": "将立即{arg:1}",
+      "Notes": "Composite review: human-readable chance summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000204:IL_00CA",
+      "LocalizedFormat": "将几乎立即{arg:1}",
+      "Notes": "Composite review: human-readable chance summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000205:IL_00BF",
+      "LocalizedFormat": "将立即且持续{arg:1}",
+      "Notes": "Composite review: human-readable percentage chance summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000348:IL_0B50",
+      "LocalizedFormat": "该{arg:1}的特殊能力",
+      "Notes": "Composite review: profession-tooltip possessive wording is specific to this final display."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000348:IL_0D87",
+      "LocalizedFormat": "该{arg:1}的属性",
+      "Notes": "Composite review: profession-tooltip possessive wording is specific to this final display."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000348:IL_11AE",
+      "LocalizedFormat": "说明为何无法{arg:1}该{arg:3}",
+      "Notes": "Composite review: profession-tooltip action failure explanation."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000348:IL_13E3",
+      "LocalizedFormat": "说明{arg:1}该{arg:3}所需的条件",
+      "Notes": "Composite review: profession-tooltip action requirement explanation."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000348:IL_166B",
+      "LocalizedFormat": "说明为何无法{arg:1}该{arg:3}",
+      "Notes": "Composite review: profession-tooltip action failure explanation."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600171C:IL_003F",
+      "LocalizedFormat": "{arg:0}：无",
+      "Notes": "Composite review: game-description empty-value label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600171F:IL_03C1",
+      "LocalizedFormat": "{arg:0}：无",
+      "Notes": "Composite review: game-description empty-value label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001722:IL_0193",
+      "LocalizedFormat": "……以及类似{arg:1}的高级版本",
+      "Notes": "Composite review: game-description advanced-version suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001729:IL_00EB",
+      "LocalizedFormat": "需要{arg:1}[补给|SUPPLY]",
+      "Notes": "Composite review: game-description supply prerequisite with its concept key preserved."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600172D:IL_0079",
+      "LocalizedFormat": "可作为{arg:1}……",
+      "Notes": "Composite review: game-description profession lead-in."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600172F:IL_0022",
+      "LocalizedFormat": "{arg:0}：无",
+      "Notes": "Composite review: game-description empty-value label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600126C:IL_02C5",
+      "LocalizedFormat": "{arg:0}用于",
+      "Notes": "Composite review: research-progress tooltip relation."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600125F:IL_009B",
+      "LocalizedFormat": "{arg:0}{arg:1}维护费。",
+      "Notes": "Composite review: static-check maintenance suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06001274:IL_0062",
+      "LocalizedFormat": "{arg:0}{arg:1}海洋。",
+      "Notes": "Composite review: static-check adjacent-ocean suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06001308:IL_0028",
+      "LocalizedFormat": "没有剩余的{arg:1}。",
+      "Notes": "Composite review: static-check remaining-action message; separate from the smoke-rejected Common No-space literal."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600136E:IL_0035",
+      "LocalizedFormat": "{arg:0}无法{arg:2}。",
+      "Notes": "Composite review: static-check action denial."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000C70:IL_03F4",
+      "LocalizedFormat": "额外{arg:1}／",
+      "Notes": "Composite review: resource-spoilage status fragment."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000C6B:IL_0098",
+      "LocalizedFormat": "{arg:0}{arg:1}{arg:2}由其他资源生成",
+      "Notes": "Composite review: resource-conversion status message."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000C6B:IL_00EF",
+      "LocalizedFormat": "{arg:0}{arg:2}因原料短缺而损失",
+      "Notes": "Composite review: resource-conversion shortage message."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000238:IL_0017",
+      "LocalizedFormat": "{arg:0}水域",
+      "Notes": "Composite review: generated area-name suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000238:IL_0032",
+      "LocalizedFormat": "{arg:0}不可通行",
+      "Notes": "Composite review: generated area-name suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000238:IL_0040",
+      "LocalizedFormat": "{arg:0}普通",
+      "Notes": "Composite review: generated area-name suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000125:IL_00E0",
+      "LocalizedFormat": "{arg:0}该{arg:2}",
+      "Notes": "Composite review: clan-card action label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000125:IL_04F0",
+      "LocalizedFormat": "警告：这会立即移除{arg:1}。",
+      "Notes": "Composite review: clan-card destructive-action warning."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000374:IL_009C",
+      "LocalizedFormat": "1{arg:1}。",
+      "Notes": "Composite review: disabled-state one-unit duration suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000375:IL_020F",
+      "LocalizedFormat": "另有{arg:1}。",
+      "Notes": "Composite review: occupied-state remaining-duration suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000387:IL_0094",
+      "LocalizedFormat": "命令该{arg:1}的{arg:3}",
+      "Notes": "Composite review: apprentice-dismissal action tooltip."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:0600038A:IL_0220",
+      "LocalizedFormat": "警告：这会导致当前{arg:1}项目（",
+      "Notes": "Composite review: pack-action warning prefix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000577:IL_05E4",
+      "LocalizedFormat": "购买{arg:1}",
+      "Notes": "Composite review: caravan purchase action label."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:06000997:IL_0108",
+      "LocalizedFormat": "加载声音文件失败！（{arg:1}）\n\n请将此消息的截图和操作说明发送给 Jon。游戏很可能崩溃；但若再次尝试刚才的操作，则可能不会崩溃。",
+      "Notes": "Composite review: readable audio-load failure diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:06000123:IL_0016",
+      "LocalizedFormat": "尝试修改没有背景的对象的背景颜色：{arg:1}",
+      "Notes": "Composite review: background-object diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:0600018B:IL_0010",
+      "LocalizedFormat": "尝试将已是工具提示的对象再次设为工具提示：\n\n{arg:1}",
+      "Notes": "Composite review: tooltip-state diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:0600056F:IL_0081",
+      "LocalizedFormat": "遇到标签{arg:1}，但期望“objectSet”或“tileSet”",
+      "Notes": "Composite review: tiled-map parser diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:0600053A:IL_0057",
+      "LocalizedFormat": "地格类型{arg:1}不存在。",
+      "Notes": "Composite review: tiled-map type diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:0600053A:IL_00D2",
+      "LocalizedFormat": "无效方向：{arg:1}",
+      "Notes": "Composite review: tiled-map direction diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:0600057C:IL_0139",
+      "LocalizedFormat": "{arg:0}{arg:1}小于 1",
+      "Notes": "Composite review: tiled-map numeric diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:06000076:IL_001E",
+      "LocalizedFormat": "{arg:0}测试：",
+      "Notes": "Composite review: test-runner summary."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:06000076:IL_0145",
+      "LocalizedFormat": "{arg:0}{arg:1}：成功！",
+      "Notes": "Composite review: test-runner success result."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:06000076:IL_016B",
+      "LocalizedFormat": "{arg:0}{arg:1}：失败……",
+      "Notes": "Composite review: test-runner failure result."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:060005E7:IL_004D",
+      "LocalizedFormat": "无效翻转参数：{arg:1}",
+      "Notes": "Composite review: texture diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:06000616:IL_0069",
+      "LocalizedFormat": "{arg:0} 毫秒",
+      "Notes": "Composite review: timing-unit label."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:060005D2:IL_001A",
+      "LocalizedFormat": "maxValue 必须为正数，但得到：{arg:1}",
+      "Notes": "Composite review: random-number argument diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:0600064B:IL_001F",
+      "LocalizedFormat": "尝试结束标签{arg:1}，但当前不在标签内",
+      "Notes": "Composite review: XML-writer diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:0600064B:IL_005B",
+      "LocalizedFormat": "尝试结束标签{arg:1}，但当前位于标签{arg:3}内",
+      "Notes": "Composite review: XML-writer nesting diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:06000021:IL_001A",
+      "LocalizedFormat": "无效偏移量{arg:1}",
+      "Notes": "Composite review: deque range diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:06000021:IL_003E",
+      "LocalizedFormat": "无效数量{arg:1}",
+      "Notes": "Composite review: deque range diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600043D:IL_00E5",
+      "LocalizedFormat": "已自动推进{arg:1}个完整回合。",
+      "Notes": "Composite review: debug-console turn result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000445:IL_0143",
+      "LocalizedFormat": "已从部族{arg:2}{arg:3}移除“{arg:0}”",
+      "Notes": "Composite review: debug-console clan-trait removal result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000445:IL_0174",
+      "LocalizedFormat": "已将“{arg:0}”添加至部族{arg:2}{arg:3}",
+      "Notes": "Composite review: debug-console clan-trait addition result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000462:IL_0042",
+      "LocalizedFormat": "{arg:0}数量",
+      "Notes": "Composite review: debug-console object-count heading."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000459:IL_00DF",
+      "LocalizedFormat": "位于{arg:1}{arg:2}{arg:3}",
+      "Notes": "Composite review: debug-console deposit location suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000458:IL_00E5",
+      "LocalizedFormat": "位于{arg:1}{arg:2}{arg:3}",
+      "Notes": "Composite review: debug-console structure location suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000457:IL_01E9",
+      "LocalizedFormat": "位于{arg:1}{arg:2}{arg:3}",
+      "Notes": "Composite review: debug-console unit location suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000439:IL_0582",
+      "LocalizedFormat": "无效资源：{arg:1}",
+      "Notes": "Composite review: debug-console resource diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000469:IL_00C5",
+      "LocalizedFormat": "{arg:0}（C）",
+      "Notes": "Composite review: debug-console capital marker."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000469:IL_012D",
+      "LocalizedFormat": "，人口{arg:1}{arg:2}",
+      "Notes": "Composite review: debug-console city population suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000469:IL_0196",
+      "LocalizedFormat": "{arg:0}\n\n    *（C）- 首都",
+      "Notes": "Composite review: debug-console city-list legend."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000429:IL_00CC",
+      "LocalizedFormat": "相机已居中至{arg:1}",
+      "Notes": "Composite review: debug-console camera result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600042B:IL_00F3",
+      "LocalizedFormat": "相机已居中至{arg:1}",
+      "Notes": "Composite review: debug-console camera result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600041F:IL_00EE",
+      "LocalizedFormat": "{arg:0}{arg:1}固定地图",
+      "Notes": "Composite review: debug-console fixed-map result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000420:IL_00EE",
+      "LocalizedFormat": "{arg:0}{arg:1}随机地图",
+      "Notes": "Composite review: debug-console random-map result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600041E:IL_0172",
+      "LocalizedFormat": "{arg:0}{arg:1}启动时使用固定地图",
+      "Notes": "Composite review: debug-console launch-map result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600045E:IL_00AF",
+      "LocalizedFormat": "已将选中军队的生命值提高{arg:1}%",
+      "Notes": "Composite review: debug-console health result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600045F:IL_00AF",
+      "LocalizedFormat": "已将选中军队的士气提高{arg:1}%",
+      "Notes": "Composite review: debug-console morale result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600042E:IL_0072",
+      "LocalizedFormat": "已跳过{arg:1}个回合",
+      "Notes": "Composite review: debug-console skipped-turn result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000440:IL_0062",
+      "LocalizedFormat": "{arg:0}{arg:1}现已完全可见",
+      "Notes": "Composite review: debug-console deposit-visibility result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000440:IL_0093",
+      "LocalizedFormat": "{arg:0}{arg:1}现已被迷雾遮蔽",
+      "Notes": "Composite review: debug-console deposit-visibility result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000452:IL_0155",
+      "LocalizedFormat": "所有地格的原始可采集数量已乘以 x{arg:1}",
+      "Notes": "Composite review: debug-console harvest multiplier result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600042A:IL_00B2",
+      "LocalizedFormat": "缩放已调整{arg:1}",
+      "Notes": "Composite review: debug-console zoom result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000470:IL_01A6",
+      "LocalizedFormat": "{arg:0}{arg:1}入侵中：{arg:3}",
+      "Notes": "Composite review: debug-console invasion-status row."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000471:IL_0344",
+      "LocalizedFormat": "{arg:0}{arg:1}回合",
+      "Notes": "Composite review: debug-console invasion-status duration."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600046F:IL_0094",
+      "LocalizedFormat": "{arg:0}不是玩家。",
+      "Notes": "Composite review: debug-console player diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600046F:IL_00DC",
+      "LocalizedFormat": "{arg:0}不是玩家。",
+      "Notes": "Composite review: debug-console player diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600046E:IL_019A",
+      "LocalizedFormat": "{arg:0}{arg:1}正在与{arg:3}交战",
+      "Notes": "Composite review: debug-console war-status row."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000413:IL_05C9",
+      "LocalizedFormat": "无效命令：{arg:1}",
+      "Notes": "Composite review: debug-console command diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600138A:IL_0046",
+      "LocalizedFormat": "{arg:0}变体",
+      "Notes": "Composite review: beach-config variant count."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000D09:IL_0038",
+      "LocalizedFormat": "{arg:0}至随机权重",
+      "Notes": "Composite review: random-weight debug label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060012EE:IL_01BF",
+      "LocalizedFormat": "{arg:0}特质",
+      "Notes": "Composite review: clan-trait cache label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000FD5:IL_027C",
+      "LocalizedFormat": "{arg:0}特质",
+      "Notes": "Composite review: condition trait label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600172A:IL_0DA9",
+      "LocalizedFormat": "当{arg:1}位于",
+      "Notes": "Composite review: production-description condition fragment."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060016F4:IL_0013",
+      "LocalizedFormat": "{arg:0} - 地形前 XML 加载()",
+      "Notes": "Composite review: configuration-load log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060016F4:IL_02A0",
+      "LocalizedFormat": "{arg:0} - 地形前配置已加载",
+      "Notes": "Composite review: configuration-load log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060016F4:IL_02DB",
+      "LocalizedFormat": "{arg:0} - ElfTools 地格配置已加载",
+      "Notes": "Composite review: configuration-load log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060016F4:IL_0399",
+      "LocalizedFormat": "{arg:0} - 地形后配置已加载",
+      "Notes": "Composite review: configuration-load log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060016F4:IL_03BC",
+      "LocalizedFormat": "{arg:0} - 完成",
+      "Notes": "Composite review: configuration-load log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060016F5:IL_0019",
+      "LocalizedFormat": "{arg:0} - 指针已缓存",
+      "Notes": "Composite review: configuration-load completion log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060016F5:IL_003C",
+      "LocalizedFormat": "{arg:0} - 可建造升级树已生成",
+      "Notes": "Composite review: configuration-load completion log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060016F5:IL_005F",
+      "LocalizedFormat": "{arg:0} - 科技成本层级列表已生成",
+      "Notes": "Composite review: configuration-load completion log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001162:IL_0052",
+      "LocalizedFormat": "{arg:0}……PossibleCounts 列表索引",
+      "Notes": "Composite review: starting-situation diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001162:IL_00AB",
+      "LocalizedFormat": "{arg:0}……OneItemPercent 随机掷骰",
+      "Notes": "Composite review: starting-situation diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001435:IL_0069",
+      "LocalizedFormat": "{arg:0} - 地形图块集已加载",
+      "Notes": "Composite review: terrain-load log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001435:IL_0654",
+      "LocalizedFormat": "{arg:0}{arg:1}无效！若提供该值，必须至少为 1。",
+      "Notes": "Composite review: terrain configuration validation diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060003C5:IL_01A0",
+      "LocalizedFormat": "{arg:0} - 已损坏",
+      "Notes": "Composite review: settings-file diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000783:IL_0041",
+      "LocalizedFormat": "{arg:0}未找到矿藏",
+      "Notes": "Composite review: generated-player-data diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000206:IL_0020",
+      "LocalizedFormat": "尝试获取[HumanReadablePercentOf100]的{arg:1}，该数值超出允许范围 0-100。",
+      "Notes": "Composite review: human-readable-percent range diagnostic with its protected token preserved."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060001B1:IL_0110",
+      "LocalizedFormat": "处理{arg:1}时出错……{arg:3}",
+      "Notes": "Composite review: config-name-or-icon formatter diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000122:IL_0017",
+      "LocalizedFormat": "随机数生成器：{arg:1}",
+      "Notes": "Composite review: random-number generator diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000123:IL_001C",
+      "LocalizedFormat": "随机数生成器：{arg:1}",
+      "Notes": "Composite review: random-number generator diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600018E:IL_002B",
+      "LocalizedFormat": "{arg:0}  ▎  费用：",
+      "Notes": "Composite review: path diagnostic cost label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600018E:IL_0049",
+      "LocalizedFormat": "{arg:0}  ▎  起点：",
+      "Notes": "Composite review: path diagnostic start label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600018E:IL_0067",
+      "LocalizedFormat": "{arg:0}  ▎  下一步：",
+      "Notes": "Composite review: path diagnostic next-step label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600018E:IL_0085",
+      "LocalizedFormat": "{arg:0}  ▎  终点：",
+      "Notes": "Composite review: path diagnostic end label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600000F:IL_003A",
+      "LocalizedFormat": "{arg:0} - 已创建",
+      "Notes": "Composite review: game-core startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600000F:IL_009F",
+      "LocalizedFormat": "{arg:0} - GAME.Init_ProgramLaunched 已执行",
+      "Notes": "Composite review: game-core startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600000F:IL_00C2",
+      "LocalizedFormat": "{arg:0} - Settings.Init_ProgramLaunched 已执行",
+      "Notes": "Composite review: game-core startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600000F:IL_00E6",
+      "LocalizedFormat": "{arg:0} - Settings.ReadUnlockedFactionIDs 已执行",
+      "Notes": "Composite review: game-core startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600000F:IL_010F",
+      "LocalizedFormat": "{arg:0} - 已新建 GraphicsDeviceManager",
+      "Notes": "Composite review: game-core startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600001B:IL_0025",
+      "LocalizedFormat": "无法覆盖现有派系数据文件：{arg:1}",
+      "Notes": "Composite review: faction-data file diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000010:IL_006F",
+      "LocalizedFormat": "{arg:0} - 图形设置已应用",
+      "Notes": "Composite review: game-core initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000010:IL_010B",
+      "LocalizedFormat": "{arg:0} - ElfGlobal 已初始化",
+      "Notes": "Composite review: game-core initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000010:IL_0139",
+      "LocalizedFormat": "{arg:0} - ATGApplication 已创建",
+      "Notes": "Composite review: game-core initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000DA7:IL_0060",
+      "LocalizedFormat": "默认{arg:1}为",
+      "Notes": "Composite review: unit-mood diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000D8C:IL_0084",
+      "LocalizedFormat": "部族肖像文件“{arg:1}”不存在。已改用肖像索引 01。请将此错误消息及最新自动存档告诉 Jon。",
+      "Notes": "Composite review: portrait-load diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000951:IL_0016",
+      "LocalizedFormat": "领袖已拥有特质：{arg:1}",
+      "Notes": "Composite review: leader-trait diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000935:IL_004C",
+      "LocalizedFormat": "{arg:0}领袖总数",
+      "Notes": "Composite review: leader-manager summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000F10:IL_0053",
+      "LocalizedFormat": "{arg:0}正被其所有者移除！",
+      "Notes": "Composite review: map-object validity diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06001020:IL_026C",
+      "LocalizedFormat": "命令未指定所需回合数：{arg:1}",
+      "Notes": "Composite review: command-duration diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06001128:IL_0019",
+      "LocalizedFormat": "已命令{arg:0}治疗，但它本不应能够治疗。",
+      "Notes": "Composite review: heal-command diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600112E:IL_0019",
+      "LocalizedFormat": "已命令{arg:0}补员，但它本不应能够补员。",
+      "Notes": "Composite review: reinforce-command diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600115A:IL_0096",
+      "LocalizedFormat": "{arg:0}{arg:1}{arg:2}类型",
+      "Notes": "Composite review: growth-rate diagnostic label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000976:IL_001F",
+      "LocalizedFormat": "{arg:0}距下次瘟疫的回合数",
+      "Notes": "Composite review: plague-manager summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000976:IL_004E",
+      "LocalizedFormat": "{arg:0}瘟疫记录",
+      "Notes": "Composite review: plague-manager summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000981:IL_001A",
+      "LocalizedFormat": "{arg:0}第回合发生瘟疫",
+      "Notes": "Composite review: plague-record summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000925:IL_000D",
+      "LocalizedFormat": "{arg:0}政治事件 - ",
+      "Notes": "Composite review: political-event manager heading."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000925:IL_007D",
+      "LocalizedFormat": "{arg:0}距强制触发的回合数",
+      "Notes": "Composite review: political-event manager summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060008DC:IL_001B",
+      "LocalizedFormat": "{arg:0}在科技已位于研究队列中时调用了 TechMgr.AddToQueue()。",
+      "Notes": "Composite review: technology-queue diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060008DD:IL_0018",
+      "LocalizedFormat": "{arg:0}在科技不位于研究队列中时调用了 TechMgr.RemoveFromQueue()。",
+      "Notes": "Composite review: technology-queue diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000713:IL_009F",
+      "LocalizedFormat": "{arg:0}二世",
+      "Notes": "Composite review: generated clan-name suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000713:IL_00BC",
+      "LocalizedFormat": "{arg:0}三世",
+      "Notes": "Composite review: generated clan-name suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000713:IL_00D9",
+      "LocalizedFormat": "{arg:0}四世",
+      "Notes": "Composite review: generated clan-name suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000713:IL_00F6",
+      "LocalizedFormat": "{arg:0}五世",
+      "Notes": "Composite review: generated clan-name suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000704:IL_001F",
+      "LocalizedFormat": "{arg:0} - Init_NewGame_CreateMap()",
+      "Notes": "Composite review: map-creation startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000704:IL_0104",
+      "LocalizedFormat": "{arg:0} - 随机数种子：{arg:2}",
+      "Notes": "Composite review: map-creation startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000706:IL_0013",
+      "LocalizedFormat": "{arg:0} - 地图已创建",
+      "Notes": "Composite review: map-creation startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000706:IL_0045",
+      "LocalizedFormat": "{arg:0} - 新游戏创建完成",
+      "Notes": "Composite review: map-creation startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000725:IL_0027",
+      "LocalizedFormat": "正在加载文件：{arg:1}",
+      "Notes": "Composite review: world-data load diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000738:IL_001B",
+      "LocalizedFormat": "{arg:0}初始化中 - ",
+      "Notes": "Composite review: world-core status summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000738:IL_0082",
+      "LocalizedFormat": "{arg:0}玩家",
+      "Notes": "Composite review: world-core status summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000094:IL_0059",
+      "LocalizedFormat": "{arg:0} - GameMap()",
+      "Notes": "Composite review: map-constructor startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000094:IL_00A4",
+      "LocalizedFormat": "{arg:0} - 子对象已创建",
+      "Notes": "Composite review: map-constructor startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000095:IL_0035",
+      "LocalizedFormat": "{arg:0} - 地图生成器已创建",
+      "Notes": "Composite review: map-generation log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000096:IL_0073",
+      "LocalizedFormat": "{arg:0} - 地图生成器已创建",
+      "Notes": "Composite review: map-generation log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000096:IL_009C",
+      "LocalizedFormat": "{arg:0} - 大陆已生成",
+      "Notes": "Composite review: map-generation log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000096:IL_0106",
+      "LocalizedFormat": "{arg:0} - 六边形地图已创建",
+      "Notes": "Composite review: map-generation log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060000A4:IL_0265",
+      "LocalizedFormat": "意外的地图对象类型：{arg:1}",
+      "Notes": "Composite review: map-load diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600009A:IL_01FB",
+      "LocalizedFormat": "{arg:0} - 地图生成完成",
+      "Notes": "Composite review: map-generation log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600009B:IL_0063",
+      "LocalizedFormat": "{arg:0} - 已填充",
+      "Notes": "Composite review: map-population log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060000E6:IL_008C",
+      "LocalizedFormat": "{arg:0}对象",
+      "Notes": "Composite review: map summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060000E6:IL_00BB",
+      "LocalizedFormat": "{arg:0}城市",
+      "Notes": "Composite review: map summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060000E6:IL_0119",
+      "LocalizedFormat": "{arg:0}建筑",
+      "Notes": "Composite review: map summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060001B1:IL_0021",
+      "LocalizedFormat": "尝试获取{arg:1}范围内的受控地格。请截取此错误框的截图。",
+      "Notes": "Composite review: controlled-tile diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000192:IL_0025",
+      "LocalizedFormat": "地格上的{arg:1}可采集数量为负数。",
+      "Notes": "Composite review: harvestable-amount diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060001AE:IL_001B",
+      "LocalizedFormat": "尝试获取半径{arg:1}内的地格。请截取此错误框的截图。",
+      "Notes": "Composite review: radius lookup diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060001AF:IL_001B",
+      "LocalizedFormat": "尝试获取半径{arg:1}内的地格。请截取此错误框的截图。",
+      "Notes": "Composite review: step-distance lookup diagnostic shares the source template with the radius lookup."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000193:IL_0028",
+      "LocalizedFormat": "请将此消息展示给 Jon，并提供发生问题前的存档！\n\nRefreshHarvestMeter() 在以下地格陷入无限循环：\n\n{arg:1}",
+      "Notes": "Composite review: harvest-meter infinite-loop diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600018E:IL_0022",
+      "LocalizedFormat": "尝试移除{arg:1}的可采集数量，但在地格上未找到匹配的 HarvestData 对象。",
+      "Notes": "Composite review: harvest-data removal diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600013A:IL_001C",
+      "LocalizedFormat": "为{arg:1}计算出的高度无效",
+      "Notes": "Composite review: elevation diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000362:IL_0024",
+      "LocalizedFormat": "{arg:0}地格",
+      "Notes": "Composite review: zone-ring summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600049A:IL_003C",
+      "LocalizedFormat": "{arg:0} - 存档目录已创建",
+      "Notes": "Composite review: application startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060004A6:IL_001F",
+      "LocalizedFormat": "无法覆盖现有存档：{arg:1}",
+      "Notes": "Composite review: save-file diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600049E:IL_00F3",
+      "LocalizedFormat": "{arg:0} - NewGame()",
+      "Notes": "Composite review: new-game startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600049E:IL_0117",
+      "LocalizedFormat": "{arg:0} - 世界界面已创建",
+      "Notes": "Composite review: new-game startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060004A2:IL_0037",
+      "LocalizedFormat": "{arg:0} - 游戏世界已创建",
+      "Notes": "Composite review: new-game startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060004A2:IL_0084",
+      "LocalizedFormat": "{arg:0} - 正在将控制权交给人类玩家",
+      "Notes": "Composite review: new-game startup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060005B3:IL_010D",
+      "LocalizedFormat": "{arg:0} - 渲染目标已创建",
+      "Notes": "Composite review: world-screen initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060005B5:IL_0022",
+      "LocalizedFormat": "{arg:0} - 水彩着色器已加载",
+      "Notes": "Composite review: world-screen initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:060005B5:IL_00F0",
+      "LocalizedFormat": "{arg:0} - 所有着色器已加载",
+      "Notes": "Composite review: world-screen initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000125:IL_00B8",
+      "LocalizedFormat": "{arg:0}封爵按钮",
+      "Notes": "Composite review: clan-card action control name."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000125:IL_0291",
+      "LocalizedFormat": "{arg:0}训练为军团统帅按钮",
+      "Notes": "Composite review: clan-card action control name."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000125:IL_037F",
+      "LocalizedFormat": "{arg:0}从议会撤职按钮",
+      "Notes": "Composite review: clan-card action control name."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000125:IL_044D",
+      "LocalizedFormat": "{arg:0}任命入议会按钮",
+      "Notes": "Composite review: clan-card action control name."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000125:IL_0742",
+      "LocalizedFormat": "{arg:0}返回地图按钮",
+      "Notes": "Composite review: clan-card action control name."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060005CE:IL_03C9",
+      "LocalizedFormat": "{arg:0}{arg:1}”。请将此信息展示给 Jon。",
+      "Notes": "Composite review: professions-screen layout diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060005CE:IL_03F1",
+      "LocalizedFormat": "{arg:0}{arg:1}”。请将此信息展示给 Jon。",
+      "Notes": "Composite review: professions-screen layout diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000243:IL_001F",
+      "LocalizedFormat": "{arg:0} - Init()",
+      "Notes": "Composite review: world-screen initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000243:IL_00EE",
+      "LocalizedFormat": "{arg:0} - 控件已创建",
+      "Notes": "Composite review: world-screen initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000243:IL_013B",
+      "LocalizedFormat": "{arg:0} - 子对象已创建",
+      "Notes": "Composite review: world-screen initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000243:IL_017E",
+      "LocalizedFormat": "{arg:0} - 子对象已初始化",
+      "Notes": "Composite review: world-screen initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000244:IL_00A4",
+      "LocalizedFormat": "{arg:0} - 旧的已用部族注释已清除",
+      "Notes": "Composite review: world-screen cleanup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000244:IL_00C5",
+      "LocalizedFormat": "{arg:0} - 旧的已用部族注释未清除",
+      "Notes": "Composite review: world-screen cleanup log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:0600029F:IL_01B1",
+      "LocalizedFormat": "{arg:0} - 声音已初始化",
+      "Notes": "Composite review: sound initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060000BC:IL_0013",
+      "LocalizedFormat": "{arg:0} - Init()",
+      "Notes": "Composite review: main-menu initialization log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060000C5:IL_008B",
+      "LocalizedFormat": "{arg:0} - 正在显示组队游戏说明",
+      "Notes": "Composite review: main-menu log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060000C4:IL_015A",
+      "LocalizedFormat": "{arg:0} - 正在显示存档数量警告",
+      "Notes": "Composite review: main-menu log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060000C3:IL_0013",
+      "LocalizedFormat": "{arg:0} - 正在显示欢迎弹窗",
+      "Notes": "Composite review: main-menu log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060000D0:IL_00BD",
+      "LocalizedFormat": "{arg:0} - 正在显示过期挑战弹窗",
+      "Notes": "Composite review: main-menu log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060000D0:IL_013D",
+      "LocalizedFormat": "{arg:0} - 正在显示过期挑战弹窗",
+      "Notes": "Composite review: main-menu log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060000BD:IL_0067",
+      "LocalizedFormat": "{arg:0} - 正在播放标题音乐",
+      "Notes": "Composite review: main-menu audio log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060000BE:IL_0096",
+      "LocalizedFormat": "{arg:0} - 快速读档",
+      "Notes": "Composite review: main-menu quickload log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060000BE:IL_0116",
+      "LocalizedFormat": "{arg:0} - 快速开始",
+      "Notes": "Composite review: main-menu quickstart log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:06000077:IL_007A",
+      "LocalizedFormat": "到{arg:1}的地形转化未由通知系统处理。",
+      "Notes": "Composite review: terrain-transformation notification diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060009C8:IL_001A",
+      "LocalizedFormat": "{arg:0}（索引",
+      "Notes": "Composite review: configuration ToString index prefix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600136A:IL_0065",
+      "LocalizedFormat": "{arg:0}与以下内容无效：",
+      "Notes": "Composite review: free-trait incompatibility prefix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001370:IL_001A",
+      "LocalizedFormat": "{arg:0}缺少以下特质时无效：",
+      "Notes": "Composite review: trait prerequisite incompatibility prefix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000CA1:IL_0033",
+      "LocalizedFormat": "{arg:0}特质",
+      "Notes": "Composite review: mood-config trait label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060014A5:IL_005A",
+      "LocalizedFormat": "{arg:0} - 河流图块集已加载",
+      "Notes": "Composite review: river-config load log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060014AC:IL_005A",
+      "LocalizedFormat": "{arg:0} - 道路图块集已加载",
+      "Notes": "Composite review: road-config load log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060015BB:IL_003E",
+      "LocalizedFormat": "{arg:0}文本",
+      "Notes": "Composite review: text-key load label."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000433:IL_0015",
+      "LocalizedFormat": "工具提示章节折叠状态（x{arg:1}）",
+      "Notes": "Composite review: tooltip collapsed-state setting summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000008:IL_003C",
+      "LocalizedFormat": "{arg:0}{arg:1}-2020年7月1日",
+      "Notes": "Composite review: program version-date suffix."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000008:IL_00D9",
+      "LocalizedFormat": "{arg:0} - 主函数()",
+      "Notes": "Composite review: program entry log."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:0600046E:IL_002D",
+      "LocalizedFormat": " × {arg:1}{arg:2}",
+      "Notes": "Composite review: resolution separator."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:0600046E:IL_00CE",
+      "LocalizedFormat": " × {arg:1}{arg:2}",
+      "Notes": "Composite review: resolution separator."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060000C2:IL_0518",
+      "LocalizedFormat": "EEEE年MM月dd日{arg:1}",
+      "Notes": "Composite review: main-menu date-format display template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesUI.original.dll:060000C2:IL_052F",
+      "LocalizedFormat": "EEEE年MM月dd日{arg:1}",
+      "Notes": "Composite review: main-menu date-format display template."
+    },
+    {
+      "EntryPointId": "managed:source/ElfTools.original.dll:060002F8:IL_0269",
+      "LocalizedFormat": "文本块……{arg:1}",
+      "Notes": "Composite review: rich-text chunk debug summary."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600037B:IL_003F",
+      "LocalizedFormat": "读取 _PATCH_NOTES_.txt 第{arg:1}行时出错。\n\n补丁说明不能包含 [ or ]（方括号），因为它是文本标签查找系统的保留语法；显示补丁说明时会导致游戏崩溃。",
+      "Notes": "Composite review: patch-notes parser diagnostic with bracket syntax preserved."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600046B:IL_0268",
+      "LocalizedFormat": "不存在世界索引为{arg:1}的城市。",
+      "Notes": "Composite review: debug-console city lookup diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600046C:IL_0154",
+      "LocalizedFormat": "不存在世界索引为{arg:1}的城市。",
+      "Notes": "Composite review: debug-console city lookup diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600046C:IL_018D",
+      "LocalizedFormat": "不存在索引为{arg:1}的玩家。",
+      "Notes": "Composite review: debug-console player lookup diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600046C:IL_01CE",
+      "LocalizedFormat": "已拥有{arg:1}{arg:2}。",
+      "Notes": "Composite review: debug-console city ownership result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600046C:IL_01FE",
+      "LocalizedFormat": "现由{arg:1}{arg:2}拥有。",
+      "Notes": "Composite review: debug-console city ownership result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600042F:IL_005C",
+      "LocalizedFormat": "已将调试叠加模式切换为{arg:1}。",
+      "Notes": "Composite review: debug-console overlay result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000433:IL_0106",
+      "LocalizedFormat": "已将调试叠加模式切换为{arg:1}。",
+      "Notes": "Composite review: debug-console overlay result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600046A:IL_00D0",
+      "LocalizedFormat": "\n正在居中至{arg:1}{arg:2}……",
+      "Notes": "Composite review: debug-console city camera result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600046A:IL_0175",
+      "LocalizedFormat": "不存在世界索引为{arg:1}的城市。",
+      "Notes": "Composite review: debug-console city lookup diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000460:IL_00B6",
+      "LocalizedFormat": "已将选中地图对象的额外控制范围设为{arg:1}。",
+      "Notes": "Composite review: debug-console control-range result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600046F:IL_02ED",
+      "LocalizedFormat": "{arg:0}已向{arg:2}宣战。",
+      "Notes": "Composite review: debug-console war declaration result."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:0600009D:IL_003A",
+      "LocalizedFormat": "找不到优先级：[{arg:1}]。是否拼写有误？",
+      "Notes": "Composite review: bracketed priority diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060000A2:IL_003F",
+      "LocalizedFormat": "找不到情境：[{arg:1}]。是否拼写有误？",
+      "Notes": "Composite review: bracketed situation diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06000992:IL_00C7",
+      "LocalizedFormat": "事件类型[{arg:1}]没有加载逻辑。",
+      "Notes": "Composite review: bracketed event-type diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060009C4:IL_008F",
+      "LocalizedFormat": "XML 中包含重复条目：[{arg:1}{arg:2}]。",
+      "Notes": "Composite review: bracketed XML duplicate diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060012C1:IL_003F",
+      "LocalizedFormat": "找不到与[{arg:1}]匹配的姿态枚举。",
+      "Notes": "Composite review: bracketed stance diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001389:IL_01C9",
+      "LocalizedFormat": "{arg:0}[{arg:2}]不是有效边。",
+      "Notes": "Composite review: preserve bracketed edge operand while translating its diagnostic."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060014DC:IL_0087",
+      "LocalizedFormat": "[{arg:1}]的气候数据中出现意外 XML 块。",
+      "Notes": "Composite review: bracketed climate XML diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060015BB:IL_00C4",
+      "LocalizedFormat": "[{arg:1}]发生 XML 文本错误：文本条目不能以空格开头。若需缩进，请改用制表符。",
+      "Notes": "Composite review: preserve bracketed TextKey while translating XML whitespace guidance."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060015BB:IL_00EA",
+      "LocalizedFormat": "[{arg:1}]发生 XML 文本错误：文本条目不能以空格结尾。若需缩进，请改用制表符。",
+      "Notes": "Composite review: preserve bracketed TextKey while translating XML whitespace guidance."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060015BB:IL_0110",
+      "LocalizedFormat": "XML 文本错误：TextKey [{arg:1}]存在多个副本。",
+      "Notes": "Composite review: bracketed TextKey duplicate diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060015BB:IL_0133",
+      "LocalizedFormat": "[{arg:1}]发生 XML 文本错误：TextKey 必须以 [TEXT.]开头。",
+      "Notes": "Composite review: preserve bracketed TextKey syntax in the complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060015BB:IL_0159",
+      "LocalizedFormat": "[{arg:1}]发生 XML 文本错误：TextKey 不能包含空格。",
+      "Notes": "Composite review: preserve bracketed TextKey syntax in the complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:060015BB:IL_018A",
+      "LocalizedFormat": "[{arg:1}]发生 XML 文本错误：TextKey 至少须包含两个 [.]，以包围描述文本上下文的简短说明（例如 MainMenu、Terrain）。",
+      "Notes": "Composite review: preserve bracketed TextKey syntax in the complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001717:IL_0D7A",
+      "LocalizedFormat": "找不到与名称[{arg:1}]关联的月份。",
+      "Notes": "Composite review: bracketed month-name diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001718:IL_0484",
+      "LocalizedFormat": "找不到与索引[{arg:1}]关联的月份。",
+      "Notes": "Composite review: bracketed month-index diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesCommon.original.dll:06001719:IL_0034",
+      "LocalizedFormat": "没有与[{arg:1}]匹配的对象属性 ID。",
+      "Notes": "Composite review: bracketed property-ID diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600041E:IL_0133",
+      "LocalizedFormat": "无效地图尺寸：[{arg:1}]。",
+      "Notes": "Composite review: bracketed map-size diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000439:IL_0685",
+      "LocalizedFormat": "已高亮显示含有食物但不包括[{arg:1}]的地块。",
+      "Notes": "Composite review: bracketed debug-filter result requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000439:IL_0793",
+      "LocalizedFormat": "已高亮显示含有资源点类型[{arg:1}]的地块。",
+      "Notes": "Composite review: bracketed debug-filter result requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000439:IL_091A",
+      "LocalizedFormat": "已高亮显示可放置区域特质[{arg:1}]的地块。",
+      "Notes": "Composite review: bracketed debug-filter result requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000439:IL_0A78",
+      "LocalizedFormat": "已高亮显示含有区域特质[{arg:1}]的地块。",
+      "Notes": "Composite review: bracketed debug-filter result requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:0600077E:IL_005E",
+      "LocalizedFormat": "BaseObject.GetProperty() 调用未能为[{arg:1}]找到有效匹配。",
+      "Notes": "Composite review: bracketed property lookup diagnostic requires a complete template."
+    },
+    {
+      "EntryPointId": "managed:source/AtTheGatesGame.original.exe:06000D9C:IL_0020",
+      "LocalizedFormat": "ATGUnit.HasTrait()：特质[{arg:1}]不存在。",
+      "Notes": "Composite review: bracketed trait diagnostic requires a complete template."
     }
   ]
 }

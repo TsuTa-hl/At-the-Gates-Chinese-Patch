@@ -6,17 +6,25 @@ namespace AtG.RuntimeText
     public static class CjkText
     {
         private const string OpeningPunctuation =
-            "([{\uFF08\uFF3B\uFF5B\u3008\u300A\u300C\u300E\u3010\u3014\u3016\u3018\u301A";
+            "([{\u2018\u201C\uFF08\uFF3B\uFF5B\u3008\u300A\u300C\u300E\u3010\u3014\u3016\u3018\u301A";
         private const string ClosingPunctuation =
             ")]},.!?;:\uFF09\uFF3D\uFF5D\u3009\u300B\u300D\u300F\u3011\u3015\u3017\u3019\u301B" +
             "\uFF0C\u3002\uFF01\uFF1F\uFF1B\uFF1A\u3001\u2026\u2014\u201D\u2019";
+        private const string DynamicTypography = "\u2013\u2014\u2018\u2019\u201C\u201D\u2026";
 
         public static bool RequiresDynamicGlyph(char character)
         {
+            if ((character >= (char)0x3000 && character <= (char)0x303F) ||
+                character == (char)0x2013 || character == (char)0x2014 ||
+                character == (char)0x2018 || character == (char)0x2019 ||
+                character == (char)0x201C || character == (char)0x201D ||
+                character == (char)0x2026) return true;
             return (character >= '\u2E80' && character <= '\u9FFF') ||
                    (character >= '\uF900' && character <= '\uFAFF') ||
+                   (character >= '\u3000' && character <= '\u303F') ||
                    (character >= '\uFE10' && character <= '\uFE6F') ||
-                   (character >= '\uFF00' && character <= '\uFFEF');
+                   (character >= '\uFF00' && character <= '\uFFEF') ||
+                   DynamicTypography.IndexOf(character) >= 0;
         }
 
         public static bool IsIgnorableFormat(char character)
@@ -27,6 +35,7 @@ namespace AtG.RuntimeText
         public static bool CanBreakBetween(char previous, char next)
         {
             if (previous == '\r' || previous == '\n' || next == '\r' || next == '\n') return true;
+            if (previous == (char)0x2018 || previous == (char)0x201C) return false;
             if (OpeningPunctuation.IndexOf(previous) >= 0) return false;
             if (ClosingPunctuation.IndexOf(next) >= 0) return false;
             return RequiresDynamicGlyph(previous) || RequiresDynamicGlyph(next) ||

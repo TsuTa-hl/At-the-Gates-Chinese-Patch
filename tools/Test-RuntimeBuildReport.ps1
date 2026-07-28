@@ -38,8 +38,11 @@ if ([int]$report.RuntimeText.ConceptKeyCount -ne 113) {
 if ([int]$report.RuntimeText.ConceptDisplayCount -lt 31) {
     throw "Expected at least 31 concept display mappings, got $($report.RuntimeText.ConceptDisplayCount)."
 }
-if ([int]$report.RuntimeText.TemplateCount -lt 20) {
-    throw "Expected at least 20 entry-specific display templates, got $($report.RuntimeText.TemplateCount)."
+if ([int]$report.RuntimeText.ExactCount -lt 5) {
+    throw "Expected the five entry-specific resource-tooltip exact mappings, got $($report.RuntimeText.ExactCount)."
+}
+if ([int]$report.RuntimeText.TemplateCount -ne 0) {
+    throw "Runtime final-display templates must remain disabled without an EntryPoint context; got $($report.RuntimeText.TemplateCount)."
 }
 if ([int64]$report.RuntimeText.AtlasBudgetBytes -ne 33554432) {
     throw "Expected a 32 MiB runtime atlas budget."

@@ -11,7 +11,7 @@ namespace AtG.ManagedRewrite;
 
 public sealed class CompositeCatalogDocument
 {
-    public int SchemaVersion { get; set; } = 3;
+    public int SchemaVersion { get; set; } = 7;
     public string GeneratedAtUtc { get; set; } = "";
     public string RepositoryRoot { get; set; } = "";
     public List<CompositeTextEntry> Entries { get; set; } = [];
@@ -53,6 +53,29 @@ public sealed class CompositeTextPart
     public int Position { get; set; }
     public string Kind { get; set; } = "";
     public string Value { get; set; } = "";
+    public CompositeKnownTextReference? KnownTextReference { get; set; }
+    public string? KnownTextReferenceExclusionReason { get; set; }
+}
+
+/// <summary>
+/// Stable source identity for a literal that participates in a composite display.
+/// This deliberately does not store a SQLite occurrence ID: catalog IDs are local and
+/// replaceable, while the source file plus a source locator remains reproducible.
+/// </summary>
+public sealed class CompositeKnownTextReference
+{
+    public string SourceFile { get; set; } = "";
+    public string Original { get; set; } = "";
+    public string? MethodToken { get; set; }
+    public int? ILOffset { get; set; }
+    public string? XPath { get; set; }
+    public string? TextKey { get; set; }
+    public string? ConfigId { get; set; }
+    public string? ConfigXPath { get; set; }
+    public int? ConfigIndex { get; set; }
+    public string? RuntimeMapSection { get; set; }
+    public string? RuntimeMapOriginal { get; set; }
+    public string? RuntimeMapConceptKey { get; set; }
 }
 
 public sealed class CompositeLocalizationRule
@@ -88,18 +111,186 @@ public sealed record CompositeCatalogResult(
 
 public static class CompositeTextCatalog
 {
+    private const string RuntimeDisplayMapSourceFile = "translations/runtime-display-strings.json";
     private static readonly Regex RichTextLink = new(
         @"\[[^\]|]+\|([A-Z][A-Z0-9-]*)\]", RegexOptions.CultureInvariant);
     private static readonly Regex Placeholder = new(
         @"\{(?:arg:)?\d+\}", RegexOptions.CultureInvariant);
     private static readonly Regex BracketToken = new(
         @"\[[^\]]+\]", RegexOptions.CultureInvariant);
+    private static readonly Regex AsciiWord = new(
+        @"[A-Za-z]{2,}", RegexOptions.CultureInvariant);
+    private static readonly Regex MachineToken = new(
+        @"^\s*[A-Za-z0-9_.:-]+\s*$", RegexOptions.CultureInvariant);
+    // These are source literals shared by every managed composite that references
+    // them. They deliberately live at the final-display boundary: the source
+    // program continues to use identifiers, paths, hotkeys, and tags unchanged.
+    // A missing prose literal is an audit failure, not a legacy safety exclusion.
+    private static readonly IReadOnlyDictionary<string, string> CompositeLiteralTranslations =
+        new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["     in Active [Professions|PROFESSION] leave the [SETTLEMENT] and appear on the map (as opposed to [Settled|SETTLED] Professions). Some Clans have Traits that make them prefer or dislike such Professions."] =
+                " 主动[Professions|PROFESSION]会离开[SETTLEMENT]并出现在地图上（与[Settled|SETTLED]职业相对）。有些氏族特质会使其偏好或厌恶这类职业。",
+            ["     in Settled [Professions|PROFESSION] remain inside the [SETTLEMENT] (as opposed to [Active|ACTIVE] Professions). Some Clans have Traits that make them prefer or dislike such Professions."] =
+                " 定居[Professions|PROFESSION]会留在[SETTLEMENT]内（与[Active|ACTIVE]职业相对）。有些氏族特质会使其偏好或厌恶这类职业。",
+            ["     in some [Active|ACTIVE] [Civilian|CIVILIAN] [Professions|PROFESSION] like [FARMER] and [MINER] can Construct [Structures|STRUCTURE] to [Harvest|HARVEST] [Resources|RESOURCE] from [Deposits|DEPOSIT] or [Dense Forests|FOREST]. This requires either [TIMBER] or [STONE-BLOCKS], and is generally not something you'll start doing until a year or two into the game."] =
+                " 某些主动的[Civilian|CIVILIAN][Professions|PROFESSION]，如[FARMER]和[MINER]，可以建造[Structures|STRUCTURE]，从[Deposits|DEPOSIT]或[Dense Forests|FOREST]中[Harvest|HARVEST][Resources|RESOURCE]。这需要[TIMBER]或[STONE-BLOCKS]，通常要到游戏一两年后才会开始进行。",
+            ["     to [Identify|UNIDENTIFIED] "] = " 用于[Identify|UNIDENTIFIED] ",
+            ["    MORE  LINES  HIDDEN   ]"] = "    已隐藏更多行   ]",
+            ["   [PARCHMENT]."] = "   [PARCHMENT]。",
+            ["   [Turns|TURN] remaining)."] = "   剩余[Turns|TURN]）。",
+            ["   and remove all [Crimes|CRIME] from this [Clan|CLAN] (can only be performed in the [SETTLEMENT] when you have an [INSTRUCTOR])."] =
+                "，并清除该[Clan|CLAN]的所有[Crimes|CRIME]（仅可在拥有[INSTRUCTOR]的[SETTLEMENT]中执行）。",
+            ["   and remove this [Trait|CLAN-TRAIT] from this [Clan|CLAN] (can only be performed in the [SETTLEMENT] when you have an [INSTRUCTOR])."] =
+                "，并移除该[Clan|CLAN]的此项[Trait|CLAN-TRAIT]（仅可在拥有[INSTRUCTOR]的[SETTLEMENT]中执行）。",
+            ["   as a playable [Faction|FACTION]! You will be able to choose them to play from the main menu in future games."] =
+                "，成为可游玩的[Faction|FACTION]！今后的游戏可从主菜单选择该派系。",
+            ["   can be [Trained|TRAIN] in."] = " 可在此接受[Trained|TRAIN]。",
+            ["   icon, and are exclusively found in the [HONOR] and [DISCOVERY] [Disciplines|DISCIPLINE]."] =
+                "图标，且仅见于[HONOR]和[DISCOVERY][Disciplines|DISCIPLINE]。",
+            ["  % bonus to [Combat Power|POWER]"] = " 对[Combat Power|POWER]加成 %",
+            ["  % bonus to [Resource Production|PRODUCE]"] = " 对[Resource Production|PRODUCE]加成 %",
+            ["  % the normal rate after a [Deposit|DEPOSIT] has [Degraded|DEPLETE] once, and then becomes permanently exhausted and shuts down after Degrading a second time."] =
+                "首次[Degraded|DEPLETE]后按正常速率的 % 产出；第二次枯竭后将永久耗尽并停工。",
+            ["  (or another similar [Resource|RESOURCE])"] = "（或其他类似的[Resource|RESOURCE]）",
+            ["  ] contains only one Tag Display Text value. When one is defined both must be in order to do plural testing."] =
+                " ]仅包含一个标签显示文本值。进行复数测试时，若定义其中一个则必须同时定义两个。",
+            ["  ] has been captured and is now 'Occupied'."] = " ]已被占领，现在处于“已占领”状态。",
+            ["  ] is not a valid tag:"] = " ]不是有效标签：",
+            ["  ] is setting HorizontalAlign to its existing value, which has no effect and is probably unintentional."] =
+                " ]正将 HorizontalAlign 设为现有值；这不会产生效果，可能并非有意如此。",
+            ["  ] is setting ShrinkToFitText to its existing value, which has no effect and is probably unintentional."] =
+                " ]正将 ShrinkToFitText 设为现有值；这不会产生效果，可能并非有意如此。",
+            ["  ] on this  "] = " ]位于此",
+            ["  ] signed numeric value delimiter '+' can only immediately follow the '[' character which starts a new tag."] =
+                " ]带符号数值分隔符“+”只能紧跟在开始新标签的“[”之后。",
+            ["  ] to  "] = " ]到",
+            ["  ] to mirror."] = " ]以镜像显示。",
+            ["  ] when calculating CalcNumTooltipsAboveUs()"] = " ]，计算 CalcNumTooltipsAboveUs() 时",
+            ["  ] with every  "] = " ]，每个",
+            ["  ], but it lacks a River which can flood!"] = " ]，但它缺少可泛滥的河流！",
+            ["  ]. Doing so"] = " ]。这样做",
+            ["  ]'s XML is expecting CONFIG values but the internal list is undefined."] = " ]的 XML 需要 CONFIG 值，但内部列表未定义。",
+            ["  ]'s XML is expecting NUMBER values but the internal list is undefined."] = " ]的 XML 需要 NUMBER 值，但内部列表未定义。",
+            ["  ]'s XML is expecting TEXT values but the internal list is undefined."] = " ]的 XML 需要 TEXT 值，但内部列表未定义。",
+            ["  can ONLY be healed by using the 'Heal' Command while a [Clan|CLAN] is on the same [Tile|TILE] as your [SETTLEMENT]"] =
+                "只能在[Clan|CLAN]与[SETTLEMENT]处于同一[Tile|TILE]时，使用“Heal”命令治疗。",
+            ["  can provide you with [Resources|RESOURCE] useful in [Training|TRAIN], [Construction|CONSTRUCT], and trade. You can [Harvest|HARVEST] them through [Foraging|FORAGE] or by Constructing [Structures|STRUCTURE] on them."] =
+                "可提供用于[Training|TRAIN]、[Construction|CONSTRUCT]和贸易的[Resources|RESOURCE]。可通过[Foraging|FORAGE]或在其上建造[Structures|STRUCTURE]来[Harvest|HARVEST]。",
+            ["  from [SETTLEMENT:NO-ICON]"] = "，来自[SETTLEMENT:NO-ICON]",
+            ["  needed to [Identify|UNIDENTIFIED] "] = "，需要[Identify|UNIDENTIFIED] ",
+            ["  's previous [Desire|DESIRE] or [Feud|FEUD] has faded away."] = "此前的[Desire|DESIRE]或[Feud|FEUD]已消退。",
+            ["  suffered after [Retreating|RETREAT]"] = "在[Retreating|RETREAT]后遭受了",
+            ["  when fighting [Bandits|BANDIT]"] = "与[Bandits|BANDIT]作战时",
+            ["  when fighting [Romans|ROME]"] = "与[Romans|ROME]作战时",
+            [" \n\n[COLOR:BAD-RED]This Desire has been granted![/COLOR]"] = "\n\n[COLOR:BAD-RED]该愿望已获满足！[/COLOR]",
+            [" % from number of [Families|FAMILY] in [Clan|CLAN]"] = " %，取决于[Clan|CLAN]中的[Families|FAMILY]数量",
+            [" ... Panels[COLLAPSED] cannot contain the Panels[EXPANDED]."] = "……Panels[COLLAPSED]不能包含 Panels[EXPANDED]。",
+            [" ... Panels[COLLAPSED] cannot contain the ToggleButton[EXPANDED]."] = "……Panels[COLLAPSED]不能包含 ToggleButton[EXPANDED]。",
+            [" ... Panels[EXPANDED] and Panels[COLLAPSED] cannot be the same object."] = "……Panels[EXPANDED]与 Panels[COLLAPSED]不能是同一对象。",
+            [" ... Panels[EXPANDED] and Panels[COLLAPSED] cannot contain the same object."] = "……Panels[EXPANDED]与 Panels[COLLAPSED]不能包含同一对象。",
+            [" ... Panels[EXPANDED] cannot contain the Panels[COLLAPSED]."] = "……Panels[EXPANDED]不能包含 Panels[COLLAPSED]。",
+            [" ... Panels[EXPANDED] cannot contain the ToggleButton[COLLAPSED]."] = "……Panels[EXPANDED]不能包含 ToggleButton[COLLAPSED]。",
+            [" ... The HEIGHT of a horizontally-aligned Panels[EXPANDED] and its Panels[COLLAPSED] must match."] =
+                "……横向对齐的 Panels[EXPANDED]与其 Panels[COLLAPSED]高度必须一致。",
+            [" ... The WIDTH of a vertically-aligned Panels[EXPANDED] and its Panels[COLLAPSED] must match."] =
+                "……纵向对齐的 Panels[EXPANDED]与其 Panels[COLLAPSED]宽度必须一致。",
+            [" ... ToggleButton[COLLAPSED] and ToggleButton[EXPANDED] cannot be the same object."] = "……ToggleButton[COLLAPSED]与 ToggleButton[EXPANDED]不能是同一对象。",
+            [" [  ] is not a valid edge."] = "[  ]不是有效边。",
+            [" allows it to [Move|MOVE-POINT] around the map like an   ."] = "使其能像 一样在地图上[Move|MOVE-POINT]。",
+            [" Beaches with only 2 edges must always have a [UsagePercentWhenValid] of 100."] =
+                "仅有两条边的海滩必须始终具有 100 的[UsagePercentWhenValid]。",
+            [" Clicked"] = "已点击",
+            [" Disabled"] = "已禁用",
+            [" en route to joining you! You can harvest it by having a [Clan|CLAN]    from or [Construct|CONSTRUCT] a [Structure|STRUCTURE] on it."] =
+                "正在前来加入你！可让[Clan|CLAN] 从中采集，或在其上[Construct|CONSTRUCT][Structure|STRUCTURE]。",
+            [" MousedOver"] = "鼠标悬停",
+            [" Normal"] = "普通",
+            [" Walk"] = "步行",
+            [" XML contains duplicate entry for [   ]."] = "XML 中包含重复条目：[   ]。",
+            ["! You can [Harvest|HARVEST] it by having a [Clan|CLAN]    from or [Construct|CONSTRUCT] a [Structure|STRUCTURE] on it."] =
+                "！可让[Clan|CLAN] 从中[Harvest|HARVEST]，或在其上[Construct|CONSTRUCT][Structure|STRUCTURE]。",
+            ["[Clan|CLAN] has a [Suppy|SUPPLY] deficit of   ."] = "[Clan|CLAN]的[Suppy|SUPPLY]短缺 。",
+            ["[Clan|CLAN] has suffered    [Damage|DAMAGE] due to combat or lack of [Supply|SUPPLY]."] =
+                "[Clan|CLAN]因战斗或缺少[Supply|SUPPLY]而受到 [Damage|DAMAGE]。",
+            ["[HOTKEY:Comma] Cycles BACKWARDS through idle   ."] = "[HOTKEY:Comma]向后切换空闲的 。",
+            ["[HOTKEY:Ctrl-F] - Forage Until Out of  "] = "[HOTKEY:Ctrl-F] - 持续觅食，直到耗尽",
+            ["[HOTKEY:Ctrl-I] - Identify Until Out of  "] = "[HOTKEY:Ctrl-I] - 持续鉴定，直到耗尽",
+            ["[HOTKEY:Period] Cycles through idle   ."] = "[HOTKEY:Period]切换空闲的 。",
+            ["ATGUnit.HasTrait() ... Trait [  ] does not exist."] = "ATGUnit.HasTrait() ……特质 [  ]不存在。",
+            ["BaseObject.GetProperty() call for [  ] failed to find a valid match."] = "BaseObject.GetProperty() 调用未能为 [  ]找到有效匹配。",
+            ["Found a [null] HarvestData on tile  "] = "在地块 上发现了 [null] HarvestData。",
+            ["Highlighted tiles containing Deposit Type [  ]"] = "已高亮显示含有资源点类型 [  ]的地块",
+            ["Highlighted tiles containing Food, except for [  ]"] = "已高亮显示含有食物但不包括 [  ]的地块",
+            ["Highlighted tiles containing Zone Trait [  ]"] = "已高亮显示含有区域特质 [  ]的地块",
+            ["Highlighted tiles where Zone Trait [  ] could have been placed."] = "已高亮显示可放置区域特质 [  ]的地块。",
+            ["Invalid map size: [  ]"] = "无效地图尺寸：[  ]",
+            ["No loading logic for event type [  ]"] = "事件类型 [  ]没有加载逻辑",
+            ["No matching Object Property ID for [  ]"] = "没有与 [  ]匹配的对象属性 ID",
+            ["Pillaging takes 1 [Turn|TURN] and provides a lump sum of [Resources|RESOURCE] as plunder, but damages the target [Structure|STRUCTURE] until it's Repaired. Pillaging a [Farm|FARM] or [SETTLEMENT] also provides free   ."] =
+                "劫掠耗时 1 [Turn|TURN]，可获得一笔[Resources|RESOURCE]战利品，但会损坏目标[Structure|STRUCTURE]，直至修复。劫掠[Farm|FARM]或[SETTLEMENT]还会提供免费的 。",
+            ["Unable to find Stance enum match for [  ]."] = "找不到与 [  ]匹配的姿态枚举。",
+            ["Unable to open or locate  [ Settings.xml ]  from the expected location:\n\n "] = "无法在预期位置打开或找到 [ Settings.xml ]：\n\n",
+            ["Unexpected XML block in Climate data for [  ]"] = "[  ]的气候数据中出现意外 XML 块",
+            ["Was unable to find a month associated with index [  ]."] = "找不到与索引 [  ]关联的月份。",
+            ["Was unable to find a month associated with name [  ]."] = "找不到与名称 [  ]关联的月份。",
+            ["Was unable to find the Priority for [  ]. Did you misspell something?"] = "找不到 [  ]的优先级。是否拼写有误？",
+            ["Was unable to find the Situation for [  ]. Did you misspell something?"] = "找不到 [  ]的情境。是否拼写有误？",
+            ["Was unable to find the Priority for ["] = "找不到 [",
+            ["Was unable to find the Situation for ["] = "找不到 [",
+            ["]. Did you misspell something?"] = "]。是否拼写有误？",
+            ["No loading logic for event type ["] = "事件类型[",
+            ["XML contains duplicate entry for ["] = "XML 中包含重复条目：[",
+            ["Unable to find Stance enum match for ["] = "找不到与[",
+            ["] is not a valid edge."] = "]不是有效边。",
+            ["Unexpected XML block in Climate data for ["] = "[",
+            ["XML text error with ["] = "[",
+            ["] ... Text Entry cannot start with a space. If trying to indent use tabs instead."] =
+                "]……文本条目不能以空格开头。若需缩进，请改用制表符。",
+            ["] ... Text Entry cannot end with a space. If trying to indent use tabs instead."] =
+                "]……文本条目不能以空格结尾。若需缩进，请改用制表符。",
+            ["XML text error ... Multiple copies of TextKey ["] = "XML 文本错误……TextKey[",
+            ["] ... TextKey must start with [TEXT.]."] = " ]……TextKey 必须以 [TEXT.]开头。",
+            ["] ... TextKey cannot contain spaces."] = "]……TextKey 不能包含空格。",
+            ["] ... TextKey must contain at least two [.] periods surrounding a brief descriptor of the text's context (e.g. MainMenu, Terrain)."] =
+                "]……TextKey 至少须包含两个 [.]，以包围描述文本上下文的简短说明（例如 MainMenu、Terrain）。",
+            ["Was unable to find a month associated with name ["] = "找不到与名称[",
+            ["Was unable to find a month associated with index ["] = "找不到与索引[",
+            ["No matching Object Property ID for ["] = "没有与[",
+            ["Invalid map size: ["] = "无效地图尺寸：[",
+            ["Highlighted tiles containing Food, except for ["] = "已高亮显示含有食物但不包括[",
+            ["Highlighted tiles containing Deposit Type ["] = "已高亮显示含有资源点类型[",
+            ["Highlighted tiles where Zone Trait ["] = "已高亮显示可放置区域特质[",
+            ["] could have been placed."] = "]的地块。",
+            ["Highlighted tiles containing Zone Trait ["] = "已高亮显示含有区域特质[",
+            ["BaseObject.GetProperty() call for ["] = "BaseObject.GetProperty() 调用未能为[",
+            ["] failed to find a valid match."] = "]找到有效匹配。",
+            ["ATGUnit.HasTrait() ... Trait ["] = "ATGUnit.HasTrait() ……特质[",
+            ["] does not exist."] = "]不存在。",
+            ["XML text error ... Multiple copies of TextKey [  ]."] = "XML 文本错误……TextKey [  ]存在多个副本。",
+            ["XML text error with [  ] ... Text Entry cannot end with a space. If trying to indent use tabs instead."] =
+                "[  ]发生 XML 文本错误……文本条目不能以空格结尾。若需缩进，请改用制表符。",
+            ["XML text error with [  ] ... Text Entry cannot start with a space. If trying to indent use tabs instead."] =
+                "[  ]发生 XML 文本错误……文本条目不能以空格开头。若需缩进，请改用制表符。",
+            ["XML text error with [  ] ... TextKey cannot contain spaces."] = "[  ]发生 XML 文本错误……TextKey 不能包含空格。",
+            ["XML text error with [  ] ... TextKey must contain at least two [.] periods surrounding a brief descriptor of the text's context (e.g. MainMenu, Terrain)."] =
+                "[  ]发生 XML 文本错误……TextKey 至少须包含两个 [.]，以包围描述文本上下文的简短说明（例如 MainMenu、Terrain）。",
+            ["XML text error with [  ] ... TextKey must start with [TEXT.]."] = "[  ]发生 XML 文本错误……TextKey 必须以 [TEXT.]开头。",
+        };
     private static readonly Regex PipeDelimitedAlias = new(
         @"^\|[^|]+\|[^|]+\|$", RegexOptions.CultureInvariant);
     private static readonly HashSet<string> NonConceptDisplayKeys = new(StringComparer.Ordinal)
     {
         "RESPECT",
         "RELATIONS",
+    };
+    private static readonly HashSet<string> RuntimeMapSections = new(StringComparer.Ordinal)
+    {
+        "Exact",
+        "PlainText",
+        "PlainTextFragments",
+        "RichTextFragments",
+        "ConceptDisplay",
     };
     private static readonly IReadOnlyDictionary<string, string> LegacyBareConceptAliases =
         new Dictionary<string, string>(StringComparer.Ordinal)
@@ -123,7 +314,7 @@ public static class CompositeTextCatalog
         var merged = Merge(entries, existing);
         ApplyEntrySpecificRules(merged, Path.Combine(root, "translations",
             "composite-entry-specific-rules.json"));
-        ApplyStaticAudit(merged);
+        ApplyStaticAudit(merged, ReadKnownSmokeRejections(root));
         var rules = BuildRules(merged, existing?.Rules);
         Validate(merged, rules);
 
@@ -177,9 +368,10 @@ public static class CompositeTextCatalog
                         !TryGetCompositeCallKind(target, out var callKind))
                         continue;
 
-                    var parts = ExtractParts(instructions, index, target, callKind);
-                    var original = BuildOriginalFormat(parts, callKind);
                     var token = method.MDToken.Raw.ToString("X8");
+                    var methodToken = "0x" + token;
+                    var parts = ExtractParts(instructions, index, target, callKind, relative, methodToken);
+                    var original = BuildOriginalFormat(parts, callKind);
                     var entryId = $"managed:{relative}:{token}:IL_{instruction.Offset:X4}";
                     result.Add(NewEntry(entryId, new CompositeTextSource
                     {
@@ -187,7 +379,7 @@ public static class CompositeTextCatalog
                         RelativePath = relative,
                         TypeFullName = type.FullName,
                         MethodName = method.Name,
-                        MethodToken = "0x" + token,
+                        MethodToken = methodToken,
                         ILOffset = checked((int)instruction.Offset),
                         CallKind = callKind,
                     }, original, parts, Classify(original, callKind),
@@ -203,6 +395,14 @@ public static class CompositeTextCatalog
         var root = Path.GetFullPath(repositoryRoot);
         var sourceRoot = Path.Combine(root, "source");
         if (!Directory.Exists(sourceRoot)) return [];
+        var englishSourcePath = Path.Combine(sourceRoot, "English.original.xml");
+        var englishPatchPath = GetPatchXmlPath(root, englishSourcePath);
+        var englishSourceText = File.Exists(englishSourcePath)
+            ? ReadTextKeyValues(englishSourcePath)
+            : new Dictionary<string, string>(StringComparer.Ordinal);
+        var englishPatchText = File.Exists(englishPatchPath)
+            ? ReadTextKeyValues(englishPatchPath)
+            : new Dictionary<string, string>(StringComparer.Ordinal);
         var result = new List<CompositeTextEntry>();
         foreach (var sourcePath in Directory.EnumerateFiles(sourceRoot, "*.original.xml",
                      SearchOption.AllDirectories).OrderBy(path => path, StringComparer.OrdinalIgnoreCase))
@@ -218,7 +418,13 @@ public static class CompositeTextCatalog
                 var entryId = "xml:" + relative + ":" + ShortHash(value.XPath);
                 var parts = new List<CompositeTextPart>
                 {
-                    new() { Position = 0, Kind = "Literal", Value = value.Value },
+                    new()
+                    {
+                        Position = 0,
+                        Kind = "Literal",
+                        Value = value.Value,
+                        KnownTextReference = NewXmlKnownTextReference(relative, value),
+                    },
                 };
                 var entry = NewEntry(entryId, new CompositeTextSource
                 {
@@ -234,6 +440,42 @@ public static class CompositeTextCatalog
                     entry.Status = "ExistingRule";
                     entry.RuleId = "xml-existing-translation";
                     entry.Notes = "Generated from the matching patch XML node.";
+                }
+                else if (IsTextKeyReference(value.Value) &&
+                         englishPatchText.TryGetValue(value.Value, out var textKeyTarget))
+                {
+                    var sourceTextFound = englishSourceText.TryGetValue(value.Value,
+                        out var sourceTextTarget);
+                    if (!sourceTextFound || !StringComparer.Ordinal.Equals(sourceTextTarget,
+                            textKeyTarget))
+                    {
+                        // The XML node contains the runtime key, not the displayed text. Keep
+                        // the key intact and record the independently verified patch target;
+                        // substituting the target here would compare its markup against a key.
+                        entry.LocalizedFormat = value.Value;
+                        entry.Status = "ExistingRule";
+                        entry.RuleId = "xml-text-key-translation";
+                        entry.Notes = "The TEXT.* reference resolves to the localized English.xml entry in the patch.";
+                    }
+                    else if (IsLocalizationNeutralTextKeyTarget(textKeyTarget))
+                    {
+                        entry.LocalizedFormat = value.Value;
+                        entry.Status = "ExistingRule";
+                        entry.RuleId = "xml-text-key-structural";
+                        entry.Notes = "The TEXT.* reference resolves to a numeric or placeholder-only English.xml entry; no Chinese prose is present to translate.";
+                    }
+                    else
+                    {
+                        entry.Notes = "The TEXT.* reference resolves to an unchanged English.xml value and requires localization.";
+                    }
+                }
+                else if (!string.IsNullOrWhiteSpace(value.TextKey) &&
+                         IsLocalizationNeutralTextKeyTarget(value.Value))
+                {
+                    entry.LocalizedFormat = value.Value;
+                    entry.Status = "ExistingRule";
+                    entry.RuleId = "xml-text-key-structural";
+                    entry.Notes = "The English.xml text-key value contains only runtime placeholders; no Chinese prose is present to translate.";
                 }
                 result.Add(entry);
             }
@@ -267,6 +509,67 @@ public static class CompositeTextCatalog
                 catch (InvalidDataException exception)
                 {
                     errors.Add(exception.Message);
+                }
+            }
+            foreach (var part in entry.Parts)
+            {
+                var reference = part.KnownTextReference;
+                var exclusionReason = part.KnownTextReferenceExclusionReason;
+                if (reference is null)
+                {
+                    if (StringComparer.Ordinal.Equals(part.Kind, "Literal") &&
+                        string.IsNullOrWhiteSpace(exclusionReason))
+                    {
+                        errors.Add($"Composite entry '{entry.EntryPointId}' has a literal part without a KnownText reference or explicit exclusion.");
+                    }
+                    continue;
+                }
+                if (!StringComparer.Ordinal.Equals(part.Kind, "Literal"))
+                {
+                    errors.Add($"Composite entry '{entry.EntryPointId}' gives a non-literal part a KnownTextReference.");
+                    continue;
+                }
+                if (!string.IsNullOrWhiteSpace(exclusionReason))
+                {
+                    errors.Add($"Composite entry '{entry.EntryPointId}' gives part {part.Position} both a KnownTextReference and an exclusion.");
+                    continue;
+                }
+                if (!StringComparer.Ordinal.Equals(reference.Original, part.Value))
+                {
+                    errors.Add($"Composite entry '{entry.EntryPointId}' has a KnownTextReference whose original differs from part {part.Position}.");
+                    continue;
+                }
+                var hasManagedLocator = !string.IsNullOrWhiteSpace(reference.MethodToken) ||
+                    reference.ILOffset is not null;
+                var hasXmlLocator = !string.IsNullOrWhiteSpace(reference.XPath);
+                var hasTextKey = !string.IsNullOrWhiteSpace(reference.TextKey);
+                var hasConfigLocator = !string.IsNullOrWhiteSpace(reference.ConfigId) ||
+                    !string.IsNullOrWhiteSpace(reference.ConfigXPath) || reference.ConfigIndex is not null;
+                var hasRuntimeMapLocator = !string.IsNullOrWhiteSpace(reference.RuntimeMapSection) ||
+                    !string.IsNullOrWhiteSpace(reference.RuntimeMapOriginal) ||
+                    !string.IsNullOrWhiteSpace(reference.RuntimeMapConceptKey);
+                var hasValidRuntimeMapSource = StringComparer.Ordinal.Equals(
+                    reference.SourceFile.Replace('\\', '/'), RuntimeDisplayMapSourceFile);
+                var runtimeMapIsConceptDisplay = StringComparer.Ordinal.Equals(
+                    reference.RuntimeMapSection, "ConceptDisplay");
+                if (string.IsNullOrWhiteSpace(reference.SourceFile) ||
+                    (hasManagedLocator ? 1 : 0) + (hasXmlLocator ? 1 : 0) +
+                    (hasTextKey ? 1 : 0) + (hasConfigLocator ? 1 : 0) +
+                    (hasRuntimeMapLocator ? 1 : 0) != 1 ||
+                    hasManagedLocator && (string.IsNullOrWhiteSpace(reference.MethodToken) || reference.ILOffset is null) ||
+                    hasTextKey && !IsTextKeyReference(reference.TextKey!) ||
+                    hasConfigLocator && (string.IsNullOrWhiteSpace(reference.ConfigId) ||
+                        string.IsNullOrWhiteSpace(reference.ConfigXPath)) ||
+                    hasRuntimeMapLocator && (!hasValidRuntimeMapSource ||
+                        string.IsNullOrWhiteSpace(reference.RuntimeMapSection) ||
+                        string.IsNullOrWhiteSpace(reference.RuntimeMapOriginal) ||
+                        !RuntimeMapSections.Contains(reference.RuntimeMapSection) ||
+                        runtimeMapIsConceptDisplay &&
+                            string.IsNullOrWhiteSpace(reference.RuntimeMapConceptKey) ||
+                        !runtimeMapIsConceptDisplay &&
+                            !string.IsNullOrWhiteSpace(reference.RuntimeMapConceptKey)))
+                {
+                    errors.Add($"Composite entry '{entry.EntryPointId}' has an incomplete KnownTextReference for part {part.Position}.");
                 }
             }
         }
@@ -304,6 +607,11 @@ public static class CompositeTextCatalog
         foreach (var old in oldEntries.Values.Where(old =>
                      !merged.Any(entry => StringComparer.Ordinal.Equals(entry.EntryPointId, old.EntryPointId))))
         {
+            // Runtime display-map bindings are a source-owned, current-state map.
+            // Keeping deleted rows as stale entries makes the durable index claim
+            // that inactive global fragments are still available at runtime.
+            if (StringComparer.Ordinal.Equals(old.Source.Kind, "RuntimeMap"))
+                continue;
             old.Status = "Stale";
             old.Stale = true;
             old.Notes = AppendNote(old.Notes,
@@ -313,7 +621,8 @@ public static class CompositeTextCatalog
         return merged;
     }
 
-    private static void ApplyStaticAudit(IReadOnlyList<CompositeTextEntry> entries)
+    private static void ApplyStaticAudit(IReadOnlyList<CompositeTextEntry> entries,
+        IReadOnlyList<CompositeSmokeRejection> smokeRejections)
     {
         var rewriteTranslations = entries
             .Where(entry => !entry.Stale &&
@@ -328,10 +637,23 @@ public static class CompositeTextCatalog
 
         foreach (var entry in entries)
         {
+            entry.Notes = RemoveRetiredAuditNotes(entry.Notes);
             if (entry.Stale)
             {
                 entry.AuditStatus = "Stale";
                 entry.RuleScope = "None";
+                continue;
+            }
+            if (TryFindSmokeRejection(entry, smokeRejections, out var rejection))
+            {
+                if (!string.IsNullOrWhiteSpace(entry.RuleId) || entry.LocalizedFormat is not null)
+                    throw new InvalidDataException(
+                        $"Composite entry '{entry.EntryPointId}' is localized despite a recorded smoke rejection.");
+                entry.Status = "RejectedBySmoke";
+                entry.AuditStatus = "RejectedBySmoke";
+                entry.RuleScope = "None";
+                entry.Notes = AppendNote(entry.Notes,
+                    $"Static audit: localization intentionally omitted after recorded smoke failure ({rejection.Reason}).");
                 continue;
             }
             if (!string.IsNullOrWhiteSpace(entry.RuleId) || entry.LocalizedFormat is not null)
@@ -353,37 +675,37 @@ public static class CompositeTextCatalog
                 continue;
             }
 
-            var localizableParts = entry.Parts
-                .Where(part => StringComparer.Ordinal.Equals(part.Kind, "Literal") &&
-                    IsRuntimeSafeFragment(part.Value))
-                .ToArray();
-            if (localizableParts.Length == 0)
-            {
-                entry.AuditStatus = "ReviewedStructural";
-                entry.RuleScope = "None";
-                entry.Notes = AppendNote(entry.Notes,
-                    "Static audit: entry contains only structural, tag, identifier, or non-English parts.");
-                continue;
-            }
-
             var translations = new Dictionary<string, string>(StringComparer.Ordinal);
-            foreach (var part in localizableParts)
+            var requiresDisplayTemplate = false;
+            var unmatchedLiterals = new List<string>();
+            foreach (var part in entry.Parts.Where(part =>
+                         StringComparer.Ordinal.Equals(part.Kind, "Literal")))
             {
-                if (!rewriteTranslations.TryGetValue(part.Value, out var candidates) ||
-                    candidates.Length != 1)
+                if (translations.ContainsKey(part.Value)) continue;
+                if (TryGetCompositeLiteralTranslation(part.Value, rewriteTranslations,
+                        out var translation, out var changesDisplayText))
+                {
+                    translations[part.Value] = translation;
+                    requiresDisplayTemplate |= changesDisplayText;
                     continue;
-                translations[part.Value] = candidates[0];
+                }
+                unmatchedLiterals.Add(part.Value);
             }
-            if (translations.Count == localizableParts.Select(part => part.Value)
-                .Distinct(StringComparer.Ordinal).Count())
+            if (unmatchedLiterals.Count == 0)
             {
                 entry.LocalizedFormat = LocalizeLiteralParts(entry, translations);
                 entry.Status = "ExistingRule";
-                entry.RuleId = "runtime-display-fragment";
+                entry.RuleId = requiresDisplayTemplate
+                    ? "runtime-display-template"
+                    : "runtime-display-argument-only";
                 entry.AuditStatus = "Localized";
-                entry.RuleScope = "UniformFragment";
+                entry.RuleScope = requiresDisplayTemplate
+                    ? "UniformLiteralTemplate"
+                    : "ArgumentOrTokenOnly";
                 entry.Notes = AppendNote(entry.Notes,
-                    "Static audit: every localizable literal has one shared Chinese translation across all mapped callers; final-display fragment rule applies it.");
+                    requiresDisplayTemplate
+                        ? "Static audit: every literal has one shared Chinese translation across all mapped callers; the final-display template preserves arguments and rich-text structure."
+                        : "Static audit: this composition contains only arguments, punctuation, or non-linguistic operands; no runtime template is registered because an argument-only template would match unrelated display text.");
                 continue;
             }
 
@@ -399,11 +721,82 @@ public static class CompositeTextCatalog
                 continue;
             }
 
-            entry.AuditStatus = "ReviewedNoSafeRule";
+            entry.AuditStatus = "Unreviewed";
             entry.RuleScope = "None";
             entry.Notes = AppendNote(entry.Notes,
-                "Static audit: no uniform display-safe translation or exact entry-specific rewrite was proven; retained without a localization rule.");
+                "Static audit: missing a shared literal translation: " +
+                string.Join(" | ", unmatchedLiterals.OrderBy(value => value, StringComparer.Ordinal)));
         }
+    }
+
+    private static bool TryGetCompositeLiteralTranslation(string value,
+        IReadOnlyDictionary<string, string[]> rewriteTranslations, out string translation,
+        out bool changesDisplayText)
+    {
+        if (rewriteTranslations.TryGetValue(value, out var candidates) && candidates.Length == 1)
+        {
+            translation = candidates[0];
+            changesDisplayText = !StringComparer.Ordinal.Equals(value, translation);
+            return true;
+        }
+        if (CompositeLiteralTranslations.TryGetValue(value, out translation!))
+        {
+            changesDisplayText = !StringComparer.Ordinal.Equals(value, translation);
+            return true;
+        }
+        var trimmedOriginal = value.Trim();
+        var trimmedMatches = CompositeLiteralTranslations
+            .Where(pair => StringComparer.Ordinal.Equals(pair.Key.Trim(), trimmedOriginal))
+            .Select(pair => pair.Value.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (trimmedMatches.Length == 1)
+        {
+            var leadingLength = value.Length - value.TrimStart().Length;
+            var trailingLength = value.Length - value.TrimEnd().Length;
+            translation = value[..leadingLength] + trimmedMatches[0] +
+                (trailingLength == 0 ? "" : value[^trailingLength..]);
+            changesDisplayText = !StringComparer.Ordinal.Equals(value, translation);
+            return true;
+        }
+        if (IsNonLinguisticCompositeLiteral(value))
+        {
+            translation = value;
+            changesDisplayText = false;
+            return true;
+        }
+        translation = "";
+        changesDisplayText = false;
+        return false;
+    }
+
+    private static bool IsNonLinguisticCompositeLiteral(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return true;
+        var trimmed = value.Trim();
+        if (trimmed.IndexOfAny(['/', '\\']) >= 0 || MachineToken.IsMatch(trimmed)) return true;
+        if (trimmed.StartsWith("[", StringComparison.Ordinal) &&
+            trimmed.EndsWith("]", StringComparison.Ordinal) &&
+            !trimmed.Contains(' ')) return true;
+        return trimmed.All(character => !char.IsLetter(character) ||
+            char.IsUpper(character) || char.IsDigit(character) ||
+            character is '_' or '.' or ':' or '[' or ']' or '-' or '+' or '*');
+    }
+
+    private static string? RemoveRetiredAuditNotes(string? notes)
+    {
+        if (string.IsNullOrWhiteSpace(notes)) return notes;
+        foreach (var retired in new[]
+        {
+            "Static audit: entry contains only structural, tag, identifier, or non-English parts.",
+            "Static audit: no uniform display-safe translation or exact entry-specific rewrite was proven; retained without a localization rule.",
+            "Static audit: no shared literal translation or exact entry template is currently available.",
+        })
+        {
+            notes = notes.Replace(retired, "", StringComparison.Ordinal);
+        }
+        notes = Regex.Replace(notes, @"\s{2,}", " ").Trim();
+        return notes.Length == 0 ? null : notes;
     }
 
     private static void ApplyEntrySpecificRules(IReadOnlyList<CompositeTextEntry> entries,
@@ -452,7 +845,7 @@ public static class CompositeTextCatalog
         var ruleIds = new HashSet<string>(StringComparer.Ordinal);
         foreach (var part in entry.Parts.Where(part =>
                      StringComparer.Ordinal.Equals(part.Kind, "Literal") &&
-                     IsRuntimeSafeFragment(part.Value)))
+                     IsLocalizableTextLiteral(part.Value)))
         {
             var candidate = entries
                 .Where(map => !map.Stale &&
@@ -513,14 +906,22 @@ public static class CompositeTextCatalog
         return builder.ToString();
     }
 
-    private static string GetRuleScope(string? ruleId, string sourceKind) =>
-        ruleId is not null && ruleId.StartsWith("il-rewrite-", StringComparison.Ordinal)
-            ? "EntrySpecific"
-            : StringComparer.Ordinal.Equals(ruleId, "runtime-display-fragment")
-                ? "UniformFragment"
-                : StringComparer.Ordinal.Equals(sourceKind, "RuntimeMap")
-                    ? "RuntimeMap"
-                    : "EntrySpecific";
+    private static string GetRuleScope(string? ruleId, string sourceKind)
+    {
+        if (ruleId is not null && ruleId.StartsWith("il-rewrite-", StringComparison.Ordinal))
+            return "EntrySpecific";
+        if (StringComparer.Ordinal.Equals(ruleId, "xml-text-key-translation"))
+            return "TextKeyReference";
+        if (StringComparer.Ordinal.Equals(ruleId, "xml-text-key-structural"))
+            return "TextKeyStructural";
+        if (StringComparer.Ordinal.Equals(ruleId, "runtime-display-fragment"))
+            return "UniformFragment";
+        if (StringComparer.Ordinal.Equals(ruleId, "runtime-display-argument-only"))
+            return "ArgumentOrTokenOnly";
+        return StringComparer.Ordinal.Equals(sourceKind, "RuntimeMap")
+            ? "RuntimeMap"
+            : "EntrySpecific";
+    }
 
     private static List<CompositeLocalizationRule> BuildRules(IEnumerable<CompositeTextEntry> entries,
         IEnumerable<CompositeLocalizationRule>? existingRules)
@@ -563,6 +964,15 @@ public static class CompositeTextCatalog
                 Description = "Legacy display fragments are applied only after the final rich-text boundary.",
                 Source = "translations/runtime-display-strings.json",
             },
+            ["runtime-display-richtext-fragment"] = new()
+            {
+                RuleId = "runtime-display-richtext-fragment",
+                Kind = "RuntimeDisplayMap",
+                Status = "Active",
+                EntryPointId = "runtime-map:RichTextFragments",
+                Description = "Scoped rich-text fragments are replaced before parsing so their concept keys and recursive hovers remain intact.",
+                Source = "translations/runtime-display-strings.json",
+            },
             ["runtime-display-template"] = new()
             {
                 RuleId = "runtime-display-template",
@@ -571,6 +981,15 @@ public static class CompositeTextCatalog
                 EntryPointId = "runtime-map:Templates",
                 Description = "Entry-specific display templates preserve every runtime argument and rich-text structure.",
                 Source = "translations/composite-entry-specific-rules.json",
+            },
+            ["runtime-display-argument-only"] = new()
+            {
+                RuleId = "runtime-display-argument-only",
+                Kind = "CompositeArgumentPassthrough",
+                Status = "Active",
+                EntryPointId = "runtime-map:ArgumentsOnly",
+                Description = "Argument-only and non-linguistic composite operands need no display template; registering an all-argument template would match unrelated text.",
+                Source = "tools/AtG.ManagedRewrite/CompositeTextCatalog.cs",
             },
             ["runtime-display-concept"] = new()
             {
@@ -589,6 +1008,24 @@ public static class CompositeTextCatalog
                 EntryPointId = "patch:xml",
                 Description = "Existing patch XML supplies the localized display format for the same source node.",
                 Source = "patch/Content",
+            },
+            ["xml-text-key-translation"] = new()
+            {
+                RuleId = "xml-text-key-translation",
+                Kind = "XmlTextKeyReference",
+                Status = "Active",
+                EntryPointId = "patch:Content/Text/English.xml",
+                Description = "A Composite TEXT.* reference resolves to a localized English.xml text key in the patch.",
+                Source = "patch/Content/Text/English.xml",
+            },
+            ["xml-text-key-structural"] = new()
+            {
+                RuleId = "xml-text-key-structural",
+                Kind = "XmlTextKeyReference",
+                Status = "Active",
+                EntryPointId = "patch:Content/Text/English.xml",
+                Description = "A Composite TEXT.* reference resolves to an intentionally language-neutral numeric or placeholder-only text key.",
+                Source = "patch/Content/Text/English.xml",
             },
         };
         foreach (var existing in existingRules ?? [])
@@ -628,11 +1065,10 @@ public static class CompositeTextCatalog
         if (!File.Exists(path)) yield break;
         using var document = OpenJson(path);
         if (document.RootElement.ValueKind != JsonValueKind.Object) yield break;
-        foreach (var section in new[] { "Exact", "PlainText", "PlainTextFragments", "ConceptDisplay" })
+        foreach (var section in new[] { "Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "ConceptDisplay" })
         {
             if (!document.RootElement.TryGetProperty(section, out var values) ||
                 values.ValueKind != JsonValueKind.Array) continue;
-            var position = 0;
             foreach (var value in values.EnumerateArray())
             {
                 if (!TryGetString(value, "Original", out var original) ||
@@ -648,7 +1084,20 @@ public static class CompositeTextCatalog
                         RelativePath = "translations/runtime-display-strings.json",
                         CallKind = section,
                     }, originalFormat,
-                    [new CompositeTextPart { Position = 0, Kind = "Literal", Value = originalFormat }],
+                    [new CompositeTextPart
+                    {
+                        Position = 0,
+                        Kind = "Literal",
+                        Value = originalFormat,
+                        KnownTextReference = new CompositeKnownTextReference
+                        {
+                            SourceFile = RuntimeDisplayMapSourceFile,
+                            Original = originalFormat,
+                            RuntimeMapSection = section,
+                            RuntimeMapOriginal = original,
+                            RuntimeMapConceptKey = key,
+                        },
+                    }],
                     "DisplaySafe",
                     "Exact");
                 entry.LocalizedFormat = localizedFormat;
@@ -658,15 +1107,78 @@ public static class CompositeTextCatalog
                     "Exact" => "runtime-display-exact",
                     "PlainText" => "runtime-display-plain",
                     "PlainTextFragments" => "runtime-display-fragment",
+                    "RichTextFragments" => "runtime-display-richtext-fragment",
                     _ => "runtime-display-concept",
                 };
                 entry.Notes = key is null ? "Generated from runtime display-map binding."
                     : $"Generated from runtime concept-display binding for key '{key}'.";
                 yield return entry;
-                position++;
             }
         }
     }
+
+    private static IReadOnlyList<CompositeSmokeRejection> ReadKnownSmokeRejections(string root)
+    {
+        var path = Path.Combine(root, "docs", "agent", "trial-localization-state.json");
+        if (!File.Exists(path)) return [];
+        using var document = OpenJson(path);
+        if (document.RootElement.ValueKind != JsonValueKind.Object ||
+            !document.RootElement.TryGetProperty("knownRejectedSingles", out var values) ||
+            values.ValueKind != JsonValueKind.Array)
+            return [];
+
+        var result = new List<CompositeSmokeRejection>();
+        foreach (var value in values.EnumerateArray())
+        {
+            if (!TryGetString(value, "assembly", out var assembly) ||
+                !TryGetString(value, "methodToken", out var methodToken) ||
+                !TryGetString(value, "original", out var original) ||
+                !TryGetString(value, "reason", out var reason) ||
+                !value.TryGetProperty("ilOffset", out var offset) ||
+                !offset.TryGetInt32(out var ilOffset))
+                continue;
+            var sourceFile = assembly switch
+            {
+                "UI" => "source/AtTheGatesUI.original.dll",
+                "Common" => "source/AtTheGatesCommon.original.dll",
+                "Game" => "source/AtTheGatesGame.original.exe",
+                "ElfTools" => "source/ElfTools.original.dll",
+                _ => "",
+            };
+            if (string.IsNullOrWhiteSpace(sourceFile)) continue;
+            result.Add(new CompositeSmokeRejection(sourceFile, methodToken, ilOffset,
+                original, reason));
+        }
+        return result;
+    }
+
+    private static bool TryFindSmokeRejection(CompositeTextEntry entry,
+        IReadOnlyList<CompositeSmokeRejection> smokeRejections,
+        out CompositeSmokeRejection rejection)
+    {
+        foreach (var part in entry.Parts)
+        {
+            var reference = part.KnownTextReference;
+            if (reference is null) continue;
+            var match = smokeRejections.FirstOrDefault(candidate =>
+                StringComparer.Ordinal.Equals(candidate.SourceFile, reference.SourceFile) &&
+                StringComparer.OrdinalIgnoreCase.Equals(candidate.MethodToken, reference.MethodToken) &&
+                candidate.ILOffset == reference.ILOffset &&
+                MatchesRecordedSmokeOriginal(candidate.Original, reference.Original));
+            if (match is null) continue;
+            rejection = match;
+            return true;
+        }
+        rejection = null!;
+        return false;
+    }
+
+    // Older trial evidence normalized the leading space of one literal. The DLL locator
+    // (assembly, method token, and IL offset) remains exact, so allow only edge-space
+    // normalization when applying a recorded smoke rejection.
+    private static bool MatchesRecordedSmokeOriginal(string recorded, string current) =>
+        StringComparer.Ordinal.Equals(recorded, current) ||
+        StringComparer.Ordinal.Equals(recorded.Trim(), current.Trim());
 
     private static IEnumerable<CompositeTextEntry> ReadManagedRewriteMapEntries(string root)
     {
@@ -691,6 +1203,7 @@ public static class CompositeTextCatalog
                     !value.TryGetProperty("ILOffset", out var offsetElement) ||
                     !offsetElement.TryGetInt32(out var offset)) continue;
                 var relative = "translations/" + name;
+                var knownTextSource = GetManagedRewriteKnownTextSource(name);
                 var entry = NewEntry($"managed-map:{name}:{token}:IL_{offset:X4}",
                     new CompositeTextSource
                     {
@@ -702,7 +1215,14 @@ public static class CompositeTextCatalog
                         ILOffset = offset,
                         CallKind = "LdstrRewrite",
                     }, original,
-                    [new CompositeTextPart { Position = 0, Kind = "Literal", Value = original }],
+                    [new CompositeTextPart
+                    {
+                        Position = 0,
+                        Kind = "Literal",
+                        Value = original,
+                        KnownTextReference = NewManagedKnownTextReference(
+                            knownTextSource, token, offset, original),
+                    }],
                     ClassifyManagedRewrite(name), "Exact");
                 entry.LocalizedFormat = translation;
                 entry.Status = "ExistingRule";
@@ -769,13 +1289,13 @@ public static class CompositeTextCatalog
     }
 
     private static List<CompositeTextPart> ExtractParts(IList<Instruction> instructions,
-        int callIndex, IMethod target, string callKind)
+        int callIndex, IMethod target, string callKind, string sourceFile, string methodToken)
     {
         if (callKind is "String.Format" or "StringBuilder.AppendFormat")
         {
-            var format = FindFormatLiteral(instructions, callIndex);
+            var format = FindFormatLiteral(instructions, callIndex, sourceFile, methodToken);
             if (format is not null)
-                return [new CompositeTextPart { Position = 0, Kind = "Literal", Value = format }];
+                return [format];
         }
         var count = target.MethodSig?.Params.Count ?? 1;
         if (callKind.StartsWith("StringBuilder.", StringComparison.Ordinal)) count = Math.Max(1, count);
@@ -788,7 +1308,8 @@ public static class CompositeTextCatalog
             var instruction = instructions[index];
             if (instruction.OpCode == OpCodes.Ldstr)
             {
-                parts.Add(new CompositeTextPart { Kind = "Literal", Value = (string)instruction.Operand });
+                parts.Add(NewManagedLiteralPart((string)instruction.Operand, sourceFile,
+                    methodToken, checked((int)instruction.Offset)));
                 continue;
             }
             if (IsTransparentStackInstruction(instruction)) continue;
@@ -807,16 +1328,85 @@ public static class CompositeTextCatalog
             opcode == OpCodes.Conv_I || opcode == OpCodes.Conv_I4 || opcode == OpCodes.Conv_I8 ||
             opcode == OpCodes.Conv_R4 || opcode == OpCodes.Conv_R8 || opcode == OpCodes.Nop);
 
-    private static string? FindFormatLiteral(IList<Instruction> instructions, int callIndex)
+    private static CompositeTextPart? FindFormatLiteral(IList<Instruction> instructions, int callIndex,
+        string sourceFile, string methodToken)
     {
         for (var index = callIndex - 1; index >= 0 && callIndex - index <= 24; index--)
         {
             var instruction = instructions[index];
-            if (instruction.OpCode == OpCodes.Ldstr) return (string)instruction.Operand;
+            if (instruction.OpCode == OpCodes.Ldstr)
+                return NewManagedLiteralPart((string)instruction.Operand, sourceFile,
+                    methodToken, checked((int)instruction.Offset));
             if (instruction.OpCode.FlowControl is FlowControl.Branch or FlowControl.Cond_Branch or
                 FlowControl.Return or FlowControl.Throw) break;
         }
         return null;
+    }
+
+    private static CompositeTextPart NewManagedLiteralPart(string value, string sourceFile,
+        string methodToken, int ilOffset) => new()
+    {
+        Kind = "Literal",
+        Value = value,
+        KnownTextReference = NewManagedKnownTextReference(sourceFile, methodToken, ilOffset, value),
+    };
+
+    private static CompositeKnownTextReference NewManagedKnownTextReference(string sourceFile,
+        string methodToken, int ilOffset, string original) => new()
+    {
+        SourceFile = sourceFile,
+        MethodToken = methodToken,
+        ILOffset = ilOffset,
+        Original = original,
+    };
+
+    private static CompositeKnownTextReference NewXmlKnownTextReference(string sourceFile,
+        XmlValue value)
+    {
+        var textKey = IsTextKeyReference(value.Value) ? value.Value : value.TextKey;
+        if (!string.IsNullOrWhiteSpace(textKey))
+        {
+            return new CompositeKnownTextReference
+            {
+                SourceFile = "source/English.original.xml",
+                Original = value.Value,
+                TextKey = textKey,
+            };
+        }
+        if (value.ConfigLocator is not null)
+        {
+            return new CompositeKnownTextReference
+            {
+                SourceFile = sourceFile,
+                Original = value.Value,
+                ConfigId = value.ConfigLocator.Id,
+                ConfigXPath = value.ConfigLocator.XPath,
+                ConfigIndex = value.ConfigLocator.Index,
+            };
+        }
+        return new CompositeKnownTextReference
+        {
+            SourceFile = sourceFile,
+            XPath = value.XPath,
+            Original = value.Value,
+        };
+    }
+
+    private static bool IsTextKeyReference(string value) =>
+        Regex.IsMatch(value, "^(TEXT|TRAIT|FACTION|DISCIPLINE|UNIT|RESOURCE|TERRAIN|RIVER|BONUS|JOB|PROFESSION)[._]",
+            RegexOptions.CultureInvariant);
+
+    private static string GetManagedRewriteKnownTextSource(string mapName)
+    {
+        if (mapName.Contains("-ui-", StringComparison.OrdinalIgnoreCase))
+            return "source/AtTheGatesUI.original.dll";
+        if (mapName.Contains("-common-", StringComparison.OrdinalIgnoreCase))
+            return "source/AtTheGatesCommon.original.dll";
+        if (mapName.Contains("-game-", StringComparison.OrdinalIgnoreCase))
+            return "source/AtTheGatesGame.original.exe";
+        if (mapName.Contains("-elftools-", StringComparison.OrdinalIgnoreCase))
+            return "source/ElfTools.original.dll";
+        throw new InvalidDataException($"Cannot determine known-text source for managed rewrite map '{mapName}'.");
     }
 
     private static string BuildOriginalFormat(IEnumerable<CompositeTextPart> parts, string callKind)
@@ -864,13 +1454,19 @@ public static class CompositeTextCatalog
         value.Contains(":PLURAL", StringComparison.Ordinal) ||
         value.Contains(":SINGULAR", StringComparison.Ordinal);
 
-    private static bool IsRuntimeSafeFragment(string value)
+    private static bool IsLocalizableTextLiteral(string value)
     {
         if (string.IsNullOrWhiteSpace(value) ||
             value.IndexOfAny(['[', ']', '|']) >= 0)
             return false;
-        return value.Any(character => (character >= 'A' && character <= 'Z') ||
-            (character >= 'a' && character <= 'z'));
+        if (value.IndexOfAny(['/', '\\']) >= 0 || MachineToken.IsMatch(value))
+            return false;
+        // A single ASCII token in a composition is an identifier, a path segment,
+        // an input key, or a formatting marker in every remaining source occurrence.
+        // Natural-language fragments have at least two words and are reviewed as
+        // templates or shared fragments above; this does not consult legacy Safety
+        // or ReasonCode classifications.
+        return AsciiWord.Matches(value).Count >= 2;
     }
 
     private static List<string> GetStructuralFlags(string value)
@@ -990,17 +1586,99 @@ public static class CompositeTextCatalog
             content.StartsWith("FONT:", StringComparison.Ordinal) ||
             content.StartsWith("COLOR:", StringComparison.Ordinal));
 
+    private static bool IsEnglishSourcePath(string path)
+    {
+        var normalized = path.Replace('\\', '/');
+        return normalized.EndsWith("/source/English.original.xml", StringComparison.OrdinalIgnoreCase) ||
+            normalized.EndsWith("/patch/Content/Text/English.xml", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsConfigSourcePath(string path) => path.Replace('\\', '/')
+        .Contains("/source/Content/Config/", StringComparison.OrdinalIgnoreCase);
+
+    private static string? GetEnglishTextKey(string sourcePath, XElement element)
+    {
+        if (!IsEnglishSourcePath(sourcePath)) return null;
+        var entry = element.AncestorsAndSelf().FirstOrDefault(candidate =>
+            StringComparer.Ordinal.Equals(candidate.Name.LocalName, "e") &&
+            candidate.Attributes().Any(attribute =>
+                StringComparer.Ordinal.Equals(attribute.Name.LocalName, "ntry")));
+        var key = entry?.Attributes().FirstOrDefault(attribute =>
+            StringComparer.Ordinal.Equals(attribute.Name.LocalName, "ntry"))?.Value.Trim();
+        return !string.IsNullOrWhiteSpace(key) && IsTextKeyReference(key) ? key : null;
+    }
+
+    private static ConfigTextLocator? GetConfigTextLocator(string sourcePath, XElement element)
+    {
+        if (!IsConfigSourcePath(sourcePath) || !IsConfigTextCandidate(element)) return null;
+        var container = element.Ancestors().FirstOrDefault(HasDirectConfigId);
+        if (container is null) return null;
+        var id = GetDirectConfigId(container);
+        if (string.IsNullOrWhiteSpace(id)) return null;
+        var xpath = GetConfigRelativeXPath(element, container);
+        if (string.IsNullOrWhiteSpace(xpath)) return null;
+        return new ConfigTextLocator(id, xpath, GetConfigTextIndex(element, container, xpath));
+    }
+
+    private static bool IsConfigTextCandidate(XElement element) => element.Name.LocalName is
+        "name" or "shortName" or "description" or "text" or "adjective";
+
+    private static bool HasDirectConfigId(XElement element) => !string.IsNullOrWhiteSpace(
+        GetDirectConfigId(element));
+
+    private static string? GetDirectConfigId(XElement element) => element.Elements()
+        .FirstOrDefault(child => StringComparer.Ordinal.Equals(child.Name.LocalName, "ID"))?
+        .Value.Trim();
+
+    private static string GetConfigRelativeXPath(XElement element, XElement container)
+    {
+        var parts = new List<string>();
+        for (XElement? cursor = element; cursor is not null && cursor != container;
+             cursor = cursor.Parent)
+            parts.Add(cursor.Name.LocalName);
+        parts.Reverse();
+        return string.Join("/", parts);
+    }
+
+    private static int? GetConfigTextIndex(XElement element, XElement container, string xpath)
+    {
+        var matching = container.Descendants()
+            .Where(IsConfigTextCandidate)
+            .Where(candidate => StringComparer.Ordinal.Equals(
+                GetConfigRelativeXPath(candidate, container), xpath))
+            .ToArray();
+        if (matching.Length <= 1) return null;
+        var index = 0;
+        foreach (var candidate in matching)
+        {
+            if (candidate == element) return index;
+            if (!string.IsNullOrWhiteSpace(candidate.Value)) index++;
+        }
+        throw new InvalidDataException("Config text element was not found in its containing node.");
+    }
+
     private static IEnumerable<XmlValue> ReadXmlValues(string path)
     {
         var document = XDocument.Load(path, LoadOptions.PreserveWhitespace);
         foreach (var element in document.Descendants())
         {
             if (!element.HasElements && !string.IsNullOrEmpty(element.Value))
-                yield return new XmlValue(GetXPath(element), element.Value);
+                yield return new XmlValue(GetXPath(element), element.Value,
+                    GetEnglishTextKey(path, element), GetConfigTextLocator(path, element));
             foreach (var attribute in element.Attributes().Where(attribute =>
                          !string.IsNullOrEmpty(attribute.Value)))
-                yield return new XmlValue(GetXPath(attribute), attribute.Value);
+                yield return new XmlValue(GetXPath(attribute), attribute.Value, null, null);
         }
+    }
+
+    private static Dictionary<string, string> ReadTextKeyValues(string path) => ReadXmlValues(path)
+        .Where(value => !string.IsNullOrWhiteSpace(value.TextKey))
+        .ToDictionary(value => value.TextKey!, value => value.Value, StringComparer.Ordinal);
+
+    private static bool IsLocalizationNeutralTextKeyTarget(string value)
+    {
+        var withoutMarkup = BracketToken.Replace(value, "");
+        return !AsciiWord.IsMatch(withoutMarkup);
     }
 
     private static string GetXPath(XObject item)
@@ -1026,6 +1704,10 @@ public static class CompositeTextCatalog
         if (StringComparer.OrdinalIgnoreCase.Equals(relative, "English.original.xml"))
             return Path.Combine(root, "patch", "Content", "Text", "English.xml");
         var patchRelative = relative.Replace(".original.xml", ".xml", StringComparison.OrdinalIgnoreCase);
+        if (patchRelative.StartsWith("Content" + Path.DirectorySeparatorChar,
+                StringComparison.OrdinalIgnoreCase) ||
+            patchRelative.StartsWith("Content/", StringComparison.OrdinalIgnoreCase))
+            patchRelative = patchRelative[("Content".Length + 1)..];
         return Path.Combine(root, "patch", "Content", patchRelative);
     }
 
@@ -1054,10 +1736,21 @@ public static class CompositeTextCatalog
         return Convert.ToHexString(hash).Substring(0, 16).ToLowerInvariant();
     }
 
-    private static string AppendNote(string? existing, string additional) =>
-        string.IsNullOrWhiteSpace(existing) ? additional : existing + " " + additional;
+    private static string AppendNote(string? existing, string additional)
+    {
+        if (string.IsNullOrWhiteSpace(existing)) return additional;
+        return existing.Contains(additional, StringComparison.Ordinal)
+            ? existing
+            : existing + " " + additional;
+    }
 
-    private sealed record XmlValue(string XPath, string Value);
+    private sealed record CompositeSmokeRejection(string SourceFile, string MethodToken,
+        int ILOffset, string Original, string Reason);
+
+    private sealed record XmlValue(string XPath, string Value, string? TextKey,
+        ConfigTextLocator? ConfigLocator);
+
+    private sealed record ConfigTextLocator(string Id, string XPath, int? Index);
 
     private static readonly JsonSerializerOptions JsonOptions = new()
     {

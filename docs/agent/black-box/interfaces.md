@@ -32,6 +32,9 @@ file defines what to inspect and when a surface may be considered covered.
 - Do not count a portrait, card body, notification, or clan detail card as a
   trait result. Record the actual trait ID and save before repair when random
   discovery exposes a defect.
+- The `avr-wpr-clan-family-countdown-20260727` fixed-save case covers the
+  family-growth countdown on the first card. Its 2026-07-27 final trace draws
+  `(+1，还需 12 回合)` without a residual English `in`.
 
 ## Clan List
 
@@ -49,8 +52,43 @@ file defines what to inspect and when a surface may be considered covered.
   currently visible action that the change can affect.
 - Terrain tests click/hover each distinct visible object needed by the active
   scenario and inspect the lower-right description and left-side detail panel.
+- `TileHoverSweep` scenarios enumerate the fixed 91 axial-radius-five tiles
+  inside each save's persisted SafeViewport. They must distinguish map cards
+  from the lower-right quick reference, expand every detected collapsed card,
+  cycle same-tile items until an identity repeats or a bounded stop is reached,
+  and record `NoTooltip` for empty tiles without failing them. The source
+  boundary is 23 terrains, 78 deposit variants, and 42 resources; rumor-only,
+  visible-only, observed, unreachable, and pending states are kept separately.
+- Run `tools\Test-TerrainTooltipBoundaryCoverage.ps1` before a dynamic sweep.
+  It verifies all 143 source name entries against the patched XML, all 22
+  defined terrain descriptions and 42 resource descriptions, and the seven
+  runtime resource/rumor tooltip templates. The three volcano descriptions
+  marked `TODO` remain source-defined and are not treated as missing runtime
+  observations.
 - Random terrain, clans, notifications, and commands must use a saved state for
   repair/retest; never reroll while chasing one defect.
+- 2026-07-26 resource-tooltip regression uses the fixed `XDR-HCF` save only:
+  verify deer, berry, unknown mineral/plant/animal, forest movement text, and
+  Note Mode. The final seven-point run drew no resource-tooltip target English;
+  its terrain status drew `消耗全部` with zero missing glyphs. Keep the expanded
+  unknown-plant and Note Mode captures as fixed-wait companions, because the
+  ordinary hover points can stabilize before their long tooltip is visible.
+- The `avr-wpr-resource-tooltips-20260727` fixed `AVR-WPR` case separately
+  covers Deserted Farm, the normal deer herd, and the wheat field. Its prior
+  passing conclusion was reopened by a user capture because the test omitted
+  the final farm literal. The repaired final fixed-save run now asserts the
+  whole two-sentence value and draws `其中可能仍有有用的物资，可由` plus the linked
+  `探险者` and `调查。`, with no English or trailing `n`. Wheat still requires
+  final-rich-text boundary fragments rather than a whole-template rule.
+- As of 2026-07-27, the farm point also uses per-point `ExpectedAll` runtime
+  text assertions for the title, both Chinese sentences, linked `探险者`, and
+  final `调查。`. A no-English check alone cannot pass this point, so a missed
+  hover or title-only tooltip now fails instead of producing false coverage.
+- The 2026-07-28 TileHoverSweep implementation is statically validated and
+  package-installed, but its three scenarios remain Discovery pending per-save
+  anchor calibration and an interactive 91-tile run. The host smoke reached
+  the AtG main-menu process; its screen capture was not trusted because the
+  desktop foreground surface was another application.
 
 ## Help and Religion
 

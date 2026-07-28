@@ -6,6 +6,7 @@ param(
     [string]$DiscoveryCacheDirectory = ".\docs\review\generated",
     [string[]]$AdditionalDllCatalogCsv = @(),
     [string]$CatalogDatabasePath = ".\.cache\atg-catalog.sqlite",
+    [string]$CompositeRulesPath = "$PSScriptRoot\..\translations\composite-text-rules.json",
     [switch]$NoRebuildDiscoveryInputs,
     [switch]$AggregateDuplicates
 )
@@ -983,6 +984,73 @@ function Add-DictionaryMap {
     }
 }
 
+function Add-RuntimeDisplayMapKnownTexts {
+    param([string]$Path)
+
+    $map = Get-JsonFile $Path
+    if ($null -eq $map) {
+        return
+    }
+
+    $sourceFile = "translations\runtime-display-strings.json"
+    foreach ($section in @("Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "ConceptDisplay")) {
+        foreach ($item in @($map.$section)) {
+            if ($null -eq $item -or $null -eq $item.Original -or $null -eq $item.Translation) {
+                continue
+            }
+
+            $runtimeOriginal = [string]$item.Original
+            $runtimeTranslation = [string]$item.Translation
+            if ([string]::IsNullOrWhiteSpace($runtimeOriginal)) {
+                continue
+            }
+
+            $conceptKey = ""
+            if ($section -eq "ConceptDisplay") {
+                if (-not $item.PSObject.Properties["ConceptKey"]) {
+                    continue
+                }
+                $conceptKey = [string]$item.ConceptKey
+                if ([string]::IsNullOrWhiteSpace($conceptKey)) {
+                    continue
+                }
+            }
+
+            $original = if ([string]::IsNullOrWhiteSpace($conceptKey)) {
+                $runtimeOriginal
+            }
+            else {
+                "[$runtimeOriginal|$conceptKey]"
+            }
+            $translation = if ([string]::IsNullOrWhiteSpace($conceptKey)) {
+                $runtimeTranslation
+            }
+            else {
+                "[$runtimeTranslation|$conceptKey]"
+            }
+            $locatorParts = @(
+                "RuntimeMapSection=$section",
+                "RuntimeMapOriginal=$runtimeOriginal"
+            )
+            if (-not [string]::IsNullOrWhiteSpace($conceptKey)) {
+                $locatorParts += "RuntimeMapConceptKey=$conceptKey"
+            }
+
+            Add-KnownText `
+                -SourceFile $sourceFile `
+                -Original $original `
+                -Translation $translation `
+                -Kind "Runtime display map ($section)" `
+                -Status "Translated" `
+                -Locator ($locatorParts -join "; ") `
+                -Safety "DisplaySafe" `
+                -LocalizationAttempted "Yes" `
+                -AttemptStatus "Mapped" `
+                -Notes "Runtime display-map binding; canonical KnownText occurrence for the runtime display transformation."
+        }
+    }
+}
+
 function Get-ConfigTranslationMap {
     $result = @{}
     foreach ($path in @(
@@ -1050,6 +1118,22 @@ if (Test-Path -LiteralPath ".\translations\entries.csv") {
     }
 }
 
+$runtimeTextKeyAdditions = Get-JsonFile ".\translations\runtime-text-key-additions.json"
+if ($null -ne $runtimeTextKeyAdditions) {
+    foreach ($property in $runtimeTextKeyAdditions.PSObject.Properties) {
+        Add-KnownText `
+            -SourceFile "source\English.original.xml" `
+            -Original ([string]$property.Name) `
+            -Translation ([string]$property.Value) `
+            -Kind "Runtime text key addition" `
+            -Status "Translated" `
+            -Locator ([string]$property.Name) `
+            -LocalizationAttempted "Yes" `
+            -AttemptStatus "Mapped" `
+            -Notes "Defined for a Composite TEXT.* reference absent from the base English XML."
+    }
+}
+
 # Config XML candidates, using static discovery rows for original text and config maps for translations.
 $configTranslations = Get-ConfigTranslationMap
 if (Test-Path -LiteralPath $StaticCandidatesCsv) {
@@ -1104,6 +1188,7 @@ if (Test-Path -LiteralPath $StaticCandidatesCsv) {
 # DLL/EXE translated maps.
 Add-DictionaryMap -Path ".\translations\hardcoded-strings.json" -SourceFile "source\AtTheGatesUI.original.dll" -Kind "UI byte/string map"
 Add-DictionaryMap -Path ".\translations\hardcoded-common-strings.json" -SourceFile "source\AtTheGatesCommon.original.dll" -Kind "Common byte/string map"
+Add-RuntimeDisplayMapKnownTexts -Path ".\translations\runtime-display-strings.json"
 Add-IlRewriteMap -Path ".\translations\hardcoded-ui-il-rewrite.json" -FallbackSource "source\AtTheGatesUI.original.dll" -Kind "UI IL rewrite"
 Add-IlRewriteMap -Path ".\translations\hardcoded-ui-il-strings.json" -FallbackSource "source\AtTheGatesUI.original.dll" -Kind "UI in-place IL string"
 Add-IlRewriteMap -Path ".\translations\hardcoded-ui-offsets.json" -FallbackSource "source\AtTheGatesUI.original.dll" -Kind "UI verified offset"
@@ -1333,6 +1418,11 @@ $csvRows = foreach ($item in $items) {
 
 $catalogImportPath = [System.IO.Path]::GetFullPath("$CsvOutputPath.catalog-import.tmp")
 $catalogDatabaseFullPath = [System.IO.Path]::GetFullPath($CatalogDatabasePath)
+$repoRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
+$compositeRulesFullPath = [System.IO.Path]::GetFullPath($CompositeRulesPath)
+if (!(Test-Path -LiteralPath $compositeRulesFullPath -PathType Leaf)) {
+    throw "Composite rule source was not found: $compositeRulesFullPath"
+}
 try {
     $csvRows | Export-Csv -LiteralPath $catalogImportPath -NoTypeInformation -Encoding UTF8
     & (Join-Path $PSScriptRoot "Invoke-AtGPatchCli.ps1") `
@@ -1349,6 +1439,18 @@ finally {
         Remove-Item -LiteralPath $catalogImportPath -Force
     }
 }
+
+# The review CSV is enriched from both authoritative source stores. It never
+# reads a generated view: SQLite provides occurrence IDs and the rule JSON
+# provides the durable Composite part locators.
+& (Join-Path $PSScriptRoot "Invoke-AtGPatchCli.ps1") `
+    -Command known-texts-csv `
+    -RepoRoot $repoRoot `
+    -CommandArguments @(
+        "--database", $catalogDatabaseFullPath,
+        "--rules", $compositeRulesFullPath,
+        "--csv", ([System.IO.Path]::GetFullPath($CsvOutputPath))
+    ) | Out-Host
 
 [pscustomobject]@{
     CsvOutputPath = (Resolve-Path -LiteralPath $CsvOutputPath).Path

@@ -17,6 +17,7 @@ try
         "rewrite" => await RewriteAsync(args[1..]),
         "catalog" => CatalogCommand.Run(args[1..], Console.Out, Console.Error),
         "composite-catalog" => BuildCompositeCatalog(args[1..]),
+        "known-texts-csv" => ExportKnownTextsCsv(args[1..]),
         "composite-csv" => ExportCompositeCsv(args[1..]),
         "todo-csv" => ExportTodoCsv(args[1..]),
         "calls" => ExportCalls(args[1..]),
@@ -123,11 +124,27 @@ static int BuildCompositeCatalog(string[] args)
 static int ExportCompositeCsv(string[] args)
 {
     var repositoryRoot = Path.GetFullPath(GetOption(args, "--repo") ?? Directory.GetCurrentDirectory());
+    var databasePath = Path.GetFullPath(GetOption(args, "--database")
+        ?? Path.Combine(repositoryRoot, ".cache", "atg-catalog.sqlite"));
     var rulesPath = Path.GetFullPath(GetOption(args, "--rules")
         ?? Path.Combine(repositoryRoot, "translations", "composite-text-rules.json"));
     var csvPath = Path.GetFullPath(GetOption(args, "--csv")
         ?? throw new ArgumentException("composite-csv requires --csv."));
-    var result = ReviewViewCsvExporter.ExportComposite(rulesPath, csvPath);
+    var result = ReviewViewCsvExporter.ExportComposite(databasePath, rulesPath, csvPath);
+    Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true }));
+    return 0;
+}
+
+static int ExportKnownTextsCsv(string[] args)
+{
+    var repositoryRoot = Path.GetFullPath(GetOption(args, "--repo") ?? Directory.GetCurrentDirectory());
+    var databasePath = Path.GetFullPath(GetOption(args, "--database")
+        ?? Path.Combine(repositoryRoot, ".cache", "atg-catalog.sqlite"));
+    var rulesPath = Path.GetFullPath(GetOption(args, "--rules")
+        ?? Path.Combine(repositoryRoot, "translations", "composite-text-rules.json"));
+    var csvPath = Path.GetFullPath(GetOption(args, "--csv")
+        ?? throw new ArgumentException("known-texts-csv requires --csv."));
+    var result = ReviewViewCsvExporter.ExportKnownTexts(databasePath, rulesPath, csvPath);
     Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true }));
     return 0;
 }
@@ -275,7 +292,8 @@ static void PrintUsage()
     Console.WriteLine("AtG.Patch.Cli rewrite [--repo PATH] [--cache PATH] [--summary PATH]");
     Console.WriteLine("AtG.Patch.Cli catalog <import|export|rebuild|stats> [catalog options]");
     Console.WriteLine("AtG.Patch.Cli composite-catalog --repo PATH [--rules PATH]");
-    Console.WriteLine("AtG.Patch.Cli composite-csv --repo PATH [--rules PATH] --csv PATH");
+    Console.WriteLine("AtG.Patch.Cli known-texts-csv --repo PATH [--database PATH] [--rules PATH] --csv PATH");
+    Console.WriteLine("AtG.Patch.Cli composite-csv --repo PATH [--database PATH] [--rules PATH] --csv PATH");
     Console.WriteLine("AtG.Patch.Cli todo-csv --repo PATH [--database PATH] [--rules PATH] --csv PATH");
     Console.WriteLine("AtG.Patch.Cli calls --assembly PATH [--contains TEXT]");
     Console.WriteLine("AtG.Patch.Cli methods --assembly PATH [--contains TEXT]");

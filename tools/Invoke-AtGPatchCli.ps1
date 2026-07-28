@@ -1,5 +1,5 @@
 param(
-    [ValidateSet("rewrite", "runtime-rewrite", "runtime-map", "load-lifecycle", "catalog", "composite-catalog", "composite-csv", "todo-csv")]
+    [ValidateSet("rewrite", "runtime-rewrite", "runtime-map", "load-lifecycle", "catalog", "composite-catalog", "known-texts-csv", "composite-csv", "todo-csv")]
     [string]$Command = "rewrite",
     [ValidateSet("MergedFonts", "DynamicCjk")]
     [string]$RendererMode = "DynamicCjk",
@@ -124,7 +124,7 @@ $toolArguments = if ($Command -eq "catalog") {
     }
     @($toolDll, "catalog") + $catalogArguments
 }
-elseif ($Command -in @("composite-catalog", "composite-csv", "todo-csv")) {
+elseif ($Command -in @("composite-catalog", "known-texts-csv", "composite-csv", "todo-csv")) {
     @($toolDll, $Command, "--repo", $resolvedRoot) + @($CommandArguments)
 }
 else {

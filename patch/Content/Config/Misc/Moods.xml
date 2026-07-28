@@ -69,7 +69,7 @@
   </mood>
   <mood>
     <ID>MOOD_CONTENT</ID>
-    <name>Content</name>
+    <name>满足</name>
     <description>TEXT.Description.Mood.Content</description>
     <texturePath>Images/Interface/Icons/Mood/Content</texturePath>
     <level>0</level>

@@ -58,7 +58,7 @@ Assert-AtGCondition (Test-AtGPropertyExists -Object $root -Name "FullRegression"
 Assert-AtGCondition (Test-AtGPropertyExists -Object $root -Name "Incremental") "Scenario file is missing Incremental."
 
 $validStatuses = @("Active", "Completed", "Deferred", "Discovery", "ManualOnly")
-$validActions = @("Click", "Hover", "ClickAndCapture", "HoverAndCapture", "CaptureOnly")
+$validActions = @("Click", "Hover", "ClickAndCapture", "HoverAndCapture", "CaptureOnly", "TileHoverSweep")
 $validControlActions = @(
     "Click", "Hover", "Move", "Key", "Wait",
     "BookmarkProgramLog", "WaitForProgramLogMarker", "Repeat"
@@ -85,46 +85,122 @@ foreach ($suiteName in @("FullRegression", "Incremental")) {
         Assert-AtGCondition (![string]::IsNullOrWhiteSpace($title)) "Scenario $id is missing Title."
         Assert-AtGCondition (![string]::IsNullOrWhiteSpace($category)) "Scenario $id is missing Category."
         Assert-AtGCondition ($validStatuses -contains $status) "Scenario $id has invalid Status '$status'."
-        Assert-AtGCondition ($points.Count -gt 0) "Scenario $id must contain at least one point."
+        Assert-AtGCondition ($status -eq "ManualOnly" -or $points.Count -gt 0) "Scenario $id must contain at least one point unless it is ManualOnly."
 
-        $traitPoints = @($points | Where-Object { [string](Get-AtGPropertyValue -Object $_ -Name "Id") -match "^card_[1-3]_trait_(upper|lower)$" })
-        if ($traitPoints.Count -gt 0) {
-            Assert-AtGCondition ($traitPoints.Count -eq 6) "Scenario $id must cover the upper and lower trait icon on all three visible clan cards."
-            # Trait points are expressed in canonical 2560x1440 client coordinates.
-            # Couple point IDs to slots so an upper/lower swap or a second vertical
-            # coordinate system cannot pass validation.
-            $expectedTraitCoordinates = @(
-                "card_1_trait_upper=1182,610", "card_1_trait_lower=1182,639",
-                "card_2_trait_upper=1331,610", "card_2_trait_lower=1331,639",
-                "card_3_trait_upper=1483,610", "card_3_trait_lower=1483,639"
-            )
-            $actualTraitCoordinates = @($traitPoints | ForEach-Object {
-                "{0}={1},{2}" -f (Get-AtGPropertyValue -Object $_ -Name "Id"),
-                    (Get-AtGPropertyValue -Object $_ -Name "X"),
-                    (Get-AtGPropertyValue -Object $_ -Name "Y")
-            })
-            foreach ($coordinate in $expectedTraitCoordinates) {
-                Assert-AtGCondition ($actualTraitCoordinates -contains $coordinate) "Scenario $id is missing calibrated trait icon coordinate $coordinate."
-            }
-            foreach ($traitPoint in $traitPoints) {
-                $traitCrop = Get-AtGPropertyValue -Object $traitPoint -Name "Crop"
-                Assert-AtGCondition ($null -ne $traitCrop) "Scenario $id trait point $([string](Get-AtGPropertyValue -Object $traitPoint -Name 'Id')) must declare a tooltip crop."
-                Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $traitCrop -Name "Width") -le 640) "Scenario $id trait tooltip crop must exclude the animated world map."
-                Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $traitCrop -Name "Height") -le 480) "Scenario $id trait tooltip crop must exclude the animated world map."
-            }
+        $expectedAnyValue = Get-AtGPropertyValue -Object $scenario -Name "ExpectedAny"
+        $expectedAny = if ($null -eq $expectedAnyValue) { @() } else { @($expectedAnyValue) }
+        foreach ($expectedText in $expectedAny) {
+            Assert-AtGCondition ($expectedText -is [string] -and ![string]::IsNullOrWhiteSpace([string]$expectedText)) "Scenario $id ExpectedAny must contain non-empty strings."
         }
 
         if ($id -eq "clan-screen-random-traits") {
             $dynamicDiscovery = Get-AtGPropertyValue -Object $scenario -Name "DynamicTraitDiscovery"
             $traitScope = @(Get-AtGPropertyValue -Object $scenario -Name "TraitScope")
-            Assert-AtGCondition ([bool](Get-AtGPropertyValue -Object $scenario -Name "RequiresFixedSave")) "Scenario $id must retain fixed-save replay for coordinate smoke points."
+            Assert-AtGCondition ($status -eq "ManualOnly") "Scenario $id must remain the archived ManualOnly protocol."
             Assert-AtGCondition ((@($traitScope | Where-Object { [string]$_ -match "Non-personality traits" })).Count -gt 0) "Scenario $id must include non-personality traits in TraitScope."
             Assert-AtGCondition ($null -ne $dynamicDiscovery) "Scenario $id is missing DynamicTraitDiscovery."
             Assert-AtGCondition ([bool](Get-AtGPropertyValue -Object $dynamicDiscovery -Name "Required")) "Scenario $id DynamicTraitDiscovery must be required."
             Assert-AtGCondition ([string](Get-AtGPropertyValue -Object $dynamicDiscovery -Name "Mode") -eq "ManualRandomDiscovery") "Scenario $id must use ManualRandomDiscovery for random layouts."
             Assert-AtGCondition ([string](Get-AtGPropertyValue -Object $dynamicDiscovery -Name "SetupMode") -eq "new-game") "Scenario $id random discovery must use new-game setup."
-            Assert-AtGCondition ([bool](Get-AtGPropertyValue -Object $dynamicDiscovery -Name "StableIconCoordinates")) "Scenario $id must define the calibrated reusable icon coordinates."
             Assert-AtGCondition (@(Get-AtGPropertyValue -Object $dynamicDiscovery -Name "RecordBeforeVerification").Count -ge 1) "Scenario $id random discovery must define evidence fields."
+        }
+
+        if ($id -eq "clan-trait-random-discovery") {
+            Assert-AtGCondition ($expectedAny.Count -gt 0) "Scenario $id must require an observed translated trait title before a fixed-point hover can pass."
+            Assert-AtGCondition ($points.Count -eq 6) "Scenario $id must cover all six fixed trait slots."
+            $actualCoordinates = @($points | ForEach-Object {
+                "{0},{1}" -f (Get-AtGPropertyValue -Object $_ -Name "X"), (Get-AtGPropertyValue -Object $_ -Name "Y")
+            } | Sort-Object)
+            $expectedCoordinates = @("1182,639", "1182,655", "1331,639", "1331,655", "1483,639", "1483,655" | Sort-Object)
+            Assert-AtGCondition (($actualCoordinates -join ";") -eq ($expectedCoordinates -join ";")) "Scenario $id must use exactly the six fixed global absolute trait coordinates."
+        }
+
+        $tileSweep = Get-AtGPropertyValue -Object $scenario -Name "TileSweep"
+        if ($null -ne $tileSweep) {
+            Assert-AtGCondition ($points.Count -eq 1) "Scenario $id TileSweep must use exactly one dynamic point."
+            $sweepPoint = $points[0]
+            Assert-AtGCondition ([string](Get-AtGPropertyValue -Object $sweepPoint -Name "Id") -eq "tile_sweep") "Scenario $id TileSweep point Id must be tile_sweep."
+            Assert-AtGCondition ([string](Get-AtGPropertyValue -Object $sweepPoint -Name "Action") -eq "TileHoverSweep") "Scenario $id TileSweep point must use TileHoverSweep."
+            $radius = Get-AtGPropertyValue -Object $tileSweep -Name "Radius"
+            Assert-AtGCondition (($radius -is [int] -or $radius -is [long]) -and [int]$radius -eq 5) "Scenario $id TileSweep Radius must be exactly 5."
+            Assert-AtGCondition ([string](Get-AtGPropertyValue -Object $tileSweep -Name "Metric") -eq "AxialHex") "Scenario $id TileSweep Metric must be AxialHex."
+            Assert-AtGCondition ([string](Get-AtGPropertyValue -Object $tileSweep -Name "Enumerate") -eq "CenterOutward") "Scenario $id TileSweep Enumerate must be CenterOutward."
+            Assert-AtGCondition ([bool](Get-AtGPropertyValue -Object $tileSweep -Name "ExpandCollapsed")) "Scenario $id TileSweep must expand collapsed cards."
+            Assert-AtGCondition ([bool](Get-AtGPropertyValue -Object $tileSweep -Name "CycleItems")) "Scenario $id TileSweep must allow bounded item cycling."
+            Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $tileSweep -Name "MaxCardsPerTile") -eq 16) "Scenario $id TileSweep MaxCardsPerTile must be 16."
+            Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $tileSweep -Name "MaxCyclesPerTile") -eq 2) "Scenario $id TileSweep MaxCyclesPerTile must be 2."
+            $manifestId = [string](Get-AtGPropertyValue -Object $tileSweep -Name "BoundaryManifestId")
+            Assert-AtGCondition (![string]::IsNullOrWhiteSpace($manifestId)) "Scenario $id TileSweep BoundaryManifestId is required."
+            $scenarioAbsolute = (Resolve-Path -LiteralPath $ScenarioPath).Path
+            $repoRoot = Split-Path (Split-Path (Split-Path $scenarioAbsolute -Parent) -Parent) -Parent
+            $manifestPath = Join-Path $repoRoot "docs\agent\terrain-tooltip-boundary.json"
+            Assert-AtGCondition (Test-Path -LiteralPath $manifestPath -PathType Leaf) "Scenario $id TileSweep boundary manifest is missing."
+            $manifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
+            Assert-AtGCondition ([string](Get-AtGPropertyValue -Object $manifest -Name "BoundaryManifestId") -eq $manifestId) "Scenario $id TileSweep BoundaryManifestId does not match the manifest."
+            $manifestCounts = Get-AtGPropertyValue -Object $manifest -Name "Counts"
+            Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $manifestCounts -Name "Terrains") -eq 23 -and [int](Get-AtGPropertyValue -Object $manifestCounts -Name "Deposits") -eq 78 -and [int](Get-AtGPropertyValue -Object $manifestCounts -Name "Resources") -eq 42) "Scenario $id TileSweep boundary manifest source counts must be 23/78/42."
+            Assert-AtGCondition (@(Get-AtGPropertyValue -Object $manifest -Name "Entries").Count -eq 143) "Scenario $id TileSweep boundary manifest must enumerate 143 source entries."
+            if ([bool](Get-AtGPropertyValue -Object $scenario -Name "RequiresFixedSave")) {
+                $saveName = [string](Get-AtGPropertyValue -Object $scenario -Name "SaveName")
+                Assert-AtGCondition (![string]::IsNullOrWhiteSpace($saveName)) "Scenario $id fixed-save TileSweep requires SaveName."
+            }
+
+            $anchor = Get-AtGPropertyValue -Object $tileSweep -Name "Anchor"
+            $basisQ = Get-AtGPropertyValue -Object $tileSweep -Name "BasisQ"
+            $basisR = Get-AtGPropertyValue -Object $tileSweep -Name "BasisR"
+            foreach ($pair in @(@("Anchor", $anchor), @("BasisQ", $basisQ), @("BasisR", $basisR))) {
+                $name = [string]$pair[0]
+                $point = $pair[1]
+                Assert-AtGCondition ($null -ne $point) "Scenario $id TileSweep $name is required."
+                foreach ($axis in @("X", "Y")) {
+                    $value = Get-AtGPropertyValue -Object $point -Name $axis
+                    Assert-AtGCondition (($value -is [int] -or $value -is [long]) -and [int]$value -ge 0) "Scenario $id TileSweep $name.$axis must be a non-negative integer."
+                }
+                Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $point -Name "X") -lt 2560 -and [int](Get-AtGPropertyValue -Object $point -Name "Y") -lt 1440) "Scenario $id TileSweep $name must be inside the 2560x1440 reference client."
+            }
+            $dqX = [int](Get-AtGPropertyValue -Object $basisQ -Name "X") - [int](Get-AtGPropertyValue -Object $anchor -Name "X")
+            $dqY = [int](Get-AtGPropertyValue -Object $basisQ -Name "Y") - [int](Get-AtGPropertyValue -Object $anchor -Name "Y")
+            $drX = [int](Get-AtGPropertyValue -Object $basisR -Name "X") - [int](Get-AtGPropertyValue -Object $anchor -Name "X")
+            $drY = [int](Get-AtGPropertyValue -Object $basisR -Name "Y") - [int](Get-AtGPropertyValue -Object $anchor -Name "Y")
+            Assert-AtGCondition (!(($dqX -eq 0 -and $dqY -eq 0) -or ($drX -eq 0 -and $drY -eq 0))) "Scenario $id TileSweep basis points must differ from Anchor."
+            Assert-AtGCondition (($dqX * $drY - $dqY * $drX) -ne 0) "Scenario $id TileSweep basis points must be non-collinear."
+
+            $safe = Get-AtGPropertyValue -Object $tileSweep -Name "SafeViewport"
+            Assert-AtGCondition ($null -ne $safe) "Scenario $id TileSweep SafeViewport is required."
+            foreach ($name in @("X", "Y", "Width", "Height")) {
+                $value = Get-AtGPropertyValue -Object $safe -Name $name
+                Assert-AtGCondition (($value -is [int] -or $value -is [long]) -and [int]$value -ge 0) "Scenario $id TileSweep SafeViewport.$name must be a non-negative integer."
+            }
+            Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $safe -Name "Width") -gt 0 -and [int](Get-AtGPropertyValue -Object $safe -Name "Height") -gt 0) "Scenario $id TileSweep SafeViewport must be positive."
+            Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $safe -Name "X") + [int](Get-AtGPropertyValue -Object $safe -Name "Width") -le 2560 -and [int](Get-AtGPropertyValue -Object $safe -Name "Y") + [int](Get-AtGPropertyValue -Object $safe -Name "Height") -le 1440) "Scenario $id TileSweep SafeViewport must fit the reference client."
+
+            foreach ($regionName in @("MapRegion", "QuickReferenceRegion")) {
+                $region = Get-AtGPropertyValue -Object $tileSweep -Name $regionName
+                Assert-AtGCondition ($null -ne $region) "Scenario $id TileSweep $regionName is required."
+                foreach ($name in @("X", "Y", "Width", "Height")) {
+                    $value = Get-AtGPropertyValue -Object $region -Name $name
+                    Assert-AtGCondition (($value -is [int] -or $value -is [long]) -and [int]$value -ge 0) "Scenario $id TileSweep $regionName.$name must be a non-negative integer."
+                }
+                Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $region -Name "Width") -gt 0 -and [int](Get-AtGPropertyValue -Object $region -Name "Height") -gt 0) "Scenario $id TileSweep $regionName must be positive."
+                Assert-AtGCondition ([int](Get-AtGPropertyValue -Object $region -Name "X") + [int](Get-AtGPropertyValue -Object $region -Name "Width") -le 2560 -and [int](Get-AtGPropertyValue -Object $region -Name "Y") + [int](Get-AtGPropertyValue -Object $region -Name "Height") -le 1440) "Scenario $id TileSweep $regionName must fit the reference client."
+            }
+
+            $coordinates = @()
+            for ($q = -5; $q -le 5; $q++) {
+                for ($r = -5; $r -le 5; $r++) {
+                    if ([Math]::Max([Math]::Abs($q), [Math]::Max([Math]::Abs($r), [Math]::Abs($q + $r))) -gt 5) { continue }
+                    $coordinates += [pscustomobject]@{
+                        X = [int](Get-AtGPropertyValue -Object $anchor -Name "X") + $q * $dqX + $r * $drX
+                        Y = [int](Get-AtGPropertyValue -Object $anchor -Name "Y") + $q * $dqY + $r * $drY
+                    }
+                }
+            }
+            Assert-AtGCondition ($coordinates.Count -eq 91) "Scenario $id TileSweep must generate 91 coordinates."
+            $uniqueCoordinates = @($coordinates | ForEach-Object { "{0},{1}" -f $_.X, $_.Y } | Sort-Object -Unique)
+            Assert-AtGCondition ($uniqueCoordinates.Count -eq 91) "Scenario $id TileSweep generated duplicate coordinates."
+            foreach ($coordinate in $coordinates) {
+                Assert-AtGCondition ($coordinate.X -ge [int](Get-AtGPropertyValue -Object $safe -Name "X") -and $coordinate.X -lt ([int](Get-AtGPropertyValue -Object $safe -Name "X") + [int](Get-AtGPropertyValue -Object $safe -Name "Width")) -and $coordinate.Y -ge [int](Get-AtGPropertyValue -Object $safe -Name "Y") -and $coordinate.Y -lt ([int](Get-AtGPropertyValue -Object $safe -Name "Y") + [int](Get-AtGPropertyValue -Object $safe -Name "Height"))) "Scenario $id TileSweep coordinate ($($coordinate.X),$($coordinate.Y)) is outside SafeViewport."
+            }
         }
 
         foreach ($phase in @("SetupActions", "TeardownActions")) {
@@ -189,6 +265,11 @@ foreach ($suiteName in @("FullRegression", "Incremental")) {
 
             $readyMarker = [string](Get-AtGPropertyValue -Object $point -Name "ReadyMarker")
             $readyTimeoutMs = Get-AtGPropertyValue -Object $point -Name "ReadyTimeoutMs"
+            $expectedAllValue = Get-AtGPropertyValue -Object $point -Name "ExpectedAll"
+            $expectedAll = if ($null -eq $expectedAllValue) { @() } else { @($expectedAllValue) }
+            foreach ($expectedText in $expectedAll) {
+                Assert-AtGCondition ($expectedText -is [string] -and ![string]::IsNullOrWhiteSpace([string]$expectedText)) "Scenario $id point $pointId ExpectedAll must contain non-empty strings."
+            }
             if (![string]::IsNullOrWhiteSpace($readyMarker) -or $null -ne $readyTimeoutMs) {
                 Assert-AtGCondition (![string]::IsNullOrWhiteSpace($readyMarker)) "Scenario $id point $pointId ReadyTimeoutMs requires ReadyMarker."
                 Assert-AtGCondition ($action -ne "CaptureOnly") "Scenario $id point $pointId ReadyMarker requires an action."

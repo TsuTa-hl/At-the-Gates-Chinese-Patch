@@ -5,7 +5,10 @@ public sealed record PlannedPoint(
     string Interface,
     TestPoint Point,
     ScenarioAction? ClearBefore,
-    IReadOnlyList<string> ExpectedNo);
+    IReadOnlyList<string> ExpectedNo,
+    IReadOnlyList<string> ExpectedAny,
+    IReadOnlyList<string> ExpectedAll,
+    TileSweepSpec? TileSweep);
 
 public sealed record PlannedState(
     string Id,
@@ -57,7 +60,10 @@ public static class SessionPlanner
                         scenario.Interface,
                         point,
                         point.SkipClear ? null : scenario.ClearBeforeEachPoint,
-                        scenario.ExpectedNo));
+                        scenario.ExpectedNo,
+                        scenario.ExpectedAny,
+                        point.ExpectedAll,
+                        scenario.TileSweep));
             }
         }
 

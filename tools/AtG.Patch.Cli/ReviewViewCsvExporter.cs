@@ -2,13 +2,20 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using AtG.Catalog;
 using AtG.ManagedRewrite;
 
 internal sealed record CompositeCsvExportResult(
     int EntryCount,
     int RuleCount,
+    int KnownTextLocatorCount,
+    int ResolvedKnownTextLocatorCount,
+    int UnresolvedKnownTextLocatorCount,
+    string OutputPath);
+
+internal sealed record KnownTextCsvExportResult(
+    int OccurrenceCount,
+    int CompositeReferenceCount,
     string OutputPath);
 
 internal sealed record TodoCsvExportResult(
@@ -23,8 +30,6 @@ internal sealed record TodoCsvExportResult(
 
 internal static class ReviewViewCsvExporter
 {
-    private static readonly Regex MethodToken = new(
-        @"(?:^|;)\s*MethodToken=(0x[0-9a-fA-F]+)", RegexOptions.CultureInvariant);
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNameCaseInsensitive = true,
@@ -35,8 +40,18 @@ internal static class ReviewViewCsvExporter
         "MethodName", "MethodToken", "ILOffset", "XPath", "CallKind",
         "OriginalFormat", "LocalizedFormat", "Classification", "Status",
         "RuleId", "RuleKind", "RuleStatus", "RuleDescription", "RuleSource",
-        "AuditStatus", "RuleScope", "Confidence", "PartsJson",
+        "AuditStatus", "RuleScope", "Confidence", "KnownTextReferenceStatus",
+        "KnownTextLocatorCount", "KnownTextUnresolvedCount", "KnownTextExcludedLiteralCount",
+        "KnownTextOccurrenceIds",
+        "KnownTextSemanticGroupIds", "KnownTextReferencesJson",
+        "KnownTextUnresolvedReferencesJson", "KnownTextReferenceExclusionsJson", "PartsJson",
         "StructuralFlags", "Notes", "Stale",
+    ];
+    private static readonly string[] KnownTextHeaders =
+    [
+        "SourceOccurrenceId", "SemanticGroupId", "SourceFile", "Kind", "Original", "Translation",
+        "Status", "ReviewState", "ReasonCode", "Safety", "Notes", "Locators",
+        "CompositeReferenceCount", "CompositeEntryPointIds", "CompositeReferencesJson",
     ];
     private static readonly string[] TodoHeaders =
     [
@@ -45,13 +60,19 @@ internal static class ReviewViewCsvExporter
         "Kind", "Original", "Translation", "Status", "ReviewState",
         "ReasonCode", "Safety", "Notes", "Locators", "Route", "EntryPointId",
         "RuleId", "AuditStatus", "RuleScope", "Confidence", "CompositeLocator",
-        "StructuralFlags", "PartsJson",
+        "StructuralFlags", "CompositeReferenceCount", "CompositeReferencesJson",
+        "KnownTextReferenceStatus", "KnownTextReferencesJson",
+        "KnownTextUnresolvedReferencesJson", "KnownTextReferenceExclusionsJson", "PartsJson",
     ];
 
-    public static CompositeCsvExportResult ExportComposite(string rulesPath, string outputPath)
+    public static CompositeCsvExportResult ExportComposite(string databasePath, string rulesPath,
+        string outputPath)
     {
         var document = LoadComposite(rulesPath);
         var rules = document.Rules.ToDictionary(rule => rule.RuleId, StringComparer.Ordinal);
+        using var database = CatalogDatabase.Open(databasePath);
+        database.Initialize();
+        var index = CompositeKnownTextIndex.Build(document.Entries, database.ReadOccurrences());
         outputPath = PrepareCsvOutput(outputPath);
         using var writer = CreateWriter(outputPath);
         WriteRow(writer, CompositeHeaders);
@@ -60,6 +81,9 @@ internal static class ReviewViewCsvExporter
         {
             var source = entry.Source ?? new CompositeTextSource();
             rules.TryGetValue(entry.RuleId ?? "", out var rule);
+            var references = index.GetEntryLinks(entry.EntryPointId);
+            var unresolved = index.GetEntryUnresolved(entry.EntryPointId);
+            var exclusions = index.GetEntryExclusions(entry);
             WriteRow(writer,
             [
                 "Entry",
@@ -84,6 +108,17 @@ internal static class ReviewViewCsvExporter
                 entry.AuditStatus,
                 entry.RuleScope,
                 entry.Confidence,
+                index.GetEntryStatus(entry),
+                index.GetEntryLocatorCount(entry).ToString(CultureInfo.InvariantCulture),
+                unresolved.Count.ToString(CultureInfo.InvariantCulture),
+                exclusions.Count.ToString(CultureInfo.InvariantCulture),
+                string.Join(";", references.Select(link => link.SourceOccurrenceId)
+                    .Distinct().Order()),
+                string.Join(";", references.Select(link => link.SemanticGroupId)
+                    .Distinct().Order()),
+                SerializeKnownTextLinks(references),
+                SerializeUnresolvedReferences(unresolved),
+                SerializeReferenceExclusions(exclusions),
                 JsonSerializer.Serialize(entry.Parts ?? [], JsonOptions),
                 string.Join("; ", entry.StructuralFlags ?? []),
                 entry.Notes,
@@ -93,38 +128,60 @@ internal static class ReviewViewCsvExporter
 
         foreach (var rule in document.Rules.OrderBy(item => item.RuleId, StringComparer.Ordinal))
         {
-            WriteRow(writer,
-            [
-                "Rule",
-                rule.EntryPointId,
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                rule.RuleId,
-                rule.Kind,
-                rule.Status,
-                rule.Description,
-                rule.Source,
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-            ]);
+            var ruleRow = new string?[CompositeHeaders.Length];
+            ruleRow[0] = "Rule";
+            ruleRow[1] = rule.EntryPointId;
+            ruleRow[14] = rule.RuleId;
+            ruleRow[15] = rule.Kind;
+            ruleRow[16] = rule.Status;
+            ruleRow[17] = rule.Description;
+            ruleRow[18] = rule.Source;
+            WriteRow(writer, ruleRow);
         }
 
-        return new CompositeCsvExportResult(document.Entries.Count, document.Rules.Count, outputPath);
+        var locatorCount = document.Entries.Sum(entry => index.GetEntryLocatorCount(entry));
+        var resolvedPartCount = document.Entries.Sum(entry => entry.Parts.Count(part =>
+            part.KnownTextReference is not null && index.GetEntryLinks(entry.EntryPointId)
+                .Any(link => link.PartPosition == part.Position)));
+        return new CompositeCsvExportResult(document.Entries.Count, document.Rules.Count,
+            locatorCount, resolvedPartCount, locatorCount - resolvedPartCount, outputPath);
+    }
+
+    public static KnownTextCsvExportResult ExportKnownTexts(string databasePath, string rulesPath,
+        string outputPath)
+    {
+        var document = LoadComposite(rulesPath);
+        using var database = CatalogDatabase.Open(databasePath);
+        database.Initialize();
+        var rows = database.ReadOccurrences();
+        var index = CompositeKnownTextIndex.Build(document.Entries, rows);
+        outputPath = PrepareCsvOutput(outputPath);
+        using var writer = CreateWriter(outputPath);
+        WriteRow(writer, KnownTextHeaders);
+        foreach (var row in rows)
+        {
+            var references = index.GetOccurrenceLinks(row.Id);
+            WriteRow(writer,
+            [
+                row.Id.ToString(CultureInfo.InvariantCulture),
+                row.SemanticGroupId.ToString(CultureInfo.InvariantCulture),
+                row.SourceFile,
+                row.Kind,
+                row.Original,
+                row.Translation,
+                row.Status,
+                row.ReviewState,
+                row.ReasonCode,
+                row.Safety,
+                row.Notes,
+                row.Locators,
+                references.Count.ToString(CultureInfo.InvariantCulture),
+                string.Join(";", references.Select(link => link.EntryPointId)
+                    .Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal)),
+                SerializeCompositeLinks(references),
+            ]);
+        }
+        return new KnownTextCsvExportResult(rows.Count, index.Links.Count, outputPath);
     }
 
     public static TodoCsvExportResult ExportTodo(string databasePath, string rulesPath,
@@ -132,10 +189,10 @@ internal static class ReviewViewCsvExporter
     {
         var document = LoadComposite(rulesPath);
         var entries = document.Entries;
-        var compositeByMethod = BuildCompositeByMethod(entries);
         using var database = CatalogDatabase.Open(databasePath);
         database.Initialize();
         var rows = database.ReadOccurrences();
+        var compositeKnownTextIndex = CompositeKnownTextIndex.Build(entries, rows);
         var openRows = rows.Where(IsOpenTextRow).ToArray();
         var resolvedBlankRows = rows.Count(row =>
             string.Equals(row.Status, "Translated", StringComparison.Ordinal) &&
@@ -162,7 +219,7 @@ internal static class ReviewViewCsvExporter
                          Category = GetTextCategory(row),
                          TodoId = "TXT-" + ShortHash(string.Join("\n",
                              row.SourceFile, row.Kind, row.Original, row.Locators)),
-                         Route = GetCompositeRoute(row, compositeByMethod),
+                         CompositeReferences = compositeKnownTextIndex.GetOccurrenceLinks(row.Id),
                      })
                      .OrderBy(item => CategoryRank(item.Category.Id))
                      .ThenBy(item => item.Row.SourceFile, StringComparer.Ordinal)
@@ -190,10 +247,10 @@ internal static class ReviewViewCsvExporter
                 row.Row.Safety,
                 row.Row.Notes,
                 row.Row.Locators,
-                row.Route,
-                "",
-                "",
-                "",
+                GetCompositeRoute(row.Row, row.CompositeReferences),
+                "", "", "", "", "", "", "",
+                row.CompositeReferences.Count.ToString(CultureInfo.InvariantCulture),
+                SerializeCompositeLinks(row.CompositeReferences),
                 "",
                 "",
                 "",
@@ -204,7 +261,7 @@ internal static class ReviewViewCsvExporter
 
         foreach (var entry in unreviewedComposites.OrderBy(item => item.EntryPointId, StringComparer.Ordinal))
         {
-            WriteCompositeTodoRow(writer, entry,
+            WriteCompositeTodoRow(writer, entry, compositeKnownTextIndex,
                 new TodoCategory(
                     "CompositeUnreviewed",
                     "未审查拼接入口",
@@ -212,7 +269,7 @@ internal static class ReviewViewCsvExporter
         }
         foreach (var entry in reviewedNoSafeComposites.OrderBy(item => item.EntryPointId, StringComparer.Ordinal))
         {
-            WriteCompositeTodoRow(writer, entry,
+            WriteCompositeTodoRow(writer, entry, compositeKnownTextIndex,
                 new TodoCategory(
                     "CompositeReviewedNoSafeRule",
                     "已审查但未添加规则的拼接入口",
@@ -247,28 +304,6 @@ internal static class ReviewViewCsvExporter
         {
             throw new InvalidDataException($"Composite rule source is invalid: {rulesPath}", exception);
         }
-    }
-
-    private static Dictionary<string, List<CompositeTextEntry>> BuildCompositeByMethod(
-        IEnumerable<CompositeTextEntry> entries)
-    {
-        var result = new Dictionary<string, List<CompositeTextEntry>>(
-            StringComparer.OrdinalIgnoreCase);
-        foreach (var entry in entries)
-        {
-            var source = entry.Source;
-            if (source is null || string.IsNullOrWhiteSpace(source.MethodToken))
-                continue;
-            var key = NormalizeSourceKey(source.RelativePath) + "|" +
-                source.MethodToken.ToUpperInvariant();
-            if (!result.TryGetValue(key, out var bucket))
-            {
-                bucket = [];
-                result[key] = bucket;
-            }
-            bucket.Add(entry);
-        }
-        return result;
     }
 
     private static bool IsOpenTextRow(SourceOccurrence row) =>
@@ -322,43 +357,26 @@ internal static class ReviewViewCsvExporter
     };
 
     private static string GetCompositeRoute(SourceOccurrence row,
-        IReadOnlyDictionary<string, List<CompositeTextEntry>> compositeByMethod)
+        IReadOnlyList<CompositeKnownTextLink> references)
     {
         if (string.Equals(row.Kind, "TextKeyReference", StringComparison.Ordinal))
             return "这是解析键；先在 SQLite/English.xml 找到最终显示文本，不能直接改配置键。";
-        var match = MethodToken.Match(row.Locators ?? "");
-        if (!match.Success)
-            return "未关联到静态组合入口；按本行精确来源和分类处理。";
-        var methodKey = NormalizeSourceKey(row.SourceFile) + "|" +
-            match.Groups[1].Value.ToUpperInvariant();
-        if (!compositeByMethod.TryGetValue(methodKey, out var matches))
-            return "未关联到静态组合入口；按本行精确来源和分类处理。";
-
-        var parts = new List<string>();
-        var unreviewed = matches.Where(entry =>
-            string.Equals(entry.AuditStatus, "Unreviewed", StringComparison.Ordinal)).ToArray();
-        if (unreviewed.Length > 0)
-        {
-            var ids = unreviewed.Take(3).Select(entry => entry.EntryPointId);
-            var suffix = unreviewed.Length > 3 ? $"（共 {unreviewed.Length} 个）" : "";
-            parts.Add($"先审查组合入口：{string.Join(", ", ids)}{suffix}");
-        }
-        var ruleIds = matches.Where(entry => !string.IsNullOrWhiteSpace(entry.RuleId))
-            .Select(entry => entry.RuleId!)
-            .Distinct(StringComparer.Ordinal)
-            .OrderBy(value => value, StringComparer.Ordinal)
-            .ToArray();
-        if (ruleIds.Length > 0)
-            parts.Add($"同方法已有规则：{string.Join(", ", ruleIds)}");
-        return parts.Count == 0
-            ? "同方法已存在组合目录记录；检查其 EntryPointId 后再修改。"
-            : string.Join("；", parts);
+        if (references.Count == 0)
+            return "未建立精确 Composite 引用；按本行精确来源和分类处理。";
+        var entryPoints = references.Select(link => link.EntryPointId)
+            .Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray();
+        var parts = references.Select(link => link.PartPosition).Distinct().Order().ToArray();
+        return "精确关联组合入口：" + string.Join(", ", entryPoints) +
+            "；片段位置：" + string.Join(", ", parts);
     }
 
     private static void WriteCompositeTodoRow(TextWriter writer, CompositeTextEntry entry,
-        TodoCategory category)
+        CompositeKnownTextIndex index, TodoCategory category)
     {
         var source = entry.Source ?? new CompositeTextSource();
+        var references = index.GetEntryLinks(entry.EntryPointId);
+        var unresolved = index.GetEntryUnresolved(entry.EntryPointId);
+        var exclusions = index.GetEntryExclusions(entry);
         WriteRow(writer,
         [
             "Composite",
@@ -387,6 +405,12 @@ internal static class ReviewViewCsvExporter
             entry.Confidence,
             CompositeLocator(source),
             string.Join("; ", entry.StructuralFlags ?? []),
+            "",
+            "",
+            index.GetEntryStatus(entry),
+            SerializeKnownTextLinks(references),
+            SerializeUnresolvedReferences(unresolved),
+            SerializeReferenceExclusions(exclusions),
             JsonSerializer.Serialize(entry.Parts ?? [], JsonOptions),
         ]);
     }
@@ -399,8 +423,57 @@ internal static class ReviewViewCsvExporter
         return source.XPath ?? "";
     }
 
-    private static string NormalizeSourceKey(string? value) =>
-        (value ?? "").Replace('/', '\\').ToLowerInvariant();
+    private static string SerializeKnownTextLinks(IEnumerable<CompositeKnownTextLink> links) =>
+        JsonSerializer.Serialize(links.OrderBy(link => link.PartPosition)
+            .ThenBy(link => link.SourceOccurrenceId)
+            .Select(link => new
+            {
+                link.PartPosition,
+                link.PartValue,
+                link.LocatorKind,
+                link.TextMatch,
+                link.SourceOccurrenceId,
+                link.SemanticGroupId,
+                link.SourceFile,
+                link.Original,
+                link.Translation,
+                link.Status,
+                link.ReviewState,
+                link.Safety,
+                link.Locators,
+            }), JsonOptions);
+
+    private static string SerializeCompositeLinks(IEnumerable<CompositeKnownTextLink> links) =>
+        JsonSerializer.Serialize(links.OrderBy(link => link.EntryPointId, StringComparer.Ordinal)
+            .ThenBy(link => link.PartPosition)
+            .Select(link => new
+            {
+                link.EntryPointId,
+                link.PartPosition,
+                link.PartValue,
+                link.LocatorKind,
+                link.TextMatch,
+            }), JsonOptions);
+
+    private static string SerializeUnresolvedReferences(
+        IEnumerable<CompositeKnownTextUnresolvedReference> unresolved) =>
+        JsonSerializer.Serialize(unresolved.OrderBy(item => item.PartPosition)
+            .Select(item => new
+            {
+                item.PartPosition,
+                item.PartValue,
+                item.Reason,
+            }), JsonOptions);
+
+    private static string SerializeReferenceExclusions(
+        IEnumerable<CompositeKnownTextReferenceExclusion> exclusions) =>
+        JsonSerializer.Serialize(exclusions.OrderBy(item => item.PartPosition)
+            .Select(item => new
+            {
+                item.PartPosition,
+                item.PartValue,
+                item.Reason,
+            }), JsonOptions);
 
     private static string ShortHash(string value) =>
         Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).Substring(0, 12);

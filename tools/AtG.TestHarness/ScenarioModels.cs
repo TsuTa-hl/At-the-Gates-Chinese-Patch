@@ -37,9 +37,11 @@ public sealed class TestScenario
     public string Status { get; init; } = string.Empty;
     public bool SkipByDefault { get; init; }
     public string[] ExpectedNo { get; init; } = [];
+    public string[] ExpectedAny { get; init; } = [];
     public ScenarioAction[] SetupActions { get; init; } = [];
     public ScenarioAction[] TeardownActions { get; init; } = [];
     public ScenarioAction? ClearBeforeEachPoint { get; init; }
+    public TileSweepSpec? TileSweep { get; init; }
     public TestPoint[] Points { get; init; } = [];
 }
 
@@ -70,6 +72,7 @@ public sealed class TestPoint
     public CropRegion? Crop { get; init; }
     public bool SkipClear { get; init; }
     public bool AllowUnchanged { get; init; }
+    public string[] ExpectedAll { get; init; } = [];
 }
 
 public sealed record CropRegion(int X, int Y, int Width, int Height);

@@ -48,3 +48,4 @@ rule JSON remain the facts; disposable CSV views support filtering and review.
   two views. These outputs are not source data and are not retained.
 - `docs/agent/black-box-scenarios.json`: coordinate and scenario authority.
 - `docs/agent/clan-trait-verification.json`: trait verification state.
+- `docs/agent/terrain-tooltip-boundary.json`: source-derived terrain/deposit/resource boundary and runtime reachability state; refresh with `tools/Build-TerrainTooltipBoundary.ps1` and never use it as a translation operand.

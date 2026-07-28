@@ -9,6 +9,7 @@ public sealed record RuntimeDisplayMapBuildResult(
     int ExactCount,
     int PlainTextCount,
     int PlainTextFragmentCount,
+    int RichTextFragmentCount,
     int ConceptDisplayCount,
     string OutputPath);
 
@@ -20,6 +21,10 @@ public static class RuntimeDisplayMapBuilder
         @"^\[([^\]|]+)\|([A-Z][A-Z0-9-]*)\]$", RegexOptions.CultureInvariant);
     private static readonly Regex BareConceptKey = new(
         @"^[A-Z][A-Z0-9-]{1,}$", RegexOptions.CultureInvariant);
+    private static readonly Regex RuntimeTemplateArgument = new(
+        @"\{arg:\d+\}", RegexOptions.CultureInvariant);
+    private static readonly Regex RuntimeTemplateAnchor = new(
+        @"[A-Za-z0-9]{4,}", RegexOptions.CultureInvariant);
 
     public static RuntimeDisplayMapBuildResult Build(
         string commonAssemblyPath,
@@ -39,6 +44,7 @@ public static class RuntimeDisplayMapBuilder
         var exact = (model.Exact ?? []).ToList();
         var plain = model.PlainText ?? [];
         var plainFragments = (model.PlainTextFragments ?? []).ToList();
+        var richTextFragments = (model.RichTextFragments ?? []).ToList();
         var templates = new List<RuntimeDisplayEntry>();
         var configuredConceptDisplay = model.ConceptDisplay ?? [];
         var conceptDisplay = configuredConceptDisplay.ToList();
@@ -50,6 +56,7 @@ public static class RuntimeDisplayMapBuilder
         ValidateUnique(exact, entry => entry.Original, "exact");
         ValidateUnique(plain, entry => entry.Original, "plain-text");
         ValidateUnique(plainFragments, entry => entry.Original, "plain-text-fragment");
+        ValidateUnique(richTextFragments, entry => entry.Original, "rich-text-fragment");
         ValidateUnique(templates, entry => entry.Original, "template");
         ValidateUnique(configuredConceptDisplay,
             entry => entry.ConceptKey + "\u001F" + entry.Original, "concept-display");
@@ -77,6 +84,16 @@ public static class RuntimeDisplayMapBuilder
             ValidateDisplay(entry.Original, "PlainTextFragments.Original");
             ValidateFragmentTranslation(entry.Translation, "PlainTextFragments.Translation");
         }
+        foreach (var entry in richTextFragments)
+        {
+            ValidateRequired(entry.Original, "RichTextFragments.Original");
+            ValidateRequired(entry.Translation, "RichTextFragments.Translation");
+            var originalKeys = ExtractConceptKeys(entry.Original, conceptKeys);
+            var translatedKeys = ExtractConceptKeys(entry.Translation, conceptKeys);
+            if (!originalKeys.SequenceEqual(translatedKeys, StringComparer.Ordinal))
+                throw new InvalidDataException(
+                    $"Rich-text fragment changes concept keys: '{entry.Original}' -> '{entry.Translation}'.");
+        }
         foreach (var entry in templates)
         {
             ValidateRequired(entry.Original, "Template.Original");
@@ -93,6 +110,7 @@ public static class RuntimeDisplayMapBuilder
         }
 
         var lines = new List<string>(conceptKeys.Count + exact.Count + plain.Length +
+            plainFragments.Count + richTextFragments.Count + templates.Count +
             conceptDisplay.Count + 1)
         {
             "# AtG.RuntimeText display map v1",
@@ -106,6 +124,9 @@ public static class RuntimeDisplayMapBuilder
         lines.AddRange(plainFragments.OrderByDescending(entry => entry.Original.Length)
             .ThenBy(entry => entry.Original, StringComparer.Ordinal)
             .Select(entry => "F\t" + Encode(entry.Original) + "\t" + Encode(entry.Translation)));
+        lines.AddRange(richTextFragments.OrderByDescending(entry => entry.Original.Length)
+            .ThenBy(entry => entry.Original, StringComparer.Ordinal)
+            .Select(entry => "R\t" + Encode(entry.Original) + "\t" + Encode(entry.Translation)));
         lines.AddRange(templates.OrderByDescending(entry => entry.Original.Length)
             .ThenBy(entry => entry.Original, StringComparer.Ordinal)
             .Select(entry => "T\t" + Encode(entry.Original) + "\t" + Encode(entry.Translation)));
@@ -117,9 +138,11 @@ public static class RuntimeDisplayMapBuilder
 
         var output = Path.GetFullPath(outputPath);
         Directory.CreateDirectory(Path.GetDirectoryName(output)!);
-        File.WriteAllLines(output, lines, new UTF8Encoding(false));
+        // Keep generated patch data byte-stable across Windows and CI hosts.
+        File.WriteAllText(output, string.Join("\n", lines) + "\n", new UTF8Encoding(false));
         return new RuntimeDisplayMapBuildResult(conceptKeys.Count, exact.Count,
-            plain.Length, plainFragments.Count, conceptDisplay.Count, output);
+            plain.Length, plainFragments.Count, richTextFragments.Count,
+            conceptDisplay.Count, output);
     }
 
     private static void ImportConceptDisplaySources(string mapPath,
@@ -303,6 +326,11 @@ public static class RuntimeDisplayMapBuilder
                          StringComparer.Ordinal.Equals(entry.Source.Kind, "Managed") &&
                          StringComparer.Ordinal.Equals(entry.RuleId, "runtime-display-template")))
             {
+                // Templates run against every text value at draw time. A template whose
+                // only literals are whitespace or punctuation (for example
+                // "{arg:0} {arg:2}") matches ordinary UI text and can rewrite all of its
+                // separators. Emit only templates with a stable, specific source anchor.
+                if (!IsRuntimeSafeTemplate(composite.OriginalFormat)) continue;
                 if (known.TryGetValue(composite.OriginalFormat, out var existing))
                 {
                     if (!StringComparer.Ordinal.Equals(existing, composite.LocalizedFormat))
@@ -325,8 +353,20 @@ public static class RuntimeDisplayMapBuilder
         if (string.IsNullOrWhiteSpace(value) ||
             value.IndexOfAny(['[', ']', '|']) >= 0)
             return false;
-        return value.Any(character => (character >= 'A' && character <= 'Z') ||
-            (character >= 'a' && character <= 'z'));
+        // Fragments run over every final display value. A determiner,
+        // preposition, or other short token (for example "The " or "in ")
+        // is only meaningful in the source method that produced it and must
+        // not leak into names or unrelated UI. Keep the same stable-anchor
+        // threshold used for runtime templates.
+        return RuntimeTemplateAnchor.IsMatch(value);
+    }
+
+    private static bool IsRuntimeSafeTemplate(string value)
+    {
+        if (string.IsNullOrEmpty(value) || !RuntimeTemplateArgument.IsMatch(value))
+            return false;
+        var literalText = RuntimeTemplateArgument.Replace(value, "");
+        return RuntimeTemplateAnchor.IsMatch(literalText);
     }
 
     private static HashSet<string> DiscoverConceptKeys(string assemblyPath,
@@ -396,6 +436,7 @@ public static class RuntimeDisplayMapBuilder
         public RuntimeDisplayEntry[]? Exact { get; set; }
         public RuntimeDisplayEntry[]? PlainText { get; set; }
         public RuntimeDisplayEntry[]? PlainTextFragments { get; set; }
+        public RuntimeDisplayEntry[]? RichTextFragments { get; set; }
         public RuntimeConceptDisplayEntry[]? ConceptDisplay { get; set; }
         public string[]? ConceptDisplaySources { get; set; }
         public string[]? CompositeExactSources { get; set; }

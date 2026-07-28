@@ -15,12 +15,22 @@ namespace AtG.RuntimeText
             new Dictionary<string, string>(StringComparer.Ordinal);
         private static readonly Dictionary<string, string> PlainTextFragments =
             new Dictionary<string, string>(StringComparer.Ordinal);
+        private static readonly Dictionary<string, string> RichTextFragments =
+            new Dictionary<string, string>(StringComparer.Ordinal);
         private static readonly Dictionary<string, string> Templates =
             new Dictionary<string, string>(StringComparer.Ordinal);
         private static readonly Dictionary<string, Dictionary<string, string>> ConceptDisplay =
             new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
         private static readonly HashSet<string> ConceptKeys =
             new HashSet<string>(StringComparer.Ordinal);
+        private static readonly Dictionary<string, string> GameMonthNames =
+            new Dictionary<string, string>(StringComparer.Ordinal)
+            {
+                { "January", "1月" }, { "February", "2月" }, { "March", "3月" },
+                { "April", "4月" }, { "May", "5月" }, { "June", "6月" },
+                { "July", "7月" }, { "August", "8月" }, { "September", "9月" },
+                { "October", "10月" }, { "November", "11月" }, { "December", "12月" },
+            };
         private static volatile BoundedLocalizationCache ResultCache =
             new BoundedLocalizationCache(4096, 2 * 1024 * 1024);
         private static volatile LocalizationSnapshot Snapshot;
@@ -31,6 +41,7 @@ namespace AtG.RuntimeText
             public Dictionary<string, string> Exact;
             public Dictionary<string, string> Plain;
             public Dictionary<char, KeyValuePair<string, string>[]> FragmentsByFirstCharacter;
+            public Dictionary<char, KeyValuePair<string, string>[]> RichTextFragmentsByFirstCharacter;
             public KeyValuePair<string, string>[] Templates;
             public Dictionary<string, Dictionary<string, string>> Concepts;
             public HashSet<string> Keys;
@@ -139,6 +150,13 @@ namespace AtG.RuntimeText
             lock (Gate) RegisterValue(PlainTextFragments, source, translation, true);
         }
 
+        public static void RegisterRichTextFragment(string source, string translation)
+        {
+            if (string.IsNullOrEmpty(source)) throw new ArgumentException("Rich-text source is required.", "source");
+            if (string.IsNullOrEmpty(translation)) throw new ArgumentException("Rich-text translation is required.", "translation");
+            lock (Gate) RegisterValue(RichTextFragments, source, translation, true);
+        }
+
         public static void RegisterTemplate(string source, string translation)
         {
             ValidateTemplate(source, translation);
@@ -192,6 +210,12 @@ namespace AtG.RuntimeText
                 return translated;
             }
 
+            if (TryLocalizeGameDate(value, out translated))
+            {
+                resultCache.Add('D', value, translated);
+                return translated;
+            }
+
             // Dynamic status values can be appended after TextFormatter has
             // processed the original rich-text template. Apply fragments only
             // to final plain text; strings containing markup stay on the
@@ -224,6 +248,13 @@ namespace AtG.RuntimeText
 
             var changed = TryApplyTemplate(value, snapshot.Templates, out var templated);
             if (changed) value = templated;
+            var richLocalized = ApplyPlainTextFragments(value,
+                snapshot.RichTextFragmentsByFirstCharacter);
+            if (!StringComparer.Ordinal.Equals(richLocalized, value))
+            {
+                value = richLocalized;
+                changed = true;
+            }
             var nodes = RichTextAst.Parse(value, snapshot.Keys);
             var mapped = new List<RichNode>(nodes.Count);
             foreach (var node in nodes)
@@ -267,9 +298,108 @@ namespace AtG.RuntimeText
                 }
                 mapped.Add(node);
             }
+            if (CollapseInlineWhitespaceBetweenChineseConcepts(mapped)) changed = true;
             var result = changed ? RichTextAst.Render(mapped) : value;
             resultCache.Add('R', value, result);
             return result;
+        }
+
+        private static bool CollapseInlineWhitespaceBetweenChineseConcepts(List<RichNode> nodes)
+        {
+            var changed = false;
+            for (var index = 0; index < nodes.Count; index++)
+            {
+                var plain = nodes[index] as PlainTextNode;
+                if (plain == null) continue;
+                var text = plain.Text;
+                if (index + 1 < nodes.Count &&
+                    nodes[index + 1] is ConceptLinkNode nextLink &&
+                    CjkText.ContainsBreakableCjk(nextLink.DisplayText))
+                {
+                    var trimmed = TrimTrailingChineseLinkWhitespace(text);
+                    if (!StringComparer.Ordinal.Equals(trimmed, text))
+                    {
+                        nodes[index] = plain = new PlainTextNode(trimmed);
+                        text = trimmed;
+                        changed = true;
+                    }
+                }
+                if (index > 0 &&
+                    nodes[index - 1] is ConceptLinkNode previousLink &&
+                    CjkText.ContainsBreakableCjk(previousLink.DisplayText))
+                {
+                    var trimmed = TrimLeadingChineseLinkWhitespace(text);
+                    if (!StringComparer.Ordinal.Equals(trimmed, text))
+                    {
+                        nodes[index] = new PlainTextNode(trimmed);
+                        changed = true;
+                    }
+                }
+            }
+            for (var index = 1; index < nodes.Count - 1; index++)
+            {
+                var whitespace = nodes[index] as PlainTextNode;
+                if (whitespace == null || !IsInlineWhitespace(whitespace.Text))
+                    continue;
+
+                var previous = nodes[index - 1] as ConceptLinkNode;
+                var next = nodes[index + 1] as ConceptLinkNode;
+                var previousPlain = nodes[index - 1] as PlainTextNode;
+                var nextPlain = nodes[index + 1] as PlainTextNode;
+                var previousIsChinese = previous != null
+                    ? CjkText.ContainsBreakableCjk(previous.DisplayText)
+                    : previousPlain != null && EndsWithBreakableCjk(previousPlain.Text);
+                var nextIsChinese = next != null
+                    ? CjkText.ContainsBreakableCjk(next.DisplayText)
+                    : nextPlain != null && StartsWithBreakableCjk(nextPlain.Text);
+                if (!previousIsChinese || !nextIsChinese)
+                    continue;
+
+                nodes[index] = new PlainTextNode(string.Empty);
+                changed = true;
+            }
+            return changed;
+        }
+
+        private static string TrimTrailingChineseLinkWhitespace(string value)
+        {
+            var end = value.Length;
+            while (end > 0 && (value[end - 1] == ' ' || value[end - 1] == '\t')) end--;
+            if (end == value.Length || end == 0 ||
+                !CjkText.ContainsBreakableCjk(value[end - 1].ToString())) return value;
+            return value.Substring(0, end);
+        }
+
+        private static string TrimLeadingChineseLinkWhitespace(string value)
+        {
+            var start = 0;
+            while (start < value.Length && (value[start] == ' ' || value[start] == '\t')) start++;
+            if (start == 0 || start == value.Length ||
+                !CjkText.ContainsBreakableCjk(value[start].ToString())) return value;
+            return value.Substring(start);
+        }
+
+        private static bool EndsWithBreakableCjk(string value)
+        {
+            return !string.IsNullOrEmpty(value) &&
+                CjkText.ContainsBreakableCjk(value[value.Length - 1].ToString());
+        }
+
+        private static bool StartsWithBreakableCjk(string value)
+        {
+            return !string.IsNullOrEmpty(value) &&
+                CjkText.ContainsBreakableCjk(value[0].ToString());
+        }
+
+        private static bool IsInlineWhitespace(string value)
+        {
+            if (value.Length == 0) return false;
+            for (var index = 0; index < value.Length; index++)
+            {
+                var character = value[index];
+                if (character != ' ' && character != '\t') return false;
+            }
+            return true;
         }
 
         public static void Load(TextReader reader)
@@ -298,6 +428,9 @@ namespace AtG.RuntimeText
                         case "F" when fields.Length == 3:
                             RegisterPlainTextFragment(Decode(fields[1]), Decode(fields[2]));
                             break;
+                        case "R" when fields.Length == 3:
+                            RegisterRichTextFragment(Decode(fields[1]), Decode(fields[2]));
+                            break;
                         case "T" when fields.Length == 3:
                             RegisterTemplate(Decode(fields[1]), Decode(fields[2]));
                             break;
@@ -323,6 +456,7 @@ namespace AtG.RuntimeText
                 ExactStrings.Clear();
                 PlainText.Clear();
                 PlainTextFragments.Clear();
+                RichTextFragments.Clear();
                 Templates.Clear();
                 ConceptDisplay.Clear();
                 ConceptKeys.Clear();
@@ -355,6 +489,62 @@ namespace AtG.RuntimeText
         private static string Decode(string value)
         {
             return Encoding.UTF8.GetString(Convert.FromBase64String(value));
+        }
+
+        private static bool TryLocalizeGameDate(string value, out string translated)
+        {
+            const string eraSuffix = " AD";
+            if (!value.EndsWith(eraSuffix, StringComparison.Ordinal))
+            {
+                translated = value;
+                return false;
+            }
+            var comma = value.LastIndexOf(", ", StringComparison.Ordinal);
+            if (comma <= 0 || comma + 2 >= value.Length - eraSuffix.Length)
+            {
+                translated = value;
+                return false;
+            }
+            var year = value.Substring(comma + 2,
+                value.Length - comma - 2 - eraSuffix.Length);
+            if (!IsAsciiDigits(year))
+            {
+                translated = value;
+                return false;
+            }
+
+            var monthWithPart = value.Substring(0, comma);
+            var part = "";
+            if (monthWithPart.StartsWith("Early ", StringComparison.Ordinal))
+            {
+                monthWithPart = monthWithPart.Substring("Early ".Length);
+                part = "上旬";
+            }
+            else if (monthWithPart.StartsWith("Late ", StringComparison.Ordinal))
+            {
+                monthWithPart = monthWithPart.Substring("Late ".Length);
+                part = "下旬";
+            }
+
+            string month;
+            if (!GameMonthNames.TryGetValue(monthWithPart, out month))
+            {
+                translated = value;
+                return false;
+            }
+            translated = "公元" + year + "年" + month + part;
+            return true;
+        }
+
+        private static bool IsAsciiDigits(string value)
+        {
+            if (value.Length == 0) return false;
+            for (var index = 0; index < value.Length; index++)
+            {
+                var character = value[index];
+                if (character < '0' || character > '9') return false;
+            }
+            return true;
         }
 
         private static bool TryApplyTemplate(string value,
@@ -521,6 +711,36 @@ namespace AtG.RuntimeText
             return builder.ToString();
         }
 
+        private static Dictionary<char, KeyValuePair<string, string>[]> BuildFragmentIndex(
+            Dictionary<string, string> values)
+        {
+            var buckets = new Dictionary<char, List<KeyValuePair<string, string>>>();
+            foreach (var entry in values)
+            {
+                if (entry.Key.Length == 0) continue;
+                List<KeyValuePair<string, string>> bucket;
+                if (!buckets.TryGetValue(entry.Key[0], out bucket))
+                {
+                    bucket = new List<KeyValuePair<string, string>>();
+                    buckets.Add(entry.Key[0], bucket);
+                }
+                bucket.Add(entry);
+            }
+            var result = new Dictionary<char, KeyValuePair<string, string>[]>();
+            foreach (var bucket in buckets)
+            {
+                bucket.Value.Sort((left, right) =>
+                {
+                    var length = right.Key.Length.CompareTo(left.Key.Length);
+                    return length != 0
+                        ? length
+                        : StringComparer.Ordinal.Compare(left.Key, right.Key);
+                });
+                result.Add(bucket.Key, bucket.Value.ToArray());
+            }
+            return result;
+        }
+
         private static bool IsPlainFinalDisplayText(string value)
         {
             return value.IndexOf('[') < 0 && value.IndexOf(']') < 0 &&
@@ -565,31 +785,8 @@ namespace AtG.RuntimeText
                 snapshot = Snapshot;
                 if (snapshot != null) return snapshot;
 
-                var fragments = new Dictionary<char, List<KeyValuePair<string, string>>>();
-                foreach (var entry in PlainTextFragments)
-                {
-                    if (entry.Key.Length == 0) continue;
-                    List<KeyValuePair<string, string>> bucket;
-                    if (!fragments.TryGetValue(entry.Key[0], out bucket))
-                    {
-                        bucket = new List<KeyValuePair<string, string>>();
-                        fragments.Add(entry.Key[0], bucket);
-                    }
-                    bucket.Add(entry);
-                }
-                var fragmentIndex =
-                    new Dictionary<char, KeyValuePair<string, string>[]>();
-                foreach (var bucket in fragments)
-                {
-                    bucket.Value.Sort((left, right) =>
-                    {
-                        var length = right.Key.Length.CompareTo(left.Key.Length);
-                        return length != 0
-                            ? length
-                            : StringComparer.Ordinal.Compare(left.Key, right.Key);
-                    });
-                    fragmentIndex.Add(bucket.Key, bucket.Value.ToArray());
-                }
+                var fragmentIndex = BuildFragmentIndex(PlainTextFragments);
+                var richTextFragmentIndex = BuildFragmentIndex(RichTextFragments);
 
                 var concepts =
                     new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
@@ -609,6 +806,7 @@ namespace AtG.RuntimeText
                     Exact = new Dictionary<string, string>(ExactStrings, StringComparer.Ordinal),
                     Plain = new Dictionary<string, string>(PlainText, StringComparer.Ordinal),
                     FragmentsByFirstCharacter = fragmentIndex,
+                    RichTextFragmentsByFirstCharacter = richTextFragmentIndex,
                     Templates = templates.ToArray(),
                     Concepts = concepts,
                     Keys = new HashSet<string>(ConceptKeys, StringComparer.Ordinal),

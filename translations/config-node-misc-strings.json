@@ -44,6 +44,10 @@
         "Name": "不悦"
       },
       {
+        "ID": "MOOD_CONTENT",
+        "Name": "满足"
+      },
+      {
         "ID": "MOOD_HAPPY",
         "Name": "高兴"
       }

@@ -19,10 +19,16 @@ function ConvertTo-AtGBase64 {
 function Test-AtGDynamicGlyph {
     param([char]$Character)
     $value = [int]$Character
+    if (($value -ge 0x3000 -and $value -le 0x303F) -or
+        ($value -in 0x2013, 0x2014, 0x2018, 0x2019, 0x201C, 0x201D, 0x2026)) {
+        return $true
+    }
     return ($value -ge 0x2E80 -and $value -le 0x9FFF) -or
         ($value -ge 0xF900 -and $value -le 0xFAFF) -or
+        ($value -ge 0x3000 -and $value -le 0x303F) -or
         ($value -ge 0xFE10 -and $value -le 0xFE6F) -or
-        ($value -ge 0xFF00 -and $value -le 0xFFEF)
+        ($value -ge 0xFF00 -and $value -le 0xFFEF) -or
+        ($value -in 0x2013, 0x2014, 0x2018, 0x2019, 0x201C, 0x201D, 0x2026)
 }
 
 function Get-AtGWarmPriority {

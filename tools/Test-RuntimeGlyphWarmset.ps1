@@ -34,10 +34,15 @@ foreach ($line in $lines | Select-Object -Skip 1) {
         throw "Warmset characters must be sorted and unique: $fontName"
     }
     foreach ($code in $codes) {
+        $isDynamicTypography = ($code -ge 0x3000 -and $code -le 0x303F) -or
+            ($code -in 0x2013, 0x2014, 0x2018, 0x2019, 0x201C, 0x201D, 0x2026)
+        if ($isDynamicTypography) { continue }
         if (!(($code -ge 0x2E80 -and $code -le 0x9FFF) -or
               ($code -ge 0xF900 -and $code -le 0xFAFF) -or
+              ($code -ge 0x3000 -and $code -le 0x303F) -or
               ($code -ge 0xFE10 -and $code -le 0xFE6F) -or
-              ($code -ge 0xFF00 -and $code -le 0xFFEF))) {
+              ($code -ge 0xFF00 -and $code -le 0xFFEF) -or
+              ($code -in 0x2013, 0x2014, 0x2018, 0x2019, 0x201C, 0x201D, 0x2026))) {
             throw "Warmset contains a non-dynamic character U+$($code.ToString('X4'))."
         }
     }

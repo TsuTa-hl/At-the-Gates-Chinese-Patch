@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AtG.TestHarness;
 
-public sealed class Win32WindowDriver : IWindowDriver
+public sealed class Win32WindowDriver : IWindowDriver, IWindowFrameSource
 {
     private readonly string _processName;
     private readonly int? _processId;
@@ -27,22 +27,19 @@ public sealed class Win32WindowDriver : IWindowDriver
 
     public void Move(int referenceX, int referenceY)
     {
-        var point = ToScreen(referenceX, referenceY);
-        if (!SetCursorPos(point.X, point.Y))
-            throw new InvalidOperationException("SetCursorPos failed.");
+        // Every sweep point is an absolute client coordinate. Re-activate the
+        // owned game window so a background desktop window cannot receive it.
+        ActivateWindow(ResolveWindow());
+        SetAndVerifyAbsoluteCursorPosition(referenceX, referenceY, ToScreen(referenceX, referenceY));
     }
 
     public void Click(int referenceX, int referenceY)
     {
         var window = ResolveWindow();
-        SetForegroundWindow(window);
+        ActivateWindow(window);
         Thread.Sleep(100);
         Move(referenceX, referenceY);
         Thread.Sleep(40);
-        mouse_event(MouseEventMove, 1, 1, 0, UIntPtr.Zero);
-        Thread.Sleep(20);
-        mouse_event(MouseEventMove, unchecked((uint)-1), unchecked((uint)-1), 0, UIntPtr.Zero);
-        Thread.Sleep(20);
         mouse_event(MouseEventLeftDown, 0, 0, 0, UIntPtr.Zero);
         Thread.Sleep(80);
         mouse_event(MouseEventLeftUp, 0, 0, 0, UIntPtr.Zero);
@@ -54,7 +51,7 @@ public sealed class Win32WindowDriver : IWindowDriver
         if (key.Equals("Ctrl+S", StringComparison.OrdinalIgnoreCase) ||
             key.Equals("CtrlS", StringComparison.OrdinalIgnoreCase))
         {
-            SetForegroundWindow(ResolveWindow());
+            ActivateWindow(ResolveWindow());
             keybd_event(VirtualKeyControl, 0, 0, UIntPtr.Zero);
             Thread.Sleep(30);
             keybd_event((byte)'S', 0, 0, UIntPtr.Zero);
@@ -125,6 +122,8 @@ public sealed class Win32WindowDriver : IWindowDriver
         bitmap.Save(outputPath, ImageFormat.Png);
     }
 
+    public Bitmap CaptureFrame(CropRegion? referenceRegion) => CaptureBitmap(referenceRegion);
+
     public void Dispose() { }
 
     private static IntPtr FindWindow(IReadOnlyCollection<Process> processes)
@@ -156,8 +155,20 @@ public sealed class Win32WindowDriver : IWindowDriver
             .FirstOrDefault(handle => handle != IntPtr.Zero);
     }
 
+    private static void ActivateWindow(IntPtr window)
+    {
+        if (window == IntPtr.Zero)
+            throw new InvalidOperationException("At the Gates window handle is unavailable.");
+        // Restore only a minimized game window; do not resize or move it. The
+        // calibrated client coordinate system must remain unchanged.
+        ShowWindow(window, 9);
+        BringWindowToTop(window);
+        SetForegroundWindow(window);
+    }
+
     private Bitmap CaptureBitmap(CropRegion? referenceRegion)
     {
+        ActivateWindow(ResolveWindow());
         var origin = ClientOrigin();
         var region = ScaleRegion(referenceRegion) ?? new CropRegion(0, 0, ClientWidth, ClientHeight);
         var bitmap = new Bitmap(region.Width, region.Height, PixelFormat.Format32bppArgb);
@@ -195,6 +206,28 @@ public sealed class Win32WindowDriver : IWindowDriver
                 throw new InvalidOperationException("ClientToScreen failed after window recovery.");
         }
         return new Point(point.X, point.Y);
+    }
+
+    private static void SetAndVerifyAbsoluteCursorPosition(int referenceX, int referenceY, Point target)
+    {
+        for (var attempt = 1; attempt <= 2; attempt++)
+        {
+            if (!SetCursorPos(target.X, target.Y))
+                throw new InvalidOperationException(
+                    $"SetCursorPos failed for reference ({referenceX}, {referenceY}) and screen target ({target.X}, {target.Y}).");
+
+            Thread.Sleep(20);
+            if (!GetCursorPos(out var actual))
+                throw new InvalidOperationException("GetCursorPos failed after SetCursorPos.");
+
+            if (Math.Abs(actual.X - target.X) <= 1 && Math.Abs(actual.Y - target.Y) <= 1)
+                return;
+        }
+
+        GetCursorPos(out var finalActual);
+        throw new InvalidOperationException(
+            $"Absolute cursor move drifted after two attempts: reference ({referenceX}, {referenceY}), " +
+            $"screen target ({target.X}, {target.Y}), actual ({finalActual.X}, {finalActual.Y}).");
     }
 
     private Point ClientOrigin()
@@ -250,7 +283,6 @@ public sealed class Win32WindowDriver : IWindowDriver
         finally { foreach (var process in processes) process.Dispose(); }
     }
 
-    private const uint MouseEventMove = 0x0001;
     private const uint MouseEventLeftDown = 0x0002;
     private const uint MouseEventLeftUp = 0x0004;
     private const uint KeyEventKeyUp = 0x0002;
@@ -271,7 +303,10 @@ public sealed class Win32WindowDriver : IWindowDriver
     [DllImport("user32.dll")] private static extern bool GetClientRect(IntPtr hWnd, out NativeRect rect);
     [DllImport("user32.dll")] private static extern bool ClientToScreen(IntPtr hWnd, ref NativePoint point);
     [DllImport("user32.dll")] private static extern bool SetCursorPos(int x, int y);
+    [DllImport("user32.dll")] private static extern bool GetCursorPos(out NativePoint point);
     [DllImport("user32.dll")] private static extern bool SetForegroundWindow(IntPtr hWnd);
+    [DllImport("user32.dll")] private static extern bool BringWindowToTop(IntPtr hWnd);
+    [DllImport("user32.dll")] private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
     [DllImport("user32.dll")] private static extern void mouse_event(uint flags, uint dx, uint dy, uint data, UIntPtr extraInfo);
     [DllImport("user32.dll")] private static extern void keybd_event(byte virtualKey, byte scanCode, uint flags, UIntPtr extraInfo);
 }
