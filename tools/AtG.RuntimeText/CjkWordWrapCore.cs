@@ -21,6 +21,10 @@ namespace AtG.RuntimeText
         private static readonly object Gate = new object();
         private static readonly Dictionary<Type, Accessors> Cache =
             new Dictionary<Type, Accessors>();
+        private static readonly object ResidualGate = new object();
+        private static readonly Dictionary<string, int> ResidualBudgets =
+            new Dictionary<string, int>(StringComparer.Ordinal);
+        private static DateTime ResidualBudgetExpiresUtc;
 
         public static void ProcessWord(object processor,
             Func<object, string, CjkMeasuredText> measure)
@@ -35,7 +39,42 @@ namespace AtG.RuntimeText
             if (processor == null) throw new ArgumentNullException("processor");
             if (measure == null) throw new ArgumentNullException("measure");
             var access = Resolve(processor.GetType());
-            var word = (string)access.Word.GetValue(processor);
+            var sourceWord = (string)access.Word.GetValue(processor);
+            var word = DisplayStringLocalizer.LocalizeRichText(sourceWord);
+            if (sourceWord.IndexOf("unable以", StringComparison.Ordinal) >= 0)
+                word = word.Replace("unable以", "无法在冬季留在");
+            if (!StringComparer.Ordinal.Equals(sourceWord, word))
+                access.Word.SetValue(processor, word);
+
+            // The original composite is tokenized as separate ASCII words
+            // after the localized winter prefix. Keep a short-lived, exact
+            // budget so their source advances are not added before the
+            // following Chinese concept link.
+            if (word.IndexOf("无法在冬季留在", StringComparison.Ordinal) >= 0 ||
+                sourceWord.IndexOf("unable以", StringComparison.Ordinal) >= 0)
+            {
+                lock (ResidualGate)
+                {
+                    ResidualBudgets.Clear();
+                    ResidualBudgets["spend"] = 1;
+                    ResidualBudgets["the"] = 2;
+                    ResidualBudgets["winter"] = 1;
+                    ResidualBudgets["inside"] = 1;
+                    ResidualBudgetExpiresUtc = DateTime.UtcNow.AddMilliseconds(500);
+                }
+            }
+
+            var builder = (StringBuilder)access.TextSoFar.GetValue(processor);
+            if (TrySuppressLocalizedResidualWord(sourceWord))
+            {
+                access.AppendSpaceBeforeNextWord.SetValue(processor, false);
+                var skipSplitter = access.WordsInLine.GetValue(processor);
+                var skipNext = (string)access.SplitterNext.Invoke(skipSplitter, null);
+                access.WordsInLine.SetValue(processor, skipSplitter);
+                access.Word.SetValue(processor, skipNext);
+                return;
+            }
+
             if (!CjkText.ContainsBreakableCjk(word))
             {
                 access.OriginalWordMethod.Invoke(processor, null);
@@ -43,7 +82,6 @@ namespace AtG.RuntimeText
             }
 
             var font = access.ChunkFont.GetValue(processor);
-            var builder = (StringBuilder)access.TextSoFar.GetValue(processor);
             var currentX = GetFloat(access.CurrentX, processor);
             var currentWidth = GetFloat(access.WidthOfTextSoFar, processor);
             var widthOfSpace = GetFloat(access.WidthOfSpace, processor);
@@ -112,6 +150,30 @@ namespace AtG.RuntimeText
         private static float GetFloat(FieldInfo field, object instance)
         {
             return Convert.ToSingle(field.GetValue(instance));
+        }
+
+        private static bool TrySuppressLocalizedResidualWord(string sourceWord)
+        {
+            var suppressed = false;
+            lock (ResidualGate)
+            {
+                if (DateTime.UtcNow > ResidualBudgetExpiresUtc)
+                {
+                    ResidualBudgets.Clear();
+                }
+                else
+                {
+                    int count;
+                    if (ResidualBudgets.TryGetValue(sourceWord, out count) && count > 0)
+                    {
+                        if (count == 1) ResidualBudgets.Remove(sourceWord);
+                        else ResidualBudgets[sourceWord] = count - 1;
+                        suppressed = true;
+                    }
+                }
+            }
+
+            return suppressed;
         }
 
         private static Accessors Resolve(Type type)

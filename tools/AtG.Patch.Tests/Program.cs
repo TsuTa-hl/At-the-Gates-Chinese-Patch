@@ -23,6 +23,7 @@ var tests = new (string Name, Action Body)[]
     ("Runtime display map imports approved single concept tags", RuntimeDisplayMapImportsConceptTags),
     ("Runtime display map imports composite exact entries", RuntimeDisplayMapImportsCompositeExactEntries),
     ("Runtime display map imports only uniform composite fragments", RuntimeDisplayMapImportsUniformCompositeFragments),
+    ("Runtime display map rejects generic composite templates", RuntimeDisplayMapRejectsGenericCompositeTemplates),
     ("Composite catalog discovers templates and preserves approved rules", CompositeCatalogDiscoversTemplatesAndPreservesRules),
     ("Load lifecycle patch releases only IdSpriteBatch owned resources", LoadLifecyclePatchReleasesOwnedResources),
     ("Load lifecycle patch clears stale world roots before loading", LoadLifecyclePatchClearsStaleWorldRoots),
@@ -345,6 +346,7 @@ static void RuntimeDisplayMapPreservesConceptKeys()
           "Exact": [{ "Original": "Close", "Translation": "\u5173\u95ed" }],
           "PlainText": [{ "Original": "Train ", "Translation": "\u8bad\u7ec3" }],
           "PlainTextFragments": [{ "Original": "engage in ", "Translation": "\u5377\u5165" }],
+          "RichTextFragments": [{ "Original": "[Clan|CLAN] in the [Turn|TURN]", "Translation": "[Clan|CLAN]\uFF0C\u6240\u5C5E\u4E3A[Turn|TURN]" }],
           "ConceptDisplay": [{ "ConceptKey": "CLAN", "Original": "Clan", "Translation": "\u6c0f\u65cf" }]
         }
         """);
@@ -361,8 +363,11 @@ static void RuntimeDisplayMapPreservesConceptKeys()
     Assert.True(lines.Any(line => line == "C\t" + RuntimeMapConceptFixture.Encode("CLAN") + "\t" +
         RuntimeMapConceptFixture.Encode("Clan") + "\t" + RuntimeMapConceptFixture.Encode("\u6c0f\u65cf")));
     Assert.Equal(1, result.PlainTextFragmentCount);
+    Assert.Equal(1, result.RichTextFragmentCount);
     Assert.True(lines.Any(line => line == "F\t" + RuntimeMapConceptFixture.Encode("engage in ") + "\t" +
         RuntimeMapConceptFixture.Encode("\u5377\u5165")));
+    Assert.True(lines.Any(line => line == "R\t" + RuntimeMapConceptFixture.Encode("[Clan|CLAN] in the [Turn|TURN]") + "\t" +
+        RuntimeMapConceptFixture.Encode("[Clan|CLAN]\uFF0C\u6240\u5C5E\u4E3A[Turn|TURN]")));
 }
 
 static void RuntimeDisplayMapImportsConceptTags()
@@ -483,6 +488,14 @@ static void RuntimeDisplayMapImportsUniformCompositeFragments()
               ]
             },
             {
+              "EntryPointId": "managed:generic-the",
+              "Source": { "Kind": "Managed" },
+              "Parts": [
+                { "Position": 0, "Kind": "Literal", "Value": "The " },
+                { "Position": 1, "Kind": "Argument", "Value": "" }
+              ]
+            },
+            {
               "EntryPointId": "rewrite:one",
               "Source": { "Kind": "ManagedRewriteMap" },
               "OriginalFormat": "Can explore ",
@@ -509,6 +522,13 @@ static void RuntimeDisplayMapImportsUniformCompositeFragments()
               "OriginalFormat": "Already ",
               "LocalizedFormat": "",
               "Stale": false
+            },
+            {
+              "EntryPointId": "rewrite:generic-the",
+              "Source": { "Kind": "ManagedRewriteMap" },
+              "OriginalFormat": "The ",
+              "LocalizedFormat": "\u8BE5",
+              "Stale": false
             }
           ]
         }
@@ -532,6 +552,53 @@ static void RuntimeDisplayMapImportsUniformCompositeFragments()
         StringComparison.Ordinal)));
     Assert.False(lines.Any(line => line.StartsWith("F\t" +
         RuntimeMapConceptFixture.Encode("Already ") + "\t", StringComparison.Ordinal)));
+    Assert.False(lines.Any(line => line.StartsWith("F\t" +
+        RuntimeMapConceptFixture.Encode("The ") + "\t", StringComparison.Ordinal)));
+}
+
+static void RuntimeDisplayMapRejectsGenericCompositeTemplates()
+{
+    using var temp = new TempDirectory();
+    temp.Write("composite-text-rules.json", """
+        {
+          "Entries": [
+            {
+              "EntryPointId": "managed:unsafe",
+              "Source": { "Kind": "Managed" },
+              "OriginalFormat": "{arg:0} {arg:2}",
+              "LocalizedFormat": "{arg:0}\u7ea7{arg:2}",
+              "RuleId": "runtime-display-template",
+              "Stale": false
+            },
+            {
+              "EntryPointId": "managed:safe",
+              "Source": { "Kind": "Managed" },
+              "OriginalFormat": "Cannot {arg:1} Right Now",
+              "LocalizedFormat": "\u5f53\u524d\u65e0\u6cd5{arg:1}",
+              "RuleId": "runtime-display-template",
+              "Stale": false
+            }
+          ]
+        }
+        """);
+    var map = temp.Write("runtime-display.json", """
+        {
+          "CompositeTemplateSources": ["composite-text-rules.json"]
+        }
+        """);
+    var output = Path.Combine(temp.Path, "AtG.RuntimeText.tsv");
+
+    RuntimeDisplayMapBuilder.Build(
+        typeof(RuntimeMapConceptFixture).Assembly.Location,
+        typeof(RuntimeMapConceptFixture).FullName!, map, output);
+
+    var lines = File.ReadAllLines(output);
+    Assert.False(lines.Any(line => line == "T\t" +
+        RuntimeMapConceptFixture.Encode("{arg:0} {arg:2}") + "\t" +
+        RuntimeMapConceptFixture.Encode("{arg:0}\u7ea7{arg:2}")));
+    Assert.True(lines.Any(line => line == "T\t" +
+        RuntimeMapConceptFixture.Encode("Cannot {arg:1} Right Now") + "\t" +
+        RuntimeMapConceptFixture.Encode("\u5f53\u524d\u65e0\u6cd5{arg:1}")));
 }
 
 static void CompositeCatalogDiscoversTemplatesAndPreservesRules()

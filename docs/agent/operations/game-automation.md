@@ -29,6 +29,23 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Capture-Desktop.ps1 
 For repeatable UI work, prefer `AtG.TestHarness` and the JSON scenario library.
 Use one game process and one main-menu fixed-save load per related test session.
 Do not derive hover coordinates from cropped evidence images.
+`TileHoverSweep` uses the persisted 2560x1440 reference anchors in the scenario
+file, requires `--text-trace`, and keeps all generated tile coordinates inside
+the declared SafeViewport; it never pans by moving the cursor to a window edge.
+The Win32 driver re-activates the owned window before every absolute move,
+click, fingerprint, and frame capture, then verifies the cursor with
+`GetCursorPos`; it never falls back to relative mouse motion.
+
+On this workspace, launch the test harness through the bundled runtime:
+`& .\.tools\dotnet\dotnet.exe .\tools\AtG.TestHarness\bin\Release\net8.0-windows\AtG.TestHarness.dll ...`.
+The standalone `AtG.TestHarness.exe` needs a global .NET 8 installation and
+cannot start here; the bundled runtime avoids that environmental failure.
+Its fixed-save selector temporarily promotes the selected save in the external
+Steam `Saved Games` directory. In the sandbox this requires the scoped elevated
+test command; an access-denied selector failure occurs before the game starts.
+`AtG.TestHarness` filters by suite before applying `--scenario`; for a manually
+selected scenario whose suite has not been checked, pass `--suite All` to avoid
+an otherwise successful zero-point session.
 
 ## Hover and Capture Discipline
 

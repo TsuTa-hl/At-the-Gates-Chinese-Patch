@@ -30,3 +30,12 @@ columns helps. Reuse an existing Rule ID when it covers the same final display
 boundary.
 Do not reintroduce word-level `and/from/or/a` patches where a complete template
 or final-display rule is available.
+
+## Recent Exact Evidence
+
+- The `TRAIT_Miserable` contextual mood tooltip uses two independently scoped
+  display paths: `ATGUnit.RecalcMood` supplies the default-mood composition,
+  while `GAME.BuildDescription_Mood` supplies the clan-to-mood connector.
+  Retain the existing `runtime-display-template` composition rule for the
+  former and localize the latter only at method `0x06001731`, IL offset 285.
+  The `SYI-ITT` fixed-save regression is the required evidence for either path.

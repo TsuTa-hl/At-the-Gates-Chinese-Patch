@@ -112,10 +112,10 @@
         "Length":  7,
         "Class":  "UnclassifiedLiteral",
         "Safety":  "ManualOnly",
-        "NeedsFontWhenTranslated":  true,
+        "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {

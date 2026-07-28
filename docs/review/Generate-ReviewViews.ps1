@@ -94,12 +94,12 @@ $sourceData = @(
     [pscustomobject]@{
         Name = "Known-text occurrence catalog"
         Path = $catalogDatabasePath
-        UsedBy = "KnownTexts, Todo"
+        UsedBy = "KnownTexts, Composite, Todo"
     },
     [pscustomobject]@{
         Name = "Composite rule authority"
         Path = $compositeRulesPath
-        UsedBy = "Composite, Todo"
+        UsedBy = "KnownTexts, Composite, Todo"
     },
     [pscustomobject]@{
         Name = "Exact source catalogs outside view generation"
@@ -112,16 +112,19 @@ Push-Location -LiteralPath $repositoryRoot
 try {
     if ($needsKnownTexts) {
         Assert-AtGSourceFile -Path $catalogDatabasePath
-        & $patchCliPath -Command catalog -RepoRoot $repositoryRoot -CommandArguments @(
-            "export",
+        Assert-AtGSourceFile -Path $compositeRulesPath
+        & $patchCliPath -Command known-texts-csv -RepoRoot $repositoryRoot -CommandArguments @(
             "--database", $catalogDatabasePath,
+            "--rules", $compositeRulesPath,
             "--csv", $knownTextsCsvPath
         ) | Out-Host
     }
 
     if ($needsComposite) {
+        Assert-AtGSourceFile -Path $catalogDatabasePath
         Assert-AtGSourceFile -Path $compositeRulesPath
         & $patchCliPath -Command composite-csv -RepoRoot $repositoryRoot -CommandArguments @(
+            "--database", $catalogDatabasePath,
             "--rules", $compositeRulesPath,
             "--csv", $compositeCsvPath
         ) | Out-Host

@@ -1,5 +1,17 @@
 [
     {
+        "Original":  " VS ",
+        "Translation":  "对",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  2163,
+        "StringToken":  "0x70002142",
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Clan trait property comparison connector; the Mounted config ID remains unchanged.",
+        "EvidenceScenario":  "clan-trait-random-discovery"
+    },
+    {
         "Original":  "Spend ",
         "Translation":  "花费",
         "MethodToken":  "0x06000118",
@@ -2784,6 +2796,18 @@
         "Safety":  "CommonDisplayCandidate",
         "Note":  "Clan trait tooltip numeric modifier wording.",
         "EvidenceScenario":  "full-regression-clan-trait-hovers"
+    },
+    {
+        "Original":  " decreased by ",
+        "Translation":  "降低",
+        "MethodToken":  "0x06000207",
+        "ILOffset":  578,
+        "StringToken":  "0x70002dcb",
+        "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+        "MethodName":  "HumanReadableMod",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Clan trait tooltip numeric modifier wording observed in Low Fertility.",
+        "EvidenceScenario":  "clan-trait-random-discovery"
     },
     {
         "Original":  "A Clan is a group of [Families|FAMILY] which act as a single unit. Each Clan can be [Trained|TRAIN] in a [Profession|PROFESSION] in order to grant it the ability to [Harvest|HARVEST] or refine [Resources|RESOURCE], explore the map, [Fight|WARRIOR] enemies, and more. You will usually end up with around 40-50 Clans over the course of a single game.",
@@ -9228,5 +9252,17 @@
         "Safety":  "CommonDisplayCandidate",
         "Note":  "Trait/property view-range suffix; replaces observed English Range token.",
         "EvidenceScenario":  "clan-trait-random-discovery-20260725"
+    },
+    {
+        "Original":  " is ",
+        "Translation":  "为",
+        "MethodToken":  "0x06001731",
+        "ILOffset":  285,
+        "StringToken":  "0x70033c4a",
+        "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
+        "MethodName":  "BuildDescription_Mood",
+        "Safety":  "TooltipFragment",
+        "Note":  "SYI-ITT Miserable mood-detail clan-to-mood connector; exact BuildDescription_Mood fragment.",
+        "EvidenceScenario":  "clan-trait-miserable-mood-detail"
     }
 ]

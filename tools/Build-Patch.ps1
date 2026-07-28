@@ -1,6 +1,7 @@
 param(
     [string]$SourceXml = "$PSScriptRoot\..\source\English.original.xml",
     [string]$TranslationJson = "$PSScriptRoot\..\translations\zh-CN.json",
+    [string]$AdditionalTextEntriesJson = "$PSScriptRoot\..\translations\runtime-text-key-additions.json",
     [string]$PatchRoot = "$PSScriptRoot\..\patch",
     [string]$OriginalFontDir = "$PSScriptRoot\..\source\fonts-original",
     [switch]$PatchCommonConceptTerms,
@@ -77,6 +78,7 @@ Measure-AtGStage -Summary $timing -Name "text-xml" -ScriptBlock {
         -InputPaths @(
             $SourceXml,
             $TranslationJson,
+            $AdditionalTextEntriesJson,
             (Join-Path $PSScriptRoot "Build-ChineseXml.ps1"),
             (Join-Path $PSScriptRoot "Test-TextTags.ps1")
         ) `
@@ -84,7 +86,8 @@ Measure-AtGStage -Summary $timing -Name "text-xml" -ScriptBlock {
         -StampPath (Join-Path $PSScriptRoot "..\.cache\build-stages\text-xml.json") `
         -Version "text-xml-v1" `
         -ScriptBlock {
-            & "$PSScriptRoot\Build-ChineseXml.ps1" -SourceXml $SourceXml -TranslationJson $TranslationJson -OutputXml $textOut
+            & "$PSScriptRoot\Build-ChineseXml.ps1" -SourceXml $SourceXml -TranslationJson $TranslationJson `
+                -AdditionalEntriesJson $AdditionalTextEntriesJson -OutputXml $textOut
             & "$PSScriptRoot\Test-TextTags.ps1" -SourceXml $SourceXml -PatchedXml $textOut
         })
 }

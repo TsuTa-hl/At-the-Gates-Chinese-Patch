@@ -1,6 +1,7 @@
 param(
     [string]$SourceXml = "$PSScriptRoot\..\source\English.original.xml",
     [string]$TranslationJson = "$PSScriptRoot\..\translations\zh-CN.json",
+    [string]$AdditionalEntriesJson = "$PSScriptRoot\..\translations\runtime-text-key-additions.json",
     [string]$OutputXml = "$PSScriptRoot\..\patch\Content\Text\English.xml"
 )
 
@@ -12,11 +13,20 @@ if (!(Test-Path -LiteralPath $SourceXml)) {
 if (!(Test-Path -LiteralPath $TranslationJson)) {
     throw "Translation JSON not found: $TranslationJson"
 }
+if (!(Test-Path -LiteralPath $AdditionalEntriesJson)) {
+    throw "Additional text entries JSON not found: $AdditionalEntriesJson"
+}
 
 $translationObject = Get-Content -LiteralPath $TranslationJson -Raw -Encoding UTF8 | ConvertFrom-Json
 $translations = @{}
 foreach ($property in $translationObject.PSObject.Properties) {
     $translations[$property.Name] = [string]$property.Value
+}
+
+$additionalEntryObject = Get-Content -LiteralPath $AdditionalEntriesJson -Raw -Encoding UTF8 | ConvertFrom-Json
+$additionalEntries = [ordered]@{}
+foreach ($property in $additionalEntryObject.PSObject.Properties) {
+    $additionalEntries[$property.Name] = [string]$property.Value
 }
 
 $xml = [xml](Get-Content -LiteralPath $SourceXml -Raw -Encoding UTF8)
@@ -89,6 +99,44 @@ function Add-TextKeyAliases {
     return $added
 }
 
+function Add-ConfiguredTextEntries {
+    param(
+        [xml]$Xml,
+        [System.Collections.IDictionary]$Entries
+    )
+
+    if ($null -eq $Xml.DocumentElement) {
+        throw "XML document has no root element."
+    }
+
+    $knownKeys = New-Object 'System.Collections.Generic.HashSet[string]' ([System.StringComparer]::Ordinal)
+    foreach ($sourceEntry in @($Xml.SelectNodes("//e"))) {
+        $sourceKey = [string]$sourceEntry.ntry
+        if (![string]::IsNullOrWhiteSpace($sourceKey)) {
+            [void]$knownKeys.Add($sourceKey)
+        }
+    }
+
+    $added = 0
+    foreach ($key in @($Entries.Keys | Sort-Object)) {
+        if ([string]::IsNullOrWhiteSpace([string]$key)) {
+            throw "Additional text entry has an empty key."
+        }
+        if ($knownKeys.Contains([string]$key)) {
+            throw "Additional text entry '$key' already exists in the source English XML. Move it to zh-CN.json instead."
+        }
+        $entry = $Xml.CreateElement("e")
+        $ntryAttribute = $Xml.CreateAttribute("ntry")
+        $ntryAttribute.Value = [string]$key
+        [void]$entry.Attributes.Append($ntryAttribute)
+        $entry.InnerText = [string]$Entries[$key]
+        [void]$Xml.DocumentElement.AppendChild($entry)
+        [void]$knownKeys.Add([string]$key)
+        $added++
+    }
+    return $added
+}
+
 $resourceAliasCount = Add-TextKeyAliases `
     -Xml $xml `
     -SourceEntries $entries `
@@ -131,6 +179,8 @@ $techAliasCount = Add-TextKeyAliases `
     -BaseKeyPattern '^TEXT\.Name\.Tech\.' `
     -Suffixes @("SINGULAR", "PLURAL")
 
+$additionalEntryCount = Add-ConfiguredTextEntries -Xml $xml -Entries $additionalEntries
+
 $outDir = Split-Path -Parent $OutputXml
 if ($outDir) {
     New-Item -ItemType Directory -Force -Path $outDir | Out-Null
@@ -140,7 +190,7 @@ $settings = New-Object System.Xml.XmlWriterSettings
 $settings.Indent = $true
 $settings.Encoding = New-Object System.Text.UTF8Encoding($false)
 $settings.OmitXmlDeclaration = $true
-$settings.NewLineChars = "`r`n"
+$settings.NewLineChars = "`n"
 $settings.NewLineHandling = [System.Xml.NewLineHandling]::Replace
 
 $writer = [System.Xml.XmlWriter]::Create($OutputXml, $settings)
@@ -160,3 +210,4 @@ Write-Host "Added $structureAliasCount generated structure name aliases."
 Write-Host "Added $depositAliasCount generated deposit name aliases."
 Write-Host "Added $terrainAliasCount generated terrain name aliases."
 Write-Host "Added $techAliasCount generated tech name aliases."
+Write-Host "Added $additionalEntryCount configured runtime text entries."

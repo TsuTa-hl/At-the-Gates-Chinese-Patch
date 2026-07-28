@@ -285,7 +285,9 @@ $knownDirectoryNames = @(
     "runs", "trial-localization", "trial-game-archive", "cached-validation-tests",
     "catalog-rereview", "file-ops-test", "font-compare", "font-references",
     "known-text-review-catalog-green", "known-text-review-catalog-red",
-    "known-text-review-test", "optimization-tooling-tests", "resource-monitor",
+    "known-text-review-test", "composite-knowntext-index-smoke",
+    "composite-static-review", "composite-text-catalog-test", "localization-todolist-test",
+    "review-views", "optimization-tooling-tests", "resource-monitor",
     "resource-monitor-test", "spark-review-20260704", "trial-batch-safety-test"
 )
 

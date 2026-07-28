@@ -13244,6 +13244,42 @@
     "EvidenceScenario":  "trial-ui-diplomacy-1"
 },
 {
+    "Original":  "Friends",
+    "Translation":  "友好",
+    "MethodToken":  "0x06000678",
+    "ILOffset":  491,
+    "StringToken":  "0x7001a751",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Diplomacy",
+    "MethodName":  "CreateControls_Fixed",
+    "Safety":  "SafeUI",
+    "Note":  "Current-leader diplomacy screen label.",
+    "EvidenceScenario":  "diplomacy-current-leader-20260726"
+},
+{
+    "Original":  "Enemies",
+    "Translation":  "敌对",
+    "MethodToken":  "0x06000678",
+    "ILOffset":  637,
+    "StringToken":  "0x7001a8fc",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Diplomacy",
+    "MethodName":  "CreateControls_Fixed",
+    "Safety":  "SafeUI",
+    "Note":  "Current-leader diplomacy screen label.",
+    "EvidenceScenario":  "diplomacy-current-leader-20260726"
+},
+{
+    "Original":  "Approach",
+    "Translation":  "态度",
+    "MethodToken":  "0x06000678",
+    "ILOffset":  783,
+    "StringToken":  "0x7001aab1",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Diplomacy",
+    "MethodName":  "CreateControls_Fixed",
+    "Safety":  "SafeUI",
+    "Note":  "Current-leader diplomacy screen label.",
+    "EvidenceScenario":  "diplomacy-current-leader-20260726"
+},
+{
     "Original":  "Relationship Level",
     "Translation":  "关系等级",
     "MethodToken":  "0x06000678",
@@ -13289,6 +13325,18 @@
     "EvidenceScenario":  "trial-ui-diplomacy-1"
 },
 {
+    "Original":  "Influence",
+    "Translation":  "影响力",
+    "MethodToken":  "0x06000678",
+    "ILOffset":  1075,
+    "StringToken":  "0x7001ade3",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Diplomacy",
+    "MethodName":  "CreateControls_Fixed",
+    "Safety":  "SafeUI",
+    "Note":  "Current-leader diplomacy screen label.",
+    "EvidenceScenario":  "diplomacy-current-leader-20260726"
+},
+{
     "Original":  "Your Global Reputation",
     "Translation":  "全局声誉",
     "MethodToken":  "0x06000678",
@@ -13314,6 +13362,18 @@
     "Safety":  "TooltipFragment",
     "Note":  "Trial UI exact-catalog diplomacy tooltip preserving concept ID.",
     "EvidenceScenario":  "trial-ui-diplomacy-1"
+},
+{
+    "Original":  "Leverage",
+    "Translation":  "筹码",
+    "MethodToken":  "0x06000678",
+    "ILOffset":  1367,
+    "StringToken":  "0x7001b08f",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Diplomacy",
+    "MethodName":  "CreateControls_Fixed",
+    "Safety":  "SafeUI",
+    "Note":  "Current-leader diplomacy screen label.",
+    "EvidenceScenario":  "diplomacy-current-leader-20260726"
 },
 {
     "Original":  "[Leverage|LEVERAGE] is the total amount of \u0027diplomatic currency\u0027 you have to spend with this Leader, right now.",

@@ -32,6 +32,9 @@ $knownTextExporterSource = Get-Content -LiteralPath (Join-Path $PSScriptRoot "Ex
 if ($knownTextExporterSource -match "MarkdownOutputPath|--markdown") {
     throw "Known-text export must not generate a Markdown review view."
 }
+if ($knownTextExporterSource -notmatch "CompositeRulesPath|known-texts-csv") {
+    throw "Known-text export must enrich the CSV from the composite rule source and SQLite catalog directly."
+}
 
 $rows = @(Import-Csv -LiteralPath $csvPath -Encoding UTF8)
 if ($rows.Count -lt 1000) {
@@ -66,7 +69,12 @@ $requiredColumns = @(
     "ReviewState",
     "ReasonCode",
     "Safety",
-    "Locators"
+    "Locators",
+    "SourceOccurrenceId",
+    "SemanticGroupId",
+    "CompositeReferenceCount",
+    "CompositeEntryPointIds",
+    "CompositeReferencesJson"
 )
 
 $columns = @($rows[0].PSObject.Properties.Name)
@@ -86,6 +94,55 @@ foreach ($column in $removedColumns) {
     if ($columns -contains $column) {
         throw "CSV review output still contains removed column: $column"
     }
+}
+
+$apiaryKnownText = $rows | Where-Object {
+    $_.Locators -eq "ID=STRUCTURE_APIARY_1; XPath=description; Index=" -and
+    $_.Original -like "Apiaries are a *"
+} | Select-Object -First 1
+if ($null -eq $apiaryKnownText -or [int]$apiaryKnownText.CompositeReferenceCount -lt 1 -or
+    [string]::IsNullOrWhiteSpace([string]$apiaryKnownText.CompositeEntryPointIds) -or
+    $apiaryKnownText.CompositeReferencesJson -notmatch 'ConfigIdXPathIndexLocator') {
+    throw "Known-text CSV must expose the exact reverse Composite link for the Apiary config description."
+}
+
+$creditsKnownText = $rows | Where-Object {
+    $_.Locators -eq "TEXT.Credits.Conifer"
+} | Select-Object -First 1
+if ($null -eq $creditsKnownText -or [int]$creditsKnownText.CompositeReferenceCount -lt 1 -or
+    $creditsKnownText.CompositeReferencesJson -notmatch 'TextKeyExactLocator') {
+    throw "Known-text CSV must expose English text-key Composite links without a heuristic text join."
+}
+
+$runtimeMapKnownTexts = @($rows | Where-Object {
+    $_.SourceFile -eq "translations\runtime-display-strings.json"
+})
+$runtimeDisplayMap = Get-Content -LiteralPath (Join-Path $repoRoot "translations\runtime-display-strings.json") -Raw -Encoding UTF8 | ConvertFrom-Json
+$expectedRuntimeMapBindings = @(
+    foreach ($section in @("Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "ConceptDisplay")) {
+        foreach ($entry in @($runtimeDisplayMap.$section)) {
+            if ($null -ne $entry -and ![string]::IsNullOrWhiteSpace([string]$entry.Original) -and
+                $null -ne $entry.Translation) {
+                $entry
+            }
+        }
+    }
+)
+if ($runtimeMapKnownTexts.Count -ne $expectedRuntimeMapBindings.Count -or @($runtimeMapKnownTexts | Where-Object {
+    $_.Kind -notmatch '^Runtime display map \(' -or
+    $_.Status -ne "Translated" -or
+    $_.ReviewState -ne "Translated" -or
+    $_.Locators -notmatch '^RuntimeMapSection=.*; RuntimeMapOriginal=' -or
+    [int]$_.CompositeReferenceCount -ne 1 -or
+    $_.CompositeReferencesJson -notmatch 'RuntimeMapExactLocator'
+}).Count -gt 0) {
+    throw "Known-text CSV must include all $($expectedRuntimeMapBindings.Count) runtime-display-map bindings as exact Composite-linked KnownTexts."
+}
+$activeRuntimeConcept = @($runtimeMapKnownTexts | Where-Object {
+    $_.Locators -eq "RuntimeMapSection=ConceptDisplay; RuntimeMapOriginal=Active; RuntimeMapConceptKey=ACTIVE"
+})
+if ($activeRuntimeConcept.Count -ne 1 -or $activeRuntimeConcept[0].Original -ne "[Active|ACTIVE]") {
+    throw "Known-text CSV must retain the concept wrapper and stable map locator for the Active runtime binding."
 }
 
 $allowedReviewStates = @("Translated", "NeedsTrial", "Skipped", "RecheckedSkipped", "Rejected")
@@ -122,7 +179,8 @@ $requiredSources = @(
     "source\AtTheGatesUI.original.dll",
     "source\AtTheGatesCommon.original.dll",
     "source\AtTheGatesGame.original.exe",
-    "source\ElfTools.original.dll"
+    "source\ElfTools.original.dll",
+    "translations\runtime-display-strings.json"
 )
 
 $sourceSet = @{}

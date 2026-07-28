@@ -1,0 +1,2173 @@
+﻿{
+    "BoundaryManifestId":  "terrain-tooltip-v1",
+    "SchemaVersion":  1,
+    "GeneratedAtUtc":  "2026-07-28T09:34:43.8664909Z",
+    "SourcePath":  "source/English.original.xml",
+    "Counts":  {
+                   "Terrains":  23,
+                   "Deposits":  78,
+                   "Resources":  42
+               },
+    "ReachabilityStates":  [
+                               "Observed",
+                               "RumorOnly",
+                               "VisibleOnly",
+                               "Unreachable",
+                               "Pending"
+                           ],
+    "TooltipSurfaces":  [
+                            "TerrainBaseOrOverlay",
+                            "VisibleDeposit",
+                            "RumorKnownDeposit",
+                            "RumorUnknownDeposit",
+                            "TileQuickReference",
+                            "CycleItem"
+                        ],
+    "Entries":  [
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Blizzard",
+                        "Id":  "Blizzard",
+                        "Original":  "Blizzard#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Scorched",
+                        "Id":  "Scorched",
+                        "Original":  "Scorched",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Snow",
+                        "Id":  "Snow",
+                        "Original":  "Snow",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Forest",
+                        "Id":  "Forest",
+                        "Original":  "Forest#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Brush",
+                        "Id":  "Brush",
+                        "Original":  "Brush",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Rain",
+                        "Id":  "Rain",
+                        "Original":  "Heavy Rain#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.ActiveVolcano",
+                        "Id":  "ActiveVolcano",
+                        "Original":  "Active Volcano#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "SourceTodo",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.EruptedVolcano",
+                        "Id":  "EruptedVolcano",
+                        "Original":  "Erupted Volcano#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "SourceTodo",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.DormantVolcano",
+                        "Id":  "DormantVolcano",
+                        "Original":  "Dormant Volcano#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "SourceTodo",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Flooded",
+                        "Id":  "Flooded",
+                        "Original":  "Flooded",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Ice",
+                        "Id":  "Ice",
+                        "Original":  "Ice",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Cold",
+                        "Id":  "Cold",
+                        "Original":  "Cold",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.ShallowWater",
+                        "Id":  "ShallowWater",
+                        "Original":  "Shallow Water",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Mountain",
+                        "Id":  "Mountain",
+                        "Original":  "Mountain#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.DeepWater",
+                        "Id":  "DeepWater",
+                        "Original":  "Deep Water",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.River",
+                        "Id":  "River",
+                        "Original":  "River#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Stream",
+                        "Id":  "Stream",
+                        "Original":  "Stream#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Hill",
+                        "Id":  "Hill",
+                        "Original":  "Hill#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Marsh",
+                        "Id":  "Marsh",
+                        "Original":  "|Marsh|Marshes|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Tundra",
+                        "Id":  "Tundra",
+                        "Original":  "Tundra",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Desert",
+                        "Id":  "Desert",
+                        "Original":  "Desert#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Fertile",
+                        "Id":  "Fertile",
+                        "Original":  "Grassland#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Terrain",
+                        "SourceKey":  "TEXT.Name.Terrain.Dry",
+                        "Id":  "Dry",
+                        "Original":  "Steppe#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.PatchOfBerries",
+                        "Id":  "PatchOfBerries",
+                        "Original":  "|Patch of Berries|Patches of Berries|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargePatchOfBerries",
+                        "Id":  "LargePatchOfBerries",
+                        "Original":  "|Large Patch of Berries|Large Patches of Berries|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeSchoolOfFish",
+                        "Id":  "LargeSchoolOfFish",
+                        "Original":  "|Large School of Fish|Large Schools of Fish|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastSchoolOfFish",
+                        "Id":  "VastSchoolOfFish",
+                        "Original":  "|Vast School of Fish|Vast Schools of Fish|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastPatchOfBerries",
+                        "Id":  "VastPatchOfBerries",
+                        "Original":  "|Vast Patch of Berries|Vast Patches of Berries|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastGroveOfFruitTrees",
+                        "Id":  "VastGroveOfFruitTrees",
+                        "Original":  "|Vast Grove of Fruit Trees|Vast Groves of Fruit Trees|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.FieldOfWheat",
+                        "Id":  "FieldOfWheat",
+                        "Original":  "|Field of Wheat|Fields of Wheat|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.GroveOfFruitTrees",
+                        "Id":  "GroveOfFruitTrees",
+                        "Original":  "|Grove of Fruit Trees|Groves of Fruit Trees|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeGroveOfFruitTrees",
+                        "Id":  "LargeGroveOfFruitTrees",
+                        "Original":  "|Large Grove of Fruit Trees|Large Groves of Fruit Trees|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.SchoolOfFish",
+                        "Id":  "SchoolOfFish",
+                        "Original":  "|School of Fish|Schools of Fish|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastHerdOfPigs",
+                        "Id":  "VastHerdOfPigs",
+                        "Original":  "|Vast Herd of Pigs|Vast Herds of Pigs|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.HerdOfDeer",
+                        "Id":  "HerdOfDeer",
+                        "Original":  "|Herd of Deer|Herd of Deer|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.HerdOfPigs",
+                        "Id":  "HerdOfPigs",
+                        "Original":  "|Herd of Pigs|Herd of Pigs|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeHerdOfPigs",
+                        "Id":  "LargeHerdOfPigs",
+                        "Original":  "|Large Herd of Pigs|Large Herds of Pigs|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeHerdOfDeer",
+                        "Id":  "LargeHerdOfDeer",
+                        "Original":  "|Large Herd of Deer|Large Herds of Deer|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeBeehive",
+                        "Id":  "LargeBeehive",
+                        "Original":  "Large Beehive#",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastBeehive",
+                        "Id":  "VastBeehive",
+                        "Original":  "Vast Beehive#",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastHerdOfDeer",
+                        "Id":  "VastHerdOfDeer",
+                        "Original":  "|Vast Herd of Deer|Vast Herds of Deer|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.Beehive",
+                        "Id":  "Beehive",
+                        "Original":  "Beehive#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeFieldOfWheat",
+                        "Id":  "LargeFieldOfWheat",
+                        "Original":  "|Large Field of Wheat|Large Fields of Wheat|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastFieldOfFlax",
+                        "Id":  "VastFieldOfFlax",
+                        "Original":  "|Vast Field of Flax|Vast Fields of Flax|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.MineralSpring",
+                        "Id":  "MineralSpring",
+                        "Original":  "Mineral Spring#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.FieldOfFlax",
+                        "Id":  "FieldOfFlax",
+                        "Original":  "|Field of Flax|Fields of Flax|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeFieldOfFlax",
+                        "Id":  "LargeFieldOfFlax",
+                        "Original":  "|Large Field of Flax|Large Fields of Flax|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.ForestOfRareTimber",
+                        "Id":  "ForestOfRareTimber",
+                        "Original":  "|Forest of Rare Timber|Forests of Rare Timber|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.UnidentifiedAnimal",
+                        "Id":  "UnidentifiedAnimal",
+                        "Original":  "Unidentified Animal#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.UnidentifiedPlant",
+                        "Id":  "UnidentifiedPlant",
+                        "Original":  "Unidentified Plant#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.Unidentified",
+                        "Id":  "Unidentified",
+                        "Original":  "Unidentified Deposit#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.UnidentifiedMineral",
+                        "Id":  "UnidentifiedMineral",
+                        "Original":  "Unidentified Mineral#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastFieldOfGrapes",
+                        "Id":  "VastFieldOfGrapes",
+                        "Original":  "|Vast Field of Grapes|Vast Fields of Grapes|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeFieldOfBarley",
+                        "Id":  "LargeFieldOfBarley",
+                        "Original":  "|Large Field of Barley|Large Fields of Barley|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastFieldOfBarley",
+                        "Id":  "VastFieldOfBarley",
+                        "Original":  "|Vast Field of Barley|Vast Fields of Barley|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastFieldOfWheat",
+                        "Id":  "VastFieldOfWheat",
+                        "Original":  "|Vast Field of Wheat|Vast Fields of Wheat|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.FieldOfBarley",
+                        "Id":  "FieldOfBarley",
+                        "Original":  "|Field of Barley|Fields of Barley|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.OliveGrove",
+                        "Id":  "OliveGrove",
+                        "Original":  "Olive Grove#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.FieldOfGrapes",
+                        "Id":  "FieldOfGrapes",
+                        "Original":  "|Field of Grapes|Fields of Grapes|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeFieldOfGrapes",
+                        "Id":  "LargeFieldOfGrapes",
+                        "Original":  "|Large Field of Grapes|Large Fields of Grapes|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeOliveGrove",
+                        "Id":  "LargeOliveGrove",
+                        "Original":  "Large Olive Grove#",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastOliveGrove",
+                        "Id":  "VastOliveGrove",
+                        "Original":  "Vast Olive Grove#",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.StoneDeposit",
+                        "Id":  "StoneDeposit",
+                        "Original":  "Stone Deposit#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeStoneDeposit",
+                        "Id":  "LargeStoneDeposit",
+                        "Original":  "Large Stone Deposit#",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeGemsDeposit",
+                        "Id":  "LargeGemsDeposit",
+                        "Original":  "Large Gems Deposit#",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastGemsDeposit",
+                        "Id":  "VastGemsDeposit",
+                        "Original":  "Vast Gems Deposit#",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastStoneDeposit",
+                        "Id":  "VastStoneDeposit",
+                        "Original":  "Vast Stone Deposit#",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastCoalDeposit",
+                        "Id":  "VastCoalDeposit",
+                        "Original":  "Vast Coal Deposit#",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.PeatDeposit",
+                        "Id":  "PeatDeposit",
+                        "Original":  "Peat Deposit#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.CoalDeposit",
+                        "Id":  "CoalDeposit",
+                        "Original":  "Coal Deposit#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeCoalDeposit",
+                        "Id":  "LargeCoalDeposit",
+                        "Original":  "Large Coal Deposit#",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.GemsDeposit",
+                        "Id":  "GemsDeposit",
+                        "Original":  "Gems Deposit#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastIronDeposit",
+                        "Id":  "VastIronDeposit",
+                        "Original":  "Vast Iron Deposit#",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.Meteorite",
+                        "Id":  "Meteorite",
+                        "Original":  "Meteorite#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.IronDeposit",
+                        "Id":  "IronDeposit",
+                        "Original":  "Iron Deposit#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeIronDeposit",
+                        "Id":  "LargeIronDeposit",
+                        "Original":  "Large Iron Deposit#",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeMeteorite",
+                        "Id":  "LargeMeteorite",
+                        "Original":  "Large Meteorite#",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeGoldDeposit",
+                        "Id":  "LargeGoldDeposit",
+                        "Original":  "Large Gold Deposit#",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastGoldDeposit",
+                        "Id":  "VastGoldDeposit",
+                        "Original":  "Vast Gold Deposit#",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastMeteorite",
+                        "Id":  "VastMeteorite",
+                        "Original":  "Vast Meteorite#",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.GoldDeposit",
+                        "Id":  "GoldDeposit",
+                        "Original":  "Gold Deposit#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargePeatDeposit",
+                        "Id":  "LargePeatDeposit",
+                        "Original":  "Large Peat Deposit#",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastHerdOfCattle",
+                        "Id":  "VastHerdOfCattle",
+                        "Original":  "|Vast Herd of Cattle|Vast Herds of Cattle|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.HerdOfAurochs",
+                        "Id":  "HerdOfAurochs",
+                        "Original":  "|Herd of Aurochs|Herds of Aurochs|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.HerdOfCattle",
+                        "Id":  "HerdOfCattle",
+                        "Original":  "|Herd of Cattle|Herds of Cattle|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeHerdOfCattle",
+                        "Id":  "LargeHerdOfCattle",
+                        "Original":  "|Large Herd of Cattle|Large Herds of Cattle|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeHerdOfAurochs",
+                        "Id":  "LargeHerdOfAurochs",
+                        "Original":  "|Large Herd of Aurochs|Large Herds of Aurochs|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeHerdOfSheep",
+                        "Id":  "LargeHerdOfSheep",
+                        "Original":  "|Large Herd of Sheep|Large Herds of Sheep|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastHerdOfSheep",
+                        "Id":  "VastHerdOfSheep",
+                        "Original":  "|Vast Herd of Sheep|Vast Herds of Sheep|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastHerdOfAurochs",
+                        "Id":  "VastHerdOfAurochs",
+                        "Original":  "|Vast Herd of Aurochs|Vast Herds of Aurochs|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.HerdOfSheep",
+                        "Id":  "HerdOfSheep",
+                        "Original":  "|Herd of Sheep|Herds of Sheep|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastHerdOfPurebreds",
+                        "Id":  "VastHerdOfPurebreds",
+                        "Original":  "|Vast Herd of Purebreds|Vast Herds of Purebreds|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeSaltDeposit",
+                        "Id":  "LargeSaltDeposit",
+                        "Original":  "Large Salt Deposit#",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastSaltDeposit",
+                        "Id":  "VastSaltDeposit",
+                        "Original":  "Vast Salt Deposit#",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastPeatDeposit",
+                        "Id":  "VastPeatDeposit",
+                        "Original":  "Vast Peat Deposit#",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.SaltDeposit",
+                        "Id":  "SaltDeposit",
+                        "Original":  "Salt Deposit#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.HerdOfHorses",
+                        "Id":  "HerdOfHorses",
+                        "Original":  "|Herd of Horses|Herds of Horses|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.HerdOfPurebreds",
+                        "Id":  "HerdOfPurebreds",
+                        "Original":  "|Herd of Purebreds|Herds of Purebreds|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeHerdOfPurebreds",
+                        "Id":  "LargeHerdOfPurebreds",
+                        "Original":  "|Large Herd of Purebreds|Large Herds of Purebreds|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.LargeHerdOfHorses",
+                        "Id":  "LargeHerdOfHorses",
+                        "Original":  "|Large Herd of Horses|Large Herds of Horses|",
+                        "Variant":  "Large",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Deposit",
+                        "SourceKey":  "TEXT.Name.Deposit.VastHerdOfHorses",
+                        "Id":  "VastHerdOfHorses",
+                        "Original":  "|Vast Herd of Horses|Vast Herds of Horses|",
+                        "Variant":  "Vast",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Stone",
+                        "Id":  "Stone",
+                        "Original":  "|Stone|Stone|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.StoneBlock",
+                        "Id":  "StoneBlock",
+                        "Original":  "Stone Block#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Board",
+                        "Id":  "Board",
+                        "Original":  "Board#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Parchment",
+                        "Id":  "Parchment",
+                        "Original":  "|Parchment|Parchment|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Timber",
+                        "Id":  "Timber",
+                        "Original":  "|Timber|Timber|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Weapon",
+                        "Id":  "Weapon",
+                        "Original":  "Weapon#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Armor",
+                        "Id":  "Armor",
+                        "Original":  "|Armor|Armor|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Tool",
+                        "Id":  "Tool",
+                        "Original":  "Tool#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Coal",
+                        "Id":  "Coal",
+                        "Original":  "|Coal|Coal|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Iron",
+                        "Id":  "Iron",
+                        "Original":  "|Iron|Iron|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.FineCloth",
+                        "Id":  "FineCloth",
+                        "Original":  "|Fine Cloth|Fine Cloth|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Grapes",
+                        "Id":  "Grapes",
+                        "Original":  "|Grapes|Grapes|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Alcohol",
+                        "Id":  "Alcohol",
+                        "Original":  "|Alcohol|Alcohol|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Honey",
+                        "Id":  "Honey",
+                        "Original":  "|Honey|Honey|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Salt",
+                        "Id":  "Salt",
+                        "Original":  "|Salt|Salt|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Barley",
+                        "Id":  "Barley",
+                        "Original":  "|Barley|Barley|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Wool",
+                        "Id":  "Wool",
+                        "Original":  "|Wool|Wool|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Cloth",
+                        "Id":  "Cloth",
+                        "Original":  "|Cloth|Cloth|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Flax",
+                        "Id":  "Flax",
+                        "Original":  "|Flax|Flax|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Olives",
+                        "Id":  "Olives",
+                        "Original":  "|Olives|Olives|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Oil",
+                        "Id":  "Oil",
+                        "Original":  "|Oil|Oil|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Fish",
+                        "Id":  "Fish",
+                        "Original":  "|Fish|Fish|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Wheat",
+                        "Id":  "Wheat",
+                        "Original":  "|Wheat|Wheat|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Meat",
+                        "Id":  "Meat",
+                        "Original":  "|Meat|Meat|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Fruit",
+                        "Id":  "Fruit",
+                        "Original":  "|Fruit|Fruit|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Cheese",
+                        "Id":  "Cheese",
+                        "Original":  "|Cheese|Cheese|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Fame",
+                        "Id":  "Fame",
+                        "Original":  "|Fame|Fame|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Score",
+                        "Id":  "Score",
+                        "Original":  "|Score|Score|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Prestige",
+                        "Id":  "Prestige",
+                        "Original":  "|Prestige|Prestige|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Food",
+                        "Id":  "Food",
+                        "Original":  "|Food|Food|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Knowledge",
+                        "Id":  "Knowledge",
+                        "Original":  "|Knowledge|Knowledge|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Treasure",
+                        "Id":  "Treasure",
+                        "Original":  "|Treasure|Treasure|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.SteelArmor",
+                        "Id":  "SteelArmor",
+                        "Original":  "|Steel Armor|Steel Armor|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Deer",
+                        "Id":  "Deer",
+                        "Original":  "|Deer|Deer|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.SteelWeapon",
+                        "Id":  "SteelWeapon",
+                        "Original":  "Steel Weapon#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Steel",
+                        "Id":  "Steel",
+                        "Original":  "|Steel|Steel|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.SteelTool",
+                        "Id":  "SteelTool",
+                        "Original":  "Steel Tool#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Horse",
+                        "Id":  "Horse",
+                        "Original":  "Horse#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Warhorse",
+                        "Id":  "Warhorse",
+                        "Original":  "Warhorse#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Sheep",
+                        "Id":  "Sheep",
+                        "Original":  "|Sheep|Sheep|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Pig",
+                        "Id":  "Pig",
+                        "Original":  "Pig#",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    },
+                    {
+                        "Kind":  "Resource",
+                        "SourceKey":  "TEXT.Name.Resource.Cattle",
+                        "Id":  "Cattle",
+                        "Original":  "|Cattle|Cattle|",
+                        "Variant":  "Base",
+                        "DescriptionStatus":  "Defined",
+                        "Reachability":  "Pending",
+                        "ObservedSurfaces":  [
+
+                                             ],
+                        "RumorVisibleDifferences":  [
+
+                                                    ]
+                    }
+                ]
+}

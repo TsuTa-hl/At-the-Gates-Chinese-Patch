@@ -34,7 +34,7 @@ $todoRows = @(Import-Csv -LiteralPath $OutputPath -Encoding UTF8)
 if ($todoRows.Count -eq 0) {
     throw "Localization todo CSV has no rows."
 }
-foreach ($column in @("RowKind", "TodoId", "CategoryId", "Original", "Route", "EntryPointId", "PartsJson")) {
+foreach ($column in @("RowKind", "TodoId", "CategoryId", "Original", "Route", "EntryPointId", "CompositeReferenceCount", "CompositeReferencesJson", "KnownTextReferenceStatus", "KnownTextReferencesJson", "KnownTextUnresolvedReferencesJson", "KnownTextReferenceExclusionsJson", "PartsJson")) {
     if (-not $todoRows[0].PSObject.Properties[$column]) {
         throw "Localization todo CSV is missing required column: $column"
     }
@@ -64,6 +64,34 @@ if ($todoExporterSource -match "KnownTextsCsv|Import-Csv") {
 }
 if ($todoExporterSource -notmatch "CatalogDatabasePath|CompositeRulesPath|todo-csv") {
     throw "Todo exporter must read the SQLite catalog and composite rule JSON directly."
+}
+
+$reviewExporterSource = Get-Content -LiteralPath (Join-Path $repoRoot "tools\AtG.Patch.Cli\ReviewViewCsvExporter.cs") -Raw -Encoding UTF8
+if ($reviewExporterSource -match "BuildCompositeByMethod|SameMethod") {
+    throw "Todo export must not use a method-level Composite/KnowText heuristic."
+}
+if ($reviewExporterSource -notmatch "CompositeKnownTextIndex|GetCompositeRoute") {
+    throw "Todo export must use the exact durable Composite/KnowText index."
+}
+
+$linkedTextRows = @($textRows | Where-Object { [int]$_.CompositeReferenceCount -gt 0 })
+if ($linkedTextRows.Count -eq 0) {
+    throw "Localization todo CSV must retain exact Composite links for unresolved KnownText rows."
+}
+$exactLinkedTextRows = @($linkedTextRows | Where-Object {
+    -not [string]::IsNullOrWhiteSpace([string]$_.Route) -and
+    -not [string]::IsNullOrWhiteSpace([string]$_.CompositeReferencesJson)
+})
+if ($exactLinkedTextRows.Count -eq 0) {
+    throw "Localization todo CSV has no exact Composite route with reverse-link JSON."
+}
+
+$linkedCompositeRows = @($compositeRows | Where-Object {
+    $_.KnownTextReferenceStatus -eq "Resolved" -and
+    $_.KnownTextReferencesJson -and $_.KnownTextReferencesJson -ne "[]"
+})
+if ($compositeRows.Count -gt 0 -and $linkedCompositeRows.Count -eq 0) {
+    throw "Localization todo CSV must expose exact KnownText links for reviewed Composite entries."
 }
 
 Write-Host "Localization todo CSV validation passed: $($textRows.Count) text rows, $($compositeRows.Count) composite entries."

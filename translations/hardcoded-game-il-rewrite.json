@@ -893,6 +893,18 @@
     "EvidenceScenario":  "trial-game-static-checks-3"
 },
 {
+    "Original":  "in ",
+    "Translation":  "",
+    "MethodToken":  "0x0600086c",
+    "ILOffset":  172,
+    "StringToken":  "0x7000dc5b",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ATGCity",
+    "MethodName":  "BuildTrainingProjectDescription",
+    "Safety":  "TooltipFragment",
+    "Note":  "Training-project completion sentence already ends in 于; remove only its exact in fragment.",
+    "EvidenceScenario":  "diplomacy-current-leader-20260726"
+},
+{
     "Original":  "next [Turn|TURN].",
     "Translation":  "下个[回合|TURN]。",
     "MethodToken":  "0x0600086c",
@@ -2200,6 +2212,18 @@
     "Safety":  "TrialFastFail",
     "Note":  "2026-07-04 Game NeedsTrial exact-catalog batch 5; Training turns fragment.",
     "EvidenceScenario":  "trial-20260704-game-needs-5"
+},
+{
+    "Original":  " in ",
+    "Translation":  "，还需",
+    "MethodToken":  "0x06000864",
+    "ILOffset":  396,
+    "StringToken":  "0x7000053e",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ATGCity",
+    "MethodName":  "GetMinTurnsToTrain",
+    "Safety":  "TooltipFragment",
+    "Note":  "AVR-WPR training-description fragment; the clan-card countdown itself is localized by a final display fragment.",
+    "EvidenceScenario":  "avr-wpr-clan-family-countdown-20260727"
 },
 {
     "Original":  " can join a ",
@@ -5600,5 +5624,29 @@
     "Safety":  "TrialFastFailSparkRecheck",
     "Note":  "Spark first-pass non-bracket skipped-text recheck.",
     "EvidenceScenario":  "trial-20260704-spark-recheck-pass1"
+},
+{
+    "Original":  "Default ",
+    "Translation":  "默认",
+    "MethodToken":  "0x06000da7",
+    "ILOffset":  81,
+    "StringToken":  "0x70014197",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ATGUnit",
+    "MethodName":  "RecalcMood",
+    "Safety":  "TooltipFragment",
+    "Note":  "SYI-ITT Miserable mood-detail prefix; exact RecalcMood display fragment.",
+    "EvidenceScenario":  "clan-trait-miserable-mood-detail"
+},
+{
+    "Original":  " is ",
+    "Translation":  "为",
+    "MethodToken":  "0x06000da7",
+    "ILOffset":  91,
+    "StringToken":  "0x70009597",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ATGUnit",
+    "MethodName":  "RecalcMood",
+    "Safety":  "TooltipFragment",
+    "Note":  "SYI-ITT Miserable mood-detail connector; exact RecalcMood display fragment.",
+    "EvidenceScenario":  "clan-trait-miserable-mood-detail"
 }
 ]
