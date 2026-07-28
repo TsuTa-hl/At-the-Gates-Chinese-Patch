@@ -2,13 +2,13 @@
     "schemaVersion":  1,
     "purpose":  "Machine-readable state for exploratory trial localization. This file is for agents and scripts, not human translation review.",
     "lastUpdated":  "2026-07-05",
-    "workflowReviewIndex":  "docs/review/known-texts.md",
-    "reviewTable":  "docs/review/known-texts.csv",
+    "workflowReviewIndex":  "docs/review/Generate-ReviewViews.ps1 -View KnownTexts",
+    "reviewTable":  ".tmp/review-views/known-texts.csv (generated on demand)",
     "policy":  {
                    "strategy":  "Probe discovered display candidates with fast-fail batch smoke tests, then keep accepted entries in normal rewrite maps.",
                    "missingVisualEvidenceIsSkipReason":  false,
                    "passScope":  "A trial pass proves build, install, startup, and the trial runner\u0027s explicit -IncludeNewGame smoke safety only. It does not prove wording, layout, hover coverage, fixed-save loading, or all UI paths.",
-                   "csvOriginalRule":  "Do not use docs/review/known-texts.md or docs/review/known-texts.csv Original as an IL rewrite Original. They are normalized for review. Use the exact DLL catalog Value.",
+                   "csvOriginalRule":  "Do not use an on-demand known-texts view Original as an IL rewrite Original. It is normalized for review. Use the exact DLL catalog Value.",
                    "skipPolicy":  "Keep SkippedByPolicy for technical/internal text, semantic-free grammar glue, date/season logic, external online flows, raw IDs, paths, parser match tokens, bracket-only parser-like tags, and static config candidates classified as unsafe.",
                    "forbiddenTrialInputs":  [
                                                 "AtTheGatesCommon.ns_Text.Text.ConvertTags trial entries",
@@ -58,7 +58,8 @@
                         "windowsErrorSeen":  false,
                         "startupWaitSeconds":  4.09,
                         "newGameSmokeSeconds":  19.34,
-                        "notes":  "Latest accepted pass: trial-20260705-recheck-skipped-ui-fastfail2-batch (5/0), run .tmp\\trial-localization\\20260705-025427."
+                        "notes":  "Latest accepted pass: trial-20260705-recheck-skipped-ui-fastfail2-batch (5/0).",
+                        "evidenceHandoff":  "20260723-composite-governance"
                     },
     "knownRejectedSingles":  [
                                  {
@@ -262,7 +263,8 @@
                         "accepted":  48,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-010529"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-exact-next2",
@@ -272,7 +274,8 @@
                         "accepted":  48,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-024037"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-exact-next3",
@@ -282,7 +285,8 @@
                         "accepted":  48,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-025151"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-exact-next4",
@@ -292,7 +296,8 @@
                         "accepted":  48,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-025713"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-exact-next5",
@@ -302,7 +307,8 @@
                         "accepted":  48,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-030334"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-exact-next6",
@@ -312,7 +318,8 @@
                         "accepted":  48,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-030857"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-exact-next7",
@@ -322,7 +329,8 @@
                         "accepted":  48,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-031956"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-exact-next8",
@@ -332,7 +340,8 @@
                         "accepted":  14,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-032440"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-placement-failures-1",
@@ -342,7 +351,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-034831"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-property-details-1",
@@ -352,7 +362,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-035229"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-property-details-2",
@@ -362,7 +373,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-035833"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-property-details-3",
@@ -372,7 +384,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-040314"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-property-details-4",
@@ -382,7 +395,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-040658"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-property-details-5",
@@ -392,7 +406,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-043731"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-property-details-6",
@@ -402,7 +417,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-044335"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-property-details-7",
@@ -412,7 +428,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-044826"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-property-details-8",
@@ -422,7 +439,8 @@
                         "accepted":  2,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-045307"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-battle-projection-1",
@@ -432,7 +450,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-045747"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-battle-projection-2",
@@ -442,7 +461,8 @@
                         "accepted":  9,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-050245"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-notification-details-1",
@@ -452,7 +472,8 @@
                         "accepted":  14,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-050945"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-diplomacy-1",
@@ -462,7 +483,8 @@
                         "accepted":  19,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-051433"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-profession-tooltip-1",
@@ -472,7 +494,8 @@
                         "accepted":  11,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-051903"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-resource-tech-tooltip-1",
@@ -482,7 +505,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-054804"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-clan-structure-tooltip-1",
@@ -492,7 +516,8 @@
                         "accepted":  14,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-055020"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-economy-tooltip-1",
@@ -502,7 +527,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-055508"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-structure-apprentice-1",
@@ -512,7 +538,8 @@
                         "accepted":  13,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-055841"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-help-tips-1",
@@ -522,7 +549,8 @@
                         "accepted":  21,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-060343"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-diplomacy-profession-actions-1",
@@ -532,7 +560,8 @@
                         "accepted":  15,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-060901"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-game-abilities-1",
@@ -542,7 +571,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-062022"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-game-description-1",
@@ -552,7 +582,8 @@
                         "accepted":  14,
                         "rejected":  2,
                         "status":  "accepted-with-retried-precision-failures",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-062543"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-game-description-retry-1",
@@ -562,7 +593,8 @@
                         "accepted":  2,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-063856"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-dialog-actions-1",
@@ -572,7 +604,8 @@
                         "accepted":  9,
                         "rejected":  7,
                         "status":  "accepted-with-retried-precision-failures",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-065104"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-dialog-actions-retry-1",
@@ -582,7 +615,8 @@
                         "accepted":  7,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-070119"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-condition-text-1",
@@ -593,7 +627,8 @@
                         "accepted":  7,
                         "rejected":  5,
                         "status":  "accepted-with-retried-precision-failures",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-070732"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-condition-text-retry-1",
@@ -603,7 +638,8 @@
                         "accepted":  5,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-072920"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-tooltip-fragments-1",
@@ -613,7 +649,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-111951"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-resource-tooltip-2",
@@ -624,7 +661,8 @@
                         "accepted":  2,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-113838"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-1",
@@ -634,7 +672,8 @@
                         "accepted":  4,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-120012"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-2",
@@ -644,7 +683,8 @@
                         "accepted":  4,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-120459"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-3",
@@ -654,7 +694,8 @@
                         "accepted":  4,
                         "rejected":  0,
                         "status":  "accepted-smoke-after-invalid-smoke-rerun",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-134002"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concept-tags-2",
@@ -664,7 +705,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-230803"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concept-tags-3",
@@ -674,7 +716,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-232356"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-4",
@@ -684,7 +727,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke-with-final-accepted",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-232812"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-5",
@@ -694,7 +738,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-233310"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-6",
@@ -704,7 +749,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-233632"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-7",
@@ -714,7 +760,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-234004"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-8",
@@ -724,7 +771,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke-with-final-accepted",
-                        "runRoot":  ".tmp\\trial-localization\\20260701-234438"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-9",
@@ -734,7 +782,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-003224"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-10",
@@ -744,7 +793,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke-with-bisection-final-accepted",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-003656"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-11",
@@ -754,7 +804,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-005255"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-12",
@@ -764,7 +815,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-005838"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-13",
@@ -774,8 +826,9 @@
                         "accepted":  0,
                         "rejected":  2,
                         "status":  "invalid-smoke-user-setting-settings-xml",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-010822",
-                        "notes":  "Two UserSetting entries polluted Settings.xml with non-ASCII comments and caused Error Loading User Settings. The six non-UserSetting entries were retried in trial-common-concepts-help-13-safe-retry."
+                        "notes":  "Two UserSetting entries polluted Settings.xml with non-ASCII comments and caused Error Loading User Settings. The six non-UserSetting entries were retried in trial-common-concepts-help-13-safe-retry.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-13-safe-retry",
@@ -785,80 +838,87 @@
                         "accepted":  6,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-014539"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-14",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-023439",
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke-with-transient-build-lock",
                         "scope":  "common-concepts-help-combat-offense",
                         "inputEntries":  8,
-                        "path":  "translations/trial-common-concepts-help-14-batch.json"
+                        "path":  "translations/trial-common-concepts-help-14-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-15",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-024452",
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke-with-transient-build-lock",
                         "scope":  "common-concepts-help-combat-defense",
                         "inputEntries":  8,
-                        "path":  "translations/trial-common-concepts-help-15-batch.json"
+                        "path":  "translations/trial-common-concepts-help-15-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-16",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-030252",
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "common-concepts-help-morale-retreat",
                         "inputEntries":  8,
-                        "path":  "translations/trial-common-concepts-help-16-batch.json"
+                        "path":  "translations/trial-common-concepts-help-16-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-17",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-030744",
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke-after-intermittent-wer-and-build-lock",
                         "scope":  "common-concepts-help-clan-limit-construct-forage-encamp",
                         "inputEntries":  8,
-                        "path":  "translations/trial-common-concepts-help-17-batch.json"
+                        "path":  "translations/trial-common-concepts-help-17-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-18",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-042437",
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "common-concepts-help-pillage-siege",
                         "inputEntries":  8,
-                        "path":  "translations/trial-common-concepts-help-18-batch.json"
+                        "path":  "translations/trial-common-concepts-help-18-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-concepts-help-19",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-042905",
                         "accepted":  4,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "common-concepts-help-packed-settlement",
                         "inputEntries":  4,
-                        "path":  "translations/trial-common-concepts-help-19-batch.json"
+                        "path":  "translations/trial-common-concepts-help-19-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-zone-trait-placement-1",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-044137",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "common-zone-trait-placement-failures",
                         "inputEntries":  16,
-                        "path":  "translations/trial-common-zone-trait-placement-1-batch.json"
+                        "path":  "translations/trial-common-zone-trait-placement-1-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
-                        "runRoot":  ".tmp\\trial-localization\\20260702-044405",
                         "id":  "trial-common-zone-trait-placement-2",
                         "rejected":  0,
                         "notes":  "Two MapUtils entries initially failed because the batch used stale MethodToken 0x06000aca. Evidence was moved to rejected.invalid-catalog-token.json and corrected token 0x06000091 entries were accepted in trial-common-map-placement-1.",
@@ -866,10 +926,11 @@
                         "inputEntries":  3,
                         "path":  "translations/trial-common-zone-trait-placement-2-batch.json",
                         "status":  "accepted-with-catalog-token-retry",
-                        "accepted":  1
+                        "accepted":  1,
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
-                        "runRoot":  ".tmp\\trial-localization\\20260702-045333",
                         "id":  "trial-common-map-placement-1",
                         "rejected":  0,
                         "scope":  "common-map-placement-failures-exact-token",
@@ -877,10 +938,11 @@
                         "status":  "accepted-smoke",
                         "path":  "translations/trial-common-map-placement-1-batch.json",
                         "alreadyMapped":  14,
-                        "accepted":  2
+                        "accepted":  2,
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
-                        "runRoot":  ".tmp\\trial-localization\\20260702-045720",
                         "id":  "trial-common-map-placement-2",
                         "rejected":  0,
                         "scope":  "common-map-placement-failures-remainder",
@@ -888,60 +950,66 @@
                         "status":  "already-mapped-no-test",
                         "path":  "translations/trial-common-map-placement-2-batch.json",
                         "alreadyMapped":  4,
-                        "accepted":  0
+                        "accepted":  0,
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-config-description-1",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-050720",
                         "accepted":  7,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "common-config-description-mood-desire-family",
                         "inputEntries":  7,
-                        "path":  "translations/trial-common-config-description-1-batch.json"
+                        "path":  "translations/trial-common-config-description-1-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-game-art-hotkeys-1",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-051513",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-art-mode-hotkey-list",
                         "inputEntries":  16,
-                        "path":  "translations/trial-game-art-hotkeys-1-batch.json"
+                        "path":  "translations/trial-game-art-hotkeys-1-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-game-static-checks-1",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-051915",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-static-checks-complete-failures",
                         "inputEntries":  16,
-                        "path":  "translations/trial-game-static-checks-1-batch.json"
+                        "path":  "translations/trial-game-static-checks-1-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-game-static-checks-2",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-052707",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-static-checks-complete-failures",
                         "inputEntries":  16,
-                        "path":  "translations/trial-game-static-checks-2-batch.json"
+                        "path":  "translations/trial-game-static-checks-2-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-command-status-1",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-060401",
                         "accepted":  9,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "common-command-status-text",
                         "inputEntries":  9,
-                        "path":  "translations/trial-common-command-status-1-batch.json"
+                        "path":  "translations/trial-common-command-status-1-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
-                        "runRoot":  ".tmp\\trial-localization\\20260702-061156",
                         "id":  "trial-ui-visible-misc-1",
                         "rejected":  0,
                         "scope":  "ui-visible-misc-credits-victory-diplomacy-loadsave",
@@ -949,10 +1017,11 @@
                         "status":  "accepted-smoke",
                         "path":  "translations/trial-ui-visible-misc-1-batch.json",
                         "alreadyMapped":  1,
-                        "accepted":  15
+                        "accepted":  15,
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
-                        "runRoot":  ".tmp\\trial-localization\\20260702-061733",
                         "id":  "trial-ui-tooltip-visible-1",
                         "rejected":  0,
                         "notes":  "Initial combined smoke reported At the Gates window not found, then bisection and final accepted-only smoke passed. Treat as automation/window-finder noise, not unsafe text.",
@@ -961,7 +1030,9 @@
                         "status":  "accepted-smoke-after-window-finder-noise",
                         "path":  "translations/trial-ui-tooltip-visible-1-batch.json",
                         "alreadyMapped":  1,
-                        "accepted":  3
+                        "accepted":  3,
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-visible-misc-2",
@@ -971,7 +1042,8 @@
                         "accepted":  6,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-064252"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-sage-effects-1",
@@ -981,7 +1053,8 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-064830"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-visible-misc-1",
@@ -991,8 +1064,9 @@
                         "accepted":  3,
                         "rejected":  0,
                         "status":  "accepted-smoke-with-already-mapped",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-065841",
-                        "alreadyMapped":  2
+                        "alreadyMapped":  2,
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-visible-misc-3",
@@ -1002,8 +1076,9 @@
                         "accepted":  28,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-071229",
-                        "alreadyMapped":  1
+                        "alreadyMapped":  1,
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-tooltip-visible-2-exact",
@@ -1013,8 +1088,9 @@
                         "accepted":  2,
                         "rejected":  0,
                         "status":  "accepted-smoke-after-catalog-precision-retry",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-073434",
-                        "notes":  "Non-exact trial-common-tooltip-visible-2 failed at build because review CSV normalized leading/trailing spaces; exact catalog values passed."
+                        "notes":  "Non-exact trial-common-tooltip-visible-2 failed at build because review CSV normalized leading/trailing spaces; exact catalog values passed.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-game-static-checks-3",
@@ -1024,7 +1100,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-074217"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-game-static-checks-4",
@@ -1034,7 +1111,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-074903"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-human-readable-text-1",
@@ -1045,7 +1123,8 @@
                         "rejected":  0,
                         "alreadyMapped":  11,
                         "status":  "accepted-smoke-with-already-mapped",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-082853"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-property-readable-text-1",
@@ -1056,7 +1135,8 @@
                         "rejected":  0,
                         "alreadyMapped":  11,
                         "status":  "accepted-smoke-with-already-mapped",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-083440"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-readable-text-2",
@@ -1066,8 +1146,9 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke-after-window-finder-noise",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-084450",
-                        "notes":  "Initial combined smoke failed at screenshot capture with \u0027At the Gates window not found\u0027. Both half-batches passed and no single text was rejected; treat as automation/window-finder noise."
+                        "notes":  "Initial combined smoke failed at screenshot capture with \u0027At the Gates window not found\u0027. Both half-batches passed and no single text was rejected; treat as automation/window-finder noise.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-readable-text-3",
@@ -1078,7 +1159,8 @@
                         "rejected":  0,
                         "alreadyMapped":  8,
                         "status":  "accepted-smoke-with-already-mapped",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-085437"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-game-static-checks-5",
@@ -1089,7 +1171,8 @@
                         "rejected":  0,
                         "alreadyMapped":  1,
                         "status":  "accepted-smoke-with-already-mapped",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-085900"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-ui-visible-misc-4",
@@ -1099,7 +1182,8 @@
                         "accepted":  3,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-090406"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-common-tostring-labels-1",
@@ -1109,7 +1193,8 @@
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-091228"
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-final-visible-fragments-1",
@@ -1120,8 +1205,9 @@
                         "rejected":  0,
                         "alreadyMapped":  2,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260702-105841",
-                        "notes":  "Accepted remaining visible display fragments after classifying technical/internal strings and pure formatter tags out of TrialCandidate."
+                        "notes":  "Accepted remaining visible display fragments after classifying technical/internal strings and pure formatter tags out of TrialCandidate.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-elftools-display-tooltips-1",
@@ -1131,459 +1217,502 @@
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
-                        "runRoot":  ".tmp\\trial-localization\\20260703-030001",
-                        "notes":  "Accepted all newly exposed ElfTools display candidates after classifying engine/helper diagnostics and parser/resource strings as SkippedByPolicy."
+                        "notes":  "Accepted all newly exposed ElfTools display candidates after classifying engine/helper diagnostics and parser/resource strings as SkippedByPolicy.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-nongame-needs-1",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-023804",
                         "accepted":  26,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "non-game-needs-trial-common-ui",
                         "inputEntries":  26,
-                        "path":  "translations/trial-20260704-nongame-needs-1-batch.json"
+                        "path":  "translations/trial-20260704-nongame-needs-1-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-1",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-034509",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-needs-trial",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-1-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-1-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-2",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-035444",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-needs-trial",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-2-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-2-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-3",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-040626",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-needs-trial",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-3-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-3-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-4",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-041531",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-needs-trial",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-4-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-4-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-5",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-042456",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-needs-trial",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-5-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-5-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-6",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-043405",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-static-checks",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-6-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-6-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-7",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-045000",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-static-checks",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-7-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-7-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-8",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-045822",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-resource-and-status",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-8-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-8-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-9",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-050813",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-resource-event-and-diagnostic",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-9-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-9-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-10",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-055220",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-10-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-10-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-11",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-060222",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-11-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-11-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-12",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-061436",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-12-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-12-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-13",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-064234",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-13-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-13-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-14",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-065235",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-14-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-14-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-15",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-070117",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-15-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-15-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-16",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-071035",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-static-checks-and-ui-fragments",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-16-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-16-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-17",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-072408",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-resource-pillage-victory-fragments",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-17-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-17-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-18",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-073327",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-resource-pillage-victory-fragments",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-18-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-18-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-19",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-074218",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-resource-pillage-victory-fragments",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-19-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-19-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-20",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-075753",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-final-needs-trial",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-20-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-20-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-21",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-080831",
                         "accepted":  16,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-final-needs-trial",
                         "inputEntries":  16,
-                        "path":  "translations/trial-20260704-game-needs-21-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-21-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-game-needs-22",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-081729",
                         "accepted":  1,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "game-exact-catalog-final-needs-trial",
                         "inputEntries":  1,
-                        "path":  "translations/trial-20260704-game-needs-22-batch.json"
+                        "path":  "translations/trial-20260704-game-needs-22-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-retry-skipped-display-1",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-091927",
                         "accepted":  4,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "retry-skipped-ui-game-victory-and-hotkey-display",
                         "inputEntries":  4,
-                        "path":  "translations/trial-20260704-retry-skipped-display-1-batch.json"
+                        "path":  "translations/trial-20260704-retry-skipped-display-1-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-retry-skipped-display-2",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-093326",
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "retry-skipped-victory-categories-mainmenu-warning-and-welcome-display",
                         "inputEntries":  8,
-                        "path":  "translations/trial-20260704-retry-skipped-display-2-batch.json"
+                        "path":  "translations/trial-20260704-retry-skipped-display-2-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-retry-skipped-common-desc-1",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-094348",
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "retry-skipped-common-generated-description-glue",
                         "inputEntries":  8,
-                        "path":  "translations/trial-20260704-retry-skipped-common-desc-1-batch.json"
+                        "path":  "translations/trial-20260704-retry-skipped-common-desc-1-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-retry-skipped-ui-fragments-1",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-095746",
                         "accepted":  6,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "retry-skipped-ui-notification-and-caravan-display-fragments",
                         "inputEntries":  6,
-                        "path":  "translations/trial-20260704-retry-skipped-ui-fragments-1-batch.json"
+                        "path":  "translations/trial-20260704-retry-skipped-ui-fragments-1-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-retry-skipped-fragments-2-catalog-mismatch",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-102721",
                         "accepted":  0,
                         "rejected":  0,
                         "status":  "catalog-precision-failed",
                         "scope":  "normalized-csv-original-lost-leading-and-trailing-spaces",
                         "inputEntries":  13,
-                        "path":  "translations/trial-20260704-retry-skipped-fragments-2-batch.json"
+                        "path":  "translations/trial-20260704-retry-skipped-fragments-2-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-retry-skipped-fragments-2",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-105117",
                         "accepted":  13,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "retry-skipped-ui-common-property-and-clan-description-fragments",
                         "inputEntries":  13,
-                        "path":  "translations/trial-20260704-retry-skipped-fragments-2-batch.json"
+                        "path":  "translations/trial-20260704-retry-skipped-fragments-2-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-retry-skipped-ui-glue-2",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-110342",
                         "accepted":  20,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "retry-skipped-ui-command-tooltip-glue-fragments",
                         "inputEntries":  20,
-                        "path":  "translations/trial-20260704-retry-skipped-ui-glue-2-batch.json"
+                        "path":  "translations/trial-20260704-retry-skipped-ui-glue-2-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-retry-skipped-game-glue-1",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-111049",
                         "accepted":  8,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "retry-skipped-game-resource-and-requirement-glue-fragments",
                         "inputEntries":  8,
-                        "path":  "translations/trial-20260704-retry-skipped-game-glue-1-batch.json"
+                        "path":  "translations/trial-20260704-retry-skipped-game-glue-1-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-recheck-skipped-alpha-batch",
-                        "runRoot":  ".tmp\\\\trial-localization\\\\20260704-171743",
                         "accepted":  0,
                         "rejected":  1,
                         "status":  "invalid-smoke",
                         "scope":  "retry-skipped-player-visible-glue-fragments",
                         "inputEntries":  8,
                         "path":  "translations/trial-20260704-recheck-skipped-alpha-batch.json",
-                        "notes":  "Final accepted smoke failed with isolated unsafe `No` candidate. Rejected single: Common|0x06000207|386|ILOffset 386. "
+                        "notes":  "Final accepted smoke failed with isolated unsafe `No` candidate. Rejected single: Common|0x06000207|386|ILOffset 386. ",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-recheck-skipped-alpha-accepts",
-                        "runRoot":  ".tmp\\\\trial-localization\\\\20260704-172228",
                         "accepted":  7,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "retry-skipped-player-visible-glue-fragments-accepts",
                         "inputEntries":  7,
                         "path":  "translations/trial-20260704-recheck-skipped-alpha-accepts-batch.json",
-                        "notes":  "Baked 7 safe player-visible glue fragments after removing isolated rejected `No` entry."
+                        "notes":  "Baked 7 safe player-visible glue fragments after removing isolated rejected `No` entry.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-recheck-skipped-beta-common-batch",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-182625",
                         "accepted":  0,
                         "rejected":  4,
                         "status":  "invalid-smoke",
                         "scope":  "retry-skipped-player-visible-glue-fragments-beta-common",
                         "inputEntries":  4,
                         "path":  "translations/trial-20260704-recheck-skipped-beta-common-batch.json",
-                        "notes":  "Failed in local test path due infrastructure-only smoke failure: CopyFromScreen handle invalid and new-game marker did not reach main loop."
+                        "notes":  "Failed in local test path due infrastructure-only smoke failure: CopyFromScreen handle invalid and new-game marker did not reach main loop.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-recheck-skipped-beta-ui-batch",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-183947",
                         "accepted":  0,
                         "rejected":  3,
                         "status":  "invalid-smoke",
                         "scope":  "retry-skipped-player-visible-glue-fragments-beta-ui",
                         "inputEntries":  3,
                         "path":  "translations/trial-20260704-recheck-skipped-beta-ui-batch.json",
-                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure."
+                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-recheck-skipped-beta-game-1-batch",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-184643",
                         "accepted":  0,
                         "rejected":  4,
                         "status":  "invalid-smoke",
                         "scope":  "retry-skipped-player-visible-glue-fragments-beta-game",
                         "inputEntries":  4,
                         "path":  "translations/trial-20260704-recheck-skipped-beta-game-1-batch.json",
-                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure, no safe accepted entries isolated."
+                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure, no safe accepted entries isolated.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-recheck-skipped-beta-game-2-batch",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-185456",
                         "accepted":  0,
                         "rejected":  4,
                         "status":  "invalid-smoke",
                         "scope":  "retry-skipped-player-visible-glue-fragments-beta-game",
                         "inputEntries":  4,
                         "path":  "translations/trial-20260704-recheck-skipped-beta-game-2-batch.json",
-                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure, no safe accepted entries isolated."
+                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure, no safe accepted entries isolated.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260704-recheck-skipped-beta-game-3-batch",
-                        "runRoot":  ".tmp\\trial-localization\\20260704-190405",
                         "accepted":  0,
                         "rejected":  7,
                         "status":  "invalid-smoke",
                         "scope":  "retry-skipped-player-visible-glue-fragments-beta-game",
                         "inputEntries":  7,
                         "path":  "translations/trial-20260704-recheck-skipped-beta-game-3-batch.json",
-                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure, no safe accepted entries isolated."
+                        "notes":  "Failed in local smoke path with final-accepted-only smoke failure, no safe accepted entries isolated.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260705-recheck-skipped-ui-fastfail-batch",
-                        "runRoot":  ".tmp\\\\trial-localization\\\\20260705-023338",
                         "accepted":  4,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "retry-skipped-player-visible-ui-fastfail",
                         "inputEntries":  4,
-                        "path":  "translations/trial-20260705-recheck-skipped-ui-fastfail-batch.json"
+                        "path":  "translations/trial-20260705-recheck-skipped-ui-fastfail-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260705-recheck-skipped-ui-fastfail2-batch",
-                        "runRoot":  ".tmp\\\\trial-localization\\\\20260705-025427",
                         "accepted":  5,
                         "rejected":  0,
                         "status":  "accepted-smoke",
                         "scope":  "retry-skipped-player-visible-ui-fastfail",
                         "inputEntries":  5,
-                        "path":  "translations/trial-20260705-recheck-skipped-ui-fastfail2-batch.json"
+                        "path":  "translations/trial-20260705-recheck-skipped-ui-fastfail2-batch.json",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260705-recheck-skipped-game-fastfail1-batch",
-                        "runRoot":  ".tmp\\\\trial-localization\\\\20260705-042431",
                         "accepted":  0,
                         "rejected":  6,
                         "status":  "invalid-smoke",
                         "scope":  "retry-skipped-player-visible-game-command-fragments-fastfail",
                         "inputEntries":  8,
                         "path":  "translations/trial-20260705-recheck-skipped-game-fastfail1-batch.json",
-                        "notes":  "Re-routed with exact catalog spacing; final smoke bisection rejected 6 and no safe accepted entries."
+                        "notes":  "Re-routed with exact catalog spacing; final smoke bisection rejected 6 and no safe accepted entries.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260705-recheck-skipped-game-fastfail2-batch",
-                        "runRoot":  ".tmp\\\\trial-localization\\\\20260705-043825",
                         "accepted":  0,
                         "rejected":  8,
                         "status":  "invalid-smoke",
                         "scope":  "retry-skipped-player-visible-game-command-fragments-fastfail",
                         "inputEntries":  8,
                         "path":  "translations/trial-20260705-recheck-skipped-game-fastfail2-batch.json",
-                        "notes":  "All 8 entries rejected during smoke bisection; final-accepted smoke reported infrastructure-style failure, but entries isolated as smoke-unsafe."
+                        "notes":  "All 8 entries rejected during smoke bisection; final-accepted smoke reported infrastructure-style failure, but entries isolated as smoke-unsafe.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     },
                     {
                         "id":  "trial-20260705-recheck-skipped-common-settings-fastfail1-batch",
-                        "runRoot":  ".tmp\\trial-localization\\20260705-052601",
                         "accepted":  0,
                         "rejected":  6,
                         "status":  "invalid-smoke",
                         "scope":  "retry-skipped-common-settings-fastfail",
                         "inputEntries":  8,
                         "path":  "translations/trial-20260705-recheck-skipped-common-settings-fastfail1-batch.json",
-                        "notes":  "All tested common settings strings caused final smoke errors; new-game hit \"Error Loading User Settings\", so entries are treated as settings-serialization risk until safer route is proven."
+                        "notes":  "All tested common settings strings caused final smoke errors; new-game hit \"Error Loading User Settings\", so entries are treated as settings-serialization risk until safer route is proven.",
+                        "evidenceHandoff":  "20260723-composite-governance",
+                        "evidenceRetention":  "TextOnly"
                     }
                 ],
     "nextWork":  {
                      "priority":  [
                                       "Stop this pass: two game console command fast-fail batches both resolved to invalid-smoke with all entries rejected/unsafe for this attempt.",
                                       "Continue recheck-skipped work only on UI/CommonDisplay, keep skipping debug command-list / console-system tokens unless parser-safe evidence appears.",
-                                      "Continue using exact catalog Value + MethodToken + ILOffset; never use normalized known-texts.md/csv Original."
+                                      "Continue using exact catalog Value + MethodToken + ILOffset; never use a normalized temporary review-view Original."
                                   ],
                      "doNotUseAsBatchSource":  [
-                                                   "docs/review/known-texts.md Original",
-                                                   "docs/review/known-texts.csv Original"
+                                                   "temporary review-view CSV Original"
                                                ]
                  },
     "latestSparkAudit":  {
@@ -1620,8 +1749,10 @@
                                                       "crashDialogSeen":  false,
                                                       "settingsErrorSeen":  false,
                                                       "windowsErrorSeen":  false,
-                                                      "screenshot":  ".tmp/game-smoke.png",
-                                                      "note":  "After repairing Settings.xml polluted comments and rebuilding from cleaned maps, startup/main-menu smoke passed again with SettingsErrorSeen=false."
+                                                      "note":  "After repairing Settings.xml polluted comments and rebuilding from cleaned maps, startup/main-menu smoke passed again with SettingsErrorSeen=false.",
+                                                      "evidenceHandoff":  "20260723-composite-governance",
+                                                      "evidenceRetention":  "TextOnly"
                                                   }
-                         }
+                         },
+    "cleanupHandoff":  "20260723-composite-governance"
 }

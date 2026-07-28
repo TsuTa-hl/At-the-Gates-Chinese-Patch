@@ -16,17 +16,19 @@ public static class CatalogCommand
 
             var root = FindRepositoryRoot(Environment.CurrentDirectory);
             var options = ParseOptions(args.Skip(1).ToArray());
+            if (options.ContainsKey("markdown"))
+                throw new ArgumentException("--markdown is no longer supported; review views are CSV only.");
             var databasePath = Get(options, "database", Path.Combine(root, ".cache", "atg-catalog.sqlite"));
+            var reviewViewDirectory = Path.Combine(root, ".tmp", "review-views");
+            var defaultCsv = Path.Combine(reviewViewDirectory, "known-texts.csv");
             return args[0].ToLowerInvariant() switch
             {
-                "import" => Import(databasePath, Get(options, "input", Path.Combine(root, "docs", "review", "known-texts.csv")), !options.ContainsKey("append"), output),
+                "import" => Import(databasePath, Require(options, "input"), !options.ContainsKey("append"), output),
                 "export" => Export(databasePath,
-                    Get(options, "csv", Path.Combine(root, "docs", "review", "known-texts.csv")),
-                    Get(options, "markdown", Path.Combine(root, "docs", "review", "known-texts.md")), output),
+                    Get(options, "csv", defaultCsv), output),
                 "rebuild" => Rebuild(databasePath,
-                    Get(options, "input", Path.Combine(root, "docs", "review", "known-texts.csv")),
-                    Get(options, "csv", Path.Combine(root, "docs", "review", "known-texts.csv")),
-                    Get(options, "markdown", Path.Combine(root, "docs", "review", "known-texts.md")), output),
+                    Require(options, "input"),
+                    Get(options, "csv", defaultCsv), output),
                 "search" => Search(databasePath,
                     Get(options, "text", ""),
                     GetOptional(options, "source"),
@@ -52,20 +54,18 @@ public static class CatalogCommand
         return 0;
     }
 
-    private static int Export(string databasePath, string csvPath, string markdownPath, TextWriter output)
+    private static int Export(string databasePath, string csvPath, TextWriter output)
     {
         using var database = CatalogDatabase.Open(databasePath);
         database.Initialize();
         var exporter = new ReviewExporter(database);
-        exporter.ExportMarkdown(markdownPath);
         exporter.ExportCsv(csvPath);
         output.WriteLine($"Exported {database.CountOccurrences()} source occurrences.");
         output.WriteLine($"CSV: {Path.GetFullPath(csvPath)}");
-        output.WriteLine($"Markdown: {Path.GetFullPath(markdownPath)}");
         return 0;
     }
 
-    private static int Rebuild(string databasePath, string inputPath, string csvPath, string markdownPath, TextWriter output)
+    private static int Rebuild(string databasePath, string inputPath, string csvPath, TextWriter output)
     {
         var temporaryInput = Path.GetFullPath(inputPath);
         var csvOutput = Path.GetFullPath(csvPath);
@@ -79,7 +79,7 @@ public static class CatalogCommand
         try
         {
             var importExit = Import(databasePath, temporaryInput, replaceExisting: true, output);
-            return importExit == 0 ? Export(databasePath, csvPath, markdownPath, output) : importExit;
+            return importExit == 0 ? Export(databasePath, csvPath, output) : importExit;
         }
         finally
         {
@@ -130,6 +130,13 @@ public static class CatalogCommand
         return value;
     }
 
+    private static string Require(IReadOnlyDictionary<string, string?> options, string name)
+    {
+        if (!options.TryGetValue(name, out var value) || string.IsNullOrWhiteSpace(value))
+            throw new ArgumentException($"--{name} is required.");
+        return value;
+    }
+
     private static string? GetOptional(IReadOnlyDictionary<string, string?> options, string name)
     {
         if (!options.TryGetValue(name, out var value)) return null;
@@ -164,11 +171,11 @@ public static class CatalogCommand
     private static void WriteUsage(TextWriter output)
     {
         output.WriteLine("AtG.Catalog - generated localization catalog");
-        output.WriteLine("  import  [--input <known-texts.csv>] [--database <catalog.sqlite>] [--append]");
-        output.WriteLine("  export  [--database <catalog.sqlite>] [--csv <known-texts.csv>] [--markdown <known-texts.md>]");
+        output.WriteLine("  import  --input <source-occurrences.csv> [--database <catalog.sqlite>] [--append]");
+        output.WriteLine("  export  [--database <catalog.sqlite>] [--csv <known-texts.csv>]");
         output.WriteLine("  rebuild [all import/export options]");
         output.WriteLine("  search  --text <text> [--source <source-file-fragment>] [--limit <1-500>] [--database <catalog.sqlite>]");
         output.WriteLine("  stats   [--database <catalog.sqlite>]");
-        output.WriteLine("Defaults use .cache/atg-catalog.sqlite and docs/review generated views under the repository root.");
+        output.WriteLine("Defaults use .cache/atg-catalog.sqlite and transient .tmp/review-views outputs under the repository root.");
     }
 }

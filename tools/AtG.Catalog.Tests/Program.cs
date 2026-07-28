@@ -8,10 +8,11 @@ var tests = new (string Name, Action Body)[]
     ("translation status and evidence round-trip", StatusAndEvidenceRoundTrip),
     ("CSV parser accepts reordered multiline review columns", ReorderedMultilineCsvImports),
     ("generated review views preserve occurrence rows", GeneratedViewsPreserveOccurrences),
+    ("generated review CSV preserves multiline fields", GeneratedCsvPreservesMultilineFields),
     ("replacement import preserves semantic bindings and group evidence", ReplacementImportPreservesKnowledge),
-    ("generated markdown remains an AI-friendly source index", GeneratedMarkdownIsAiFriendly),
     ("catalog search prioritizes exact and normalized text", CatalogSearchPrioritizesMatches),
     ("CLI imports and exports generated catalog views", CliImportsAndExports),
+    ("CLI default review outputs are transient", CliDefaultsUseTransientReviewViews),
     ("schema contains required tables and indexes", SchemaContainsRequiredObjects),
 };
 
@@ -117,13 +118,12 @@ static void GeneratedViewsPreserveOccurrences()
     database.AddOccurrence(new SourceOccurrenceInput("a.dll", "SafeUI", "Duplicate", "重复", "Translated", "Reviewed", "", "DisplaySafe", "two", "token=2"));
 
     var csv = Path.Combine(fixture.Root, "known-texts.csv");
-    var markdown = Path.Combine(fixture.Root, "known-texts.md");
     new ReviewExporter(database).ExportCsv(csv);
-    new ReviewExporter(database).ExportMarkdown(markdown);
 
     Assert.Equal(3, File.ReadAllLines(csv).Length);
-    Assert.Contains("token=1", File.ReadAllText(markdown));
-    Assert.Contains("token=2", File.ReadAllText(markdown));
+    var text = File.ReadAllText(csv);
+    Assert.Contains("token=1", text);
+    Assert.Contains("token=2", text);
 }
 
 static void ReplacementImportPreservesKnowledge()
@@ -158,28 +158,23 @@ static void ReplacementImportPreservesKnowledge()
     Assert.Equal("scenario:stable", reopened.GetEvidence(groupId).Single().Reference);
 }
 
-static void GeneratedMarkdownIsAiFriendly()
+static void GeneratedCsvPreservesMultilineFields()
 {
     using var fixture = new CatalogFixture();
     using var database = CatalogDatabase.Open(fixture.DatabasePath);
     database.Initialize();
     database.AddOccurrence(new SourceOccurrenceInput(
-        "source\\A.dll", "DisplaySafe", "Line one\nLine two", "第一行\n第二行",
+        "source\\A.dll", "DisplaySafe", "Line one\nLine two", "Translated text",
         "Translated", "Translated", "", "DisplaySafe", "note", "token=7"));
 
-    var markdown = Path.Combine(fixture.Root, "known-texts.md");
-    new ReviewExporter(database).ExportMarkdown(markdown);
-    var text = File.ReadAllText(markdown);
+    var csv = Path.Combine(fixture.Root, "known-texts.csv");
+    new ReviewExporter(database).ExportCsv(csv);
+    var text = File.ReadAllText(csv);
 
-    Assert.Contains("# Known Texts AI Index", text);
-    Assert.Contains("Query the SQLite catalog first", text);
-    Assert.Contains("Use this Markdown for grouped source context", text);
-    Assert.DoesNotContain("Use this Markdown first for agent/workflow text matching", text);
-    Assert.Contains("## Source: source\\A.dll", text);
-    Assert.Contains("SourceOccurrenceId:", text);
-    Assert.Contains("SemanticGroupId:", text);
-    Assert.Contains("Original:\n```text\nLine one\nLine two\n```", text.Replace("\r\n", "\n"));
-    Assert.Contains("Translation:\n```text\n第一行\n第二行\n```", text.Replace("\r\n", "\n"));
+    Assert.Contains("SourceFile", text);
+    Assert.Contains("token=7", text);
+    Assert.Contains("Line one", text);
+    Assert.Contains("Line two", text);
 }
 
 static void CatalogSearchPrioritizesMatches()
@@ -223,19 +218,49 @@ static void CliImportsAndExports()
         ReviewCsv.Header,
         ReviewCsv.Row("source\\A.dll", "SafeUI", "Hello", "你好", "Translated", "Reviewed", "", "DisplaySafe", "", "token=1"));
     var csv = Path.Combine(fixture.Root, "export", "known-texts.csv");
-    var markdown = Path.Combine(fixture.Root, "export", "known-texts.md");
     var stdout = new StringWriter();
     var stderr = new StringWriter();
 
     var importExit = CatalogCommand.Run(["import", "--input", input, "--database", fixture.DatabasePath], stdout, stderr);
-    var exportExit = CatalogCommand.Run(["export", "--database", fixture.DatabasePath, "--csv", csv, "--markdown", markdown], stdout, stderr);
+    var exportExit = CatalogCommand.Run(["export", "--database", fixture.DatabasePath, "--csv", csv], stdout, stderr);
 
     Assert.Equal(0, importExit);
     Assert.Equal(0, exportExit);
     Assert.Equal(true, File.Exists(fixture.DatabasePath));
     Assert.Equal(true, File.Exists(csv));
-    Assert.Equal(true, File.Exists(markdown));
     Assert.Contains("Imported 1 source occurrences", stdout.ToString());
+    Assert.Equal(string.Empty, stderr.ToString());
+}
+
+static void CliDefaultsUseTransientReviewViews()
+{
+    using var fixture = new CatalogFixture();
+    var input = fixture.WriteCsv(
+        ReviewCsv.Header,
+        ReviewCsv.Row("source\\A.dll", "SafeUI", "Hello", "你好", "Translated", "Reviewed", "", "DisplaySafe", "", "token=1"));
+    var stdout = new StringWriter();
+    var stderr = new StringWriter();
+    var previousDirectory = Environment.CurrentDirectory;
+    try
+    {
+        Directory.SetCurrentDirectory(fixture.Root);
+        var importExit = CatalogCommand.Run(
+            ["import", "--input", input, "--database", fixture.DatabasePath], stdout, stderr);
+        var exportExit = CatalogCommand.Run(
+            ["export", "--database", fixture.DatabasePath], stdout, stderr);
+
+        Assert.Equal(0, importExit);
+        Assert.Equal(0, exportExit);
+    }
+    finally
+    {
+        Directory.SetCurrentDirectory(previousDirectory);
+    }
+
+    var outputDirectory = Path.Combine(fixture.Root, ".tmp", "review-views");
+    Assert.Equal(true, File.Exists(Path.Combine(outputDirectory, "known-texts.csv")));
+    Assert.Equal(false, File.Exists(Path.Combine(outputDirectory, "known-texts.md")));
+    Assert.Equal(false, Directory.Exists(Path.Combine(fixture.Root, "docs", "review")));
     Assert.Equal(string.Empty, stderr.ToString());
 }
 

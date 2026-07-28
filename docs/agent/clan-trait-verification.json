@@ -1,0 +1,1927 @@
+{
+    "SchemaVersion":  1,
+    "GeneratedAt":  "2026-07-27T18:53:38.8838012Z",
+    "GeneratedFrom":  "C:\\Users\\98538\\Documents\\AtTheGateChinese\\source\\Content\\Config\\Primary\\ClanTraits.original.xml",
+    "NameMap":  "C:\\Users\\98538\\Documents\\AtTheGateChinese\\translations\\config-node-strings.json",
+    "PatchXml":  "C:\\Users\\98538\\Documents\\AtTheGateChinese\\patch\\Content\\Config\\Primary\\ClanTraits.xml",
+    "EvidenceRetentionPolicy":  "TextOnly; temporary visual evidence is summarized by cleanup handoffs.",
+    "TotalClanTraits":  106,
+    "PersonalityCount":  92,
+    "NonPersonalityCount":  14,
+    "StatusSummary":  {
+                          "Verified":  95,
+                          "Partial":  0,
+                          "Failed":  0,
+                          "Unverified":  11
+                      },
+    "Traits":  [
+                   {
+                       "ID":  "TRAIT_Adaptable",
+                       "OriginalName":  "Adaptable",
+                       "Translation":  "适应力强",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [DKK-XXH]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run26-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-26 new-world six-point hover: 适应力强 title/body visibly Chinese; no configured residuals.",
+                       "VerifiedAt":  "2026-07-27T00:00:00Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Adventurous",
+                       "OriginalName":  "Adventurous",
+                       "Translation":  "爱冒险",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "TranslatedInConfig",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [FII-JKZ]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run-fii-final-crafting",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "FII-JKZ same-save retest: title and body are Chinese; old spacing and residual English nodes are absent.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Afraid_of_Animals",
+                       "OriginalName":  "Afraid of Animals",
+                       "Translation":  "怕动物",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [DGK-OCG]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run17-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run 17 same-save retest: card_1_trait_lower visibly renders 战力对骑乘单位减半 and 职业，所属为畜牧纪律; final draw trace has zero VS, Mounted, or in the residuals. The source property ID Mounted remains unchanged in ClanTraits XML.",
+                       "VerifiedAt":  "2026-07-26T23:15:00.5221399Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Afraid_of_Fire",
+                       "OriginalName":  "Afraid of Fire",
+                       "Translation":  "怕火",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [XF-CB]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run21-retest-disciplines",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Same-save replay after adding HONOR/METALWORKING/DISCOVERY rich-text fragments rendered 怕火 with no in the; lower trait point passed. Secondary slots were empty in this layout.",
+                       "VerifiedAt":  "2026-07-27T16:04:56.1757633Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Afraid_of_Water",
+                       "OriginalName":  "Afraid of Water",
+                       "Translation":  "怕水",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [VNV-WKZ]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260726-clan-trait-run14-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run 14 fixed-save retest: 怕水 tooltip is visually Chinese; trace has zero seafaring nodes and draws 航海.",
+                       "VerifiedAt":  "2026-07-26T12:10:16.2488322Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Aggressive",
+                       "OriginalName":  "Aggressive",
+                       "Translation":  "好斗",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ZBG-OWS]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run18-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-18 new-game six-point tooltips visually and in final trace Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_All_Thumbs",
+                       "OriginalName":  "All Thumbs",
+                       "Translation":  "笨手笨脚",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ZLJ-ESX]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run16-final-crafting",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-16 same-save retest after CRAFTING profession/discipline fragment: title and visible body are Chinese; no in the residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Apathetic",
+                       "OriginalName":  "Apathetic",
+                       "Translation":  "冷漠",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [CMY-APT]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260725-clan-trait-discovery-run2",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "新游戏第 2 轮：名称“冷漠”及三条效果完整可见，未见英文残留。",
+                       "VerifiedAt":  "2026-07-25T02:08:08.2695831Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Ascetic",
+                       "OriginalName":  "Ascetic",
+                       "Translation":  "苦行",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "JMA-YPM",
+                       "EvidenceHandoff":  "20260723-clan-trait-coverage",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Runtime final plain-text fragment rule maps Content to 满足; visually verified on the Clan Screen.",
+                       "VerifiedAt":  "2026-07-23T20:24:00.3315270Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Archers",
+                       "OriginalName":  "Archers",
+                       "Translation":  "弓箭手",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Unverified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  false,
+                       "VerificationSave":  null,
+                       "EvidenceHandoff":  null,
+                       "EvidenceRetention":  null,
+                       "Notes":  null,
+                       "VerifiedAt":  null
+                   },
+                   {
+                       "ID":  "TRAIT_Attentive",
+                       "OriginalName":  "Attentive",
+                       "Translation":  "专注",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ZBG-OWS]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run18-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-18 new-game six-point tooltips visually and in final trace Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Boisterous",
+                       "OriginalName":  "Boisterous",
+                       "Translation":  "喧闹",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [XQX-WOF]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "稳定图标坐标 1182,666；直接特质悬浮提示显示喧闹且无英文残留。",
+                       "VerifiedAt":  "2026-07-22T01:59:30.4452284Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Bow_Legged",
+                       "OriginalName":  "Bow-Legged",
+                       "Translation":  "罗圈腿",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [QKT-QZF]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run45-bowlegged-retest",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-45 同存档六点通过；罗圈腿完整 1600×650 截图正文仅中文，where they\u0027re neither/nor the 已消除，trace 无配置残留。",
+                       "VerifiedAt":  "2026-07-27T17:41:19.0062013Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Brown_Thumb",
+                       "OriginalName":  "Brown Thumb",
+                       "Translation":  "拙于园艺",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [KDG-LYR]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run18-calibrated",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "KDG-LYR corrected-coordinate retest: card_3_trait_lower visibly renders 职业，所属为农耕纪律; final draw trace has zero `in the` residuals and preserves the AGRICULTURE concept link.",
+                       "VerifiedAt":  "2026-07-27T00:08:42.6251007Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Calm",
+                       "OriginalName":  "Calm",
+                       "Translation":  "冷静",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [FII-JKZ]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run-fii-final-crafting",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "FII-JKZ same-save retest: title and body are Chinese; old spacing and residual English nodes are absent.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Charismatic",
+                       "OriginalName":  "Charismatic",
+                       "Translation":  "有魅力",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [PLO-IGS]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "card_2_trait_lower: visual hover fully Chinese after current installed build.",
+                       "VerifiedAt":  "2026-07-22T17:14:01.6048227Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Competitive",
+                       "OriginalName":  "Competitive",
+                       "Translation":  "好胜",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [IRM-LMH]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run15-lower-candidates",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-15 lower-card tooltip visually and in final trace localized; secondary slots were empty and uncounted.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Confident",
+                       "OriginalName":  "Confident",
+                       "Translation":  "自信",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [JQL-THW]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run19-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-19 new-game six-point tooltips identified from final draw trace and visually Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Corrupt",
+                       "OriginalName":  "Corrupt",
+                       "Translation":  "腐败",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ARH-KDB]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run23-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-23 all six points passed in 15.586 seconds; visual crops and trace were Chinese with no configured trait residual.",
+                       "VerifiedAt":  "2026-07-27T16:11:02.0054442Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Craven",
+                       "OriginalName":  "Craven",
+                       "Translation":  "怯懦",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "TranslatedInConfig",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [JQL-THW]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run19-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-19 new-game six-point tooltips identified from final draw trace and visually Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Creative",
+                       "OriginalName":  "Creative",
+                       "Translation":  "有创造力",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [SBY-HLL]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "固定存档主菜单读档后，稳定特质槽位悬停显示有创造力；提示正文无英文、裸键或未解析标签。",
+                       "VerifiedAt":  "2026-07-22T18:35:06.0162174Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Curious",
+                       "OriginalName":  "Curious",
+                       "Translation":  "好奇",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [PLO-IGS]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "card_1_trait_upper: visual hover fully Chinese after current installed build.",
+                       "VerifiedAt":  "2026-07-22T17:14:01.0742285Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Dabbler",
+                       "OriginalName":  "Dabbler",
+                       "Translation":  "涉猎广",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [RKG-SPT]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run17-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-17 new-game six-point tooltips visually and in final trace Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Demanding",
+                       "OriginalName":  "Demanding",
+                       "Translation":  "苛求",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ARH-KDB]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run23-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-23 all six points passed in 15.586 seconds; visual crops and trace were Chinese with no configured trait residual.",
+                       "VerifiedAt":  "2026-07-27T16:11:01.8332117Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Diggers",
+                       "OriginalName":  "Diggers",
+                       "Translation":  "掘土者",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "JMA-YPM",
+                       "EvidenceHandoff":  "20260723-clan-trait-coverage",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Card 2 upper trait point (1331,610), visual tooltip verified; non-personality trait.",
+                       "VerifiedAt":  "2026-07-23T20:34:14.3883163Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Disfigured",
+                       "OriginalName":  "Disfigured",
+                       "Translation":  "毁容",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [YSP-FFU]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "稳定图标坐标 1483,639；直接特质悬浮提示显示毁容，所有可见正文与高亮词均为中文。",
+                       "VerifiedAt":  "2026-07-22T03:34:51.5372728Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Disgraced",
+                       "OriginalName":  "Disgraced",
+                       "Translation":  "失誉",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [PLO-IGS]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "card_2_trait_upper: visual hover fully Chinese after current installed build.",
+                       "VerifiedAt":  "2026-07-22T17:14:01.4657976Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Dramatic",
+                       "OriginalName":  "Dramatic",
+                       "Translation":  "爱夸张",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "new-world run-104-current",
+                       "EvidenceHandoff":  "20260727-clan-trait-run104-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-104 new-world lower-point hover: Dramatic title and full body visibly Chinese; complete 1600x650 capture with no configured residuals.",
+                       "VerifiedAt":  "2026-07-27T23:18:00Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Dutiful",
+                       "OriginalName":  "Dutiful",
+                       "Translation":  "尽责",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [SBY-HLL]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Main-menu fixed-save test: the Dutiful tooltip rendered the former No fragment as Chinese 无; no raw key or English residual was visible.",
+                       "VerifiedAt":  "2026-07-22T23:12:56.9222352Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Eager",
+                       "OriginalName":  "Eager",
+                       "Translation":  "热切",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [KDW-EPG]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260726-clan-trait-run13-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run 13 fixed-save retest: 热切 lower-card title and visible effects are Chinese with intact concept links.",
+                       "VerifiedAt":  "2026-07-26T11:56:11.2164905Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Easily_Cold",
+                       "OriginalName":  "Easily Cold",
+                       "Translation":  "畏寒",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [LJV-CWC]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run16-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "card_3_trait_lower final installed fixed-save retest: visible final node is Chinese through 如果无法在冬季留在; no unable, spend the winter, or raw key drawn.",
+                       "VerifiedAt":  "2026-07-26T21:29:09.6693372Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Efficient",
+                       "OriginalName":  "Efficient",
+                       "Translation":  "高效",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [BBU-CFN]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "固定存档主菜单读档后，稳定槽位直接悬停显示高效；提示正文与效果均无英文、裸键或未解析标签。",
+                       "VerifiedAt":  "2026-07-22T13:47:41.1536816Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Eloquent",
+                       "OriginalName":  "Eloquent",
+                       "Translation":  "善辩",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [VRB-PGL]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260726-clan-trait-run12-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run 12 fixed-save retest: 善辩 lower-card title and every visible effect line are Chinese.",
+                       "VerifiedAt":  "2026-07-26T11:46:58.1116200Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Envious",
+                       "OriginalName":  "Envious",
+                       "Translation":  "善妒",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [JEV-MCR]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run15",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "card_1_trait_lower: visual hover title and all three effect lines are Chinese; no English or raw key visible.",
+                       "VerifiedAt":  "2026-07-26T20:53:46.6015561Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Epicure",
+                       "OriginalName":  "Epicure",
+                       "Translation":  "享乐者",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [FFB-OXW]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run43-epicure-full",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "修复后同存档完整复测：享乐者 tooltip 使用 1600×650 完整截图，正文和效果全为中文；trace 不再出现“被迫从事n”、forced/unable/winter 残留。",
+                       "VerifiedAt":  "2026-07-27T00:00:00Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Esteemed",
+                       "OriginalName":  "Esteemed",
+                       "Translation":  "受敬重",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ZLJ-ESX]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run16-final-crafting",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-16 same-save retest after CRAFTING profession/discipline fragment: title and visible body are Chinese; no in the residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Explorers",
+                       "OriginalName":  "Explorers",
+                       "Translation":  "探索者",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Unverified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  false,
+                       "VerificationSave":  null,
+                       "EvidenceHandoff":  null,
+                       "EvidenceRetention":  null,
+                       "Notes":  null,
+                       "VerifiedAt":  null
+                   },
+                   {
+                       "ID":  "TRAIT_Farmers",
+                       "OriginalName":  "Farmers",
+                       "Translation":  "农夫",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Unverified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  false,
+                       "VerificationSave":  null,
+                       "EvidenceHandoff":  null,
+                       "EvidenceRetention":  null,
+                       "Notes":  null,
+                       "VerifiedAt":  null
+                   },
+                   {
+                       "ID":  "TRAIT_Fast_Learner",
+                       "OriginalName":  "Fast Learner",
+                       "Translation":  "学得快",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [SBY-HLL]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "固定存档主菜单读档后，稳定特质槽位悬停显示学得快；提示正文无英文、裸键或未解析标签。",
+                       "VerifiedAt":  "2026-07-22T18:35:07.4364629Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Fastidious",
+                       "OriginalName":  "Fastidious",
+                       "Translation":  "挑剔",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [KRQ-HYY]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260725-clan-trait-discovery-run7",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-7 lower-card hover: name and all five effect lines visibly Chinese; no trace or screenshot residual.",
+                       "VerifiedAt":  "2026-07-25T02:51:27.2601750Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Fecund",
+                       "OriginalName":  "Fecund",
+                       "Translation":  "多产",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [FII-JKZ]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run-fii-final-crafting",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "FII-JKZ same-save retest: title and body are Chinese; old spacing and residual English nodes are absent.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Filthy",
+                       "OriginalName":  "Filthy",
+                       "Translation":  "肮脏",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [YSP-FFU]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "稳定图标坐标 1331,639；运行时文本和直接悬浮截图确认标题肮脏，所有可见正文与高亮词均为中文。",
+                       "VerifiedAt":  "2026-07-22T04:07:14.3599490Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Frail",
+                       "OriginalName":  "Frail",
+                       "Translation":  "虚弱",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [BVT-LCL]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Fixed-save tooltip visually checked; no raw key, English fragment, or unresolved tag.",
+                       "VerifiedAt":  "2026-07-21T04:07:06.2058667Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Gatherers",
+                       "OriginalName":  "Gatherers",
+                       "Translation":  "采集者",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Unverified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  false,
+                       "VerificationSave":  null,
+                       "EvidenceHandoff":  null,
+                       "EvidenceRetention":  null,
+                       "Notes":  null,
+                       "VerifiedAt":  null
+                   },
+                   {
+                       "ID":  "TRAIT_Gentle",
+                       "OriginalName":  "Gentle",
+                       "Translation":  "温和",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "新世界 run-58-current",
+                       "EvidenceHandoff":  "20260727-clan-trait-run58-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-58 完整 1600×650 截图；温和 tooltip 边框和正文完整、无英文残留。",
+                       "VerifiedAt":  "2026-07-27T18:14:03.6047139Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Gluttonous",
+                       "OriginalName":  "Gluttonous",
+                       "Translation":  "贪食",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [IRM-LMH]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run15-lower-candidates",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-15 lower-card tooltip visually and in final trace localized; secondary slots were empty and uncounted.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Greedy",
+                       "OriginalName":  "Greedy",
+                       "Translation":  "贪婪",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [TYP-EOO]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run20-typ-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Current-package fixed-save replay passed all six points; runtime title 贪婪 was Chinese with no configured trait residual.",
+                       "VerifiedAt":  "2026-07-27T15:53:36.9641033Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Green_Thumb",
+                       "OriginalName":  "Green Thumb",
+                       "Translation":  "园艺能手",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ZLJ-ESX]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run16-final-crafting",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-16 same-save retest after CRAFTING profession/discipline fragment: title and visible body are Chinese; no in the residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Gregarious",
+                       "OriginalName":  "Gregarious",
+                       "Translation":  "合群",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [HAV-BIV]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260725-clan-trait-discovery-run3",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "新游戏第 3 轮：名称“合群”与全部可见效果为中文。",
+                       "VerifiedAt":  "2026-07-25T02:16:20.4255513Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Haggler",
+                       "OriginalName":  "Haggler",
+                       "Translation":  "会砍价",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [SBY-HLL]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "固定存档主菜单读档后，稳定特质槽位悬停显示会砍价；提示正文无英文、裸键或未解析标签。",
+                       "VerifiedAt":  "2026-07-22T18:35:05.3893743Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Handy",
+                       "OriginalName":  "Handy",
+                       "Translation":  "手巧",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [EZN-YZD]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run-ezn-demanding-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "EZN-YZD fixed-save six-point run: observed tooltip title/body Chinese and no historical Angry/Obsessed residual; Demanding was not present in this layout.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Herder",
+                       "OriginalName":  "Herder",
+                       "Translation":  "牧人",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [VRB-PGL]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260726-clan-trait-run12-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run 12 fixed-save retest: 牧人 tooltip is visually Chinese; trace has zero forced into a or outside of nodes and draws 被迫从事 plus ，且不在.",
+                       "VerifiedAt":  "2026-07-26T11:46:58.2773401Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Hillmen",
+                       "OriginalName":  "Hillmen",
+                       "Translation":  "山地人",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [DKK-XXH]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run26-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-26 new-world six-point hover: 山地人 title/body visibly Chinese; no configured residuals.",
+                       "VerifiedAt":  "2026-07-27T00:00:00Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Hoarder",
+                       "OriginalName":  "Hoarder",
+                       "Translation":  "囤积者",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [FWR-OFC]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run25-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-25 all six points passed; current crop visibly renders 囤积者 and trace has no configured trait residual.",
+                       "VerifiedAt":  "2026-07-27T16:21:27.0124077Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Hunters",
+                       "OriginalName":  "Hunters",
+                       "Translation":  "猎人",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Unverified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  false,
+                       "VerificationSave":  null,
+                       "EvidenceHandoff":  null,
+                       "EvidenceRetention":  null,
+                       "Notes":  null,
+                       "VerifiedAt":  null
+                   },
+                   {
+                       "ID":  "TRAIT_Imaginative",
+                       "OriginalName":  "Imaginative",
+                       "Translation":  "富想象",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "new-world run-107-current",
+                       "EvidenceHandoff":  "20260727-clan-trait-run107-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-107 new-world card_3_secondary hover: Imaginative title and full body visibly Chinese; complete 1600x650 capture with no configured residuals.",
+                       "VerifiedAt":  "2026-07-27T23:48:00Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Impatient",
+                       "OriginalName":  "Impatient",
+                       "Translation":  "急躁",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [CMY-APT]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260725-clan-trait-discovery-run2",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "新游戏第 2 轮：名称“急躁”及两条效果完整可见，未见英文残留。",
+                       "VerifiedAt":  "2026-07-25T02:08:22.6120429Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Impulsive",
+                       "OriginalName":  "Impulsive",
+                       "Translation":  "冲动",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [BVT-LCL]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Fixed-save tooltip visually checked; no raw key, English fragment, or unresolved tag.",
+                       "VerifiedAt":  "2026-07-21T04:07:06.2058667Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Independent",
+                       "OriginalName":  "Independent",
+                       "Translation":  "独立",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ZBG-OWS]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run18-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-18 new-game six-point tooltips visually and in final trace Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Intimidating",
+                       "OriginalName":  "Intimidating",
+                       "Translation":  "威吓",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [JQL-THW]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run19-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-19 new-game six-point tooltips identified from final draw trace and visually Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Lazy",
+                       "OriginalName":  "Lazy",
+                       "Translation":  "懒惰",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [BJN-ERN]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Fixed-save direct trait hover: tooltip title 懒惰 and body visually contains no raw key or English residual.",
+                       "VerifiedAt":  "2026-07-21T18:17:35.5806208Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Leperous",
+                       "OriginalName":  "Leperous",
+                       "Translation":  "麻风",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "新世界 run-74-current",
+                       "EvidenceHandoff":  "20260727-clan-trait-run74-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-74 完整 1600×650 截图；麻风 tooltip 边框、标题和正文完整，无英文残留。",
+                       "VerifiedAt":  "2026-07-27T18:53:38.8687979Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Local",
+                       "OriginalName":  "Local",
+                       "Translation":  "本地人",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ZBG-OWS]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run18-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-18 new-game six-point tooltips visually and in final trace Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Loggers",
+                       "OriginalName":  "Loggers",
+                       "Translation":  "伐木工",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "JMA-YPM",
+                       "EvidenceHandoff":  "20260723-clan-trait-coverage",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Card 3 upper trait point (1483,610), visual tooltip verified; non-personality trait.",
+                       "VerifiedAt":  "2026-07-23T20:34:16.5601964Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Low_Fertility",
+                       "OriginalName":  "Low Fertility",
+                       "Translation":  "低生育",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ZLJ-ESX]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run16-final-crafting",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-16 same-save retest after CRAFTING profession/discipline fragment: title and visible body are Chinese; no in the residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Loyal",
+                       "OriginalName":  "Loyal",
+                       "Translation":  "忠诚",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [FII-JKZ]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run-fii-final-crafting",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "FII-JKZ same-save retest: title and body are Chinese; old spacing and residual English nodes are absent.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Marshmen",
+                       "OriginalName":  "Marshmen",
+                       "Translation":  "沼泽民",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [KDW-EPG]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260726-clan-trait-run13-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run 13 fixed-save retest: 沼泽民 title and every visible terrain effect are Chinese; trace has zero No extra nodes and draws 无额外.",
+                       "VerifiedAt":  "2026-07-26T11:56:11.0509445Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Meek",
+                       "OriginalName":  "Meek",
+                       "Translation":  "温顺",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ZLJ-ESX]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run16-final-crafting",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-16 same-save retest after CRAFTING profession/discipline fragment: title and visible body are Chinese; no in the residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Miners",
+                       "OriginalName":  "Miners",
+                       "Translation":  "矿工",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Unverified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  false,
+                       "VerificationSave":  null,
+                       "EvidenceHandoff":  null,
+                       "EvidenceRetention":  null,
+                       "Notes":  null,
+                       "VerifiedAt":  null
+                   },
+                   {
+                       "ID":  "TRAIT_Miserable",
+                       "OriginalName":  "Miserable",
+                       "Translation":  "苦闷",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "TranslatedInConfig",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [SYI-ITT]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-miserable-final-connector",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "SYI-ITT fixed-save mood-detail retest: final draws are Eberhardt为不悦, 默认, 为满足, （苦闷特质）, and 当不悦时……; no Default, Content, Trait, When, or English is connector remains. Reused RecalcMood runtime-display-template and the entry-specific BuildDescription_Mood IL rewrite.",
+                       "VerifiedAt":  "2026-07-27T01:23:18Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Nervous",
+                       "OriginalName":  "Nervous",
+                       "Translation":  "紧张",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "JMA-YPM",
+                       "EvidenceHandoff":  "20260723-clan-trait-coverage",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Card 1 upper trait point (1182,610), visual tooltip verified.",
+                       "VerifiedAt":  "2026-07-23T20:34:13.5104425Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Nomadic",
+                       "OriginalName":  "Nomadic",
+                       "Translation":  "游牧",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "新世界 run-58-current",
+                       "EvidenceHandoff":  "20260727-clan-trait-run58-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-58 完整 1600×650 截图；游牧 tooltip 边框和正文完整、动态职业/畜牧链接无英文残留。",
+                       "VerifiedAt":  "2026-07-27T18:14:04.1686518Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Northmen",
+                       "OriginalName":  "Northmen",
+                       "Translation":  "北地人",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [JQL-THW]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run19-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-19 new-game six-point tooltips identified from final draw trace and visually Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Obedient",
+                       "OriginalName":  "Obedient",
+                       "Translation":  "服从",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [RKG-SPT]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run17-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-17 new-game six-point tooltips visually and in final trace Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Obsessive",
+                       "OriginalName":  "Obsessive",
+                       "Translation":  "执念",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [WR-STV]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run28-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-28 new-world six-point hover: 执念 title/body visibly Chinese; final runtime trace had no configured residual.",
+                       "VerifiedAt":  "2026-07-27T00:00:00Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Obstinate",
+                       "OriginalName":  "Obstinate",
+                       "Translation":  "顽固",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [NPE-JYK]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260725-clan-trait-discovery-run8",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-8 lower-card hover: title and all visible effect lines Chinese; no residual English/raw key.",
+                       "VerifiedAt":  "2026-07-25T02:54:40.9482665Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Paranoid",
+                       "OriginalName":  "Paranoid",
+                       "Translation":  "多疑",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [FII-JKZ]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run-fii-final-crafting",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "FII-JKZ same-save retest: title and body are Chinese; old spacing and residual English nodes are absent.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Passionate",
+                       "OriginalName":  "Passionate",
+                       "Translation":  "热情",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [RKG-SPT]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run17-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-17 new-game six-point tooltips visually and in final trace Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Peddlers",
+                       "OriginalName":  "Peddlers",
+                       "Translation":  "小贩",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ADJ-XMM]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Random new-game discovery: stable card 1 upper trait tooltip displayed 小贩 with fully Chinese body and effect text; no raw key, English residual, or unresolved rich-text tag.",
+                       "VerifiedAt":  "2026-07-22T23:55:40.8580897Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Perceptive",
+                       "OriginalName":  "Perceptive",
+                       "Translation":  "敏锐",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ARH-KDB]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run23-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-23 all six points passed in 15.586 seconds; visual crops and trace were Chinese with no configured trait residual.",
+                       "VerifiedAt":  "2026-07-27T16:11:02.1264716Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Petty",
+                       "OriginalName":  "Petty",
+                       "Translation":  "小气",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [EZN-YZD]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run-ezn-demanding-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "EZN-YZD fixed-save six-point run: observed tooltip title/body Chinese and no historical Angry/Obsessed residual; Demanding was not present in this layout.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Ranchers",
+                       "OriginalName":  "Ranchers",
+                       "Translation":  "牧场主",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Unverified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  false,
+                       "VerificationSave":  null,
+                       "EvidenceHandoff":  null,
+                       "EvidenceRetention":  null,
+                       "Notes":  null,
+                       "VerifiedAt":  null
+                   },
+                   {
+                       "ID":  "TRAIT_Reapers",
+                       "OriginalName":  "Reapers",
+                       "Translation":  "收割者",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Unverified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  false,
+                       "VerificationSave":  null,
+                       "EvidenceHandoff":  null,
+                       "EvidenceRetention":  null,
+                       "Notes":  null,
+                       "VerifiedAt":  null
+                   },
+                   {
+                       "ID":  "TRAIT_Reclusive",
+                       "OriginalName":  "Reclusive",
+                       "Translation":  "离群索居",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [IAR-IBO]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260726-clan-trait-run10-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run 10 fixed-save retest: title and every effect line are visibly Chinese; trace has zero commit Theft, engage in Brawls, or on the same residuals.",
+                       "VerifiedAt":  "2026-07-26T11:29:07.3207687Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Reserved",
+                       "OriginalName":  "Reserved",
+                       "Translation":  "寡言",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [EZN-YZD]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run-ezn-demanding-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "EZN-YZD fixed-save six-point run: observed tooltip title/body Chinese and no historical Angry/Obsessed residual; Demanding was not present in this layout.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Resourceful",
+                       "OriginalName":  "Resourceful",
+                       "Translation":  "足智多谋",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [BBU-CFN]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "固定存档主菜单读档后，稳定槽位直接悬停显示足智多谋；提示正文与效果均无英文、裸键或未解析标签。",
+                       "VerifiedAt":  "2026-07-22T13:47:43.0291687Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Rivermen",
+                       "OriginalName":  "Rivermen",
+                       "Translation":  "河民",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [BBU-CFN]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "固定存档主菜单读档后，稳定槽位直接悬停显示河民；提示正文与效果均无英文、裸键或未解析标签。",
+                       "VerifiedAt":  "2026-07-22T13:47:42.0513039Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Rowdy",
+                       "OriginalName":  "Rowdy",
+                       "Translation":  "粗野",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [IRM-LMH]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run15-lower-candidates",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-15 lower-card tooltip visually and in final trace localized; secondary slots were empty and uncounted.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Rustic",
+                       "OriginalName":  "Rustic",
+                       "Translation":  "乡野",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "新世界 run-59-current",
+                       "EvidenceHandoff":  "20260727-clan-trait-run59-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-59 完整 1600×650 截图；乡野 tooltip 边框、标题和正文完整，无英文残留。",
+                       "VerifiedAt":  "2026-07-27T18:16:18.0811669Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Sensitive",
+                       "OriginalName":  "Sensitive",
+                       "Translation":  "敏感",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [RKG-SPT]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run17-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-17 new-game six-point tooltips visually and in final trace Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Smithing_Lineage",
+                       "OriginalName":  "Smithing Lineage",
+                       "Translation":  "锻造世家",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [KYH-MMW]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run24-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-24 visible tooltip 锻造世家 was Chinese; first lower crop and trace showed the localized profession/discipline connector with no configured residual.",
+                       "VerifiedAt":  "2026-07-27T16:18:02.8952409Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Squeamish",
+                       "OriginalName":  "Squeamish",
+                       "Translation":  "易反胃",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [HAV-BIV]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260725-clan-trait-discovery-run3",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "新游戏第 3 轮：名称“易反胃”与全部可见效果为中文。",
+                       "VerifiedAt":  "2026-07-25T02:16:20.5405770Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Stoic",
+                       "OriginalName":  "Stoic",
+                       "Translation":  "坚忍",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [HW-HOJ]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run39-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-39 new-world lower candidate: 坚忍 title and visible effect lines were visually Chinese; final runtime trace had no configured residual.",
+                       "VerifiedAt":  "2026-07-27T00:00:00Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Strong",
+                       "OriginalName":  "Strong",
+                       "Translation":  "强壮",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [APX-LDH]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run27-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-27 new-world lower candidate: 强壮 title and all visible effect lines were visually Chinese; final runtime trace had no configured residual.",
+                       "VerifiedAt":  "2026-07-27T00:00:00Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Stubborn",
+                       "OriginalName":  "Stubborn",
+                       "Translation":  "固执",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [BVT-LCL]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260723-composite-governance",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Fixed-save tooltip visually checked after runtime fragment patch; the former on the same residual is now translated as 位于同一。",
+                       "VerifiedAt":  "2026-07-21T07:27:23.0626898Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Sullen",
+                       "OriginalName":  "Sullen",
+                       "Translation":  "阴沉",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [ZLJ-ESX]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run16-final-crafting",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-16 same-save retest after CRAFTING profession/discipline fragment: title and visible body are Chinese; no in the residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Surveyors",
+                       "OriginalName":  "Surveyors",
+                       "Translation":  "测绘员",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Unverified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  false,
+                       "VerificationSave":  null,
+                       "EvidenceHandoff":  null,
+                       "EvidenceRetention":  null,
+                       "Notes":  null,
+                       "VerifiedAt":  null
+                   },
+                   {
+                       "ID":  "TRAIT_Thorough",
+                       "OriginalName":  "Thorough",
+                       "Translation":  "细致",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "新世界 run-71-current",
+                       "EvidenceHandoff":  "20260727-clan-trait-run71-current",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-71 完整 1600×650 截图；细致 tooltip 边框、标题和正文完整，无英文残留。",
+                       "VerifiedAt":  "2026-07-27T18:41:08.9714264Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Tough",
+                       "OriginalName":  "Tough",
+                       "Translation":  "坚韧",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [CMY-APT]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260725-clan-trait-discovery-retest-creative-3",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "固定存档回归：名称“坚韧”与“伤害战斗中承受减半”可见；同轮确认有创造力列表标点已为中文。",
+                       "VerifiedAt":  "2026-07-25T02:05:49.9855220Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Trappers",
+                       "OriginalName":  "Trappers",
+                       "Translation":  "陷阱猎人",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Unverified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  false,
+                       "VerificationSave":  null,
+                       "EvidenceHandoff":  null,
+                       "EvidenceRetention":  null,
+                       "Notes":  null,
+                       "VerifiedAt":  null
+                   },
+                   {
+                       "ID":  "TRAIT_Vigorous",
+                       "OriginalName":  "Vigorous",
+                       "Translation":  "精力旺盛",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [JQL-THW]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run19-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-19 new-game six-point tooltips identified from final draw trace and visually Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Violent",
+                       "OriginalName":  "Violent",
+                       "Translation":  "暴力",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [EZN-YZD]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run-ezn-demanding-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "EZN-YZD fixed-save six-point run: observed tooltip title/body Chinese and no historical Angry/Obsessed residual; Demanding was not present in this layout.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Wasteful",
+                       "OriginalName":  "Wasteful",
+                       "Translation":  "浪费",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [DGK-OCG]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run17-observed",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "card_3_trait_lower visual tooltip was fully Chinese; resource, building, supply, and damage effect lines contained no residual English.",
+                       "VerifiedAt":  "2026-07-27T00:00:00Z"
+                   },
+                   {
+                       "ID":  "TRAIT_Wild",
+                       "OriginalName":  "Wild",
+                       "Translation":  "野性",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [JQL-THW]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260727-clan-trait-run19-final",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "Run-19 new-game six-point tooltips identified from final draw trace and visually Chinese; no configured residual.",
+                       "VerifiedAt":  "2026-07-27"
+                   },
+                   {
+                       "ID":  "TRAIT_Wood_Collectors",
+                       "OriginalName":  "Wood Collectors",
+                       "Translation":  "拾柴者",
+                       "IsPersonality":  false,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Unverified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  false,
+                       "VerificationSave":  null,
+                       "EvidenceHandoff":  null,
+                       "EvidenceRetention":  null,
+                       "Notes":  null,
+                       "VerifiedAt":  null
+                   },
+                   {
+                       "ID":  "TRAIT_Woodsmen",
+                       "OriginalName":  "Woodsmen",
+                       "Translation":  "林地人",
+                       "IsPersonality":  true,
+                       "NameStatus":  "TranslatedInConfig",
+                       "DescriptionStatus":  "NotPresent",
+                       "TooltipStatus":  "Verified",
+                       "TooltipEnglishResiduals":  [
+
+                                                   ],
+                       "Verified":  true,
+                       "VerificationSave":  "v1.4.1   World [VC-JCY]   游戏开始.AtGSave",
+                       "EvidenceHandoff":  "20260725-clan-trait-discovery-run4",
+                       "EvidenceRetention":  "TextOnly",
+                       "Notes":  "run-4 lower-card hover: name and terrain-movement tooltip fully Chinese; screenshot and runtime trace retained.",
+                       "VerifiedAt":  "2026-07-25T02:26:38.1808290Z"
+                   }
+               ]
+}

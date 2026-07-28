@@ -615,27 +615,53 @@
     "Items": [
       {
         "ID": "TECH_WRAPPER_HONOR",
-        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[HONOR]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[HONOR]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[HONOR]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[HONOR]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。"
       },
       {
         "ID": "TECH_WRAPPER_AGRICULTURE",
-        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[AGRICULTURE]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[AGRICULTURE]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[AGRICULTURE]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[AGRICULTURE]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。"
       },
       {
         "ID": "TECH_WRAPPER_LIVESTOCK",
-        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[LIVESTOCK]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[LIVESTOCK]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[LIVESTOCK]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[LIVESTOCK]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。"
       },
       {
         "ID": "TECH_WRAPPER_METALWORKING",
-        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[METALWORKING]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[METALWORKING]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[METALWORKING]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[METALWORKING]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。"
       },
       {
         "ID": "TECH_WRAPPER_CRAFTING",
-        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[CRAFTING]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[CRAFTING]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[CRAFTING]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[CRAFTING]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。"
       },
       {
         "ID": "TECH_WRAPPER_DISCOVERY",
-        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[DISCOVERY]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[DISCOVERY]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内训练职业所需的[回合|TURN]数。"
+        "Description": "[学会|LEARN]此[技术|TECH]后，可以在[DISCOVERY]中[研究|STUDY]新的[职业|PROFESSION]和[升级|UPGRADE]。[BLANK-LINE]完成后，还可一次性选择一个[定居|SETTLED][氏族|CLAN]，给予其在[DISCOVERY]中的2个免费[等级|LEVEL]，减少其在该[纪律|DISCIPLINE]内[训练|TRAIN]职业所需的[回合|TURN]数。"
+      }
+    ],
+    "CompositeReplacements": [
+      {
+        "XPath": "descendant::fromDescription",
+        "OriginalSuffix": " Upgrade",
+        "LocalizedValue": " 升级",
+        "ExpectedMatchCount": 448
+      },
+      {
+        "XPath": "descendant::fromDescription",
+        "OriginalValue": "[Upgrade|UPGRADE]",
+        "LocalizedValue": "[升级|UPGRADE]",
+        "ExpectedMatchCount": 2
+      },
+      {
+        "XPath": "descendant::fromDescription",
+        "OriginalValue": "[Learned|LEARN] 'Ceremonial Rites'",
+        "LocalizedValue": "已[学会|LEARN]“仪式礼制”",
+        "ExpectedMatchCount": 1
+      },
+      {
+        "XPath": "descendant::fromDescription",
+        "OriginalValue": "[Learned|LEARN] 'Militia Training'",
+        "LocalizedValue": "已[学会|LEARN]“民兵训练”",
+        "ExpectedMatchCount": 1
       }
     ]
   }

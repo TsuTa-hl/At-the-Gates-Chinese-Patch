@@ -2,43 +2,276 @@
   "ConceptDisplaySources": [
     "hardcoded-common-strings.json"
   ],
-  "Exact": [],
-  "PlainText": [],
+  "CompositeExactSources": [
+    "composite-text-rules.json"
+  ],
+  "CompositeFragmentSources": [],
+  "CompositeTemplateSources": [],
+  "Exact": [
+    {
+      "Original": "This is a farm that has been recently abandoned.\r\n\r\nIt may still contain useful supplies, and can be investigated by an [EXPLORER].",
+      "Translation": "这是一座最近被遗弃的农场。\r\n\r\n其中可能仍有有用的物资，可由[EXPLORER]调查。"
+    },
+    {
+      "Original": "This is among the largest fields ever found!",
+      "Translation": "这是迄今发现的最大麦田之一！"
+    },
+    {
+      "Original": "\u0080很可能变得相当不满 数月内，如果unable以 spend the winter inside the",
+      "Translation": "\u0080很可能变得相当不满 数月内，如果无法在冬季留在"
+    },
+    {
+      "Original": "\u0080很可能变得相当不满在一年内，如果unable以 spend the winter inside the",
+      "Translation": "\u0080很可能变得相当不满在一年内，如果无法在冬季留在"
+    },
+    {
+      "Original": "Herds of [DEER] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], or for [PARCHMENT] or [CLOTH] by a [TRAPPER].[BLANK-LINE]Note that unlike other kinds of [Animals|ANIMAL] Deer cannot be added to your [Stockpile|STOCKPILE] by [Constructing|CONSTRUCT] a [Pasture|PASTURE] on them.[BLANK-LINE]This is a particularly large herd!",
+      "Translation": "一群[DEER]可被[采收|HARVEST]，获得[MEAT]；由[HUNTER]负责。还可获得[PARCHMENT]或[CLOTH]，由[TRAPPER]负责。[BLANK-LINE]请注意，与其他[动物|ANIMAL]不同，鹿不能加入[储备|STOCKPILE]；即使[建造|CONSTRUCT][牧场|PASTURE]也不行。[BLANK-LINE]这是一大群鹿！"
+    },
+    {
+      "Original": "Herds of [DEER] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], or for [PARCHMENT] or [CLOTH] by a [TRAPPER].[BLANK-LINE]Note that unlike other kinds of [Animals|ANIMAL] Deer cannot be added to your [Stockpile|STOCKPILE] by [Constructing|CONSTRUCT] a [Pasture|PASTURE] on them.",
+      "Translation": "一群[DEER]可被[采收|HARVEST]，获得[MEAT]；由[HUNTER]负责。还可获得[PARCHMENT]或[CLOTH]，由[TRAPPER]负责。[BLANK-LINE]请注意，与其他[动物|ANIMAL]不同，鹿不能加入[储备|STOCKPILE]；即使[建造|CONSTRUCT][牧场|PASTURE]也不行。"
+    },
+    {
+      "Original": "It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+      "Translation": "其中可能仍有有用的物资，可由[EXPLORER]调查。"
+    },
+    {
+      "Original": "Berry Patches can be [Harvested|HARVEST] by a [GATHERER] to [Produce|PRODUCE] [FRUIT].",
+      "Translation": "浆果丛可被[采收|HARVEST]，由[GATHERER]进行，以[产出|PRODUCE][FRUIT]。"
+    },
+    {
+      "Original": "Seeing this on a [Tile|TILE] means there's a [Mineral|MINERAL] there, but you don't know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [DIGGER] or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.",
+      "Translation": "在[地块|TILE]上看到这个标记，表示那里有一处[矿物|MINERAL]，但你还不知道具体种类。[BLANK-LINE][鉴定|UNIDENTIFIED]由[DIGGER]或[SURVEYOR]完成后，即可[采收|HARVEST][资源|RESOURCE]。"
+    },
+    {
+      "Original": "Seeing this on a [Tile|TILE] means there's a [Herd of Animals|ANIMAL] there, but you don't know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [HUNTER], [TRAPPER], or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.",
+      "Translation": "在[地块|TILE]上看到这个标记，表示那里有一群[动物|ANIMAL]，但你还不知道具体种类。[BLANK-LINE][鉴定|UNIDENTIFIED]由[HUNTER]、[TRAPPER]或[SURVEYOR]完成后，即可[采收|HARVEST][资源|RESOURCE]。"
+    },
+    {
+      "Original": "Seeing this on a [Tile|TILE] means there's a useful [Plant|PLANT] there, but you don't know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [GATHERER], [REAPER], or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.",
+      "Translation": "在[地块|TILE]上看到这个标记，表示那里有一种有用的[植物|PLANT]，但你还不知道具体种类。[BLANK-LINE][鉴定|UNIDENTIFIED]由[GATHERER]、[REAPER]或[SURVEYOR]完成后，即可[采收|HARVEST][资源|RESOURCE]。"
+    }
+  ],
+  "PlainText": [
+    {
+      "Original": "Content",
+      "Translation": "满足"
+    },
+    {
+      "Original": "Minor Leader",
+      "Translation": "小部族领袖"
+    },
+    {
+      "Original": "Deserted Farm",
+      "Translation": "废弃农场"
+    },
+    {
+      "Original": "This is a farm that has been recently abandoned.",
+      "Translation": "这是一座最近被遗弃的农场。"
+    },
+    {
+      "Original": "Harvested",
+      "Translation": "采收"
+    },
+    {
+      "Original": "Produce",
+      "Translation": "产出"
+    },
+    {
+      "Original": "Cold",
+      "Translation": "严寒"
+    },
+    {
+      "Original": "传闻有一个Deserted Farm",
+      "Translation": "传闻有一个废弃农场"
+    },
+    {
+      "Original": "Angry",
+      "Translation": "愤怒"
+    },
+    {
+      "Original": "Obsessed",
+      "Translation": "痴迷"
+    },
+    {
+      "Original": ",",
+      "Translation": "、"
+    },
+    {
+      "Original": ", or",
+      "Translation": "、或"
+    },
+    {
+      "Original": "Range",
+      "Translation": "范围"
+    },
+    {
+      "Original": "\u0080Max",
+      "Translation": "\u0080最高"
+    },
+    {
+      "Original": "\u0080No extra",
+      "Translation": "\u0080无额外"
+    },
+    {
+      "Original": "\u0080消耗all",
+      "Translation": "\u0080消耗全部"
+    }
+  ],
   "PlainTextFragments": [
     {
-      "Original": "forced into a ",
-      "Translation": "被迫从事"
+      "Original": "commit Theft",
+      "Translation": "犯下盗窃"
     },
     {
-      "Original": " outside of ",
-      "Translation": "，且不属于"
+      "Original": "engage in Brawls",
+      "Translation": "参与斗殴"
     },
     {
-      "Original": "there's another ",
+      "Original": "there's another",
       "Translation": "另有"
     },
     {
-      "Original": "engage in ",
-      "Translation": "卷入"
+      "Original": "Mounted",
+      "Translation": "骑乘"
     },
     {
-      "Original": "commit ",
-      "Translation": "犯下"
+      "Original": " on the same",
+      "Translation": "位于同一"
     },
     {
-      "Original": "Brawls",
-      "Translation": "斗殴"
+      "Original": "forced into a",
+      "Translation": "被迫从事"
     },
     {
-      "Original": "Theft",
-      "Translation": "盗窃"
+      "Original": "forced into an",
+      "Translation": "被迫从事"
     },
     {
-      "Original": "Max ",
-      "Translation": "最高"
+      "Original": " where they're neither within the ",
+      "Translation": "，既不在"
+    },
+    {
+      "Original": " nor the ",
+      "Translation": "，也不作为"
+    },
+    {
+      "Original": " outside of",
+      "Translation": "，且不在"
+    },
+    {
+      "Original": " within the",
+      "Translation": "，且在"
+    },
+    {
+      "Original": " outside the",
+      "Translation": "，且不在"
+    },
+    {
+      "Original": " or as the",
+      "Translation": "内，或作为"
+    },
+    {
+      "Original": " of a",
+      "Translation": "，驻留在"
+    },
+    {
+      "Original": "seafaring",
+      "Translation": "航海"
+    },
+    {
+      "Original": "Fields of Wheat can be",
+      "Translation": "小麦田可被"
+    },
+    {
+      "Original": "Beehives can be",
+      "Translation": "蜂巢可被"
+    },
+    {
+      "Original": " by a",
+      "Translation": "，由"
+    },
+    {
+      "Original": " or",
+      "Translation": "或"
+    },
+    {
+      "Original": " to",
+      "Translation": "以"
+    },
+    {
+      "Original": "Wheat can no longer be Harvested when a",
+      "Translation": "小麦无法再采收，若"
+    },
+    {
+      "Original": "unable以 spend the winter inside the",
+      "Translation": "无法在冬季留在"
+    },
+    {
+      "Original": " becomes",
+      "Translation": "变为"
+    },
+    {
+      "Original": "(+1 in ",
+      "Translation": "(+1，还需 "
+    },
+    {
+      "Original": " (苦闷 Trait)",
+      "Translation": "（苦闷特质）"
+    },
+    {
+      "Original": "When 不悦...",
+      "Translation": "当不悦时……"
+    }
+  ],
+  "RichTextFragments": [
+    {
+      "Original": "[Profession|PROFESSION] in the [LIVESTOCK] [Discipline|DISCIPLINE]",
+      "Translation": "[Profession|PROFESSION]，所属为[LIVESTOCK][Discipline|DISCIPLINE]"
+    },
+    {
+      "Original": "[Profession|PROFESSION] in the [AGRICULTURE] [Discipline|DISCIPLINE]",
+      "Translation": "[Profession|PROFESSION]，所属为[AGRICULTURE][Discipline|DISCIPLINE]"
+    },
+    {
+      "Original": "[Profession|PROFESSION] in the [CRAFTING] [Discipline|DISCIPLINE]",
+      "Translation": "[Profession|PROFESSION]\uFF0C\u6240\u5C5E\u4E3A[CRAFTING][Discipline|DISCIPLINE]"
+    },
+    {
+      "Original": "[Profession|PROFESSION] in the [HONOR] [Discipline|DISCIPLINE]",
+      "Translation": "[Profession|PROFESSION]，所属为[HONOR][Discipline|DISCIPLINE]"
+    },
+    {
+      "Original": "[Profession|PROFESSION] in the [METALWORKING] [Discipline|DISCIPLINE]",
+      "Translation": "[Profession|PROFESSION]，所属为[METALWORKING][Discipline|DISCIPLINE]"
+    },
+    {
+      "Original": "[Profession|PROFESSION] in the [DISCOVERY] [Discipline|DISCIPLINE]",
+      "Translation": "[Profession|PROFESSION]，所属为[DISCOVERY][Discipline|DISCIPLINE]"
     }
   ],
   "ConceptDisplay": [
+    {
+      "ConceptKey": "RESIDENT",
+      "Original": "Resident",
+      "Translation": "居民"
+    },
+    {
+      "ConceptKey": "ACTIVE",
+      "Original": "Active",
+      "Translation": "主动"
+    },
+    {
+      "ConceptKey": "ACTIVE",
+      "Original": "Active Profession",
+      "Translation": "主动职业"
+    },
+    {
+      "ConceptKey": "ACTIVE",
+      "Original": "Active Professions",
+      "Translation": "主动职业"
+    },
     {
       "ConceptKey": "LEVEL",
       "Original": "Level",
@@ -50,6 +283,31 @@
       "Translation": "等级"
     },
     {
+      "ConceptKey": "RESOURCE",
+      "Original": "Resource",
+      "Translation": "资源"
+    },
+    {
+      "ConceptKey": "RESOURCE",
+      "Original": "Resources",
+      "Translation": "资源"
+    },
+    {
+      "ConceptKey": "SETTLED",
+      "Original": "Settled",
+      "Translation": "定居"
+    },
+    {
+      "ConceptKey": "SETTLED",
+      "Original": "Settled Profession",
+      "Translation": "定居职业"
+    },
+    {
+      "ConceptKey": "SETTLED",
+      "Original": "Settled Professions",
+      "Translation": "定居职业"
+    },
+    {
       "ConceptKey": "UPGRADE",
       "Original": "Upgrade",
       "Translation": "升级"
@@ -58,6 +316,11 @@
       "ConceptKey": "UPGRADE",
       "Original": "Upgrades",
       "Translation": "升级"
+    },
+    {
+      "ConceptKey": "WARRIOR",
+      "Original": "Warrior",
+      "Translation": "战士"
     }
   ]
 }

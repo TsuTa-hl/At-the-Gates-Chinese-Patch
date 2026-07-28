@@ -15,11 +15,13 @@ namespace AtG.RuntimeText
         public static void Register(SpriteFont font, string name, float size, bool bold)
         {
             if (font == null) throw new ArgumentNullException("font");
+            var descriptor = new FontDescriptor(name, size, bold);
             lock (Gate)
             {
                 Fonts.Remove(font);
-                Fonts.Add(font, new FontDescriptor(name, size, bold));
+                Fonts.Add(font, descriptor);
             }
+            RuntimeGlyphWarmset.Register(descriptor);
         }
 
         public static SpriteFont RegisterAndReturn(SpriteFont font, string name, float size, bool bold)
@@ -51,6 +53,7 @@ namespace AtG.RuntimeText
                 if (!Fonts.TryGetValue(font, out var existing)) Fonts.Add(font, descriptor);
                 else descriptor = existing;
             }
+            RuntimeGlyphWarmset.Register(descriptor);
             return descriptor;
         }
     }

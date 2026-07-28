@@ -16,7 +16,12 @@ try
     {
         "rewrite" => await RewriteAsync(args[1..]),
         "catalog" => CatalogCommand.Run(args[1..], Console.Out, Console.Error),
+        "composite-catalog" => BuildCompositeCatalog(args[1..]),
+        "known-texts-csv" => ExportKnownTextsCsv(args[1..]),
+        "composite-csv" => ExportCompositeCsv(args[1..]),
+        "todo-csv" => ExportTodoCsv(args[1..]),
         "calls" => ExportCalls(args[1..]),
+        "methods" => ExportMethods(args[1..]),
         "runtime-rewrite" => await RewriteRuntimeCallsAsync(args[1..]),
         "runtime-map" => BuildRuntimeDisplayMap(args[1..]),
         "load-lifecycle" => PatchLoadLifecycle(args[1..]),
@@ -95,6 +100,69 @@ static int ExportCalls(string[] args)
     return 0;
 }
 
+static int ExportMethods(string[] args)
+{
+    var assembly = GetOption(args, "--assembly")
+                   ?? throw new ArgumentException("--assembly is required.");
+    var contains = GetOption(args, "--contains");
+    var methods = ManagedMethodCatalog.Read(assembly)
+        .Where(method => contains is null || method.FullName.Contains(contains, StringComparison.OrdinalIgnoreCase))
+        .ToArray();
+    Console.WriteLine(JsonSerializer.Serialize(methods, new JsonSerializerOptions { WriteIndented = true }));
+    return 0;
+}
+
+static int BuildCompositeCatalog(string[] args)
+{
+    var repositoryRoot = Path.GetFullPath(GetOption(args, "--repo") ?? Directory.GetCurrentDirectory());
+    var rulesPath = GetOption(args, "--rules");
+    var result = CompositeTextCatalog.Build(repositoryRoot, rulesPath);
+    Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true }));
+    return 0;
+}
+
+static int ExportCompositeCsv(string[] args)
+{
+    var repositoryRoot = Path.GetFullPath(GetOption(args, "--repo") ?? Directory.GetCurrentDirectory());
+    var databasePath = Path.GetFullPath(GetOption(args, "--database")
+        ?? Path.Combine(repositoryRoot, ".cache", "atg-catalog.sqlite"));
+    var rulesPath = Path.GetFullPath(GetOption(args, "--rules")
+        ?? Path.Combine(repositoryRoot, "translations", "composite-text-rules.json"));
+    var csvPath = Path.GetFullPath(GetOption(args, "--csv")
+        ?? throw new ArgumentException("composite-csv requires --csv."));
+    var result = ReviewViewCsvExporter.ExportComposite(databasePath, rulesPath, csvPath);
+    Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true }));
+    return 0;
+}
+
+static int ExportKnownTextsCsv(string[] args)
+{
+    var repositoryRoot = Path.GetFullPath(GetOption(args, "--repo") ?? Directory.GetCurrentDirectory());
+    var databasePath = Path.GetFullPath(GetOption(args, "--database")
+        ?? Path.Combine(repositoryRoot, ".cache", "atg-catalog.sqlite"));
+    var rulesPath = Path.GetFullPath(GetOption(args, "--rules")
+        ?? Path.Combine(repositoryRoot, "translations", "composite-text-rules.json"));
+    var csvPath = Path.GetFullPath(GetOption(args, "--csv")
+        ?? throw new ArgumentException("known-texts-csv requires --csv."));
+    var result = ReviewViewCsvExporter.ExportKnownTexts(databasePath, rulesPath, csvPath);
+    Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true }));
+    return 0;
+}
+
+static int ExportTodoCsv(string[] args)
+{
+    var repositoryRoot = Path.GetFullPath(GetOption(args, "--repo") ?? Directory.GetCurrentDirectory());
+    var databasePath = Path.GetFullPath(GetOption(args, "--database")
+        ?? Path.Combine(repositoryRoot, ".cache", "atg-catalog.sqlite"));
+    var rulesPath = Path.GetFullPath(GetOption(args, "--rules")
+        ?? Path.Combine(repositoryRoot, "translations", "composite-text-rules.json"));
+    var csvPath = Path.GetFullPath(GetOption(args, "--csv")
+        ?? throw new ArgumentException("todo-csv requires --csv."));
+    var result = ReviewViewCsvExporter.ExportTodo(databasePath, rulesPath, csvPath);
+    Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true }));
+    return 0;
+}
+
 static async Task<int> RewriteRuntimeCallsAsync(string[] args)
 {
     var repositoryRoot = Path.GetFullPath(GetOption(args, "--repo") ?? Directory.GetCurrentDirectory());
@@ -105,7 +173,19 @@ static async Task<int> RewriteRuntimeCallsAsync(string[] args)
     var jobs = RuntimeTextRedirectPlan.Create(repositoryRoot, runtimeAssembly);
     var results = await RuntimeTextRedirectCoordinator.RunAsync(jobs, new BuildCache(cachePath));
     var total = results.Sum(result => result.RedirectedCount);
+    var frameBoundaryHooks = results.Sum(result => result.FrameBoundaryHookCount);
+    var warmsetStartupHooks = results.Sum(result => result.WarmsetStartupHookCount);
+    var startupGraphicsHooks = results.Sum(result => result.StartupGraphicsHookCount);
     if (total != 145) throw new InvalidDataException($"Expected 145 runtime text redirects, got {total}.");
+    if (frameBoundaryHooks != 1)
+        throw new InvalidDataException(
+            $"Expected one runtime frame-boundary hook, got {frameBoundaryHooks}.");
+    if (warmsetStartupHooks != 1)
+        throw new InvalidDataException(
+            $"Expected one runtime warmset startup hook, got {warmsetStartupHooks}.");
+    if (startupGraphicsHooks != 1)
+        throw new InvalidDataException(
+            $"Expected one runtime startup graphics hook, got {startupGraphicsHooks}.");
     var summary = new
     {
         Command = "runtime-rewrite",
@@ -115,6 +195,9 @@ static async Task<int> RewriteRuntimeCallsAsync(string[] args)
         LifecycleRedirectCount = jobs.Sum(job => job.ExpectedLifecycleRedirectCount),
         LayoutRedirectCount = jobs.Sum(job => job.ExpectedLayoutRedirectCount),
         LocalizationRedirectCount = jobs.Sum(job => job.ExpectedLocalizationRedirectCount),
+        FrameBoundaryHookCount = frameBoundaryHooks,
+        WarmsetStartupHookCount = warmsetStartupHooks,
+        StartupGraphicsHookCount = startupGraphicsHooks,
         Jobs = results,
     };
     var json = JsonSerializer.Serialize(summary, new JsonSerializerOptions { WriteIndented = true });
@@ -208,7 +291,12 @@ static void PrintUsage()
 {
     Console.WriteLine("AtG.Patch.Cli rewrite [--repo PATH] [--cache PATH] [--summary PATH]");
     Console.WriteLine("AtG.Patch.Cli catalog <import|export|rebuild|stats> [catalog options]");
+    Console.WriteLine("AtG.Patch.Cli composite-catalog --repo PATH [--rules PATH]");
+    Console.WriteLine("AtG.Patch.Cli known-texts-csv --repo PATH [--database PATH] [--rules PATH] --csv PATH");
+    Console.WriteLine("AtG.Patch.Cli composite-csv --repo PATH [--database PATH] [--rules PATH] --csv PATH");
+    Console.WriteLine("AtG.Patch.Cli todo-csv --repo PATH [--database PATH] [--rules PATH] --csv PATH");
     Console.WriteLine("AtG.Patch.Cli calls --assembly PATH [--contains TEXT]");
+    Console.WriteLine("AtG.Patch.Cli methods --assembly PATH [--contains TEXT]");
     Console.WriteLine("AtG.Patch.Cli runtime-rewrite --repo PATH --runtime-assembly PATH");
     Console.WriteLine("AtG.Patch.Cli runtime-map --repo PATH [--map PATH] [--output PATH]");
     Console.WriteLine("AtG.Patch.Cli load-lifecycle --repo PATH --renderer-mode <DynamicCjk|MergedFonts>");

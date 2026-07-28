@@ -49,3 +49,4 @@ New-Item -ItemType Directory -Force -Path $fontDestination | Out-Null
 Copy-AtGFileIfChanged -Source (Join-Path $root "assets\fonts\NotoSansSC-Regular.otf") -Destination (Join-Path $fontDestination "NotoSansSC-Regular.otf") | Out-Null
 Copy-AtGFileIfChanged -Source (Join-Path $root "assets\fonts\NotoSansSC-Bold.otf") -Destination (Join-Path $fontDestination "NotoSansSC-Bold.otf") | Out-Null
 Copy-AtGFileIfChanged -Source (Join-Path $root "assets\fonts\OFL.txt") -Destination (Join-Path $fontDestination "OFL.txt") | Out-Null
+Copy-AtGFileIfChanged -Source (Join-Path $root "translations\runtime-glyph-warmset.tsv") -Destination (Join-Path $fontDestination "AtG.RuntimeGlyphWarmset.tsv") | Out-Null

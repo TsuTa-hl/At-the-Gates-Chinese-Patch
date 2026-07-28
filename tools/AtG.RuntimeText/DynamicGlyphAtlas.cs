@@ -20,6 +20,27 @@ namespace AtG.RuntimeText
         public float LineHeight;
     }
 
+    internal enum GlyphUploadStatus
+    {
+        Uploaded,
+        AlreadyCached,
+        Deferred,
+        WarmBudgetReached,
+        Rejected,
+    }
+
+    internal sealed class GlyphUploadResult
+    {
+        public GlyphUploadResult(GlyphUploadStatus status, bool pageCreated)
+        {
+            Status = status;
+            PageCreated = pageCreated;
+        }
+
+        public GlyphUploadStatus Status { get; private set; }
+        public bool PageCreated { get; private set; }
+    }
+
     internal sealed class DynamicGlyphAtlas
     {
         private sealed class PendingGlyph
@@ -28,20 +49,24 @@ namespace AtG.RuntimeText
             public char Character;
         }
 
-        private const int AtlasPageSize = 1024;
-        private const int MaximumAtlasPages = 8;
+        internal const int AtlasPageSize = 1024;
+        internal const int MaximumAtlasPages = 8;
         private const int GraphicsTextureSlotCount = 16;
         private const int VertexTextureSlotCount = 4;
         public const long MaximumTextureBytes =
             (long)AtlasPageSize * AtlasPageSize * 4L * MaximumAtlasPages;
         private readonly GraphicsDevice _device;
         private readonly object _gate = new object();
-        private readonly Dictionary<string, DynamicGlyph> _glyphs = new Dictionary<string, DynamicGlyph>();
+        private readonly Dictionary<string, Dictionary<char, DynamicGlyph>> _glyphs =
+            new Dictionary<string, Dictionary<char, DynamicGlyph>>(StringComparer.Ordinal);
         private readonly Texture2D[] _pages = new Texture2D[MaximumAtlasPages];
         private readonly GlyphAtlasCacheState _state =
             new GlyphAtlasCacheState(AtlasPageSize, AtlasPageSize, MaximumAtlasPages);
         private readonly DeferredGlyphQueue<PendingGlyph> _pending =
             new DeferredGlyphQueue<PendingGlyph>();
+        private readonly HashSet<int> _unboundPagesThisPump = new HashSet<int>();
+        private readonly Dictionary<string, PendingGlyph> _observed =
+            new Dictionary<string, PendingGlyph>(StringComparer.Ordinal);
         private int _pageCount;
         private bool _isResetting;
 
@@ -65,7 +90,6 @@ namespace AtG.RuntimeText
 
         public DynamicGlyph GetGlyph(FontDescriptor descriptor, char character, bool deferUpload)
         {
-            var key = descriptor.CacheKey + "|" + ((int)character).ToString("X4");
             lock (_gate)
             {
                 ObserveInvalidResources();
@@ -78,7 +102,24 @@ namespace AtG.RuntimeText
                 }
 
                 DynamicGlyph glyph;
-                if (_glyphs.TryGetValue(key, out glyph)) return glyph;
+                if (TryGetCachedGlyph(descriptor.CacheKey, character, out glyph))
+                {
+                    RuntimeTextPerformance.RecordGlyphLookup(true);
+                    return glyph;
+                }
+                RuntimeTextPerformance.RecordGlyphLookup(false);
+                var key = GlyphMetricsCache.CreateKey(descriptor, character);
+                if (!_observed.ContainsKey(key))
+                    _observed.Add(key, new PendingGlyph
+                    {
+                        Descriptor = descriptor,
+                        Character = character,
+                    });
+                if (!RuntimeGlyphScheduler.IsLegacySync)
+                {
+                    RuntimeGlyphScheduler.RequestLive(descriptor, character);
+                    return null;
+                }
                 if (deferUpload)
                 {
                     if (_pending.Enqueue(key, new PendingGlyph
@@ -114,7 +155,7 @@ namespace AtG.RuntimeText
                             Advance = advance,
                             LineHeight = lineHeight,
                         };
-                        _glyphs.Add(key, glyph);
+                        AddCachedGlyph(descriptor.CacheKey, character, glyph);
                         _state.RecordGlyphCached();
                     }
                     catch (Exception ex)
@@ -128,11 +169,93 @@ namespace AtG.RuntimeText
             }
         }
 
-        public void FlushPending()
+        public void FlushPendingLegacy()
         {
             var pending = _pending.Drain();
             foreach (var item in pending)
                 GetGlyph(item.Descriptor, item.Character, false);
+        }
+
+        public int PageCount
+        {
+            get { lock (_gate) return _pageCount; }
+        }
+
+        public void BeginUploadPump()
+        {
+            lock (_gate) _unboundPagesThisPump.Clear();
+        }
+
+        public void EndUploadPump()
+        {
+            lock (_gate) _unboundPagesThisPump.Clear();
+        }
+
+        public bool RequiresNewPage(int width, int height, int maximumPageCount)
+        {
+            lock (_gate)
+            {
+                ObserveInvalidResources();
+                return !_state.CanAllocateOnExistingPage(width, height, maximumPageCount);
+            }
+        }
+
+        public GlyphUploadResult UploadPrepared(PreparedGlyph prepared, int maximumPageCount)
+        {
+            if (prepared == null) throw new ArgumentNullException("prepared");
+            var request = prepared.Request;
+            lock (_gate)
+            {
+                ObserveInvalidResources();
+                if (_device.IsDisposed || _isResetting || _state.GetDiagnostics().IsFaulted)
+                    return new GlyphUploadResult(GlyphUploadStatus.Deferred, false);
+
+                DynamicGlyph existing;
+                if (TryGetCachedGlyph(
+                        request.Descriptor.CacheKey, request.Character, out existing))
+                    return new GlyphUploadResult(GlyphUploadStatus.AlreadyCached, false);
+
+                var canUseExisting = _state.CanAllocateOnExistingPage(
+                    prepared.Width, prepared.Height, maximumPageCount);
+                var allowNewPage = _pageCount < maximumPageCount;
+                GlyphAtlasAllocation allocation;
+                if (!_state.TryAllocate(prepared.Width, prepared.Height, maximumPageCount,
+                        allowNewPage, !request.IsWarmup, out allocation))
+                {
+                    if (request.IsWarmup && !canUseExisting && _pageCount >= maximumPageCount)
+                        return new GlyphUploadResult(GlyphUploadStatus.WarmBudgetReached, false);
+                    RuntimeTextTrace.Write("texture-budget-full",
+                        request.Character.ToString(), request.Descriptor, null);
+                    return new GlyphUploadResult(GlyphUploadStatus.Rejected, false);
+                }
+
+                var pageCreated = allocation.PageIndex >= _pageCount;
+                try
+                {
+                    var page = GetOrCreatePage(allocation.PageIndex);
+                    if (_unboundPagesThisPump.Add(allocation.PageIndex)) UnbindTexture(page);
+                    var bounds = new XnaRectangle(allocation.X, allocation.Y,
+                        allocation.Width, allocation.Height);
+                    page.SetData(0, bounds, prepared.Pixels, 0, prepared.Pixels.Length);
+                    AddCachedGlyph(request.Descriptor.CacheKey, request.Character,
+                        new DynamicGlyph
+                    {
+                        Texture = page,
+                        Source = bounds,
+                        Advance = prepared.Advance,
+                        LineHeight = prepared.LineHeight,
+                    });
+                    _state.RecordGlyphCached();
+                    return new GlyphUploadResult(GlyphUploadStatus.Uploaded, pageCreated);
+                }
+                catch (Exception ex)
+                {
+                    _state.MarkFaulted();
+                    RuntimeTextTrace.Write("atlas-page-faulted",
+                        request.Character.ToString(), request.Descriptor, ex);
+                    return new GlyphUploadResult(GlyphUploadStatus.Rejected, pageCreated);
+                }
+            }
         }
 
         private Texture2D GetOrCreatePage(int pageIndex)
@@ -152,6 +275,29 @@ namespace AtG.RuntimeText
             _pageCount++;
             _state.RecordPageCreated(pageIndex);
             return page;
+        }
+
+        private bool TryGetCachedGlyph(
+            string descriptorKey, char character, out DynamicGlyph glyph)
+        {
+            Dictionary<char, DynamicGlyph> byCharacter;
+            if (_glyphs.TryGetValue(descriptorKey, out byCharacter) &&
+                byCharacter.TryGetValue(character, out glyph))
+                return true;
+            glyph = null;
+            return false;
+        }
+
+        private void AddCachedGlyph(
+            string descriptorKey, char character, DynamicGlyph glyph)
+        {
+            Dictionary<char, DynamicGlyph> byCharacter;
+            if (!_glyphs.TryGetValue(descriptorKey, out byCharacter))
+            {
+                byCharacter = new Dictionary<char, DynamicGlyph>();
+                _glyphs.Add(descriptorKey, byCharacter);
+            }
+            byCharacter.Add(character, glyph);
         }
 
         private void ObserveInvalidResources()
@@ -208,12 +354,17 @@ namespace AtG.RuntimeText
                 }
                 if (action == GlyphAtlasResetAction.ReleaseAllPages)
                 {
+                    var observed = new List<PendingGlyph>(_observed.Values);
                     for (var pageIndex = 0; pageIndex < _pageCount; pageIndex++)
                         _pages[pageIndex] = null;
                     _pageCount = 0;
                     _glyphs.Clear();
                     _pending.Drain();
                     _state.ResetAfterResourcesReleased();
+                    RuntimeTextPerformance.RecordDeviceReset();
+                    RuntimeGlyphWarmset.RequeueAll();
+                    foreach (var item in observed)
+                        RuntimeGlyphScheduler.RequestLive(item.Descriptor, item.Character);
                     return;
                 }
 
@@ -237,15 +388,24 @@ namespace AtG.RuntimeText
 
         private static XnaColor[] GetPremultipliedPixels(Bitmap bitmap)
         {
-            var pixels = new XnaColor[bitmap.Width * bitmap.Height];
-            for (var y = 0; y < bitmap.Height; y++)
-                for (var x = 0; x < bitmap.Width; x++)
+            var bounds = new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height);
+            var data = bitmap.LockBits(bounds, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+            try
+            {
+                var bytes = GlyphAlphaConverter.FromBgra(
+                    data.Scan0, bitmap.Width, bitmap.Height, data.Stride);
+                var pixels = new XnaColor[bitmap.Width * bitmap.Height];
+                for (var index = 0; index < pixels.Length; index++)
                 {
-                    var pixel = bitmap.GetPixel(x, y);
-                    // SpriteBatch.AlphaBlend expects premultiplied alpha.
-                    pixels[y * bitmap.Width + x] = new XnaColor(pixel.A, pixel.A, pixel.A, pixel.A);
+                    var alpha = bytes[index * 4 + 3];
+                    pixels[index] = new XnaColor(alpha, alpha, alpha, alpha);
                 }
-            return pixels;
+                return pixels;
+            }
+            finally
+            {
+                bitmap.UnlockBits(data);
+            }
         }
 
         private static Bitmap RenderGlyph(FontDescriptor descriptor, char character,
@@ -287,7 +447,13 @@ namespace AtG.RuntimeText
         public static void FlushPending(GraphicsDevice device)
         {
             DynamicGlyphAtlas atlas;
-            if (device != null && Atlases.TryGetValue(device, out atlas)) atlas.FlushPending();
+            if (device == null) return;
+            if (RuntimeGlyphScheduler.IsLegacySync)
+            {
+                if (Atlases.TryGetValue(device, out atlas)) atlas.FlushPendingLegacy();
+                return;
+            }
+            RuntimeGlyphScheduler.PumpReadyUploads(device);
         }
     }
 }

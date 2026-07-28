@@ -1,4 +1,4 @@
-﻿{
+{
     "Version":  1,
     "Policy":  {
                    "DefaultSuite":  "Incremental",
@@ -42,8 +42,7 @@
                                               }
                                           ],
                                "Evidence":  {
-                                                "LastStatus":  "Passed",
-                                                "LastRunDir":  null
+                                                "LastStatus":  "Passed"
                                             }
                            },
                            {
@@ -54,6 +53,21 @@
                                "Status":  "Completed",
                                "SkipByDefault":  true,
                                "Setup":  "Open the knowledge screen from the main loop.",
+                               "SetupActions":  [
+                                                    {
+                                                        "Action":  "Key",
+                                                        "Key":  "F1",
+                                                        "WaitMs":  900,
+                                                        "RequireChange":  true
+                                                    }
+                                                ],
+                               "TeardownActions":  [
+                                                       {
+                                                           "Action":  "Key",
+                                                           "Key":  "Escape",
+                                                           "WaitMs":  500
+                                                       }
+                                                   ],
                                "ExpectedNo":  [
                                                   "TEXT.Name.Profession.",
                                                   "TEXT.Name.Discipline.",
@@ -364,7 +378,8 @@
                                           ],
                                "Evidence":  {
                                                 "LastStatus":  "Passed",
-                                                "LastRunDir":  ".tmp/knowledge-new-hovers-final2"
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
                                             }
                            },
                            {
@@ -375,8 +390,24 @@
                                "Status":  "Completed",
                                "SkipByDefault":  true,
                                "RequiresFixedSave":  true,
-                               "SaveName":  "Quicksave.AtGSave",
+                               "SaveName":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
                                "Setup":  "Load the fixed save and open the clan screen.",
+                               "SetupActions":  [
+                                                    {
+                                                        "Action":  "Click",
+                                                        "X":  64,
+                                                        "Y":  57,
+                                                        "WaitMs":  1200,
+                                                        "RequireChange":  true
+                                                    }
+                                                ],
+                               "TeardownActions":  [
+                                                       {
+                                                           "Action":  "Key",
+                                                           "Key":  "Escape",
+                                                           "WaitMs":  500
+                                                       }
+                                                   ],
                                "ExpectedNo":  [
                                                   "TEXT.Name.Profession.",
                                                   "Profession:",
@@ -445,27 +476,47 @@
                                               }
                                           ],
                                "Evidence":  {
-                                                "LastStatus":  "Passed",
-                                                "LastRunDir":  ".tmp/clan-button-hover-final"
+                                                "LastStatus":  "Partial",
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
                                             }
                            },
                            {
                                "Id":  "clan-screen-random-traits",
-                               "Title":  "Three visible clans and six trait hovers",
+                               "Title":  "Archived clan-card trait discovery protocol",
                                "Interface":  "Clan Screen",
                                "Category":  "HoverSweep",
-                               "Status":  "Passed",
+                               "Status":  "ManualOnly",
                                "SkipByDefault":  true,
-                               "RequiresFixedSave":  true,
-                               "RequiresSaveBeforeFix":  true,
-                               "SaveName":  "v1.4.1   World [BVT-LCL]   游戏开始.AtGSave",
-                               "Setup":  "Load BVT-LCL from the main menu and open the top-left clan screen.",
+                               "TraitScope":  [
+                                                  "Personality traits (92)",
+                                                  "Non-personality traits (14; isNotPersonalityTrait=true)"
+                                              ],
+                               "CoverageRule":  "Every trait that appears on the three visible clan cards is in scope, regardless of the IsPersonality flag. Record the trait ID before marking its tooltip Verified.",
+                               "DynamicTraitDiscovery":  {
+                                                             "Required":  true,
+                                                             "Scope":  "All trait icons visible on all three clan cards, including non-personality traits",
+                                                             "Mode":  "ManualRandomDiscovery",
+                                                             "SetupMode":  "new-game",
+                                                             "StableIconCoordinates":  true,
+                                                             "CoordinateRule":  "Superseded by clan-trait-random-discovery. The canonical automated six-point reference-space coordinates are x=1182/1331/1483 and y=639/655; each move is converted once to an absolute screen position and verified by GetCursorPos.",
+                                                             "RecordBeforeVerification":  [
+                                                                                              "TraitId",
+                                                                                              "ClanName",
+                                                                                              "TraitHoverCoordinate",
+                                                                                              "ScreenshotPath",
+                                                                                              "SaveName"
+                                                                                          ],
+                                                             "SaveBeforeFix":  true,
+                                                             "ReloadSameSaveForVerification":  true
+                                                         },
+                               "Setup":  "Archived documentation only. Run clan-trait-random-discovery for the six fixed global absolute points.",
                                "ExpectedNo":  [
                                                   "TEXT.",
                                                   ":PLURAL",
                                                   ":SINGULAR",
                                                   "Might very rarely",
-                                                  "there's another",
+                                                  "there\u0027s another",
                                                   "forced into a",
                                                   "outside of",
                                                   "commit ",
@@ -495,60 +546,35 @@
                                                             "Y":  1100,
                                                             "WaitMs":  150
                                                         },
-                               "Points":  [
-                                              {
-                                                  "Id":  "landbert_trait_1",
-                                                  "Label":  "Landbert upper trait",
-                                                  "Action":  "HoverAndCapture",
-                                                  "X":  1182,
-                                                  "Y":  608,
-                                                  "WaitMs":  900
-                                              },
-                                              {
-                                                  "Id":  "landbert_trait_2",
-                                                  "Label":  "Landbert lower trait",
-                                                  "Action":  "HoverAndCapture",
-                                                  "X":  1182,
-                                                  "Y":  639,
-                                                  "WaitMs":  900
-                                              },
-                                              {
-                                                  "Id":  "adelhard_trait_1",
-                                                  "Label":  "Adelhard upper trait",
-                                                  "Action":  "HoverAndCapture",
-                                                  "X":  1331,
-                                                  "Y":  608,
-                                                  "WaitMs":  900
-                                              },
-                                              {
-                                                  "Id":  "adelhard_trait_2",
-                                                  "Label":  "Adelhard lower trait",
-                                                  "Action":  "HoverAndCapture",
-                                                  "X":  1331,
-                                                  "Y":  639,
-                                                  "WaitMs":  900
-                                              },
-                                              {
-                                                  "Id":  "aland_trait_1",
-                                                  "Label":  "Aland upper trait",
-                                                  "Action":  "HoverAndCapture",
-                                                  "X":  1483,
-                                                  "Y":  608,
-                                                  "WaitMs":  900
-                                              },
-                                              {
-                                                  "Id":  "aland_trait_2",
-                                                  "Label":  "Aland lower trait",
-                                                  "Action":  "HoverAndCapture",
-                                                  "X":  1483,
-                                                  "Y":  639,
-                                                  "WaitMs":  900
-                                              }
-                                          ],
+                               "Points":  [],
                                "Evidence":  {
-                                                "LastStatus":  "PassedVisual",
-                                                "LastRunDir":  ".tmp/runs/20260716-clan-traits-fixed-save",
-                                                "Note":  "Harness timed out on the first hover stabilization, but the captured tooltip was visually checked and the localized text was correct."
+                                                "LastStatus":  "Partial",
+                                                "VisibleTraitIdsLastRun":  [
+                                                                               "TRAIT_Craven",
+                                                                               "TRAIT_Eloquent",
+                                                                               "TRAIT_Stubborn",
+                                                                               "TRAIT_Frail",
+                                                                               "TRAIT_Impulsive"
+                                                                           ],
+                                                "RandomDiscoveryLastRun":  {
+                                                                               "Status":  "Partial",
+                                                                               "Setup":  "new-game",
+                                                                               "GeneratedClans":  [
+                                                                                                      "Keil",
+                                                                                                      "Imre",
+                                                                                                      "Vander"
+                                                                                                  ],
+                                                                               "ConfirmedNonPersonalityIds":  [
+
+                                                                                                              ],
+                                                                               "StateChanged":  false,
+                                                                               "Note":  "The random layout did not expose a confirmed non-personality trait. Fixed-save coordinates hit a clan detail card on one point and were not reused or counted as random coverage.",
+                                                                               "EvidenceHandoff":  "20260723-composite-governance",
+                                                                               "EvidenceRetention":  "TextOnly"
+                                                                           },
+                     "Note":  "Archived after coordinate hardening on 2026-07-27. The executable six-point regression is clan-trait-random-discovery; random cards may show any of the 92 personality or 14 non-personality traits, and non-personality traits remain in scope.",
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
                                             }
                            },
                            {
@@ -639,19 +665,20 @@
                                           ],
                                "Evidence":  {
                                                 "LastStatus":  "Partial",
-                                                "LastRunDir":  ".tmp/main-loop-button-hovers-final2"
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
                                             }
                            },
-                           {
-                               "Id":  "main-loop-tile-click-hover-37",
-                               "Title":  "Thirty-seven random tile click and lower-right tooltip checks",
+                            {
+                                "Id":  "main-loop-tile-click-hover-37",
+                               "Title":  "Archived thirty-seven random tile click protocol (superseded)",
                                "Interface":  "Main Loop Map",
                                "Category":  "TileSweep",
-                               "Status":  "Discovery",
+                               "Status":  "ManualOnly",
                                "SkipByDefault":  true,
                                "RequiresFixedSave":  true,
                                "RequiresSaveBeforeFix":  true,
-                               "Setup":  "Use the saved random start that exposes the target map/tile set.",
+                               "Setup":  "Archived manual protocol. Use the TileHoverSweep scenarios with persisted absolute anchors and 91 generated hex coordinates.",
                                "ExpectedNo":  [
                                                   "TEXT.",
                                                   ":PLURAL",
@@ -995,8 +1022,7 @@
                                               }
                                           ],
                                "Evidence":  {
-                                                "LastStatus":  "Discovery",
-                                                "LastRunDir":  null
+                                                "LastStatus":  "Discovery"
                                             }
                            },
                            {
@@ -1007,8 +1033,8 @@
                                "Status":  "Completed",
                                "SkipByDefault":  true,
                                "RequiresFixedSave":  true,
-                               "SaveName":  "Quicksave.AtGSave",
-                               "Setup":  "Start from the main menu. Hover the main-menu Load Saved Game button if needed, click it, test the load-save screen hovers there, then load Quicksave.AtGSave and test the main-loop toolbar and target tile from that fixed state. Do not open the load-save screen from the in-game pause/main-loop UI for this scenario.",
+                               "SaveName":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
+                               "Setup":  "Start from the main menu. Hover the main-menu Load Saved Game button if needed, click it, test the load-save screen hovers there, then load v1.4.1 World [OAA-JUH] 游戏开始.AtGSave and test the main-loop toolbar and target tile from that fixed state. Do not open the load-save screen from the in-game pause/main-loop UI for this scenario.",
                                "ClearBeforeEachPoint":  {
                                                             "X":  1280,
                                                             "Y":  720,
@@ -1089,7 +1115,9 @@
                                                   "Action":  "Click",
                                                   "X":  1285,
                                                   "Y":  578,
-                                                  "WaitMs":  5000
+                                                  "WaitMs":  5000,
+                                                  "ReadyMarker":  "World Screen - Children Initialized",
+                                                  "ReadyTimeoutMs":  45000
                                               },
                                               {
                                                   "Id":  "main_strategic_view",
@@ -1171,107 +1199,107 @@
                                                   "WaitMs":  900
                                               }
                                           ],
-                               "Evidence":  {
-                                                "LastStatus":  "Passed",
-                                                "LastRunDir":  ".tmp/runs/20260702-221952-load-save-main-loop-tile-tooltip-20260702",
-                                                "LastContactSheet":  ".tmp/runs/20260702-221952-load-save-main-loop-tile-tooltip-20260702/contact.png"
-                                            }
-                            },
-                            {
-                                "Id":  "in-game-reload-memory-regression-20260712",
-                                "Title":  "Reload a fixed save from the in-game pause menu without OOM",
-                                "Interface":  "Pause Menu / Load Save",
-                                "StateId":  "in-game-reload",
-                                "Category":  "SaveLoad",
-                                "Status":  "Completed",
-                                "SkipByDefault":  true,
-                                "RequiresFixedSave":  true,
-                                "Setup":  "Load the selected fixed save from the main menu, press Escape in the main loop, choose Load Saved Game from the pause menu, and load the promoted first row again. Repeat five times in the same process and wait only for a new World Screen log marker written after each reload began.",
-                                "SetupActions":  [
-                                                     {
-                                                         "Action":  "Repeat",
-                                                         "RepeatCount":  5,
-                                                         "Actions":  [
-                                                                          {
-                                                                              "Action":  "BookmarkProgramLog",
-                                                                              "Bookmark":  "reload-1"
-                                                                          },
-                                                                          {
-                                                                              "Action":  "Key",
-                                                                              "Key":  "Escape",
-                                                                              "WaitMs":  900,
-                                                                              "RequireChange":  true,
-                                                                              "Crop":  {
-                                                                                           "X":  1080,
-                                                                                           "Y":  300,
-                                                                                           "Width":  400,
-                                                                                           "Height":  800
-                                                                                       }
-                                                                          },
-                                                                          {
-                                                                              "Action":  "Click",
-                                                                              "X":  1280,
-                                                                              "Y":  772,
-                                                                              "WaitMs":  900,
-                                                                              "RequireChange":  true,
-                                                                              "Crop":  {
-                                                                                           "X":  900,
-                                                                                           "Y":  250,
-                                                                                           "Width":  760,
-                                                                                           "Height":  850
-                                                                                       }
-                                                                          },
-                                                                          {
-                                                                              "Action":  "Click",
-                                                                              "X":  1280,
-                                                                              "Y":  578,
-                                                                              "WaitMs":  900,
-                                                                              "RequireChange":  false,
-                                                                              "Crop":  {
-                                                                                           "X":  900,
-                                                                                           "Y":  250,
-                                                                                           "Width":  760,
-                                                                                           "Height":  850
-                                                                                       }
-                                                                          },
-                                                                          {
-                                                                              "Action":  "WaitForProgramLogMarker",
-                                                                              "Bookmark":  "reload-1",
-                                                                              "Marker":  "World Screen - Children Initialized",
-                                                                              "WaitMs":  45000
-                                                                          }
-                                                                      ]
-                                                                  }
-                                                              ],
-                                 "ExpectedNo":  [
-                                                   "TEXT.",
-                                                   ":PLURAL",
-                                                   ":SINGULAR",
-                                                   "mojibake"
-                                               ],
-                                "Points":  [
-                                               {
-                                                   "Id":  "main_loop_after_reload_1",
-                                                   "Label":  "Main loop after in-game reload",
-                                                   "Action":  "CaptureOnly",
-                                                   "Crop":  {
-                                                                "X":  0,
-                                                                "Y":  0,
-                                                                "Width":  2560,
-                                                                "Height":  1440
-                                                            }
-                                               }
-                                           ],
                                 "Evidence":  {
                                                  "LastStatus":  "Passed",
-                                                 "LastRunDir":  ".tmp/runs/20260714-load-reload-memory-lifecycle-v4",
-                                                 "LastScreenshot":  ".tmp/runs/20260714-load-reload-memory-lifecycle-v4/in-game-reload-memory-regression-20260712-main_loop_after_reload_1.png"
-                                             }
-                            }
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
+                                            }
+                           },
+                           {
+                               "Id":  "in-game-reload-memory-regression-20260712",
+                               "Title":  "Reload a fixed save from the in-game pause menu without OOM",
+                               "Interface":  "Pause Menu / Load Save",
+                               "StateId":  "in-game-reload",
+                               "Category":  "SaveLoad",
+                               "Status":  "Completed",
+                               "SkipByDefault":  true,
+                               "RequiresFixedSave":  true,
+                               "Setup":  "Load the selected fixed save from the main menu, press Escape in the main loop, choose Load Saved Game from the pause menu, and load the promoted first row again. Repeat five times in the same process and wait only for a new World Screen log marker written after each reload began.",
+                               "SetupActions":  [
+                                                    {
+                                                        "Action":  "Repeat",
+                                                        "RepeatCount":  5,
+                                                        "Actions":  [
+                                                                        {
+                                                                            "Action":  "BookmarkProgramLog",
+                                                                            "Bookmark":  "reload-1"
+                                                                        },
+                                                                        {
+                                                                            "Action":  "Key",
+                                                                            "Key":  "Escape",
+                                                                            "WaitMs":  900,
+                                                                            "RequireChange":  true,
+                                                                            "Crop":  {
+                                                                                         "X":  1080,
+                                                                                         "Y":  300,
+                                                                                         "Width":  400,
+                                                                                         "Height":  800
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "Action":  "Click",
+                                                                            "X":  1280,
+                                                                            "Y":  772,
+                                                                            "WaitMs":  900,
+                                                                            "RequireChange":  true,
+                                                                            "Crop":  {
+                                                                                         "X":  900,
+                                                                                         "Y":  250,
+                                                                                         "Width":  760,
+                                                                                         "Height":  850
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "Action":  "Click",
+                                                                            "X":  1280,
+                                                                            "Y":  578,
+                                                                            "WaitMs":  900,
+                                                                            "RequireChange":  false,
+                                                                            "Crop":  {
+                                                                                         "X":  900,
+                                                                                         "Y":  250,
+                                                                                         "Width":  760,
+                                                                                         "Height":  850
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "Action":  "WaitForProgramLogMarker",
+                                                                            "Bookmark":  "reload-1",
+                                                                            "Marker":  "World Screen - Children Initialized",
+                                                                            "WaitMs":  45000
+                                                                        }
+                                                                    ]
+                                                    }
+                                                ],
+                               "ExpectedNo":  [
+                                                  "TEXT.",
+                                                  ":PLURAL",
+                                                  ":SINGULAR",
+                                                  "mojibake"
+                                              ],
+                               "Points":  [
+                                              {
+                                                  "Id":  "main_loop_after_reload_1",
+                                                  "Label":  "Main loop after in-game reload",
+                                                  "Action":  "CaptureOnly",
+                                                  "Crop":  {
+                                                               "X":  0,
+                                                               "Y":  0,
+                                                               "Width":  2560,
+                                                               "Height":  1440
+                                                           }
+                                              }
+                                          ],
+                               "Evidence":  {
+                                                "LastStatus":  "Passed",
+                                                "EvidenceHandoff":  "20260723-composite-governance",
+                                                "EvidenceRetention":  "TextOnly"
+                                            }
+                           }
                        ],
     "Incremental":  [
-                         {
-                             "Id":  "clan-list-header-hover-20260710",
+                        {
+                            "Id":  "clan-list-header-hover-20260710",
                             "Title":  "Clan list header first-level hovers and Level nested tooltip",
                             "Interface":  "Clan List",
                             "StateId":  "clan-list",
@@ -1341,8 +1369,8 @@
                                                "Id":  "header_level_nested",
                                                "Label":  "Nested Level concept tooltip",
                                                "Action":  "HoverAndCapture",
-                       "X":  1328,
-                       "Y":  84,
+                                               "X":  1328,
+                                               "Y":  84,
                                                "WaitMs":  900,
                                                "SkipClear":  true
                                            },
@@ -1404,8 +1432,9 @@
                                            }
                                        ],
                             "Evidence":  {
-                     "LastStatus":  "FocusedPassed",
-                     "LastRunDir":  ".tmp/runs/richtext-clan-list-level-nested.png"
+                                             "LastStatus":  "FocusedPassed",
+                                             "EvidenceHandoff":  "20260723-composite-governance",
+                                             "EvidenceRetention":  "TextOnly"
                                          }
                         },
                         {
@@ -1435,16 +1464,16 @@
                                                "Id":  "select_center_settlement",
                                                "Label":  "Select central settlement",
                                                "Action":  "ClickAndCapture",
-                           "X":  1280,
-                           "Y":  720,
-                           "AllowUnchanged":  true,
-                           "Crop":  {
-                                        "X":  0,
-                                        "Y":  500,
-                                        "Width":  650,
-                                        "Height":  900
-                                    },
-                           "WaitMs":  900
+                                               "X":  1280,
+                                               "Y":  720,
+                                               "AllowUnchanged":  true,
+                                               "Crop":  {
+                                                            "X":  0,
+                                                            "Y":  500,
+                                                            "Width":  650,
+                                                            "Height":  900
+                                                        },
+                                               "WaitMs":  900
                                            },
                                            {
                                                "Id":  "hover_pack_up",
@@ -1456,22 +1485,39 @@
                                            }
                                        ],
                             "Evidence":  {
-                                             "LastStatus":  "StaticFixOnly",
-                                             "LastRunDir":  null
+                                             "LastStatus":  "StaticFixOnly"
                                          }
                         },
-                         {
-                             "Id":  "terrain-description-all-fragment-20260710",
-                            "Title":  "Lower-right terrain description should not show English all",
+                        {
+                            "Id":  "terrain-description-all-fragment-20260710",
+                            "Title":  "XDR-HCF resource hovers, terrain movement text, and note-mode punctuation",
                             "Interface":  "Main Loop Map",
-                            "Category":  "TileTooltip",
+                            "Category":  "HoverSweep",
                             "Status":  "Active",
                             "SkipByDefault":  false,
-                            "Setup":  "Load a fixed save or use the visible start map. Click a tile whose lower-right terrain description previously included the English word all.",
+                            "RequiresFixedSave":  true,
+                            "SaveName":  "v1.4.1   World [XDR-HCF]   Game Start.AtGSave",
+                            "Setup":  "Load the XDR-HCF fixed save from the main menu. Hover the six recorded resource tiles and click the forest tile; do not start or reroll a world.",
+                            "ClearBeforeEachPoint":  {
+                                                         "Action":  "Move",
+                                                         "X":  1900,
+                                                         "Y":  1100,
+                                                         "WaitMs":  150
+                                                     },
                             "ExpectedNo":  [
-                                               " all ",
+                                               "Herds of",
+                                               "Berry Patches",
+                                               "Seeing",
+                                               "there's a",
+                                               "Once Identified",
+                                               "Harvest Resources",
+                                               "can be Harvested",
+                       "particularly large herd",
+                       "消耗all",
+                       " all ",
                                                "all ",
                                                " all",
+                                               "Move Points",
                                                "TEXT.",
                                                ":PLURAL",
                                                ":SINGULAR",
@@ -1479,79 +1525,817 @@
                                            ],
                             "Points":  [
                                            {
-                                               "Id":  "click_known_terrain_tooltip_tile",
-                                               "Label":  "Click terrain tile that exposes lower-right description",
-                                               "Action":  "ClickAndCapture",
-                                               "X":  null,
-                                               "Y":  null,
-                                               "Discover":  true,
+                                               "Id":  "hover_large_deer_herd",
+                                               "Label":  "Large deer herd resource tooltip",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1433,
+                                               "Y":  809,
+                                               "Crop":  {
+                                                            "X":  1360,
+                                                            "Y":  650,
+                                                            "Width":  900,
+                                                            "Height":  500
+                                                        },
                                                "WaitMs":  900
-                          }
-                                        ],
-                             "Evidence":  {
-                                              "LastStatus":  "StaticFixOnly",
-                                              "LastRunDir":  null
-                                          }
+                                           },
+                                           {
+                                               "Id":  "hover_berry_patch",
+                                               "Label":  "Berry patch resource tooltip",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1256,
+                                               "Y":  813,
+                                               "Crop":  {
+                                                            "X":  1160,
+                                                            "Y":  700,
+                                                            "Width":  900,
+                                                            "Height":  430
+                                                        },
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "hover_unknown_mineral",
+                                               "Label":  "Unidentified mineral resource tooltip",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1521,
+                                               "Y":  864,
+                                               "Crop":  {
+                                                            "X":  1450,
+                                                            "Y":  700,
+                                                            "Width":  950,
+                                                            "Height":  500
+                                                        },
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "hover_forest_tile",
+                                               "Label":  "Forest terrain hover",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1256,
+                                               "Y":  889,
+                                               "Crop":  {
+                                                            "X":  1080,
+                                                            "Y":  760,
+                                                            "Width":  720,
+                                                            "Height":  420
+                                                        },
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "hover_unknown_plant",
+                                               "Label":  "Unidentified plant resource tooltip",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  905,
+                                               "Y":  900,
+                                               "Crop":  {
+                                                            "X":  760,
+                                                            "Y":  720,
+                                                            "Width":  900,
+                                                            "Height":  480
+                                                        },
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "hover_unknown_animal",
+                                               "Label":  "Unidentified animal resource tooltip",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1065,
+                                               "Y":  430,
+                                               "Crop":  {
+                                                            "X":  840,
+                                                            "Y":  240,
+                                                            "Width":  950,
+                                                            "Height":  480
+                                                        },
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "hover_note_mode_punctuation",
+                                               "Label":  "Note-mode tooltip Chinese quotation marks",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  235,
+                                               "Y":  25,
+                                               "Crop":  {
+                                                            "X":  180,
+                                                            "Y":  0,
+                                                            "Width":  620,
+                                                            "Height":  100
+                                                        },
+                                               "WaitMs":  900
+                                           }
+                                       ],
+                            "Evidence":  {
+                                             "LastStatus":  "Passed",
+                                             "Save":  "v1.4.1   World [XDR-HCF]   Game Start.AtGSave",
+                                             "TextResult":  "2026-07-26 final installed-patch XDR-HCF run passed all seven points. The draw trace has zero target English resource-tooltip nodes and draws U+0080 + 消耗全部 with zero missing glyphs. The expanded-plant and Note Mode fixed-wait visual confirmations are recorded in their companion scenarios.",
+                                             "EvidenceHandoff":  "20260726-xdr-resource-final",
+                                             "EvidenceRetention":  "TextOnly"
+                                         }
+                        },
+                        {
+                            "Id":  "xdr-unknown-plant-tooltip-20260726",
+                            "Title":  "XDR-HCF unknown-plant expanded tooltip",
+                            "Interface":  "Main Loop Map",
+                            "StateId":  "xdr-unknown-plant-tooltip-20260726",
+                            "Category":  "HoverCapture",
+                            "Status":  "Active",
+                            "SkipByDefault":  false,
+                            "RequiresFixedSave":  true,
+                            "SaveName":  "v1.4.1   World [XDR-HCF]   Game Start.AtGSave",
+                            "Setup":  "Load the XDR-HCF fixed save from the main menu, hold the pointer on the unidentified plant until its expanded tooltip appears, then capture it; do not reroll the world.",
+                            "SetupActions":  [
+                                                 {
+                                                     "Action":  "Move",
+                                                     "X":  905,
+                                                     "Y":  900,
+                                                     "WaitMs":  350
+                                                 },
+                                                 {
+                                                     "Action":  "Wait",
+                                                     "WaitMs":  2200
+                                                 }
+                                             ],
+                            "ExpectedNo":  [
+                                               "Seeing",
+                                               "there's a",
+                                               "Once Identified",
+                                               "Harvest Resources",
+                                               "useful Plant",
+                                               "Resources",
+                                               "will be able to"
+                                           ],
+                            "Points":  [
+                                           {
+                                               "Id":  "capture_unknown_plant_expanded_tooltip",
+                                               "Label":  "Expanded unidentified plant tooltip",
+                                               "Action":  "CaptureOnly",
+                                               "SkipClear":  true,
+                                               "Crop":  {
+                                                            "X":  760,
+                                                            "Y":  620,
+                                                            "Width":  1000,
+                                                            "Height":  650
+                                                        }
+                                           }
+                                       ],
+                            "Evidence":  {
+                                             "LastStatus":  "Partial",
+                                             "Save":  "v1.4.1   World [XDR-HCF]   Game Start.AtGSave",
+                                             "TextResult":  "2026-07-26 final fixed-wait capture passed after 2.2 seconds. Visual inspection confirms the full unknown-plant tooltip uses 地块 and 资源 and contains none of the expected English fragments or missing-glyph fallback.",
+                                             "EvidenceHandoff":  "20260726-xdr-plant-expanded-final",
+                                             "EvidenceRetention":  "TextOnly"
+                                         }
+                        },
+                        {
+                            "Id":  "xdr-note-mode-punctuation-20260726",
+                            "Title":  "XDR-HCF Note Mode smart-punctuation tooltip",
+                            "Interface":  "Main Loop HUD",
+                            "StateId":  "xdr-note-mode-punctuation-20260726",
+                            "Category":  "HoverCapture",
+                            "Status":  "Active",
+                            "SkipByDefault":  false,
+                            "RequiresFixedSave":  true,
+                            "SaveName":  "v1.4.1   World [XDR-HCF]   Game Start.AtGSave",
+                            "Setup":  "Load the XDR-HCF fixed save, keep the pointer on the Note Mode button until its tooltip settles, then capture it. Do not use a vanilla installation or reroll the world.",
+                            "SetupActions":  [
+                                                 {
+                                                     "Action":  "Move",
+                                                     "X":  235,
+                                                     "Y":  25,
+                                                     "WaitMs":  1800
+                                                 }
+                                             ],
+                            "ExpectedNo":  [
+                                               "?",
+                                               "Switch to or from",
+                                               "Note Mode",
+                                               "short notes"
+                                           ],
+                            "Points":  [
+                                           {
+                                               "Id":  "capture_note_mode_smart_punctuation",
+                                               "Label":  "Note Mode tooltip with Chinese smart quotes",
+                                               "Action":  "CaptureOnly",
+                                               "SkipClear":  true,
+                                               "Crop":  {
+                                                            "X":  170,
+                                                            "Y":  0,
+                                                            "Width":  680,
+                                                            "Height":  150
+                                                        }
+                                           }
+                                       ],
+                            "Evidence":  {
+                                             "LastStatus":  "Passed",
+                                             "Save":  "v1.4.1   World [XDR-HCF]   Game Start.AtGSave",
+                                             "TextResult":  "2026-07-26 final fixed-wait capture passed after 1.8 seconds. Visual inspection confirms 切换“备注模式”，可为自己写下简短备注。 with no question-mark fallback.",
+                                             "EvidenceHandoff":  "20260726-xdr-note-punctuation-final",
+                                             "EvidenceRetention":  "TextOnly"
+                                         }
+                        },
+                        {
+                            "Id":  "diplomacy-current-leader-20260726",
+                            "Title":  "Current-leader diplomacy panel labels",
+                            "Interface":  "Diplomacy",
+                            "StateId":  "diplomacy-current-leader",
+                            "Category":  "ClickAndCapture",
+                            "Status":  "Active",
+                            "SkipByDefault":  false,
+                            "RequiresFixedSave":  true,
+                            "SaveName":  "v1.4.1   World [CBR-YJC]   游戏开始.AtGSave",
+                            "Setup":  "Load the CBR-YJC fixed save from the main-menu load flow, open the diplomacy selector with F3, and choose the visible current leader.",
+                            "SetupActions":  [
+                                                 {
+                                                     "Action":  "Click",
+                                                     "X":  2025,
+                                                     "Y":  25,
+                                                     "WaitMs":  700
+                                                 },
+                                                 {
+                                                     "Action":  "Click",
+                                                     "X":  1280,
+                                                     "Y":  718,
+                                                     "WaitMs":  900
+                                                 }
+                                             ],
+                            "ExpectedNo":  [
+                                               "Minor Leader",
+                                               "Friends",
+                                               "Enemies",
+                                               "Approach",
+                                               "Influence",
+                                               "Leverage",
+                                               "该Peucini",
+                                               "TEXT.",
+                                               ":PLURAL",
+                                               ":SINGULAR",
+                                               "mojibake"
+                                           ],
+                            "Points":  [
+                                           {
+                                               "Id":  "current_leader_diplomacy_panel",
+                                               "Label":  "Current leader title, relationship labels, and actions",
+                                               "Action":  "CaptureOnly",
+                                               "Crop":  {
+                                                            "X":  1090,
+                                                            "Y":  35,
+                                                            "Width":  920,
+                                                            "Height":  1360
+                                                        }
+                                           }
+                                       ],
+                            "Evidence":  {
+                                             "LastStatus":  "Passed",
+                                             "Save":  "v1.4.1   World [CBR-YJC]   游戏开始.AtGSave",
+                                             "TextResult":  "2026-07-26 index-final session passed the capture point in 238 ms. Its 446 draw nodes contain zero target English nodes (Minor Leader, Friends, Enemies, Approach, Influence, Leverage, or 该Peucini), 18 draws of 小部族领袖、友好、敌对、态度、影响力、筹码, zero missing-glyph draws, and zero standalone question-mark draws. The remaining The Peucini deliberately preserves the untranslated proper name and its article.",
+                                             "EvidenceHandoff":  "20260726-diplomacy-index-final",
+                                             "EvidenceRetention":  "TextOnly"
+                                         }
+                        },
+                        {
+                            "Id":  "religion-screen-20260718",
+                            "Title":  "Religion screen title and religion choices",
+                            "Interface":  "Religion Screen",
+                            "StateId":  "religion-screen",
+                            "Category":  "ClickAndCapture",
+                            "Status":  "Completed",
+                            "SkipByDefault":  false,
+                            "RequiresFixedSave":  true,
+                            "SaveName":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
+                            "Setup":  "Load the current fixed save directly from the main-menu load flow, then open the main-loop Religion screen. Do not start a new game or load from the in-game pause menu.",
+                            "ExpectedNo":  [
+                                               "Religion",
+                                               "Nicene Christianity",
+                                               "Arian Christianity",
+                                               "Pagan",
+                                               "RELIGION_",
+                                               "TEXT.",
+                                               ":PLURAL",
+                                               ":SINGULAR",
+                                               "mojibake"
+                                           ],
+                            "Points":  [
+                                           {
+                                               "Id":  "open_religion_screen",
+                                               "Label":  "Open Religion screen",
+                                               "Action":  "ClickAndCapture",
+                                               "X":  2080,
+                                               "Y":  25,
+                                               "AllowUnchanged":  true,
+                                               "WaitMs":  900
+                                           },
+                                           {
+                                               "Id":  "religion_screen_labels",
+                                               "Label":  "Religion title and three choices",
+                                               "Action":  "CaptureOnly",
+                                               "Crop":  {
+                                                            "X":  1130,
+                                                            "Y":  550,
+                                                            "Width":  340,
+                                                            "Height":  360
+                                                        }
+                                           },
+                                           {
+                                               "Id":  "close_religion_screen",
+                                               "Label":  "Close Religion screen",
+                                               "Action":  "Click",
+                                               "X":  1350,
+                                               "Y":  837,
+                                               "SkipClear":  true,
+                                               "WaitMs":  500
+                                           }
+                                       ],
+                            "Evidence":  {
+                                             "LastStatus":  "Passed",
+                                             "Save":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
+                                             "EvidenceHandoff":  "20260723-composite-governance",
+                                             "EvidenceRetention":  "TextOnly"
+                                         }
+                        },
+    {
+        "Id": "avr-wpr-tile-hover-sweep-20260728",
+        "Title": "AVR-WPR radius-five tile hover boundary sweep",
+        "Interface": "Main Loop Map",
+        "StateId": "avr-wpr-tile-hover-sweep-20260728",
+        "Category": "TileSweep",
+        "Status": "Discovery",
+        "SkipByDefault": true,
+        "RequiresFixedSave": true,
+        "RequiresSaveBeforeFix": true,
+        "SaveName": "v1.4.1   World [AVR-WPR]   娓告垙寮€濮?AtGSave",
+        "Setup": "Load AVR-WPR from the patched main-menu flow. Calibrate and persist the absolute center tile, two adjacent tile centers, and SafeViewport before the first discovery pass; reload this same save for every retest.",
+        "ExpectedNo": [
+            "TEXT.",
+            ":PLURAL",
+            ":SINGULAR",
+            "Deserted Farm",
+            "Herds of",
+            "Fields of Wheat",
+            "Seeing",
+            "Once Identified",
+            "Move Points",
+            " all ",
+            "mojibake"
+        ],
+        "Points": [
+            {
+                "Id": "tile_sweep",
+                "Label": "91-tile absolute hex sweep",
+                "Action": "TileHoverSweep",
+                "WaitMs": 900
+            }
+        ],
+        "TileSweep": {
+            "Radius": 5,
+            "Metric": "AxialHex",
+            "Anchor": { "X": 1150, "Y": 650 },
+            "BasisQ": { "X": 1250, "Y": 650 },
+            "BasisR": { "X": 1100, "Y": 730 },
+            "SafeViewport": { "X": 300, "Y": 200, "Width": 1700, "Height": 900 },
+            "MapRegion": { "X": 300, "Y": 200, "Width": 1700, "Height": 850 },
+            "QuickReferenceRegion": { "X": 1820, "Y": 980, "Width": 700, "Height": 420 },
+            "Enumerate": "CenterOutward",
+            "ExpandCollapsed": true,
+            "CycleItems": true,
+            "MaxCardsPerTile": 16,
+            "MaxCyclesPerTile": 2,
+            "BoundaryManifestId": "terrain-tooltip-v1"
+        },
+        "Evidence": {
+            "LastStatus": "Discovery",
+            "EvidenceRetention": "TextOnly",
+            "Note": "The three absolute calibration points are intentionally persisted per save; update them only after a documented calibration pass."
+        }
+    },
+    {
+        "Id": "xdr-hcf-tile-hover-sweep-20260728",
+        "Title": "XDR-HCF radius-five tile hover boundary sweep",
+        "Interface": "Main Loop Map",
+        "StateId": "xdr-hcf-tile-hover-sweep-20260728",
+        "Category": "TileSweep",
+        "Status": "Discovery",
+        "SkipByDefault": true,
+        "RequiresFixedSave": true,
+        "RequiresSaveBeforeFix": true,
+        "SaveName": "v1.4.1   World [XDR-HCF]   Game Start.AtGSave",
+        "Setup": "Load XDR-HCF from the patched main-menu flow. Calibrate and persist the absolute center tile, two adjacent tile centers, and SafeViewport before the first discovery pass; reload this same save for every retest.",
+        "ExpectedNo": [
+            "TEXT.",
+            ":PLURAL",
+            ":SINGULAR",
+            "Herds of",
+            "Berry Patches",
+            "Seeing",
+            "Once Identified",
+            "Harvest Resources",
+            "Move Points",
+            " all ",
+            "mojibake"
+        ],
+        "Points": [
+            {
+                "Id": "tile_sweep",
+                "Label": "91-tile absolute hex sweep",
+                "Action": "TileHoverSweep",
+                "WaitMs": 900
+            }
+        ],
+        "TileSweep": {
+            "Radius": 5,
+            "Metric": "AxialHex",
+            "Anchor": { "X": 1150, "Y": 650 },
+            "BasisQ": { "X": 1250, "Y": 650 },
+            "BasisR": { "X": 1100, "Y": 730 },
+            "SafeViewport": { "X": 300, "Y": 200, "Width": 1700, "Height": 900 },
+            "MapRegion": { "X": 300, "Y": 200, "Width": 1700, "Height": 850 },
+            "QuickReferenceRegion": { "X": 1820, "Y": 980, "Width": 700, "Height": 420 },
+            "Enumerate": "CenterOutward",
+            "ExpandCollapsed": true,
+            "CycleItems": true,
+            "MaxCardsPerTile": 16,
+            "MaxCyclesPerTile": 2,
+            "BoundaryManifestId": "terrain-tooltip-v1"
+        },
+        "Evidence": {
+            "LastStatus": "Discovery",
+            "EvidenceRetention": "TextOnly",
+            "Note": "The three absolute calibration points are intentionally persisted per save; update them only after a documented calibration pass."
+        }
+    },
+    {
+        "Id": "random-tile-hover-sweep-discovery-20260728",
+        "Title": "New-game radius-five tile hover boundary discovery",
+        "Interface": "Main Loop Map",
+        "StateId": "random-tile-hover-sweep-discovery-20260728",
+        "Category": "TileSweep",
+        "Status": "Discovery",
+        "SkipByDefault": true,
+        "RequiresSaveBeforeFix": true,
+        "Setup": "Start one new game, calibrate the absolute center tile, two adjacent tile centers, and SafeViewport, then save the exposed state before any repair. Reload that exact save for verification.",
+        "ExpectedNo": [
+            "TEXT.",
+            ":PLURAL",
+            ":SINGULAR",
+            "Herds of",
+            "Fields of Wheat",
+            "Seeing",
+            "Once Identified",
+            "Move Points",
+            " all ",
+            "mojibake"
+        ],
+        "Points": [
+            {
+                "Id": "tile_sweep",
+                "Label": "91-tile absolute hex sweep",
+                "Action": "TileHoverSweep",
+                "WaitMs": 900
+            }
+        ],
+        "TileSweep": {
+            "Radius": 5,
+            "Metric": "AxialHex",
+            "Anchor": { "X": 1150, "Y": 650 },
+            "BasisQ": { "X": 1250, "Y": 650 },
+            "BasisR": { "X": 1100, "Y": 730 },
+            "SafeViewport": { "X": 300, "Y": 200, "Width": 1700, "Height": 900 },
+            "MapRegion": { "X": 300, "Y": 200, "Width": 1700, "Height": 850 },
+            "QuickReferenceRegion": { "X": 1820, "Y": 980, "Width": 700, "Height": 420 },
+            "Enumerate": "CenterOutward",
+            "ExpandCollapsed": true,
+            "CycleItems": true,
+            "MaxCardsPerTile": 16,
+            "MaxCyclesPerTile": 2,
+            "BoundaryManifestId": "terrain-tooltip-v1"
+        },
+        "Evidence": {
+            "LastStatus": "Discovery",
+            "EvidenceRetention": "TextOnly",
+            "Note": "The discovery save is the only allowed random input; repair verification must reload this saved state."
+        }
+    },
+    {
+        "Id":  "avr-wpr-resource-tooltips-20260727",
+        "Title":  "AVR-WPR deserted farm, deer herd, and wheat field expanded tooltips",
+        "Interface":  "Main Loop Map",
+        "StateId":  "avr-wpr-resource-tooltips-20260727",
+        "Category":  "HoverSweep",
+        "Status":  "Active",
+        "SkipByDefault":  false,
+        "RequiresFixedSave":  true,
+        "SaveName":  "v1.4.1   World [AVR-WPR]   游戏开始.AtGSave",
+        "Setup":  "Load the AVR-WPR fixed save from the patched main-menu load flow. Hover the three fixed map features until each expanded tooltip settles; do not reroll the world.",
+        "ClearBeforeEachPoint":  {
+                                     "Action":  "Move",
+                                     "X":  2420,
+                                     "Y":  1320,
+                                     "WaitMs":  200
+                                 },
+        "ExpectedNo":  [
+                            "Deserted Farm",
+                            "This is a farm that has been recently abandoned",
+                            "It may still contain useful supplies",
+                            "Herds of",
+                           "Deer cannot be added",
+                           "Fields of Wheat",
+                           "Wheat can no longer be",
+                           "mojibake"
+                       ],
+        "Points":  [
+                       {
+                           "Id":  "hover_deserted_farm",
+                           "Label":  "Deserted Farm expanded tooltip",
+                           "Action":  "HoverAndCapture",
+                           "X":  1670,
+                           "Y":  910,
+                           "WaitMs":  2200,
+                           "ExpectedAll":  [
+                                               "废弃农场",
+                                               "这是一座最近被遗弃的农场。",
+                                               "其中可能仍有有用的物资，可由",
+                                               "探险者",
+                                               "调查。"
+                                           ],
+                           "Crop":  {
+                                        "X":  1580,
+                                        "Y":  740,
+                                        "Width":  920,
+                                        "Height":  560
+                                    }
+                       },
+                       {
+                           "Id":  "hover_deer_herd",
+                           "Label":  "Deer herd expanded tooltip",
+                           "Action":  "HoverAndCapture",
+                           "X":  1820,
+                           "Y":  728,
+                           "WaitMs":  2200,
+                           "Crop":  {
+                                        "X":  1740,
+                                        "Y":  500,
+                                        "Width":  800,
+                                        "Height":  620
+                                    }
+                       },
+                       {
+                           "Id":  "hover_wheat_field",
+                           "Label":  "Wheat field expanded tooltip",
+                           "Action":  "HoverAndCapture",
+                           "X":  1800,
+                           "Y":  816,
+                           "WaitMs":  2200,
+                           "Crop":  {
+                                        "X":  1700,
+                                        "Y":  620,
+                                        "Width":  850,
+                                        "Height":  600
+                                    }
+                       }
+                   ],
+        "Evidence":  {
+                          "LastStatus":  "Passed",
+                          "Save":  "v1.4.1   World [AVR-WPR]   游戏开始.AtGSave",
+                          "TextResult":  "2026-07-27 current installed fixed-save run passed all three points in 8.207 seconds. The farm point now requires every final Chinese node, not merely absence of English: `废弃农场`, `这是一座最近被遗弃的农场。`, `其中可能仍有有用的物资，可由`, linked `探险者`, and `调查。`. All were drawn in the tooltip crop; no target English or residual `n` was visible. Deer and wheat also passed.",
+                          "EvidenceHandoff":  "20260727-avr-wpr-resource-farm-required-text-final",
+                         "EvidenceRetention":  "TextOnly"
+                     }
+    },
+    {
+        "Id":  "avr-wpr-clan-family-countdown-20260727",
+        "Title":  "AVR-WPR clan family training countdown",
+        "Interface":  "Clan Screen",
+        "StateId":  "avr-wpr-clan-family-countdown-20260727",
+        "Category":  "ClickAndHover",
+        "Status":  "Active",
+        "SkipByDefault":  false,
+        "RequiresFixedSave":  true,
+        "SaveName":  "v1.4.1   World [AVR-WPR]   游戏开始.AtGSave",
+        "Setup":  "Load the AVR-WPR fixed save from the patched main-menu load flow, open the clan screen, then hover the first clan card details until its family countdown tooltip settles.",
+        "SetupActions":  [
+                             {
+                                 "Action":  "Click",
+                                 "X":  64,
+                                 "Y":  57,
+                                 "WaitMs":  1000
+                             }
+                         ],
+        "ClearBeforeEachPoint":  {
+                                     "Action":  "Move",
+                                     "X":  2420,
+                                     "Y":  1320,
+                                     "WaitMs":  200
+                                 },
+        "ExpectedNo":  [
+                           " in ",
+                           "mojibake"
+                       ],
+        "Points":  [
+                       {
+                           "Id":  "hover_first_clan_family_countdown",
+                           "Label":  "First clan card family countdown",
+                           "Action":  "HoverAndCapture",
+                           "X":  1460,
+                           "Y":  600,
+                           "WaitMs":  1800,
+                           "Crop":  {
+                                        "X":  1400,
+                                        "Y":  430,
+                                        "Width":  820,
+                                        "Height":  470
+                                    }
+                       }
+                   ],
+        "Evidence":  {
+                         "LastStatus":  "Passed",
+                         "Save":  "v1.4.1   World [AVR-WPR]   游戏开始.AtGSave",
+                         "TextResult":  "2026-07-27 final installed fixed-save run passed in 4.06 seconds. Trace draws `(+1，还需 12` followed by `回合`; no residual ` in ` or mojibake was visible.",
+                         "EvidenceHandoff":  "20260727-avr-wpr-clan-final",
+                         "EvidenceRetention":  "TextOnly"
+                     }
+    },
+    {
+        "Id":  "clan-trait-random-discovery",
+                            "Title":  "Random new-game clan trait discovery",
+                            "Interface":  "Clan Screen",
+                            "StateId":  "clan-trait-random-discovery",
+                            "Category":  "HoverSweep",
+                            "Status":  "Discovery",
+                            "SkipByDefault":  true,
+                            "RequiresSaveBeforeFix":  true,
+    "ExpectedNo":  [
+                       "VS",
+                       "Mounted",
+                       " in the",
+                       "within the",
+                       ", or ",
+                       "outside the",
+                       "Warrior",
+                       "unable",
+                       "spend",
+                       "winter",
+                       "inside",
+                       "Resident",
+                       "forced into an",
+                       "forced into a",
+                       "从事n",
+                       "where they're neither",
+                       " nor the"
+                   ],
+    "ExpectedAny":  [
+                        "适应力强", "爱冒险", "怕动物", "怕火", "怕水", "好斗", "笨手笨脚", "冷漠", "苦行", "弓箭手", "专注", "喧闹", "罗圈腿", "拙于园艺", "冷静", "有魅力", "好胜", "自信", "腐败", "怯懦", "有创造力", "好奇", "涉猎广", "苛求", "掘土者", "毁容", "失誉", "爱夸张", "尽责", "热切", "畏寒", "高效", "善辩", "善妒", "享乐者", "受敬重", "探索者", "农夫", "学得快", "挑剔", "多产", "肮脏", "虚弱", "采集者", "温和", "贪食", "贪婪", "园艺能手", "合群", "会砍价", "手巧", "牧人", "山地人", "囤积者", "猎人", "富想象", "急躁", "冲动", "独立", "威吓", "懒惰", "麻风", "本地人", "伐木工", "低生育", "忠诚", "沼泽民", "温顺", "矿工", "苦闷", "紧张", "游牧", "北地人", "服从", "执念", "顽固", "多疑", "热情", "小贩", "敏锐", "小气", "牧场主", "收割者", "离群索居", "寡言", "足智多谋", "河民", "粗野", "乡野", "敏感", "锻造世家", "易反胃", "坚忍", "强壮", "固执", "阴沉", "测绘员", "细致", "坚韧", "陷阱猎人", "精力旺盛", "暴力", "浪费", "野性", "拾柴者", "林地人"
+                    ],
+    "Setup":  "Load the selected save, open the clan screen, then hover all six fixed global absolute trait points: x=1182, 1331, 1483 crossed with y=639, 655. Each point is converted once from the 2560x1440 reference client to a Windows absolute screen point and GetCursorPos must confirm it. Every hover must render a translated trait title from ExpectedAny; card details, mood details, empty hovers, or a changed crop alone fail the run. Persist every identified trait before changing the patch. If any residual is found, use the same save for the later fixed-save retest.",
+                            "SetupActions":  [
+                                                 {
+                                                     "Action":  "Click",
+                                                     "X":  64,
+                                                     "Y":  57,
+                                                     "WaitMs":  1200
+                                                 }
+                                             ],
+                            "ClearBeforeEachPoint":  {
+                                                         "Action":  "Move",
+                                                         "X":  1900,
+                                                         "Y":  1100,
+                                                          "WaitMs":  500
+                                                      },
+                           "Points":  [
+            {
+                "Id":  "card_1_secondary_candidate",
+                "Label":  "Card 1 fixed trait slot at 1182,655",
+                "Action":  "HoverAndCapture",
+                "X":  1182,
+                "Y":  655,
+                "Crop":  {
+                             "X":  900,
+                             "Y":  450,
+                             "Width":  1600,
+                             "Height":  650
                          },
-                         {
-                             "Id":  "religion-screen-20260718",
-                             "Title":  "Religion screen title and religion choices",
-                             "Interface":  "Religion Screen",
-                             "StateId":  "religion-screen",
-                             "Category":  "ClickAndCapture",
-                             "Status":  "Completed",
-                             "SkipByDefault":  false,
-                             "RequiresFixedSave":  true,
-                             "SaveName":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
-                             "Setup":  "Load the current fixed save directly from the main-menu load flow, then open the main-loop Religion screen. Do not start a new game or load from the in-game pause menu.",
-                             "ExpectedNo":  [
-                                                "Religion",
-                                                "Nicene Christianity",
-                                                "Arian Christianity",
-                                                "Pagan",
-                                                "RELIGION_",
-                                                "TEXT.",
-                                                ":PLURAL",
-                                                ":SINGULAR",
-                                                "mojibake"
-                                            ],
-                             "Points":  [
-                                            {
-                                                "Id":  "open_religion_screen",
-                                                "Label":  "Open Religion screen",
-                                                "Action":  "ClickAndCapture",
-                                                "X":  2080,
-                                                "Y":  25,
-                                                "AllowUnchanged":  true,
-                                                "WaitMs":  900
-                                            },
-                                            {
-                                                "Id":  "religion_screen_labels",
-                                                "Label":  "Religion title and three choices",
-                                                "Action":  "CaptureOnly",
-                                                "Crop":  {
-                                                             "X":  1130,
-                                                             "Y":  550,
-                                                             "Width":  340,
-                                                             "Height":  360
-                                                         }
-                                            },
-                                            {
-                                                "Id":  "close_religion_screen",
-                                                "Label":  "Close Religion screen",
-                                                "Action":  "Click",
-                                                "X":  1350,
-                                                "Y":  837,
-                                                "SkipClear":  true,
-                                                "WaitMs":  500
-                                            }
-                                        ],
-                             "Evidence":  {
-                                              "LastStatus":  "Passed",
-                                              "LastRunDir":  ".tmp/runs/20260718-religion-screen-manual",
-                                              "LastScreenshot":  ".tmp/religion-screen.png",
-                                              "Save":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave"
-                                          }
-                         }
+                "WaitMs":  900
+            },
+            {
+                "Id":  "card_1_lower_candidate",
+                "Label":  "Card 1 fixed trait slot at 1182,639",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1182,
+                                               "Y":  639,
+                                               "Crop":  {
+                                                            "X":  900,
+                                                            "Y":  450,
+                                                            "Width":  1600,
+                                                            "Height":  650
+                                                        },
+                "WaitMs":  900
+            },
+            {
+                "Id":  "card_2_secondary_candidate",
+                "Label":  "Card 2 fixed trait slot at 1331,655",
+                "Action":  "HoverAndCapture",
+                "X":  1331,
+                "Y":  655,
+                "Crop":  {
+                             "X":  900,
+                             "Y":  450,
+                             "Width":  1600,
+                             "Height":  650
+                         },
+                "WaitMs":  900
+            },
+            {
+                "Id":  "card_2_lower_candidate",
+                "Label":  "Card 2 fixed trait slot at 1331,639",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1331,
+                                               "Y":  639,
+                                               "Crop":  {
+                                                            "X":  900,
+                                                            "Y":  450,
+                                                            "Width":  1600,
+                                                            "Height":  650
+                                                        },
+                                               "WaitMs":  900
+            },
+            {
+                "Id":  "card_3_secondary_candidate",
+                "Label":  "Card 3 fixed trait slot at 1483,655",
+                "Action":  "HoverAndCapture",
+                "X":  1483,
+                "Y":  655,
+                "Crop":  {
+                             "X":  900,
+                             "Y":  450,
+                             "Width":  1600,
+                             "Height":  650
+                         },
+                "WaitMs":  900
+            },
+            {
+                "Id":  "card_3_lower_candidate",
+                "Label":  "Card 3 fixed trait slot at 1483,639",
+                                               "Action":  "HoverAndCapture",
+                                               "X":  1483,
+                                               "Y":  639,
+                                               "Crop":  {
+                                                            "X":  900,
+                                                            "Y":  450,
+                                                            "Width":  1600,
+                                                            "Height":  650
+                                                        },
+                                               "WaitMs":  900
+                                           }
+                                       ],
+                                             "Evidence":  {
+                                             "LastStatus":  "Passed",
+                      "VisibleTraitIdsLastRun":  [
+                                                      "TRAIT_Epicure",
+                                                      "TRAIT_Charismatic",
+                                                      "TRAIT_Low_Fertility",
+                                                      "TRAIT_Perceptive",
+                                                      "TRAIT_Gluttonous",
+                                                      "TRAIT_Thorough"
+                                                 ],
+                      "Save":  "新世界 run-119-current",
+                      "EvidenceHandoff":  "20260728-clan-trait-run119-current",
+                                              "EvidenceRetention":  "TextOnly",
+                      "Note":  "run-119 新世界六点动作和六张 1600x650 截图均完整；享乐者、有魅力、低生育、敏锐、贪食、细致 tooltip 的边框、标题和正文完整，正文及 scoped trace 无配置残留。"
+                                         }
+                        },
+    {
+        "Id": "clan-trait-miserable-mood-detail",
+        "Title": "Miserable trait mood-detail localization",
+        "Interface": "Clan Screen",
+        "StateId": "clan-trait-miserable-mood-detail",
+        "Category": "HoverCapture",
+        "Status": "Active",
+        "SkipByDefault": true,
+        "ExpectedNo": ["Default", "Content", "Trait", "When", " is "],
+        "RequiresFixedSave": true,
+        "SaveName": "v1.4.1   World [SYI-ITT]   游戏开始.AtGSave",
+        "TraitScope": ["TRAIT_Miserable"],
+        "Setup": "Load the SYI-ITT fixed save from the patched main-menu flow, open the clan screen, then hover the first card's bottom-center mood detail. This is a contextual Miserable-trait detail, not the clan-card summary.",
+        "SetupActions": [
+            { "Action": "Click", "X": 64, "Y": 57, "WaitMs": 1200 }
+        ],
+        "ClearBeforeEachPoint": { "Action": "Move", "X": 1900, "Y": 1100, "WaitMs": 150 },
+        "Points": [
+            {
+                "Id": "miserable_mood_detail",
+                "Label": "Miserable mood-detail tooltip",
+                "Action": "HoverAndCapture",
+                "X": 1127,
+                "Y": 640,
+                "WaitMs": 1800,
+                "Crop": { "X": 800, "Y": 560, "Width": 900, "Height": 540 },
+                "ExpectedAll": ["默认", "满足", "苦闷特质", "当不悦时"]
+            }
+        ],
+        "Evidence": {
+            "LastStatus": "Passed",
+            "Save": "v1.4.1   World [SYI-ITT]   游戏开始.AtGSave",
+            "EvidenceHandoff": "20260727-clan-trait-miserable-final-connector",
+            "EvidenceRetention": "TextOnly",
+            "Note": "Final fixed-save run completed in 3.994 seconds, with the required hover settled for 2.061 seconds. It drew `Eberhardt为不悦`, `默认`, `为满足`, `（苦闷特质）`, and `当不悦时……`; no Default, Content, Trait, When, or English ` is ` connector remained. The pre-fix `Default {arg:1} is ` composition reused EntryPointId managed:source/AtTheGatesGame.original.exe:06000DA7:IL_0060 and RuleId runtime-display-template; the contextual clan connector is the entry-specific BuildDescription_Mood rewrite at 0x06001731 IL_011D. Always use fixed-save setup; main-menu-fixed-save only promotes a save and stays at the menu."
+        }
+    }
                     ]
 }

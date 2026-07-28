@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,6 +9,22 @@ namespace AtG.RuntimeText
 {
     public static class TextRenderer
     {
+        private sealed class OriginalGlyphSet
+        {
+            public readonly HashSet<char> Characters = new HashSet<char>();
+            public readonly Dictionary<char, float> Advances = new Dictionary<char, float>();
+
+            public OriginalGlyphSet(SpriteFont font)
+            {
+                foreach (var character in font.Characters) Characters.Add(character);
+            }
+        }
+
+        private static readonly ConditionalWeakTable<SpriteFont, OriginalGlyphSet> OriginalGlyphs =
+            new ConditionalWeakTable<SpriteFont, OriginalGlyphSet>();
+        [ThreadStatic]
+        private static StringBuilder ScratchBuilder;
+
         public static GlyphCacheDiagnostics GetGlyphCacheDiagnostics(GraphicsDevice device)
         {
             if (device == null) throw new ArgumentNullException("device");
@@ -17,6 +35,85 @@ namespace AtG.RuntimeText
         {
             if (font == null) throw new ArgumentNullException("font");
             if (text == null) throw new ArgumentNullException("text");
+            var performanceStartedAt = RuntimeTextPerformance.StartOperation();
+            try
+            {
+                return MeasureStringCore(font,
+                    DisplayStringLocalizer.LocalizeDisplayString(text));
+            }
+            finally
+            {
+                RuntimeTextPerformance.CompleteMainThreadOperation(performanceStartedAt);
+            }
+        }
+
+        public static Vector2 MeasureString(SpriteFont font, StringBuilder text)
+        {
+            if (text == null) throw new ArgumentNullException("text");
+            return MeasureString(font, text.ToString());
+        }
+
+        internal static float[] MeasurePrefixWidths(SpriteFont font, string text)
+        {
+            if (font == null) throw new ArgumentNullException("font");
+            if (text == null) throw new ArgumentNullException("text");
+            var performanceStartedAt = RuntimeTextPerformance.StartOperation();
+            try
+            {
+                var descriptor = FontRegistry.Resolve(font);
+                var widths = new float[text.Length + 1];
+                for (var index = 0; index < text.Length; index++)
+                {
+                    var character = text[index];
+                    var advance = 0f;
+                    if (character != '\r' && character != '\n' &&
+                        !CjkText.IsIgnorableFormat(character))
+                    {
+                        if (CjkText.RequiresDynamicGlyph(character))
+                            advance = MeasureDynamic(descriptor, character).X;
+                        else
+                            advance = GetOriginalAdvance(font,
+                                HasOriginalGlyph(font, character) ? character : '?');
+                    }
+                    widths[index + 1] = widths[index] + advance;
+                }
+                return widths;
+            }
+            finally
+            {
+                RuntimeTextPerformance.CompleteMainThreadOperation(performanceStartedAt);
+            }
+        }
+
+        public static void DrawString(SpriteBatch batch, SpriteFont font, string text,
+            Vector2 position, Color color)
+        {
+            DrawString(batch, font, text, position, color, 0f, Vector2.Zero, 1f,
+                SpriteEffects.None, 0f);
+        }
+
+        public static void DrawString(SpriteBatch batch, SpriteFont font, string text,
+            Vector2 position, Color color, float rotation, Vector2 origin, float scale,
+            SpriteEffects effects, float layerDepth)
+        {
+            if (batch == null) throw new ArgumentNullException("batch");
+            if (font == null) throw new ArgumentNullException("font");
+            if (text == null) throw new ArgumentNullException("text");
+            var performanceStartedAt = RuntimeTextPerformance.StartOperation();
+            try
+            {
+                DrawStringCore(batch, font,
+                    DisplayStringLocalizer.LocalizeDisplayString(text),
+                    position, color, rotation, origin, scale, effects, layerDepth);
+            }
+            finally
+            {
+                RuntimeTextPerformance.CompleteMainThreadOperation(performanceStartedAt);
+            }
+        }
+
+        private static Vector2 MeasureStringCore(SpriteFont font, string text)
+        {
             if (!NeedsRuntimeProcessing(font, text))
             {
                 var nativeSize = font.MeasureString(text);
@@ -31,7 +128,7 @@ namespace AtG.RuntimeText
                 var height = Math.Max(font.LineSpacing, descriptor.RasterSize);
                 var currentLineHeight = height;
                 var missingGlyphs = 0;
-                var originalRun = new StringBuilder();
+                var originalRun = GetScratchBuilder();
                 for (var index = 0; index < text.Length; index++)
                 {
                     var character = text[index];
@@ -57,14 +154,16 @@ namespace AtG.RuntimeText
                     {
                         originalRun.Append('?');
                         missingGlyphs++;
-                        RuntimeTextTrace.Write("missing-original-glyph", character.ToString(), descriptor, null);
+                        RuntimeTextTrace.Write("missing-original-glyph",
+                            character.ToString(), descriptor, null);
                     }
                 }
                 width += FlushOriginalMeasure(font, originalRun);
                 maximumWidth = Math.Max(maximumWidth, width);
                 var measured = new Vector2(maximumWidth, height);
-                RuntimeTextTrace.Write("measure", text, descriptor, null,
-                    CreateMetrics(null, measured, missingGlyphs));
+                if (RuntimeTextTrace.IsEnabled)
+                    RuntimeTextTrace.Write("measure", text, descriptor, null,
+                        CreateMetrics(null, measured, missingGlyphs));
                 return measured;
             }
             catch (Exception ex)
@@ -77,27 +176,14 @@ namespace AtG.RuntimeText
             }
         }
 
-        public static Vector2 MeasureString(SpriteFont font, StringBuilder text)
-        {
-            if (text == null) throw new ArgumentNullException("text");
-            return MeasureString(font, text.ToString());
-        }
-
-        public static void DrawString(SpriteBatch batch, SpriteFont font, string text, Vector2 position, Color color)
-        {
-            DrawString(batch, font, text, position, color, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-        }
-
-        public static void DrawString(SpriteBatch batch, SpriteFont font, string text, Vector2 position,
-            Color color, float rotation, Vector2 origin, float scale,
+        private static void DrawStringCore(SpriteBatch batch, SpriteFont font, string text,
+            Vector2 position, Color color, float rotation, Vector2 origin, float scale,
             SpriteEffects effects, float layerDepth)
         {
-            if (batch == null) throw new ArgumentNullException("batch");
-            if (font == null) throw new ArgumentNullException("font");
-            if (text == null) throw new ArgumentNullException("text");
             if (!NeedsRuntimeProcessing(font, text))
             {
-                batch.DrawString(font, text, position, color, rotation, origin, scale, effects, layerDepth);
+                batch.DrawString(font, text, position, color, rotation, origin, scale,
+                    effects, layerDepth);
                 if (RuntimeTextTrace.IsEnabled)
                     TraceResult("draw", text, font, null, position,
                         font.MeasureString(text) * scale, 0);
@@ -113,7 +199,7 @@ namespace AtG.RuntimeText
                 var maximumWidth = 0f;
                 var lineHeight = Math.Max(font.LineSpacing, descriptor.RasterSize);
                 var missingGlyphs = 0;
-                var originalRun = new StringBuilder();
+                var originalRun = GetScratchBuilder();
                 for (var index = 0; index < text.Length; index++)
                 {
                     var character = text[index];
@@ -135,7 +221,8 @@ namespace AtG.RuntimeText
                         {
                             originalRun.Append('?');
                             missingGlyphs++;
-                            RuntimeTextTrace.Write("missing-original-glyph", character.ToString(), descriptor, null);
+                            RuntimeTextTrace.Write("missing-original-glyph",
+                                character.ToString(), descriptor, null);
                         }
                         continue;
                     }
@@ -147,6 +234,7 @@ namespace AtG.RuntimeText
                     {
                         originalRun.Append('?');
                         missingGlyphs++;
+                        RuntimeGlyphScheduler.NotifyFallback();
                         continue;
                     }
                     var glyphPosition = Transform(
@@ -159,15 +247,17 @@ namespace AtG.RuntimeText
                 x += DrawOriginalRun(batch, font, originalRun, x, y, position, color,
                     rotation, origin, scale, effects, layerDepth);
                 maximumWidth = Math.Max(maximumWidth, x);
-                RuntimeTextTrace.Write("draw", text, descriptor, null,
-                    CreateMetrics(position,
-                        new Vector2(maximumWidth * scale, (y + lineHeight) * scale),
-                        missingGlyphs));
+                if (RuntimeTextTrace.IsEnabled)
+                    RuntimeTextTrace.Write("draw", text, descriptor, null,
+                        CreateMetrics(position,
+                            new Vector2(maximumWidth * scale, (y + lineHeight) * scale),
+                            missingGlyphs));
             }
             catch (Exception ex)
             {
                 var sanitized = Sanitize(font, text);
-                batch.DrawString(font, sanitized, position, color, rotation, origin, scale, effects, layerDepth);
+                batch.DrawString(font, sanitized, position, color, rotation, origin, scale,
+                    effects, layerDepth);
                 RuntimeTextTrace.Write("draw-fallback", text, descriptor, ex,
                     CreateMetrics(position, font.MeasureString(sanitized) * scale,
                         CountReplacements(sanitized)));
@@ -206,6 +296,18 @@ namespace AtG.RuntimeText
             return count;
         }
 
+        private static StringBuilder GetScratchBuilder()
+        {
+            var builder = ScratchBuilder;
+            if (builder == null)
+            {
+                builder = new StringBuilder(128);
+                ScratchBuilder = builder;
+            }
+            builder.Length = 0;
+            return builder;
+        }
+
         private static float FlushOriginalMeasure(SpriteFont font, StringBuilder run)
         {
             if (run.Length == 0) return 0f;
@@ -216,19 +318,27 @@ namespace AtG.RuntimeText
 
         private static Vector2 MeasureDynamic(FontDescriptor descriptor, char character)
         {
+            if (!RuntimeGlyphScheduler.IsLegacySync)
+            {
+                var metrics = RuntimeGlyphScheduler.GetMetrics(descriptor, character);
+                return new Vector2(metrics.Advance, metrics.LineHeight);
+            }
+
             var font = PrivateFontProvider.GetFont(descriptor);
             using (var bitmap = new System.Drawing.Bitmap(1, 1))
             using (var graphics = System.Drawing.Graphics.FromImage(bitmap))
             {
                 var size = graphics.MeasureString(character.ToString(), font,
-                    new System.Drawing.PointF(0, 0), System.Drawing.StringFormat.GenericTypographic);
+                    new System.Drawing.PointF(0, 0),
+                    System.Drawing.StringFormat.GenericTypographic);
                 return new Vector2(size.Width, font.GetHeight(graphics));
             }
         }
 
-        private static float DrawOriginalRun(SpriteBatch batch, SpriteFont font, StringBuilder run,
-            float x, float y, Vector2 position, Color color, float rotation, Vector2 origin,
-            float scale, SpriteEffects effects, float layerDepth)
+        private static float DrawOriginalRun(SpriteBatch batch, SpriteFont font,
+            StringBuilder run, float x, float y, Vector2 position, Color color,
+            float rotation, Vector2 origin, float scale, SpriteEffects effects,
+            float layerDepth)
         {
             if (run.Length == 0) return 0f;
             var value = run.ToString();
@@ -243,6 +353,7 @@ namespace AtG.RuntimeText
             float rotation, float scale)
         {
             local -= origin;
+            if (rotation == 0f) return position + local * scale;
             var cosine = (float)Math.Cos(rotation);
             var sine = (float)Math.Sin(rotation);
             return position + new Vector2(
@@ -252,19 +363,37 @@ namespace AtG.RuntimeText
 
         private static bool NeedsRuntimeProcessing(SpriteFont font, string text)
         {
+            var originalGlyphs =
+                OriginalGlyphs.GetValue(font, value => new OriginalGlyphSet(value));
             for (var index = 0; index < text.Length; index++)
             {
                 var character = text[index];
                 if (CjkText.RequiresDynamicGlyph(character) ||
                     CjkText.IsIgnorableFormat(character) ||
-                    !HasOriginalGlyph(font, character)) return true;
+                    (character != '\r' && character != '\n' &&
+                     !originalGlyphs.Characters.Contains(character))) return true;
             }
             return false;
         }
 
         private static bool HasOriginalGlyph(SpriteFont font, char character)
         {
-            return character == '\r' || character == '\n' || font.Characters.Contains(character);
+            return character == '\r' || character == '\n' ||
+                   OriginalGlyphs.GetValue(font, value => new OriginalGlyphSet(value))
+                       .Characters.Contains(character);
+        }
+
+        private static float GetOriginalAdvance(SpriteFont font, char character)
+        {
+            var glyphs = OriginalGlyphs.GetValue(font, value => new OriginalGlyphSet(value));
+            lock (glyphs.Advances)
+            {
+                float advance;
+                if (glyphs.Advances.TryGetValue(character, out advance)) return advance;
+                advance = font.MeasureString(character.ToString()).X;
+                glyphs.Advances.Add(character, advance);
+                return advance;
+            }
         }
 
         private static string Sanitize(SpriteFont font, string text)
@@ -273,7 +402,8 @@ namespace AtG.RuntimeText
             foreach (var character in text)
             {
                 if (CjkText.IsIgnorableFormat(character)) continue;
-                builder.Append(CjkText.RequiresDynamicGlyph(character) || !HasOriginalGlyph(font, character)
+                builder.Append(CjkText.RequiresDynamicGlyph(character) ||
+                               !HasOriginalGlyph(font, character)
                     ? '?'
                     : character);
             }

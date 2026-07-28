@@ -20,5 +20,11 @@
     <Compile Include="..\AtG.RuntimeText\TraceWriteGuard.cs" Link="TraceWriteGuard.cs" />
     <Compile Include="..\AtG.RuntimeText\RuntimeTextTrace.cs" Link="RuntimeTextTrace.cs" />
     <Compile Include="..\AtG.RuntimeText\DeferredGlyphQueue.cs" Link="DeferredGlyphQueue.cs" />
+    <Compile Include="..\AtG.RuntimeText\PriorityDeduplicatingQueue.cs" Link="PriorityDeduplicatingQueue.cs" />
+    <Compile Include="..\AtG.RuntimeText\FrameUploadBudget.cs" Link="FrameUploadBudget.cs" />
+    <Compile Include="..\AtG.RuntimeText\GlyphAlphaConverter.cs" Link="GlyphAlphaConverter.cs" />
+    <Compile Include="..\AtG.RuntimeText\GlyphMetricsCache.cs" Link="GlyphMetricsCache.cs" />
+    <Compile Include="..\AtG.RuntimeText\RuntimeGlyphWarmsetCatalog.cs" Link="RuntimeGlyphWarmsetCatalog.cs" />
+    <Compile Include="..\AtG.RuntimeText\RuntimeTextPerformance.cs" Link="RuntimeTextPerformance.cs" />
   </ItemGroup>
 </Project>

@@ -2519,6 +2519,34 @@
   <e ntry="TEXT.Name.Tech.MilitiaTraining:PLURAL">民兵训练</e>
   <e ntry="TEXT.Name.Tech.CeremonialRites:SINGULAR">仪式礼法</e>
   <e ntry="TEXT.Name.Tech.CeremonialRites:PLURAL">仪式礼法</e>
+  <e ntry="TEXT.Description.Economy.Bonus">经济优势</e>
+  <e ntry="TEXT.Description.Economy.LargeBonus">显著经济优势</e>
+  <e ntry="TEXT.Description.Economy.LargePenalty">显著经济劣势</e>
+  <e ntry="TEXT.Description.Economy.Penalty">经济劣势</e>
+  <e ntry="TEXT.Description.Horsemen">擅长骑兵作战。</e>
+  <e ntry="TEXT.Description.Knowledge.Bonus">知识优势</e>
+  <e ntry="TEXT.Description.Knowledge.LargeBonus">显著知识优势</e>
+  <e ntry="TEXT.Description.Knowledge.LargePenalty">显著知识劣势</e>
+  <e ntry="TEXT.Description.Knowledge.Penalty">知识劣势</e>
+  <e ntry="TEXT.Description.Maritime">擅长航海与海上活动。</e>
+  <e ntry="TEXT.Description.Military.Bonus">军事优势</e>
+  <e ntry="TEXT.Description.Military.LargeBonus">显著军事优势</e>
+  <e ntry="TEXT.Description.Military.LargePenalty">显著军事劣势</e>
+  <e ntry="TEXT.Description.Military.Penalty">军事劣势</e>
+  <e ntry="TEXT.Description.Minor">没有显著的派系特性。</e>
+  <e ntry="TEXT.Description.Outposts.Bonus">前哨优势</e>
+  <e ntry="TEXT.Description.Outposts.LargeBonus">显著前哨优势</e>
+  <e ntry="TEXT.Description.Outposts.LargePenalty">显著前哨劣势</e>
+  <e ntry="TEXT.Description.Outposts.Penalty">前哨劣势</e>
+  <e ntry="TEXT.Description.Population.Bonus">人口优势</e>
+  <e ntry="TEXT.Description.Population.LargeBonus">显著人口优势</e>
+  <e ntry="TEXT.Description.Population.LargePenalty">显著人口劣势</e>
+  <e ntry="TEXT.Description.Population.Penalty">人口劣势</e>
+  <e ntry="TEXT.Description.Roman">采用罗马式传统。</e>
+  <e ntry="TEXT.Description.Stockpile.Bonus">库存优势</e>
+  <e ntry="TEXT.Description.Stockpile.LargeBonus">显著库存优势</e>
+  <e ntry="TEXT.Description.Stockpile.LargePenalty">显著库存劣势</e>
+  <e ntry="TEXT.Description.Stockpile.Penalty">库存劣势</e>
 </english>
 <!--
     

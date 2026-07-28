@@ -9,17 +9,12 @@ $outRoot = Join-Path $repoRoot $OutputDirectory
 New-Item -ItemType Directory -Force -Path $outRoot | Out-Null
 
 $csvPath = Join-Path $outRoot "known-texts.csv"
-$mdPath = Join-Path $outRoot "known-texts.md"
 $catalogPath = Join-Path $outRoot "atg-catalog.sqlite"
 
 $exportResult = & (Join-Path $PSScriptRoot "Export-KnownTextReview.ps1") `
-    -MarkdownOutputPath $mdPath `
     -CsvOutputPath $csvPath `
     -CatalogDatabasePath $catalogPath
 
-if (!(Test-Path -LiteralPath $mdPath -PathType Leaf)) {
-    throw "Markdown review output was not generated: $mdPath"
-}
 if (!(Test-Path -LiteralPath $csvPath -PathType Leaf)) {
     throw "CSV review output was not generated: $csvPath"
 }
@@ -27,39 +22,18 @@ if (!(Test-Path -LiteralPath $catalogPath -PathType Leaf)) {
     throw "SQLite review catalog was not generated: $catalogPath"
 }
 
-$mdRaw = Get-Content -LiteralPath $mdPath -Raw -Encoding UTF8
-if ($mdRaw -notmatch "# Known Texts AI Index") {
-    throw "Markdown review output is missing the AI index header."
-}
-if ($mdRaw -notmatch "Query the SQLite catalog first") {
-    throw "Markdown review output must direct workflow matching to SQLite first."
-}
-if ($mdRaw -notmatch "Use this Markdown for grouped source context") {
-    throw "Markdown review output must identify itself as the grouped context view."
-}
-if ($mdRaw -match "Use this Markdown first for agent/workflow text matching") {
-    throw "Markdown review output must not supersede the SQLite primary query path."
-}
-if ($mdRaw -notmatch "## Source: source\\English\.original\.xml") {
-    throw "Markdown review output must group rows by source file."
-}
-if ($mdRaw -notmatch 'Original:\r?\n```text' -or $mdRaw -notmatch 'Translation:\r?\n```text') {
-    throw "Markdown review output must expose original and translation text blocks."
-}
-if ($mdRaw -notmatch "Locators:") {
-    throw "Markdown review output must include locators for workflow matching."
-}
-if ($mdRaw -notmatch "SourceOccurrenceId:" -or $mdRaw -notmatch "SemanticGroupId:") {
-    throw "Markdown review output must expose SQLite occurrence and semantic-group identifiers."
-}
-if ($null -eq $exportResult.MarkdownOutputPath -or -not (Test-Path -LiteralPath $exportResult.MarkdownOutputPath -PathType Leaf)) {
-    throw "Exporter result must include MarkdownOutputPath."
-}
 if ($null -eq $exportResult.CsvOutputPath -or -not (Test-Path -LiteralPath $exportResult.CsvOutputPath -PathType Leaf)) {
     throw "Exporter result must include CsvOutputPath."
 }
 if ($null -eq $exportResult.CatalogDatabasePath -or -not (Test-Path -LiteralPath $exportResult.CatalogDatabasePath -PathType Leaf)) {
     throw "Exporter result must include CatalogDatabasePath."
+}
+$knownTextExporterSource = Get-Content -LiteralPath (Join-Path $PSScriptRoot "Export-KnownTextReview.ps1") -Raw -Encoding UTF8
+if ($knownTextExporterSource -match "MarkdownOutputPath|--markdown") {
+    throw "Known-text export must not generate a Markdown review view."
+}
+if ($knownTextExporterSource -notmatch "CompositeRulesPath|known-texts-csv") {
+    throw "Known-text export must enrich the CSV from the composite rule source and SQLite catalog directly."
 }
 
 $rows = @(Import-Csv -LiteralPath $csvPath -Encoding UTF8)
@@ -95,7 +69,12 @@ $requiredColumns = @(
     "ReviewState",
     "ReasonCode",
     "Safety",
-    "Locators"
+    "Locators",
+    "SourceOccurrenceId",
+    "SemanticGroupId",
+    "CompositeReferenceCount",
+    "CompositeEntryPointIds",
+    "CompositeReferencesJson"
 )
 
 $columns = @($rows[0].PSObject.Properties.Name)
@@ -115,6 +94,55 @@ foreach ($column in $removedColumns) {
     if ($columns -contains $column) {
         throw "CSV review output still contains removed column: $column"
     }
+}
+
+$apiaryKnownText = $rows | Where-Object {
+    $_.Locators -eq "ID=STRUCTURE_APIARY_1; XPath=description; Index=" -and
+    $_.Original -like "Apiaries are a *"
+} | Select-Object -First 1
+if ($null -eq $apiaryKnownText -or [int]$apiaryKnownText.CompositeReferenceCount -lt 1 -or
+    [string]::IsNullOrWhiteSpace([string]$apiaryKnownText.CompositeEntryPointIds) -or
+    $apiaryKnownText.CompositeReferencesJson -notmatch 'ConfigIdXPathIndexLocator') {
+    throw "Known-text CSV must expose the exact reverse Composite link for the Apiary config description."
+}
+
+$creditsKnownText = $rows | Where-Object {
+    $_.Locators -eq "TEXT.Credits.Conifer"
+} | Select-Object -First 1
+if ($null -eq $creditsKnownText -or [int]$creditsKnownText.CompositeReferenceCount -lt 1 -or
+    $creditsKnownText.CompositeReferencesJson -notmatch 'TextKeyExactLocator') {
+    throw "Known-text CSV must expose English text-key Composite links without a heuristic text join."
+}
+
+$runtimeMapKnownTexts = @($rows | Where-Object {
+    $_.SourceFile -eq "translations\runtime-display-strings.json"
+})
+$runtimeDisplayMap = Get-Content -LiteralPath (Join-Path $repoRoot "translations\runtime-display-strings.json") -Raw -Encoding UTF8 | ConvertFrom-Json
+$expectedRuntimeMapBindings = @(
+    foreach ($section in @("Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "ConceptDisplay")) {
+        foreach ($entry in @($runtimeDisplayMap.$section)) {
+            if ($null -ne $entry -and ![string]::IsNullOrWhiteSpace([string]$entry.Original) -and
+                $null -ne $entry.Translation) {
+                $entry
+            }
+        }
+    }
+)
+if ($runtimeMapKnownTexts.Count -ne $expectedRuntimeMapBindings.Count -or @($runtimeMapKnownTexts | Where-Object {
+    $_.Kind -notmatch '^Runtime display map \(' -or
+    $_.Status -ne "Translated" -or
+    $_.ReviewState -ne "Translated" -or
+    $_.Locators -notmatch '^RuntimeMapSection=.*; RuntimeMapOriginal=' -or
+    [int]$_.CompositeReferenceCount -ne 1 -or
+    $_.CompositeReferencesJson -notmatch 'RuntimeMapExactLocator'
+}).Count -gt 0) {
+    throw "Known-text CSV must include all $($expectedRuntimeMapBindings.Count) runtime-display-map bindings as exact Composite-linked KnownTexts."
+}
+$activeRuntimeConcept = @($runtimeMapKnownTexts | Where-Object {
+    $_.Locators -eq "RuntimeMapSection=ConceptDisplay; RuntimeMapOriginal=Active; RuntimeMapConceptKey=ACTIVE"
+})
+if ($activeRuntimeConcept.Count -ne 1 -or $activeRuntimeConcept[0].Original -ne "[Active|ACTIVE]") {
+    throw "Known-text CSV must retain the concept wrapper and stable map locator for the Active runtime binding."
 }
 
 $allowedReviewStates = @("Translated", "NeedsTrial", "Skipped", "RecheckedSkipped", "Rejected")
@@ -151,7 +179,8 @@ $requiredSources = @(
     "source\AtTheGatesUI.original.dll",
     "source\AtTheGatesCommon.original.dll",
     "source\AtTheGatesGame.original.exe",
-    "source\ElfTools.original.dll"
+    "source\ElfTools.original.dll",
+    "translations\runtime-display-strings.json"
 )
 
 $sourceSet = @{}
@@ -272,7 +301,6 @@ else {
 }
 
 [pscustomobject]@{
-    MarkdownPath = (Resolve-Path -LiteralPath $mdPath).Path
     CsvPath = (Resolve-Path -LiteralPath $csvPath).Path
     RowCount = $rows.Count
 }

@@ -9,15 +9,22 @@ var tests = new (string Name, Action Body)[]
     ("Only allowlisted keys become concept links", OnlyAllowlistedKeysBecomeConceptLinks),
     ("Rich localization changes display text but preserves keys and raw tags", RichLocalizationPreservesStructure),
     ("Display registrations reject conflicts and markup injection", DisplayRegistrationsRejectUnsafeValues),
-    ("Runtime display map loads exact and concept-scoped translations", RuntimeDisplayMapLoads),
+    ("Runtime display map localizes exact and standalone dynamic values", RuntimeDisplayMapLoads),
     ("Runtime display fragments localize plain nodes without breaking concept links", RuntimeDisplayFragmentsPreserveLinks),
+    ("Scoped rich-text fragments preserve concept links", RuntimeDisplayRichTextFragmentsPreserveLinks),
+    ("Chinese concept links collapse inherited English word spaces", RuntimeDisplayConceptSpacingPreservesLinks),
+    ("Runtime display templates preserve runtime arguments", RuntimeDisplayTemplatesPreserveArguments),
+    ("Game date banners use a strict localized date format", GameDatesLocalizeExactly),
     ("CJK line breaks respect punctuation", CjkBreaksRespectPunctuation),
     ("CJK fitting breaks preserve punctuation and grapheme clusters", CjkFittingBreaksPreserveTextElements),
     ("CJK word layout splits only at invisible line boundaries", CjkWordLayoutUsesLineBoundaries),
     ("CJK word bridge preserves ASCII and wraps CJK without spaces", CjkWordBridgePreservesOriginalPath),
+    ("CJK word bridge removes split winter-clause source advances", CjkWordBridgeRemovesWinterResidualWords),
     ("Display templates localize only exact approved strings", ExactTemplatesOnly),
+    ("Localization cache invalidates as one generation", LocalizationCacheInvalidatesGeneration),
     ("SpriteFont asset names map to exact runtime descriptors", SpriteFontAssetsMapExactly),
     ("CJK raster size is calibrated independently from the SpriteFont asset size", CjkRasterSizeIsCalibrated),
+    ("Font descriptor cache keys are stable allocations", FontDescriptorCacheKeyIsStable),
     ("CJK baselines are calibrated against the original SpriteFont sizes", CjkBaselineIsCalibrated),
     ("Zero-width format characters are ignored by runtime text", ZeroWidthFormatCharactersAreIgnored),
     ("Shelf packing crosses to a new atlas page", ShelfPackingCrossesToNewPage),
@@ -33,6 +40,16 @@ var tests = new (string Name, Action Body)[]
     ("Trace write failures never escape the rendering boundary", TraceWriteFailuresNeverEscape),
     ("Runtime trace JSON records final text bounds and missing glyphs", RuntimeTraceRecordsMetrics),
     ("Deferred glyph uploads are deduplicated and drained atomically", DeferredGlyphsAreDeduplicated),
+    ("Priority glyph queue deduplicates and promotes live requests", PriorityGlyphQueuePromotesLiveRequests),
+    ("Priority glyph queue peek preserves the next request", PriorityGlyphQueuePeekPreservesRequest),
+    ("Frame upload budget is shared across pumps", FrameBudgetIsSharedAcrossPumps),
+    ("Glyph alpha conversion handles positive and negative stride", GlyphAlphaConversionPreservesRows),
+    ("Provisional glyph metrics remain stable after raster measurement", ProvisionalMetricsRemainStable),
+    ("Glyph metric cache reports only the first reservation as cold", GlyphMetricReservationIsColdOnce),
+    ("Runtime glyph warmset parser validates deterministic v1 records", RuntimeGlyphWarmsetParses),
+    ("Prefix-width CJK wrapping avoids repeated substring measurement", PrefixWidthCjkWrapping),
+    ("Atlas allocator enforces warm page and frame creation limits", AtlasAllocatorHonorsPageLimits),
+    ("Performance JSON records scheduler frame counters", PerformanceTraceRecordsSchedulerCounters),
 };
 var failures = 0;
 foreach (var test in tests)
@@ -116,6 +133,15 @@ static void RuntimeDisplayMapLoads()
     {
         "K\t" + B64("CLAN"),
         "P\t" + B64("Train ") + "\t" + B64("\u8bad\u7ec3"),
+        "P\t" + B64("Content") + "\t" + B64("\u6ee1\u8db3"),
+        "P\t" + B64(",") + "\t" + B64("\u3001"),
+        "P\t" + B64(", or") + "\t" + B64("\u3001\u6216"),
+        "P\t" + B64("Range") + "\t" + B64("\u8303\u56f4"),
+        "F\t" + B64("seafaring") + "\t" + B64("\u822a\u6d77"),
+        "F\t" + B64("Mounted") + "\t" + B64("\u9a91\u4e58"),
+        "P\t" + B64("\u0080Max") + "\t" + B64("\u0080\u6700\u9ad8"),
+        "P\t" + B64("\u0080No extra") + "\t" + B64("\u0080\u65e0\u989d\u5916"),
+        "F\t" + B64("Content") + "\t" + B64("\u6ee1\u8db3"),
         "F\t" + B64("engage in ") + "\t" + B64("\u5377\u5165"),
         "C\t" + B64("CLAN") + "\t" + B64("Clan") + "\t" + B64("\u6c0f\u65cf"),
         "E\t" + B64("Close") + "\t" + B64("\u5173\u95ed"),
@@ -123,6 +149,16 @@ static void RuntimeDisplayMapLoads()
     DisplayStringLocalizer.Load(new StringReader(lines));
 
     Equal("\u5173\u95ed", DisplayStringLocalizer.LocalizeDisplayString("Close"));
+    Equal("\u6ee1\u8db3", DisplayStringLocalizer.LocalizeDisplayString("Content"));
+    Equal("\u3001", DisplayStringLocalizer.LocalizeDisplayString(","));
+    Equal("\u3001\u6216", DisplayStringLocalizer.LocalizeDisplayString(", or"));
+    Equal("\u8303\u56f4", DisplayStringLocalizer.LocalizeDisplayString("Range"));
+    Equal("\u822a\u6d77", DisplayStringLocalizer.LocalizeRichText("seafaring"));
+    Equal("\u5bf9\u9a91\u4e58\u5355\u4f4d\u51cf\u534a", DisplayStringLocalizer.LocalizeRichText("\u5bf9Mounted\u5355\u4f4d\u51cf\u534a"));
+    Equal("\u0080\u6700\u9ad8", DisplayStringLocalizer.LocalizeRichText("\u0080Max"));
+    Equal("\u0080\u65e0\u989d\u5916", DisplayStringLocalizer.LocalizeRichText("\u0080No extra"));
+    Equal("\u59cb\u7ec8\u6ee1\u8db3", DisplayStringLocalizer.LocalizeDisplayString("\u59cb\u7ec8Content"));
+    Equal("\u59cb\u7ec8[Content|MOOD]", DisplayStringLocalizer.LocalizeDisplayString("\u59cb\u7ec8[Content|MOOD]"));
     Equal("\u8bad\u7ec3[\u6c0f\u65cf|CLAN]",
         DisplayStringLocalizer.LocalizeRichText("Train [Clan|CLAN]"));
     Equal("\u5377\u5165Brawls",
@@ -134,21 +170,204 @@ static void RuntimeDisplayFragmentsPreserveLinks()
     DisplayStringLocalizer.ResetForTests();
     DisplayStringLocalizer.RegisterConceptKey("CLAN");
     DisplayStringLocalizer.RegisterConceptKey("UPGRADE");
+    DisplayStringLocalizer.RegisterConceptKey("ACTIVE");
+    DisplayStringLocalizer.RegisterConceptKey("SETTLED");
+    DisplayStringLocalizer.RegisterConceptKey("SETTLEMENT");
+    DisplayStringLocalizer.RegisterConceptKey("TILE");
+    DisplayStringLocalizer.RegisterConceptKey("PROFESSION");
+    DisplayStringLocalizer.RegisterConceptKey("RESIDENT");
+    DisplayStringLocalizer.RegisterConceptKey("STRUCTURE");
+    DisplayStringLocalizer.RegisterConceptKey("WARRIOR");
     DisplayStringLocalizer.RegisterConceptDisplay("CLAN", "Clan", "\u6c0f\u65cf");
     DisplayStringLocalizer.RegisterConceptDisplay("UPGRADE", "Upgrade", "\u5347\u7ea7");
+    DisplayStringLocalizer.RegisterConceptDisplay("ACTIVE", "Active", "\u4e3b\u52a8");
+    DisplayStringLocalizer.RegisterConceptDisplay("SETTLED", "Settled", "\u5b9a\u5c45");
+    DisplayStringLocalizer.RegisterConceptDisplay("SETTLEMENT", "Settlement", "\u5b9a\u5c45\u70b9");
+    DisplayStringLocalizer.RegisterConceptDisplay("TILE", "Tile", "\u5730\u5757");
+    DisplayStringLocalizer.RegisterConceptDisplay("PROFESSION", "Profession", "\u804c\u4e1a");
+    DisplayStringLocalizer.RegisterConceptDisplay("RESIDENT", "Resident", "\u5c45\u6c11");
+    DisplayStringLocalizer.RegisterConceptDisplay("STRUCTURE", "Structure", "\u5efa\u7b51");
+    DisplayStringLocalizer.RegisterConceptDisplay("WARRIOR", "Warrior", "\u6218\u58eb");
     DisplayStringLocalizer.RegisterPlainTextFragment("there's another ", "\u53e6\u6709");
     DisplayStringLocalizer.RegisterPlainTextFragment("engage in ", "\u5377\u5165");
     DisplayStringLocalizer.RegisterPlainTextFragment("Brawls", "\u6597\u6bb4");
     DisplayStringLocalizer.RegisterPlainTextFragment("into", "\u8fdb\u5165");
     DisplayStringLocalizer.RegisterPlainTextFragment("forced into a ", "\u88ab\u8feb\u4ece\u4e8b");
+    DisplayStringLocalizer.RegisterPlainTextFragment("forced into an ", "\u88ab\u8feb\u4ece\u4e8b");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" within the ", "\uff0c\u4e14\u5728");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" outside the ", "\uff0c\u4e14\u4e0d\u5728");
+    DisplayStringLocalizer.RegisterPlainTextFragment("No", "\u65e0");
+    DisplayStringLocalizer.RegisterPlainTextFragment("commit Theft", "\u72af\u4e0b\u76d7\u7a83");
+    DisplayStringLocalizer.RegisterPlainTextFragment("engage in Brawls", "\u53c2\u4e0e\u6597\u6bb4");
+    DisplayStringLocalizer.RegisterPlainTextFragment("there's another", "\u53e6\u6709");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" on the same", "\u4f4d\u4e8e\u540c\u4e00");
+    DisplayStringLocalizer.RegisterPlainTextFragment("forced into a", "\u88ab\u8feb\u4ece\u4e8b");
+    DisplayStringLocalizer.RegisterPlainTextFragment("forced into an", "\u88ab\u8feb\u4ece\u4e8b");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" where they're neither within the ", "\uFF0C\u65E2\u4E0D\u5728");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" nor the ", "\uFF0C\u4E5F\u4E0D\u4F5C\u4E3A");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" within the", "\uff0c\u4e14\u5728");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" outside of", "\uff0c\u4e14\u4e0d\u5728");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" outside the", "\uff0c\u4e14\u4e0d\u5728");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" or as the", "\u5185\uff0c\u6216\u4f5c\u4e3a");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" of a", "\uff0c\u9a7b\u7559\u5728");
+    DisplayStringLocalizer.RegisterPlainTextFragment("seafaring", "\u822a\u6d77");
 
-    Equal("\u53e6\u6709[\u6c0f\u65cf|CLAN]\u5377\u5165\u6597\u6bb4",
+    Equal("\u53e6\u6709[\u6c0f\u65cf|CLAN]\u53c2\u4e0e\u6597\u6bb4",
         DisplayStringLocalizer.LocalizeRichText(
             "there's another [Clan|CLAN]engage in Brawls"));
     Equal("\u88ab\u8feb\u4ece\u4e8b[\u6c0f\u65cf|CLAN]",
         DisplayStringLocalizer.LocalizeRichText("forced into a [Clan|CLAN]"));
+    Equal("\u88ab\u8feb\u4ece\u4e8b[\u5b9a\u5c45|SETTLED][\u4e3b\u52a8|ACTIVE]\uff0c\u4e14\u5728[\u6c0f\u65cf|CLAN]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "forced into an [Settled|SETTLED][Active|ACTIVE] within the [Clan|CLAN]"));
+    Equal("\u88ab\u8feb\u4ece\u4e8b[\u5b9a\u5c45|SETTLED][\u4e3b\u52a8|ACTIVE]\uff0c\u4e14\u5728[\u6c0f\u65cf|CLAN]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "forced into an [Settled|SETTLED][Active|ACTIVE] within the[Clan|CLAN]"));
+    Equal("\u88ab\u8feb\u4ece\u4e8b[\u4e3b\u52a8|ACTIVE]\uff0c\u4e14\u4e0d\u5728[\u5b9a\u5c45\u70b9|SETTLEMENT]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "forced into an [Active|ACTIVE] outside the [Settlement|SETTLEMENT]"));
     Equal("[\u5347\u7ea7|UPGRADE]",
         DisplayStringLocalizer.LocalizeRichText("[Upgrade|UPGRADE]"));
+    Equal("\u65e0[\u5347\u7ea7|UPGRADE]",
+        DisplayStringLocalizer.LocalizeRichText("No[Upgrade|UPGRADE]"));
+    Equal("\u6c38\u8fdc\u4e0d\u4f1a\u72af\u4e0b\u76d7\u7a83\uff08\u7f6a\u884c\uff09",
+        DisplayStringLocalizer.LocalizeRichText("\u6c38\u8fdc\u4e0d\u4f1acommit Theft\uff08\u7f6a\u884c\uff09"));
+    Equal("\u53ef\u80fd\u4f1a\u53c2\u4e0e\u6597\u6bb4\uff08\u7f6a\u884c\uff09",
+        DisplayStringLocalizer.LocalizeRichText("\u53ef\u80fd\u4f1aengage in Brawls\uff08\u7f6a\u884c\uff09"));
+    Equal("\u5982\u679c\u53e6\u6709[\u6c0f\u65cf|CLAN]",
+        DisplayStringLocalizer.LocalizeRichText("\u5982\u679cthere's another[Clan|CLAN]"));
+    Equal("\u5982\u679c\u53e6\u6709[\u6c0f\u65cf|CLAN]\u4f4d\u4e8e\u540c\u4e00[\u5730\u5757|TILE]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "\u5982\u679cthere's another[Clan|CLAN] on the same[Tile|TILE]"));
+    Equal("\u5f88\u53ef\u80fd\u53d8\u5f97\u4e0d\u6ee1\u5728\u4e00\u5e74\u5185\uff0c\u5982\u679c\u88ab\u8feb\u4ece\u4e8b[\u804c\u4e1a|PROFESSION]\uff0c\u4e14\u4e0d\u5728[\u5b9a\u5c45\u70b9|SETTLEMENT]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "\u5f88\u53ef\u80fd\u53d8\u5f97\u4e0d\u6ee1\u5728\u4e00\u5e74\u5185\uff0c\u5982\u679cforced into a[Profession|PROFESSION] outside of[Settlement|SETTLEMENT]"));
+    Equal("\u5f88\u53ef\u80fd\u53d8\u5f97\u4e0d\u6ee1\u5728\u4e00\u5e74\u5185\uff0c\u5982\u679c\u88ab\u8feb\u4ece\u4e8b[\u804c\u4e1a|PROFESSION]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "\u5f88\u53ef\u80fd\u53d8\u5f97\u4e0d\u6ee1\u5728\u4e00\u5e74\u5185\uff0c\u5982\u679cforced into an[Profession|PROFESSION]"));
+    Equal("\u88ab\u8feb\u4ece\u4e8b[\u4e3b\u52a8|ACTIVE]\uFF0C\u65E2\u4E0D\u5728[\u5b9a\u5c45|SETTLED]\uFF0C\u4E5F\u4E0D\u4F5C\u4E3A[\u5c45\u6c11|RESIDENT]\uFF0C\u9A7B\u7559\u5728[\u5efa\u7B51|STRUCTURE]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "forced into an [Active|ACTIVE] where they're neither within the [Settled|SETTLED] nor the [Resident|RESIDENT] of a [Structure|STRUCTURE]"));
+    Equal("\u5982\u679c\u88ab\u8feb\u4ece\u4e8b\u822a\u6d77[\u804c\u4e1a|PROFESSION]",
+        DisplayStringLocalizer.LocalizeRichText("\u5982\u679c\u88ab\u8feb\u4ece\u4e8bseafaring[Profession|PROFESSION]"));
+    Equal("\u5982\u679c\u88ab\u8feb\u4ece\u4e8b[\u4e3b\u52a8|ACTIVE]\uff0c\u4e14\u4e0d\u5728[\u5b9a\u5c45\u70b9|SETTLEMENT]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "\u5982\u679cforced into a [Active|ACTIVE] outside the[Settlement|SETTLEMENT]"));
+    Equal("\u5982\u679c\u88ab\u8feb\u4ece\u4e8b[\u6218\u58eb|WARRIOR]",
+        DisplayStringLocalizer.LocalizeRichText("\u5982\u679cforced into a [Warrior|WARRIOR]"));
+    Equal("\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728[\u5b9a\u5c45\u70b9|SETTLEMENT]\u5185\uff0c\u6216\u4f5c\u4e3a[\u5c45\u6c11|RESIDENT]\uff0c\u9a7b\u7559\u5728[\u5efa\u7b51|STRUCTURE]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728[Settlement|SETTLEMENT] or as the[Resident|RESIDENT] of a[Structure|STRUCTURE]"));
+
+    Equal("\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728[\u5b9a\u5c45\u70b9|SETTLEMENT]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728 [Settlement|SETTLEMENT]"));
+
+    DisplayStringLocalizer.RegisterPlainText("This is among the largest fields ever found!", "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u9ea6\u7530\u4e4b\u4e00\uff01");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Beehives can be", "\u8702\u5de2\u53ef\u88ab");
+    Equal("\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u9ea6\u7530\u4e4b\u4e00\uff01",
+        DisplayStringLocalizer.LocalizeDisplayString("This is among the largest fields ever found!"));
+    Equal("\u8702\u5de2\u53ef\u88ab[\u91c7\u6536|HARVEST]",
+        DisplayStringLocalizer.LocalizeRichText("Beehives can be[采收|HARVEST]"));
+}
+
+static void RuntimeDisplayRichTextFragmentsPreserveLinks()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterConceptKey("ACTIVE");
+    DisplayStringLocalizer.RegisterConceptKey("PROFESSION");
+    DisplayStringLocalizer.RegisterConceptKey("LIVESTOCK");
+    DisplayStringLocalizer.RegisterConceptKey("AGRICULTURE");
+    DisplayStringLocalizer.RegisterConceptKey("CRAFTING");
+    DisplayStringLocalizer.RegisterConceptKey("HONOR");
+    DisplayStringLocalizer.RegisterConceptKey("METALWORKING");
+    DisplayStringLocalizer.RegisterConceptKey("DISCOVERY");
+    DisplayStringLocalizer.RegisterConceptKey("DISCIPLINE");
+    DisplayStringLocalizer.RegisterConceptDisplay("ACTIVE", "Active", "主动");
+    DisplayStringLocalizer.RegisterConceptDisplay("PROFESSION", "Profession", "职业");
+    DisplayStringLocalizer.RegisterConceptDisplay("LIVESTOCK", "LIVESTOCK", "畜牧");
+    DisplayStringLocalizer.RegisterConceptDisplay("AGRICULTURE", "AGRICULTURE", "农耕");
+    DisplayStringLocalizer.RegisterConceptDisplay("CRAFTING", "CRAFTING", "工艺");
+    DisplayStringLocalizer.RegisterConceptDisplay("HONOR", "HONOR", "荣耀");
+    DisplayStringLocalizer.RegisterConceptDisplay("METALWORKING", "METALWORKING", "冶金");
+    DisplayStringLocalizer.RegisterConceptDisplay("DISCOVERY", "DISCOVERY", "探索");
+    DisplayStringLocalizer.RegisterConceptDisplay("DISCIPLINE", "Discipline", "纪律");
+    DisplayStringLocalizer.RegisterRichTextFragment(
+        "[Profession|PROFESSION] in the [LIVESTOCK] [Discipline|DISCIPLINE]",
+        "[Profession|PROFESSION]，所属为[LIVESTOCK][Discipline|DISCIPLINE]");
+    DisplayStringLocalizer.RegisterRichTextFragment(
+        "[Profession|PROFESSION] in the [AGRICULTURE] [Discipline|DISCIPLINE]",
+        "[Profession|PROFESSION]，所属为[AGRICULTURE][Discipline|DISCIPLINE]");
+    DisplayStringLocalizer.RegisterRichTextFragment(
+        "[Profession|PROFESSION] in the [CRAFTING] [Discipline|DISCIPLINE]",
+        "[Profession|PROFESSION]，所属为[CRAFTING][Discipline|DISCIPLINE]");
+    DisplayStringLocalizer.RegisterRichTextFragment(
+        "[Profession|PROFESSION] in the [HONOR] [Discipline|DISCIPLINE]",
+        "[Profession|PROFESSION]，所属为[HONOR][Discipline|DISCIPLINE]");
+    DisplayStringLocalizer.RegisterRichTextFragment(
+        "[Profession|PROFESSION] in the [METALWORKING] [Discipline|DISCIPLINE]",
+        "[Profession|PROFESSION]，所属为[METALWORKING][Discipline|DISCIPLINE]");
+    DisplayStringLocalizer.RegisterRichTextFragment(
+        "[Profession|PROFESSION] in the [DISCOVERY] [Discipline|DISCIPLINE]",
+        "[Profession|PROFESSION]，所属为[DISCOVERY][Discipline|DISCIPLINE]");
+
+    Equal("[职业|PROFESSION]，所属为[LIVESTOCK][纪律|DISCIPLINE]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "[Profession|PROFESSION] in the [LIVESTOCK] [Discipline|DISCIPLINE]"));
+    Equal("[职业|PROFESSION]，所属为[AGRICULTURE][纪律|DISCIPLINE]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "[Profession|PROFESSION] in the [AGRICULTURE] [Discipline|DISCIPLINE]"));
+    Equal("[职业|PROFESSION]，所属为[CRAFTING][纪律|DISCIPLINE]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "[Profession|PROFESSION] in the [CRAFTING] [Discipline|DISCIPLINE]"));
+    Equal("[职业|PROFESSION]，所属为[HONOR][纪律|DISCIPLINE]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "[Profession|PROFESSION] in the [HONOR] [Discipline|DISCIPLINE]"));
+    Equal("[职业|PROFESSION]，所属为[METALWORKING][纪律|DISCIPLINE]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "[Profession|PROFESSION] in the [METALWORKING] [Discipline|DISCIPLINE]"));
+    Equal("[职业|PROFESSION]，所属为[DISCOVERY][纪律|DISCIPLINE]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "[Profession|PROFESSION] in the [DISCOVERY] [Discipline|DISCIPLINE]"));
+}
+
+static void RuntimeDisplayConceptSpacingPreservesLinks()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterConceptKey("ACTIVE");
+    DisplayStringLocalizer.RegisterConceptKey("PROFESSION");
+    DisplayStringLocalizer.RegisterConceptKey("UNMAPPED");
+    DisplayStringLocalizer.RegisterConceptDisplay("ACTIVE", "Active", "\u4e3b\u52a8");
+    DisplayStringLocalizer.RegisterConceptDisplay("PROFESSION", "Profession", "\u804c\u4e1a");
+
+    Equal("[\u4e3b\u52a8|ACTIVE][\u804c\u4e1a|PROFESSION]",
+        DisplayStringLocalizer.LocalizeRichText("[Active|ACTIVE] [Profession|PROFESSION]"));
+    Equal("[\u4e3b\u52a8|ACTIVE] [Unknown|UNMAPPED]",
+        DisplayStringLocalizer.LocalizeRichText("[Active|ACTIVE] [Unknown|UNMAPPED]"));
+}
+
+static void RuntimeDisplayTemplatesPreserveArguments()
+{
+    DisplayStringLocalizer.ResetForTests();
+    var lines = "T\t" + B64("Cannot {arg:1}.") + "\t" +
+        B64("\u65e0\u6cd5{arg:1}\u3002");
+    DisplayStringLocalizer.Load(new StringReader(lines));
+
+    Equal("\u65e0\u6cd5Train\u3002",
+        DisplayStringLocalizer.LocalizeDisplayString("Cannot Train."));
+    Equal("\u65e0\u6cd5[Study|STUDY]\u3002",
+        DisplayStringLocalizer.LocalizeRichText("Cannot [Study|STUDY]."));
+}
+
+static void GameDatesLocalizeExactly()
+{
+    DisplayStringLocalizer.ResetForTests();
+    Equal("公元400年4月上旬",
+        DisplayStringLocalizer.LocalizeDisplayString("Early April, 400 AD"));
+    Equal("公元401年12月下旬",
+        DisplayStringLocalizer.LocalizeDisplayString("Late December, 401 AD"));
+    Equal("Early on, April 2014 was unusual.",
+        DisplayStringLocalizer.LocalizeDisplayString("Early on, April 2014 was unusual."));
 }
 
 static void CjkBreaksRespectPunctuation()
@@ -156,6 +375,12 @@ static void CjkBreaksRespectPunctuation()
     True(CjkText.CanBreakBetween('汉', '字'));
     True(!CjkText.CanBreakBetween('（', '汉'));
     True(!CjkText.CanBreakBetween('字', '）'));
+    True(CjkText.RequiresDynamicGlyph('\u201C'));
+    True(CjkText.RequiresDynamicGlyph('\u201D'));
+    True(CjkText.RequiresDynamicGlyph('\u300A'));
+    True(!CjkText.RequiresDynamicGlyph('\u200B'));
+    True(!CjkText.CanBreakBetween('\u201C', '汉'));
+    True(!CjkText.CanBreakBetween('汉', '\u201D'));
 }
 
 static void CjkFittingBreaksPreserveTextElements()
@@ -197,11 +422,35 @@ static void CjkWordBridgePreservesOriginalPath()
     True(cjk.Emitted.All(text => text.IndexOf(' ') < 0));
 }
 
+static void CjkWordBridgeRemovesWinterResidualWords()
+{
+    var processor = new FakeWordProcessor("\u5f88\u53ef\u80fd\u5982\u679cunable\u4ee5", 200);
+    processor.WordsInLine = new FakeStringSplitter(new[] { "spend", "the", "winter", "inside", "the", "final" });
+    CjkWordWrapCore.ProcessWord(processor, (_, text) => new CjkMeasuredText(text.Length, 1f));
+    CjkWordWrapCore.ProcessWord(processor, (_, text) => new CjkMeasuredText(text.Length, 1f));
+    CjkWordWrapCore.ProcessWord(processor, (_, text) => new CjkMeasuredText(text.Length, 1f));
+    CjkWordWrapCore.ProcessWord(processor, (_, text) => new CjkMeasuredText(text.Length, 1f));
+    CjkWordWrapCore.ProcessWord(processor, (_, text) => new CjkMeasuredText(text.Length, 1f));
+    CjkWordWrapCore.ProcessWord(processor, (_, text) => new CjkMeasuredText(text.Length, 1f));
+    True(processor.TextSoFar.ToString().IndexOf("\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728", StringComparison.Ordinal) >= 0);
+    True(processor.TextSoFar.ToString().IndexOf("spend", StringComparison.Ordinal) < 0);
+    True(processor.TextSoFar.ToString().IndexOf("winter", StringComparison.Ordinal) < 0);
+    Equal("final", processor.Word);
+}
+
 static void ExactTemplatesOnly()
 {
     DisplayStringLocalizer.Register("Clan {0} joined", "氏族{0}加入");
     Equal("氏族{0}加入", DisplayStringLocalizer.LocalizeDisplayString("Clan {0} joined"));
     Equal("and", DisplayStringLocalizer.LocalizeDisplayString("and"));
+}
+
+static void LocalizationCacheInvalidatesGeneration()
+{
+    DisplayStringLocalizer.ResetForTests();
+    Equal("Status", DisplayStringLocalizer.LocalizeDisplayString("Status"));
+    DisplayStringLocalizer.RegisterPlainText("Status", "\u72b6\u6001");
+    Equal("\u72b6\u6001", DisplayStringLocalizer.LocalizeDisplayString("Status"));
 }
 
 static void SpriteFontAssetsMapExactly()
@@ -226,6 +475,15 @@ static void CjkRasterSizeIsCalibrated()
     Equal(FontDescriptor.DefaultCjkScale, descriptor.CjkScale);
     Equal(15f * FontDescriptor.DefaultCjkScale, descriptor.RasterSize);
     True(descriptor.CacheKey.IndexOf("|cjk=1.15", StringComparison.Ordinal) >= 0);
+}
+
+static void FontDescriptorCacheKeyIsStable()
+{
+    var descriptor = new FontDescriptor("SegoeUI_15", 15f, false);
+    var first = descriptor.CacheKey;
+    var second = descriptor.CacheKey;
+    True(ReferenceEquals(first, second));
+    Equal("SegoeUI_15|15|False|cjk=1.15", first);
 }
 
 static void CjkBaselineIsCalibrated()
@@ -493,6 +751,205 @@ static void DeferredGlyphsAreDeduplicated()
     True(drained.SequenceEqual(new[] { "first", "second" }));
     Equal(0, queue.Count);
     Equal(0, queue.Drain().Count);
+}
+
+static void PriorityGlyphQueuePromotesLiveRequests()
+{
+    var queue = new PriorityDeduplicatingQueue<string>(4, 3);
+    True(queue.Enqueue("warm", "warm", 2));
+    True(queue.Enqueue("background", "background", 3));
+    True(!queue.Enqueue("warm", "duplicate", 1));
+    True(queue.Promote("background", 0));
+    True(queue.Enqueue("middle", "middle", 1));
+    True(!queue.Enqueue("full", "full", 0));
+
+    True(queue.TryDequeue(out var firstKey, out var first, out var firstPriority));
+    Equal("background", firstKey);
+    Equal("background", first);
+    Equal(0, firstPriority);
+    True(queue.TryDequeue(out _, out var second, out var secondPriority));
+    Equal("warm", second);
+    Equal(1, secondPriority);
+    True(queue.TryDequeue(out _, out var third, out var thirdPriority));
+    Equal("middle", third);
+    Equal(1, thirdPriority);
+}
+
+static void PriorityGlyphQueuePeekPreservesRequest()
+{
+    var queue = new PriorityDeduplicatingQueue<string>(4, 3);
+    True(queue.Enqueue("warm", "warm", 2));
+    True(queue.Enqueue("live", "live", 0));
+
+    True(queue.TryPeek(out var peekedKey, out var peeked, out var peekedPriority));
+    Equal("live", peekedKey);
+    Equal("live", peeked);
+    Equal(0, peekedPriority);
+    Equal(2, queue.Count);
+
+    True(queue.TryDequeue(out var dequeuedKey, out var dequeued, out var dequeuedPriority));
+    Equal(peekedKey, dequeuedKey);
+    Equal(peeked, dequeued);
+    Equal(peekedPriority, dequeuedPriority);
+    Equal(1, queue.Count);
+}
+
+static void FrameBudgetIsSharedAcrossPumps()
+{
+    var budget = new FrameUploadBudget(2d, 1000L, 16, 1);
+    budget.BeginFrame();
+    True(budget.CanAttempt(requiresPageCreation: true));
+    budget.RecordOperation(1L, pageCreated: true);
+    True(!budget.CanAttempt(requiresPageCreation: true));
+    True(budget.CanAttempt(requiresPageCreation: false));
+    budget.RecordOperation(1L, pageCreated: false);
+    True(!budget.CanAttempt(requiresPageCreation: false));
+
+    budget.BeginFrame();
+    for (var index = 0; index < 16; index++)
+    {
+        True(budget.CanAttempt(requiresPageCreation: false));
+        budget.RecordOperation(0L, pageCreated: false);
+    }
+    True(!budget.CanAttempt(requiresPageCreation: false));
+}
+
+static void GlyphAlphaConversionPreservesRows()
+{
+    var positive = new byte[]
+    {
+        1, 2, 3, 10, 4, 5, 6, 20,
+        7, 8, 9, 30, 10, 11, 12, 40,
+    };
+    var converted = GlyphAlphaConverter.FromBgra(positive, 2, 2, 8);
+    True(converted.SequenceEqual(new byte[]
+    {
+        10, 10, 10, 10, 20, 20, 20, 20,
+        30, 30, 30, 30, 40, 40, 40, 40,
+    }));
+    var negative = GlyphAlphaConverter.FromBgra(positive, 2, 2, -8);
+    True(negative.SequenceEqual(new byte[]
+    {
+        30, 30, 30, 30, 40, 40, 40, 40,
+        10, 10, 10, 10, 20, 20, 20, 20,
+    }));
+
+    var memory = System.Runtime.InteropServices.Marshal.AllocHGlobal(8);
+    try
+    {
+        var bottomUp = new byte[]
+        {
+            7, 8, 9, 30,
+            1, 2, 3, 10,
+        };
+        System.Runtime.InteropServices.Marshal.Copy(bottomUp, 0, memory, bottomUp.Length);
+        var scan0 = IntPtr.Add(memory, 4);
+        var pointerConverted = GlyphAlphaConverter.FromBgra(scan0, 1, 2, -4);
+        True(pointerConverted.SequenceEqual(new byte[]
+        {
+            10, 10, 10, 10,
+            30, 30, 30, 30,
+        }));
+    }
+    finally
+    {
+        System.Runtime.InteropServices.Marshal.FreeHGlobal(memory);
+    }
+}
+
+static void ProvisionalMetricsRemainStable()
+{
+    GlyphMetricsCache.ResetForTests();
+    var descriptor = new FontDescriptor("SegoeUI_15", 15f, false);
+    var provisional = GlyphMetricsCache.GetOrReserve(descriptor, '\u6c49');
+    True(provisional.Provisional);
+    var measured = GlyphMetricsCache.PublishMeasured(descriptor, '\u6c49', 99f, 88f);
+    True(ReferenceEquals(provisional, measured));
+    Equal(provisional.Advance, measured.Advance);
+    Equal(provisional.LineHeight, measured.LineHeight);
+
+    var warmMeasured = GlyphMetricsCache.PublishMeasured(descriptor, '\u5b57', 17f, 20f);
+    True(!warmMeasured.Provisional);
+    Equal(17f, warmMeasured.Advance);
+    Equal(20f, warmMeasured.LineHeight);
+}
+
+static void GlyphMetricReservationIsColdOnce()
+{
+    GlyphMetricsCache.ResetForTests();
+    var descriptor = new FontDescriptor("SegoeUI_15", 15f, false);
+    var first = GlyphMetricsCache.GetOrReserve(descriptor, '\u6c49', out var firstReserved);
+    var second = GlyphMetricsCache.GetOrReserve(descriptor, '\u6c49', out var secondReserved);
+
+    True(firstReserved);
+    True(!secondReserved);
+    True(ReferenceEquals(first, second));
+}
+
+static void RuntimeGlyphWarmsetParses()
+{
+    var fontName = B64("SegoeUI_15_Bold");
+    var characters = B64("\u4e2d\u6587");
+    var text = "# AtG.RuntimeGlyphWarmset v1\n" +
+               "W\t1\t" + fontName + "\t15\t1\t" + characters +
+               "\tknowledge-screen-hovers,clan-screen-buttons\n";
+    var entries = RuntimeGlyphWarmsetCatalog.Load(new StringReader(text));
+    Equal(1, entries.Count);
+    Equal(1, entries[0].Priority);
+    Equal("SegoeUI_15_Bold", entries[0].FontName);
+    Equal(15f, entries[0].Size);
+    True(entries[0].Bold);
+    Equal("\u4e2d\u6587", entries[0].Characters);
+    Throws<InvalidDataException>(() => RuntimeGlyphWarmsetCatalog.Load(
+        new StringReader("W\t0\t" + fontName + "\t15\t1\t" +
+                         B64("\u4e2d\u4e2d") + "\tduplicate\n")));
+}
+
+static void PrefixWidthCjkWrapping()
+{
+    var text = "\u6c49\u5b57\u6d4b\u8bd5";
+    var prefix = new[] { 0f, 1f, 2f, 3f, 4f };
+    var pieces = CjkLineBreaker.SplitWord(text, 2f, 2f, prefix);
+    True(pieces.SequenceEqual(new[] { "\u6c49\u5b57", "\u6d4b\u8bd5" }));
+
+    var punctuationText = "\u6c49\uff0c\u5b57";
+    var punctuationPrefix = new[] { 0f, 1f, 2f, 3f };
+    Equal(2, CjkText.FindLongestFittingBreak(
+        punctuationText, 0, 1f, punctuationPrefix));
+}
+
+static void AtlasAllocatorHonorsPageLimits()
+{
+    var allocator = new GlyphAtlasAllocator(4, 4, 2);
+    True(allocator.TryAllocate(4, 4, 1, true, out var first));
+    Equal(0, first.PageIndex);
+    True(!allocator.TryAllocate(1, 1, 1, true, out _));
+    True(!allocator.TryAllocate(1, 1, 2, false, out _));
+    True(allocator.TryAllocate(1, 1, 2, true, out var second));
+    Equal(1, second.PageIndex);
+}
+
+static void PerformanceTraceRecordsSchedulerCounters()
+{
+    var line = RuntimeTextPerformance.FormatLine(
+        42L,
+        new DateTime(2026, 7, 24, 1, 2, 3, DateTimeKind.Utc),
+        "Budgeted",
+        System.Diagnostics.Stopwatch.Frequency / 1000,
+        System.Diagnostics.Stopwatch.Frequency / 2000,
+        System.Diagnostics.Stopwatch.Frequency / 100,
+        System.Diagnostics.Stopwatch.Frequency / 4000,
+        4, 5, 6, 20, 14, 6, 7, 8, 9, 1, 2, 10, 11, 3);
+    using var document = System.Text.Json.JsonDocument.Parse(line);
+    var root = document.RootElement;
+    Equal(42L, root.GetProperty("frame").GetInt64());
+    Equal("Budgeted", root.GetProperty("mode").GetString());
+    Equal(4, root.GetProperty("uploads").GetInt32());
+    Equal(20, root.GetProperty("lookups").GetInt32());
+    Equal(14, root.GetProperty("hits").GetInt32());
+    Equal(0.7d, root.GetProperty("hitRate").GetDouble());
+    Equal(11, root.GetProperty("maxReady").GetInt32());
+    Equal(3, root.GetProperty("atlasPages").GetInt32());
 }
 
 static bool Overlaps(GlyphAtlasAllocation left, GlyphAtlasAllocation right)

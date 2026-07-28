@@ -8,7 +8,9 @@ param(
     [string]$NewGameScreenshotPath = "$PSScriptRoot\..\.tmp\game-smoke-new-game.png",
     [int]$PostNewGameReadyDelayMs = 1500,
     [string]$SmokeLockName = "Local\AtGChinesePatch.TestGameLaunch",
-    [switch]$KeepRunning
+    [switch]$KeepRunning,
+    [int]$StabilitySeconds = 4,
+    [int]$StabilityPollMilliseconds = 500
 )
 
 $ErrorActionPreference = "Stop"
@@ -29,6 +31,12 @@ function Get-AtGProcess {
     Get-Process | Where-Object {
         $_.ProcessName -eq "At The Gates"
     }
+}
+
+function Get-AtGNormalizedTitle {
+    param([string]$Title)
+
+    return (($Title -replace "\s+", " ").Trim())
 }
 
 $existing = @(Get-AtGProcess)
@@ -52,6 +60,8 @@ $eventStartTime = (Get-Date).AddSeconds(-2)
 $process = Start-Process -FilePath $exe -WorkingDirectory $GamePath -PassThru
 $launchWait = [System.Diagnostics.Stopwatch]::StartNew()
 $windowReady = $false
+$mainMenuStable = $false
+$stableWindowChecks = 0
 $deadline = [DateTime]::UtcNow.AddSeconds($WaitSeconds)
 while ([DateTime]::UtcNow -lt $deadline) {
     $readyWindow = @(Get-AtGProcess | Where-Object { $_.MainWindowHandle -ne 0 } | Select-Object -First 1)
@@ -70,6 +80,38 @@ while ([DateTime]::UtcNow -lt $deadline) {
 if ($windowReady) {
     Start-Sleep -Seconds 2
 }
+$stabilityStopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+if ($windowReady -and $StabilitySeconds -gt 0) {
+    $stabilityDeadline = [DateTime]::UtcNow.AddSeconds($StabilitySeconds)
+    while ([DateTime]::UtcNow -lt $stabilityDeadline) {
+        try {
+            $process.Refresh()
+        }
+        catch {
+            break
+        }
+
+        if ($process.HasExited) {
+            break
+        }
+
+        $visibleWindows = @(Get-AtGProcess | Where-Object { $_.MainWindowHandle -ne 0 })
+        $hasNormalWindow = @($visibleWindows | Where-Object {
+            $title = Get-AtGNormalizedTitle $_.MainWindowTitle
+            $title -notlike "*HE'S DEAD*" -and $title -notlike "*Error Loading User Settings*"
+        }).Count -gt 0
+
+        if (!$hasNormalWindow) {
+            break
+        }
+
+        $stableWindowChecks++
+        Start-Sleep -Milliseconds $StabilityPollMilliseconds
+    }
+
+    $mainMenuStable = $stableWindowChecks -gt 0 -and !$process.HasExited -and ([DateTime]::UtcNow -ge $stabilityDeadline)
+}
+$stabilityStopwatch.Stop()
 $launchWait.Stop()
 
 $windows = @(Get-AtGProcess | Select-Object Id, ProcessName, MainWindowTitle)
@@ -99,7 +141,9 @@ if (Test-Path -LiteralPath $crashLog) {
 
 function Update-AtGCrashStatus {
     $script:windows = @(Get-AtGProcess | Select-Object Id, ProcessName, MainWindowTitle)
-    $script:crashDialogSeen = @($script:windows | Where-Object { $_.MainWindowTitle -like "*HE'S DEAD*" }).Count -gt 0
+    $script:crashDialogSeen = @($script:windows | Where-Object {
+        (Get-AtGNormalizedTitle $_.MainWindowTitle) -like "*HE'S DEAD*"
+    }).Count -gt 0
     $script:settingsErrorSeen = @($script:windows | Where-Object { $_.MainWindowTitle -like "*Error Loading User Settings*" }).Count -gt 0
     $script:crashUpdated = $false
     $script:crashSummary = ""
@@ -200,13 +244,8 @@ public static class AtGWindow {
     public static extern bool SetForegroundWindow(IntPtr hWnd);
 
     [DllImport("user32.dll")]
-    public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-    [DllImport("user32.dll")]
     public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
-    [DllImport("user32.dll")]
-    public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
 }
 "@
 
@@ -216,9 +255,6 @@ public static class AtGWindow {
     $mainWindow = @(Get-AtGProcess | Where-Object { $_.MainWindowHandle -ne 0 } | Select-Object -First 1)
     if ($mainWindow.Count -gt 0) {
         $handle = $mainWindow[0].MainWindowHandle
-        $flags = 0x0001 -bor 0x0002 -bor 0x0040
-        [AtGWindow]::ShowWindow($handle, 9) | Out-Null
-        [AtGWindow]::SetWindowPos($handle, [IntPtr]::new(-1), 0, 0, 0, 0, $flags) | Out-Null
         [AtGWindow]::SetForegroundWindow($handle) | Out-Null
         Start-Sleep -Seconds 1
 
@@ -240,9 +276,6 @@ public static class AtGWindow {
                 $bitmap = $null
                 $graphics = $null
             }
-        }
-        if (!$KeepRunning) {
-            [AtGWindow]::SetWindowPos($handle, [IntPtr]::new(-2), 0, 0, 0, 0, $flags) | Out-Null
         }
     }
 
@@ -342,8 +375,9 @@ catch {
     $processExitedBeforeCleanup = $true
 }
 
-if ($KeepRunning) {
-    $processKeptRunning = !$processExitedBeforeCleanup
+$canKeepRunning = $KeepRunning -and $windowReady -and $mainMenuStable -and !$processExitedBeforeCleanup -and !$crashDialogSeen -and !$crashUpdated -and !$settingsErrorSeen
+if ($canKeepRunning) {
+    $processKeptRunning = $true
 }
 else {
     foreach ($atg in @(Get-AtGProcess)) {
@@ -367,6 +401,9 @@ $windowsErrorEvents = @(Get-AtGWindowsErrorEvents)
 $failureReasons = New-Object System.Collections.Generic.List[string]
 if (!$windowReady) {
     $failureReasons.Add("Game window did not become ready.")
+}
+if ($windowReady -and !$mainMenuStable) {
+    $failureReasons.Add("Game window did not remain stable for $StabilitySeconds seconds.")
 }
 if ($processExitedBeforeCleanup) {
     if ($null -ne $processExitCode) {
@@ -396,6 +433,9 @@ if ($windowsErrorEvents.Count -gt 0) {
     StartedProcessId = $process.Id
     WindowReady = $windowReady
     StartupWaitSeconds = [Math]::Round($launchWait.Elapsed.TotalSeconds, 2)
+    MainMenuStable = $mainMenuStable
+    StableWindowChecks = $stableWindowChecks
+    StabilitySeconds = [Math]::Round($stabilityStopwatch.Elapsed.TotalSeconds, 2)
     ProcessExitedBeforeCleanup = $processExitedBeforeCleanup
     ProcessExitCode = $processExitCode
     ProcessKeptRunning = $processKeptRunning

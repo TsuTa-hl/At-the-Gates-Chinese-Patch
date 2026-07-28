@@ -33,5 +33,38 @@ namespace AtG.RuntimeText
             }
             return result;
         }
+
+        public static IList<string> SplitWord(string text, float firstLineWidth,
+            float subsequentLineWidth, float[] prefixWidths)
+        {
+            if (text == null) throw new ArgumentNullException("text");
+            if (prefixWidths == null) throw new ArgumentNullException("prefixWidths");
+            if (prefixWidths.Length != text.Length + 1)
+                throw new ArgumentException("Prefix widths must match the input text.",
+                    "prefixWidths");
+            var result = new List<string>();
+            if (text.Length == 0)
+            {
+                result.Add(text);
+                return result;
+            }
+
+            var start = 0;
+            var available = Math.Max(0f, firstLineWidth);
+            while (start < text.Length)
+            {
+                var boundary = CjkText.FindLongestFittingBreak(
+                    text, start, available, prefixWidths);
+                if (boundary <= start || boundary >= text.Length)
+                {
+                    result.Add(text.Substring(start));
+                    break;
+                }
+                result.Add(text.Substring(start, boundary - start));
+                start = boundary;
+                available = Math.Max(0f, subsequentLineWidth);
+            }
+            return result;
+        }
     }
 }

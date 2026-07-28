@@ -61,7 +61,7 @@ public static class SessionExecutor
                             $"{state.Id}/point-{planned.Point.Id}/clear");
                     results.Add(await ExecutePointAsync(
                         planned, driver, outputDirectory, policy, firstPoint,
-                        cancellationToken, textProbe));
+                        cancellationToken, textProbe, programLogProbe));
                     firstPoint = false;
                 }
             }
@@ -105,7 +105,8 @@ public static class SessionExecutor
         ScenarioPolicy policy,
         bool stateChanged,
         CancellationToken cancellationToken,
-        IRenderTextProbe? textProbe)
+        IRenderTextProbe? textProbe,
+        IProgramLogProbe? programLogProbe)
     {
         var stopwatch = Stopwatch.StartNew();
         string? evidencePath = null;
@@ -115,7 +116,21 @@ public static class SessionExecutor
         try
         {
             var point = planned.Point;
+            if (point.Action.Equals("TileHoverSweep", StringComparison.OrdinalIgnoreCase))
+            {
+                var sweep = await TileHoverSweepExecutor.ExecuteAsync(
+                    planned, driver, outputDirectory, policy, stateChanged,
+                    cancellationToken, textProbe);
+                return new PointResult(
+                    planned.ScenarioId, point.Id, sweep.Status, sweep.DurationMs,
+                    sweep.EvidencePath, sweep.WaitTimedOut, sweep.Error);
+            }
             var textBookmark = textProbe?.Bookmark() ?? 0;
+            var programLogBookmark = string.IsNullOrWhiteSpace(point.ReadyMarker)
+                ? 0
+                : programLogProbe?.Bookmark()
+                    ?? throw new InvalidOperationException(
+                        "A point ReadyMarker requires an owned game session.");
             if (!point.Action.Equals("CaptureOnly", StringComparison.OrdinalIgnoreCase) &&
                 (point.X is null || point.Y is null))
             {
@@ -136,26 +151,43 @@ public static class SessionExecutor
                 else if (point.Action.StartsWith("Click", StringComparison.OrdinalIgnoreCase))
                     driver.Click(point.X!.Value, point.Y!.Value);
 
+                if (!string.IsNullOrWhiteSpace(point.ReadyMarker))
+                {
+                    var ready = await programLogProbe!.WaitForMarkerAfterAsync(
+                        programLogBookmark,
+                        point.ReadyMarker,
+                        TimeSpan.FromMilliseconds(point.ReadyTimeoutMs ?? 45000),
+                        cancellationToken);
+                    if (!ready)
+                        throw new TimeoutException(
+                            $"Program log marker '{point.ReadyMarker}' did not appear after point '{point.Id}'.");
+                }
+
                 if (hasAction)
                 {
+                    var hoverWaitMs = Math.Min(Math.Max(
+                        point.WaitMs ?? policy.HoverWaitMsDefault, 1500),
+                        policy.HoverWaitMsMaximum);
+                    var hoverStopwatch = Stopwatch.StartNew();
                     var wait = await AdaptiveWaiter.WaitForStableAsync(
                         _ => Task.FromResult(driver.ReadFingerprint(referenceCrop)),
-                        maximumWaitMs: Math.Min(Math.Max(
-                            point.WaitMs ?? policy.HoverWaitMsDefault, 1500),
-                            policy.HoverWaitMsMaximum),
+                        maximumWaitMs: hoverWaitMs,
                         pollIntervalMs: 100,
                         baselineFingerprint: baseline,
                         requireChangeFromBaseline: !point.AllowUnchanged,
                         cancellationToken: cancellationToken);
+                    var remainingHoverMs = hoverWaitMs - (int)hoverStopwatch.ElapsedMilliseconds;
+                    if (remainingHoverMs > 0)
+                        await Task.Delay(remainingHoverMs, cancellationToken);
                     timedOut = wait.TimedOut;
-                    if (timedOut && !point.AllowUnchanged)
+                    if (timedOut && !point.AllowUnchanged && !wait.ChangedFromBaseline)
                     {
                         status = "Failed";
                         error = "The UI did not change and stabilize before the action timeout.";
                     }
                 }
 
-                if (textProbe is not null && planned.ExpectedNo.Count > 0)
+                if (textProbe is not null && (planned.ExpectedNo.Count > 0 || planned.ExpectedAny.Count > 0 || planned.ExpectedAll.Count > 0))
                 {
                     var observed = RenderedTextFilter.InRegion(
                         textProbe.ReadSince(textBookmark), referenceCrop,
@@ -172,6 +204,25 @@ public static class SessionExecutor
                         error = string.IsNullOrEmpty(error)
                             ? "Forbidden visible text: " + string.Join(", ", forbidden)
                             : error + " Forbidden visible text: " + string.Join(", ", forbidden);
+                    }
+                    var missing = planned.ExpectedAll
+                        .Where(pattern => !observed.Any(observation =>
+                            observation.Text.Contains(pattern, StringComparison.Ordinal)))
+                        .Distinct(StringComparer.Ordinal)
+                        .ToArray();
+                    if (missing.Length > 0)
+                    {
+                        status = "Failed";
+                        error = string.IsNullOrEmpty(error)
+                            ? "Required visible text not observed: " + string.Join(", ", missing)
+                            : error + " Required visible text not observed: " + string.Join(", ", missing);
+                    }
+                    if (planned.ExpectedAny.Count > 0 && !planned.ExpectedAny.Any(pattern =>
+                        observed.Any(observation => observation.Text.Contains(pattern, StringComparison.Ordinal))))
+                    {
+                        status = "Failed";
+                        const string message = "None of the required visible text alternatives was observed.";
+                        error = string.IsNullOrEmpty(error) ? message : error + " " + message;
                     }
                 }
 

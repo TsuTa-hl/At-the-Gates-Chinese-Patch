@@ -58,6 +58,49 @@ function Set-AtGConfigNodeText {
     return "Patched config node '$ID' $XPath '$oldValue' -> '$Value'."
 }
 
+function Apply-AtGConfigCompositeReplacement {
+    param(
+        [System.Xml.XmlNode]$ContainerNode,
+        [object]$Replacement,
+        [string]$SourcePath
+    )
+
+    $xpath = [string]$Replacement.XPath
+    if ([string]::IsNullOrWhiteSpace($xpath)) {
+        throw "Missing XPath for composite replacement in $SourcePath"
+    }
+
+    $hasOriginalValue = Test-JsonProperty $Replacement "OriginalValue"
+    $hasOriginalSuffix = Test-JsonProperty $Replacement "OriginalSuffix"
+    if ($hasOriginalValue -eq $hasOriginalSuffix) {
+        throw "Composite replacement '$xpath' in $SourcePath must specify exactly one of OriginalValue or OriginalSuffix."
+    }
+    if (!(Test-JsonProperty $Replacement "LocalizedValue")) {
+        throw "Composite replacement '$xpath' in $SourcePath is missing LocalizedValue."
+    }
+
+    $originalValue = if ($hasOriginalValue) { [string]$Replacement.OriginalValue } else { $null }
+    $originalSuffix = if ($hasOriginalSuffix) { [string]$Replacement.OriginalSuffix } else { $null }
+    $localizedValue = [string]$Replacement.LocalizedValue
+    $changed = 0
+    foreach ($node in @($ContainerNode.SelectNodes($xpath))) {
+        $oldValue = $node.InnerText
+        $newValue = $null
+        if ($hasOriginalValue -and $oldValue -eq $originalValue) {
+            $newValue = $localizedValue
+        }
+        elseif ($hasOriginalSuffix -and $oldValue.EndsWith($originalSuffix, [System.StringComparison]::Ordinal)) {
+            $newValue = $oldValue.Substring(0, $oldValue.Length - $originalSuffix.Length) + $localizedValue
+        }
+
+        if ($null -ne $newValue) {
+            $node.InnerText = $newValue
+            $changed++
+        }
+    }
+    return $changed
+}
+
 foreach ($mapPath in $MapJson) {
     $map = Get-Content -LiteralPath $mapPath -Raw -Encoding UTF8 | ConvertFrom-Json
     foreach ($fileEntry in $map.PSObject.Properties) {
@@ -123,6 +166,23 @@ foreach ($mapPath in $MapJson) {
                 }
             }
         }
+
+        if (Test-JsonProperty $config "CompositeReplacements") {
+            foreach ($replacement in @($config.CompositeReplacements)) {
+                $replaced = 0
+                foreach ($containerNode in @($document.Xml.SelectNodes("//$container"))) {
+                    $replaced += Apply-AtGConfigCompositeReplacement `
+                        -ContainerNode $containerNode `
+                        -Replacement $replacement `
+                        -SourcePath $sourcePath
+                }
+                if ((Test-JsonProperty $replacement "ExpectedMatchCount") -and
+                    $replaced -ne [int]$replacement.ExpectedMatchCount) {
+                    throw "Composite replacement '$($replacement.XPath)' in $relativeOutput matched $replaced nodes; expected $($replacement.ExpectedMatchCount)."
+                }
+                Write-Host "Applied config composite replacement '$($replacement.XPath)' to $replaced node(s) in $relativeOutput."
+            }
+        }
     }
 }
 
@@ -137,7 +197,7 @@ foreach ($relativeOutput in $documents.Keys) {
     $settings.Indent = $true
     $settings.Encoding = $utf8NoBom
     $settings.OmitXmlDeclaration = $true
-    $settings.NewLineChars = "`r`n"
+    $settings.NewLineChars = "`n"
     $settings.NewLineHandling = [System.Xml.NewLineHandling]::Replace
 
     $writer = [System.Xml.XmlWriter]::Create($outputPath, $settings)

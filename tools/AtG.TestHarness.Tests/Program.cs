@@ -1,3 +1,4 @@
+using System.Drawing;
 using AtG.TestHarness;
 
 var tests = new (string Name, Func<Task> Body)[]
@@ -8,16 +9,20 @@ var tests = new (string Name, Func<Task> Body)[]
     ("Evidence policy keeps full frames only for transitions and failures", EvidencePolicyIsCompact),
     ("Coordinates scale from the canonical 2560 by 1440 window", CoordinatesScale),
     ("Window handle recovery replaces a stale handle", WindowHandleRecoveryReplacesStaleHandle),
-    ("Session executor uses one driver and adaptive waits", SessionExecutorUsesOneDriver),
+    ("Session executor uses one driver and holds the requested hover dwell", SessionExecutorUsesOneDriver),
+    ("Session executor honors an explicit hover crop", SessionExecutorHonorsExplicitHoverCrop),
     ("Capture-only points do not wait for a changing frame to stabilize", CaptureOnlySkipsAdaptiveWait),
     ("Owned session launches and sets up exactly once", OwnedSessionLaunchesAndSetsUpOnce),
+    ("Owned session repeats plans without restarting the game", OwnedSessionRepeatsPlanInOneProcess),
     ("Program log waiter blocks until the requested marker appears", ProgramLogWaiterBlocksUntilMarker),
     ("Program log probe ignores markers before its bookmark", ProgramLogProbeIgnoresExistingMarker),
+    ("Program log probe reads a rotated log from its beginning", ProgramLogProbeReadsRotatedLog),
     ("Session planner groups shared setup into one state", SessionPlannerGroupsSharedState),
     ("Session planner preserves repeated actions inside one setup sequence", SessionPlannerPreservesRepeatedSetupActions),
     ("Session executor runs setup and teardown around state points", SessionExecutorRunsStateActions),
     ("A changed state action may proceed even while animation remains unstable", ChangedStateActionMayRemainUnstable),
     ("Session executor can wait for a program-log marker after a named bookmark", SessionExecutorWaitsForBookmarkedProgramLog),
+    ("A point can wait for a program-log marker emitted by its action", PointWaitsForProgramLogMarker),
     ("Session executor repeats a bounded setup action group", SessionExecutorRepeatsActionGroup),
     ("Session executor records memory around each repeat iteration", SessionExecutorRecordsRepeatMemory),
     ("Fixed-save preparation promotes and restores the requested save", FixedSavePreparationPromotesAndRestores),
@@ -25,11 +30,27 @@ var tests = new (string Name, Func<Task> Body)[]
     ("Per-point clear actions honor nested-hover opt out", PerPointClearHonorsNestedHoverOptOut),
     ("Fixed-save requirement uses the machine-readable flag only", FixedSaveRequirementUsesExplicitFlag),
     ("Rendered-text probe fails a point on forbidden visible text", RenderedTextProbeFindsForbiddenText),
+    ("Rendered-text probe fails a point when required visible text is absent", RenderedTextProbeRequiresExpectedText),
+    ("Rendered-text probe requires one visible text alternative", RenderedTextProbeRequiresAnyExpectedText),
     ("Owned session forwards its rendered-text probe", OwnedSessionForwardsTextProbe),
     ("Owned session enables runtime text tracing only when requested", OwnedSessionTextTraceIsOptIn),
+    ("Owned session configures runtime glyph performance modes deterministically", OwnedSessionGlyphPerformanceOptions),
+    ("Owned session records a new-game save only when requested", OwnedSessionSaveAfterNewGameIsOptIn),
+    ("Performance evidence splits cold and hot pass intervals", PerformanceEvidenceSplitsPassIntervals),
+    ("Performance evidence splits a one-pass cold interval", PerformanceEvidenceSplitsSinglePassInterval),
     ("A point that never changes the UI fails instead of passing", TimedOutActionFails),
+    ("A changed point may pass while its animation remains unstable", ChangedPointMayRemainUnstable),
     ("An explicitly idempotent point can pass without a UI change", IdempotentActionCanPass),
     ("Rendered text filtering ignores unrelated screen regions", RenderedTextFilteringUsesPointRegion),
+    ("Tile sweep radius five produces 91 center-outward coordinates", TileSweepProduces91Coordinates),
+    ("Tile sweep validation rejects coordinates outside the safe viewport", TileSweepValidatesSafeViewport),
+    ("Tooltip panel detector distinguishes collapsed and expanded cards", TooltipDetectorDistinguishesPanelStates),
+    ("Tooltip panel detector excludes the quick-reference expand action", TooltipDetectorSeparatesQuickReference),
+    ("Tooltip pixel detector finds a dark panel region", TooltipPixelDetectorFindsPanel),
+    ("Boundary source inventory contains 23 terrains, 78 deposits, and 42 resources", BoundarySourceInventoryHasExpectedCounts),
+    ("Boundary merge distinguishes rumor-only, visible-only, and observed sources", BoundaryMergeClassifiesSurfaces),
+    ("Tile sweep cycle stops on a repeated identity and respects caps", TileSweepCycleGuards),
+    ("Tile sweep guard detects camera or selection changes", TileSweepGuardDetectsMovement),
 };
 var failures = 0;
 foreach (var test in tests)
@@ -64,6 +85,90 @@ static Task OwnedSessionTextTraceIsOptIn()
     True(tracedOwner.TextProbe is JsonlRenderTextProbe);
     var tracedStartInfo = Win32GameSessionOwner.CreateStartInfo(Path.GetTempPath(), enableTextTrace: true);
     Equal("1", tracedStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_TRACE"]);
+    return Task.CompletedTask;
+}
+
+static Task OwnedSessionGlyphPerformanceOptions()
+{
+    var defaultStartInfo = Win32GameSessionOwner.CreateStartInfo(
+        Path.GetTempPath(), enableTextTrace: false);
+    True(!defaultStartInfo.EnvironmentVariables.ContainsKey("ATG_RUNTIME_TEXT_PERF"));
+    Equal("Budgeted", defaultStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_GLYPH_MODE"]);
+    Equal("1", defaultStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_WARMSET"]);
+
+    var legacyStartInfo = Win32GameSessionOwner.CreateStartInfo(
+        Path.GetTempPath(),
+        enableTextTrace: true,
+        enablePerformanceTrace: true,
+        glyphMode: "legacysync",
+        disableWarmset: true);
+    Equal("1", legacyStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_TRACE"]);
+    Equal("1", legacyStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_PERF"]);
+    Equal("LegacySync", legacyStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_GLYPH_MODE"]);
+    Equal("0", legacyStartInfo.EnvironmentVariables["ATG_RUNTIME_TEXT_WARMSET"]);
+
+    Throws<ArgumentException>(() => Win32GameSessionOwner.CreateStartInfo(
+        Path.GetTempPath(), enableTextTrace: false, glyphMode: "unknown"));
+    return Task.CompletedTask;
+}
+
+static Task OwnedSessionSaveAfterNewGameIsOptIn()
+{
+    using var defaultOwner = new Win32GameSessionOwner(Path.GetTempPath());
+    using var savingOwner = new Win32GameSessionOwner(
+        Path.GetTempPath(), saveAfterNewGame: true,
+        saveEvidencePath: Path.Combine(Path.GetTempPath(), "atg-save-evidence.json"));
+    True(defaultOwner is not null);
+    True(savingOwner is not null);
+    return Task.CompletedTask;
+}
+
+static Task PerformanceEvidenceSplitsPassIntervals()
+{
+    using var temp = new TempDirectory();
+    var trace = Path.Combine(temp.Path, "runtime-performance.jsonl");
+    var start = new DateTime(2026, 7, 24, 12, 0, 0, DateTimeKind.Utc);
+    File.WriteAllLines(trace,
+    [
+        $"{{\"time\":\"{start.AddMilliseconds(500):o}\",\"frame\":1}}",
+        $"{{\"time\":\"{start.AddMilliseconds(1500):o}\",\"frame\":2}}",
+        $"{{\"time\":\"{start.AddMilliseconds(3500):o}\",\"frame\":3}}",
+        $"{{\"time\":\"{start.AddMilliseconds(5500):o}\",\"frame\":4}}",
+    ]);
+    var sessions = new[]
+    {
+        new SessionResult(start.AddSeconds(1), 1000, [], []),
+        new SessionResult(start.AddSeconds(3), 1000, [], []),
+    };
+
+    var outputs = RuntimePerformanceEvidence.SplitBySession(
+        trace, temp.Path, sessions);
+
+    Equal(2, outputs.Count);
+    Equal(1, File.ReadAllLines(outputs[0]).Length);
+    Equal(1, File.ReadAllLines(outputs[1]).Length);
+    True(File.ReadAllText(outputs[0]).Contains("\"frame\":2", StringComparison.Ordinal));
+    True(File.ReadAllText(outputs[1]).Contains("\"frame\":3", StringComparison.Ordinal));
+    return Task.CompletedTask;
+}
+
+static Task PerformanceEvidenceSplitsSinglePassInterval()
+{
+    using var temp = new TempDirectory();
+    var trace = Path.Combine(temp.Path, "runtime-performance.jsonl");
+    var start = new DateTime(2026, 7, 24, 12, 0, 0, DateTimeKind.Utc);
+    File.WriteAllLines(trace,
+    [
+        $"{{\"time\":\"{start.AddMilliseconds(500):o}\",\"frame\":1}}",
+        $"{{\"time\":\"{start.AddMilliseconds(1500):o}\",\"frame\":2}}",
+    ]);
+
+    var outputs = RuntimePerformanceEvidence.SplitBySession(
+        trace, temp.Path, [new SessionResult(start.AddSeconds(1), 1000, [], [])]);
+
+    Equal(1, outputs.Count);
+    True(outputs[0].EndsWith("runtime-performance.pass-1.jsonl", StringComparison.Ordinal));
+    True(File.ReadAllText(outputs[0]).Contains("\"frame\":2", StringComparison.Ordinal));
     return Task.CompletedTask;
 }
 
@@ -140,7 +245,34 @@ static async Task SessionExecutorUsesOneDriver()
     Equal(1, result.Points.Count);
     Equal(1, driver.MoveCount);
     Equal(1, driver.CaptureCount);
-    True(result.Points[0].DurationMs < 3000);
+    True(result.Points[0].DurationMs >= 2900);
+}
+
+static async Task SessionExecutorHonorsExplicitHoverCrop()
+{
+    using var temp = new TempDirectory();
+    using var driver = new FakeWindowDriver();
+    var crop = new CropRegion(1100, 500, 550, 400);
+    var scenario = new TestScenario
+    {
+        Id = "hover-crop",
+        Interface = "Clan Screen",
+        Points =
+        [
+            new TestPoint
+            {
+                Id = "trait", Action = "HoverAndCapture", X = 1182, Y = 639,
+                WaitMs = 300, Crop = crop,
+            },
+        ],
+    };
+
+    var result = await SessionExecutor.ExecuteAsync(
+        SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy());
+
+    Equal("Passed", result.Points[0].Status);
+    True(driver.FingerprintRegions.Count >= 2);
+    True(driver.FingerprintRegions.All(region => region == crop));
 }
 
 static async Task CaptureOnlySkipsAdaptiveWait()
@@ -179,8 +311,35 @@ static async Task OwnedSessionLaunchesAndSetsUpOnce()
     Equal(1, owner.StartCount);
     Equal(1, owner.SetupCount);
     Equal(GameSetupMode.NewGame, owner.LastSetupMode);
+    Equal(1, owner.CompleteCount);
     Equal(1, owner.DisposeCount);
     Equal(1, result.Points.Count);
+}
+
+static async Task OwnedSessionRepeatsPlanInOneProcess()
+{
+    using var temp = new TempDirectory();
+    using var owner = new FakeGameSessionOwner();
+    var scenario = new TestScenario
+    {
+        Id = "repeat-owned",
+        Interface = "HUD",
+        Points = [new TestPoint { Id = "one", Action = "CaptureOnly" }],
+    };
+
+    var results = await OwnedSessionExecutor.ExecutePassesAsync(
+        SessionPlanner.Create([scenario]), owner, GameSetupMode.FixedSave,
+        temp.Path, new ScenarioPolicy(), passCount: 2);
+
+    Equal(2, results.Count);
+    Equal(1, owner.StartCount);
+    Equal(1, owner.SetupCount);
+    Equal(1, owner.CompleteCount);
+    Equal(1, owner.DisposeCount);
+    Equal(1, results[0].Points.Count);
+    Equal(1, results[1].Points.Count);
+    True(File.Exists(Path.Combine(temp.Path, "pass-1", "run-summary.json")));
+    True(File.Exists(Path.Combine(temp.Path, "pass-2", "run-summary.json")));
 }
 
 static async Task ProgramLogWaiterBlocksUntilMarker()
@@ -214,6 +373,22 @@ static async Task ProgramLogProbeIgnoresExistingMarker()
     True(!waiting.IsCompleted);
 
     await File.AppendAllTextAsync(logPath, "World Screen - Children Initialized\n");
+    True(await waiting);
+}
+
+static async Task ProgramLogProbeReadsRotatedLog()
+{
+    using var temp = new TempDirectory();
+    var logPath = System.IO.Path.Combine(temp.Path, "Program.AtGLog");
+    await File.WriteAllTextAsync(logPath, new string('x', 128));
+    var probe = new FileProgramLogProbe(logPath, TimeSpan.FromMilliseconds(10));
+    var bookmark = probe.Bookmark();
+
+    var waiting = probe.WaitForMarkerAfterAsync(
+        bookmark, "Controller   - Giving Control to Human",
+        TimeSpan.FromSeconds(2), CancellationToken.None);
+    await Task.Delay(30);
+    await File.WriteAllTextAsync(logPath, "Controller   - Giving Control to Human\n");
     True(await waiting);
 }
 
@@ -327,6 +502,37 @@ static async Task SessionExecutorWaitsForBookmarkedProgramLog()
         SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy(),
         programLogProbe: probe);
 
+    Equal(1, probe.BookmarkCount);
+    Equal(1, probe.WaitCount);
+    Equal(45000, probe.LastTimeoutMs);
+    Equal("World Screen - Children Initialized", probe.LastMarker);
+    Equal("Passed", result.Points[0].Status);
+}
+
+static async Task PointWaitsForProgramLogMarker()
+{
+    using var temp = new TempDirectory();
+    using var driver = new FakeWindowDriver();
+    var probe = new FakeProgramLogProbe();
+    var scenario = new TestScenario
+    {
+        Id = "load", Interface = "Load Save",
+        Points =
+        [
+            new TestPoint
+            {
+                Id = "load-save", Action = "Click", X = 100, Y = 200,
+                ReadyMarker = "World Screen - Children Initialized",
+                ReadyTimeoutMs = 45000,
+            },
+        ],
+    };
+
+    var result = await SessionExecutor.ExecuteAsync(
+        SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy(),
+        programLogProbe: probe);
+
+    Equal(1, driver.ClickCount);
     Equal(1, probe.BookmarkCount);
     Equal(1, probe.WaitCount);
     Equal(45000, probe.LastTimeoutMs);
@@ -483,6 +689,55 @@ static async Task RenderedTextProbeFindsForbiddenText()
     True(error.Contains(":PLURAL", StringComparison.Ordinal));
 }
 
+static async Task RenderedTextProbeRequiresExpectedText()
+{
+    using var temp = new TempDirectory();
+    using var driver = new FakeWindowDriver();
+    var probe = new FakeRenderTextProbe("仅有标题");
+    var scenario = new TestScenario
+    {
+        Id = "required-text", Interface = "HUD", StateId = "hud",
+        Points =
+        [
+            new TestPoint
+            {
+                Id = "hover", Action = "CaptureOnly", WaitMs = 100,
+                ExpectedAll = ["正文已出现"],
+            },
+        ],
+    };
+
+    var result = await SessionExecutor.ExecuteAsync(
+        SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy(),
+        textProbe: probe);
+
+    Equal("Failed", result.Points[0].Status);
+    True((result.Points[0].Error ?? string.Empty).Contains("正文已出现", StringComparison.Ordinal));
+}
+
+static async Task RenderedTextProbeRequiresAnyExpectedText()
+{
+    using var temp = new TempDirectory();
+    using var driver = new FakeWindowDriver();
+    var scenario = new TestScenario
+    {
+        Id = "required-any-text", Interface = "HUD", StateId = "hud",
+        ExpectedAny = ["first title", "visible title"],
+        Points = [new TestPoint { Id = "hover", Action = "CaptureOnly", WaitMs = 100 }],
+    };
+
+    var accepted = await SessionExecutor.ExecuteAsync(
+        SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy(),
+        textProbe: new FakeRenderTextProbe("visible title"));
+    Equal("Passed", accepted.Points[0].Status);
+
+    var rejected = await SessionExecutor.ExecuteAsync(
+        SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy(),
+        textProbe: new FakeRenderTextProbe("unrelated text"));
+    Equal("Failed", rejected.Points[0].Status);
+    True((rejected.Points[0].Error ?? string.Empty).Contains("alternatives", StringComparison.Ordinal));
+}
+
 static async Task OwnedSessionForwardsTextProbe()
 {
     using var temp = new TempDirectory();
@@ -515,6 +770,24 @@ static async Task TimedOutActionFails()
     var result = await SessionExecutor.ExecuteAsync(
         SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy());
     Equal("Failed", result.Points[0].Status);
+    True(result.Points[0].WaitTimedOut);
+}
+
+static async Task ChangedPointMayRemainUnstable()
+{
+    using var temp = new TempDirectory();
+    using var driver = new ChangingWindowDriver();
+    var scenario = new TestScenario
+    {
+        Id = "animated-click", Interface = "HUD", StateId = "hud",
+        Points =
+        [
+            new TestPoint { Id = "target", Action = "ClickAndCapture", X = 10, Y = 20, WaitMs = 200 },
+        ],
+    };
+    var result = await SessionExecutor.ExecuteAsync(
+        SessionPlanner.Create([scenario]), driver, temp.Path, new ScenarioPolicy());
+    Equal("Passed", result.Points[0].Status);
     True(result.Points[0].WaitTimedOut);
 }
 
@@ -555,11 +828,187 @@ static Task RenderedTextFilteringUsesPointRegion()
     return Task.CompletedTask;
 }
 
+static Task TileSweepProduces91Coordinates()
+{
+    var coordinates = TileSweepPlanner.Enumerate(CreateValidTileSweepSpec());
+    Equal(91, coordinates.Count);
+    Equal((0, 0), (coordinates[0].Q, coordinates[0].R));
+    Equal(91, coordinates.Select(point => (point.X, point.Y)).Distinct().Count());
+    Equal(5, coordinates.Max(point => point.Distance));
+    True(coordinates.Take(7).All(point => point.Distance <= 1));
+    return Task.CompletedTask;
+}
+
+static Task TileSweepValidatesSafeViewport()
+{
+    var invalid = new TileSweepSpec
+    {
+        Radius = 5,
+        Metric = "AxialHex",
+        Anchor = new TileReferencePoint(1150, 650),
+        BasisQ = new TileReferencePoint(1250, 650),
+        BasisR = new TileReferencePoint(1100, 730),
+        SafeViewport = new CropRegion(900, 500, 400, 300),
+        MapRegion = new CropRegion(900, 500, 400, 300),
+        QuickReferenceRegion = new CropRegion(1800, 1000, 700, 400),
+        BoundaryManifestId = "terrain-tooltip-v1",
+    };
+    Throws<InvalidDataException>(() => TileSweepPlanner.Enumerate(invalid));
+    return Task.CompletedTask;
+}
+
+static Task TooltipDetectorDistinguishesPanelStates()
+{
+    var spec = CreateValidTileSweepSpec();
+    var collapsed = TooltipPanelDetector.Detect(
+        [
+            new RenderedTextObservation("draw", "森林", 1300, 580, 80, 24),
+            new RenderedTextObservation("measure", "点击展开此面板以查看基本说明：森林（位于此地格）", 1300, 610, 300, 20),
+        ], spec, 2560, 1440);
+    Equal(1, collapsed.Count);
+    Equal(TooltipPanelState.Collapsed, collapsed[0].State);
+    True(collapsed[0].ExpandPoint is not null);
+
+    var expanded = TooltipPanelDetector.Detect(
+        [
+            new RenderedTextObservation("draw", "森林", 1300, 580, 80, 24),
+            new RenderedTextObservation("draw", "点击最小化此面板。", 1300, 610, 180, 20),
+            new RenderedTextObservation("draw", "进入森林会消耗移动力。", 1300, 640, 260, 20),
+        ], spec, 2560, 1440);
+    Equal(1, expanded.Count);
+    Equal(TooltipPanelState.Expanded, expanded[0].State);
+    True(expanded[0].ExpandPoint is null);
+    return Task.CompletedTask;
+}
+
+static Task TooltipDetectorSeparatesQuickReference()
+{
+    var spec = CreateValidTileSweepSpec();
+    var panels = TooltipPanelDetector.Detect(
+        [
+            new RenderedTextObservation("draw", "点击展开此面板以查看此地格详情。", 2100, 1120, 300, 20),
+        ], spec, 2560, 1440);
+    Equal(1, panels.Count);
+    Equal(TooltipSurface.QuickReference, panels[0].Surface);
+    True(panels[0].ExpandPoint is null);
+    return Task.CompletedTask;
+}
+
+static Task TooltipPixelDetectorFindsPanel()
+{
+    using var bitmap = new Bitmap(240, 160);
+    for (var x = 0; x < bitmap.Width; x++)
+    for (var y = 0; y < bitmap.Height; y++)
+        bitmap.SetPixel(x, y, Color.FromArgb(190, 145, 95));
+    for (var x = 40; x < 205; x++)
+    for (var y = 30; y < 105; y++)
+        bitmap.SetPixel(x, y, Color.FromArgb(20, 55, 105));
+    var regions = TooltipPixelPanelDetector.Detect(
+        bitmap, new CropRegion(300, 200, 1700, 850), 2560, 1440);
+    True(regions.Any(region => region.Width >= 100 && region.Height >= 100));
+    return Task.CompletedTask;
+}
+
+static Task BoundarySourceInventoryHasExpectedCounts()
+{
+    var root = FindRepositoryRoot();
+    var entries = TerrainTooltipBoundaryCatalog.ReadSourceInventory(
+        Path.Combine(root, "source", "English.original.xml"));
+    var counts = TerrainTooltipBoundaryCatalog.CountByKind(entries);
+    Equal(23, counts.Terrains);
+    Equal(78, counts.Deposits);
+    Equal(42, counts.Resources);
+    Equal(3, entries.Count(entry => entry.DescriptionStatus == "SourceTodo"));
+    return Task.CompletedTask;
+}
+
+static Task BoundaryMergeClassifiesSurfaces()
+{
+    var observations = new[]
+    {
+        new TooltipSurfaceObservation("TEXT.Name.Deposit.HerdOfDeer", true, false, "RumorKnownDeposit", "Expanded"),
+        new TooltipSurfaceObservation("TEXT.Name.Deposit.HerdOfDeer", false, true, "VisibleDeposit", "Expanded"),
+        new TooltipSurfaceObservation("TEXT.Name.Deposit.PatchOfBerries", true, false, "RumorKnownDeposit", "Collapsed"),
+        new TooltipSurfaceObservation("TEXT.Name.Deposit.FieldOfWheat", false, true, "VisibleDeposit", "Expanded"),
+    };
+    var merged = TerrainTooltipBoundaryCatalog.MergeReachability(observations);
+    Equal("Observed", merged["TEXT.Name.Deposit.HerdOfDeer"]);
+    Equal("RumorOnly", merged["TEXT.Name.Deposit.PatchOfBerries"]);
+    Equal("VisibleOnly", merged["TEXT.Name.Deposit.FieldOfWheat"]);
+    Equal("Pending", TerrainTooltipBoundaryCatalog.ClassifyReachability(false, false));
+    Equal("Unreachable", TerrainTooltipBoundaryCatalog.ClassifyReachability(false, false, true));
+    return Task.CompletedTask;
+}
+
+static Task TileSweepCycleGuards()
+{
+    var spec = CreateValidTileSweepSpec();
+    var seen = new HashSet<string>(StringComparer.Ordinal) { "terrain:A", "terrain:B" };
+    True(TileSweepRuntimeGuards.HasRepeatedIdentity(seen, "terrain:A"));
+    True(!TileSweepRuntimeGuards.HasRepeatedIdentity(seen, "terrain:C"));
+    True(TileSweepRuntimeGuards.ExceedsCardCap(17, spec));
+    True(!TileSweepRuntimeGuards.ExceedsCardCap(16, spec));
+    True(TileSweepRuntimeGuards.ExceedsCycleCap(2, spec));
+    True(!TileSweepRuntimeGuards.ExceedsCycleCap(1, spec));
+    return Task.CompletedTask;
+}
+
+static Task TileSweepGuardDetectsMovement()
+{
+    True(!TileSweepRuntimeGuards.CameraOrSelectionChanged("tile", "tile", "geometry", "geometry"));
+    True(TileSweepRuntimeGuards.CameraOrSelectionChanged("tile", "changed", "geometry", "geometry"));
+    True(TileSweepRuntimeGuards.CameraOrSelectionChanged("tile", "tile", "geometry", "changed"));
+    return Task.CompletedTask;
+}
+
+static TileSweepSpec CreateValidTileSweepSpec() => new()
+{
+    Radius = 5,
+    Metric = "AxialHex",
+    Anchor = new TileReferencePoint(1150, 650),
+    BasisQ = new TileReferencePoint(1250, 650),
+    BasisR = new TileReferencePoint(1100, 730),
+    SafeViewport = new CropRegion(300, 200, 1700, 900),
+    MapRegion = new CropRegion(300, 200, 1700, 850),
+    QuickReferenceRegion = new CropRegion(1820, 980, 700, 420),
+    Enumerate = "CenterOutward",
+    ExpandCollapsed = true,
+    CycleItems = true,
+    MaxCardsPerTile = 16,
+    MaxCyclesPerTile = 2,
+    BoundaryManifestId = "terrain-tooltip-v1",
+};
+
+static string FindRepositoryRoot()
+{
+    var current = new DirectoryInfo(Directory.GetCurrentDirectory());
+    while (current is not null)
+    {
+        if (File.Exists(Path.Combine(current.FullName, "source", "English.original.xml")))
+            return current.FullName;
+        current = current.Parent;
+    }
+    throw new InvalidOperationException("Unable to locate the AtTheGateChinese repository root.");
+}
+
 static void True(bool value) { if (!value) throw new InvalidOperationException("Expected true."); }
 static void Equal<T>(T expected, T actual)
 {
     if (!EqualityComparer<T>.Default.Equals(expected, actual))
         throw new InvalidOperationException($"Expected '{expected}', actual '{actual}'.");
+}
+static void Throws<TException>(Action action) where TException : Exception
+{
+    try
+    {
+        action();
+    }
+    catch (TException)
+    {
+        return;
+    }
+    throw new InvalidOperationException(
+        $"Expected exception {typeof(TException).Name}.");
 }
 
 sealed class FakeClock : IWaitClock
@@ -582,6 +1031,8 @@ sealed class FakeWindowDriver : IWindowDriver
     public int KeyCount { get; private set; }
     public string? LastKey { get; private set; }
     public int CaptureCount { get; private set; }
+    public List<CropRegion?> FingerprintRegions { get; } = [];
+    public CropRegion? LastCaptureRegion { get; private set; }
     public void Move(int referenceX, int referenceY)
     {
         MoveCount++;
@@ -598,10 +1049,15 @@ sealed class FakeWindowDriver : IWindowDriver
         LastKey = key;
         _operationCount++;
     }
-    public string ReadFingerprint(CropRegion? referenceRegion) => _operationCount.ToString();
+    public string ReadFingerprint(CropRegion? referenceRegion)
+    {
+        FingerprintRegions.Add(referenceRegion);
+        return _operationCount.ToString();
+    }
     public void Capture(string outputPath, CropRegion? referenceRegion, bool markCursor)
     {
         CaptureCount++;
+        LastCaptureRegion = referenceRegion;
         File.WriteAllText(outputPath, "evidence");
     }
     public void Dispose() { }
@@ -644,6 +1100,7 @@ sealed class FakeGameSessionOwner : IGameSessionOwner
     public IProcessMemoryProbe? ProcessMemoryProbe => null;
     public int StartCount { get; private set; }
     public int SetupCount { get; private set; }
+    public int CompleteCount { get; private set; }
     public int DisposeCount { get; private set; }
     public GameSetupMode LastSetupMode { get; private set; }
     public Task<IWindowDriver> StartAsync(CancellationToken cancellationToken)
@@ -655,6 +1112,11 @@ sealed class FakeGameSessionOwner : IGameSessionOwner
     {
         SetupCount++;
         LastSetupMode = mode;
+        return Task.CompletedTask;
+    }
+    public Task CompleteAsync(CancellationToken cancellationToken)
+    {
+        CompleteCount++;
         return Task.CompletedTask;
     }
     public void Dispose()
