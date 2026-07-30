@@ -49,3 +49,5 @@ rule JSON remain the facts; disposable CSV views support filtering and review.
 - `docs/agent/black-box-scenarios.json`: coordinate and scenario authority.
 - `docs/agent/clan-trait-verification.json`: trait verification state.
 - `docs/agent/terrain-tooltip-boundary.json`: source-derived terrain/deposit/resource boundary and runtime reachability state; refresh with `tools/Build-TerrainTooltipBoundary.ps1` and never use it as a translation operand.
+- `docs/agent/interface-localization-routes.json`: deterministic interface/surface/condition routing for the static progress audit.
+- `docs/agent/interface-localization-progress.md`: progress formulas, isolated export protocol, and the latest static baseline.

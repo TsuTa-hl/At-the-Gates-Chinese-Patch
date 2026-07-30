@@ -14,6 +14,7 @@ $ErrorActionPreference = "Stop"
 . "$PSScriptRoot\AtGTiming.ps1"
 . "$PSScriptRoot\AtGCache.ps1"
 . "$PSScriptRoot\AtGFileOps.ps1"
+. "$PSScriptRoot\AtGLocalizationInputDigest.ps1"
 
 $timing = New-AtGTimingSummary
 
@@ -1029,10 +1030,12 @@ if ($RendererMode -eq "DynamicCjk") {
     }
 }
 
+$localizationInputs = Get-AtGLocalizationInputDigest -ProjectRoot (Join-Path $PSScriptRoot "..")
 $buildReport = [ordered]@{
     GeneratedAtUtc = [DateTime]::UtcNow.ToString("o")
     PatchRoot = (Resolve-Path -LiteralPath $PatchRoot).Path
     RendererMode = $RendererMode
+    LocalizationInputs = $localizationInputs
     Text = [ordered]@{
         EnglishXml = Get-AtGBuildArtifactStatus -Path $textOut -ExpectedFirstLine "<english>"
         EntryCount = Get-AtGXmlEntryCount -Path $textOut

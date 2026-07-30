@@ -1,0 +1,166 @@
+{
+  "SchemaVersion": 1,
+  "Description": "Deterministic, static routing for the interface-localization progress review. Rules are matched by exact metadata only; unmatched items remain visible as Unclassified.",
+  "Routes": [
+    {
+      "RouteId": "map-terrain-resource-tooltip",
+      "Priority": 10,
+      "Interface": "地图地形、矿藏与资源",
+      "Surface": "Tooltip",
+      "Trigger": "MapDiscovery",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "LocatorPrefixes": [ "TEXT.Name.Terrain.", "TEXT.Name.Deposit.", "TEXT.Name.Resource." ] }
+    },
+    {
+      "RouteId": "clan-trait-config-tooltip",
+      "Priority": 10,
+      "Interface": "氏族特质",
+      "Surface": "Tooltip",
+      "Trigger": "ClanState",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "Kinds": [ "ClanTraitName", "ClanTraitDescription", "ClanTraitDialogue" ] }
+    },
+    {
+      "RouteId": "tile-tooltip",
+      "Priority": 20,
+      "Interface": "地图格与选中信息",
+      "Surface": "Tooltip",
+      "Trigger": "Hover",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "TypeFullNames": [ "AtTheGatesUI.ns_InGame.TileTooltip", "AtTheGatesCommon.ns_UI.ns_Tooltips.TerrainTooltip" ] }
+    },
+    {
+      "RouteId": "generic-mouseover-tooltip",
+      "Priority": 20,
+      "Interface": "通用悬浮提示",
+      "Surface": "Tooltip",
+      "Trigger": "Hover",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "TypeFullNames": [ "AtTheGatesUI.ns_InGame.MouseoverPanel", "ElfTools.Interfaces.MouseoverObject", "AtTheGatesCommon.ns_UI.ns_Tooltips.BasicTooltip", "AtTheGatesCommon.ns_UI.ns_Tooltips.RichTextTooltip", "AtTheGatesCommon.ns_GlobalSystems.UserSetting_Tooltips" ] }
+    },
+    {
+      "RouteId": "profession-tooltip",
+      "Priority": 20,
+      "Interface": "职业与学科",
+      "Surface": "Tooltip",
+      "Trigger": "Hover",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "TypeFullNames": [ "AtTheGatesCommon.ns_UI.ns_Tooltips.ProfessionTooltip", "AtTheGatesUI.ns_InGame.ns_Popups.ProfessionButton", "AtTheGatesUI.ns_InGame.ns_Popups.ProfessionsScreen", "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseDisciplineToLevelUp" ] }
+    },
+    {
+      "RouteId": "clan-tooltip",
+      "Priority": 20,
+      "Interface": "氏族界面与列表",
+      "Surface": "Tooltip",
+      "Trigger": "Hover",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "TypeFullNames": [ "AtTheGatesCommon.ns_UI.ns_Tooltips.ClanTooltip", "AtTheGatesCommon.ns_UI.ns_Tooltips.ClanTraitTooltip", "AtTheGatesUI.ns_InGame.ClanCard", "AtTheGatesUI.ns_InGame.ns_Popups.ClanListEntry" ] }
+    },
+    {
+      "RouteId": "structure-resource-tooltip",
+      "Priority": 20,
+      "Interface": "建筑与资源产出",
+      "Surface": "Tooltip",
+      "Trigger": "Hover",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "TypeFullNames": [ "AtTheGatesCommon.ns_UI.ns_Tooltips.StructureTooltip", "AtTheGatesCommon.ns_UI.ns_Tooltips.ns_Info.Info_ResourceCostAndProduction" ] }
+    },
+    {
+      "RouteId": "selection-context",
+      "Priority": 20,
+      "Interface": "选中对象与指令",
+      "Surface": "Conditional",
+      "Trigger": "SelectionState",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "TypeFullNames": [ "AtTheGatesUI.ns_InGame.SelectionPanel", "AtTheGatesGame.ns_UIControllers.ATGWorldScreen" ] }
+    },
+    {
+      "RouteId": "world-notification-context",
+      "Priority": 20,
+      "Interface": "世界界面与通知",
+      "Surface": "Conditional",
+      "Trigger": "GameStateOrEvent",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "TypeFullNames": [ "AtTheGatesUI.ns_InGame.WorldScreen", "AtTheGatesUI.ns_Notifications.Notification", "AtTheGatesUI.ns_Notifications.NotificationtMgr" ] }
+    },
+    {
+      "RouteId": "clan-screen",
+      "Priority": 20,
+      "Interface": "氏族界面与列表",
+      "Surface": "Screen",
+      "Trigger": "Always",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "TypeFullNames": [ "AtTheGatesUI.ns_InGame.ns_Popups.Screen_Clans" ] }
+    },
+    {
+      "RouteId": "knowledge-tech-religion",
+      "Priority": 20,
+      "Interface": "知识、科技与宗教",
+      "Surface": "Screen",
+      "Trigger": "Always",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "Kinds": [ "ReligionDisplay" ] }
+    },
+    {
+      "RouteId": "knowledge-tech-tooltip",
+      "Priority": 20,
+      "Interface": "知识、科技与宗教",
+      "Surface": "Tooltip",
+      "Trigger": "Hover",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "TypeFullNames": [ "AtTheGatesCommon.ns_Config.TechConfig", "AtTheGatesCommon.ns_Config.SageVariant" ] }
+    },
+    {
+      "RouteId": "stockpile-resource-panel",
+      "Priority": 20,
+      "Interface": "库存与资源面板",
+      "Surface": "Conditional",
+      "Trigger": "GameState",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "TypeFullNames": [ "AtTheGatesUI.ns_InGame.StockpileLabel", "AtTheGatesGame.ns_GameCode.ResourcesMgr" ] }
+    },
+    {
+      "RouteId": "main-menu-help-dialog",
+      "Priority": 20,
+      "Interface": "主菜单、载入、帮助与对话框",
+      "Surface": "Screen",
+      "Trigger": "Always",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "TypeFullNames": [ "AtTheGatesUI.ns_MainMenu.MainMenu", "AtTheGatesUI.ns_InGame.ns_Popups.Popup_SystemMenu", "AtTheGatesUI.HelpGuideTips.HelpGuideTip", "ElfTools.Inputs.Input" ] }
+    },
+    {
+      "RouteId": "runtime-final-display",
+      "Priority": 30,
+      "Interface": "运行时最终显示",
+      "Surface": "Conditional",
+      "Trigger": "RuntimeComposition",
+      "PlayerVisible": true,
+      "NeedsTranslation": true,
+      "Match": { "SourceFiles": [ "translations\\runtime-display-strings.json" ] }
+    },
+    {
+      "RouteId": "technical-or-structural",
+      "Priority": 90,
+      "Interface": "结构、逻辑与诊断文本",
+      "Surface": "NonDisplay",
+      "Trigger": "NotApplicable",
+      "PlayerVisible": false,
+      "NeedsTranslation": false,
+      "Match": { "ReviewStates": [ "Skipped" ], "SafetyValues": [ "Technical" ] }
+    }
+  ]
+}
