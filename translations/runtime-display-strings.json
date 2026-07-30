@@ -67,6 +67,66 @@
       "Translation": "废弃农场"
     },
     {
+      "Original": "Deserted Battlefield",
+      "Translation": "废弃战场"
+    },
+    {
+      "Original": "Deserted",
+      "Translation": "废弃"
+    },
+    {
+      "Original": "Battlefield",
+      "Translation": "战场"
+    },
+    {
+      "Original": "Deserted Village",
+      "Translation": "废弃村落"
+    },
+    {
+      "Original": "Deserted City",
+      "Translation": "废弃城市"
+    },
+    {
+      "Original": "传闻有一个Deserted City",
+      "Translation": "传闻有一个废弃城市"
+    },
+    {
+      "Original": "All that remains of a once-thriving community.",
+      "Translation": "这是昔日繁荣社区的残迹。"
+    },
+    {
+      "Original": "All that remains of a once-magnificent Roman City, abandoned only recently.",
+      "Translation": "这是昔日辉煌的罗马城市，如今仅剩残迹，且最近才被遗弃。"
+    },
+    {
+      "Original": "Supply",
+      "Translation": "补给"
+    },
+    {
+      "Original": "Terrain",
+      "Translation": "地形"
+    },
+    {
+      "Original": "Defense",
+      "Translation": "防御"
+    },
+    {
+      "Original": "传闻有一个Deserted Village",
+      "Translation": "传闻有一个废弃村落"
+    },
+    {
+      "Original": "\u0080Impassable",
+      "Translation": "\u0080不可通行"
+    },
+    {
+      "Original": "点击展开此面板以查看基本说明：Deserted",
+      "Translation": "点击展开此面板以查看基本说明：废弃"
+    },
+    {
+      "Original": "Battlefield（位于此地格）.",
+      "Translation": "战场（位于此地格）."
+    },
+    {
       "Original": "This is a farm that has been recently abandoned.",
       "Translation": "这是一座最近被遗弃的农场。"
     },
@@ -85,6 +145,10 @@
     {
       "Original": "传闻有一个Deserted Farm",
       "Translation": "传闻有一个废弃农场"
+    },
+    {
+      "Original": "传闻有一个Deserted Battlefield",
+      "Translation": "传闻有一个废弃战场"
     },
     {
       "Original": "Angry",
@@ -173,12 +237,20 @@
       "Translation": "内，或作为"
     },
     {
-      "Original": " of a",
-      "Translation": "，驻留在"
-    },
-    {
       "Original": "seafaring",
       "Translation": "航海"
+    },
+    {
+      "Original": "Berry Patches can be",
+      "Translation": "浆果丛可被"
+    },
+    {
+      "Original": "This is a particularly large patch!",
+      "Translation": "这是一大片浆果丛！"
+    },
+    {
+      "Original": "This is a particularly large field!",
+      "Translation": "这是一大片田地！"
     },
     {
       "Original": "Fields of Wheat can be",
@@ -187,6 +259,54 @@
     {
       "Original": "Beehives can be",
       "Translation": "蜂巢可被"
+    },
+    {
+      "Original": "Herds of",
+      "Translation": "一群"
+    },
+    {
+      "Original": " can be",
+      "Translation": "可被"
+    },
+    {
+      "Original": "、 for",
+      "Translation": "、获得"
+    },
+    {
+      "Original": " for",
+      "Translation": "，获得"
+    },
+    {
+      "Original": "and then used for other purposes by",
+      "Translation": "之后可由"
+    },
+    {
+      "Original": "It may still contain useful supplies, and can be investigated by an ",
+      "Translation": "其中可能仍有有用的物资，可由"
+    },
+    {
+      "Original": "It may still contain useful supplies, and can be investigated by a",
+      "Translation": "其中可能仍有有用的物资，可由"
+    },
+    {
+      "Original": "All that remains of a once-magnificent Roman City, abandoned",
+      "Translation": "昔日辉煌的罗马城市如今仅剩残迹，"
+    },
+    {
+      "Original": "only recently.",
+      "Translation": "最近才被遗弃。"
+    },
+    {
+      "Original": "on them.",
+      "Translation": "在其上。"
+    },
+    {
+      "Original": "This is a particularly large herd!",
+      "Translation": "这是一大群动物！"
+    },
+    {
+      "Original": "This is among the largest herds ever found!",
+      "Translation": "这是迄今发现的最大兽群之一！"
     },
     {
       "Original": " by a",
@@ -223,6 +343,34 @@
     {
       "Original": "When 不悦...",
       "Translation": "当不悦时……"
+    },
+    {
+      "Original": "When 高兴...",
+      "Translation": "当高兴时……"
+    },
+    {
+      "Original": " from being ",
+      "Translation": "，因为"
+    },
+    {
+      "Original": "Ennobled",
+      "Translation": "已册封"
+    },
+    {
+      "Original": "Enabled",
+      "Translation": "已启用"
+    },
+    {
+      "Original": " from being",
+      "Translation": "，因为"
+    },
+    {
+      "Original": " from being Ennobled",
+      "Translation": "，原因：已册封"
+    },
+    {
+      "Original": " from being Enabled",
+      "Translation": "，原因：已启用"
     }
   ],
   "RichTextFragments": [

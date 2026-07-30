@@ -30,7 +30,7 @@ must obey. Read a child topic only when its work is actually needed.
 - Resource, network, and runtime diagnostics:
   `docs/agent/operations/diagnostics.md`
 
-## Win11 Toolchain Audit (2026-07-28)
+## Win11 Toolchain Audit (2026-07-29)
 
 - Windows reports build `26200` / display version `25H2` (the registry still
   labels the product `Windows 10 Enterprise`; use the build rather than that
@@ -38,14 +38,34 @@ must obey. Read a child topic only when its work is actually needed.
 - Windows PowerShell 5.1 and the bundled `.tools\dotnet\dotnet.exe` (SDK
   8.0.423, win-x64) are the supported working combination. A system `dotnet`
   command is not on `PATH`, so scripts must continue to use the bundled path.
-- All 83 project PowerShell scripts parse successfully; all project JSON/XML
-  catalogs parse successfully; every C# project and deterministic test suite
-  builds/runs on this host. Restore/build may emit `NU1900` when the NuGet
-  vulnerability endpoint is unreachable; this is a network-audit warning, not
-  a compile failure.
+- All 87 current project PowerShell scripts parse successfully; 14 XML files
+  parse successfully with explicit UTF-8 decoding. The filtered project set
+  contains 183 JSON files; 182 are strict UTF-8 and one legacy, unused
+  `translations/recheck-skipped-candidates.json` is GB2312 and should be
+  normalized before it is promoted to an input. Every one of the 11 C# projects
+  builds and all four deterministic test suites pass. Restore/build may emit
+  `NU1900` when the NuGet vulnerability endpoint is unreachable; this is a
+  network-audit warning, not a compile failure.
 - The single-instance smoke-test guard now starts its child through explicit
   `.NET ProcessStartInfo`. This avoids a Windows PowerShell 5.1 failure when a
   host environment exposes both case variants of `PATH` (`PATH` and `Path`).
-- The audit did not launch the game or validate a live visual surface. Main-menu
-  smoke and in-game automation therefore remain separate, explicitly opt-in
-  checks.
+- Manifest refresh, install, and main-menu smoke also pass on this host: the
+  refreshed window started in 8.27 seconds and remained stable for 4.15 seconds
+  across eight checks, with no crash, settings, or Windows-error events. Static
+  gates, install-refresh, window-finder, file-operation, cache, IL-rewrite,
+  glyph, and trial-localization checks also pass. Running the trial batch-safety
+  and recovery checks concurrently is unsupported because they share
+  `.tmp\trial-localization\active-run.json`; they pass when run serially. This
+  validates startup only; in-game automation and live visual capture remain
+  separate, explicitly opt-in checks. PowerShell 5.1 audits must specify
+  `-Encoding UTF8`; its default decoding can falsely report valid Chinese JSON
+  as malformed.
+
+Reverification on 2026-07-29 after the Win11 update reproduced the toolchain
+results: solution build and four deterministic suites passed, the patch rebuilt
+with the cached managed/runtime stages, and manifest-backed installation
+refresh succeeded. The installed build reached the main menu in 8.78 seconds,
+stayed stable for 4.15 seconds (8 checks), and exited cleanly with no crash,
+settings, or Windows-error events. Fifteen external static/helper gates also
+returned exit code 0. This is a repeat of the startup/tool audit; it does not
+promote the separate in-game terrain/deposit coverage to complete.

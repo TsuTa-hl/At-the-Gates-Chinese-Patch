@@ -41,7 +41,6 @@ public sealed class TestScenario
     public ScenarioAction[] SetupActions { get; init; } = [];
     public ScenarioAction[] TeardownActions { get; init; } = [];
     public ScenarioAction? ClearBeforeEachPoint { get; init; }
-    public TileSweepSpec? TileSweep { get; init; }
     public TestPoint[] Points { get; init; } = [];
 }
 

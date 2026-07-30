@@ -10,6 +10,8 @@ var tests = new (string Name, Action Body)[]
     ("Rich localization changes display text but preserves keys and raw tags", RichLocalizationPreservesStructure),
     ("Display registrations reject conflicts and markup injection", DisplayRegistrationsRejectUnsafeValues),
     ("Runtime display map localizes exact and standalone dynamic values", RuntimeDisplayMapLoads),
+    ("Tile-detail rich text preserves localized concept links and wrapped city text", TileDetailFallbacksLocalize),
+    ("Split mood-tooltip fragments localize without changing the UI composition", RuntimeDisplayMoodFragmentsLocalize),
     ("Runtime display fragments localize plain nodes without breaking concept links", RuntimeDisplayFragmentsPreserveLinks),
     ("Scoped rich-text fragments preserve concept links", RuntimeDisplayRichTextFragmentsPreserveLinks),
     ("Chinese concept links collapse inherited English word spaces", RuntimeDisplayConceptSpacingPreservesLinks),
@@ -265,10 +267,76 @@ static void RuntimeDisplayFragmentsPreserveLinks()
 
     DisplayStringLocalizer.RegisterPlainText("This is among the largest fields ever found!", "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u9ea6\u7530\u4e4b\u4e00\uff01");
     DisplayStringLocalizer.RegisterPlainTextFragment("Beehives can be", "\u8702\u5de2\u53ef\u88ab");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Herds of", "\u4e00\u7fa4");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" can be", "\u53ef\u88ab");
+    DisplayStringLocalizer.RegisterPlainTextFragment("、 for", "、\u83b7\u5f97");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" for", "，\u83b7\u5f97");
+    DisplayStringLocalizer.RegisterPlainTextFragment("and then used for other purposes by", "\u4e4b\u540e\u53ef\u7531");
+    DisplayStringLocalizer.RegisterPlainTextFragment("on them.", "\u5728\u5176\u4e0a\u3002");
+    DisplayStringLocalizer.RegisterPlainTextFragment("This is a particularly large herd!", "\u8fd9\u662f\u4e00\u5927\u7fa4\u52a8\u7269\uff01");
+    DisplayStringLocalizer.RegisterPlainTextFragment("This is among the largest herds ever found!", "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u517d\u7fa4\u4e4b\u4e00\uff01");
     Equal("\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u9ea6\u7530\u4e4b\u4e00\uff01",
         DisplayStringLocalizer.LocalizeDisplayString("This is among the largest fields ever found!"));
     Equal("\u8702\u5de2\u53ef\u88ab[\u91c7\u6536|HARVEST]",
         DisplayStringLocalizer.LocalizeRichText("Beehives can be[采收|HARVEST]"));
+    Equal("\u4e00\u7fa4 [\u9a6c|ANIMAL]\u53ef\u88ab [\u91c7\u6536|HARVEST]，\u83b7\u5f97 [\u8089|MEAT]、\u83b7\u5f97 [\u76ae|PARCHMENT]\u5728\u5176\u4e0a\u3002",
+        DisplayStringLocalizer.LocalizeRichText("Herds of [马|ANIMAL] can be [采收|HARVEST] for [肉|MEAT]、 for [皮|PARCHMENT]on them."));
+    Equal("\u8fd9\u662f\u4e00\u5927\u7fa4\u52a8\u7269\uff01",
+        DisplayStringLocalizer.LocalizeRichText("This is a particularly large herd!"));
+}
+
+static void TileDetailFallbacksLocalize()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterConceptKey("SUPPLY");
+    DisplayStringLocalizer.RegisterConceptKey("TERRAIN");
+    DisplayStringLocalizer.RegisterConceptKey("DEFENSE");
+    DisplayStringLocalizer.RegisterPlainText("Supply", "补给");
+    DisplayStringLocalizer.RegisterPlainText("Terrain", "地形");
+    DisplayStringLocalizer.RegisterPlainText("Defense", "防御");
+    DisplayStringLocalizer.RegisterPlainTextFragment(
+        "All that remains of a once-magnificent Roman City, abandoned",
+        "昔日辉煌的罗马城市如今仅剩残迹，");
+    DisplayStringLocalizer.RegisterPlainTextFragment("only recently.", "最近才被遗弃。");
+
+    // The targeted TileTooltip RichTextLabel patch sends these strings through
+    // TextFormatter; Chinese display text must retain the stable machine key.
+    DisplayStringLocalizer.RegisterConceptDisplay("SUPPLY", "Supply", "补给");
+    DisplayStringLocalizer.RegisterConceptDisplay("TERRAIN", "Terrain", "地形");
+    DisplayStringLocalizer.RegisterConceptDisplay("DEFENSE", "Defense", "防御");
+    Equal("[补给|SUPPLY]", DisplayStringLocalizer.LocalizeRichText("[Supply|SUPPLY]"));
+    // SupplyInfo's fixed UI literal is rewritten to Chinese before it reaches
+    // the runtime formatter; the formatter must retain its concept key.
+    Equal("来自[地形|TERRAIN]",
+        DisplayStringLocalizer.LocalizeRichText("来自[地形|TERRAIN]"));
+    Equal("[防御|DEFENSE]", DisplayStringLocalizer.LocalizeRichText("[Defense|DEFENSE]"));
+
+    Equal("补给", DisplayStringLocalizer.LocalizeDisplayString("Supply"));
+    Equal("地形", DisplayStringLocalizer.LocalizeDisplayString("Terrain"));
+    Equal("防御", DisplayStringLocalizer.LocalizeDisplayString("Defense"));
+    Equal("昔日辉煌的罗马城市如今仅剩残迹，",
+        DisplayStringLocalizer.LocalizeDisplayString(
+            "All that remains of a once-magnificent Roman City, abandoned"));
+    Equal("最近才被遗弃。", DisplayStringLocalizer.LocalizeDisplayString("only recently."));
+}
+
+static void RuntimeDisplayMoodFragmentsLocalize()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterPlainTextFragment("When 高兴...", "当高兴时……");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" from being ", "，因为");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" from being", "，因为");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Ennobled", "已册封");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Enabled", "已启用");
+
+    // GAME.BuildDescription_Mood emits its heading whole, while RecalcMood
+    // exposes its reason in separate text nodes around a concept link.
+    Equal("当高兴时……", DisplayStringLocalizer.LocalizeDisplayString("When 高兴..."));
+    Equal("，因为", DisplayStringLocalizer.LocalizeDisplayString(" from being"));
+    Equal("已册封", DisplayStringLocalizer.LocalizeDisplayString("Ennobled"));
+    Equal("已启用", DisplayStringLocalizer.LocalizeDisplayString("Enabled"));
+    Equal("+1心情，因为已册封",
+        DisplayStringLocalizer.LocalizeRichText("+1心情 from being Ennobled"));
 }
 
 static void RuntimeDisplayRichTextFragmentsPreserveLinks()

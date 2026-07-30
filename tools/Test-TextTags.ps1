@@ -15,10 +15,26 @@ function Get-EntryMap([string]$Path) {
 }
 
 function Get-Tags([string]$Text) {
-    $matches = [regex]::Matches($Text, "\[[^\]]+\]")
+    # Some legacy source text contains a split rich-text link such as
+    # `[Researching]|STUDY]`. Treat it as one intended concept tag so a
+    # corrected localized `[研究|STUDY]` is accepted without weakening normal
+    # tag-count validation.
+    # `TEXT.Tip.HarvestingResources.1` also contains the one-off misspelling
+    # `[Construct|CONSTURCT]`. Normalize only that literal source defect to its
+    # existing CONSTRUCT concept key so the localized link remains interactive.
+    $Text = $Text.Replace("[Construct|CONSTURCT]", "[Construct|CONSTRUCT]")
+    $malformed = [regex]::Matches($Text, "\[[^\]]+\]\|([A-Z][A-Z0-9-]*)\]")
+    $normalizedText = $Text
+    foreach ($match in $malformed) {
+        $normalizedText = $normalizedText.Replace($match.Value, "")
+    }
+    $matches = [regex]::Matches($normalizedText, "\[[^\]]+\]")
     $items = New-Object System.Collections.Generic.List[string]
     foreach ($match in $matches) {
         $items.Add((Get-TagSignature $match.Value))
+    }
+    foreach ($match in $malformed) {
+        $items.Add("[|$($match.Groups[1].Value)]")
     }
     return $items
 }

@@ -215,7 +215,7 @@ public static class RuntimeTextRedirectCoordinator
         {
             cancellationToken.ThrowIfCancellationRequested();
             var hash = ContentHasher.HashFiles([job.SourcePath, job.RuntimeAssemblyPath],
-                "runtime-text-redirect-v2|" + string.Join("|", job.Specs.Select(spec =>
+                "runtime-text-redirect-v3-tile-tooltip-richtext|" + string.Join("|", job.Specs.Select(spec =>
                     spec.CallerMethodToken + ":" + spec.IlOffset + ":" + spec.SourceTargetFullName)) +
                 "|filters=" + string.Join("|", job.StringFieldFilters.Select(spec =>
                     spec.CallerMethodToken + ":" + spec.FieldFullName + ":" + spec.TargetMethodToken)) +
@@ -232,6 +232,8 @@ public static class RuntimeTextRedirectCoordinator
                     job.ExpectedFrameBoundaryHookCount,
                     job.ExpectedWarmsetStartupHookCount,
                     job.ExpectedStartupGraphicsHookCount);
+                if (StringComparer.Ordinal.Equals(job.Name, "ui"))
+                    TileTooltipRichTextPatcher.Verify(job.OutputPath);
                 return new RuntimeRedirectJobResult(job.Name, job.OutputPath,
                     job.Specs.Count + job.StringFieldFilters.Count,
                     job.ExpectedFrameBoundaryHookCount,
@@ -267,6 +269,12 @@ public static class RuntimeTextRedirectCoordinator
                     filteredOutput, job.OutputPath,
                     job.RuntimeAssemblyPath, job.MethodEntryHooks).InjectedCount;
                 File.Delete(filteredOutput);
+            }
+            if (StringComparer.Ordinal.Equals(job.Name, "ui"))
+            {
+                var tileTooltipOutput = job.OutputPath + ".tile-tooltip.tmp";
+                TileTooltipRichTextPatcher.Patch(job.OutputPath, tileTooltipOutput);
+                File.Move(tileTooltipOutput, job.OutputPath, true);
             }
             RuntimeTextRedirectVerifier.Verify(job.OutputPath,
                 job.ExpectedRenderingRedirectCount, job.ExpectedFontLoadRedirectCount,

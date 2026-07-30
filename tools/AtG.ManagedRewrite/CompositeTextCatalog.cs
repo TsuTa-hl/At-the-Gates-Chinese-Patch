@@ -114,6 +114,12 @@ public static class CompositeTextCatalog
     private const string RuntimeDisplayMapSourceFile = "translations/runtime-display-strings.json";
     private static readonly Regex RichTextLink = new(
         @"\[[^\]|]+\|([A-Z][A-Z0-9-]*)\]", RegexOptions.CultureInvariant);
+    // A few legacy source strings contain a split link such as
+    // `[Researching]|STUDY]`. Treat the trailing key as the intended concept
+    // link for structural validation while allowing the patch to repair the
+    // malformed display markup.
+    private static readonly Regex MalformedRichTextLink = new(
+        @"\[[^\]]+\]\|([A-Z][A-Z0-9-]*)\]", RegexOptions.CultureInvariant);
     private static readonly Regex Placeholder = new(
         @"\{(?:arg:)?\d+\}", RegexOptions.CultureInvariant);
     private static readonly Regex BracketToken = new(
@@ -122,6 +128,13 @@ public static class CompositeTextCatalog
         @"[A-Za-z]{2,}", RegexOptions.CultureInvariant);
     private static readonly Regex MachineToken = new(
         @"^\s*[A-Za-z0-9_.:-]+\s*$", RegexOptions.CultureInvariant);
+    private static readonly IReadOnlyDictionary<string, string> ConceptKeyAliases =
+        new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            // The game source uses the legacy plural key in one Clan-list
+            // tooltip, while the registered concept target is UPGRADE.
+            ["UPGRADES"] = "UPGRADE",
+        };
     // These are source literals shared by every managed composite that references
     // them. They deliberately live at the final-display boundary: the source
     // program continues to use identifiers, paths, hotkeys, and tags unchanged.
@@ -594,7 +607,17 @@ public static class CompositeTextCatalog
         {
             if (oldEntries.TryGetValue(entry.EntryPointId, out var old))
             {
-                if (old.LocalizedFormat is not null) entry.LocalizedFormat = old.LocalizedFormat;
+                // Source-owned XML translations are regenerated from the current
+                // patch English.xml. Prefer that value when the previous row was
+                // also source-owned, so corrected tags cannot be masked forever by
+                // a stale generated row. Manually supplied fixture/rule values
+                // remain durable and are still validated on regeneration.
+                var oldIsSourceOwnedXml = StringComparer.Ordinal.Equals(entry.Source.Kind, "Xml") &&
+                    old.RuleId is "xml-existing-translation" or "xml-text-key-translation" or
+                    "xml-text-key-structural";
+                if (old.LocalizedFormat is not null &&
+                    (entry.LocalizedFormat is null || !oldIsSourceOwnedXml))
+                    entry.LocalizedFormat = old.LocalizedFormat;
                 if (!string.IsNullOrWhiteSpace(old.RuleId)) entry.RuleId = old.RuleId;
                 if (!string.IsNullOrWhiteSpace(old.Notes)) entry.Notes = old.Notes;
                 if (!string.IsNullOrWhiteSpace(old.Status) &&
@@ -1513,9 +1536,14 @@ public static class CompositeTextCatalog
 
     private static IEnumerable<string> GetProtectedTagSignatures(string value)
     {
+        var malformedLinks = MalformedRichTextLink.Matches(value);
         foreach (Match match in BracketToken.Matches(value))
         {
             var token = match.Value;
+            // The bracket prefix of a split legacy link is repaired together
+            // with its trailing `|KEY]`; it is not an independent protected tag.
+            if (malformedLinks.Cast<Match>().Any(link => link.Index == match.Index))
+                continue;
             if (RichTextLink.IsMatch(token)) continue;
             var content = token[1..^1];
             if (LegacyBareConceptAliases.ContainsKey(content)) continue;
@@ -1533,7 +1561,12 @@ public static class CompositeTextCatalog
         foreach (Match match in RichTextLink.Matches(value))
         {
             var key = match.Groups[1].Value;
-            if (!NonConceptDisplayKeys.Contains(key)) yield return key;
+            if (!NonConceptDisplayKeys.Contains(key)) yield return NormalizeConceptKey(key);
+        }
+        foreach (Match match in MalformedRichTextLink.Matches(value))
+        {
+            var key = match.Groups[1].Value;
+            if (!NonConceptDisplayKeys.Contains(key)) yield return NormalizeConceptKey(key);
         }
         foreach (Match match in BracketToken.Matches(value))
         {
@@ -1546,6 +1579,9 @@ public static class CompositeTextCatalog
     private static bool ContainsLegacyBareConceptAlias(string value) =>
         BracketToken.Matches(value).Cast<Match>()
             .Any(match => LegacyBareConceptAliases.ContainsKey(match.Value[1..^1]));
+
+    private static string NormalizeConceptKey(string key) =>
+        ConceptKeyAliases.TryGetValue(key, out var canonical) ? canonical : key;
 
     private static bool TryGetPluralSelectorSignature(string content, out string signature)
     {

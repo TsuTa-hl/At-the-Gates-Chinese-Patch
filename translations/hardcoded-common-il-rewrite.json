@@ -1058,18 +1058,6 @@
         "EvidenceScenario":  "trial-smoke-new-game"
     },
     {
-        "Original":  " [Supply|SUPPLY]",
-        "Translation":  "[补给|SUPPLY]",
-        "MethodToken":  "0x06001729",
-        "ILOffset":  230,
-        "StringToken":  "0x70038b1c",
-        "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
-        "MethodName":  "BuildDescription_Supply",
-        "Safety":  "TooltipFragment",
-        "Note":  "Trial fast-fail auto batch generated from glossary and high-confidence phrase rules; smoke safety only.",
-        "EvidenceScenario":  "trial-smoke-new-game"
-    },
-    {
         "Original":  "[Upgrades|UPGRADE]:",
         "Translation":  "[升级|UPGRADE]:",
         "MethodToken":  "0x06001725",

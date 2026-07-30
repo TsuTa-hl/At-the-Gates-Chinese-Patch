@@ -2,7 +2,18 @@
 
 这是为 **Jon Shafer's At the Gates** 制作的简体中文补丁工程。项目以启动稳定性和精确、可回归的本地化为优先级；它不是官方产品，也不包含游戏本体。
 
+> **非官方、玩家制作的免费补丁；仅限非商业用途。**
+
 游戏页面：[Steam 商店](https://store.steampowered.com/app/241000/Jon_Shafers_At_the_Gates/)
+
+## 授权、发布与支持声明
+
+Jon Shafer 已许可本项目发布和推广本补丁，条件如下：
+
+- 本补丁始终免费且严格限于非商业用途，并在下载和宣传中明确标注为非官方玩家作品。
+- 发布物不包含、也不重新分发任何原版游戏文件；使用者必须拥有合法的《At the Gates》游戏副本。
+- Conifer Games 不为已安装本补丁的游戏提供技术支持。补丁环境下的崩溃报告和技术问题请提交至[本项目 Issues](https://github.com/TsuTa-hl/At-the-Gates-Chinese-Patch/issues)，不要提交给 Conifer Games。
+- 该许可基于善意授予，且可撤销。
 
 ## 当前能力
 
