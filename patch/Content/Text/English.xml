@@ -1020,10 +1020,10 @@
     <e ntry="TEXT.Tip.Food.1">[FOOD]是你的[氏族|CLAN]每回合都会食用的关键[资源|RESOURCE]。如果耗尽，部族会[挨饿|STARVE]，降低[资源产出|PRODUCE]、[士气|MORALE]等。你可以借助[采集者|FORAGE]从地图上的各种[矿藏|DEPOSIT]中[采集|HARVEST]食物。[商队|CARAVAN]偶尔会出售[FOOD]，但不要指望能长期靠这种方式养活你的[氏族|CLAN]。</e>
     <e ntry="TEXT.Tip.Food.2">[FOOD]不同于其他[资源|RESOURCE]，它进入[库存|STOCKPILE]时不是固定可花费数量，而是[“储备回合”|STORED-TURN]。你每回合正好消耗 1 [食物回合|STORED-TURN]。你能[产出|PRODUCE]的、超过需求的原始[FOOD]会转化为以后可用的盈余回合（100% 额外[产出|PRODUCE]等于 +1 [储备回合|STORED-TURN]）。</e>
     <e ntry="TEXT.Tip.Food.3">在最初几个回合中，选择一个用于供养成长中部族的[矿藏|DEPOSIT]（通常是[植物|PLANT]）很重要，然后把一个[氏族|CLAN][训练|TRAIN]成[采集者|FORAGE]去[采集|HARVEST]它。它应该能维持一两年，之后会耗尽，你需要寻找新的、更大的来源（也许还能精炼成更高级的东西）。</e>
-    <e ntry="TEXT.Tip.HarvestingResources.1">你可以让一个被[训练|TRAIN]为[采集|FORAGE][职业|PROFESSION]的[氏族|CLAN]，从地图上的[矿藏|DEPOSIT]和[茂密森林|FOREST][产出资源|PRODUCE]。当经济更先进后，你可以让具备合适[职业|PROFESSION]的氏族（例如[FARMER]、[MINER]）在那里[建造|CONSTURCT][建筑|STRUCTURE]，从而[产出|PRODUCE]更多。</e>
+    <e ntry="TEXT.Tip.HarvestingResources.1">你可以让一个被[训练|TRAIN]为[采集|FORAGE][职业|PROFESSION]的[氏族|CLAN]，从地图上的[矿藏|DEPOSIT]和[茂密森林|FOREST][产出资源|PRODUCE]。当经济更先进后，你可以让具备合适[职业|PROFESSION]的氏族（例如[FARMER]、[MINER]）在那里[建造|CONSTRUCT][建筑|STRUCTURE]，从而[产出|PRODUCE]更多。</e>
     <e ntry="TEXT.Tip.HarvestingResources.2">许多[矿藏|DEPOSIT]一开始是[未识别|UNIDENTIFIED]的，你需要正确类型的[采集者|FORAGE]（例如用[DIGGER]识别[矿藏|MINERAL]）或更高级的[SURVEYOR]查明它们是什么，然后才能从中[采集任何资源|HARVEST]。</e>
     <e ntry="TEXT.Tip.HarvestingResources.3">从地块[采集资源|HARVEST]会使其[枯竭|DEPLETE]，并最终完全[耗尽|EXHAUST]。避免这种情况的唯一办法是[建造|CONSTRUCT]高级的[STONE-BLOCKS:SINGULAR][建筑|STRUCTURE]；它们既能永久存在，也可以通过指派[学徒|APPRENTICE]提高[产出|PRODUCE]。</e>
-    <e ntry="TEXT.Tip.HarvestingResources.4">提高[资源产出|PRODUCE]的另一种方式，是将[氏族|CLAN][训练|TRAIN]成能提升其他氏族产出的“协同”[职业|PROFESSION]（例如面包师）。你也可以通过[Researching]|STUDY]并[购买基于职业的升级|UPGRADE]来强化单个氏族（按钮会出现在[氏族|CLAN]卡片上）。</e>
+    <e ntry="TEXT.Tip.HarvestingResources.4">提高[资源产出|PRODUCE]的另一种方式，是将[氏族|CLAN][训练|TRAIN]成能提升其他氏族产出的“协同”[职业|PROFESSION]（例如面包师）。你也可以通过[研究|STUDY]并[购买基于职业的升级|UPGRADE]来强化单个氏族（按钮会出现在[氏族|CLAN]卡片上）。</e>
     <e ntry="TEXT.Tip.BasicWarfare.1">[战士单位|WARRIOR]有几项重要属性。首先是[战力|POWER]，它是衡量[单位|UNIT]战斗强度的总体指标。一般来说，一个[单位编队|STACK]或单个单位若拥有另一方两倍的[战力|POWER]，就能痛击敌人，但未必能杀死对方。防御者可以从所在[地形|TERRAIN]获得加成，或通过多回合掘壕固守获得加成。</e>
     <e ntry="TEXT.Tip.BasicWarfare.2">[生命值|HEALTH]是另一个重要属性。它从 100 开始，如果降到 0，[单位|UNIT]就会死亡。生命值下降时，也会降低单位的[战力|POWER]。在长期战役中避免[生命值|HEALTH]损失尤其重要，因为[单位|UNIT]不会自动恢复生命值，只能在[SETTLEMENT]中花费[OIL]和[CLOTH]恢复。</e>
     <e ntry="TEXT.Tip.BasicWarfare.3">[士气|MORALE]类似[生命值|HEALTH]，但每回合会自动恢复。进攻[单位|UNIT]在战斗中损失更多生命值，防御者则损失更多[士气|MORALE]。进攻方的目标是把防御者士气降到 0，这会使其混乱地从所在地块撤退，失去所有防御加成，并在逃跑时损失大量[生命值|HEALTH]。</e>

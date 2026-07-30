@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 7,
-  "GeneratedAtUtc": "2026-07-28T04:41:48.7499663Z",
+  "GeneratedAtUtc": "2026-07-29T17:52:09.6443046Z",
   "RepositoryRoot": ".",
   "Entries": [
     {
@@ -2379,7 +2379,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " gained in ",
-      "LocalizedFormat": "\u83B7\u5F97\u4E8E",
+      "LocalizedFormat": "\uFF1A",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -31068,10 +31068,10 @@
       "OriginalFormat": " [Supply|SUPPLY]",
       "LocalizedFormat": "[\u8865\u7ED9|SUPPLY]",
       "Classification": "LogicSensitive",
-      "Status": "ExistingRule",
+      "Status": "Stale",
       "RuleId": "il-rewrite-common",
-      "AuditStatus": "Localized",
-      "RuleScope": "EntrySpecific",
+      "AuditStatus": "Stale",
+      "RuleScope": "None",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -31090,8 +31090,8 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
-      "Notes": "Trial fast-fail auto batch generated from glossary and high-confidence phrase rules; smoke safety only.",
-      "Stale": false
+      "Notes": "Trial fast-fail auto batch generated from glossary and high-confidence phrase rules; smoke safety only. Source was not rediscovered during the latest composite catalog scan.",
+      "Stale": true
     },
     {
       "EntryPointId": "managed-map:hardcoded-common-il-rewrite.json:0x0600172a:IL_0073",
@@ -63944,10 +63944,10 @@
       "OriginalFormat": "from [Terrain|TERRAIN]",
       "LocalizedFormat": "\u6765\u81EA[\u5730\u5F62|TERRAIN]",
       "Classification": "DisplaySafe",
-      "Status": "ExistingRule",
+      "Status": "Stale",
       "RuleId": "il-rewrite-ui",
-      "AuditStatus": "Localized",
-      "RuleScope": "EntrySpecific",
+      "AuditStatus": "Stale",
+      "RuleScope": "None",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -63966,8 +63966,8 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
-      "Notes": "Generated from existing UI hardcoded maps and ldstr catalog to avoid equal-length padding.",
-      "Stale": false
+      "Notes": "Generated from existing UI hardcoded maps and ldstr catalog to avoid equal-length padding. Source was not rediscovered during the latest composite catalog scan.",
+      "Stale": true
     },
     {
       "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x0600016b:IL_019C",
@@ -85790,7 +85790,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": "The currently available [Upgrades|UPGRADES] for a [Clan|CLAN]. Clicking on a button will purchase the Upgrade.",
-      "LocalizedFormat": "\u8BE5[\u6C0F\u65CF|CLAN]\u5F53\u524D\u53EF\u7528\u7684[\u5347\u7EA7|UPGRADES]\u3002\u70B9\u51FB\u6309\u94AE\u5373\u53EF\u8D2D\u4E70\u5347\u7EA7\u3002",
+      "LocalizedFormat": "\u8BE5[\u6C0F\u65CF|CLAN]\u5F53\u524D\u53EF\u7528\u7684[\u5347\u7EA7|UPGRADE]\u3002\u70B9\u51FB\u6309\u94AE\u5373\u53EF\u8D2D\u4E70\u5347\u7EA7\u3002",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-ui",
@@ -296009,7 +296009,7 @@
         "CallKind": "Exact"
       },
       "OriginalFormat": "Seeing this on a [Tile|TILE] means there\u0027s a [Mineral|MINERAL] there, but you don\u0027t know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [DIGGER] or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.",
-      "LocalizedFormat": "\u5728[Tile|TILE]\u4E0A\u770B\u5230\u8FD9\u4E2A\u6807\u8BB0\uFF0C\u8868\u793A\u90A3\u91CC\u6709\u4E00\u5904[Mineral|MINERAL]\uFF0C\u4F46\u4F60\u8FD8\u4E0D\u77E5\u9053\u5177\u4F53\u79CD\u7C7B\u3002[BLANK-LINE][\u9274\u5B9A|UNIDENTIFIED]\u7531[DIGGER]\u6216[SURVEYOR]\u5B8C\u6210\u540E\uFF0C\u5373\u53EF[\u91C7\u6536|HARVEST][Resources|RESOURCE]\u3002",
+      "LocalizedFormat": "\u5728[\u5730\u5757|TILE]\u4E0A\u770B\u5230\u8FD9\u4E2A\u6807\u8BB0\uFF0C\u8868\u793A\u90A3\u91CC\u6709\u4E00\u5904[\u77FF\u7269|MINERAL]\uFF0C\u4F46\u4F60\u8FD8\u4E0D\u77E5\u9053\u5177\u4F53\u79CD\u7C7B\u3002[BLANK-LINE][\u9274\u5B9A|UNIDENTIFIED]\u7531[DIGGER]\u6216[SURVEYOR]\u5B8C\u6210\u540E\uFF0C\u5373\u53EF[\u91C7\u6536|HARVEST][\u8D44\u6E90|RESOURCE]\u3002",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "runtime-display-exact",
@@ -296044,7 +296044,7 @@
         "CallKind": "Exact"
       },
       "OriginalFormat": "Seeing this on a [Tile|TILE] means there\u0027s a [Herd of Animals|ANIMAL] there, but you don\u0027t know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [HUNTER], [TRAPPER], or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.",
-      "LocalizedFormat": "\u5728[Tile|TILE]\u4E0A\u770B\u5230\u8FD9\u4E2A\u6807\u8BB0\uFF0C\u8868\u793A\u90A3\u91CC\u6709\u4E00\u7FA4[\u52A8\u7269|ANIMAL]\uFF0C\u4F46\u4F60\u8FD8\u4E0D\u77E5\u9053\u5177\u4F53\u79CD\u7C7B\u3002[BLANK-LINE][\u9274\u5B9A|UNIDENTIFIED]\u7531[HUNTER]\u3001[TRAPPER]\u6216[SURVEYOR]\u5B8C\u6210\u540E\uFF0C\u5373\u53EF[\u91C7\u6536|HARVEST][Resources|RESOURCE]\u3002",
+      "LocalizedFormat": "\u5728[\u5730\u5757|TILE]\u4E0A\u770B\u5230\u8FD9\u4E2A\u6807\u8BB0\uFF0C\u8868\u793A\u90A3\u91CC\u6709\u4E00\u7FA4[\u52A8\u7269|ANIMAL]\uFF0C\u4F46\u4F60\u8FD8\u4E0D\u77E5\u9053\u5177\u4F53\u79CD\u7C7B\u3002[BLANK-LINE][\u9274\u5B9A|UNIDENTIFIED]\u7531[HUNTER]\u3001[TRAPPER]\u6216[SURVEYOR]\u5B8C\u6210\u540E\uFF0C\u5373\u53EF[\u91C7\u6536|HARVEST][\u8D44\u6E90|RESOURCE]\u3002",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "runtime-display-exact",
@@ -296244,7 +296244,7 @@
         "CallKind": "Exact"
       },
       "OriginalFormat": "Seeing this on a [Tile|TILE] means there\u0027s a useful [Plant|PLANT] there, but you don\u0027t know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [GATHERER], [REAPER], or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.",
-      "LocalizedFormat": "\u5728[Tile|TILE]\u4E0A\u770B\u5230\u8FD9\u4E2A\u6807\u8BB0\uFF0C\u8868\u793A\u90A3\u91CC\u6709\u4E00\u79CD\u6709\u7528\u7684[\u690D\u7269|PLANT]\uFF0C\u4F46\u4F60\u8FD8\u4E0D\u77E5\u9053\u5177\u4F53\u79CD\u7C7B\u3002[BLANK-LINE][\u9274\u5B9A|UNIDENTIFIED]\u7531[GATHERER]\u3001[REAPER]\u6216[SURVEYOR]\u5B8C\u6210\u540E\uFF0C\u5373\u53EF[\u91C7\u6536|HARVEST][Resources|RESOURCE]\u3002",
+      "LocalizedFormat": "\u5728[\u5730\u5757|TILE]\u4E0A\u770B\u5230\u8FD9\u4E2A\u6807\u8BB0\uFF0C\u8868\u793A\u90A3\u91CC\u6709\u4E00\u79CD\u6709\u7528\u7684[\u690D\u7269|PLANT]\uFF0C\u4F46\u4F60\u8FD8\u4E0D\u77E5\u9053\u5177\u4F53\u79CD\u7C7B\u3002[BLANK-LINE][\u9274\u5B9A|UNIDENTIFIED]\u7531[GATHERER]\u3001[REAPER]\u6216[SURVEYOR]\u5B8C\u6210\u540E\uFF0C\u5373\u53EF[\u91C7\u6536|HARVEST][\u8D44\u6E90|RESOURCE]\u3002",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "runtime-display-exact",
@@ -296314,7 +296314,7 @@
         "CallKind": "Exact"
       },
       "OriginalFormat": "Herds of [DEER] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], or for [PARCHMENT] or [CLOTH] by a [TRAPPER].[BLANK-LINE]Note that unlike other kinds of [Animals|ANIMAL] Deer cannot be added to your [Stockpile|STOCKPILE] by [Constructing|CONSTRUCT] a [Pasture|PASTURE] on them.[BLANK-LINE]This is a particularly large herd!",
-      "LocalizedFormat": "\u4E00\u7FA4[DEER]\u53EF\u88AB[\u91C7\u6536|HARVEST]\uFF0C\u83B7\u5F97[MEAT]\uFF1B\u7531[HUNTER]\u8D1F\u8D23\u3002\u8FD8\u53EF\u83B7\u5F97[PARCHMENT]\u6216[CLOTH]\uFF0C\u7531[TRAPPER]\u8D1F\u8D23\u3002[BLANK-LINE]\u8BF7\u6CE8\u610F\uFF0C\u4E0E\u5176\u4ED6[Animals|ANIMAL]\u4E0D\u540C\uFF0C\u9E7F\u4E0D\u80FD\u52A0\u5165[Stockpile|STOCKPILE]\uFF1B\u5373\u4F7F[\u5EFA\u9020|CONSTRUCT][Pasture|PASTURE]\u4E5F\u4E0D\u884C\u3002[BLANK-LINE]\u8FD9\u662F\u4E00\u5927\u7FA4\u9E7F\uFF01",
+      "LocalizedFormat": "\u4E00\u7FA4[DEER]\u53EF\u88AB[\u91C7\u6536|HARVEST]\uFF0C\u83B7\u5F97[MEAT]\uFF1B\u7531[HUNTER]\u8D1F\u8D23\u3002\u8FD8\u53EF\u83B7\u5F97[PARCHMENT]\u6216[CLOTH]\uFF0C\u7531[TRAPPER]\u8D1F\u8D23\u3002[BLANK-LINE]\u8BF7\u6CE8\u610F\uFF0C\u4E0E\u5176\u4ED6[\u52A8\u7269|ANIMAL]\u4E0D\u540C\uFF0C\u9E7F\u4E0D\u80FD\u52A0\u5165[\u50A8\u5907|STOCKPILE]\uFF1B\u5373\u4F7F[\u5EFA\u9020|CONSTRUCT][\u7267\u573A|PASTURE]\u4E5F\u4E0D\u884C\u3002[BLANK-LINE]\u8FD9\u662F\u4E00\u5927\u7FA4\u9E7F\uFF01",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "runtime-display-exact",
@@ -296372,6 +296372,70 @@
       "StructuralFlags": [
         "RichTextMarkup"
       ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:0d80cdb84736a472",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "Battlefield\uFF08\u4F4D\u4E8E\u6B64\u5730\u683C\uFF09.",
+      "LocalizedFormat": "\u6218\u573A\uFF08\u4F4D\u4E8E\u6B64\u5730\u683C\uFF09.",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Battlefield\uFF08\u4F4D\u4E8E\u6B64\u5730\u683C\uFF09.",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Battlefield\uFF08\u4F4D\u4E8E\u6B64\u5730\u683C\uFF09.",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "Battlefield\uFF08\u4F4D\u4E8E\u6B64\u5730\u683C\uFF09."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:172f7ed4afbb3c86",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "Deserted City",
+      "LocalizedFormat": "\u5E9F\u5F03\u57CE\u5E02",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Deserted City",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Deserted City",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "Deserted City"
+          }
+        }
+      ],
+      "StructuralFlags": [],
       "Notes": "Generated from runtime display-map binding.",
       "Stale": false
     },
@@ -296472,6 +296536,166 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainText:2392bc26bd97c1ff",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "Defense",
+      "LocalizedFormat": "\u9632\u5FA1",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Defense",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Defense",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "Defense"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:34da2e19b0596482",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted Battlefield",
+      "LocalizedFormat": "\u4F20\u95FB\u6709\u4E00\u4E2A\u5E9F\u5F03\u6218\u573A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted Battlefield",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted Battlefield",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted Battlefield"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:3f93b138fd39c6f6",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "Battlefield",
+      "LocalizedFormat": "\u6218\u573A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Battlefield",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Battlefield",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "Battlefield"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:4529b98dc3beb336",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "Terrain",
+      "LocalizedFormat": "\u5730\u5F62",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Terrain",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Terrain",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "Terrain"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:4b7395eadafa9cde",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted Village",
+      "LocalizedFormat": "\u4F20\u95FB\u6709\u4E00\u4E2A\u5E9F\u5F03\u6751\u843D",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted Village",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted Village",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted Village"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainText:4d3ea36441a171b3",
       "Source": {
         "Kind": "RuntimeMap",
@@ -296496,6 +296720,38 @@
             "Original": "\u0080Max",
             "RuntimeMapSection": "PlainText",
             "RuntimeMapOriginal": "\u0080Max"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:4eee75d6ea909cd4",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "Deserted",
+      "LocalizedFormat": "\u5E9F\u5F03",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Deserted",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Deserted",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "Deserted"
           }
         }
       ],
@@ -296632,6 +296888,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainText:5b8e04f7dda232da",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "All that remains of a once-thriving community.",
+      "LocalizedFormat": "\u8FD9\u662F\u6614\u65E5\u7E41\u8363\u793E\u533A\u7684\u6B8B\u8FF9\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "All that remains of a once-thriving community.",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "All that remains of a once-thriving community.",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "All that remains of a once-thriving community."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainText:69036f6d579259b3",
       "Source": {
         "Kind": "RuntimeMap",
@@ -296656,6 +296944,102 @@
             "Original": ", or",
             "RuntimeMapSection": "PlainText",
             "RuntimeMapOriginal": ", or"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:7139e6e81f42aa20",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "All that remains of a once-magnificent Roman City, abandoned only recently.",
+      "LocalizedFormat": "\u8FD9\u662F\u6614\u65E5\u8F89\u714C\u7684\u7F57\u9A6C\u57CE\u5E02\uFF0C\u5982\u4ECA\u4EC5\u5269\u6B8B\u8FF9\uFF0C\u4E14\u6700\u8FD1\u624D\u88AB\u9057\u5F03\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "All that remains of a once-magnificent Roman City, abandoned only recently.",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "All that remains of a once-magnificent Roman City, abandoned only recently.",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "All that remains of a once-magnificent Roman City, abandoned only recently."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:721df33ffaa12968",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "\u70B9\u51FB\u5C55\u5F00\u6B64\u9762\u677F\u4EE5\u67E5\u770B\u57FA\u672C\u8BF4\u660E\uFF1ADeserted",
+      "LocalizedFormat": "\u70B9\u51FB\u5C55\u5F00\u6B64\u9762\u677F\u4EE5\u67E5\u770B\u57FA\u672C\u8BF4\u660E\uFF1A\u5E9F\u5F03",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "\u70B9\u51FB\u5C55\u5F00\u6B64\u9762\u677F\u4EE5\u67E5\u770B\u57FA\u672C\u8BF4\u660E\uFF1ADeserted",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "\u70B9\u51FB\u5C55\u5F00\u6B64\u9762\u677F\u4EE5\u67E5\u770B\u57FA\u672C\u8BF4\u660E\uFF1ADeserted",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "\u70B9\u51FB\u5C55\u5F00\u6B64\u9762\u677F\u4EE5\u67E5\u770B\u57FA\u672C\u8BF4\u660E\uFF1ADeserted"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:8df76bb8b6084fe0",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "Deserted Battlefield",
+      "LocalizedFormat": "\u5E9F\u5F03\u6218\u573A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Deserted Battlefield",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Deserted Battlefield",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "Deserted Battlefield"
           }
         }
       ],
@@ -296696,6 +297080,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainText:a38d8d129f339dc0",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted City",
+      "LocalizedFormat": "\u4F20\u95FB\u6709\u4E00\u4E2A\u5E9F\u5F03\u57CE\u5E02",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted City",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted City",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "\u4F20\u95FB\u6709\u4E00\u4E2ADeserted City"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainText:a6b15ee0aa41b27e",
       "Source": {
         "Kind": "RuntimeMap",
@@ -296720,6 +297136,38 @@
             "Original": "Harvested",
             "RuntimeMapSection": "PlainText",
             "RuntimeMapOriginal": "Harvested"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:b73ec045ebb5a1a5",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "Supply",
+      "LocalizedFormat": "\u8865\u7ED9",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Supply",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Supply",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "Supply"
           }
         }
       ],
@@ -296792,6 +297240,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainText:e07fa68560eda4bd",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "\u0080Impassable",
+      "LocalizedFormat": "\u0080\u4E0D\u53EF\u901A\u884C",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "\u0080Impassable",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "\u0080Impassable",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "\u0080Impassable"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainText:ec7264ae9492136f",
       "Source": {
         "Kind": "RuntimeMap",
@@ -296816,6 +297296,38 @@
             "Original": "Angry",
             "RuntimeMapSection": "PlainText",
             "RuntimeMapOriginal": "Angry"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:eeb945999e80f076",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "Deserted Village",
+      "LocalizedFormat": "\u5E9F\u5F03\u6751\u843D",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Deserted Village",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Deserted Village",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "Deserted Village"
           }
         }
       ],
@@ -296920,6 +297432,102 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:1347f564be775f6a",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "This is among the largest herds ever found!",
+      "LocalizedFormat": "\u8FD9\u662F\u8FC4\u4ECA\u53D1\u73B0\u7684\u6700\u5927\u517D\u7FA4\u4E4B\u4E00\uFF01",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "This is among the largest herds ever found!",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "This is among the largest herds ever found!",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "This is among the largest herds ever found!"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:184f6fef42e56494",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "Herds of",
+      "LocalizedFormat": "\u4E00\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Herds of",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Herds of",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "Herds of"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:196b401bae71e486",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "Berry Patches can be",
+      "LocalizedFormat": "\u6D46\u679C\u4E1B\u53EF\u88AB",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Berry Patches can be",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Berry Patches can be",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "Berry Patches can be"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:1d1682bb463a1db3",
       "Source": {
         "Kind": "RuntimeMap",
@@ -296952,14 +297560,14 @@
       "Stale": false
     },
     {
-      "EntryPointId": "runtime-map:PlainTextFragments:2d068038698036e0",
+      "EntryPointId": "runtime-map:PlainTextFragments:28852cec42fd47aa",
       "Source": {
         "Kind": "RuntimeMap",
         "RelativePath": "translations/runtime-display-strings.json",
         "CallKind": "PlainTextFragments"
       },
-      "OriginalFormat": " of a",
-      "LocalizedFormat": "\uFF0C\u9A7B\u7559\u5728",
+      "OriginalFormat": " from being Ennobled",
+      "LocalizedFormat": "\uFF0C\u539F\u56E0\uFF1A\u5DF2\u518C\u5C01",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "runtime-display-fragment",
@@ -296970,12 +297578,44 @@
         {
           "Position": 0,
           "Kind": "Literal",
-          "Value": " of a",
+          "Value": " from being Ennobled",
           "KnownTextReference": {
             "SourceFile": "translations/runtime-display-strings.json",
-            "Original": " of a",
+            "Original": " from being Ennobled",
             "RuntimeMapSection": "PlainTextFragments",
-            "RuntimeMapOriginal": " of a"
+            "RuntimeMapOriginal": " from being Ennobled"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:3d00871efd461acc",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": " can be",
+      "LocalizedFormat": "\u53EF\u88AB",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " can be",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": " can be",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": " can be"
           }
         }
       ],
@@ -297208,6 +297848,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:652a80b1782cf14a",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "It may still contain useful supplies, and can be investigated by a",
+      "LocalizedFormat": "\u5176\u4E2D\u53EF\u80FD\u4ECD\u6709\u6709\u7528\u7684\u7269\u8D44\uFF0C\u53EF\u7531",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "It may still contain useful supplies, and can be investigated by a",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "It may still contain useful supplies, and can be investigated by a",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "It may still contain useful supplies, and can be investigated by a"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:6d247261c4c72d64",
       "Source": {
         "Kind": "RuntimeMap",
@@ -297272,6 +297944,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:6e62c5634f905c90",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "This is a particularly large field!",
+      "LocalizedFormat": "\u8FD9\u662F\u4E00\u5927\u7247\u7530\u5730\uFF01",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "This is a particularly large field!",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "This is a particularly large field!",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "This is a particularly large field!"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:785c91bd044402aa",
       "Source": {
         "Kind": "RuntimeMap",
@@ -297296,6 +298000,38 @@
             "Original": " within the",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": " within the"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:7a6355f0aa15b029",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "This is a particularly large herd!",
+      "LocalizedFormat": "\u8FD9\u662F\u4E00\u5927\u7FA4\u52A8\u7269\uFF01",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "This is a particularly large herd!",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "This is a particularly large herd!",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "This is a particularly large herd!"
           }
         }
       ],
@@ -297368,6 +298104,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:99c8cd0d89d64b28",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": " for",
+      "LocalizedFormat": "\uFF0C\u83B7\u5F97",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " for",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": " for",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": " for"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:9d4c8120f0b91d26",
       "Source": {
         "Kind": "RuntimeMap",
@@ -297424,6 +298192,38 @@
             "Original": " by a",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": " by a"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:aaca2145d25dfeda",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "This is a particularly large patch!",
+      "LocalizedFormat": "\u8FD9\u662F\u4E00\u5927\u7247\u6D46\u679C\u4E1B\uFF01",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "This is a particularly large patch!",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "This is a particularly large patch!",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "This is a particularly large patch!"
           }
         }
       ],
@@ -297560,6 +298360,102 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:d139073499397a69",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "on them.",
+      "LocalizedFormat": "\u5728\u5176\u4E0A\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "on them.",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "on them.",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "on them."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:d5e7a2606928057a",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": " from being Enabled",
+      "LocalizedFormat": "\uFF0C\u539F\u56E0\uFF1A\u5DF2\u542F\u7528",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " from being Enabled",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": " from being Enabled",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": " from being Enabled"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:da8b4b4352458c7c",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "only recently.",
+      "LocalizedFormat": "\u6700\u8FD1\u624D\u88AB\u9057\u5F03\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "only recently.",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "only recently.",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "only recently."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:e01e45cb0e1ecff2",
       "Source": {
         "Kind": "RuntimeMap",
@@ -297584,6 +298480,38 @@
             "Original": "seafaring",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "seafaring"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:e5c0c16eaef8c818",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "and then used for other purposes by",
+      "LocalizedFormat": "\u4E4B\u540E\u53EF\u7531",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "and then used for other purposes by",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "and then used for other purposes by",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "and then used for other purposes by"
           }
         }
       ],
@@ -297624,6 +298552,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:eb63cbfffd7e4939",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "\u3001 for",
+      "LocalizedFormat": "\u3001\u83B7\u5F97",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "\u3001 for",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "\u3001 for",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "\u3001 for"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:f26885f3ab7755b0",
       "Source": {
         "Kind": "RuntimeMap",
@@ -297648,6 +298608,70 @@
             "Original": " outside the",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": " outside the"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:f2af9607c79500de",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "All that remains of a once-magnificent Roman City, abandoned",
+      "LocalizedFormat": "\u6614\u65E5\u8F89\u714C\u7684\u7F57\u9A6C\u57CE\u5E02\u5982\u4ECA\u4EC5\u5269\u6B8B\u8FF9\uFF0C",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "All that remains of a once-magnificent Roman City, abandoned",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "All that remains of a once-magnificent Roman City, abandoned",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "All that remains of a once-magnificent Roman City, abandoned"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:f39f586050572d51",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "It may still contain useful supplies, and can be investigated by an ",
+      "LocalizedFormat": "\u5176\u4E2D\u53EF\u80FD\u4ECD\u6709\u6709\u7528\u7684\u7269\u8D44\uFF0C\u53EF\u7531",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "It may still contain useful supplies, and can be investigated by an ",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "It may still contain useful supplies, and can be investigated by an ",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "It may still contain useful supplies, and can be investigated by an "
           }
         }
       ],
@@ -367098,7 +368122,7 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "\n\t\tAnother way to increase [Resource Production|PRODUCE] is by [Training|TRAIN] [Clans|CLAN] in \u0027synergy\u0027 [Professions|PROFESSION] which boost the output of other Clans (e.g. Bread Maker). You can also improve individual Clans by [Researching]|STUDY] and then [purchasing Profession-based Upgrades|UPGRADE] (using a button that appears on the [Clan|CLAN] Card).\n\t",
-      "LocalizedFormat": "\u63D0\u9AD8[\u8D44\u6E90\u4EA7\u51FA|PRODUCE]\u7684\u53E6\u4E00\u79CD\u65B9\u5F0F\uFF0C\u662F\u5C06[\u6C0F\u65CF|CLAN][\u8BAD\u7EC3|TRAIN]\u6210\u80FD\u63D0\u5347\u5176\u4ED6\u6C0F\u65CF\u4EA7\u51FA\u7684\u201C\u534F\u540C\u201D[\u804C\u4E1A|PROFESSION]\uFF08\u4F8B\u5982\u9762\u5305\u5E08\uFF09\u3002\u4F60\u4E5F\u53EF\u4EE5\u901A\u8FC7[Researching]|STUDY]\u5E76[\u8D2D\u4E70\u57FA\u4E8E\u804C\u4E1A\u7684\u5347\u7EA7|UPGRADE]\u6765\u5F3A\u5316\u5355\u4E2A\u6C0F\u65CF\uFF08\u6309\u94AE\u4F1A\u51FA\u73B0\u5728[\u6C0F\u65CF|CLAN]\u5361\u7247\u4E0A\uFF09\u3002",
+      "LocalizedFormat": "\u63D0\u9AD8[\u8D44\u6E90\u4EA7\u51FA|PRODUCE]\u7684\u53E6\u4E00\u79CD\u65B9\u5F0F\uFF0C\u662F\u5C06[\u6C0F\u65CF|CLAN][\u8BAD\u7EC3|TRAIN]\u6210\u80FD\u63D0\u5347\u5176\u4ED6\u6C0F\u65CF\u4EA7\u51FA\u7684\u201C\u534F\u540C\u201D[\u804C\u4E1A|PROFESSION]\uFF08\u4F8B\u5982\u9762\u5305\u5E08\uFF09\u3002\u4F60\u4E5F\u53EF\u4EE5\u901A\u8FC7[\u7814\u7A76|STUDY]\u5E76[\u8D2D\u4E70\u57FA\u4E8E\u804C\u4E1A\u7684\u5347\u7EA7|UPGRADE]\u6765\u5F3A\u5316\u5355\u4E2A\u6C0F\u65CF\uFF08\u6309\u94AE\u4F1A\u51FA\u73B0\u5728[\u6C0F\u65CF|CLAN]\u5361\u7247\u4E0A\uFF09\u3002",
       "Classification": "DisplayComposite",
       "Status": "ExistingRule",
       "RuleId": "xml-existing-translation",
@@ -375794,7 +376818,7 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "\n\t\tYou can [Produce Resources|PRODUCE] from map-based [Deposits|DEPOSIT] and [dense Forests|FOREST] with a [Clan|CLAN] [Trained|TRAIN] in a [Foraging|FORAGE] [Profession|PROFESSION]. Once your economy is more advanced you can [Produce|PRODUCE] even more by having a Clan in an appropriate [Profession|PROFESSION] (e.g. [FARMER], [MINER]) [Construct|CONSTURCT] a [Structure|STRUCTURE] there.\n\t",
-      "LocalizedFormat": "\u4F60\u53EF\u4EE5\u8BA9\u4E00\u4E2A\u88AB[\u8BAD\u7EC3|TRAIN]\u4E3A[\u91C7\u96C6|FORAGE][\u804C\u4E1A|PROFESSION]\u7684[\u6C0F\u65CF|CLAN]\uFF0C\u4ECE\u5730\u56FE\u4E0A\u7684[\u77FF\u85CF|DEPOSIT]\u548C[\u8302\u5BC6\u68EE\u6797|FOREST][\u4EA7\u51FA\u8D44\u6E90|PRODUCE]\u3002\u5F53\u7ECF\u6D4E\u66F4\u5148\u8FDB\u540E\uFF0C\u4F60\u53EF\u4EE5\u8BA9\u5177\u5907\u5408\u9002[\u804C\u4E1A|PROFESSION]\u7684\u6C0F\u65CF\uFF08\u4F8B\u5982[FARMER]\u3001[MINER]\uFF09\u5728\u90A3\u91CC[\u5EFA\u9020|CONSTURCT][\u5EFA\u7B51|STRUCTURE]\uFF0C\u4ECE\u800C[\u4EA7\u51FA|PRODUCE]\u66F4\u591A\u3002",
+      "LocalizedFormat": "\u4F60\u53EF\u4EE5\u8BA9\u4E00\u4E2A\u88AB[\u8BAD\u7EC3|TRAIN]\u4E3A[\u91C7\u96C6|FORAGE][\u804C\u4E1A|PROFESSION]\u7684[\u6C0F\u65CF|CLAN]\uFF0C\u4ECE\u5730\u56FE\u4E0A\u7684[\u77FF\u85CF|DEPOSIT]\u548C[\u8302\u5BC6\u68EE\u6797|FOREST][\u4EA7\u51FA\u8D44\u6E90|PRODUCE]\u3002\u5F53\u7ECF\u6D4E\u66F4\u5148\u8FDB\u540E\uFF0C\u4F60\u53EF\u4EE5\u8BA9\u5177\u5907\u5408\u9002[\u804C\u4E1A|PROFESSION]\u7684\u6C0F\u65CF\uFF08\u4F8B\u5982[FARMER]\u3001[MINER]\uFF09\u5728\u90A3\u91CC[\u5EFA\u9020|CONSTRUCT][\u5EFA\u7B51|STRUCTURE]\uFF0C\u4ECE\u800C[\u4EA7\u51FA|PRODUCE]\u66F4\u591A\u3002",
       "Classification": "DisplayComposite",
       "Status": "ExistingRule",
       "RuleId": "xml-existing-translation",

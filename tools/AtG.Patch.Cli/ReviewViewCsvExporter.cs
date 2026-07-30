@@ -325,7 +325,7 @@ internal static class ReviewViewCsvExporter
             return new TodoCategory("CompositeOrKey", "拼接片段、标签或文本键（先处理完整入口）",
                 "不得单词级替换；先解析文本键或复用对应组合入口的完整格式规则。");
         if (string.Equals(row.ReasonCode, "LogicSensitive", StringComparison.Ordinal) ||
-            row.Safety is "ManualOnly" or "Skip" ||
+            row.Safety is "ReviewRequired" or "Skip" ||
             row.Kind is "FactionNameOrLabel" or "LogicSensitive" or "TodoPlaceholder")
             return new TodoCategory("LogicSensitive", "逻辑敏感或需人工确认的显示文本",
                 "先进行小批隔离修改与目标回归；不得作为批量字符串替换对象。");

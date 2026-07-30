@@ -29,9 +29,13 @@ knowledge, then either finish or return to repair.
 1. Confirm a current successful package/install/smoke handoff. Otherwise run
    package/install first.
 2. Select Active Focus plus only the interface scenarios affected by the
-   change. Full regression remains opt-in.
+   change. Full regression remains opt-in. A fixed-save scenario for a defect
+   the user has already confirmed is an allowed targeted black-box test.
 3. Build each UI state once. For in-game tests, load the designated save from
-   the main menu. A random discovery must save the exposed state before repair.
+   the main menu. Never create a new random world merely to discover whether an
+   unrelated surface might be wrong. If a proposed workflow requires repeated
+   random-world creation or exploratory coverage, stop and request the user's
+   confirmation before creating or launching it.
 4. Execute related hovers/clicks in one process. Use stable scenario anchors,
    700-1500 ms hover waits, and a 3-second maximum.
 5. On a crash, use the crash procedure: screenshot, dismiss dialog, read the
@@ -46,6 +50,15 @@ knowledge, then either finish or return to repair.
    knowledge and repeat package/install/smoke -> test -> update knowledge.
 9. If `Passed` or a documented stop condition applies, report the result after
    the knowledge update.
+
+## User-confirmed exploratory boundary
+
+When the user confirms a workflow that necessarily creates random worlds, run
+the requested procedure until the user manually confirms that the procedure is
+behaving as intended. Do not autonomously tune coordinates, add coverage,
+change stop criteria, or iterate on the procedure after that point. This
+permission is separate from targeted replay of a known defect on a fixed save;
+the latter does not require a new-world confirmation.
 
 ## Stop Conditions
 

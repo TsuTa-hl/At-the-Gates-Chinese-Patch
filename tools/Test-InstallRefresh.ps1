@@ -49,11 +49,14 @@ $manifestPath = Join-Path $gameRoot ".atg-chinese-patch.json"
 $gameText = Join-Path $gameRoot "Content\Text\English.xml"
 $backupText = Join-Path $backupRoot "Content\Text\English.xml"
 $staleFile = Join-Path $gameRoot "Content\Obsolete\OldPatchOnly.txt"
+$saveDirectory = Join-Path $gameRoot "Saved Games"
+$chineseSave = "World " + [string][char]0x6E38 + [char]0x620F + ".AtGSave"
 
 New-TextFile -Path (Join-Path $gameRoot "At The Gates.exe") -Value "fake exe"
 New-TextFile -Path $gameText -Value "old patched text"
 New-TextFile -Path $backupText -Value "original text"
 New-TextFile -Path $staleFile -Value "stale patch file"
+New-TextFile -Path (Join-Path $saveDirectory $chineseSave) -Value "preserve during refresh"
 
 $oldManifest = [pscustomobject]@{
     Name       = "At the Gates Chinese Patch"
@@ -73,17 +76,18 @@ $oldManifest = [pscustomobject]@{
 }
 $oldManifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $manifestPath -Encoding UTF8
 
-& (Join-Path $repoRoot "Install-ChinesePatch.ps1") -GamePath $gameRoot -PreserveFonts
+& (Join-Path $repoRoot "Install-ChinesePatch.ps1") -GamePath $gameRoot -PreserveFonts -NoInstallNotice
 
 Assert-AtG (!(Test-Path -LiteralPath $staleFile)) "Install did not uninstall the stale manifest-managed file first."
 Assert-AtG (Test-Path -LiteralPath $manifestPath) "Install did not create a new manifest."
 Assert-AtG (Test-Path -LiteralPath $gameText) "Install did not copy patch text."
+Assert-AtG (Test-Path -LiteralPath (Join-Path $saveDirectory $chineseSave)) "Patch refresh must not rename saves; compatibility cleanup belongs only to direct uninstall."
 
 $firstManifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
 Assert-AtG ((Get-ResolvedLiteralPath ([string]$firstManifest.BackupRoot)) -eq (Get-ResolvedLiteralPath $backupRoot)) "Install did not reuse the existing original backup."
 Assert-AtG (@($firstManifest.Files | Where-Object { $_.RelativePath -eq "Content\Obsolete\OldPatchOnly.txt" }).Count -eq 0) "New manifest kept a stale old-patch-only file."
 
-& (Join-Path $repoRoot "Install-ChinesePatch.ps1") -GamePath $gameRoot -PreserveFonts
+& (Join-Path $repoRoot "Install-ChinesePatch.ps1") -GamePath $gameRoot -PreserveFonts -NoInstallNotice
 
 $secondManifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
 Assert-AtG ((Get-ResolvedLiteralPath ([string]$secondManifest.BackupRoot)) -eq (Get-ResolvedLiteralPath $backupRoot)) "Repeated install did not preserve the original backup root."

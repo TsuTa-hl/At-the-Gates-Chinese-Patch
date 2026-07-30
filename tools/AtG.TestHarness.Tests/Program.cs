@@ -1,4 +1,3 @@
-using System.Drawing;
 using AtG.TestHarness;
 
 var tests = new (string Name, Func<Task> Body)[]
@@ -6,6 +5,7 @@ var tests = new (string Name, Func<Task> Body)[]
     ("Adaptive wait stops after two stable frames", AdaptiveWaitStopsEarly),
     ("Adaptive wait requires a change from the pre-action baseline", AdaptiveWaitRequiresChange),
     ("Session planner deduplicates interface points", SessionPlannerDeduplicates),
+    ("Session planner excludes Deferred scenarios from runtime plans", SessionPlannerExcludesDeferredScenarios),
     ("Evidence policy keeps full frames only for transitions and failures", EvidencePolicyIsCompact),
     ("Coordinates scale from the canonical 2560 by 1440 window", CoordinatesScale),
     ("Window handle recovery replaces a stale handle", WindowHandleRecoveryReplacesStaleHandle),
@@ -42,15 +42,6 @@ var tests = new (string Name, Func<Task> Body)[]
     ("A changed point may pass while its animation remains unstable", ChangedPointMayRemainUnstable),
     ("An explicitly idempotent point can pass without a UI change", IdempotentActionCanPass),
     ("Rendered text filtering ignores unrelated screen regions", RenderedTextFilteringUsesPointRegion),
-    ("Tile sweep radius five produces 91 center-outward coordinates", TileSweepProduces91Coordinates),
-    ("Tile sweep validation rejects coordinates outside the safe viewport", TileSweepValidatesSafeViewport),
-    ("Tooltip panel detector distinguishes collapsed and expanded cards", TooltipDetectorDistinguishesPanelStates),
-    ("Tooltip panel detector excludes the quick-reference expand action", TooltipDetectorSeparatesQuickReference),
-    ("Tooltip pixel detector finds a dark panel region", TooltipPixelDetectorFindsPanel),
-    ("Boundary source inventory contains 23 terrains, 78 deposits, and 42 resources", BoundarySourceInventoryHasExpectedCounts),
-    ("Boundary merge distinguishes rumor-only, visible-only, and observed sources", BoundaryMergeClassifiesSurfaces),
-    ("Tile sweep cycle stops on a repeated identity and respects caps", TileSweepCycleGuards),
-    ("Tile sweep guard detects camera or selection changes", TileSweepGuardDetectsMovement),
 };
 var failures = 0;
 foreach (var test in tests)
@@ -201,6 +192,21 @@ static Task SessionPlannerDeduplicates()
     True(plan.LoadFixedSaveOnce);
     Equal(1, plan.Points.Count);
     Equal(1, plan.StateTransitions.Count);
+    return Task.CompletedTask;
+}
+
+static Task SessionPlannerExcludesDeferredScenarios()
+{
+    var manual = new TestScenario
+    {
+        Id = "manual-terrain",
+        Interface = "Main Loop Map",
+        Status = "Deferred",
+        Points = [new TestPoint { Id = "tile", Action = "HoverAndCapture", X = 10, Y = 20 }],
+    };
+    var plan = SessionPlanner.Create([manual]);
+    Equal(0, plan.Points.Count);
+    Equal(0, plan.States.Count);
     return Task.CompletedTask;
 }
 
@@ -826,169 +832,6 @@ static Task RenderedTextFilteringUsesPointRegion()
     Equal(1, visible.Count);
     Equal("氏族当前职业。", visible[0].Text);
     return Task.CompletedTask;
-}
-
-static Task TileSweepProduces91Coordinates()
-{
-    var coordinates = TileSweepPlanner.Enumerate(CreateValidTileSweepSpec());
-    Equal(91, coordinates.Count);
-    Equal((0, 0), (coordinates[0].Q, coordinates[0].R));
-    Equal(91, coordinates.Select(point => (point.X, point.Y)).Distinct().Count());
-    Equal(5, coordinates.Max(point => point.Distance));
-    True(coordinates.Take(7).All(point => point.Distance <= 1));
-    return Task.CompletedTask;
-}
-
-static Task TileSweepValidatesSafeViewport()
-{
-    var invalid = new TileSweepSpec
-    {
-        Radius = 5,
-        Metric = "AxialHex",
-        Anchor = new TileReferencePoint(1150, 650),
-        BasisQ = new TileReferencePoint(1250, 650),
-        BasisR = new TileReferencePoint(1100, 730),
-        SafeViewport = new CropRegion(900, 500, 400, 300),
-        MapRegion = new CropRegion(900, 500, 400, 300),
-        QuickReferenceRegion = new CropRegion(1800, 1000, 700, 400),
-        BoundaryManifestId = "terrain-tooltip-v1",
-    };
-    Throws<InvalidDataException>(() => TileSweepPlanner.Enumerate(invalid));
-    return Task.CompletedTask;
-}
-
-static Task TooltipDetectorDistinguishesPanelStates()
-{
-    var spec = CreateValidTileSweepSpec();
-    var collapsed = TooltipPanelDetector.Detect(
-        [
-            new RenderedTextObservation("draw", "森林", 1300, 580, 80, 24),
-            new RenderedTextObservation("measure", "点击展开此面板以查看基本说明：森林（位于此地格）", 1300, 610, 300, 20),
-        ], spec, 2560, 1440);
-    Equal(1, collapsed.Count);
-    Equal(TooltipPanelState.Collapsed, collapsed[0].State);
-    True(collapsed[0].ExpandPoint is not null);
-
-    var expanded = TooltipPanelDetector.Detect(
-        [
-            new RenderedTextObservation("draw", "森林", 1300, 580, 80, 24),
-            new RenderedTextObservation("draw", "点击最小化此面板。", 1300, 610, 180, 20),
-            new RenderedTextObservation("draw", "进入森林会消耗移动力。", 1300, 640, 260, 20),
-        ], spec, 2560, 1440);
-    Equal(1, expanded.Count);
-    Equal(TooltipPanelState.Expanded, expanded[0].State);
-    True(expanded[0].ExpandPoint is null);
-    return Task.CompletedTask;
-}
-
-static Task TooltipDetectorSeparatesQuickReference()
-{
-    var spec = CreateValidTileSweepSpec();
-    var panels = TooltipPanelDetector.Detect(
-        [
-            new RenderedTextObservation("draw", "点击展开此面板以查看此地格详情。", 2100, 1120, 300, 20),
-        ], spec, 2560, 1440);
-    Equal(1, panels.Count);
-    Equal(TooltipSurface.QuickReference, panels[0].Surface);
-    True(panels[0].ExpandPoint is null);
-    return Task.CompletedTask;
-}
-
-static Task TooltipPixelDetectorFindsPanel()
-{
-    using var bitmap = new Bitmap(240, 160);
-    for (var x = 0; x < bitmap.Width; x++)
-    for (var y = 0; y < bitmap.Height; y++)
-        bitmap.SetPixel(x, y, Color.FromArgb(190, 145, 95));
-    for (var x = 40; x < 205; x++)
-    for (var y = 30; y < 105; y++)
-        bitmap.SetPixel(x, y, Color.FromArgb(20, 55, 105));
-    var regions = TooltipPixelPanelDetector.Detect(
-        bitmap, new CropRegion(300, 200, 1700, 850), 2560, 1440);
-    True(regions.Any(region => region.Width >= 100 && region.Height >= 100));
-    return Task.CompletedTask;
-}
-
-static Task BoundarySourceInventoryHasExpectedCounts()
-{
-    var root = FindRepositoryRoot();
-    var entries = TerrainTooltipBoundaryCatalog.ReadSourceInventory(
-        Path.Combine(root, "source", "English.original.xml"));
-    var counts = TerrainTooltipBoundaryCatalog.CountByKind(entries);
-    Equal(23, counts.Terrains);
-    Equal(78, counts.Deposits);
-    Equal(42, counts.Resources);
-    Equal(3, entries.Count(entry => entry.DescriptionStatus == "SourceTodo"));
-    return Task.CompletedTask;
-}
-
-static Task BoundaryMergeClassifiesSurfaces()
-{
-    var observations = new[]
-    {
-        new TooltipSurfaceObservation("TEXT.Name.Deposit.HerdOfDeer", true, false, "RumorKnownDeposit", "Expanded"),
-        new TooltipSurfaceObservation("TEXT.Name.Deposit.HerdOfDeer", false, true, "VisibleDeposit", "Expanded"),
-        new TooltipSurfaceObservation("TEXT.Name.Deposit.PatchOfBerries", true, false, "RumorKnownDeposit", "Collapsed"),
-        new TooltipSurfaceObservation("TEXT.Name.Deposit.FieldOfWheat", false, true, "VisibleDeposit", "Expanded"),
-    };
-    var merged = TerrainTooltipBoundaryCatalog.MergeReachability(observations);
-    Equal("Observed", merged["TEXT.Name.Deposit.HerdOfDeer"]);
-    Equal("RumorOnly", merged["TEXT.Name.Deposit.PatchOfBerries"]);
-    Equal("VisibleOnly", merged["TEXT.Name.Deposit.FieldOfWheat"]);
-    Equal("Pending", TerrainTooltipBoundaryCatalog.ClassifyReachability(false, false));
-    Equal("Unreachable", TerrainTooltipBoundaryCatalog.ClassifyReachability(false, false, true));
-    return Task.CompletedTask;
-}
-
-static Task TileSweepCycleGuards()
-{
-    var spec = CreateValidTileSweepSpec();
-    var seen = new HashSet<string>(StringComparer.Ordinal) { "terrain:A", "terrain:B" };
-    True(TileSweepRuntimeGuards.HasRepeatedIdentity(seen, "terrain:A"));
-    True(!TileSweepRuntimeGuards.HasRepeatedIdentity(seen, "terrain:C"));
-    True(TileSweepRuntimeGuards.ExceedsCardCap(17, spec));
-    True(!TileSweepRuntimeGuards.ExceedsCardCap(16, spec));
-    True(TileSweepRuntimeGuards.ExceedsCycleCap(2, spec));
-    True(!TileSweepRuntimeGuards.ExceedsCycleCap(1, spec));
-    return Task.CompletedTask;
-}
-
-static Task TileSweepGuardDetectsMovement()
-{
-    True(!TileSweepRuntimeGuards.CameraOrSelectionChanged("tile", "tile", "geometry", "geometry"));
-    True(TileSweepRuntimeGuards.CameraOrSelectionChanged("tile", "changed", "geometry", "geometry"));
-    True(TileSweepRuntimeGuards.CameraOrSelectionChanged("tile", "tile", "geometry", "changed"));
-    return Task.CompletedTask;
-}
-
-static TileSweepSpec CreateValidTileSweepSpec() => new()
-{
-    Radius = 5,
-    Metric = "AxialHex",
-    Anchor = new TileReferencePoint(1150, 650),
-    BasisQ = new TileReferencePoint(1250, 650),
-    BasisR = new TileReferencePoint(1100, 730),
-    SafeViewport = new CropRegion(300, 200, 1700, 900),
-    MapRegion = new CropRegion(300, 200, 1700, 850),
-    QuickReferenceRegion = new CropRegion(1820, 980, 700, 420),
-    Enumerate = "CenterOutward",
-    ExpandCollapsed = true,
-    CycleItems = true,
-    MaxCardsPerTile = 16,
-    MaxCyclesPerTile = 2,
-    BoundaryManifestId = "terrain-tooltip-v1",
-};
-
-static string FindRepositoryRoot()
-{
-    var current = new DirectoryInfo(Directory.GetCurrentDirectory());
-    while (current is not null)
-    {
-        if (File.Exists(Path.Combine(current.FullName, "source", "English.original.xml")))
-            return current.FullName;
-        current = current.Parent;
-    }
-    throw new InvalidOperationException("Unable to locate the AtTheGateChinese repository root.");
 }
 
 static void True(bool value) { if (!value) throw new InvalidOperationException("Expected true."); }

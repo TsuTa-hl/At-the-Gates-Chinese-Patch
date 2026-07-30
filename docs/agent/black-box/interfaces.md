@@ -27,6 +27,9 @@ file defines what to inspect and when a surface may be considered covered.
 
 - Open the clan screen from the main loop and test action buttons, card details,
   and all visible trait icons.
+- Random six-point trait discovery is deferred. The former Codex sweep is
+  disabled; use `clan-trait-verification.json` to record any deliberately
+  inspected trait ID and save.
 - Scope includes 92 personality and 14 non-personality traits. A trait is
   passed only when its own name and effect/description are visibly confirmed.
 - Do not count a portrait, card body, notification, or clan detail card as a
@@ -35,6 +38,12 @@ file defines what to inspect and when a surface may be considered covered.
 - The `avr-wpr-clan-family-countdown-20260727` fixed-save case covers the
   family-growth countdown on the first card. Its 2026-07-27 final trace draws
   `(+1，还需 12 回合)` without a residual English `in`.
+
+- The 2026-07-30 VMP-MLE fixed-save retest covers the user-reported Happy mood
+  icon on Relindis's card. The final tooltip renders `当高兴时……` and
+  `+1 心情，因为已册封`; its text trace has no residual `When`, `from being`,
+  or `Ennobled`. This is a single recorded fixed-save hover, not trait
+  discovery coverage.
 
 ## Clan List
 
@@ -52,14 +61,26 @@ file defines what to inspect and when a surface may be considered covered.
   currently visible action that the change can affect.
 - Terrain tests click/hover each distinct visible object needed by the active
   scenario and inspect the lower-right description and left-side detail panel.
-- `TileHoverSweep` scenarios enumerate the fixed 91 axial-radius-five tiles
-  inside each save's persisted SafeViewport. They must distinguish map cards
-  from the lower-right quick reference, expand every detected collapsed card,
-  cycle same-tile items until an identity repeats or a bounded stop is reached,
-  and record `NoTooltip` for empty tiles without failing them. The source
-  boundary is 23 terrains, 78 deposit variants, and 42 resources; rumor-only,
-  visible-only, observed, unreachable, and pending states are kept separately.
-- Run `tools\Test-TerrainTooltipBoundaryCoverage.ps1` before a dynamic sweep.
+- The former `TileHoverSweep` scenarios are archived exploratory records. No
+  generated 91-cell runtime sweep is selected or maintained. If the user has
+  confirmed a specific terrain/resource defect, use its fixed-point scenario
+  and the existing boundary manifest as a checklist; do not treat old sweep
+  evidence as a new coverage session.
+- Fixed-save terrain/resource hover scenarios and the contextual trait mood
+  case may be run by Codex for that confirmed defect only. Their scope is the
+  recorded points and save; they must not be expanded into random-world
+  discovery. Repeated new-world creation requires explicit user confirmation,
+  followed by manual user confirmation that the procedure behaves correctly.
+- The 2026-07-30 `VMP-MLE` fixed-save replay is a completed targeted case for
+  Deserted City, Deserted Village, and the village basic tile detail. It used
+  only the three recorded hover coordinates after a fresh patch installation.
+  City and village rumours are Chinese. The tile detail's Supply, Terrain, and
+  Defense links are parsed through `RichTextLabel`/`TextFormatter`, not shown
+  as literal `[display|KEY]` text; the recorded Supply glyph coordinate opens
+  the Chinese recursive Supply card. This is a fixed-save result, not terrain
+  discovery coverage.
+- Run `tools\Test-TerrainTooltipBoundaryCoverage.ps1` before a manual review
+  or terrain/resource translation change.
   It verifies all 143 source name entries against the patched XML, all 22
   defined terrain descriptions and 42 resource descriptions, and the seven
   runtime resource/rumor tooltip templates. The three volcano descriptions
@@ -84,11 +105,32 @@ file defines what to inspect and when a surface may be considered covered.
   text assertions for the title, both Chinese sentences, linked `探险者`, and
   final `调查。`. A no-English check alone cannot pass this point, so a missed
   hover or title-only tooltip now fails instead of producing false coverage.
-- The 2026-07-28 TileHoverSweep implementation is statically validated and
-  package-installed, but its three scenarios remain Discovery pending per-save
-  anchor calibration and an interactive 91-tile run. The host smoke reached
-  the AtG main-menu process; its screen capture was not trusted because the
-  desktop foreground surface was another application.
+- Historical 91-cell sweep results remain in text evidence for audit context
+  only. They are not rerun automatically and do not replace the static
+  23/78/42 source boundary counts.
+- The HJM-TMC fixed-save replay on 2026-07-29 also passed all 91/91 tiles. Its
+  animal-herd cards previously exposed split final nodes such as `Herds of`,
+  `can be`, and `on them.`; the repaired runtime fragment rules now render
+  those nodes in Chinese for non-Deer herd variants. No forbidden English,
+  camera movement, or selection change was recorded. Boundary evidence is
+  merged from 11 passing saves, with 32 observed source identities and 111
+  pending identities; this is not yet full 23/78 runtime coverage.
+- RKA-ILH was replayed with the same fixed 91-coordinate plan and passed every
+  tile, including collapsed/expanded handling and movement guards. It added no
+  new terrain/deposit identity, so the boundary remains 32 observed and 111
+  pending.
+- SJI-VMQ was replayed with the same fixed plan and also passed every tile;
+  no additional source identity was visible, leaving 32 observed and 111
+  pending in the boundary manifest.
+- NQT-LXE completed the same 91-tile replay without movement or untranslated
+  text and likewise added no boundary identity; 32 are observed and 111 remain
+  pending.
+- YJU-SXX completed the fixed replay with the same clean result and no new
+  identity; runtime boundary evidence remains 32 observed and 111 pending.
+- YQX-XNF and WOC-IPI are historical random-world samples from the retired
+  exploratory protocol. They are evidence only, not current executable
+  coverage; any new repeated random-world run requires explicit user
+  confirmation and manual confirmation of the unchanged procedure.
 
 ## Help and Religion
 

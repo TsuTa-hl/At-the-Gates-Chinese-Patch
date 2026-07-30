@@ -156,7 +156,7 @@ function Get-AtGStaticTextClass {
     if ($FileName -eq "Factions.original.xml") {
         return @{
             Class = "FactionNameOrLabel"
-            Safety = "ManualOnly"
+            Safety = "ReviewRequired"
             Reason = "Faction names are used by game logic; direct replacement has caused load/runtime failures."
         }
     }
@@ -171,7 +171,7 @@ function Get-AtGStaticTextClass {
 
     return @{
         Class = "UnclassifiedLiteral"
-        Safety = "ManualOnly"
+        Safety = "ReviewRequired"
         Reason = "No established safe patching rule yet."
     }
 }

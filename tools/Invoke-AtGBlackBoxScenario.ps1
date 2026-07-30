@@ -175,6 +175,16 @@ if ($SkipPassed -and [string]$scenario.Status -eq "Completed" -and [bool](Get-At
     return
 }
 
+if ([string]$scenario.Status -eq "Deferred") {
+    [pscustomobject]@{
+        ScenarioId = $ScenarioId
+        Suite = $Suite
+        Status = "Skipped"
+        Reason = "Deferred scenario; runtime automation is disabled."
+    }
+    return
+}
+
 $points = @(Get-AtGPropertyValue -Object $scenario -Name "Points")
 $clear = Get-AtGPropertyValue -Object $scenario -Name "ClearBeforeEachPoint"
 $clearX = -1

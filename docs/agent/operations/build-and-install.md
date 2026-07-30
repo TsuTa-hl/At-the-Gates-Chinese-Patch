@@ -14,6 +14,22 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-GameLaunch.ps1
 
 `Install-ChinesePatch.ps1` refreshes a manifest-backed previous patch before
 copying the new one. Build and static checks must complete before that refresh.
+Before any patch file is replaced, a direct installation shows the permission
+notice: free/non-commercial, unofficial fan-made, no original-game-file
+redistribution, legitimate-copy requirement, Conifer Games support limit,
+project-owned crash reporting, and revocable good-faith permission. Automated
+test callers pass `-NoInstallNotice`; public installation does not.
+The 2026-07-30 notice regression verifies every required permission phrase,
+the default WinForms popup path, and a non-interactive manifest refresh. The
+popup itself was not manually dismissed against a live installation.
+Its internal uninstall explicitly preserves save names. A direct
+`Uninstall-ChinesePatch.ps1` run first removes non-ASCII characters from each
+`.AtGSave` filename so original English/Latin menu fonts cannot crash while
+enumerating saves. It never changes save contents; collision-safe ASCII suffixes
+are added when necessary, then an informational OK-only popup lists the changes.
+The 2026-07-30 fake-game regression covers direct-uninstall removal, collision
+suffixing, empty-name fallback, original-file restoration, and the refresh
+bypass; it intentionally does not rename a live player's saves during testing.
 
 ## Required Gates
 

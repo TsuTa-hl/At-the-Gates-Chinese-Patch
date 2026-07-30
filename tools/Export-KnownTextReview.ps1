@@ -528,7 +528,7 @@ function Get-ReviewReasonCode {
         return "FragmentOrToken"
     }
 
-    if ($haystack -match 'UserSetting|Settings\.xml|serialized|XML-safe|logic-sensitive|ManualOnly|DoNotPatchHere|static candidate safety|date|season|month|faction|Faction|Common concept|config candidate') {
+    if ($haystack -match 'UserSetting|Settings\.xml|serialized|XML-safe|logic-sensitive|ReviewRequired|DoNotPatchHere|static candidate safety|date|season|month|faction|Faction|Common concept|config candidate') {
         return "LogicSensitive"
     }
 
