@@ -1,11 +1,13 @@
 param(
     [string]$GamePath,
     [switch]$InstallFonts,
-    [switch]$PreserveFonts
+    [switch]$PreserveFonts,
+    [switch]$NoInstallNotice
 )
 
 $ErrorActionPreference = "Stop"
 . "$PSScriptRoot\tools\AtGPaths.ps1"
+. "$PSScriptRoot\tools\AtGPatchNotice.ps1"
 
 $GamePath = Resolve-AtGGamePath $GamePath
 
@@ -20,10 +22,14 @@ if (!(Test-Path -LiteralPath $gameExe)) {
     throw "Game executable not found: $gameExe"
 }
 
+if (!$NoInstallNotice) {
+    Show-AtGInstallationNotice
+}
+
 $manifestPath = Join-Path $GamePath ".atg-chinese-patch.json"
 if (Test-Path -LiteralPath $manifestPath) {
     Write-Host "Existing Chinese patch manifest found. Uninstalling previous patch before refresh..."
-    & (Join-Path $PSScriptRoot "Uninstall-ChinesePatch.ps1") -GamePath $GamePath
+    & (Join-Path $PSScriptRoot "Uninstall-ChinesePatch.ps1") -GamePath $GamePath -SkipSaveNameCompatibility -NoSaveNameNotice
     Write-Host "Previous Chinese patch uninstalled. Installing refreshed patch..."
 }
 else {

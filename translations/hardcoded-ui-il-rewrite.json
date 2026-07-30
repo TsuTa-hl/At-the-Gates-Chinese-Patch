@@ -2245,17 +2245,6 @@
     "Note":  "Generated from existing UI hardcoded maps and ldstr catalog to avoid equal-length padding."
 },
 {
-    "Original":  "from [Terrain|TERRAIN]",
-    "Translation":  "来自[地形|TERRAIN]",
-    "MethodToken":  "0x06000169",
-    "ILOffset":  877,
-    "StringToken":  "0x7000a21a",
-    "TypeFullName":  "AtTheGatesUI.ns_InGame.TileTooltip",
-    "MethodName":  "SupplyInfo",
-    "Safety":  "TooltipFragment",
-    "Note":  "Generated from existing UI hardcoded maps and ldstr catalog to avoid equal-length padding."
-},
-{
     "Original":  "Game Help",
     "Translation":  "游戏帮助",
     "MethodToken":  "0x0600049b",
@@ -14732,6 +14721,18 @@
     "Safety":  "SafeUI",
     "Note":  "Tile lower-right supply tooltip fragment; screenshot showed \u0027+2 in 控制\u0027.",
     "EvidenceScenario":  "incremental-main-load-tile-hover-20260702"
+},
+{
+    "Original":  "from [Terrain|TERRAIN]",
+    "Translation":  "来自[地形|TERRAIN]",
+    "MethodToken":  "0x06000169",
+    "ILOffset":  877,
+    "StringToken":  "0x7000a21a",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.TileTooltip",
+    "MethodName":  "SupplyInfo",
+    "Safety":  "TooltipFragment",
+    "Note":  "Tile basic-detail connector; RichTextLabel patch preserves the TERRAIN hover link.",
+    "EvidenceScenario":  "vmp-mle-known-terrain-defects"
 },
 {
     "Original":  " right now",

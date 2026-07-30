@@ -20,6 +20,11 @@ references, asset memory behavior, or loading a save from the running game.
   original Latin/icon path.
 - After renderer/font/translation changes run `Test-FontPatchBudget.ps1`,
   `Test-RuntimeBuildReport.ps1`, and `Test-FontReferences.ps1`.
+- VMP-MLE has no active load-list/font limitation: its existing fixed-save
+  procedure loads the exact save and reaches `World Screen - Children
+  Initialized` while `Crash.AtGLog` remains unchanged. Treat a future
+  `SpriteFont` exception as current only if its log event or process exit is
+  newly timestamped after the triggering click.
 
 ## MergedFonts Rollback
 
@@ -1237,7 +1242,7 @@ references, asset memory behavior, or loading a save from the running game.
   cursor position after every absolute move and no longer emits legacy
   relative `mouse_event` moves during clicks. The random discovery scenario
   is restricted to per-save lower candidates and requires an observed Chinese
-  trait title; its former six-slot scenario is ManualOnly. FII-JKZ's
+  trait title; its former six-slot scenario is Deferred. FII-JKZ's
   `TRAIT_Epicure` hover is recorded failed before localization work because it
   still visibly contains English. A 7.352-second same-save negative retest
   failed that candidate for `outside the`, `Warrior`, `unable`, `spend`,

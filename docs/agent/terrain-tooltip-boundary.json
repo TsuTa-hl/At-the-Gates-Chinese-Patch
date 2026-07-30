@@ -1,7 +1,7 @@
-﻿{
+{
     "BoundaryManifestId":  "terrain-tooltip-v1",
     "SchemaVersion":  1,
-    "GeneratedAtUtc":  "2026-07-28T09:34:43.8664909Z",
+    "GeneratedAtUtc":  "2026-07-29T00:23:08.7077584Z",
     "SourcePath":  "source/English.original.xml",
     "Counts":  {
                    "Terrains":  23,
@@ -76,13 +76,12 @@
                         "Original":  "Forest#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Terrain",
@@ -91,13 +90,11 @@
                         "Original":  "Brush",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Terrain",
@@ -196,13 +193,12 @@
                         "Original":  "Cold",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Terrain",
@@ -211,13 +207,12 @@
                         "Original":  "Shallow Water",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "TileQuickReference",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Terrain",
@@ -226,13 +221,13 @@
                         "Original":  "Mountain#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "TileQuickReference",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Terrain",
@@ -241,13 +236,12 @@
                         "Original":  "Deep Water",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "TileQuickReference",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Terrain",
@@ -256,13 +250,12 @@
                         "Original":  "River#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Terrain",
@@ -271,13 +264,12 @@
                         "Original":  "Stream#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Terrain",
@@ -286,13 +278,12 @@
                         "Original":  "Hill#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Terrain",
@@ -301,13 +292,12 @@
                         "Original":  "|Marsh|Marshes|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "TileQuickReference",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Terrain",
@@ -316,13 +306,12 @@
                         "Original":  "Tundra",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "TileQuickReference",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Terrain",
@@ -346,13 +335,13 @@
                         "Original":  "Grassland#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "TileQuickReference",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Terrain",
@@ -361,13 +350,12 @@
                         "Original":  "Steppe#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "TileQuickReference",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Deposit",
@@ -376,13 +364,12 @@
                         "Original":  "|Patch of Berries|Patches of Berries|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Deposit",
@@ -391,13 +378,11 @@
                         "Original":  "|Large Patch of Berries|Large Patches of Berries|",
                         "Variant":  "Large",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Deposit",
@@ -466,13 +451,12 @@
                         "Original":  "|Field of Wheat|Fields of Wheat|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Deposit",
@@ -646,13 +630,11 @@
                         "Original":  "Beehive#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Deposit",
@@ -661,13 +643,12 @@
                         "Original":  "|Large Field of Wheat|Large Fields of Wheat|",
                         "Variant":  "Large",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Deposit",
@@ -751,13 +732,12 @@
                         "Original":  "Unidentified Animal#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Deposit",
@@ -766,13 +746,12 @@
                         "Original":  "Unidentified Plant#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Deposit",
@@ -796,13 +775,12 @@
                         "Original":  "Unidentified Mineral#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Deposit",
@@ -961,13 +939,11 @@
                         "Original":  "Stone Deposit#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Deposit",
@@ -1141,13 +1117,11 @@
                         "Original":  "Iron Deposit#",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Deposit",
@@ -1291,13 +1265,11 @@
                         "Original":  "|Herd of Cattle|Herds of Cattle|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Deposit",
@@ -1381,13 +1353,12 @@
                         "Original":  "|Herd of Sheep|Herds of Sheep|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Deposit",
@@ -1606,13 +1577,11 @@
                         "Original":  "|Timber|Timber|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Resource",
@@ -1666,13 +1635,11 @@
                         "Original":  "|Coal|Coal|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Resource",
@@ -1681,13 +1648,11 @@
                         "Original":  "|Iron|Iron|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Resource",
@@ -1741,13 +1706,11 @@
                         "Original":  "|Honey|Honey|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Resource",
@@ -1861,13 +1824,11 @@
                         "Original":  "|Fish|Fish|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "VisibleOnly",
                         "ObservedSurfaces":  [
-
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  null
                     },
                     {
                         "Kind":  "Resource",
@@ -1876,13 +1837,12 @@
                         "Original":  "|Wheat|Wheat|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Resource",
@@ -1906,13 +1866,12 @@
                         "Original":  "|Fruit|Fruit|",
                         "Variant":  "Base",
                         "DescriptionStatus":  "Defined",
-                        "Reachability":  "Pending",
+                        "Reachability":  "Observed",
                         "ObservedSurfaces":  [
-
+                                                 "RumorKnownDeposit",
+                                                 "VisibleDeposit"
                                              ],
-                        "RumorVisibleDifferences":  [
-
-                                                    ]
+                        "RumorVisibleDifferences":  "Rumor and visible tooltip text differ"
                     },
                     {
                         "Kind":  "Resource",

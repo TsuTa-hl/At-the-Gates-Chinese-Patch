@@ -116,15 +116,6 @@ public static class SessionExecutor
         try
         {
             var point = planned.Point;
-            if (point.Action.Equals("TileHoverSweep", StringComparison.OrdinalIgnoreCase))
-            {
-                var sweep = await TileHoverSweepExecutor.ExecuteAsync(
-                    planned, driver, outputDirectory, policy, stateChanged,
-                    cancellationToken, textProbe);
-                return new PointResult(
-                    planned.ScenarioId, point.Id, sweep.Status, sweep.DurationMs,
-                    sweep.EvidencePath, sweep.WaitTimedOut, sweep.Error);
-            }
             var textBookmark = textProbe?.Bookmark() ?? 0;
             var programLogBookmark = string.IsNullOrWhiteSpace(point.ReadyMarker)
                 ? 0

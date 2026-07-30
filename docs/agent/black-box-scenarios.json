@@ -7,7 +7,12 @@
                    "DeduplicateByInterfaceAndPointId":  true,
                    "HoverWaitMsDefault":  900,
                    "HoverWaitMsMaximum":  3000,
-                   "EvidenceRoot":  ".tmp/runs"
+                   "EvidenceRoot":  ".tmp/runs",
+                   "RandomWorldCreation":  {
+                                                   "RequiresExplicitUserConfirmation":  true,
+                                                   "AfterConfirmation":  "Run the user-approved procedure unchanged until the user manually confirms that it behaves correctly.",
+                                                   "AutonomousEvaluationOrTuning":  false
+                                               }
                },
     "FullRegression":  [
                            {
@@ -486,7 +491,7 @@
                                "Title":  "Archived clan-card trait discovery protocol",
                                "Interface":  "Clan Screen",
                                "Category":  "HoverSweep",
-                               "Status":  "ManualOnly",
+                               "Status":  "Deferred",
                                "SkipByDefault":  true,
                                "TraitScope":  [
                                                   "Personality traits (92)",
@@ -499,7 +504,7 @@
                                                              "Mode":  "ManualRandomDiscovery",
                                                              "SetupMode":  "new-game",
                                                              "StableIconCoordinates":  true,
-                                                             "CoordinateRule":  "Superseded by clan-trait-random-discovery. The canonical automated six-point reference-space coordinates are x=1182/1331/1483 and y=639/655; each move is converted once to an absolute screen position and verified by GetCursorPos.",
+                                                             "CoordinateRule":  "Deferred record. Use the saved six absolute reference slots when a human review is explicitly requested; no automated trait sweep is maintained.",
                                                              "RecordBeforeVerification":  [
                                                                                               "TraitId",
                                                                                               "ClanName",
@@ -510,7 +515,7 @@
                                                              "SaveBeforeFix":  true,
                                                              "ReloadSameSaveForVerification":  true
                                                          },
-                               "Setup":  "Archived documentation only. Run clan-trait-random-discovery for the six fixed global absolute points.",
+                               "Setup":  "Archived documentation only. Review the six fixed global absolute points by hand when needed; Codex does not run the trait sweep.",
                                "ExpectedNo":  [
                                                   "TEXT.",
                                                   ":PLURAL",
@@ -572,7 +577,7 @@
                                                                                "EvidenceHandoff":  "20260723-composite-governance",
                                                                                "EvidenceRetention":  "TextOnly"
                                                                            },
-                     "Note":  "Archived after coordinate hardening on 2026-07-27. The executable six-point regression is clan-trait-random-discovery; random cards may show any of the 92 personality or 14 non-personality traits, and non-personality traits remain in scope.",
+                     "Note":  "Archived after coordinate hardening on 2026-07-27. The six-point random-discovery runner was retired to control black-box cost; random cards may show any of the 92 personality or 14 non-personality traits, and non-personality traits remain in scope for manual review.",
                                                 "EvidenceHandoff":  "20260723-composite-governance",
                                                 "EvidenceRetention":  "TextOnly"
                                             }
@@ -673,12 +678,12 @@
                                 "Id":  "main-loop-tile-click-hover-37",
                                "Title":  "Archived thirty-seven random tile click protocol (superseded)",
                                "Interface":  "Main Loop Map",
-                               "Category":  "TileSweep",
-                               "Status":  "ManualOnly",
+                               "Category":  "ManualReview",
+                               "Status":  "Deferred",
                                "SkipByDefault":  true,
                                "RequiresFixedSave":  true,
                                "RequiresSaveBeforeFix":  true,
-                               "Setup":  "Archived manual protocol. Use the TileHoverSweep scenarios with persisted absolute anchors and 91 generated hex coordinates.",
+                               "Setup":  "Archived manual protocol. Use the listed fixed points only; the generated 91-cell sweep has been retired.",
                                "ExpectedNo":  [
                                                   "TEXT.",
                                                   ":PLURAL",
@@ -1030,7 +1035,7 @@
                                "Title":  "Main-menu load-save hovers, then fixed-save main-loop toolbar and tile tooltip",
                                "Interface":  "Load Save / Main Loop HUD / Main Loop Map",
                                "Category":  "HoverSweep",
-                               "Status":  "Completed",
+                               "Status":  "Deferred",
                                "SkipByDefault":  true,
                                "RequiresFixedSave":  true,
                                "SaveName":  "v1.4.1   World [OAA-JUH]   游戏开始.AtGSave",
@@ -1049,8 +1054,8 @@
                                                   "This action can be performed by pressing",
                                                   "on your keyboard",
                                                   " Ago",
-                                                  "s前",
-                                                  "S前",
+                                                   "s前",
+                                                   "S前",
                                                   "next ",
                                                   " in ",
                                                   "TEXT.",
@@ -1493,7 +1498,7 @@
                             "Title":  "XDR-HCF resource hovers, terrain movement text, and note-mode punctuation",
                             "Interface":  "Main Loop Map",
                             "Category":  "HoverSweep",
-                            "Status":  "Active",
+                            "Status":  "Deferred",
                             "SkipByDefault":  false,
                             "RequiresFixedSave":  true,
                             "SaveName":  "v1.4.1   World [XDR-HCF]   Game Start.AtGSave",
@@ -1637,7 +1642,7 @@
                             "Interface":  "Main Loop Map",
                             "StateId":  "xdr-unknown-plant-tooltip-20260726",
                             "Category":  "HoverCapture",
-                            "Status":  "Active",
+                            "Status":  "Deferred",
                             "SkipByDefault":  false,
                             "RequiresFixedSave":  true,
                             "SaveName":  "v1.4.1   World [XDR-HCF]   Game Start.AtGSave",
@@ -1856,8 +1861,8 @@
         "Title": "AVR-WPR radius-five tile hover boundary sweep",
         "Interface": "Main Loop Map",
         "StateId": "avr-wpr-tile-hover-sweep-20260728",
-        "Category": "TileSweep",
-        "Status": "Discovery",
+        "Category": "ManualReview",
+        "Status": "Deferred",
         "SkipByDefault": true,
         "RequiresFixedSave": true,
         "RequiresSaveBeforeFix": true,
@@ -1876,32 +1881,9 @@
             " all ",
             "mojibake"
         ],
-        "Points": [
-            {
-                "Id": "tile_sweep",
-                "Label": "91-tile absolute hex sweep",
-                "Action": "TileHoverSweep",
-                "WaitMs": 900
-            }
-        ],
-        "TileSweep": {
-            "Radius": 5,
-            "Metric": "AxialHex",
-            "Anchor": { "X": 1150, "Y": 650 },
-            "BasisQ": { "X": 1250, "Y": 650 },
-            "BasisR": { "X": 1100, "Y": 730 },
-            "SafeViewport": { "X": 300, "Y": 200, "Width": 1700, "Height": 900 },
-            "MapRegion": { "X": 300, "Y": 200, "Width": 1700, "Height": 850 },
-            "QuickReferenceRegion": { "X": 1820, "Y": 980, "Width": 700, "Height": 420 },
-            "Enumerate": "CenterOutward",
-            "ExpandCollapsed": true,
-            "CycleItems": true,
-            "MaxCardsPerTile": 16,
-            "MaxCyclesPerTile": 2,
-            "BoundaryManifestId": "terrain-tooltip-v1"
-        },
+        "Points": [],
         "Evidence": {
-            "LastStatus": "Discovery",
+            "LastStatus": "Deferred",
             "EvidenceRetention": "TextOnly",
             "Note": "The three absolute calibration points are intentionally persisted per save; update them only after a documented calibration pass."
         }
@@ -1911,8 +1893,8 @@
         "Title": "XDR-HCF radius-five tile hover boundary sweep",
         "Interface": "Main Loop Map",
         "StateId": "xdr-hcf-tile-hover-sweep-20260728",
-        "Category": "TileSweep",
-        "Status": "Discovery",
+        "Category": "ManualReview",
+        "Status": "Deferred",
         "SkipByDefault": true,
         "RequiresFixedSave": true,
         "RequiresSaveBeforeFix": true,
@@ -1931,32 +1913,9 @@
             " all ",
             "mojibake"
         ],
-        "Points": [
-            {
-                "Id": "tile_sweep",
-                "Label": "91-tile absolute hex sweep",
-                "Action": "TileHoverSweep",
-                "WaitMs": 900
-            }
-        ],
-        "TileSweep": {
-            "Radius": 5,
-            "Metric": "AxialHex",
-            "Anchor": { "X": 1150, "Y": 650 },
-            "BasisQ": { "X": 1250, "Y": 650 },
-            "BasisR": { "X": 1100, "Y": 730 },
-            "SafeViewport": { "X": 300, "Y": 200, "Width": 1700, "Height": 900 },
-            "MapRegion": { "X": 300, "Y": 200, "Width": 1700, "Height": 850 },
-            "QuickReferenceRegion": { "X": 1820, "Y": 980, "Width": 700, "Height": 420 },
-            "Enumerate": "CenterOutward",
-            "ExpandCollapsed": true,
-            "CycleItems": true,
-            "MaxCardsPerTile": 16,
-            "MaxCyclesPerTile": 2,
-            "BoundaryManifestId": "terrain-tooltip-v1"
-        },
+        "Points": [],
         "Evidence": {
-            "LastStatus": "Discovery",
+            "LastStatus": "Deferred",
             "EvidenceRetention": "TextOnly",
             "Note": "The three absolute calibration points are intentionally persisted per save; update them only after a documented calibration pass."
         }
@@ -1966,11 +1925,11 @@
         "Title": "New-game radius-five tile hover boundary discovery",
         "Interface": "Main Loop Map",
         "StateId": "random-tile-hover-sweep-discovery-20260728",
-        "Category": "TileSweep",
-        "Status": "Discovery",
+        "Category": "ManualReview",
+        "Status": "Deferred",
         "SkipByDefault": true,
         "RequiresSaveBeforeFix": true,
-        "Setup": "Start one new game, calibrate the absolute center tile, two adjacent tile centers, and SafeViewport, then save the exposed state before any repair. Reload that exact save for verification.",
+        "Setup": "Archived exploratory procedure. Creating a new random world requires explicit user confirmation first; after confirmation, run the procedure unchanged until the user manually confirms it behaves correctly. Do not autonomously tune or broaden it.",
         "ExpectedNo": [
             "TEXT.",
             ":PLURAL",
@@ -1983,32 +1942,9 @@
             " all ",
             "mojibake"
         ],
-        "Points": [
-            {
-                "Id": "tile_sweep",
-                "Label": "91-tile absolute hex sweep",
-                "Action": "TileHoverSweep",
-                "WaitMs": 900
-            }
-        ],
-        "TileSweep": {
-            "Radius": 5,
-            "Metric": "AxialHex",
-            "Anchor": { "X": 1150, "Y": 650 },
-            "BasisQ": { "X": 1250, "Y": 650 },
-            "BasisR": { "X": 1100, "Y": 730 },
-            "SafeViewport": { "X": 300, "Y": 200, "Width": 1700, "Height": 900 },
-            "MapRegion": { "X": 300, "Y": 200, "Width": 1700, "Height": 850 },
-            "QuickReferenceRegion": { "X": 1820, "Y": 980, "Width": 700, "Height": 420 },
-            "Enumerate": "CenterOutward",
-            "ExpandCollapsed": true,
-            "CycleItems": true,
-            "MaxCardsPerTile": 16,
-            "MaxCyclesPerTile": 2,
-            "BoundaryManifestId": "terrain-tooltip-v1"
-        },
+        "Points": [],
         "Evidence": {
-            "LastStatus": "Discovery",
+            "LastStatus": "Deferred",
             "EvidenceRetention": "TextOnly",
             "Note": "The discovery save is the only allowed random input; repair verification must reload this saved state."
         }
@@ -2019,7 +1955,7 @@
         "Interface":  "Main Loop Map",
         "StateId":  "avr-wpr-resource-tooltips-20260727",
         "Category":  "HoverSweep",
-        "Status":  "Active",
+        "Status":  "Deferred",
         "SkipByDefault":  false,
         "RequiresFixedSave":  true,
         "SaveName":  "v1.4.1   World [AVR-WPR]   游戏开始.AtGSave",
@@ -2050,10 +1986,10 @@
                            "WaitMs":  2200,
                            "ExpectedAll":  [
                                                "废弃农场",
-                                               "这是一座最近被遗弃的农场。",
+                                                "这是一座最近被遗弃的农场。",
                                                "其中可能仍有有用的物资，可由",
-                                               "探险者",
-                                               "调查。"
+                                                "探险者",
+                                                "调查。"
                                            ],
                            "Crop":  {
                                         "X":  1580,
@@ -2158,7 +2094,7 @@
                             "Interface":  "Clan Screen",
                             "StateId":  "clan-trait-random-discovery",
                             "Category":  "HoverSweep",
-                            "Status":  "Discovery",
+                            "Status":  "Deferred",
                             "SkipByDefault":  true,
                             "RequiresSaveBeforeFix":  true,
     "ExpectedNo":  [
@@ -2183,107 +2119,8 @@
     "ExpectedAny":  [
                         "适应力强", "爱冒险", "怕动物", "怕火", "怕水", "好斗", "笨手笨脚", "冷漠", "苦行", "弓箭手", "专注", "喧闹", "罗圈腿", "拙于园艺", "冷静", "有魅力", "好胜", "自信", "腐败", "怯懦", "有创造力", "好奇", "涉猎广", "苛求", "掘土者", "毁容", "失誉", "爱夸张", "尽责", "热切", "畏寒", "高效", "善辩", "善妒", "享乐者", "受敬重", "探索者", "农夫", "学得快", "挑剔", "多产", "肮脏", "虚弱", "采集者", "温和", "贪食", "贪婪", "园艺能手", "合群", "会砍价", "手巧", "牧人", "山地人", "囤积者", "猎人", "富想象", "急躁", "冲动", "独立", "威吓", "懒惰", "麻风", "本地人", "伐木工", "低生育", "忠诚", "沼泽民", "温顺", "矿工", "苦闷", "紧张", "游牧", "北地人", "服从", "执念", "顽固", "多疑", "热情", "小贩", "敏锐", "小气", "牧场主", "收割者", "离群索居", "寡言", "足智多谋", "河民", "粗野", "乡野", "敏感", "锻造世家", "易反胃", "坚忍", "强壮", "固执", "阴沉", "测绘员", "细致", "坚韧", "陷阱猎人", "精力旺盛", "暴力", "浪费", "野性", "拾柴者", "林地人"
                     ],
-    "Setup":  "Load the selected save, open the clan screen, then hover all six fixed global absolute trait points: x=1182, 1331, 1483 crossed with y=639, 655. Each point is converted once from the 2560x1440 reference client to a Windows absolute screen point and GetCursorPos must confirm it. Every hover must render a translated trait title from ExpectedAny; card details, mood details, empty hovers, or a changed crop alone fail the run. Persist every identified trait before changing the patch. If any residual is found, use the same save for the later fixed-save retest.",
-                            "SetupActions":  [
-                                                 {
-                                                     "Action":  "Click",
-                                                     "X":  64,
-                                                     "Y":  57,
-                                                     "WaitMs":  1200
-                                                 }
-                                             ],
-                            "ClearBeforeEachPoint":  {
-                                                         "Action":  "Move",
-                                                         "X":  1900,
-                                                         "Y":  1100,
-                                                          "WaitMs":  500
-                                                      },
-                           "Points":  [
-            {
-                "Id":  "card_1_secondary_candidate",
-                "Label":  "Card 1 fixed trait slot at 1182,655",
-                "Action":  "HoverAndCapture",
-                "X":  1182,
-                "Y":  655,
-                "Crop":  {
-                             "X":  900,
-                             "Y":  450,
-                             "Width":  1600,
-                             "Height":  650
-                         },
-                "WaitMs":  900
-            },
-            {
-                "Id":  "card_1_lower_candidate",
-                "Label":  "Card 1 fixed trait slot at 1182,639",
-                                               "Action":  "HoverAndCapture",
-                                               "X":  1182,
-                                               "Y":  639,
-                                               "Crop":  {
-                                                            "X":  900,
-                                                            "Y":  450,
-                                                            "Width":  1600,
-                                                            "Height":  650
-                                                        },
-                "WaitMs":  900
-            },
-            {
-                "Id":  "card_2_secondary_candidate",
-                "Label":  "Card 2 fixed trait slot at 1331,655",
-                "Action":  "HoverAndCapture",
-                "X":  1331,
-                "Y":  655,
-                "Crop":  {
-                             "X":  900,
-                             "Y":  450,
-                             "Width":  1600,
-                             "Height":  650
-                         },
-                "WaitMs":  900
-            },
-            {
-                "Id":  "card_2_lower_candidate",
-                "Label":  "Card 2 fixed trait slot at 1331,639",
-                                               "Action":  "HoverAndCapture",
-                                               "X":  1331,
-                                               "Y":  639,
-                                               "Crop":  {
-                                                            "X":  900,
-                                                            "Y":  450,
-                                                            "Width":  1600,
-                                                            "Height":  650
-                                                        },
-                                               "WaitMs":  900
-            },
-            {
-                "Id":  "card_3_secondary_candidate",
-                "Label":  "Card 3 fixed trait slot at 1483,655",
-                "Action":  "HoverAndCapture",
-                "X":  1483,
-                "Y":  655,
-                "Crop":  {
-                             "X":  900,
-                             "Y":  450,
-                             "Width":  1600,
-                             "Height":  650
-                         },
-                "WaitMs":  900
-            },
-            {
-                "Id":  "card_3_lower_candidate",
-                "Label":  "Card 3 fixed trait slot at 1483,639",
-                                               "Action":  "HoverAndCapture",
-                                               "X":  1483,
-                                               "Y":  639,
-                                               "Crop":  {
-                                                            "X":  900,
-                                                            "Y":  450,
-                                                            "Width":  1600,
-                                                            "Height":  650
-                                                        },
-                                               "WaitMs":  900
-                                           }
-                                       ],
+                            "Setup":  "Archived exploratory procedure. Creating random worlds requires explicit user confirmation first; after confirmation, the user must manually confirm the unchanged procedure before any extension. Codex does not run or tune this sweep.",
+                            "Points":  [],
                                              "Evidence":  {
                                              "LastStatus":  "Passed",
                       "VisibleTraitIdsLastRun":  [
@@ -2297,7 +2134,7 @@
                       "Save":  "新世界 run-119-current",
                       "EvidenceHandoff":  "20260728-clan-trait-run119-current",
                                               "EvidenceRetention":  "TextOnly",
-                      "Note":  "run-119 新世界六点动作和六张 1600x650 截图均完整；享乐者、有魅力、低生育、敏锐、贪食、细致 tooltip 的边框、标题和正文完整，正文及 scoped trace 无配置残留。"
+                       "Note":  "run-119 新世界六点动作和六张 1600x650 截图均完整；享乐者、有魅力、低生育、敏锐、贪食、细致 tooltip 的边框、标题和正文完整，正文及 scoped trace 无配置残留。"
                                          }
                         },
     {
@@ -2306,7 +2143,7 @@
         "Interface": "Clan Screen",
         "StateId": "clan-trait-miserable-mood-detail",
         "Category": "HoverCapture",
-        "Status": "Active",
+        "Status": "Deferred",
         "SkipByDefault": true,
         "ExpectedNo": ["Default", "Content", "Trait", "When", " is "],
         "RequiresFixedSave": true,

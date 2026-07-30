@@ -7,8 +7,7 @@ public sealed record PlannedPoint(
     ScenarioAction? ClearBefore,
     IReadOnlyList<string> ExpectedNo,
     IReadOnlyList<string> ExpectedAny,
-    IReadOnlyList<string> ExpectedAll,
-    TileSweepSpec? TileSweep);
+    IReadOnlyList<string> ExpectedAll);
 
 public sealed record PlannedState(
     string Id,
@@ -31,6 +30,7 @@ public static class SessionPlanner
         bool includeCompleted = false)
     {
         var selected = scenarios
+            .Where(scenario => !scenario.Status.Equals("Deferred", StringComparison.OrdinalIgnoreCase))
             .Where(scenario => includeCompleted ||
                 !(scenario.SkipByDefault && scenario.Status.Equals("Completed", StringComparison.OrdinalIgnoreCase)))
             .ToArray();
@@ -62,8 +62,7 @@ public static class SessionPlanner
                         point.SkipClear ? null : scenario.ClearBeforeEachPoint,
                         scenario.ExpectedNo,
                         scenario.ExpectedAny,
-                        point.ExpectedAll,
-                        scenario.TileSweep));
+                        point.ExpectedAll));
             }
         }
 

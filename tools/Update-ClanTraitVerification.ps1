@@ -1,3 +1,5 @@
+# Manual bookkeeping only: this script reads source/patch XML and updates the
+# trait verification ledger. It does not launch the game or hover any trait.
 [CmdletBinding()]
 param(
     [string]$ProjectRoot,

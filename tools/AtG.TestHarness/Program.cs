@@ -23,6 +23,15 @@ try
         Console.WriteLine(JsonSerializer.Serialize(plan, jsonOptions));
         return 0;
     }
+    if (plan.Points.Count == 0)
+    {
+        Console.WriteLine(JsonSerializer.Serialize(new
+        {
+            Status = "Skipped",
+            Reason = "The selected scenarios contain no runtime points (Deferred or archived).",
+        }, jsonOptions));
+        return 0;
+    }
     var output = Option("--output") ?? Path.Combine(
         Directory.GetCurrentDirectory(), ".tmp", "runs",
         DateTime.Now.ToString("yyyyMMdd-HHmmss") + "-test-session");

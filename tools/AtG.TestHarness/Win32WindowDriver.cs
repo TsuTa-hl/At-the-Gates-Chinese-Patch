@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AtG.TestHarness;
 
-public sealed class Win32WindowDriver : IWindowDriver, IWindowFrameSource
+public sealed class Win32WindowDriver : IWindowDriver
 {
     private readonly string _processName;
     private readonly int? _processId;
@@ -121,8 +121,6 @@ public sealed class Win32WindowDriver : IWindowDriver, IWindowFrameSource
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outputPath))!);
         bitmap.Save(outputPath, ImageFormat.Png);
     }
-
-    public Bitmap CaptureFrame(CropRegion? referenceRegion) => CaptureBitmap(referenceRegion);
 
     public void Dispose() { }
 
