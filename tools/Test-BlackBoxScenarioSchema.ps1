@@ -60,7 +60,7 @@ Assert-AtGCondition (Test-AtGPropertyExists -Object $root -Name "Incremental") "
 $validStatuses = @("Active", "Completed", "Deferred", "Discovery")
 $validActions = @("Click", "Hover", "ClickAndCapture", "HoverAndCapture", "CaptureOnly")
 $validControlActions = @(
-    "Click", "Hover", "Move", "Key", "Wait",
+    "Click", "Hover", "Move", "Scroll", "Key", "Wait",
     "BookmarkProgramLog", "WaitForProgramLogMarker", "Repeat"
 )
 $scenarioIds = New-Object 'System.Collections.Generic.HashSet[string]' ([System.StringComparer]::OrdinalIgnoreCase)
@@ -79,6 +79,7 @@ foreach ($suiteName in @("FullRegression", "Incremental")) {
         $category = [string](Get-AtGPropertyValue -Object $scenario -Name "Category")
         $status = [string](Get-AtGPropertyValue -Object $scenario -Name "Status")
         $points = @(Get-AtGPropertyValue -Object $scenario -Name "Points")
+        $coordinateState = [string](Get-AtGPropertyValue -Object $scenario -Name "CoordinateState")
 
         Assert-AtGCondition (![string]::IsNullOrWhiteSpace($id)) "Scenario in $suiteName is missing Id."
         Assert-AtGCondition ($scenarioIds.Add($id)) "Duplicate scenario Id: $id"
@@ -86,6 +87,15 @@ foreach ($suiteName in @("FullRegression", "Incremental")) {
         Assert-AtGCondition (![string]::IsNullOrWhiteSpace($category)) "Scenario $id is missing Category."
         Assert-AtGCondition ($validStatuses -contains $status) "Scenario $id has invalid Status '$status'."
         Assert-AtGCondition ($status -eq "Deferred" -or $points.Count -gt 0) "Scenario $id must contain at least one point unless it is Deferred."
+        if ($coordinateState -eq "UncalibratedCoordinate") {
+            Assert-AtGCondition ($status -eq "Deferred") "Scenario $id with UncalibratedCoordinate must remain Deferred."
+            Assert-AtGCondition ($points.Count -eq 0) "Scenario $id with UncalibratedCoordinate must not persist candidate points."
+            $calibration = Get-AtGPropertyValue -Object $scenario -Name "CoordinateCalibration"
+            Assert-AtGCondition ($null -ne $calibration) "Scenario $id with UncalibratedCoordinate is missing CoordinateCalibration."
+            Assert-AtGCondition ([bool](Get-AtGPropertyValue -Object $calibration -Name "AbsoluteInputOnly")) "Scenario $id must require absolute input while uncalibrated."
+            Assert-AtGCondition (![bool](Get-AtGPropertyValue -Object $calibration -Name "RelativeMouseMove")) "Scenario $id must forbid relative mouse movement while uncalibrated."
+            Assert-AtGCondition ([bool](Get-AtGPropertyValue -Object $calibration -Name "PromoteOnlyAfterUserVisualConfirmation")) "Scenario $id must require user visual confirmation before promotion."
+        }
 
         $expectedAnyValue = Get-AtGPropertyValue -Object $scenario -Name "ExpectedAny"
         $expectedAny = if ($null -eq $expectedAnyValue) { @() } else { @($expectedAnyValue) }
@@ -123,6 +133,13 @@ foreach ($suiteName in @("FullRegression", "Incremental")) {
                     Assert-AtGCondition (![string]::IsNullOrWhiteSpace($bookmark)) "Scenario $id $phase WaitForProgramLogMarker requires Bookmark."
                     Assert-AtGCondition (![string]::IsNullOrWhiteSpace($marker)) "Scenario $id $phase WaitForProgramLogMarker requires Marker."
                     Assert-AtGCondition (($controlWaitMs -is [int] -or $controlWaitMs -is [long]) -and [int]$controlWaitMs -gt 0 -and [int]$controlWaitMs -le 120000) "Scenario $id $phase WaitForProgramLogMarker WaitMs must be between 1 and 120000."
+                }
+                if ($controlAction -eq "Scroll") {
+                    $scrollX = Get-AtGPropertyValue -Object $control -Name "X"
+                    $scrollY = Get-AtGPropertyValue -Object $control -Name "Y"
+                    $wheelDelta = Get-AtGPropertyValue -Object $control -Name "WheelDelta"
+                    Assert-AtGCondition (($scrollX -is [int] -or $scrollX -is [long]) -and ($scrollY -is [int] -or $scrollY -is [long])) "Scenario $id $phase Scroll requires integer X and Y."
+                    Assert-AtGCondition (($wheelDelta -is [int] -or $wheelDelta -is [long]) -and [int]$wheelDelta -ge -12000 -and [int]$wheelDelta -le 12000 -and [int]$wheelDelta -ne 0) "Scenario $id $phase Scroll WheelDelta must be non-zero and between -12000 and 12000."
                 }
                 if ($controlAction -eq "Repeat") {
                     $repeatCount = Get-AtGPropertyValue -Object $control -Name "RepeatCount"

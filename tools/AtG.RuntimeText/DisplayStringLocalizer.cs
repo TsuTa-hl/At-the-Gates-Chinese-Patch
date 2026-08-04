@@ -217,15 +217,22 @@ namespace AtG.RuntimeText
             }
 
             // Dynamic status values can be appended after TextFormatter has
-            // processed the original rich-text template. Apply fragments only
-            // to final plain text; strings containing markup stay on the
-            // structured rich-text path so concept keys and nested hovers are
-            // never altered here.
+            // processed the original rich-text template. Apply both fragment
+            // tables to final display strings: rich fragments handle complete
+            // markup-bearing templates (for example a trait phrase), while
+            // plain fragments handle generated reason/operation clauses that
+            // may be wrapped by a color or hover tag. Plain fragments must be
+            // applied outside bracketed tags so a concept link such as
+            // [Content|MOOD] keeps its display/key pair intact.
             if (!TryApplyTemplate(value, snapshot.Templates, out translated))
             {
-                translated = IsPlainFinalDisplayText(value)
-                    ? ApplyPlainTextFragments(value, snapshot.FragmentsByFirstCharacter)
-                    : value;
+                translated = ApplyPlainTextFragments(value,
+                    snapshot.RichTextFragmentsByFirstCharacter);
+                translated = translated.IndexOf('[') >= 0
+                    ? ApplyPlainTextFragmentsOutsideMarkup(translated,
+                        snapshot.FragmentsByFirstCharacter)
+                    : ApplyPlainTextFragments(translated,
+                        snapshot.FragmentsByFirstCharacter);
             }
             resultCache.Add('D', value, translated);
             return translated;
@@ -681,15 +688,19 @@ namespace AtG.RuntimeText
             while (index < value.Length)
             {
                 KeyValuePair<string, string>? match = null;
+                var matchLength = 0;
                 KeyValuePair<string, string>[] candidates;
                 if (fragments.TryGetValue(value[index], out candidates))
                 {
                     foreach (var entry in candidates)
                     {
                         if (index + entry.Key.Length > value.Length) continue;
-                        if (string.CompareOrdinal(value, index, entry.Key, 0, entry.Key.Length) == 0)
+                        int candidateLength;
+                        if (TryMatchPlainTextFragment(value, index, entry.Key,
+                                out candidateLength))
                         {
                             match = entry;
+                            matchLength = candidateLength;
                             break;
                         }
                     }
@@ -700,7 +711,7 @@ namespace AtG.RuntimeText
                     if (builder == null) builder = new StringBuilder(value.Length);
                     if (index > copyStart) builder.Append(value, copyStart, index - copyStart);
                     builder.Append(match.Value.Value);
-                    index += match.Value.Key.Length;
+                    index += matchLength;
                     copyStart = index;
                 }
                 else index++;
@@ -708,6 +719,89 @@ namespace AtG.RuntimeText
             if (builder == null) return value;
             if (copyStart < value.Length)
                 builder.Append(value, copyStart, value.Length - copyStart);
+            return builder.ToString();
+        }
+
+        private static bool TryMatchPlainTextFragment(string value, int valueIndex,
+            string source, out int matchedLength)
+        {
+            var sourceIndex = 0;
+            var candidateIndex = valueIndex;
+            while (sourceIndex < source.Length)
+            {
+                if (source[sourceIndex] == ' ')
+                {
+                    var separatorStart = candidateIndex;
+                    while (candidateIndex < value.Length &&
+                           IsFlexibleFragmentSeparator(value[candidateIndex]))
+                        candidateIndex++;
+                    if (candidateIndex == separatorStart)
+                    {
+                        matchedLength = 0;
+                        return false;
+                    }
+                    sourceIndex++;
+                    continue;
+                }
+
+                if (candidateIndex >= value.Length ||
+                    value[candidateIndex] != source[sourceIndex])
+                {
+                    matchedLength = 0;
+                    return false;
+                }
+                sourceIndex++;
+                candidateIndex++;
+            }
+
+            matchedLength = candidateIndex - valueIndex;
+            return true;
+        }
+
+        private static bool IsFlexibleFragmentSeparator(char character)
+        {
+            return char.IsWhiteSpace(character) || character == '\u00a0' ||
+                   CjkText.IsIgnorableFormat(character);
+        }
+
+        private static string ApplyPlainTextFragmentsOutsideMarkup(string value,
+            Dictionary<char, KeyValuePair<string, string>[]> fragments)
+        {
+            if (value.Length == 0 || fragments.Count == 0) return value;
+
+            StringBuilder builder = null;
+            var segmentStart = 0;
+            var index = 0;
+            while (index < value.Length)
+            {
+                if (value[index] != '[')
+                {
+                    index++;
+                    continue;
+                }
+
+                var close = value.IndexOf(']', index + 1);
+                if (close < 0)
+                {
+                    // An incomplete tag is safer left untouched than having
+                    // a fragment replacement corrupt the remaining markup.
+                    break;
+                }
+
+                if (builder == null) builder = new StringBuilder(value.Length);
+                if (index > segmentStart)
+                    builder.Append(ApplyPlainTextFragments(
+                        value.Substring(segmentStart, index - segmentStart),
+                        fragments));
+                builder.Append(value, index, close - index + 1);
+                index = close + 1;
+                segmentStart = index;
+            }
+
+            if (builder == null) return value;
+            if (segmentStart < value.Length)
+                builder.Append(ApplyPlainTextFragments(
+                    value.Substring(segmentStart), fragments));
             return builder.ToString();
         }
 
@@ -739,12 +833,6 @@ namespace AtG.RuntimeText
                 result.Add(bucket.Key, bucket.Value.ToArray());
             }
             return result;
-        }
-
-        private static bool IsPlainFinalDisplayText(string value)
-        {
-            return value.IndexOf('[') < 0 && value.IndexOf(']') < 0 &&
-                value.IndexOf('|') < 0;
         }
 
         private static void RegisterValue(Dictionary<string, string> values,

@@ -2377,7 +2377,7 @@
         <propertyID>RESOURCE_HARVEST_QUANTITY</propertyID>
         <percent>200</percent>
         <resourceID>RESOURCE_CATTLE</resourceID>
-        <fromDescription>Innate</fromDescription>
+        <fromDescription>先天</fromDescription>
       </property>
     </structure>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -2538,7 +2538,7 @@
         <propertyID>RESOURCE_HARVEST_QUANTITY</propertyID>
         <percent>200</percent>
         <resourceID>RESOURCE_SHEEP</resourceID>
-        <fromDescription>Innate</fromDescription>
+        <fromDescription>先天</fromDescription>
       </property>
     </structure>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -2683,7 +2683,7 @@
         <propertyID>RESOURCE_HARVEST_QUANTITY</propertyID>
         <percent>200</percent>
         <resourceID>RESOURCE_PIGS</resourceID>
-        <fromDescription>Innate</fromDescription>
+        <fromDescription>先天</fromDescription>
       </property>
     </structure>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -2852,7 +2852,7 @@
         <propertyID>RESOURCE_HARVEST_QUANTITY</propertyID>
         <percent>200</percent>
         <resourceID>RESOURCE_HORSES</resourceID>
-        <fromDescription>Innate</fromDescription>
+        <fromDescription>先天</fromDescription>
       </property>
     </structure>
   </Animals>
@@ -4268,7 +4268,7 @@
       <property>
         <propertyID>SUPPLY_CARRIED_RANGE</propertyID>
         <num>4</num>
-        <fromDescription>Innate</fromDescription>
+        <fromDescription>先天</fromDescription>
       </property>
     </structure>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -4505,18 +4505,18 @@
       <property>
         <propertyID>TURNS_TO_PACK_FOR_MOVEMENT</propertyID>
         <num>2</num>
-        <fromDescription>Innate</fromDescription>
+        <fromDescription>先天</fromDescription>
       </property>
       <!-- Supply -->
       <property>
         <propertyID>SUPPLY_MIN_ON_TILE</propertyID>
         <num>5</num>
-        <fromDescription>Innate</fromDescription>
+        <fromDescription>先天</fromDescription>
       </property>
       <property>
         <propertyID>SUPPLY_MIN_ON_ADJACENT_TILES</propertyID>
         <num>5</num>
-        <fromDescription>Innate</fromDescription>
+        <fromDescription>先天</fromDescription>
       </property>
     </structure>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -4577,12 +4577,12 @@
       <property>
         <propertyID>SUPPLY_MIN_ON_TILE</propertyID>
         <num>10</num>
-        <fromDescription>Innate</fromDescription>
+        <fromDescription>先天</fromDescription>
       </property>
       <property>
         <propertyID>SUPPLY_MIN_ON_ADJACENT_TILES</propertyID>
         <num>10</num>
-        <fromDescription>Innate</fromDescription>
+        <fromDescription>先天</fromDescription>
       </property>
     </structure>
   </Cities>

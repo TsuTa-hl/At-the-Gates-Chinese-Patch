@@ -11,6 +11,7 @@ var tests = new (string Name, Action Body)[]
     ("Build cache records parallel stages atomically", BuildCacheRecordsParallelStages),
     ("Managed rewriter replaces one exact ldstr", ManagedRewriterReplacesExactString),
     ("Rewrite map loads exact context", RewriteMapLoadsExactContext),
+    ("Clan-list distance unit covers singular and plural forms", ClanListDistanceUnitCoversSingularAndPluralForms),
     ("Rewrite coordinator caches completed jobs", RewriteCoordinatorCachesJobs),
     ("Repository rewrite plan discovers all available assemblies", RepositoryRewritePlanDiscoversAssemblies),
     ("Managed rewriter redirects an instance call to a static shim", ManagedRewriterRedirectsCall),
@@ -25,6 +26,7 @@ var tests = new (string Name, Action Body)[]
     ("Runtime display map imports only uniform composite fragments", RuntimeDisplayMapImportsUniformCompositeFragments),
     ("Runtime display map rejects generic composite templates", RuntimeDisplayMapRejectsGenericCompositeTemplates),
     ("Composite catalog discovers templates and preserves approved rules", CompositeCatalogDiscoversTemplatesAndPreservesRules),
+    ("Composite catalog permits only plain bare runtime display replacements", CompositeCatalogPermitsBareRuntimeDisplayReplacements),
     ("Load lifecycle patch releases only IdSpriteBatch owned resources", LoadLifecyclePatchReleasesOwnedResources),
     ("Load lifecycle patch clears stale world roots before loading", LoadLifecyclePatchClearsStaleWorldRoots),
 };
@@ -132,6 +134,47 @@ static void RewriteMapLoadsExactContext()
     Assert.Equal(12, specs[0].IlOffset);
     Assert.Equal("before", specs[0].Original);
     Assert.Equal("之后", specs[0].Translation);
+}
+
+static void ClanListDistanceUnitCoversSingularAndPluralForms()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-ui-il-rewrite.json");
+    var specs = RewriteMap.Load(mapPath);
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesUI.original.dll");
+    var familySpecs = specs.Where(candidate => candidate.MethodToken == "0x060003e8" &&
+        (candidate.IlOffset == 2120 || candidate.IlOffset == 2127)).ToArray();
+
+    foreach (var expected in new[]
+    {
+        (Original: "tile", IlOffset: 2127),
+        (Original: "tiles", IlOffset: 2120),
+    })
+    {
+        var spec = specs.Single(candidate =>
+            candidate.MethodToken == "0x060003e8" &&
+            candidate.IlOffset == expected.IlOffset &&
+            candidate.Original == expected.Original);
+        Assert.Equal("格", spec.Translation);
+    }
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "AtTheGatesUI.dll");
+    var result = ManagedAssemblyRewriter.Rewrite(source, output, familySpecs);
+    Assert.Equal(2, result.RewrittenCount);
+
+    var rewritten = LdstrCatalog.Read(output);
+    foreach (var expected in new[]
+    {
+        (Original: "tile", IlOffset: 2127),
+        (Original: "tiles", IlOffset: 2120),
+    })
+    {
+        Assert.True(rewritten.Any(candidate =>
+            candidate.MethodToken == "0x060003e8" &&
+            candidate.IlOffset == expected.IlOffset &&
+            candidate.Value == "格"));
+    }
 }
 
 static void RewriteCoordinatorCachesJobs()
@@ -680,6 +723,38 @@ static void CompositeCatalogDiscoversTemplatesAndPreservesRules()
     try
     {
         CompositeTextCatalog.Build(temp.Path, rulesPath);
+    }
+    catch (InvalidDataException)
+    {
+        rejected = true;
+    }
+    Assert.True(rejected);
+}
+
+static void CompositeCatalogPermitsBareRuntimeDisplayReplacements()
+{
+    CompositeTextCatalog.Validate(
+    [
+        new CompositeTextEntry
+        {
+            EntryPointId = "runtime-map:RichTextFragments:fixture-score",
+            OriginalFormat = "[SCORE]",
+            LocalizedFormat = "得分",
+        },
+    ], []);
+
+    var rejected = false;
+    try
+    {
+        CompositeTextCatalog.Validate(
+        [
+            new CompositeTextEntry
+            {
+                EntryPointId = "runtime-map:RichTextFragments:fixture-score",
+                OriginalFormat = "[SCORE]",
+                LocalizedFormat = "[得分|SCORE]",
+            },
+        ], []);
     }
     catch (InvalidDataException)
     {

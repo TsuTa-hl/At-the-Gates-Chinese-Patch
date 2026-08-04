@@ -341,6 +341,13 @@ public static class SessionExecutor
             RequireCoordinates(action);
             driver.Move(action.X!.Value, action.Y!.Value);
         }
+        else if (actionKind.Equals("Scroll", StringComparison.OrdinalIgnoreCase))
+        {
+            RequireCoordinates(action);
+            if (action.WheelDelta is null || action.WheelDelta == 0)
+                throw new InvalidDataException("A Scroll action requires a non-zero WheelDelta.");
+            driver.Scroll(action.X!.Value, action.Y!.Value, action.WheelDelta.Value);
+        }
         else if (actionKind.StartsWith("Key", StringComparison.OrdinalIgnoreCase))
         {
             if (string.IsNullOrWhiteSpace(action.Key))

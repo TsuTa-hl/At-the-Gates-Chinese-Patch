@@ -34,6 +34,10 @@ Chinese strings.
   linked Chinese term. Do not add padding characters to compensate, and do not
   remove useful concept tags solely for cosmetic spacing unless the specific UI
   has been proven safe without the tag.
+- For dynamic property lines where a concept label precedes a scope qualifier,
+  keep the concept link in place and render the qualifier parenthetically (for
+  example, `资源产出（由自己建造的建筑）降低-10%`) rather than concatenating
+  nouns into an ambiguous order.
 
 ## Tags and Placeholders
 
@@ -125,6 +129,40 @@ identifies a full display template.
 
 Update this list when a new recurring term is introduced.
 
+For profession production rows, translate the repeated `increased by` fragment
+as `提高` at each method offset and render the source ` ... OR ...` connector as
+`；或`; do not leave an ellipsis placeholder that obscures the relation between
+the two alternatives. Keep `Supply Level`, `Traits`, and `Crimes` as linked
+concepts rather than translating their identifiers.
+
+For numeric modifiers, all positive `increased by` forms use an Arabic-number
+percentage (`提高75%`, `提高50%`, `提高33%`, `提高25%`, `提高20%`). The dynamic
+`increased by 4x` branch retains the source integer and therefore displays as
+`提高400%`; its scoped managed rewrite is recorded as
+`HumanReadableModDynamicPercent`. The separate multiplier words use Arabic
+digits in the `变为4倍` / `变为3倍` / `变为2倍` form.
+
+For clan placement clauses, a standalone runtime ` of a ` is not the possessive
+`的`; map it to `，驻留在` so phrases such as `居民 of a 建筑` become
+`居民，驻留在建筑` without leaking the English connector.
+
+For the forage tooltip, keep the sentence connectors compact: ` will ` is
+Chinese “将”, `This ` is Chinese “该”, and the rich trait phrase
+`become obsessed with the idea of` is Chinese “会痴迷于”. These are
+scoped display decisions, not global word replacements.
+
+For Relationship Level tooltips, translate the delta-reason connectors and
+reason phrases as one scoped display family (`from`, `borders being too close
+(within 6 tiles)`, `shared religious beliefs`, and `suffering differing
+religious beliefs`). For diplomacy-operation tooltips, map `at`, `DENOUNCE`,
+`AND...`, `OR...`, and `You` at their method-scoped operands. Preserve all
+concept-link markup and apply plain fragments only outside bracketed tags.
+
+For the UBL-TVF residual group, direct `Bandit`/`Pillage`, `This`, `next`, and
+`As` operands are also method-scoped. Movement/status/combat-XP labels use the
+same scoped connector rules, and every training title of the form `as
+<profession>` is rendered with the unified Chinese connector `为`.
+
 ## Acceptable Remaining English
 
 The following may remain English unless a safe display-only source is identified:
@@ -138,6 +176,7 @@ The following may remain English unless a safe display-only source is identified
 - Hotkey labels and technical markers
 - The product title `At the Gates` when it appears as a title/name rather than
   ordinary prose
-- Some faction names and labels treated as logic-sensitive
+- Non-tribal faction names and labels whose logic-sensitive source has not been
+  separately mapped
 
 Do not force these into Chinese solely for stylistic consistency.

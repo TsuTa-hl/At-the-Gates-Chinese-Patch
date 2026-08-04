@@ -29,36 +29,34 @@ knowledge, then either finish or return to repair.
 1. Confirm a current successful package/install/smoke handoff. Otherwise run
    package/install first.
 2. Select Active Focus plus only the interface scenarios affected by the
-   change. Full regression remains opt-in. A fixed-save scenario for a defect
-   the user has already confirmed is an allowed targeted black-box test.
-3. Build each UI state once. For in-game tests, load the designated save from
-   the main menu. Never create a new random world merely to discover whether an
-   unrelated surface might be wrong. If a proposed workflow requires repeated
-   random-world creation or exploratory coverage, stop and request the user's
-   confirmation before creating or launching it.
-4. Execute related hovers/clicks in one process. Use stable scenario anchors,
-   700-1500 ms hover waits, and a 3-second maximum.
-5. On a crash, use the crash procedure: screenshot, dismiss dialog, read the
-   new `Crash.AtGLog` block, and record the log as primary evidence.
-6. Produce a session conclusion: `Passed`, `Failed`, or `Stopped`, with
-   scenario/save, observed text, crash state, timing, and only necessary image
-   references.
+   change. Full regression remains opt-in. If the user authorizes a designated
+   fixed-save replay, execute only that selected scenario.
+3. Build and statically validate each affected scenario once, then run the
+   authorized fixed-save replay. Never create a new random world merely to
+   discover whether an unrelated surface might be wrong. Repeated random-world
+   creation remains separately gated by explicit user confirmation and manual
+   procedure confirmation.
+4. If no replay was authorized, hand the prepared scenario to the user for
+   manual execution. Otherwise collect cursor-marked screenshots and text-trace
+   evidence from the approved fixed-save points.
+5. If the user later supplies a manual crash result, use the crash procedure:
+   record the screenshot and new `Crash.AtGLog` block as primary evidence.
+6. Produce a session conclusion of `Stopped` (user-run pending) only when no
+   replay was authorized; otherwise report the measured replay result.
 7. **Run `update-knowledge.md` for every conclusion before doing anything
    else.** It records passing coverage, failures, limitations, and text evidence
    in their owning files.
-8. If the conclusion is `Failed`, return to assess/fix using the now-updated
-   knowledge and repeat package/install/smoke -> test -> update knowledge.
-9. If `Passed` or a documented stop condition applies, report the result after
-   the knowledge update.
+8. If the conclusion is `Failed` from a user-provided manual result, return to
+   assess/fix using the now-updated knowledge; do not autonomously retry the
+   game.
+9. Report the stopped/manual-pending result after the knowledge update.
 
 ## User-confirmed exploratory boundary
 
-When the user confirms a workflow that necessarily creates random worlds, run
-the requested procedure until the user manually confirms that the procedure is
-behaving as intended. Do not autonomously tune coordinates, add coverage,
-change stop criteria, or iterate on the procedure after that point. This
-permission is separate from targeted replay of a known defect on a fixed save;
-the latter does not require a new-world confirmation.
+Execution of workflows that create random worlds remains disabled by default.
+If the user explicitly re-authorizes such a workflow, follow only the
+requested procedure and do not autonomously tune coordinates, add coverage,
+change stop criteria, or iterate on it.
 
 ## Stop Conditions
 

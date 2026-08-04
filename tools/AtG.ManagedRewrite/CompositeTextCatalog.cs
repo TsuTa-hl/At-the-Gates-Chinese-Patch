@@ -124,6 +124,8 @@ public static class CompositeTextCatalog
         @"\{(?:arg:)?\d+\}", RegexOptions.CultureInvariant);
     private static readonly Regex BracketToken = new(
         @"\[[^\]]+\]", RegexOptions.CultureInvariant);
+    private static readonly Regex BareRuntimeDisplayToken = new(
+        @"^\[[A-Z][A-Z0-9-]*\]$", RegexOptions.CultureInvariant);
     private static readonly Regex AsciiWord = new(
         @"[A-Za-z]{2,}", RegexOptions.CultureInvariant);
     private static readonly Regex MachineToken = new(
@@ -607,16 +609,19 @@ public static class CompositeTextCatalog
         {
             if (oldEntries.TryGetValue(entry.EntryPointId, out var old))
             {
-                // Source-owned XML translations are regenerated from the current
-                // patch English.xml. Prefer that value when the previous row was
-                // also source-owned, so corrected tags cannot be masked forever by
-                // a stale generated row. Manually supplied fixture/rule values
-                // remain durable and are still validated on regeneration.
-                var oldIsSourceOwnedXml = StringComparer.Ordinal.Equals(entry.Source.Kind, "Xml") &&
-                    old.RuleId is "xml-existing-translation" or "xml-text-key-translation" or
-                    "xml-text-key-structural";
+                // Source-owned XML and managed-map translations are regenerated
+                // from the current patch sources. Prefer that value when the
+                // previous row was also source-owned, so corrected tags or
+                // wording cannot be masked forever by a stale generated row.
+                // Manually supplied fixture/rule values remain durable and are
+                // still validated on regeneration.
+                var oldIsSourceOwned =
+                    (StringComparer.Ordinal.Equals(entry.Source.Kind, "Xml") &&
+                        old.RuleId is "xml-existing-translation" or "xml-text-key-translation" or
+                        "xml-text-key-structural") ||
+                    StringComparer.Ordinal.Equals(entry.Source.Kind, "ManagedRewriteMap");
                 if (old.LocalizedFormat is not null &&
-                    (entry.LocalizedFormat is null || !oldIsSourceOwnedXml))
+                    (entry.LocalizedFormat is null || !oldIsSourceOwned))
                     entry.LocalizedFormat = old.LocalizedFormat;
                 if (!string.IsNullOrWhiteSpace(old.RuleId)) entry.RuleId = old.RuleId;
                 if (!string.IsNullOrWhiteSpace(old.Notes)) entry.Notes = old.Notes;
@@ -1507,6 +1512,23 @@ public static class CompositeTextCatalog
 
     private static void ValidateStructure(string original, string localized, string entryPointId)
     {
+        // A small set of legacy runtime strings are bare display macros such as
+        // [SCORE]. They are not registered concept links and the game renders
+        // the token literally unless the final-display map replaces it. Permit
+        // only a plain localized display replacement in this scoped map; all
+        // actual concept links, hotkeys, and formatting remain strict.
+        if (entryPointId.StartsWith("runtime-map:RichTextFragments:",
+                StringComparison.Ordinal) &&
+            BareRuntimeDisplayToken.IsMatch(original) &&
+            !BracketToken.IsMatch(localized))
+            return;
+        // The base help text contains the one-off typo [Construct|CONSTURCT].
+        // The patch deliberately normalizes it to the engine's real CONSTRUCT
+        // concept key so it remains an interactive concept link. Keep this
+        // catalog validation in step with Test-TextTags without broadening the
+        // normal key-preservation rule.
+        original = NormalizeKnownSourceConceptTypo(original);
+        localized = NormalizeKnownSourceConceptTypo(localized);
         var originalKeys = GetConceptKeys(original)
             .OrderBy(value => value, StringComparer.Ordinal).ToArray();
         var localizedKeys = GetConceptKeys(localized)
@@ -1533,6 +1555,10 @@ public static class CompositeTextCatalog
             throw new InvalidDataException(
                 $"Localized format has invalid FONT/COLOR nesting for '{entryPointId}'.");
     }
+
+    private static string NormalizeKnownSourceConceptTypo(string value) =>
+        value.Replace("[Construct|CONSTURCT]", "[Construct|CONSTRUCT]",
+            StringComparison.Ordinal);
 
     private static IEnumerable<string> GetProtectedTagSignatures(string value)
     {

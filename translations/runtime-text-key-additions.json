@@ -26,5 +26,6 @@
   "TEXT.Description.Stockpile.Bonus": "库存优势",
   "TEXT.Description.Stockpile.LargeBonus": "显著库存优势",
   "TEXT.Description.Stockpile.LargePenalty": "显著库存劣势",
-  "TEXT.Description.Stockpile.Penalty": "库存劣势"
+  "TEXT.Description.Stockpile.Penalty": "库存劣势",
+  "TEXT.Description.Profession.Collier": "炭工可以从[矿物|MINERAL]资源点[采收|HARVEST][COAL]。"
 }

@@ -29,17 +29,48 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Capture-Desktop.ps1 
 For repeatable UI work, prefer `AtG.TestHarness` and the JSON scenario library.
 Use one game process and one main-menu fixed-save load per related test session.
 Do not derive hover coordinates from cropped evidence images.
-On the current 125% Windows display scale, harness X/Y values remain absolute
-client logical coordinates while saved capture PNGs use scaled pixels. Convert
-only from the client-coordinate record, never by copying a coordinate from a
-screenshot; a 2026-07-30 VMP-MLE mood retest confirmed this distinction.
-Terrain and trait exploratory auto-coverage is intentionally disabled. Use the
-archived scenario records and fixed points for an explicitly requested,
-user-confirmed targeted review of a known defect; Codex may launch that fixed
-save and replay its listed points. Do not launch a generated tile sweep or
-random six-point trait pass. Any workflow that would repeatedly create random
-worlds requires the user's confirmation first, and the procedure must remain
-unchanged until the user manually confirms it behaves correctly.
+
+### Coordinate Calibration Gate
+
+Scenario `X`/`Y` values are expressed in the harness's fixed 2560 x 1440
+reference space and are transformed against the live game client at runtime.
+The capture is a physical screen image, so its pixels are not automatically a
+scenario coordinate. The display scale, client size, borderless/windowed
+state, and capture origin must therefore be treated as runtime facts rather
+than remembered constants.
+
+Before a new targeted point is allowed to assert localization text, perform a
+calibration pass on the same fixed save and interface:
+
+1. Record the intended *control identity* from the user image (for example,
+   the fish-school icon, the family-count badge, or the F3 diplomacy button),
+   not merely a nearby panel or tooltip rectangle.
+2. Move to the candidate reference coordinate and capture the full client with
+   the harness cursor marker. Verify that the marker lies on that control and
+   that its expected stable state/tooltip is visible. For a click, also verify
+   the named destination interface; a changed fingerprint alone is not enough.
+3. Record the reference size, observed client/capture size, target identity,
+   save name, and marker result alongside the candidate. Promote the point to
+   `black-box-scenarios.json` only after this proof.
+4. If the marker misses, the tooltip is a neighbour's tooltip, or setup reaches
+   another interface, stop that point as `UncalibratedCoordinate`. Do not run
+   `ExpectedAll`/`ExpectedNo`, do not infer a translation regression, and do
+   not adjust the coordinate repeatedly from the screenshot alone.
+
+Recalibrate whenever display scale, client size, window mode, capture method,
+or setup path changes. The 2026-07-30 ERJ-UUX attempt is the governing
+negative example: all six entered coordinates were absolute and stable, but
+the fish point opened Shallow Water, the clan points did not open their three
+requested tooltips, and the purported diplomacy setup did not reach diplomacy.
+Those six failures are invalid coordinate evidence, not translation results.
+
+Terrain and trait exploratory auto-coverage remains retired. A fixed-save
+replay for a user-confirmed defect may be launched when the user authorizes
+that designated run; it must use approved absolute coordinates and may not
+silently broaden into a discovery sweep. Do not launch a generated tile sweep
+or random six-point trait pass. Any workflow that would repeatedly create
+random worlds remains separately gated by the user's confirmation and manual
+confirmation that the procedure behaves correctly.
 The Win32 driver re-activates the owned window before every absolute move,
 click, fingerprint, and frame capture, then verifies the cursor with
 `GetCursorPos`; it never falls back to relative mouse motion.

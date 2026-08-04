@@ -1,5 +1,6 @@
 using AtG.Catalog;
 using AtG.ManagedRewrite;
+using System.Text;
 using System.Text.RegularExpressions;
 
 /// <summary>
@@ -278,6 +279,18 @@ internal sealed class CompositeKnownTextIndex
             return false;
         section = locatedSection;
         original = locatedOriginal;
+        if (locators.TryGetValue("RuntimeMapOriginalBase64", out var encodedOriginal) &&
+            !string.IsNullOrWhiteSpace(encodedOriginal))
+        {
+            try
+            {
+                original = Encoding.UTF8.GetString(Convert.FromBase64String(encodedOriginal));
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
         if (locators.TryGetValue("RuntimeMapConceptKey", out var locatedConceptKey))
             conceptKey = locatedConceptKey;
         return true;
@@ -310,10 +323,14 @@ internal sealed class CompositeKnownTextIndex
         NormalizeSourceFile(sourceFile) + "\u001f" + id.Trim() + "\u001f" + xpath.Trim() +
         "\u001f" + index.Trim();
 
+    // Runtime-map originals are executable display-match inputs, so boundary
+    // whitespace is meaningful. Unlike discovery text, do not review-line
+    // normalize this field: " from being" and " from being " are separate
+    // mappings and must retain separate exact KnownText links.
     private static string RuntimeMapKey(string sourceFile, string section, string original,
         string? conceptKey) => NormalizeSourceFile(sourceFile) + "\u001f" +
-        NormalizeReviewLine(section) + "\u001f" + NormalizeReviewLine(original) + "\u001f" +
-        NormalizeReviewLine(conceptKey ?? "");
+        section.Trim() + "\u001f" + (original ?? "") + "\u001f" +
+        (conceptKey ?? "").Trim();
 
     private static string ConfigIndexText(int? index) => index?.ToString(
         System.Globalization.CultureInfo.InvariantCulture) ?? "";

@@ -8,6 +8,21 @@
                    "HoverWaitMsDefault":  900,
                    "HoverWaitMsMaximum":  3000,
                    "EvidenceRoot":  ".tmp/runs",
+                   "CoordinateCalibration":  {
+                                                 "ReferenceWidth":  2560,
+                                                 "ReferenceHeight":  1440,
+                                                 "RequiredBeforeNewTargetedPoint":  true,
+                                                 "RequiredEvidence":  [
+                                                                          "cursor-marked full-client capture",
+                                                                          "same-save target identity",
+                                                                          "destination-state marker for setup clicks"
+                                                                      ],
+                                                 "UncalibratedResult":  "Do not run localization assertions or promote the point.",
+                                                 "InputMode":  "AbsoluteClientCoordinates",
+                                                 "CalibrateSetupBeforeHover":  true,
+                                                 "PromoteOnlyAfterUserVisualConfirmation":  true,
+                                                 "DoNotPersistCandidatePoints":  true
+                                             },
                    "RandomWorldCreation":  {
                                                    "RequiresExplicitUserConfirmation":  true,
                                                    "AfterConfirmation":  "Run the user-approved procedure unchanged until the user manually confirms that it behaves correctly.",
@@ -1438,8 +1453,9 @@
                                        ],
                             "Evidence":  {
                                              "LastStatus":  "FocusedPassed",
-                                             "EvidenceHandoff":  "20260723-composite-governance",
-                                             "EvidenceRetention":  "TextOnly"
+                                             "EvidenceHandoff":  "20260802-ubl-tvf-turn002-clan-list-distance",
+                                             "EvidenceRetention":  "TextOnly",
+                                             "Note":  "UBL-TVF turn 002 fixed-save replay after fresh install passed all 11 header points in 24.57 seconds, including header_distance. The runtime trace has no tiles, Moving, Each, Cancel, Forage, or is mangled residual."
                                          }
                         },
                         {
@@ -2172,6 +2188,212 @@
             "EvidenceHandoff": "20260727-clan-trait-miserable-final-connector",
             "EvidenceRetention": "TextOnly",
             "Note": "Final fixed-save run completed in 3.994 seconds, with the required hover settled for 2.061 seconds. It drew `Eberhardt为不悦`, `默认`, `为满足`, `（苦闷特质）`, and `当不悦时……`; no Default, Content, Trait, When, or English ` is ` connector remained. The pre-fix `Default {arg:1} is ` composition reused EntryPointId managed:source/AtTheGatesGame.original.exe:06000DA7:IL_0060 and RuleId runtime-display-template; the contextual clan connector is the entry-specific BuildDescription_Mood rewrite at 0x06001731 IL_011D. Always use fixed-save setup; main-menu-fixed-save only promotes a save and stays at the menu."
+        }
+    },
+    {
+        "Id": "erj-uux-confirmed-tooltip-replay-20260801",
+        "Title": "ERJ-UUX confirmed clan and diplomacy tooltip replay",
+        "Interface": "Clan Screen / Diplomacy",
+        "StateId": "erj-uux-confirmed-tooltip-replay",
+        "Category": "HoverCapture",
+        "Status": "Deferred",
+        "SkipByDefault": true,
+        "RequiresFixedSave": true,
+        "SaveName": "v1.4.1   World [ERJ-UUX]   .AtGSave",
+        "Setup": "Load ERJ-UUX through the patched main-menu fixed-save flow. This record has no approved points until a same-save calibration pass proves target identity and setup-state transitions.",
+        "CoordinateState": "UncalibratedCoordinate",
+        "CoordinateCalibration": {
+            "ReferenceWidth": 2560,
+            "ReferenceHeight": 1440,
+            "RequiredEvidence": [
+                "cursor-marked full-client capture",
+                "same-save target identity marker",
+                "destination-state marker for every setup click"
+            ],
+            "AbsoluteInputOnly": true,
+            "RelativeMouseMove": false,
+            "PromoteOnlyAfterUserVisualConfirmation": true
+        },
+        "Points": [],
+        "ExpectedNo": [
+            "Default is +0.",
+            "suffering differing religious beliefs.",
+            "from Relationship Level.",
+            "from Influence.",
+            "from Reputation.",
+            " in.",
+            "The Goths",
+            "The Peucini",
+            "Peucini"
+        ],
+        "Evidence": {
+            "LastStatus": "PassedPendingPromotion",
+            "EvidenceRetention": "TextOnly",
+            "Note": "The 2026-07-30 ERJ-UUX coordinates were rejected as UncalibratedCoordinate. On 2026-08-01 a disposable same-save calibration run used absolute reference points (F3 2025,25; Peucini selector 1280,718; relationship level 1795,644) after the exact file was loaded from the patched main-menu flow. Cursor-marked captures proved the diplomacy selector, the Peucini detail panel, the selector tooltip, and the relationship-level tooltip. Runtime trace showed Chinese Peucini and diplomacy tooltip text; no The, Peucini, differing religious beliefs, or other target English remained, and no crash occurred. Points remain unpersisted because this registry requires user visual confirmation before promotion."
+        }
+    },
+    {
+        "Id": "rxl-cqw-map-bandit-confirmed-20260802",
+        "Title": "RXL-CQW fish, wheat and bandit tooltip replay",
+        "Interface": "Main Loop Map / Selected Unit",
+        "Category": "HoverCapture",
+        "Status": "Completed",
+        "SkipByDefault": true,
+        "RequiresFixedSave": true,
+        "SaveName": "v1.4.1   World [RXL-CQW]   游戏开始.AtGSave",
+        "Setup": "Load the RXL-CQW fixed save through the patched main-menu flow. Use only the approved absolute client points below.",
+        "ExpectedNo": ["Schools of Fish", "Fields of Wheat", " to ", "Trait", "Innate", " Low ", "'s", " in ", "Attack", "Cannot "],
+        "Points": [
+            { "Id": "fish_rumor", "Label": "Fish-school rumor", "Action": "HoverAndCapture", "X": 930, "Y": 540, "WaitMs": 1800, "ExpectedAll": ["鱼群"] },
+            { "Id": "wheat_rumor", "Label": "Wheat-field rumor", "Action": "HoverAndCapture", "X": 1195, "Y": 245, "WaitMs": 1800, "ExpectedAll": ["小麦田"] },
+            { "Id": "select_bandit", "Label": "Select bandit unit", "Action": "ClickAndCapture", "X": 1090, "Y": 530, "WaitMs": 1200, "AllowUnchanged": false },
+            { "Id": "bandit_power", "Label": "Bandit power tooltip", "Action": "HoverAndCapture", "X": 250, "Y": 1340, "WaitMs": 1800, "ExpectedAll": ["战力"] },
+            { "Id": "bandit_health", "Label": "Bandit health tooltip", "Action": "HoverAndCapture", "X": 250, "Y": 1370, "WaitMs": 1800, "ExpectedAll": ["生命"] },
+            { "Id": "bandit_morale", "Label": "Bandit morale tooltip", "Action": "HoverAndCapture", "X": 250, "Y": 1398, "WaitMs": 1800, "ExpectedAll": ["士气"] }
+        ],
+        "Evidence": {
+            "LastStatus": "Passed",
+            "Save": "v1.4.1   World [RXL-CQW]   游戏开始.AtGSave",
+            "EvidenceHandoff": "20260802-rxl-cqw-map-bandit-final",
+            "EvidenceRetention": "TextOnly",
+            "Note": "Installed fixed-save replay passed all six points in 12.98 seconds. Fish-school, wheat-field, and bandit stat tooltips had the required Chinese labels and no forbidden English residual."
+        }
+    },
+    {
+        "Id": "rxl-cqw-knowledge-visible-professions-20260802",
+        "Title": "RXL-CQW visible knowledge profession tooltips",
+        "Interface": "Knowledge Screen",
+        "Category": "HoverCapture",
+        "Status": "Completed",
+        "SkipByDefault": true,
+        "RequiresFixedSave": true,
+        "SaveName": "v1.4.1   World [RXL-CQW]   游戏开始.AtGSave",
+        "Setup": "Load the RXL-CQW fixed save and open the knowledge screen with F1.",
+        "SetupActions": [{ "Action": "Key", "Key": "F1", "WaitMs": 1200, "RequireChange": true }],
+        "ExpectedNo": [" in ", "Cannot ", "Attack", "Trait", "Innate", "TEXT.Name.Profession."],
+        "Points": [
+            { "Id": "reaper", "Label": "Reaper", "Action": "HoverAndCapture", "X": 1145, "Y": 850, "WaitMs": 1800, "ExpectedAll": ["收割者"] },
+            { "Id": "gatherer", "Label": "Gatherer", "Action": "HoverAndCapture", "X": 1410, "Y": 850, "WaitMs": 1800, "ExpectedAll": ["采集者"] },
+            { "Id": "trapper", "Label": "Trapper", "Action": "HoverAndCapture", "X": 1815, "Y": 1104, "WaitMs": 1800, "ExpectedAll": ["捕兽者"] }
+        ],
+        "Evidence": {
+            "LastStatus": "Passed",
+            "Save": "v1.4.1   World [RXL-CQW]   游戏开始.AtGSave",
+            "EvidenceHandoff": "20260802-rxl-cqw-knowledge-visible-final",
+            "EvidenceRetention": "TextOnly",
+            "Note": "Installed fixed-save replay passed all three visible profession points in 7.11 seconds; the prior countdown connector ` in ` was absent."
+        }
+    },
+    {
+        "Id": "rxl-cqw-knowledge-lower-professions-20260802",
+        "Title": "RXL-CQW scrolled knowledge profession tooltips",
+        "Interface": "Knowledge Screen",
+        "Category": "HoverCapture",
+        "Status": "Completed",
+        "SkipByDefault": true,
+        "RequiresFixedSave": true,
+        "SaveName": "v1.4.1   World [RXL-CQW]   游戏开始.AtGSave",
+        "Setup": "Load the RXL-CQW fixed save, open the knowledge screen, then scroll its panel down twice at the approved absolute point.",
+        "SetupActions": [
+            { "Action": "Key", "Key": "F1", "WaitMs": 1200, "RequireChange": true },
+            { "Action": "Scroll", "X": 1280, "Y": 720, "WheelDelta": -960, "WaitMs": 1000, "RequireChange": true },
+            { "Action": "Scroll", "X": 1280, "Y": 720, "WheelDelta": -960, "WaitMs": 1000, "RequireChange": true }
+        ],
+        "ExpectedNo": [" in ", "Cannot ", "Attack", "Trait", "Innate", "TEXT.Name.Profession."],
+        "Points": [
+            { "Id": "digger", "Label": "Digger", "Action": "HoverAndCapture", "X": 1280, "Y": 350, "WaitMs": 1800, "ExpectedAll": ["挖掘者"] },
+            { "Id": "surveyor", "Label": "Surveyor", "Action": "HoverAndCapture", "X": 1820, "Y": 1060, "WaitMs": 1800, "ExpectedAll": ["勘探员"] },
+            { "Id": "explorer", "Label": "Explorer", "Action": "HoverAndCapture", "X": 1280, "Y": 1260, "WaitMs": 1800, "ExpectedAll": ["探险者"] }
+        ],
+        "Evidence": {
+            "LastStatus": "Passed",
+            "Save": "v1.4.1   World [RXL-CQW]   游戏开始.AtGSave",
+            "EvidenceHandoff": "20260802-rxl-cqw-knowledge-professions-final",
+            "EvidenceRetention": "TextOnly",
+            "Note": "After adding absolute Scroll support, the installed fixed-save replay passed Digger, Surveyor, and Explorer in 9.10 seconds. Explorer's former `Attack` residual is rendered as Chinese."
+        }
+    },
+    {
+        "Id": "ubl-tvf-turn002-command-and-battle-20260802",
+        "Title": "UBL-TVF turn 002 command, operation, and battle-prediction replay",
+        "Interface": "Clan Screen / Main Loop Selection Panel / Battle Prediction",
+        "StateId": "ubl-tvf-turn002-command-and-battle",
+        "Category": "Targeted",
+        "Status": "Deferred",
+        "SkipByDefault": true,
+        "RequiresFixedSave": true,
+        "SaveName": "v1.4.1   World [UBL-TVF]   .AtGSave",
+        "Setup": "Load UBL-TVF turn 002 from the patched main-menu flow. Use absolute reference coordinates only; do not create or reroll a world.",
+        "ExpectedNo": ["TEXT.", "Moving", "tiles", "Each", "is mangled", "Cancel", "Forage"],
+        "SetupActions": [
+            { "Action": "Click", "X": 64, "Y": 57, "WaitMs": 1000, "RequireChange": true },
+            { "Action": "Click", "X": 1280, "Y": 700, "WaitMs": 900, "RequireChange": true }
+        ],
+        "Points": [
+            { "Id": "hunter-dig-in", "Label": "Hunter Dig In tooltip", "Action": "HoverAndCapture", "X": 95, "Y": 1060, "WaitMs": 1200, "AllowUnchanged": true, "ExpectedAll": ["固守", "每回合"] },
+            { "Id": "battle-candidate-1500-1100", "Label": "Bandit-card candidate 1500 1100", "Action": "HoverAndCapture", "X": 1500, "Y": 1100, "WaitMs": 1200, "AllowUnchanged": true },
+            { "Id": "battle-candidate-1530-1135", "Label": "Bandit-card candidate 1530 1135", "Action": "HoverAndCapture", "X": 1530, "Y": 1135, "WaitMs": 1200, "AllowUnchanged": true },
+            { "Id": "battle-candidate-1470-1160", "Label": "Bandit-card candidate 1470 1160", "Action": "HoverAndCapture", "X": 1470, "Y": 1160, "WaitMs": 1200, "AllowUnchanged": true },
+            { "Id": "battle-candidate-1570-1160", "Label": "Bandit-card candidate 1570 1160", "Action": "HoverAndCapture", "X": 1570, "Y": 1160, "WaitMs": 1200, "AllowUnchanged": true }
+        ],
+        "TeardownActions": [ { "Action": "Key", "Key": "Escape", "WaitMs": 500 } ],
+        "Evidence": {
+            "LastStatus": "Limited",
+            "EvidenceHandoff": "ubl-tvf-turn002-targeted-replay",
+            "EvidenceRetention": "TextOnly",
+            "Note": "2026-08-03 installed fixed-save replay passed Hunter Dig In and all four fixed enemy candidate hovers. The candidates produced terrain/resource tooltips and no bandit camp, so the combat-prediction is mangled card remains static-only. The trace contained no Moving, tiles, Each, Cancel, Forage, or is mangled residual. No camera or selection drift occurred."
+        }
+    },
+    {
+        "Id": "ubl-tvf-turn002-digger-selector-20260802",
+        "Title": "UBL-TVF turn 002 Digger training selector replay",
+        "Interface": "Clan Screen / Profession Management",
+        "StateId": "ubl-tvf-turn002-digger-selector",
+        "Category": "Targeted",
+        "Status": "Deferred",
+        "SkipByDefault": true,
+        "RequiresFixedSave": true,
+        "SaveName": "v1.4.1   World [UBL-TVF]   .AtGSave",
+        "Setup": "Load UBL-TVF turn 002, open the clan screen, select Lume, and choose the Digger profession with absolute reference coordinates.",
+        "ExpectedNo": ["TEXT.", "Moving", "tiles", "Each", "is mangled", "Cancel", "Forage"],
+        "ExpectedAll": ["取消"],
+        "SetupActions": [
+            { "Action": "Click", "X": 64, "Y": 57, "WaitMs": 1000, "RequireChange": true },
+            { "Action": "Click", "X": 1200, "Y": 580, "WaitMs": 900, "RequireChange": true },
+            { "Action": "Click", "X": 1280, "Y": 1125, "WaitMs": 900, "RequireChange": true }
+        ],
+        "Points": [
+            { "Id": "digger-training-selector", "Label": "Digger training selector", "Action": "ClickAndCapture", "X": 1280, "Y": 1125, "WaitMs": 900, "AllowUnchanged": true, "ExpectedAll": ["取消", "挖掘者"] },
+            { "Id": "digger-operation-candidate-forage", "Label": "Digger operation candidate Forage", "Action": "HoverAndCapture", "X": 95, "Y": 1010, "WaitMs": 1200, "AllowUnchanged": true },
+            { "Id": "digger-operation-candidate-dig-in", "Label": "Digger operation candidate Dig In", "Action": "HoverAndCapture", "X": 95, "Y": 1060, "WaitMs": 1200, "AllowUnchanged": true }
+        ],
+        "TeardownActions": [ { "Action": "Key", "Key": "Escape", "WaitMs": 500 } ],
+        "Evidence": {
+            "LastStatus": "Limited",
+            "EvidenceHandoff": "ubl-tvf-turn002-targeted-replay",
+            "EvidenceRetention": "TextOnly",
+            "Note": "2026-08-03 fixed-save replay passed the training selector and the close-after-assignment map path. The selector showed Chinese 取消/挖掘者 and the map operation panel showed 采集, 固守, 扎营, 移动, and 跳过. It does not create a selected Digger map unit, so the Digger-specific operation-list tooltips remain unreachable in this save."
+        }
+    },
+    {
+        "Id": "ubl-tvf-turn002-trait-targets-20260802",
+        "Title": "UBL-TVF turn 002 Adaptable and Demanding trait target check",
+        "Interface": "Clan Screen / Trait Tooltips",
+        "StateId": "ubl-tvf-turn002-trait-targets",
+        "Category": "Targeted",
+        "Status": "Deferred",
+        "SkipByDefault": true,
+        "RequiresFixedSave": true,
+        "SaveName": "v1.4.1   World [UBL-TVF]   .AtGSave",
+        "TraitScope": ["TRAIT_Adaptable", "TRAIT_Demanding"],
+        "Setup": "Load UBL-TVF turn 002 and inspect the visible clan cards without creating a new world.",
+        "ExpectedNo": ["No", "become obsessed with the idea of", "TEXT."],
+        "Points": [],
+        "Evidence": {
+            "LastStatus": "Limited",
+            "EvidenceHandoff": "ubl-tvf-turn002-targeted-replay",
+            "EvidenceRetention": "TextOnly",
+            "Note": "The 2026-08-03 four-point fixed-save trait replay passed without No, become obsessed with the idea of, or TEXT. residuals, but the points landed on other visible traits. Neither Adaptable nor Demanding appeared on the visible UBL-TVF cards. The scoped static rewrites are installed, but this save cannot visually promote either target."
         }
     }
                     ]

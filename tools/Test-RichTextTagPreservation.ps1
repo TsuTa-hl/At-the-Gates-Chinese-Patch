@@ -66,8 +66,14 @@ foreach ($mapPath in $MapPaths) {
 
         $sourceTags = @(Get-TagSignatures ([string]$entry.Original))
         # ConvertTags maps this legacy bare verb token to the NOBLE concept link.
-        if ([string]$entry.TypeFullName -eq "AtTheGatesCommon.ns_Text.Text" -and
-            [string]$entry.MethodName -eq "ConvertTags" -and
+        $entryTypeFullName = if ($entry.PSObject.Properties["TypeFullName"]) {
+            [string]$entry.TypeFullName
+        } else { "" }
+        $entryMethodName = if ($entry.PSObject.Properties["MethodName"]) {
+            [string]$entry.MethodName
+        } else { "" }
+        if ($entryTypeFullName -eq "AtTheGatesCommon.ns_Text.Text" -and
+            $entryMethodName -eq "ConvertTags" -and
             [string]$entry.Original -eq "[Ennoble]") {
             $sourceTags = @("[|NOBLE]")
         }

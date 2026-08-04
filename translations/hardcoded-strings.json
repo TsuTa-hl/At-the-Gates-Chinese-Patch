@@ -152,7 +152,7 @@
   "Costs ": "消耗",
   " to enter": "进入",
   "next to [SETTLEMENT:NO-ICON]": "邻近[SETTLEMENT:NO-ICON]",
-  "from [Terrain|TERRAIN]": "from [Terrain|TERRAIN]",
+  "from [Terrain|TERRAIN]": "来自[地形|TERRAIN]",
   " if entered": "进入则触发",
   "Lose ": "失去",
   " Provides:": "提供：",

@@ -5648,5 +5648,17 @@
     "Safety":  "TooltipFragment",
     "Note":  "SYI-ITT Miserable mood-detail connector; exact RecalcMood display fragment.",
     "EvidenceScenario":  "clan-trait-miserable-mood-detail"
+},
+{
+    "Original":  "Pillage",
+    "Translation":  "劫掠",
+    "MethodToken":  "0x06000590",
+    "ILOffset":  19,
+    "StringToken":  "0x7000ab65",
+    "TypeFullName":  "AtTheGatesGame.ns_UIControllers.ATGUI",
+    "MethodName":  "SeizedImp_CreatePillageButton",
+    "Safety":  "SafeUI",
+    "Note":  "Seized-site popup operation label; exact source catalog locator.",
+    "EvidenceScenario":  "latest-manual-bandit-pillage-popup"
 }
 ]
