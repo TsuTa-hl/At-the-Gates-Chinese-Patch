@@ -1032,6 +1032,13 @@ function Add-RuntimeDisplayMapKnownTexts {
                 "RuntimeMapSection=$section",
                 "RuntimeMapOriginal=$runtimeOriginal"
             )
+            # The human-readable locator is normalized with every review record.
+            # Preserve an additional exact identity only when that normalization
+            # changes the executable runtime-map input (for example boundary
+            # spaces or CRLF), so ordinary locators remain concise and stable.
+            if ($runtimeOriginal -cne (ConvertTo-ReviewLine $runtimeOriginal)) {
+                $locatorParts += "RuntimeMapOriginalBase64=$([Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($runtimeOriginal)))"
+            }
             if (-not [string]::IsNullOrWhiteSpace($conceptKey)) {
                 $locatorParts += "RuntimeMapConceptKey=$conceptKey"
             }

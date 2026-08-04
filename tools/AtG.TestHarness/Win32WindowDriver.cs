@@ -46,6 +46,18 @@ public sealed class Win32WindowDriver : IWindowDriver
         Thread.Sleep(40);
     }
 
+    public void Scroll(int referenceX, int referenceY, int wheelDelta)
+    {
+        if (wheelDelta == 0)
+            throw new ArgumentOutOfRangeException(nameof(wheelDelta), "Scroll wheel delta must not be zero.");
+        var window = ResolveWindow();
+        ActivateWindow(window);
+        Move(referenceX, referenceY);
+        Thread.Sleep(80);
+        mouse_event(MouseEventWheel, 0, 0, unchecked((uint)wheelDelta), UIntPtr.Zero);
+        Thread.Sleep(80);
+    }
+
     public void KeyPress(string key)
     {
         if (key.Equals("Ctrl+S", StringComparison.OrdinalIgnoreCase) ||
@@ -283,6 +295,7 @@ public sealed class Win32WindowDriver : IWindowDriver
 
     private const uint MouseEventLeftDown = 0x0002;
     private const uint MouseEventLeftUp = 0x0004;
+    private const uint MouseEventWheel = 0x0800;
     private const uint KeyEventKeyUp = 0x0002;
     private const byte VirtualKeyControl = 0x11;
 

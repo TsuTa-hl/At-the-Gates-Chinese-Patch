@@ -32,10 +32,14 @@ Complete task cleanup first and reuse its handoff.
 5. Confirm renderer and critical generated artifacts in the build report.
 6. Install through `Install-ChinesePatch.ps1`; it refreshes only the prior
    manifest-backed patch.
-7. Run one default `Test-GameLaunch.ps1` main-menu smoke. Do not pass
-   `-IncludeNewGame` unless the selected test specifically requires it.
-8. Hand test/loop the build result, install refresh outcome, smoke result,
-   crash-log status, concise visual result, and timing.
+7. Unless the user explicitly excludes testing, run one default
+   `Test-GameLaunch.ps1` main-menu smoke. Do not pass `-IncludeNewGame` unless
+   the selected test specifically requires it. If testing is excluded, still
+   complete the install refresh in step 6 (it uninstalls the manifest-backed
+   prior patch first), verify static artifacts, and record a static smoke.
+8. Hand test/loop the build result, install refresh outcome, smoke or static
+   smoke result, crash-log status when applicable, concise visual limitation,
+   and timing.
 
 ## Failure
 

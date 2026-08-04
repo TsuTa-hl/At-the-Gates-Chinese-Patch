@@ -1046,8 +1046,8 @@
         "EvidenceScenario":  "trial-smoke-new-game"
     },
     {
-        "Original":  "Cannot [Attack|ATTACK]",
-        "Translation":  "当前无法[Attack|ATTACK]",
+    "Original":  "Cannot [Attack|ATTACK]",
+    "Translation":  "当前无法[攻击|ATTACK]",
         "MethodToken":  "0x06001724",
         "ILOffset":  1736,
         "StringToken":  "0x700388af",
@@ -1055,7 +1055,7 @@
         "MethodName":  "BuildDescription_Abilities",
         "Safety":  "TooltipFragment",
         "Note":  "Trial fast-fail auto batch generated from glossary and high-confidence phrase rules; smoke safety only.",
-        "EvidenceScenario":  "trial-smoke-new-game"
+    "EvidenceScenario":  "rxl-cqw-knowledge-profession-tooltip-20260802"
     },
     {
         "Original":  "[Upgrades|UPGRADE]:",
@@ -1695,7 +1695,7 @@
     },
     {
         "Original":  "The ",
-        "Translation":  "该",
+        "Translation":  "",
         "MethodToken":  "0x06001730",
         "ILOffset":  452,
         "StringToken":  "0x70002d27",
@@ -1779,7 +1779,7 @@
     },
     {
         "Original":  "The ",
-        "Translation":  "该",
+        "Translation":  "",
         "MethodToken":  "0x06000118",
         "ILOffset":  8503,
         "StringToken":  "0x70002d27",
@@ -2619,7 +2619,7 @@
     },
     {
         "Original":  " quadrupled",
-        "Translation":  "变为四倍",
+        "Translation":  "变为4倍",
         "MethodToken":  "0x06000207",
         "ILOffset":  14,
         "StringToken":  "0x700050d0",
@@ -2631,7 +2631,7 @@
     },
     {
         "Original":  " tripled",
-        "Translation":  "变为三倍",
+        "Translation":  "变为3倍",
         "MethodToken":  "0x06000207",
         "ILOffset":  43,
         "StringToken":  "0x700050e8",
@@ -2643,7 +2643,7 @@
     },
     {
         "Original":  " doubled",
-        "Translation":  "翻倍",
+        "Translation":  "变为2倍",
         "MethodToken":  "0x06000207",
         "ILOffset":  69,
         "StringToken":  "0x700050fa",
@@ -2655,7 +2655,7 @@
     },
     {
         "Original":  " increased by three-quarters",
-        "Translation":  "增加四分之三",
+        "Translation":  "提高75%",
         "MethodToken":  "0x06000207",
         "ILOffset":  97,
         "StringToken":  "0x7000510c",
@@ -2667,7 +2667,7 @@
     },
     {
         "Original":  " increased by half",
-        "Translation":  "增加一半",
+        "Translation":  "提高50%",
         "MethodToken":  "0x06000207",
         "ILOffset":  125,
         "StringToken":  "0x70005146",
@@ -2679,7 +2679,7 @@
     },
     {
         "Original":  " increased by one-third",
-        "Translation":  "增加三分之一",
+        "Translation":  "提高33%",
         "MethodToken":  "0x06000207",
         "ILOffset":  153,
         "StringToken":  "0x7000516c",
@@ -2691,7 +2691,7 @@
     },
     {
         "Original":  " increased by one-quarter",
-        "Translation":  "增加四分之一",
+        "Translation":  "提高25%",
         "MethodToken":  "0x06000207",
         "ILOffset":  181,
         "StringToken":  "0x7000519c",
@@ -2703,7 +2703,7 @@
     },
     {
         "Original":  " increased by one-fifth",
-        "Translation":  "增加五分之一",
+        "Translation":  "提高20%",
         "MethodToken":  "0x06000207",
         "ILOffset":  209,
         "StringToken":  "0x700051d0",
@@ -2712,6 +2712,31 @@
         "Safety":  "CommonDisplayCandidate",
         "Note":  "Clan trait tooltip numeric modifier wording.",
         "EvidenceScenario":  "full-regression-clan-trait-hovers"
+    },
+    {
+        "Original":  " increased by ",
+        "Translation":  "提高",
+        "MethodToken":  "0x06000207",
+        "ILOffset":  241,
+        "StringToken":  "0x70002de9",
+        "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+        "MethodName":  "HumanReadableMod",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Profession/property tooltip numeric increase fragment in the HumanReadableMod branch.",
+        "EvidenceScenario":  "mwc-lzr-profession-tooltip-recheck"
+    },
+    {
+        "Original":  "x",
+        "Translation":  "%",
+        "MethodToken":  "0x06000207",
+        "ILOffset":  356,
+        "StringToken":  "0x70005200",
+        "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+        "MethodName":  "HumanReadableMod",
+        "Operation":  "HumanReadableModDynamicPercent",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "HumanReadableMod dynamic increases use the source integer percentage directly instead of the original decimal multiplier suffix.",
+        "EvidenceScenario":  "mwc-lzr-profession-tooltip-recheck"
     },
     {
         "Original":  " reduced by three-quarters",
@@ -2796,6 +2821,18 @@
         "Safety":  "CommonDisplayCandidate",
         "Note":  "Clan trait tooltip numeric modifier wording observed in Low Fertility.",
         "EvidenceScenario":  "clan-trait-random-discovery"
+    },
+    {
+        "Original":  " increased by ",
+        "Translation":  "提高",
+        "MethodToken":  "0x06000207",
+        "ILOffset":  585,
+        "StringToken":  "0x70002de9",
+        "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+        "MethodName":  "HumanReadableMod",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Profession/property tooltip numeric increase fragment in the HumanReadableMod branch.",
+        "EvidenceScenario":  "mwc-lzr-profession-tooltip-recheck"
     },
     {
         "Original":  "A Clan is a group of [Families|FAMILY] which act as a single unit. Each Clan can be [Trained|TRAIN] in a [Profession|PROFESSION] in order to grant it the ability to [Harvest|HARVEST] or refine [Resources|RESOURCE], explore the map, [Fight|WARRIOR] enemies, and more. You will usually end up with around 40-50 Clans over the course of a single game.",
@@ -3048,6 +3085,42 @@
         "Safety":  "CommonDisplayCandidate",
         "Note":  "Clan trait/property tooltip probability direction fragment.",
         "EvidenceScenario":  "full-regression-clan-trait-hovers"
+    },
+    {
+        "Original":  " increased by ",
+        "Translation":  "提高",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  8826,
+        "StringToken":  "0x70002de9",
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Profession/property tooltip dynamic increase fragment; same literal as the probability branch.",
+        "EvidenceScenario":  "mwc-lzr-profession-tooltip-recheck"
+    },
+    {
+        "Original":  " increased by ",
+        "Translation":  "提高",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  9030,
+        "StringToken":  "0x70002de9",
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Profession/property tooltip dynamic increase fragment; same literal as the probability branch.",
+        "EvidenceScenario":  "mwc-lzr-profession-tooltip-recheck"
+    },
+    {
+        "Original":  " increased by ",
+        "Translation":  "提高",
+        "MethodToken":  "0x06000118",
+        "ILOffset":  14322,
+        "StringToken":  "0x70002de9",
+        "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+        "MethodName":  "BuildDetailsString",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Profession/property tooltip dynamic increase fragment; same literal as the probability branch.",
+        "EvidenceScenario":  "mwc-lzr-profession-tooltip-recheck"
     },
     {
         "Original":  "Likelihood of engaging in ",
@@ -3426,7 +3499,7 @@
     },
     {
         "Original":  "Reduces the [Supply Level|SUPPLY] of a ",
-        "Translation":  "降低[Supply Level|SUPPLY]：",
+        "Translation":  "降低[补给等级|SUPPLY]：",
         "MethodToken":  "0x06000118",
         "ILOffset":  1529,
         "Safety":  "TooltipFragment",
@@ -3777,7 +3850,7 @@
     },
     {
         "Original":  "Will suffer [Damage|DAMAGE] on a [Tile|TILE] unless it has a [Supply Level|SUPPLY] of at least ",
-    "Translation":  "若位于[地格|TILE]时[补给等级|SUPPLY]低于，则会受到[伤害|DAMAGE]",
+        "Translation":  "位于[地格|TILE]时会受到[伤害|DAMAGE]，除非[补给等级|SUPPLY]至少为 ",
         "MethodToken":  "0x06000118",
         "ILOffset":  6951,
         "Safety":  "TooltipFragment",
@@ -3867,7 +3940,7 @@
     },
     {
         "Original":  "Allows [Traits|CLAN-TRAIT] to be removed from [Clans|CLAN] in the [SETTLEMENT] by spending ",
-        "Translation":  "允许在[SETTLEMENT]中移除[Clans|CLAN]的[Traits|CLAN-TRAIT]，消耗",
+        "Translation":  "允许在[SETTLEMENT]中移除[氏族|CLAN]的[特质|CLAN-TRAIT]，消耗",
         "MethodToken":  "0x06000118",
         "ILOffset":  7732,
         "Safety":  "TooltipFragment",
@@ -3885,7 +3958,7 @@
     },
     {
         "Original":  "Allows [Crimes|CRIME] to be removed from [Clans|CLAN] in the [SETTLEMENT] by spending ",
-        "Translation":  "允许在[SETTLEMENT]中移除[Clans|CLAN]的[Crimes|CRIME]，消耗",
+        "Translation":  "允许在[SETTLEMENT]中移除[氏族|CLAN]的[罪行|CRIME]，消耗",
         "MethodToken":  "0x06000118",
         "ILOffset":  7764,
         "Safety":  "TooltipFragment",
@@ -5289,7 +5362,7 @@
     },
     {
         "Original":  " ... OR ...",
-        "Translation":  "……或……",
+        "Translation":  "；或",
         "MethodToken":  "0x0600172a",
         "ILOffset":  115,
         "Safety":  "CommonDisplayCandidate",
@@ -5298,7 +5371,7 @@
     },
     {
         "Original":  " ... OR ...",
-        "Translation":  "……或……",
+        "Translation":  "；或",
         "MethodToken":  "0x0600172a",
         "ILOffset":  406,
         "Safety":  "CommonDisplayCandidate",
@@ -5558,6 +5631,61 @@
         "EvidenceScenario":  "trial-common-tooltip-fragments-1"
     },
     {
+        "Original":  " in ",
+        "Translation":  "，还需",
+        "MethodToken":  "0x0600171f",
+        "ILOffset":  693,
+        "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
+        "MethodName":  "BuildBasicDescription",
+        "Safety":  "TooltipFragment",
+        "Note":  "CLD-DML clan card countdown separator; scoped to the basic description builder so generic in remains untouched.",
+        "EvidenceScenario":  "cld-dml-clan-tooltip-20260801"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "，还需",
+        "MethodToken":  "0x060002f0",
+        "ILOffset":  2299,
+        "TypeFullName":  "AtTheGatesCommon.ns_UI.ns_Tooltips.ClanTooltip",
+        "MethodName":  "BuildTooltip",
+        "Safety":  "TooltipFragment",
+        "Note":  "CLD-DML clan-card unidentified-resource countdown separator; exact tooltip operand, not the family-description builder.",
+        "EvidenceScenario":  "cld-dml-clan-tooltip-manual-20260802"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "，还需",
+        "MethodToken":  "0x060002f0",
+        "ILOffset":  2405,
+        "TypeFullName":  "AtTheGatesCommon.ns_UI.ns_Tooltips.ClanTooltip",
+        "MethodName":  "BuildTooltip",
+        "Safety":  "TooltipFragment",
+        "Note":  "CLD-DML clan-card alternate countdown separator; exact tooltip operand, not the family-description builder.",
+        "EvidenceScenario":  "cld-dml-clan-tooltip-manual-20260802"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "，还需",
+        "MethodToken":  "0x06000348",
+        "ILOffset":  6205,
+        "TypeFullName":  "AtTheGatesCommon.ns_UI.ns_Tooltips.ProfessionTooltip",
+        "MethodName":  "BuildTooltip",
+        "Safety":  "TooltipFragment",
+        "Note":  "CLD-DML clan-card identifiable-resource countdown separator; exact ProfessionTooltip operand behind the card detail.",
+        "EvidenceScenario":  "cld-dml-clan-card-tooltip-static-20260802"
+    },
+    {
+        "Original":  " in ",
+        "Translation":  "，还需",
+        "MethodToken":  "0x06000348",
+        "ILOffset":  6306,
+        "TypeFullName":  "AtTheGatesCommon.ns_UI.ns_Tooltips.ProfessionTooltip",
+        "MethodName":  "BuildTooltip",
+        "Safety":  "TooltipFragment",
+        "Note":  "CLD-DML clan-card alternate identifiable-resource countdown separator; exact ProfessionTooltip operand behind the card detail.",
+        "EvidenceScenario":  "cld-dml-clan-card-tooltip-static-20260802"
+    },
+    {
         "Original":  "[Damage|DAMAGE]: ",
         "Translation":  "[伤害|DAMAGE]：",
         "MethodToken":  "0x0600171f",
@@ -5577,7 +5705,7 @@
     },
     {
         "Original":  " ... OR ...",
-        "Translation":  "……或……",
+        "Translation":  "；或",
         "MethodToken":  "0x06000358",
         "ILOffset":  123,
         "Safety":  "CommonDisplayCandidate",
@@ -5586,7 +5714,7 @@
     },
     {
         "Original":  " ... OR ...",
-        "Translation":  "……或……",
+        "Translation":  "；或",
         "MethodToken":  "0x06000358",
         "ILOffset":  337,
         "Safety":  "CommonDisplayCandidate",
@@ -7708,6 +7836,17 @@
         "EvidenceScenario":  "trial-common-readable-text-2"
     },
     {
+        "Original":  " in ",
+        "Translation":  "，还需",
+        "MethodToken":  "0x06001730",
+        "ILOffset":  527,
+        "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
+        "MethodName":  "BuildDescription_Families",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "ERJ-UUX family-growth countdown separator; scoped to the generated clan-card tooltip.",
+        "EvidenceScenario":  "erj-uux-known-defects-20260730"
+    },
+    {
         "Original":  " As...",
         "Translation":  "作为…",
         "MethodToken":  "0x0600172d",
@@ -9252,5 +9391,406 @@
         "Safety":  "TooltipFragment",
         "Note":  "SYI-ITT Miserable mood-detail clan-to-mood connector; exact BuildDescription_Mood fragment.",
         "EvidenceScenario":  "clan-trait-miserable-mood-detail"
-    }
+    },
+    {
+        "Original":  " when ",
+        "Translation":  "，",
+        "MethodToken":  "0x0600172a",
+        "ILOffset":  839,
+        "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
+        "MethodName":  "BuildDescription_Production",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Clan production tooltip connector; replaces the observed when fragment while preserving the following Foraging concept.",
+        "EvidenceScenario":  "clan-production-tooltip-manual-20260801"
+    },
+    {
+        "Original":  " when ",
+        "Translation":  "，",
+        "MethodToken":  "0x0600172a",
+        "ILOffset":  2099,
+        "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
+        "MethodName":  "BuildDescription_Production",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Clan production tooltip connector; replaces the observed when fragment while preserving the following Foraging concept.",
+        "EvidenceScenario":  "clan-production-tooltip-manual-20260801"
+    },
+    {
+        "Original":  "on a ",
+        "Translation":  "，位于",
+        "MethodToken":  "0x0600172a",
+        "ILOffset":  2136,
+        "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
+        "MethodName":  "BuildDescription_Production",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Clan production tooltip location connector; replaces the observed on a fragment after the Foraging concept.",
+        "EvidenceScenario":  "clan-production-tooltip-manual-20260801"
+    },
+    {
+        "Original":  " when ",
+        "Translation":  "，",
+        "MethodToken":  "0x0600172a",
+        "ILOffset":  2503,
+        "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
+        "MethodName":  "BuildDescription_Production",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Clan production tooltip connector; replaces the observed when fragment while preserving the following Foraging concept.",
+        "EvidenceScenario":  "clan-production-tooltip-manual-20260801"
+    },
+    {
+        "Original":  "on a ",
+        "Translation":  "，位于",
+        "MethodToken":  "0x0600172a",
+        "ILOffset":  2540,
+        "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
+        "MethodName":  "BuildDescription_Production",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Clan production tooltip location connector; replaces the observed on a fragment after the Foraging concept.",
+        "EvidenceScenario":  "clan-production-tooltip-manual-20260801"
+    },
+    {
+        "Original":  " when ",
+        "Translation":  "，",
+        "MethodToken":  "0x0600172a",
+        "ILOffset":  3482,
+        "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
+        "MethodName":  "BuildDescription_Production",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Clan production tooltip connector; replaces the observed when fragment while preserving the following resource concept.",
+        "EvidenceScenario":  "clan-production-tooltip-manual-20260801"
+    },
+    {
+        "Original":  " on ",
+        "Translation":  "，位于",
+        "MethodToken":  "0x0600172a",
+        "ILOffset":  3492,
+        "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
+        "MethodName":  "BuildDescription_Production",
+        "Safety":  "CommonDisplayCandidate",
+    "Note":  "Clan production tooltip location connector; replaces the observed on fragment after the production resource concept.",
+    "EvidenceScenario":  "clan-production-tooltip-manual-20260801"
+},
+{
+    "Original":  "Trait",
+    "Translation":  "特质",
+    "MethodToken":  "0x06000118",
+    "ILOffset":  2355,
+    "StringToken":  "0x700021d2",
+    "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+    "MethodName":  "BuildDetailsString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "RXL-CQW bandit power tooltip label; translate the technical Trait fragment in the scoped property-details method.",
+    "EvidenceScenario":  "rxl-cqw-bandit-unit-tooltip-20260802"
+},
+{
+    "Original":  "Trait",
+    "Translation":  "特质",
+    "MethodToken":  "0x06000118",
+    "ILOffset":  2509,
+    "StringToken":  "0x700021d2",
+    "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+    "MethodName":  "BuildDetailsString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "RXL-CQW bandit power tooltip label; translate the technical Trait fragment in the scoped property-details method.",
+    "EvidenceScenario":  "rxl-cqw-bandit-unit-tooltip-20260802"
+},
+{
+    "Original":  "Trait",
+    "Translation":  "特质",
+    "MethodToken":  "0x06000118",
+    "ILOffset":  2689,
+    "StringToken":  "0x700021d2",
+    "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+    "MethodName":  "BuildDetailsString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "RXL-CQW bandit power tooltip label; translate the technical Trait fragment in the scoped property-details method.",
+    "EvidenceScenario":  "rxl-cqw-bandit-unit-tooltip-20260802"
+},
+{
+    "Original":  "Innate",
+    "Translation":  "先天",
+    "MethodToken":  "0x06000118",
+    "ILOffset":  6292,
+    "StringToken":  "0x70002572",
+    "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+    "MethodName":  "BuildDetailsString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "RXL-CQW bandit morale tooltip label; translate the technical Innate fragment in the scoped property-details method.",
+    "EvidenceScenario":  "rxl-cqw-bandit-unit-tooltip-20260802"
+},
+{
+    "Original":  " in ",
+    "Translation":  "，还需",
+    "MethodToken":  "0x06001724",
+    "ILOffset":  1068,
+    "StringToken":  "0x7000225c",
+    "TypeFullName":  "AtTheGatesCommon.ns_Config.GAME",
+    "MethodName":  "BuildDescription_Abilities",
+    "Safety":  "TooltipFragment",
+    "Note":  "RXL-CQW knowledge profession tooltip countdown connector; scopes the standalone in before the remaining turn count.",
+    "EvidenceScenario":  "rxl-cqw-knowledge-profession-tooltip-20260802"
+},
+{
+    "Original":  "No extra",
+    "Translation":  "无额外",
+    "MethodToken":  "0x06000118",
+    "ILOffset":  841,
+    "StringToken":  "0x70001df2",
+    "TypeFullName":  "AtTheGatesCommon.ns_Properties.PropertyBlueprint",
+    "MethodName":  "BuildDetailsString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "UBL-TVF turn 002 Adaptable trait tooltip; cover the missing No extra branch without changing property logic.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "is ",
+    "Translation":  "已",
+    "MethodToken":  "0x0600014e",
+    "ILOffset":  223,
+    "StringToken":  "0x70003925",
+    "TypeFullName":  "AtTheGatesCommon.ns_Utilities.BattleProjection",
+    "MethodName":  "BuildSummary",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "UBL-TVF turn 002 battle prediction connector; turn the scoped English is-phrase into Chinese before the result adjective.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "mangled",
+    "Translation":  "重创",
+    "MethodToken":  "0x0600014e",
+    "ILOffset":  306,
+    "StringToken":  "0x70003951",
+    "TypeFullName":  "AtTheGatesCommon.ns_Utilities.BattleProjection",
+    "MethodName":  "BuildSummary",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "UBL-TVF turn 002 battle prediction result; pair with the scoped is-connector so the UI reads 敌军已重创.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Moving",
+    "Translation":  "移动中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  177,
+    "StringToken":  "0x70005b11",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "UBL-TVF turn 002 command status; localize the Moving enum returned to clan-list tooltips and selected-clan cards.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Unassigned",
+    "Translation":  "未分配",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  122,
+    "StringToken":  "0x70005a9b",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family so no unassigned state falls back to English.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Waiting",
+    "Translation":  "等待中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  144,
+    "StringToken":  "0x70005acd",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family so waiting units do not show English.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Asleep",
+    "Translation":  "休眠中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  166,
+    "StringToken":  "0x70005b03",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family so sleeping units do not show English.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Pillaging",
+    "Translation":  "掠夺中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  210,
+    "StringToken":  "0x70005b57",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for pillage commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Fortifying",
+    "Translation":  "加固中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  221,
+    "StringToken":  "0x70005b6b",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for fortification commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Abandoning",
+    "Translation":  "遗弃中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  232,
+    "StringToken":  "0x70005b81",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for abandoning commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Healing",
+    "Translation":  "治疗中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  243,
+    "StringToken":  "0x70005b97",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for healing commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Repairing",
+    "Translation":  "修理中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  254,
+    "StringToken":  "0x70005ba7",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for repair commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Besieging",
+    "Translation":  "围城中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  262,
+    "StringToken":  "0x70005bbb",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for siege commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Identifying",
+    "Translation":  "识别中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  270,
+    "StringToken":  "0x70005bcf",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for deposit-identification commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Constructing",
+    "Translation":  "建造中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  278,
+    "StringToken":  "0x70005be7",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for construction commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Foraging",
+    "Translation":  "采集中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  286,
+    "StringToken":  "0x70005c01",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for forage commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Encamping",
+    "Translation":  "扎营中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  302,
+    "StringToken":  "0x70005c33",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for encamp commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Encamped",
+    "Translation":  "已扎营",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  310,
+    "StringToken":  "0x70005c47",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for the completed encamp state.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Unpacking",
+    "Translation":  "拆包中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  326,
+    "StringToken":  "0x70005c6f",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for unpacking commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Docked",
+    "Translation":  "已停靠",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  334,
+    "StringToken":  "0x70005c83",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for the completed docking state.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Undocking",
+    "Translation":  "离港中",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  342,
+    "StringToken":  "0x70005c91",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family for undocking commands.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "INVALID",
+    "Translation":  "无效",
+    "MethodToken":  "0x0600022a",
+    "ILOffset":  374,
+    "StringToken":  "0x70005d43",
+    "TypeFullName":  "AtTheGatesCommon.ns_Text.Text",
+    "MethodName":  "GetCommandString",
+    "Safety":  "CommonDisplayCandidate",
+    "Note":  "Complete the command-status family fallback so an invalid state cannot leak its raw enum label.",
+    "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+}
 ]

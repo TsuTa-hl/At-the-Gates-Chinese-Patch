@@ -49,6 +49,7 @@ public sealed class ScenarioAction
     public string Action { get; init; } = string.Empty;
     public int? X { get; init; }
     public int? Y { get; init; }
+    public int? WheelDelta { get; init; }
     public string? Key { get; init; }
     public string? Bookmark { get; init; }
     public string? Marker { get; init; }

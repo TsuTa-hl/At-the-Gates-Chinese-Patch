@@ -14,6 +14,15 @@ if ($reportJson.Length -gt 0 -and [char]::IsWhiteSpace($reportJson[$reportJson.L
     throw "Runtime build report must not end with whitespace."
 }
 $report = $reportJson | ConvertFrom-Json
+if ($null -eq $report.LocalizationInputs -or [int]$report.LocalizationInputs.SchemaVersion -ne 1) {
+    throw "Build report is missing localization input fingerprint metadata."
+}
+if ([string]$report.LocalizationInputs.Digest -notmatch '^[0-9a-f]{64}$') {
+    throw "Build report localization input digest must be a lowercase SHA-256 value."
+}
+if (@($report.LocalizationInputs.Files).Count -eq 0) {
+    throw "Build report localization input fingerprint must list its source files."
+}
 if ($report.RendererMode -ne "DynamicCjk") {
     throw "Runtime build report test requires a DynamicCjk build report."
 }

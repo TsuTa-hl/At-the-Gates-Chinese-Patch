@@ -19,9 +19,10 @@ notice: free/non-commercial, unofficial fan-made, no original-game-file
 redistribution, legitimate-copy requirement, Conifer Games support limit,
 project-owned crash reporting, and revocable good-faith permission. Automated
 test callers pass `-NoInstallNotice`; public installation does not.
-The 2026-07-30 notice regression verifies every required permission phrase,
-the default WinForms popup path, and a non-interactive manifest refresh. The
-popup itself was not manually dismissed against a live installation.
+The 2026-08-01 notice regression verifies the Chinese permission declaration,
+the default WinForms popup path, the non-interactive refresh, and the uninstall
+preview without `System.Object[]` or a trailing empty object. The popup itself
+was not manually dismissed against a live installation.
 Its internal uninstall explicitly preserves save names. A direct
 `Uninstall-ChinesePatch.ps1` run first removes non-ASCII characters from each
 `.AtGSave` filename so original English/Latin menu fonts cannot crash while
@@ -38,8 +39,16 @@ bypass; it intentionally does not rename a live player's saves during testing.
 3. Run the text-tag, generated-alias, font-budget, and affected subsystem
    checks named by `package-and-install.md`.
 4. Confirm `patch\Content\Text\English.xml` starts with `<english>`.
-5. Install the patch, then run the default main-menu smoke test once.
-6. Record build, install, smoke, and manifest-refresh timings in the handoff.
+5. Install the patch. `Install-ChinesePatch.ps1` first uninstalls its
+   manifest-backed previous installation, so an explicit separate uninstall is
+   not required for a normal refresh.
+6. Unless the user explicitly excludes testing, run the default main-menu
+   smoke once. When testing is excluded, do not launch the game: still build,
+   run static gates, refresh the installation, and verify the build report,
+   installed manifest, runtime-DLL hash, and runtime-map counts as a static
+   smoke.
+7. Record build, install, smoke or static-smoke, and manifest-refresh timings
+   in the handoff.
 
 `Test-GameLaunch.ps1` is a main-menu smoke test by default. It must not create
 a random game unless the caller explicitly requires `-IncludeNewGame`.

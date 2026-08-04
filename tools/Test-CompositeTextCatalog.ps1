@@ -180,7 +180,14 @@ if ($missingAudit.Count -gt 0) {
 
 $auditedCompositions = @($entries | Where-Object {
     ([string]$_.Source.Kind -eq "Managed" -and @($_.Parts).Count -gt 1) -or
-    ([string]$_.Source.Kind -eq "Xml" -and [string]$_.Classification -eq "DisplayComposite")
+    # XML source files are a complete static inventory. Only XML nodes that
+    # already bind to a patch rule are active composition entry points here;
+    # untouched config prose remains reviewable in the static source catalog
+    # and must not make a narrow, ID-scoped config patch look complete.
+    ([string]$_.Source.Kind -eq "Xml" -and
+        [string]$_.Classification -eq "DisplayComposite" -and
+        (-not [string]::IsNullOrWhiteSpace([string]$_.RuleId) -or
+            $null -ne $_.LocalizedFormat))
 })
 $unreviewedCompositions = @($auditedCompositions | Where-Object {
     [string]$_.AuditStatus -eq "Unreviewed"

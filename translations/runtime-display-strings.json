@@ -10,465 +10,1569 @@
   "Exact": [
     {
       "Original": "This is a farm that has been recently abandoned.\r\n\r\nIt may still contain useful supplies, and can be investigated by an [EXPLORER].",
-      "Translation": "这是一座最近被遗弃的农场。\r\n\r\n其中可能仍有有用的物资，可由[EXPLORER]调查。"
+      "Translation": "\u8fd9\u662f\u4e00\u5ea7\u6700\u8fd1\u88ab\u9057\u5f03\u7684\u519c\u573a\u3002\r\n\r\n\u5176\u4e2d\u53ef\u80fd\u4ecd\u6709\u6709\u7528\u7684\u7269\u8d44\uff0c\u53ef\u7531[EXPLORER]\u8c03\u67e5\u3002"
     },
     {
       "Original": "This is among the largest fields ever found!",
-      "Translation": "这是迄今发现的最大麦田之一！"
+      "Translation": "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u7530\u5730\u4e4b\u4e00\uff01"
     },
     {
-      "Original": "\u0080很可能变得相当不满 数月内，如果unable以 spend the winter inside the",
-      "Translation": "\u0080很可能变得相当不满 数月内，如果无法在冬季留在"
+      "Original": "\u0080\u5f88\u53ef\u80fd\u53d8\u5f97\u76f8\u5f53\u4e0d\u6ee1 \u6570\u6708\u5185\uff0c\u5982\u679cunable\u4ee5 spend the winter inside the",
+      "Translation": "\u0080\u5f88\u53ef\u80fd\u53d8\u5f97\u76f8\u5f53\u4e0d\u6ee1 \u6570\u6708\u5185\uff0c\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728"
     },
     {
-      "Original": "\u0080很可能变得相当不满在一年内，如果unable以 spend the winter inside the",
-      "Translation": "\u0080很可能变得相当不满在一年内，如果无法在冬季留在"
+      "Original": "\u0080\u5f88\u53ef\u80fd\u53d8\u5f97\u76f8\u5f53\u4e0d\u6ee1\u5728\u4e00\u5e74\u5185\uff0c\u5982\u679cunable\u4ee5 spend the winter inside the",
+      "Translation": "\u0080\u5f88\u53ef\u80fd\u53d8\u5f97\u76f8\u5f53\u4e0d\u6ee1\u5728\u4e00\u5e74\u5185\uff0c\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728"
     },
     {
       "Original": "Herds of [DEER] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], or for [PARCHMENT] or [CLOTH] by a [TRAPPER].[BLANK-LINE]Note that unlike other kinds of [Animals|ANIMAL] Deer cannot be added to your [Stockpile|STOCKPILE] by [Constructing|CONSTRUCT] a [Pasture|PASTURE] on them.[BLANK-LINE]This is a particularly large herd!",
-      "Translation": "一群[DEER]可被[采收|HARVEST]，获得[MEAT]；由[HUNTER]负责。还可获得[PARCHMENT]或[CLOTH]，由[TRAPPER]负责。[BLANK-LINE]请注意，与其他[动物|ANIMAL]不同，鹿不能加入[储备|STOCKPILE]；即使[建造|CONSTRUCT][牧场|PASTURE]也不行。[BLANK-LINE]这是一大群鹿！"
+      "Translation": "\u4e00\u7fa4[DEER]\u53ef\u88ab[\u91c7\u6536|HARVEST]\uff0c\u83b7\u5f97[MEAT]\uff1b\u7531[HUNTER]\u8d1f\u8d23\u3002\u8fd8\u53ef\u83b7\u5f97[PARCHMENT]\u6216[CLOTH]\uff0c\u7531[TRAPPER]\u8d1f\u8d23\u3002[BLANK-LINE]\u8bf7\u6ce8\u610f\uff0c\u4e0e\u5176\u4ed6[\u52a8\u7269|ANIMAL]\u4e0d\u540c\uff0c\u9e7f\u4e0d\u80fd\u52a0\u5165[\u50a8\u5907|STOCKPILE]\uff1b\u5373\u4f7f[\u5efa\u9020|CONSTRUCT][\u7267\u573a|PASTURE]\u4e5f\u4e0d\u884c\u3002[BLANK-LINE]\u8fd9\u662f\u4e00\u5927\u7fa4\u9e7f\uff01"
     },
     {
       "Original": "Herds of [DEER] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], or for [PARCHMENT] or [CLOTH] by a [TRAPPER].[BLANK-LINE]Note that unlike other kinds of [Animals|ANIMAL] Deer cannot be added to your [Stockpile|STOCKPILE] by [Constructing|CONSTRUCT] a [Pasture|PASTURE] on them.",
-      "Translation": "一群[DEER]可被[采收|HARVEST]，获得[MEAT]；由[HUNTER]负责。还可获得[PARCHMENT]或[CLOTH]，由[TRAPPER]负责。[BLANK-LINE]请注意，与其他[动物|ANIMAL]不同，鹿不能加入[储备|STOCKPILE]；即使[建造|CONSTRUCT][牧场|PASTURE]也不行。"
+      "Translation": "\u4e00\u7fa4[DEER]\u53ef\u88ab[\u91c7\u6536|HARVEST]\uff0c\u83b7\u5f97[MEAT]\uff1b\u7531[HUNTER]\u8d1f\u8d23\u3002\u8fd8\u53ef\u83b7\u5f97[PARCHMENT]\u6216[CLOTH]\uff0c\u7531[TRAPPER]\u8d1f\u8d23\u3002[BLANK-LINE]\u8bf7\u6ce8\u610f\uff0c\u4e0e\u5176\u4ed6[\u52a8\u7269|ANIMAL]\u4e0d\u540c\uff0c\u9e7f\u4e0d\u80fd\u52a0\u5165[\u50a8\u5907|STOCKPILE]\uff1b\u5373\u4f7f[\u5efa\u9020|CONSTRUCT][\u7267\u573a|PASTURE]\u4e5f\u4e0d\u884c\u3002"
     },
     {
       "Original": "It may still contain useful supplies, and can be investigated by an [EXPLORER].",
-      "Translation": "其中可能仍有有用的物资，可由[EXPLORER]调查。"
+      "Translation": "\u5176\u4e2d\u53ef\u80fd\u4ecd\u6709\u6709\u7528\u7684\u7269\u8d44\uff0c\u53ef\u7531[EXPLORER]\u8c03\u67e5\u3002"
     },
     {
       "Original": "Berry Patches can be [Harvested|HARVEST] by a [GATHERER] to [Produce|PRODUCE] [FRUIT].",
-      "Translation": "浆果丛可被[采收|HARVEST]，由[GATHERER]进行，以[产出|PRODUCE][FRUIT]。"
+      "Translation": "\u6d46\u679c\u4e1b\u53ef\u88ab[\u91c7\u6536|HARVEST]\uff0c\u7531[GATHERER]\u8fdb\u884c\uff0c\u4ee5[\u4ea7\u51fa|PRODUCE][FRUIT]\u3002"
     },
     {
       "Original": "Seeing this on a [Tile|TILE] means there's a [Mineral|MINERAL] there, but you don't know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [DIGGER] or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.",
-      "Translation": "在[地块|TILE]上看到这个标记，表示那里有一处[矿物|MINERAL]，但你还不知道具体种类。[BLANK-LINE][鉴定|UNIDENTIFIED]由[DIGGER]或[SURVEYOR]完成后，即可[采收|HARVEST][资源|RESOURCE]。"
+      "Translation": "\u5728[\u5730\u5757|TILE]\u4e0a\u770b\u5230\u8fd9\u4e2a\u6807\u8bb0\uff0c\u8868\u793a\u90a3\u91cc\u6709\u4e00\u5904[\u77ff\u7269|MINERAL]\uff0c\u4f46\u4f60\u8fd8\u4e0d\u77e5\u9053\u5177\u4f53\u79cd\u7c7b\u3002[BLANK-LINE][\u9274\u5b9a|UNIDENTIFIED]\u7531[DIGGER]\u6216[SURVEYOR]\u5b8c\u6210\u540e\uff0c\u5373\u53ef[\u91c7\u6536|HARVEST][\u8d44\u6e90|RESOURCE]\u3002"
     },
     {
       "Original": "Seeing this on a [Tile|TILE] means there's a [Herd of Animals|ANIMAL] there, but you don't know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [HUNTER], [TRAPPER], or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.",
-      "Translation": "在[地块|TILE]上看到这个标记，表示那里有一群[动物|ANIMAL]，但你还不知道具体种类。[BLANK-LINE][鉴定|UNIDENTIFIED]由[HUNTER]、[TRAPPER]或[SURVEYOR]完成后，即可[采收|HARVEST][资源|RESOURCE]。"
+      "Translation": "\u5728[\u5730\u5757|TILE]\u4e0a\u770b\u5230\u8fd9\u4e2a\u6807\u8bb0\uff0c\u8868\u793a\u90a3\u91cc\u6709\u4e00\u7fa4[\u52a8\u7269|ANIMAL]\uff0c\u4f46\u4f60\u8fd8\u4e0d\u77e5\u9053\u5177\u4f53\u79cd\u7c7b\u3002[BLANK-LINE][\u9274\u5b9a|UNIDENTIFIED]\u7531[HUNTER]\u3001[TRAPPER]\u6216[SURVEYOR]\u5b8c\u6210\u540e\uff0c\u5373\u53ef[\u91c7\u6536|HARVEST][\u8d44\u6e90|RESOURCE]\u3002"
     },
     {
       "Original": "Seeing this on a [Tile|TILE] means there's a useful [Plant|PLANT] there, but you don't know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [GATHERER], [REAPER], or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.",
-      "Translation": "在[地块|TILE]上看到这个标记，表示那里有一种有用的[植物|PLANT]，但你还不知道具体种类。[BLANK-LINE][鉴定|UNIDENTIFIED]由[GATHERER]、[REAPER]或[SURVEYOR]完成后，即可[采收|HARVEST][资源|RESOURCE]。"
+      "Translation": "\u5728[\u5730\u5757|TILE]\u4e0a\u770b\u5230\u8fd9\u4e2a\u6807\u8bb0\uff0c\u8868\u793a\u90a3\u91cc\u6709\u4e00\u79cd\u6709\u7528\u7684[\u690d\u7269|PLANT]\uff0c\u4f46\u4f60\u8fd8\u4e0d\u77e5\u9053\u5177\u4f53\u79cd\u7c7b\u3002[BLANK-LINE][\u9274\u5b9a|UNIDENTIFIED]\u7531[GATHERER]\u3001[REAPER]\u6216[SURVEYOR]\u5b8c\u6210\u540e\uff0c\u5373\u53ef[\u91c7\u6536|HARVEST][\u8d44\u6e90|RESOURCE]\u3002"
+    },
+    {
+      "Original": "Schools of [FISH] can be [Harvested|HARVEST] by a [FISHERMAN] to [Produce|PRODUCE] [FISH].[BLANK-LINE]This is a particularly large school!",
+      "Translation": "\u4e00\u7fa4[FISH]\u53ef\u7531[FISHERMAN]\u8fdb\u884c[\u91c7\u6536|HARVEST]\uff0c\u4ee5[\u4ea7\u51fa|PRODUCE][FISH]\u3002[BLANK-LINE]\u8fd9\u662f\u4e00\u5927\u7fa4\u9c7c\uff01"
+    },
+    {
+      "Original": "Schools of Fish can be [Harvested|HARVEST] by a [FISHERMAN] to [Produce|PRODUCE] [FISH].[BLANK-LINE]This is a particularly large school!",
+      "Translation": "\u9c7c\u7fa4\u53ef\u7531[FISHERMAN]\u8fdb\u884c[\u91c7\u6536|HARVEST]\uff0c\u4ee5[\u4ea7\u51fa|PRODUCE][FISH]\u3002[BLANK-LINE]\u8fd9\u662f\u4e00\u5927\u7fa4\u9c7c\uff01"
+    },
+    {
+      "Original": "\u82e5\u4f4d\u4e8e[\u5730\u683c|TILE]\u65f6[\u8865\u7ed9\u7b49\u7ea7|SUPPLY]\u4f4e\u4e8e\uff0c\u5219\u4f1a\u53d7\u5230[\u4f24\u5bb3|DAMAGE]1",
+      "Translation": "\u82e5\u6240\u5728[\u5730\u683c|TILE]\u7684[\u8865\u7ed9\u7b49\u7ea7|SUPPLY]\u4f4e\u4e8e1\uff0c\u5219\u4f1a\u53d7\u5230[\u4f24\u5bb3|DAMAGE]\u3002"
+    },
+    {
+      "Original": "\u82e5\u4f4d\u4e8e[\u5730\u683c|TILE]\u65f6[\u8865\u7ed9\u7b49\u7ea7|SUPPLY]\u4f4e\u4e8e\uff0c\u5219\u4f1a\u53d7\u5230[\u4f24\u5bb3|DAMAGE] 1",
+      "Translation": "\u82e5\u6240\u5728[\u5730\u683c|TILE]\u7684[\u8865\u7ed9\u7b49\u7ea7|SUPPLY]\u4f4e\u4e8e1\uff0c\u5219\u4f1a\u53d7\u5230[\u4f24\u5bb3|DAMAGE]\u3002"
+    },
+    {
+      "Original": "\u8d44\u6e90\u4ea7\u51fa\u81ea\u5df1\u5efa\u9020\u5efa\u7b51\u964d\u4f4e-10%",
+      "Translation": "\u8d44\u6e90\u4ea7\u51fa\uff08\u7531\u81ea\u5df1\u5efa\u9020\u7684\u5efa\u7b51\uff09\u964d\u4f4e-10%"
+    },
+    {
+      "Original": "\u82e5\u4f4d\u4e8e\u5730\u5757\u8865\u7ed9\u7b49\u7ea7\u4f4e\u4e8e1\uff0c\u5219\u4f1a\u53d7\u5230\u4f24\u5bb31",
+      "Translation": "\u82e5\u6240\u5728\u5730\u5757\u7684\u8865\u7ed9\u7b49\u7ea7\u4f4e\u4e8e1\uff0c\u5219\u4f1a\u53d7\u5230\u4f24\u5bb3\u3002"
+    },
+    {
+      "Original": "\u82e5\u4f4d\u4e8e\u5730\u5757\u8865\u7ed9\u7b49\u7ea7\u4f4e\u4e8e1\uff0c\u5219\u4f1a\u53d7\u5230\u4f24\u5bb3 1",
+      "Translation": "\u82e5\u6240\u5728\u5730\u5757\u7684\u8865\u7ed9\u7b49\u7ea7\u4f4e\u4e8e1\uff0c\u5219\u4f1a\u53d7\u5230\u4f24\u5bb3\u3002"
+    },
+    {
+      "Original": "This is the location of a major battle. Old equipment lies scattered about.",
+      "Translation": "\u8fd9\u91cc\u66fe\u662f\u4e00\u573a\u5927\u6218\u7684\u5730\u70b9\uff0c\u65e7\u88c5\u5907\u6563\u843d\u5404\u5904\u3002"
+    },
+    {
+      "Original": "location of a major battle. Old equipment lies scattered about.",
+      "Translation": "\u4e00\u573a\u5927\u6218\u7684\u5730\u70b9\uff0c\u65e7\u88c5\u5907\u6563\u843d\u5404\u5904\u3002"
     }
   ],
   "PlainText": [
     {
       "Original": "Content",
-      "Translation": "满足"
+      "Translation": "\u6ee1\u8db3"
     },
     {
       "Original": "Minor Leader",
-      "Translation": "小部族领袖"
+      "Translation": "\u5c0f\u90e8\u65cf\u9886\u8896"
+    },
+    {
+      "Original": "Strong Leader",
+      "Translation": "\u5f3a\u52bf\u9886\u8896"
+    },
+    {
+      "Original": "strong Leader",
+      "Translation": "\u5f3a\u52bf\u9886\u8896"
+    },
+    {
+      "Original": "become obsessed with the idea of",
+      "Translation": "\u4f1a\u75f4\u8ff7\u4e8e"
+    },
+    {
+      "Original": "Minor Tribe",
+      "Translation": "\u5c0f\u90e8\u65cf"
     },
     {
       "Original": "Deserted Farm",
-      "Translation": "废弃农场"
+      "Translation": "\u5e9f\u5f03\u519c\u573a"
     },
     {
       "Original": "Deserted Battlefield",
-      "Translation": "废弃战场"
+      "Translation": "\u5e9f\u5f03\u6218\u573a"
     },
     {
       "Original": "Deserted",
-      "Translation": "废弃"
+      "Translation": "\u5e9f\u5f03"
     },
     {
       "Original": "Battlefield",
-      "Translation": "战场"
+      "Translation": "\u6218\u573a"
     },
     {
       "Original": "Deserted Village",
-      "Translation": "废弃村落"
+      "Translation": "\u5e9f\u5f03\u6751\u843d"
     },
     {
       "Original": "Deserted City",
-      "Translation": "废弃城市"
+      "Translation": "\u5e9f\u5f03\u57ce\u5e02"
     },
     {
-      "Original": "传闻有一个Deserted City",
-      "Translation": "传闻有一个废弃城市"
+      "Original": "\u4f20\u95fb\u6709\u4e00\u4e2aDeserted City",
+      "Translation": "\u4f20\u95fb\u6709\u4e00\u4e2a\u5e9f\u5f03\u57ce\u5e02"
     },
     {
       "Original": "All that remains of a once-thriving community.",
-      "Translation": "这是昔日繁荣社区的残迹。"
+      "Translation": "\u8fd9\u662f\u6614\u65e5\u7e41\u8363\u793e\u533a\u7684\u6b8b\u8ff9\u3002"
+    },
+    {
+      "Original": "All that remains, is of a once-thriving community.",
+      "Translation": "\u8fd9\u91cc\u4ec5\u4f59\u6614\u65e5\u7e41\u8363\u793e\u533a\u7684\u9057\u8ff9\u3002"
     },
     {
       "Original": "All that remains of a once-magnificent Roman City, abandoned only recently.",
-      "Translation": "这是昔日辉煌的罗马城市，如今仅剩残迹，且最近才被遗弃。"
+      "Translation": "\u8fd9\u662f\u6614\u65e5\u8f89\u714c\u7684\u7f57\u9a6c\u57ce\u5e02\uff0c\u5982\u4eca\u4ec5\u5269\u6b8b\u8ff9\uff0c\u4e14\u6700\u8fd1\u624d\u88ab\u9057\u5f03\u3002"
     },
     {
       "Original": "Supply",
-      "Translation": "补给"
+      "Translation": "\u8865\u7ed9"
     },
     {
       "Original": "Terrain",
-      "Translation": "地形"
+      "Translation": "\u5730\u5f62"
     },
     {
       "Original": "Defense",
-      "Translation": "防御"
+      "Translation": "\u9632\u5fa1"
     },
     {
-      "Original": "传闻有一个Deserted Village",
-      "Translation": "传闻有一个废弃村落"
+      "Original": "\u4f20\u95fb\u6709\u4e00\u4e2aDeserted Village",
+      "Translation": "\u4f20\u95fb\u6709\u4e00\u4e2a\u5e9f\u5f03\u6751\u843d"
     },
     {
       "Original": "\u0080Impassable",
-      "Translation": "\u0080不可通行"
+      "Translation": "\u0080\u4e0d\u53ef\u901a\u884c"
     },
     {
-      "Original": "点击展开此面板以查看基本说明：Deserted",
-      "Translation": "点击展开此面板以查看基本说明：废弃"
+      "Original": "\u70b9\u51fb\u5c55\u5f00\u6b64\u9762\u677f\u4ee5\u67e5\u770b\u57fa\u672c\u8bf4\u660e\uff1aDeserted",
+      "Translation": "\u70b9\u51fb\u5c55\u5f00\u6b64\u9762\u677f\u4ee5\u67e5\u770b\u57fa\u672c\u8bf4\u660e\uff1a\u5e9f\u5f03"
     },
     {
-      "Original": "Battlefield（位于此地格）.",
-      "Translation": "战场（位于此地格）."
+      "Original": "Battlefield\uff08\u4f4d\u4e8e\u6b64\u5730\u683c\uff09.",
+      "Translation": "\u6218\u573a\uff08\u4f4d\u4e8e\u6b64\u5730\u683c\uff09."
     },
     {
       "Original": "This is a farm that has been recently abandoned.",
-      "Translation": "这是一座最近被遗弃的农场。"
+      "Translation": "\u8fd9\u662f\u4e00\u5ea7\u6700\u8fd1\u88ab\u9057\u5f03\u7684\u519c\u573a\u3002"
     },
     {
       "Original": "Harvested",
-      "Translation": "采收"
+      "Translation": "\u91c7\u6536"
     },
     {
       "Original": "Produce",
-      "Translation": "产出"
+      "Translation": "\u4ea7\u51fa"
     },
     {
       "Original": "Cold",
-      "Translation": "严寒"
+      "Translation": "\u4e25\u5bd2"
     },
     {
-      "Original": "传闻有一个Deserted Farm",
-      "Translation": "传闻有一个废弃农场"
+      "Original": "\u4f20\u95fb\u6709\u4e00\u4e2aDeserted Farm",
+      "Translation": "\u4f20\u95fb\u6709\u4e00\u4e2a\u5e9f\u5f03\u519c\u573a"
     },
     {
-      "Original": "传闻有一个Deserted Battlefield",
-      "Translation": "传闻有一个废弃战场"
+      "Original": "\u4f20\u95fb\u6709\u4e00\u4e2aDeserted Battlefield",
+      "Translation": "\u4f20\u95fb\u6709\u4e00\u4e2a\u5e9f\u5f03\u6218\u573a"
     },
     {
       "Original": "Angry",
-      "Translation": "愤怒"
+      "Translation": "\u6124\u6012"
     },
     {
       "Original": "Obsessed",
-      "Translation": "痴迷"
+      "Translation": "\u75f4\u8ff7"
+    },
+    {
+      "Original": "SUBMISSIVE",
+      "Translation": "\u987a\u4ece"
+    },
+    {
+      "Original": "DEFIANT",
+      "Translation": "\u6311\u8845"
+    },
+    {
+      "Original": "HOSTILE",
+      "Translation": "\u654c\u5bf9"
     },
     {
       "Original": ",",
-      "Translation": "、"
+      "Translation": "\u3001"
     },
     {
       "Original": ", or",
-      "Translation": "、或"
+      "Translation": "\u3001\u6216"
     },
     {
       "Original": "Range",
-      "Translation": "范围"
+      "Translation": "\u8303\u56f4"
     },
     {
       "Original": "\u0080Max",
-      "Translation": "\u0080最高"
+      "Translation": "\u0080\u6700\u9ad8"
     },
     {
       "Original": "\u0080No extra",
-      "Translation": "\u0080无额外"
+      "Translation": "\u0080\u65e0\u989d\u5916"
     },
     {
-      "Original": "\u0080消耗all",
-      "Translation": "\u0080消耗全部"
+      "Original": "No extra",
+      "Translation": "\u65e0\u989d\u5916"
+    },
+    {
+      "Original": "This Army is resting.",
+      "Translation": "\u8be5\u519b\u961f\u6b63\u5728\u4f11\u6574\u3002"
+    },
+    {
+      "Original": "No movement remaining.",
+      "Translation": "\u65e0\u5269\u4f59\u79fb\u52a8\u529b\u3002"
+    },
+    {
+      "Original": "\u65e0\u79fb\u52a8\u529b remaining.",
+      "Translation": "\u65e0\u5269\u4f59\u79fb\u52a8\u529b\u3002"
+    },
+    {
+      "Original": "\u0080\u6d88\u8017all",
+      "Translation": "\u0080\u6d88\u8017\u5168\u90e8"
     }
   ],
   "PlainTextFragments": [
     {
       "Original": "commit Theft",
-      "Translation": "犯下盗窃"
+      "Translation": "\u72af\u4e0b\u76d7\u7a83"
     },
     {
       "Original": "engage in Brawls",
-      "Translation": "参与斗殴"
+      "Translation": "\u53c2\u4e0e\u6597\u6bb4"
     },
     {
       "Original": "there's another",
-      "Translation": "另有"
+      "Translation": "\u53e6\u6709"
     },
     {
       "Original": "Mounted",
-      "Translation": "骑乘"
+      "Translation": "\u9a91\u4e58"
     },
     {
       "Original": " on the same",
-      "Translation": "位于同一"
+      "Translation": "\u4f4d\u4e8e\u540c\u4e00"
     },
     {
       "Original": "forced into a",
-      "Translation": "被迫从事"
+      "Translation": "\u88ab\u8feb\u4ece\u4e8b"
     },
     {
       "Original": "forced into an",
-      "Translation": "被迫从事"
+      "Translation": "\u88ab\u8feb\u4ece\u4e8b"
     },
     {
       "Original": " where they're neither within the ",
-      "Translation": "，既不在"
+      "Translation": "\uff0c\u65e2\u4e0d\u5728"
     },
     {
       "Original": " nor the ",
-      "Translation": "，也不作为"
+      "Translation": "\uff0c\u4e5f\u4e0d\u4f5c\u4e3a"
     },
     {
       "Original": " outside of",
-      "Translation": "，且不在"
+      "Translation": "\uff0c\u4e14\u4e0d\u5728"
     },
     {
       "Original": " within the",
-      "Translation": "，且在"
+      "Translation": "\uff0c\u4e14\u5728"
     },
     {
       "Original": " outside the",
-      "Translation": "，且不在"
+      "Translation": "\uff0c\u4e14\u4e0d\u5728"
     },
     {
       "Original": " or as the",
-      "Translation": "内，或作为"
+      "Translation": "\u5185\uff0c\u6216\u4f5c\u4e3a"
+    },
+    {
+      "Original": " of a",
+      "Translation": "\uFF0C\u9A7B\u7559\u5728"
+    },
+    {
+      "Original": "become obsessed with the idea of",
+      "Translation": "\u4F1A\u75F4\u8FF7\u4E8E"
+    },
+    {
+      "Original": "become obsessed with the idea of ",
+      "Translation": "\u4F1A\u75F4\u8FF7\u4E8E"
+    },
+    {
+      "Original": "All that remains, is of a once-thriving community.",
+      "Translation": "\u8fd9\u91cc\u4ec5\u4f59\u6614\u65e5\u7e41\u8363\u793e\u533a\u7684\u9057\u8ff9\u3002"
+    },
+    {
+      "Original": "Minor Leader",
+      "Translation": "\u5C0F\u90E8\u65CF\u9886\u8896"
+    },
+    {
+      "Original": "Strong Leader",
+      "Translation": "\u5F3A\u52BF\u9886\u8896"
+    },
+    {
+      "Original": "strong Leader",
+      "Translation": "\u5F3A\u52BF\u9886\u8896"
+    },
+    {
+      "Original": "No extra",
+      "Translation": "\u65E0\u989D\u5916"
+    },
+    {
+      "Original": "SUBMISSIVE",
+      "Translation": "\u987A\u4ECE"
+    },
+    {
+      "Original": "DEFIANT",
+      "Translation": "\u6311\u8845"
+    },
+    {
+      "Original": "HOSTILE",
+      "Translation": "\u654C\u5BF9"
+    },
+    {
+      "Original": "DENOUNCE",
+      "Translation": "\u8C34\u8D23"
+    },
+    {
+      "Original": "Make War",
+      "Translation": "\u5BA3\u6218"
+    },
+    {
+      "Original": "Send Emissary",
+      "Translation": "\u6D3E\u9063\u4F7F\u8005"
+    },
+    {
+      "Original": "Send Gift",
+      "Translation": "\u8D60\u9001\u793C\u7269"
+    },
+    {
+      "Original": "No movement remaining.",
+      "Translation": "\u65E0\u5269\u4F59\u79FB\u52A8\u529B\u3002"
+    },
+    {
+      "Original": "No movement remaining",
+      "Translation": "\u65E0\u5269\u4F59\u79FB\u52A8\u529B"
+    },
+    {
+      "Original": "\u65E0\u79FB\u52A8\u529B remaining.",
+      "Translation": "\u65E0\u5269\u4F59\u79FB\u52A8\u529B\u3002"
+    },
+    {
+      "Original": "\u79FB\u52A8\u529B remaining.",
+      "Translation": "\u5269\u4F59\u79FB\u52A8\u529B\u3002"
+    },
+    {
+      "Original": "\u65E0\u79FB\u52A8\u529B remaining",
+      "Translation": "\u65E0\u5269\u4F59\u79FB\u52A8\u529B"
+    },
+    {
+      "Original": "This Army is resting.",
+      "Translation": "\u8BE5\u519B\u961F\u6B63\u5728\u4F11\u6574\u3002"
+    },
+    {
+      "Original": "This Army is encamped",
+      "Translation": "\u8BE5\u519B\u961F\u6B63\u5728\u9A7B\u8425"
+    },
+    {
+      "Original": "Already ",
+      "Translation": "\u5DF2"
+    },
+    {
+      "Original": "Caravan has arrived!",
+      "Translation": "\u5546\u961F\u5DF2\u62B5\u8FBE\uFF01"
+    },
+    {
+      "Original": "Caravan",
+      "Translation": "\u5546\u961F"
+    },
+    {
+      "Original": "Late March",
+      "Translation": "\u4E09\u6708\u4E0B\u65EC"
+    },
+    {
+      "Original": "Late June",
+      "Translation": "\u516D\u6708\u4E0B\u65EC"
+    },
+    {
+      "Original": "Late September",
+      "Translation": "\u4E5D\u6708\u4E0B\u65EC"
+    },
+    {
+      "Original": "Coal Deposits",
+      "Translation": "\u7164\u77FF\u5E8A"
+    },
+    {
+      "Original": "Coal Deposit",
+      "Translation": "\u7164\u77FF\u5E8A"
+    },
+    {
+      "Original": "Bandit Stronghold",
+      "Translation": "\u5F3A\u76D7\u8425\u5730"
+    },
+    {
+      "Original": "Bandit Leader",
+      "Translation": "\u5F3A\u76D7\u8425\u5730\u5934\u76EE"
+    },
+    {
+      "Original": "\u5F3A\u76D7Leader",
+      "Translation": "\u5F3A\u76D7\u8425\u5730\u5934\u76EE"
+    },
+    {
+      "Original": "\u532A\u5E2ELeader",
+      "Translation": "\u5F3A\u76D7\u8425\u5730\u5934\u76EE"
+    },
+    {
+      "Original": "Pillage Bandits",
+      "Translation": "\u52AB\u63A0\u5F3A\u76D7\u8425\u5730"
+    },
+    {
+      "Original": "\u4E00\u4E2ABandit\u5F3A\u76D7\u8425\u5730",
+      "Translation": "\u4E00\u4E2A\u5F3A\u76D7\u8425\u5730"
+    },
+    {
+      "Original": "\u4E00\u4E2ABandit \u5F3A\u76D7\u8425\u5730",
+      "Translation": "\u4E00\u4E2A\u5F3A\u76D7\u8425\u5730"
+    },
+    {
+      "Original": "\u52AB\u63A0Bandits",
+      "Translation": "\u52AB\u63A0\u5F3A\u76D7\u8425\u5730"
+    },
+    {
+      "Original": "This ",
+      "Translation": "\u8BE5"
+    },
+    {
+      "Original": "this ",
+      "Translation": "\u672C"
+    },
+    {
+      "Original": "No ",
+      "Translation": "\u65E0"
+    },
+    {
+      "Original": "Bandits",
+      "Translation": "\u5F3A\u76D7\u8425\u5730"
+    },
+    {
+      "Original": "Bandit",
+      "Translation": "\u5F3A\u76D7\u8425\u5730"
+    },
+    {
+      "Original": "\u532A\u5E2E",
+      "Translation": "\u5F3A\u76D7\u8425\u5730"
+    },
+    {
+      "Original": "\u5F3A\u76D7",
+      "Translation": "\u5F3A\u76D7\u8425\u5730"
+    },
+    {
+      "Original": "Settlement",
+      "Translation": "\u5b9a\u5c45\u70b9"
+    },
+    {
+      "Original": "Pillaging",
+      "Translation": "\u52ab\u63a0\u4e2d"
+    },
+    {
+      "Original": "Pillage",
+      "Translation": "\u52ab\u63a0"
+    },
+    {
+      "Original": "turns",
+      "Translation": "\u56de\u5408"
+    },
+    {
+      "Original": "turn",
+      "Translation": "\u56de\u5408"
     },
     {
       "Original": "seafaring",
-      "Translation": "航海"
+      "Translation": "\u822a\u6d77"
     },
     {
       "Original": "Berry Patches can be",
-      "Translation": "浆果丛可被"
+      "Translation": "\u6d46\u679c\u4e1b\u53ef\u88ab"
     },
     {
       "Original": "This is a particularly large patch!",
-      "Translation": "这是一大片浆果丛！"
+      "Translation": "\u8fd9\u662f\u4e00\u5927\u7247\u6d46\u679c\u4e1b\uff01"
     },
     {
       "Original": "This is a particularly large field!",
-      "Translation": "这是一大片田地！"
+      "Translation": "\u8fd9\u662f\u4e00\u5927\u7247\u7530\u5730\uff01"
+    },
+    {
+      "Original": "This is a particularly large grove!",
+      "Translation": "\u8fd9\u662f\u4e00\u5927\u7247\u679c\u6811\u6797\uff01"
+    },
+    {
+      "Original": "This is among the largest groves ever found!",
+      "Translation": "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u679c\u6811\u6797\u4e4b\u4e00\uff01"
+    },
+    {
+      "Original": "This is a particularly large deposit!",
+      "Translation": "\u8fd9\u662f\u4e00\u4e2a\u7279\u522b\u5927\u7684\u8d44\u6e90\u70b9\uff01"
+    },
+    {
+      "Original": "This is among the largest deposits ever found!",
+      "Translation": "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u8d44\u6e90\u70b9\u4e4b\u4e00\uff01"
+    },
+    {
+      "Original": "This is a particularly large hive!",
+      "Translation": "\u8fd9\u662f\u4e00\u5ea7\u7279\u522b\u5927\u7684\u8702\u5de2\uff01"
+    },
+    {
+      "Original": "This is among the largest hives ever found!",
+      "Translation": "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u8702\u5de2\u4e4b\u4e00\uff01"
+    },
+    {
+      "Original": "This is among the largest patches ever found!",
+      "Translation": "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u6d46\u679c\u4e1b\u4e4b\u4e00\uff01"
+    },
+    {
+      "Original": "This is a particularly large school!",
+      "Translation": "\u8fd9\u662f\u4e00\u5927\u7fa4\u9c7c\uff01"
+    },
+    {
+      "Original": "This is among the largest schools ever found!",
+      "Translation": "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u9c7c\u7fa4\u4e4b\u4e00\uff01"
+    },
+    {
+      "Original": "This is one of the largest meteorites ever found!",
+      "Translation": "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u9668\u77f3\u4e4b\u4e00\uff01"
+    },
+    {
+      "Original": "This is a truly massive meteorite, possibly the largest in history!",
+      "Translation": "\u8fd9\u662f\u4e00\u9897\u771f\u6b63\u5de8\u5927\u7684\u9668\u77f3\uff0c\u53ef\u80fd\u662f\u53f2\u4e0a\u6700\u5927\u7684\u9668\u77f3\uff01"
     },
     {
       "Original": "Fields of Wheat can be",
-      "Translation": "小麦田可被"
+      "Translation": "\u5c0f\u9ea6\u7530\u53ef\u88ab"
     },
     {
       "Original": "Beehives can be",
-      "Translation": "蜂巢可被"
+      "Translation": "\u8702\u5de2\u53ef\u88ab"
     },
     {
       "Original": "Herds of",
-      "Translation": "一群"
+      "Translation": "\u4e00\u7fa4"
     },
     {
       "Original": " can be",
-      "Translation": "可被"
+      "Translation": "\u53ef\u88ab"
     },
     {
-      "Original": "、 for",
-      "Translation": "、获得"
+      "Original": "\u3001 for",
+      "Translation": "\u3001\u83b7\u5f97"
     },
     {
       "Original": " for",
-      "Translation": "，获得"
+      "Translation": "\uff0c\u83b7\u5f97"
     },
     {
       "Original": "and then used for other purposes by",
-      "Translation": "之后可由"
+      "Translation": "\u4e4b\u540e\u53ef\u7531"
     },
     {
       "Original": "It may still contain useful supplies, and can be investigated by an ",
-      "Translation": "其中可能仍有有用的物资，可由"
+      "Translation": "\u5176\u4e2d\u53ef\u80fd\u4ecd\u6709\u6709\u7528\u7684\u7269\u8d44\uff0c\u53ef\u7531"
     },
     {
       "Original": "It may still contain useful supplies, and can be investigated by a",
-      "Translation": "其中可能仍有有用的物资，可由"
+      "Translation": "\u5176\u4e2d\u53ef\u80fd\u4ecd\u6709\u6709\u7528\u7684\u7269\u8d44\uff0c\u53ef\u7531"
     },
     {
       "Original": "All that remains of a once-magnificent Roman City, abandoned",
-      "Translation": "昔日辉煌的罗马城市如今仅剩残迹，"
+      "Translation": "\u6614\u65e5\u8f89\u714c\u7684\u7f57\u9a6c\u57ce\u5e02\u5982\u4eca\u4ec5\u5269\u6b8b\u8ff9\uff0c"
     },
     {
       "Original": "only recently.",
-      "Translation": "最近才被遗弃。"
-    },
-    {
-      "Original": "on them.",
-      "Translation": "在其上。"
+      "Translation": "\u6700\u8fd1\u624d\u88ab\u9057\u5f03\u3002"
     },
     {
       "Original": "This is a particularly large herd!",
-      "Translation": "这是一大群动物！"
+      "Translation": "\u8fd9\u662f\u4e00\u5927\u7fa4\u52a8\u7269\uff01"
     },
     {
       "Original": "This is among the largest herds ever found!",
-      "Translation": "这是迄今发现的最大兽群之一！"
+      "Translation": "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u517d\u7fa4\u4e4b\u4e00\uff01"
     },
     {
       "Original": " by a",
-      "Translation": "，由"
+      "Translation": "\uff0c\u7531"
     },
     {
       "Original": " or",
-      "Translation": "或"
-    },
-    {
-      "Original": " to",
-      "Translation": "以"
+      "Translation": "\u6216"
     },
     {
       "Original": "Wheat can no longer be Harvested when a",
-      "Translation": "小麦无法再采收，若"
+      "Translation": "\u5c0f\u9ea6\u65e0\u6cd5\u518d\u91c7\u6536\uff0c\u82e5"
     },
     {
-      "Original": "unable以 spend the winter inside the",
-      "Translation": "无法在冬季留在"
+      "Original": "unable\u4ee5 spend the winter inside the",
+      "Translation": "\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728"
     },
     {
       "Original": " becomes",
-      "Translation": "变为"
+      "Translation": "\u53d8\u4e3a"
     },
     {
       "Original": "(+1 in ",
-      "Translation": "(+1，还需 "
+      "Translation": "(+1\uff0c\u8fd8\u9700 "
     },
     {
-      "Original": " (苦闷 Trait)",
-      "Translation": "（苦闷特质）"
+      "Original": " (\u82e6\u95f7 Trait)",
+      "Translation": "\uff08\u82e6\u95f7\u7279\u8d28\uff09"
     },
     {
-      "Original": "When 不悦...",
-      "Translation": "当不悦时……"
+      "Original": "When \u4e0d\u60a6...",
+      "Translation": "\u5f53\u4e0d\u60a6\u65f6\u2026\u2026"
     },
     {
-      "Original": "When 高兴...",
-      "Translation": "当高兴时……"
+      "Original": "When \u9ad8\u5174...",
+      "Translation": "\u5f53\u9ad8\u5174\u65f6\u2026\u2026"
     },
     {
       "Original": " from being ",
-      "Translation": "，因为"
+      "Translation": "\uff0c\u56e0\u4e3a"
     },
     {
       "Original": "Ennobled",
-      "Translation": "已册封"
+      "Translation": "\u5df2\u518c\u5c01"
     },
     {
       "Original": "Enabled",
-      "Translation": "已启用"
+      "Translation": "\u5df2\u542f\u7528"
     },
     {
       "Original": " from being",
-      "Translation": "，因为"
+      "Translation": "\uff0c\u56e0\u4e3a"
     },
     {
       "Original": " from being Ennobled",
-      "Translation": "，原因：已册封"
+      "Translation": "\uff0c\u539f\u56e0\uff1a\u5df2\u518c\u5c01"
     },
     {
       "Original": " from being Enabled",
-      "Translation": "，原因：已启用"
+      "Translation": "\uff0c\u539f\u56e0\uff1a\u5df2\u542f\u7528"
+    },
+    {
+      "Original": "The Goths",
+      "Translation": "\u54e5\u7279\u4eba"
+    },
+    {
+      "Original": "The Huns",
+      "Translation": "\u5308\u4eba"
+    },
+    {
+      "Original": "The Vandals",
+      "Translation": "\u6c6a\u8fbe\u5c14\u4eba"
+    },
+    {
+      "Original": "The Alemanni",
+      "Translation": "\u963f\u52d2\u66fc\u5c3c\u4eba"
+    },
+    {
+      "Original": "The Picts",
+      "Translation": "\u76ae\u514b\u7279\u4eba"
+    },
+    {
+      "Original": "The Lombards",
+      "Translation": "\u4f26\u5df4\u7b2c\u4eba"
+    },
+    {
+      "Original": "The Franks",
+      "Translation": "\u6cd5\u5170\u514b\u4eba"
+    },
+    {
+      "Original": "The Slavs",
+      "Translation": "\u65af\u62c9\u592b\u4eba"
+    },
+    {
+      "Original": "The Saxons",
+      "Translation": "\u6492\u514b\u900a\u4eba"
+    },
+    {
+      "Original": "The Avars",
+      "Translation": "\u963f\u74e6\u5c14\u4eba"
+    },
+    {
+      "Original": "The Suebi",
+      "Translation": "\u82cf\u7ef4\u6bd4\u4eba"
+    },
+    {
+      "Original": "The Frisii",
+      "Translation": "\u5f17\u91cc\u897f\u4eba"
+    },
+    {
+      "Original": "The Jutes",
+      "Translation": "\u6731\u7279\u4eba"
+    },
+    {
+      "Original": "The Burgundians",
+      "Translation": "\u52c3\u826e\u7b2c\u4eba"
+    },
+    {
+      "Original": "The Scirii",
+      "Translation": "\u65af\u57fa\u91cc\u4eba"
+    },
+    {
+      "Original": "The Bulgars",
+      "Translation": "\u4fdd\u52a0\u5c14\u4eba"
+    },
+    {
+      "Original": "The Thuringians",
+      "Translation": "\u56fe\u6797\u6839\u4eba"
+    },
+    {
+      "Original": "The Tencteri",
+      "Translation": "\u5766\u514b\u7279\u91cc\u4eba"
+    },
+    {
+      "Original": "The Cherusci",
+      "Translation": "\u5207\u9c81\u897f\u4eba"
+    },
+    {
+      "Original": "The Hermunduri",
+      "Translation": "\u8d6b\u5c14\u8499\u675c\u91cc\u4eba"
+    },
+    {
+      "Original": "The Chatti",
+      "Translation": "\u67e5\u8482\u4eba"
+    },
+    {
+      "Original": "The Rugii",
+      "Translation": "\u9c81\u5409\u4eba"
+    },
+    {
+      "Original": "The Heruli",
+      "Translation": "\u8d6b\u9c81\u5229\u4eba"
+    },
+    {
+      "Original": "The Gepids",
+      "Translation": "\u683c\u76ae\u5fb7\u4eba"
+    },
+    {
+      "Original": "The Sarmatians",
+      "Translation": "\u8428\u5c14\u9a6c\u7279\u4eba"
+    },
+    {
+      "Original": "The Bavarians",
+      "Translation": "\u5df4\u4f10\u5229\u4e9a\u4eba"
+    },
+    {
+      "Original": "The Khazars",
+      "Translation": "\u53ef\u8428\u4eba"
+    },
+    {
+      "Original": "The Berbers",
+      "Translation": "\u67cf\u67cf\u5c14\u4eba"
+    },
+    {
+      "Original": "The Angles",
+      "Translation": "\u76ce\u683c\u9c81\u4eba"
+    },
+    {
+      "Original": "The Varangians",
+      "Translation": "\u74e6\u5170\u5409\u4eba"
+    },
+    {
+      "Original": "The Magyars",
+      "Translation": "\u9a6c\u624e\u5c14\u4eba"
+    },
+    {
+      "Original": "The Danes",
+      "Translation": "\u4e39\u9ea6\u4eba"
+    },
+    {
+      "Original": "The Thervingi",
+      "Translation": "\u7279\u5c14\u6587\u5409\u4eba"
+    },
+    {
+      "Original": "The Greuthungi",
+      "Translation": "\u683c\u9c81\u901a\u5409\u4eba"
+    },
+    {
+      "Original": "The Bastarnae",
+      "Translation": "\u5df4\u65af\u5854\u5948\u4eba"
+    },
+    {
+      "Original": "The Peucini",
+      "Translation": "\u4f69\u4e4c\u5947\u5c3c\u4eba"
+    },
+    {
+      "Original": "The Scythians",
+      "Translation": "\u65af\u57fa\u6cf0\u4eba"
+    },
+    {
+      "Original": "The Alans",
+      "Translation": "\u963f\u5170\u4eba"
+    },
+    {
+      "Original": "The Getae",
+      "Translation": "\u76d6\u5854\u4eba"
+    },
+    {
+      "Original": "The Dacians",
+      "Translation": "\u8fbe\u5951\u4e9a\u4eba"
+    },
+    {
+      "Original": "The Jats",
+      "Translation": "\u8d3e\u7279\u4eba"
+    },
+    {
+      "Original": "The Geats",
+      "Translation": "\u8036\u963f\u7279\u4eba"
+    },
+    {
+      "Original": "The Massagetae",
+      "Translation": "\u9a6c\u8428\u9769\u592a\u4eba"
+    },
+    {
+      "Original": "The Aspasioi",
+      "Translation": "\u963f\u65af\u5e15\u897f\u5965\u4f0a\u4eba"
+    },
+    {
+      "Original": "The Dahae",
+      "Translation": "\u8fbe\u8d6b\u4eba"
+    },
+    {
+      "Original": "The Issedones",
+      "Translation": "\u4f0a\u585e\u591a\u6d85\u65af\u4eba"
+    },
+    {
+      "Original": "The Wusun",
+      "Translation": "\u4e4c\u5b59\u4eba"
+    },
+    {
+      "Original": "The Sacae",
+      "Translation": "\u585e\u8fe6\u4eba"
+    },
+    {
+      "Original": "The Varini",
+      "Translation": "\u74e6\u91cc\u5c3c\u4eba"
+    },
+    {
+      "Original": "The Carini",
+      "Translation": "\u5361\u91cc\u5c3c\u4eba"
+    },
+    {
+      "Original": "The Gutones",
+      "Translation": "\u53e4\u6258\u5185\u65af\u4eba"
+    },
+    {
+      "Original": "The Cimbri",
+      "Translation": "\u8f9b\u5e03\u91cc\u4eba"
+    },
+    {
+      "Original": "The Teutons",
+      "Translation": "\u6761\u987f\u4eba"
+    },
+    {
+      "Original": "The Chauci",
+      "Translation": "\u8003\u57fa\u4eba"
+    },
+    {
+      "Original": "The Lemovii",
+      "Translation": "\u83b1\u83ab\u7ef4\u4eba"
+    },
+    {
+      "Original": "The Quadi",
+      "Translation": "\u5938\u8fea\u4eba"
+    },
+    {
+      "Original": "The Iazyges",
+      "Translation": "\u4f0a\u963f\u9f50\u683c\u65af\u4eba"
+    },
+    {
+      "Original": "The Marcomanni",
+      "Translation": "\u9a6c\u79d1\u66fc\u5c3c\u4eba"
+    },
+    {
+      "Original": "The Costoboci",
+      "Translation": "\u79d1\u65af\u6258\u535a\u5947\u4eba"
+    },
+    {
+      "Original": "The Hasdingi",
+      "Translation": "\u54c8\u65af\u4e01\u5409\u4eba"
+    },
+    {
+      "Original": "The Lacringi",
+      "Translation": "\u62c9\u514b\u6797\u5409\u4eba"
+    },
+    {
+      "Original": "The Buri",
+      "Translation": "\u5e03\u91cc\u4eba"
+    },
+    {
+      "Original": "The Cotini",
+      "Translation": "\u79d1\u8482\u5c3c\u4eba"
+    },
+    {
+      "Original": "The Carpi",
+      "Translation": "\u5361\u5c14\u76ae\u4eba"
+    },
+    {
+      "Original": "The Taifali",
+      "Translation": "\u6cf0\u6cd5\u5229\u4eba"
+    },
+    {
+      "Original": "The Victohali",
+      "Translation": "\u7ef4\u514b\u6258\u54c8\u5229\u4eba"
+    },
+    {
+      "Original": "The Salians",
+      "Translation": "\u8428\u5229\u5b89\u4eba"
+    },
+    {
+      "Original": "Default is +0.",
+      "Translation": "\u9ed8\u8ba4\u503c\u4e3a+0\u3002"
+    },
+    {
+      "Original": "Default is ",
+      "Translation": "\u9ed8\u8ba4\u503c\u4e3a"
+    },
+    {
+      "Original": "\u2022 Default is +0.",
+      "Translation": "\u2022 \u9ed8\u8ba4\u503c\u4e3a+0\u3002"
+    },
+    {
+      "Original": "\u2022 Default is ",
+      "Translation": "\u2022 \u9ed8\u8ba4\u503c\u4e3a"
+    },
+    {
+      "Original": "-1 from Relationship Level.",
+      "Translation": "-1\u6765\u81ea\u5173\u7cfb\u7b49\u7ea7\u3002"
+    },
+    {
+      "Original": "-1 from ",
+      "Translation": "-1\u6765\u81ea"
+    },
+    {
+      "Original": "+0 from Influence.",
+      "Translation": "+0\u6765\u81ea\u5f71\u54cd\u529b\u3002"
+    },
+    {
+      "Original": "+0 from ",
+      "Translation": "+0\u6765\u81ea"
+    },
+    {
+      "Original": " from ",
+      "Translation": "\u6765\u81ea"
+    },
+    {
+      "Original": "from ",
+      "Translation": "\u6765\u81ea"
+    },
+    {
+      "Original": "+0 from Reputation.",
+      "Translation": "+0\u6765\u81ea\u58f0\u671b\u3002"
+    },
+    {
+      "Original": " in.",
+      "Translation": "\u3002"
+    },
+    {
+      "Original": "\u81ea\u5df1\u5efa\u9020\u5efa\u7b51\u964d\u4f4e",
+      "Translation": "\uff08\u7531\u81ea\u5df1\u5efa\u9020\u7684\u5efa\u7b51\uff09\u964d\u4f4e"
+    },
+    {
+      "Original": ", suffering differing religious beliefs.",
+      "Translation": "\uff0c\u56e0\u5b97\u6559\u4fe1\u4ef0\u4e0d\u540c\u800c\u627f\u53d7\u60e9\u7f5a\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 1 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc71\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 1 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc71\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 2 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc72\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 2 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc72\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 3 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc73\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 3 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc73\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 4 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc74\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 4 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc74\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 5 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc75\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 5 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc75\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 6 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc76\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 6 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc76\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 7 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc77\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 7 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc77\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 8 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc78\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 8 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc78\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 9 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc79\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 9 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc79\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 10 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc710\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 10 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc710\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 11 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc711\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 11 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc711\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (within 12 tiles).",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc712\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (within 12 tiles).",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc712\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", shared religious beliefs.",
+      "Translation": "\uff0c\u56e0\u5b97\u6559\u4fe1\u4ef0\u76f8\u540c\u3002"
+    },
+    {
+      "Original": "shared religious beliefs.",
+      "Translation": "\u56e0\u5b97\u6559\u4fe1\u4ef0\u76f8\u540c\u3002"
+    },
+    {
+      "Original": "suffering differing religious beliefs.",
+      "Translation": "\u56e0\u5b97\u6559\u4fe1\u4ef0\u4e0d\u540c\u800c\u627f\u53d7\u60e9\u7f5a\u3002"
+    },
+    {
+      "Original": "differing religious beliefs.",
+      "Translation": "\u56e0\u5b97\u6559\u4fe1\u4ef0\u4e0d\u540c\u800c\u627f\u53d7\u60e9\u7f5a\u3002"
+    },
+    {
+      "Original": "\u2022 -1, suffering differing religious beliefs.",
+      "Translation": "\u2022 -1\uff0c\u56e0\u5b97\u6559\u4fe1\u4ef0\u4e0d\u540c\u800c\u627f\u53d7\u60e9\u7f5a\u3002"
+    },
+    {
+      "Original": "Goths",
+      "Translation": "\u54e5\u7279\u4eba"
+    },
+    {
+      "Original": "Huns",
+      "Translation": "\u5308\u4eba"
+    },
+    {
+      "Original": "Vandals",
+      "Translation": "\u6c6a\u8fbe\u5c14\u4eba"
+    },
+    {
+      "Original": "Alemanni",
+      "Translation": "\u963f\u52d2\u66fc\u5c3c\u4eba"
+    },
+    {
+      "Original": "Picts",
+      "Translation": "\u76ae\u514b\u7279\u4eba"
+    },
+    {
+      "Original": "Lombards",
+      "Translation": "\u4f26\u5df4\u7b2c\u4eba"
+    },
+    {
+      "Original": "Franks",
+      "Translation": "\u6cd5\u5170\u514b\u4eba"
+    },
+    {
+      "Original": "Slavs",
+      "Translation": "\u65af\u62c9\u592b\u4eba"
+    },
+    {
+      "Original": "Saxons",
+      "Translation": "\u6492\u514b\u900a\u4eba"
+    },
+    {
+      "Original": "Avars",
+      "Translation": "\u963f\u74e6\u5c14\u4eba"
+    },
+    {
+      "Original": "Suebi",
+      "Translation": "\u82cf\u7ef4\u6bd4\u4eba"
+    },
+    {
+      "Original": "Frisii",
+      "Translation": "\u5f17\u91cc\u897f\u4eba"
+    },
+    {
+      "Original": "Jutes",
+      "Translation": "\u6731\u7279\u4eba"
+    },
+    {
+      "Original": "Burgundians",
+      "Translation": "\u52c3\u826e\u7b2c\u4eba"
+    },
+    {
+      "Original": "Scirii",
+      "Translation": "\u65af\u57fa\u91cc\u4eba"
+    },
+    {
+      "Original": "Bulgars",
+      "Translation": "\u4fdd\u52a0\u5c14\u4eba"
+    },
+    {
+      "Original": "Thuringians",
+      "Translation": "\u56fe\u6797\u6839\u4eba"
+    },
+    {
+      "Original": "Tencteri",
+      "Translation": "\u5766\u514b\u7279\u91cc\u4eba"
+    },
+    {
+      "Original": "Cherusci",
+      "Translation": "\u5207\u9c81\u897f\u4eba"
+    },
+    {
+      "Original": "Hermunduri",
+      "Translation": "\u8d6b\u5c14\u8499\u675c\u91cc\u4eba"
+    },
+    {
+      "Original": "Chatti",
+      "Translation": "\u67e5\u8482\u4eba"
+    },
+    {
+      "Original": "Rugii",
+      "Translation": "\u9c81\u5409\u4eba"
+    },
+    {
+      "Original": "Heruli",
+      "Translation": "\u8d6b\u9c81\u5229\u4eba"
+    },
+    {
+      "Original": "Gepids",
+      "Translation": "\u683c\u76ae\u5fb7\u4eba"
+    },
+    {
+      "Original": "Sarmatians",
+      "Translation": "\u8428\u5c14\u9a6c\u7279\u4eba"
+    },
+    {
+      "Original": "Bavarians",
+      "Translation": "\u5df4\u4f10\u5229\u4e9a\u4eba"
+    },
+    {
+      "Original": "Khazars",
+      "Translation": "\u53ef\u8428\u4eba"
+    },
+    {
+      "Original": "Berbers",
+      "Translation": "\u67cf\u67cf\u5c14\u4eba"
+    },
+    {
+      "Original": "Angles",
+      "Translation": "\u76ce\u683c\u9c81\u4eba"
+    },
+    {
+      "Original": "Varangians",
+      "Translation": "\u74e6\u5170\u5409\u4eba"
+    },
+    {
+      "Original": "Magyars",
+      "Translation": "\u9a6c\u624e\u5c14\u4eba"
+    },
+    {
+      "Original": "Danes",
+      "Translation": "\u4e39\u9ea6\u4eba"
+    },
+    {
+      "Original": "Thervingi",
+      "Translation": "\u7279\u5c14\u6587\u5409\u4eba"
+    },
+    {
+      "Original": "Greuthungi",
+      "Translation": "\u683c\u9c81\u901a\u5409\u4eba"
+    },
+    {
+      "Original": "Bastarnae",
+      "Translation": "\u5df4\u65af\u5854\u5948\u4eba"
+    },
+    {
+      "Original": "Peucini",
+      "Translation": "\u4f69\u4e4c\u5947\u5c3c\u4eba"
+    },
+    {
+      "Original": "Scythians",
+      "Translation": "\u65af\u57fa\u6cf0\u4eba"
+    },
+    {
+      "Original": "Alans",
+      "Translation": "\u963f\u5170\u4eba"
+    },
+    {
+      "Original": "Getae",
+      "Translation": "\u76d6\u5854\u4eba"
+    },
+    {
+      "Original": "Dacians",
+      "Translation": "\u8fbe\u5951\u4e9a\u4eba"
+    },
+    {
+      "Original": "Jats",
+      "Translation": "\u8d3e\u7279\u4eba"
+    },
+    {
+      "Original": "Geats",
+      "Translation": "\u8036\u963f\u7279\u4eba"
+    },
+    {
+      "Original": "Massagetae",
+      "Translation": "\u9a6c\u8428\u9769\u592a\u4eba"
+    },
+    {
+      "Original": "Aspasioi",
+      "Translation": "\u963f\u65af\u5e15\u897f\u5965\u4f0a\u4eba"
+    },
+    {
+      "Original": "Dahae",
+      "Translation": "\u8fbe\u8d6b\u4eba"
+    },
+    {
+      "Original": "Issedones",
+      "Translation": "\u4f0a\u585e\u591a\u6d85\u65af\u4eba"
+    },
+    {
+      "Original": "Wusun",
+      "Translation": "\u4e4c\u5b59\u4eba"
+    },
+    {
+      "Original": "Sacae",
+      "Translation": "\u585e\u8fe6\u4eba"
+    },
+    {
+      "Original": "Varini",
+      "Translation": "\u74e6\u91cc\u5c3c\u4eba"
+    },
+    {
+      "Original": "Carini",
+      "Translation": "\u5361\u91cc\u5c3c\u4eba"
+    },
+    {
+      "Original": "Gutones",
+      "Translation": "\u53e4\u6258\u5185\u65af\u4eba"
+    },
+    {
+      "Original": "Cimbri",
+      "Translation": "\u8f9b\u5e03\u91cc\u4eba"
+    },
+    {
+      "Original": "Teutons",
+      "Translation": "\u6761\u987f\u4eba"
+    },
+    {
+      "Original": "Chauci",
+      "Translation": "\u8003\u57fa\u4eba"
+    },
+    {
+      "Original": "Lemovii",
+      "Translation": "\u83b1\u83ab\u7ef4\u4eba"
+    },
+    {
+      "Original": "Quadi",
+      "Translation": "\u5938\u8fea\u4eba"
+    },
+    {
+      "Original": "Iazyges",
+      "Translation": "\u4f0a\u963f\u9f50\u683c\u65af\u4eba"
+    },
+    {
+      "Original": "Marcomanni",
+      "Translation": "\u9a6c\u79d1\u66fc\u5c3c\u4eba"
+    },
+    {
+      "Original": "Costoboci",
+      "Translation": "\u79d1\u65af\u6258\u535a\u5947\u4eba"
+    },
+    {
+      "Original": "Hasdingi",
+      "Translation": "\u54c8\u65af\u4e01\u5409\u4eba"
+    },
+    {
+      "Original": "Lacringi",
+      "Translation": "\u62c9\u514b\u6797\u5409\u4eba"
+    },
+    {
+      "Original": "Buri",
+      "Translation": "\u5e03\u91cc\u4eba"
+    },
+    {
+      "Original": "Cotini",
+      "Translation": "\u79d1\u8482\u5c3c\u4eba"
+    },
+    {
+      "Original": "Carpi",
+      "Translation": "\u5361\u5c14\u76ae\u4eba"
+    },
+    {
+      "Original": "Taifali",
+      "Translation": "\u6cf0\u6cd5\u5229\u4eba"
+    },
+    {
+      "Original": "Victohali",
+      "Translation": "\u7ef4\u514b\u6258\u54c8\u5229\u4eba"
+    },
+    {
+      "Original": "Salians",
+      "Translation": "\u8428\u5229\u5b89\u4eba"
+    },
+    {
+      "Original": "Innate",
+      "Translation": "先天"
+    },
+    {
+      "Original": " Trait",
+      "Translation": " 特质"
+    },
+    {
+      "Original": "The",
+      "Translation": ""
+    },
+    {
+      "Original": "As",
+      "Translation": "当"
+    },
+    {
+      "Original": "Old equipment lies scattered about.",
+      "Translation": "旧装备散落各处。"
+    },
+    {
+      "Original": "Old equipment lies scattered about",
+      "Translation": "旧装备散落各处"
+    },
+    {
+      "Original": "location of a major battle.",
+      "Translation": "一场大战的地点。"
+    },
+    {
+      "Original": "location of a major battle",
+      "Translation": "一场大战的地点"
     }
   ],
   "RichTextFragments": [
     {
+      "Original": "become obsessed with the idea of",
+      "Translation": "会痴迷于"
+    },
+    {
       "Original": "[Profession|PROFESSION] in the [LIVESTOCK] [Discipline|DISCIPLINE]",
-      "Translation": "[Profession|PROFESSION]，所属为[LIVESTOCK][Discipline|DISCIPLINE]"
+      "Translation": "[Profession|PROFESSION]\uff0c\u6240\u5c5e\u4e3a[LIVESTOCK][Discipline|DISCIPLINE]"
     },
     {
       "Original": "[Profession|PROFESSION] in the [AGRICULTURE] [Discipline|DISCIPLINE]",
-      "Translation": "[Profession|PROFESSION]，所属为[AGRICULTURE][Discipline|DISCIPLINE]"
+      "Translation": "[Profession|PROFESSION]\uff0c\u6240\u5c5e\u4e3a[AGRICULTURE][Discipline|DISCIPLINE]"
     },
     {
       "Original": "[Profession|PROFESSION] in the [CRAFTING] [Discipline|DISCIPLINE]",
-      "Translation": "[Profession|PROFESSION]\uFF0C\u6240\u5C5E\u4E3A[CRAFTING][Discipline|DISCIPLINE]"
+      "Translation": "[Profession|PROFESSION]\uff0c\u6240\u5c5e\u4e3a[CRAFTING][Discipline|DISCIPLINE]"
     },
     {
       "Original": "[Profession|PROFESSION] in the [HONOR] [Discipline|DISCIPLINE]",
-      "Translation": "[Profession|PROFESSION]，所属为[HONOR][Discipline|DISCIPLINE]"
+      "Translation": "[Profession|PROFESSION]\uff0c\u6240\u5c5e\u4e3a[HONOR][Discipline|DISCIPLINE]"
     },
     {
       "Original": "[Profession|PROFESSION] in the [METALWORKING] [Discipline|DISCIPLINE]",
-      "Translation": "[Profession|PROFESSION]，所属为[METALWORKING][Discipline|DISCIPLINE]"
+      "Translation": "[Profession|PROFESSION]\uff0c\u6240\u5c5e\u4e3a[METALWORKING][Discipline|DISCIPLINE]"
     },
     {
       "Original": "[Profession|PROFESSION] in the [DISCOVERY] [Discipline|DISCIPLINE]",
-      "Translation": "[Profession|PROFESSION]，所属为[DISCOVERY][Discipline|DISCIPLINE]"
+      "Translation": "[Profession|PROFESSION]\uff0c\u6240\u5c5e\u4e3a[DISCOVERY][Discipline|DISCIPLINE]"
+    },
+    {
+      "Original": "[Relationship Level|RL].",
+      "Translation": "[\u5173\u7cfb\u7b49\u7ea7|RL]\u3002"
+    },
+    {
+      "Original": "[Influence|INFLUENCE].",
+      "Translation": "[\u5f71\u54cd\u529b|INFLUENCE]\u3002"
+    },
+    {
+      "Original": "[Reputation|REPUTATION].",
+      "Translation": "[\u58f0\u8a89|REPUTATION]\u3002"
+    },
+    {
+      "Original": "become obsessed with the idea of ",
+      "Translation": "\u4f1a\u75f4\u8ff7\u4e8e"
+    },
+    {
+      "Original": "[SCORE]",
+      "Translation": "\u5f97\u5206"
+    },
+    {
+      "Original": "[TREASURE]",
+      "Translation": "\u8d22\u5bcc"
+    },
+    {
+      "Original": "[HORSES]",
+      "Translation": "\u9a6c\u5339"
+    },
+    {
+      "Original": "[WEAPONS]",
+      "Translation": "\u6b66\u5668"
+    },
+    {
+      "Original": "[CARAVAN]",
+      "Translation": "\u5546\u961F"
+    },
+    {
+      "Original": "[COAL]",
+      "Translation": "\u7164"
     }
   ],
   "ConceptDisplay": [
     {
       "ConceptKey": "RESIDENT",
       "Original": "Resident",
-      "Translation": "居民"
+      "Translation": "\u5c45\u6c11"
     },
     {
       "ConceptKey": "ACTIVE",
       "Original": "Active",
-      "Translation": "主动"
+      "Translation": "\u4e3b\u52a8"
     },
     {
       "ConceptKey": "ACTIVE",
       "Original": "Active Profession",
-      "Translation": "主动职业"
+      "Translation": "\u4e3b\u52a8\u804c\u4e1a"
     },
     {
       "ConceptKey": "ACTIVE",
       "Original": "Active Professions",
-      "Translation": "主动职业"
+      "Translation": "\u4e3b\u52a8\u804c\u4e1a"
     },
     {
       "ConceptKey": "LEVEL",
       "Original": "Level",
-      "Translation": "等级"
+      "Translation": "\u7b49\u7ea7"
     },
     {
       "ConceptKey": "LEVEL",
       "Original": "Levels",
-      "Translation": "等级"
+      "Translation": "\u7b49\u7ea7"
     },
     {
       "ConceptKey": "RESOURCE",
       "Original": "Resource",
-      "Translation": "资源"
+      "Translation": "\u8d44\u6e90"
     },
     {
       "ConceptKey": "RESOURCE",
       "Original": "Resources",
-      "Translation": "资源"
+      "Translation": "\u8d44\u6e90"
     },
     {
       "ConceptKey": "SETTLED",
       "Original": "Settled",
-      "Translation": "定居"
+      "Translation": "\u5b9a\u5c45"
     },
     {
       "ConceptKey": "SETTLED",
       "Original": "Settled Profession",
-      "Translation": "定居职业"
+      "Translation": "\u5b9a\u5c45\u804c\u4e1a"
     },
     {
       "ConceptKey": "SETTLED",
       "Original": "Settled Professions",
-      "Translation": "定居职业"
+      "Translation": "\u5b9a\u5c45\u804c\u4e1a"
     },
     {
       "ConceptKey": "UPGRADE",
       "Original": "Upgrade",
-      "Translation": "升级"
+      "Translation": "\u5347\u7ea7"
     },
     {
       "ConceptKey": "UPGRADE",
       "Original": "Upgrades",
-      "Translation": "升级"
+      "Translation": "\u5347\u7ea7"
     },
     {
       "ConceptKey": "WARRIOR",
       "Original": "Warrior",
-      "Translation": "战士"
+      "Translation": "\u6218\u58eb"
     }
   ]
 }

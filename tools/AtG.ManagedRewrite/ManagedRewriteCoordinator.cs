@@ -13,7 +13,7 @@ public sealed record RewriteJobResult(
 
 public static class ManagedRewriteCoordinator
 {
-    private const string CacheVersion = "managed-rewrite-v1-dnlib-4.5.0";
+    private const string CacheVersion = "managed-rewrite-v4-dnlib-4.5.0-human-readable-percent-receiver-guard";
 
     public static async Task<IReadOnlyList<RewriteJobResult>> RunAsync(
         IReadOnlyCollection<RewriteJob> jobs,

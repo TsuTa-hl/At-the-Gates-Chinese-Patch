@@ -2542,6 +2542,7 @@
   <e ntry="TEXT.Description.Population.LargeBonus">显著人口优势</e>
   <e ntry="TEXT.Description.Population.LargePenalty">显著人口劣势</e>
   <e ntry="TEXT.Description.Population.Penalty">人口劣势</e>
+  <e ntry="TEXT.Description.Profession.Collier">炭工可以从[矿物|MINERAL]资源点[采收|HARVEST][COAL]。</e>
   <e ntry="TEXT.Description.Roman">采用罗马式传统。</e>
   <e ntry="TEXT.Description.Stockpile.Bonus">库存优势</e>
   <e ntry="TEXT.Description.Stockpile.LargeBonus">显著库存优势</e>

@@ -3,9 +3,58 @@
 Use the scenario registry for coordinates, setup state, and machine IDs. This
 file defines what to inspect and when a surface may be considered covered.
 
+## Coordinate Verification Gate
+
+- A user screenshot establishes a known defect and the intended control; it
+  does **not** establish a runnable `X`/`Y` pair. Scenario coordinates use the
+  2560 x 1440 harness reference space and must be proven with a current,
+  cursor-marked full-client capture on the same save and interface.
+- Calibrate setup clicks as well as hover points. A setup click is valid only
+  when the requested destination marker is visible (for example, the diplomacy
+  screen), not merely because the frame fingerprint changed.
+- Calibrate a hover by showing the named control and its own tooltip. A nearby
+  tile detail, card body, notification, or title is not a substitute. Capture
+  dimensions, save name, reference coordinate, marker result, and stable
+  target identity in the current handoff before adding a permanent point.
+- If this proof is absent, record `UncalibratedCoordinate` and stop. Such a
+  result is neither a localization pass nor a localization failure, and it
+  must not be used to tune coordinates by repeated screenshot guessing.
+- For ERJ-UUX and any future fixed-save replay, keep calibration in two
+  separate phases: first prove setup destinations (clan screen, diplomacy
+  screen, selected leader), then prove each hover target and its tooltip. A
+  stable absolute mouse trace alone is insufficient. Store no point until the
+  cursor-marked frame contains the named target and the destination-state
+  marker; the 2026-07-30 ERJ-UUX points therefore remain retired.
+
+The 2026-08-01 ERJ-UUX repair session added exact runtime fallbacks for the
+observed Wasteful effect order, the title `in.` suffix, and the flattened
+supply sentence; deterministic runtime tests passed, the refreshed patch was
+installed, and main-menu smoke passed. The later diplomacy replay used the
+exact ERJ-UUX file and proved the same-save path with absolute points
+F3=(2025,25), Peucini=(1280,718), and Relationship Level=(1795,644).
+
+## Diplomacy
+
+- The selector button, its hover tooltip, the selected small-tribe detail
+  panel, and the Relationship Level tooltip are separate surfaces.
+- ERJ-UUX's runtime trace now draws Chinese Peucini and diplomacy tooltip text;
+  the relationship tooltip has no differing religious beliefs fragment.
+- The name is split by the game into The and a bare tribe-name draw node in
+  the tooltip. Runtime mappings therefore retain full The Name entries for
+  buttons and add split name/article fallbacks for tooltips.
+- The disposable run passed all nine capture points without a crash. Its
+  points remain out of the registry until the cursor-marked calibration is
+  manually promoted.
+
 ## Main Menu, Load, and Reload
 
 - Main-menu smoke verifies a complete window and no new crash/log event.
+- `Screen_ChooseFaction.Update` derives a faction key from the first four
+  characters of the button text. The ten playable faction `<name>` and
+  `city/name` config values therefore remain original logic strings; their
+  visible Chinese labels come from the runtime display map. A new-game click
+  sequence is not a pass until the tribe-selection destination is visibly
+  proven on the current client geometry.
 - Fixed-save scenarios load from the main-menu load panel, not from the pause
   menu, unless the in-game reload path is the case under test.
 - The load panel must localize its buttons/tooltips and may retain World IDs,
@@ -23,6 +72,16 @@ file defines what to inspect and when a surface may be considered covered.
 - Nested concept hovers must retain a highlighted display term and a valid
   second-level tooltip when one exists.
 
+- The 2026-08-02 RXL-CQW fixed-save replay passed the visible profession cards
+  at absolute reference points Reaper (1145,850), Gatherer (1410,850), and
+  Trapper (1815,1104). Two absolute panel scrolls at (1280,720) with
+  `WheelDelta=-960` then exposed and passed Digger (1280,350), Surveyor
+  (1820,1060), and Explorer (1280,1260). The runtime traces contain no
+  standalone ` in ` countdown connector, `Attack`, `Cannot`, `Trait`, or
+  `Innate`; the same fixed-save map replay also covered the resource and
+  selected-bandit surfaces. These points are executable after fixed-save
+  authorization and are not random-world discovery.
+
 ## Clan Screen and Traits
 
 - Open the clan screen from the main loop and test action buttons, card details,
@@ -38,12 +97,23 @@ file defines what to inspect and when a surface may be considered covered.
 - The `avr-wpr-clan-family-countdown-20260727` fixed-save case covers the
   family-growth countdown on the first card. Its 2026-07-27 final trace draws
   `(+1，还需 12 回合)` without a residual English `in`.
+- The 2026-08-01 `CLD-DML` probe isolated a different clan-card countdown
+  surface: `BuildBasicDescription` emits a standalone ` in ` node before the
+  remaining-turn value. It is now covered by the scoped `0x0600171f` / IL
+  offset 693 rewrite to `，还需`. A current replay may run only against the
+  designated fixed save and approved coordinates after user authorization; it
+  must not broaden into random discovery.
 
 - The 2026-07-30 VMP-MLE fixed-save retest covers the user-reported Happy mood
   icon on Relindis's card. The final tooltip renders `当高兴时……` and
   `+1 心情，因为已册封`; its text trace has no residual `When`, `from being`,
   or `Ennobled`. This is a single recorded fixed-save hover, not trait
   discovery coverage.
+
+- The 2026-08-02 UBL-TVF turn-002 replay did not expose Adaptable or Demanding
+  on the visible cards. Their scoped `No` and `become obsessed with the idea
+  of` fixes are installed, but this save supplies no target tooltip for visual
+  promotion; do not count the absent cards as a pass.
 
 ## Clan List
 
@@ -52,6 +122,11 @@ file defines what to inspect and when a surface may be considered covered.
   an explicit request.
 - Concept links such as Clan, Discipline, Level, and Upgrades must show
   localized display text while retaining their valid concept keys.
+
+- The 2026-08-03 UBL-TVF turn-002 fixed-save run passed all 11 first-row header
+  hovers, including the distance column. The distance label renders `格`, and
+  the trace contains no `tiles`, `Moving`, or other command-family English
+  residuals.
 
 ## Main Loop and Terrain
 
@@ -67,10 +142,10 @@ file defines what to inspect and when a surface may be considered covered.
   and the existing boundary manifest as a checklist; do not treat old sweep
   evidence as a new coverage session.
 - Fixed-save terrain/resource hover scenarios and the contextual trait mood
-  case may be run by Codex for that confirmed defect only. Their scope is the
-  recorded points and save; they must not be expanded into random-world
-  discovery. Repeated new-world creation requires explicit user confirmation,
-  followed by manual user confirmation that the procedure behaves correctly.
+  case may be executed after the user confirms the defect and authorizes the
+  designated run. Use only approved absolute coordinates and the same save;
+  repeated new-world creation remains separately gated by explicit user
+  confirmation and manual confirmation that the procedure behaves correctly.
 - The 2026-07-30 `VMP-MLE` fixed-save replay is a completed targeted case for
   Deserted City, Deserted Village, and the village basic tile detail. It used
   only the three recorded hover coordinates after a fresh patch installation.
@@ -131,6 +206,20 @@ file defines what to inspect and when a surface may be considered covered.
   exploratory protocol. They are evidence only, not current executable
   coverage; any new repeated random-world run requires explicit user
   confirmation and manual confirmation of the unchanged procedure.
+
+- The 2026-08-03 UBL-TVF turn-002 fixed-save run reached the Hunter at the
+  approved center point and passed the Chinese `固守`/`每回合` tooltip. The
+  Digger selector and close-after-assignment paths passed; the map operation
+  panel visibly rendered `采集`, `固守`, `扎营`, `移动`, and `跳过`. The static
+  SelectionPanel audit also covers direct Abandon, Besiege, Enable, Disable,
+  Heal, Repair, and Unpack labels, while existing exact mappings cover Split
+  Army, Pillage, Force, Remove Disguise, Manage Clans, and Add Apprentice Slot.
+  These less common branches were not reachable in this save and remain
+  static/build-only evidence. No Digger map unit was present, and four fixed
+  enemy candidates produced terrain/resource cards rather than a bandit camp;
+  the `is mangled` battle-prediction card therefore remains unreachable in this
+  save. Adaptable and Demanding were also absent from the visible clan cards;
+  their scoped static rewrites remain unpromoted until a save exposes them.
 
 ## Help and Religion
 

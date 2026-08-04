@@ -16,8 +16,15 @@ must obey. Read a child topic only when its work is actually needed.
   `AT_THE_GATES_PATH`, then Steam discovery. Never hard-code an install path.
 - Launch the game with its working directory set to the resolved game folder.
 - All coordinates are relative to the game window, not the virtual desktop.
-  JSON scenario coordinates use the stated reference client size; the harness
-  scales them after locating the window.
+  JSON scenario coordinates are in the harness's 2560 x 1440 reference space;
+  `CoordinateTransform` scales them only after it has read the live client
+  size. A screenshot is evidence of a control, not a coordinate record. The
+  two may numerically coincide only after a current cursor-marked capture has
+  demonstrated the live mapping.
+- A `RequireChange` result proves only that pixels changed. It does not prove
+  that a click opened the intended interface or that a hover reached the
+  intended control. Record an interface/state marker before treating either
+  kind of action as calibrated.
 - Do not open external webpages, challenge login, or forum links during game
   tests.
 

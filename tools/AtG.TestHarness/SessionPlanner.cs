@@ -101,7 +101,7 @@ public static class SessionPlanner
     }
 
     private static string ActionKey(ScenarioAction action) => string.Join('\0',
-        action.Action, action.X, action.Y, action.Key, action.Bookmark, action.Marker,
+        action.Action, action.X, action.Y, action.WheelDelta, action.Key, action.Bookmark, action.Marker,
         action.WaitMs, action.Crop?.X, action.Crop?.Y, action.Crop?.Width,
         action.Crop?.Height, action.RequireChange, action.RepeatCount,
         string.Join('\u001d', action.Actions.Select(ActionKey)));

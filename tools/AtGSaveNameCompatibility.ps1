@@ -106,7 +106,7 @@ function Convert-AtGSavedGameNamesForOriginalFonts {
     return $renamed.ToArray()
 }
 
-function Show-AtGSaveNameCompatibilityNotice {
+function Get-AtGSaveNameCompatibilityMessage {
     param(
         [Parameter(Mandatory = $true)]
         [object[]]$RenamedSaves
@@ -129,15 +129,36 @@ function Show-AtGSaveNameCompatibilityNotice {
     $uninstalled = [string](ConvertFrom-Json '"\u6c49\u5316\u8865\u4e01\u5df2\u5378\u8f7d\u3002"')
     $renamedTemplate = [string](ConvertFrom-Json '"\u4e3a\u907f\u514d\u539f\u7248\u6e38\u620f\u8bfb\u53d6\u542b\u4e2d\u6587\u7684\u5b58\u6863\u540d\u65f6\u5d29\u6e83\uff0c\u5df2\u5728\u6062\u590d\u539f\u59cb\u6587\u4ef6\u524d\u81ea\u52a8\u4fee\u6539 {0} \u4e2a\u5b58\u6863\u540d\u3002"')
     $contentsSafe = [string](ConvertFrom-Json '"\u4ec5\u79fb\u9664\u4e86\u539f\u7248\u4e0d\u652f\u6301\u7684\u5b57\u7b26\uff0c\u672a\u4fee\u6539\u5b58\u6863\u5185\u5bb9\u3002"')
+    # Add preview lines individually. In PowerShell, placing the preview array
+    # as one element in @(...)-join can stringify it as System.Object[] (or
+    # leave an empty object at the end of the dialog) instead of rendering the
+    # actual rename lines.
+    $messageLines = New-Object 'System.Collections.Generic.List[string]'
+    [void]$messageLines.Add($uninstalled)
+    [void]$messageLines.Add("")
+    [void]$messageLines.Add($renamedTemplate -f $RenamedSaves.Count)
+    [void]$messageLines.Add($contentsSafe)
+    [void]$messageLines.Add("")
+    foreach ($line in @($preview)) {
+        if (![string]::IsNullOrEmpty([string]$line)) {
+            [void]$messageLines.Add([string]$line)
+        }
+    }
+    return $messageLines -join [Environment]::NewLine
+}
+
+function Show-AtGSaveNameCompatibilityNotice {
+    param(
+        [Parameter(Mandatory = $true)]
+        [object[]]$RenamedSaves
+    )
+
+    if ($RenamedSaves.Count -eq 0) {
+        return
+    }
+
+    $message = Get-AtGSaveNameCompatibilityMessage -RenamedSaves $RenamedSaves
     $title = "At the Gates " + [string](ConvertFrom-Json '"\u6c49\u5316\u8865\u4e01"')
-    $message = @(
-        $uninstalled,
-        "",
-        ($renamedTemplate -f $RenamedSaves.Count),
-        $contentsSafe,
-        "",
-        $preview
-    ) -join [Environment]::NewLine
 
     try {
         Add-Type -AssemblyName System.Windows.Forms

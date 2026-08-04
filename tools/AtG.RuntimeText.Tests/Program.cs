@@ -10,6 +10,14 @@ var tests = new (string Name, Action Body)[]
     ("Rich localization changes display text but preserves keys and raw tags", RichLocalizationPreservesStructure),
     ("Display registrations reject conflicts and markup injection", DisplayRegistrationsRejectUnsafeValues),
     ("Runtime display map localizes exact and standalone dynamic values", RuntimeDisplayMapLoads),
+    ("Runtime display fragments tolerate UI spacing variants", RuntimeDisplayFragmentsTolerateUiSpacing),
+    ("Generated runtime display map loads the reported dynamic fallbacks", GeneratedRuntimeDisplayMapLoads),
+    ("Diplomacy tooltip bullets localize around concept links", DiplomacyTooltipBulletsLocalize),
+    ("Markup-bearing display strings apply rich fragments", MarkupBearingDisplayStringsApplyRichFragments),
+    ("Markup-bearing display strings also apply generated plain fragments", MarkupBearingDisplayStringsApplyPlainFragments),
+    ("Dynamic tooltip fallbacks localize standalone and rich-text segments", DynamicTooltipFallbacksLocalize),
+    ("Diplomacy from connector and all tribe names localize", DiplomacyFromAndFactionNamesLocalize),
+    ("Wasteful and clan-title tooltip fragments localize without reordering links", WastefulAndClanTitleFragmentsLocalize),
     ("Tile-detail rich text preserves localized concept links and wrapped city text", TileDetailFallbacksLocalize),
     ("Split mood-tooltip fragments localize without changing the UI composition", RuntimeDisplayMoodFragmentsLocalize),
     ("Runtime display fragments localize plain nodes without breaking concept links", RuntimeDisplayFragmentsPreserveLinks),
@@ -165,6 +173,285 @@ static void RuntimeDisplayMapLoads()
         DisplayStringLocalizer.LocalizeRichText("Train [Clan|CLAN]"));
     Equal("\u5377\u5165Brawls",
         DisplayStringLocalizer.LocalizeRichText("engage in Brawls"));
+}
+
+static void GeneratedRuntimeDisplayMapLoads()
+{
+    var path = Path.Combine(Directory.GetCurrentDirectory(), "patch", "Content", "Text",
+        "AtG.RuntimeText.tsv");
+    True(File.Exists(path));
+
+    DisplayStringLocalizer.ResetForTests();
+    using (var reader = File.OpenText(path)) DisplayStringLocalizer.Load(reader);
+
+    Equal("会痴迷于", DisplayStringLocalizer.LocalizeRichText(
+        "become obsessed with the idea of"));
+    Equal("会痴迷于", DisplayStringLocalizer.LocalizeRichText(
+        "become\u00a0obsessed\u200bwith the idea of"));
+    Equal("[COLOR:NEGATIVE]会痴迷于[/COLOR]", DisplayStringLocalizer.LocalizeRichText(
+        "[COLOR:NEGATIVE]become obsessed with the idea of[/COLOR]"));
+    Equal("• -1，因边界过近（相距不超过6格）。", DisplayStringLocalizer.LocalizeRichText(
+        "• -1, borders being too close (within 6 tiles)."));
+    Equal("• -1，因边界过近（相距不超过3格）。", DisplayStringLocalizer.LocalizeRichText(
+        "• -1, borders being too close (within 3 tiles)."));
+    Equal("无剩余移动力。", DisplayStringLocalizer.LocalizeRichText("无移动力 remaining."));
+    Equal("这里仅余昔日繁荣社区的遗迹。", DisplayStringLocalizer.LocalizeRichText(
+        "All that remains, is of a once-thriving community."));
+    Equal("强盗营地头目 (强盗营地 5)", DisplayStringLocalizer.LocalizeRichText(
+        "Bandit Leader (Bandits 5)"));
+    Equal("• +1，因宗教信仰相同。", DisplayStringLocalizer.LocalizeRichText(
+        "• +1, shared religious beliefs."));
+}
+
+static void RuntimeDisplayFragmentsTolerateUiSpacing()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterPlainTextFragment("become obsessed with the idea of", "会痴迷于");
+
+    Equal("会痴迷于", DisplayStringLocalizer.LocalizeRichText(
+        "become\u00a0obsessed\u200bwith the idea of"));
+}
+
+static void DiplomacyTooltipBulletsLocalize()
+{
+    DisplayStringLocalizer.ResetForTests();
+    foreach (var key in new[] { "RL", "INFLUENCE", "REPUTATION" })
+        DisplayStringLocalizer.RegisterConceptKey(key);
+    DisplayStringLocalizer.RegisterConceptDisplay("RL", "Relationship Level", "关系等级");
+    DisplayStringLocalizer.RegisterConceptDisplay("INFLUENCE", "Influence", "影响力");
+    DisplayStringLocalizer.RegisterConceptDisplay("REPUTATION", "Reputation", "声誉");
+    DisplayStringLocalizer.RegisterPlainTextFragment("• Default is +0.", "• 默认值为+0。");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Default is ", "默认值为");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" from ", "来自");
+    DisplayStringLocalizer.RegisterPlainTextFragment("from ", "来自");
+    DisplayStringLocalizer.RegisterPlainTextFragment("-1 from ", "-1来自");
+    DisplayStringLocalizer.RegisterPlainTextFragment("+0 from ", "+0来自");
+    DisplayStringLocalizer.RegisterPlainTextFragment(", suffering differing religious beliefs.", "，因宗教信仰不同而承受惩罚。");
+    DisplayStringLocalizer.RegisterPlainTextFragment("differing religious beliefs.", "因宗教信仰不同而承受惩罚。");
+    DisplayStringLocalizer.RegisterPlainTextFragment("The", "");
+    DisplayStringLocalizer.RegisterPlainTextFragment("The Peucini", "佩乌奇尼人");
+    DisplayStringLocalizer.RegisterRichTextFragment("[Relationship Level|RL].", "[关系等级|RL]。");
+    DisplayStringLocalizer.RegisterRichTextFragment("[Influence|INFLUENCE].", "[影响力|INFLUENCE]。");
+    DisplayStringLocalizer.RegisterRichTextFragment("[Reputation|REPUTATION].", "[声誉|REPUTATION]。");
+
+    Equal("• 默认值为+0。", DisplayStringLocalizer.LocalizeRichText("• Default is +0."));
+    Equal("默认值为+7", DisplayStringLocalizer.LocalizeDisplayString("Default is +7"));
+    Equal("来自", DisplayStringLocalizer.LocalizeDisplayString(" from "));
+    Equal("来自", DisplayStringLocalizer.LocalizeDisplayString("from "));
+    Equal("• -1来自[关系等级|RL]。",
+        DisplayStringLocalizer.LocalizeRichText("• -1 from [Relationship Level|RL]."));
+    Equal("• +0来自[影响力|INFLUENCE]。",
+        DisplayStringLocalizer.LocalizeRichText("• +0 from [Influence|INFLUENCE]."));
+    Equal("• +0来自[声誉|REPUTATION]。",
+        DisplayStringLocalizer.LocalizeRichText("• +0 from [Reputation|REPUTATION]."));
+    Equal("• -1，因宗教信仰不同而承受惩罚。",
+        DisplayStringLocalizer.LocalizeRichText("• -1, suffering differing religious beliefs."));
+    Equal("因宗教信仰不同而承受惩罚。",
+        DisplayStringLocalizer.LocalizeDisplayString("differing religious beliefs."));
+    Equal("佩乌奇尼人", DisplayStringLocalizer.LocalizeDisplayString("The Peucini"));
+    Equal("", DisplayStringLocalizer.LocalizeDisplayString("The"));
+}
+
+static void MarkupBearingDisplayStringsApplyRichFragments()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterRichTextFragment("become obsessed with the idea of", "\u4f1a\u75f4\u8ff7\u4e8e");
+
+    Equal("[COLOR:EMPHASIS]\u4f1a\u75f4\u8ff7\u4e8e[/COLOR]",
+        DisplayStringLocalizer.LocalizeDisplayString(
+            "[COLOR:EMPHASIS]become obsessed with the idea of[/COLOR]"));
+}
+
+static void MarkupBearingDisplayStringsApplyPlainFragments()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterPlainTextFragment(
+        ", borders being too close (within 6 tiles).",
+        "，因边界过近（相距不超过6格）。");
+    DisplayStringLocalizer.RegisterPlainTextFragment(
+        ", shared religious beliefs.",
+        "，因宗教信仰相同。");
+
+    Equal("[COLOR:NEGATIVE]-1，因边界过近（相距不超过6格）。[/COLOR]",
+        DisplayStringLocalizer.LocalizeDisplayString(
+            "[COLOR:NEGATIVE]-1, borders being too close (within 6 tiles).[/COLOR]"));
+    Equal("[COLOR:POSITIVE]+1，因宗教信仰相同。[/COLOR]",
+        DisplayStringLocalizer.LocalizeDisplayString(
+            "[COLOR:POSITIVE]+1, shared religious beliefs.[/COLOR]"));
+}
+
+static void DynamicTooltipFallbacksLocalize()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterPlainText("become obsessed with the idea of", "会痴迷于");
+    DisplayStringLocalizer.RegisterPlainText("Minor Leader", "小部族领袖");
+    DisplayStringLocalizer.RegisterPlainText("Strong Leader", "强势领袖");
+    DisplayStringLocalizer.RegisterPlainText("No extra", "无额外");
+    DisplayStringLocalizer.RegisterPlainText("This Army is resting.", "该军队正在休整。");
+    DisplayStringLocalizer.RegisterPlainTextFragment("become obsessed with the idea of ", "会痴迷于");
+    DisplayStringLocalizer.RegisterPlainTextFragment("No movement remaining.", "无剩余移动力。");
+    DisplayStringLocalizer.RegisterPlainTextFragment("This Army is encamped", "该军队正在驻营");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Already ", "已");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Caravan has arrived!", "商队已抵达！");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Caravan", "商队");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Late March", "三月下旬");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Coal Deposits", "煤矿床");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Bandit Stronghold", "强盗营地");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Pillage Bandits", "劫掠强盗营地");
+    DisplayStringLocalizer.RegisterPlainTextFragment("\u52AB\u63A0Bandits", "\u52AB\u63A0\u5F3A\u76D7\u8425\u5730");
+    DisplayStringLocalizer.RegisterPlainTextFragment("This ", "该");
+    DisplayStringLocalizer.RegisterPlainTextFragment("this ", "本");
+    DisplayStringLocalizer.RegisterPlainTextFragment("No ", "无");
+    DisplayStringLocalizer.RegisterPlainTextFragment("turn", "回合");
+    DisplayStringLocalizer.RegisterRichTextFragment("become obsessed with the idea of ", "会痴迷于");
+    DisplayStringLocalizer.RegisterRichTextFragment("[SCORE]", "得分");
+    DisplayStringLocalizer.RegisterRichTextFragment("[TREASURE]", "财富");
+    DisplayStringLocalizer.RegisterRichTextFragment("[HORSES]", "马匹");
+    DisplayStringLocalizer.RegisterRichTextFragment("[WEAPONS]", "武器");
+    DisplayStringLocalizer.RegisterRichTextFragment("[CARAVAN]", "商队");
+    DisplayStringLocalizer.RegisterRichTextFragment("[COAL]", "煤");
+
+    Equal("会痴迷于", DisplayStringLocalizer.LocalizeDisplayString("become obsessed with the idea of"));
+    Equal("[COLOR:NEGATIVE]会痴迷于[/COLOR]",
+        DisplayStringLocalizer.LocalizeDisplayString(
+            "[COLOR:NEGATIVE]become obsessed with the idea of [/COLOR]"));
+    Equal("小部族领袖", DisplayStringLocalizer.LocalizeRichText("Minor Leader"));
+    Equal("强势领袖", DisplayStringLocalizer.LocalizeRichText("Strong Leader"));
+    Equal("无额外", DisplayStringLocalizer.LocalizeRichText("No extra"));
+    Equal("无剩余移动力。", DisplayStringLocalizer.LocalizeRichText("No movement remaining."));
+    Equal("该军队正在休整。", DisplayStringLocalizer.LocalizeRichText("This Army is resting."));
+    Equal("本回合", DisplayStringLocalizer.LocalizeRichText("this turn"));
+    Equal("已identified", DisplayStringLocalizer.LocalizeRichText("Already identified"));
+    Equal("商队已抵达！", DisplayStringLocalizer.LocalizeRichText("Caravan has arrived!"));
+    Equal("三月下旬", DisplayStringLocalizer.LocalizeRichText("Late March"));
+    Equal("煤矿床", DisplayStringLocalizer.LocalizeRichText("Coal Deposits"));
+    Equal("劫掠强盗营地", DisplayStringLocalizer.LocalizeRichText("Pillage Bandits"));
+    Equal("\u52AB\u63A0\u5F3A\u76D7\u8425\u5730", DisplayStringLocalizer.LocalizeRichText("\u52AB\u63A0Bandits"));
+    Equal("得分 财富 马匹 武器 商队 煤",
+        DisplayStringLocalizer.LocalizeRichText("[SCORE] [TREASURE] [HORSES] [WEAPONS] [CARAVAN] [COAL]"));
+}
+
+static void DiplomacyFromAndFactionNamesLocalize()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterConceptKey("INFLUENCE");
+    DisplayStringLocalizer.RegisterConceptKey("FACTION");
+    DisplayStringLocalizer.RegisterConceptDisplay("INFLUENCE", "Influence", "\u5f71\u54cd\u529b");
+
+    var factions = new Dictionary<string, string>(StringComparer.Ordinal)
+    {
+        ["The Goths"] = "\u54e5\u7279\u4eba",
+        ["The Huns"] = "\u5308\u4eba",
+        ["The Vandals"] = "\u6c6a\u8fbe\u5c14\u4eba",
+        ["The Alemanni"] = "\u963f\u52d2\u66fc\u5c3c\u4eba",
+        ["The Picts"] = "\u76ae\u514b\u7279\u4eba",
+        ["The Lombards"] = "\u4f26\u5df4\u7b2c\u4eba",
+        ["The Franks"] = "\u6cd5\u5170\u514b\u4eba",
+        ["The Slavs"] = "\u65af\u62c9\u592b\u4eba",
+        ["The Saxons"] = "\u6492\u514b\u900a\u4eba",
+        ["The Avars"] = "\u963f\u74e6\u5c14\u4eba"
+    };
+    foreach (var faction in factions)
+        DisplayStringLocalizer.RegisterConceptDisplay("FACTION", faction.Key, faction.Value);
+    var neutralFactions = new Dictionary<string, string>(StringComparer.Ordinal)
+    {
+        ["The Suebi"] = "\u82cf\u7ef4\u6bd4\u4eba",
+        ["The Frisii"] = "\u5f17\u91cc\u897f\u4eba",
+        ["The Jutes"] = "\u6731\u7279\u4eba",
+        ["The Burgundians"] = "\u52c3\u826e\u7b2c\u4eba",
+        ["The Scirii"] = "\u65af\u57fa\u91cc\u4eba",
+        ["The Bulgars"] = "\u4fdd\u52a0\u5c14\u4eba",
+        ["The Thuringians"] = "\u56fe\u6797\u6839\u4eba",
+        ["The Tencteri"] = "\u5766\u514b\u7279\u91cc\u4eba",
+        ["The Cherusci"] = "\u5207\u9c81\u897f\u4eba",
+        ["The Hermunduri"] = "\u8d6b\u5c14\u8499\u675c\u91cc\u4eba",
+        ["The Chatti"] = "\u67e5\u8482\u4eba",
+        ["The Rugii"] = "\u9c81\u5409\u4eba",
+        ["The Heruli"] = "\u8d6b\u9c81\u5229\u4eba",
+        ["The Gepids"] = "\u683c\u76ae\u5fb7\u4eba",
+        ["The Sarmatians"] = "\u8428\u5c14\u9a6c\u7279\u4eba",
+        ["The Bavarians"] = "\u5df4\u4f10\u5229\u4e9a\u4eba",
+        ["The Khazars"] = "\u53ef\u8428\u4eba",
+        ["The Berbers"] = "\u67cf\u67cf\u5c14\u4eba",
+        ["The Angles"] = "\u76ce\u683c\u9c81\u4eba",
+        ["The Varangians"] = "\u74e6\u5170\u5409\u4eba",
+        ["The Magyars"] = "\u9a6c\u624e\u5c14\u4eba",
+        ["The Danes"] = "\u4e39\u9ea6\u4eba",
+        ["The Thervingi"] = "\u7279\u5c14\u6587\u5409\u4eba",
+        ["The Greuthungi"] = "\u683c\u9c81\u901a\u5409\u4eba",
+        ["The Bastarnae"] = "\u5df4\u65af\u5854\u5948\u4eba",
+        ["The Peucini"] = "\u4f69\u4e4c\u5947\u5c3c\u4eba",
+        ["The Scythians"] = "\u65af\u57fa\u6cf0\u4eba",
+        ["The Alans"] = "\u963f\u5170\u4eba",
+        ["The Getae"] = "\u76d6\u5854\u4eba",
+        ["The Dacians"] = "\u8fbe\u5951\u4e9a\u4eba",
+        ["The Jats"] = "\u8d3e\u7279\u4eba",
+        ["The Geats"] = "\u8036\u963f\u7279\u4eba",
+        ["The Massagetae"] = "\u9a6c\u8428\u9769\u592a\u4eba",
+        ["The Aspasioi"] = "\u963f\u65af\u5e15\u897f\u5965\u4f0a\u4eba",
+        ["The Dahae"] = "\u8fbe\u8d6b\u4eba",
+        ["The Issedones"] = "\u4f0a\u585e\u591a\u6d85\u65af\u4eba",
+        ["The Wusun"] = "\u4e4c\u5b59\u4eba",
+        ["The Sacae"] = "\u585e\u8fe6\u4eba",
+        ["The Varini"] = "\u74e6\u91cc\u5c3c\u4eba",
+        ["The Carini"] = "\u5361\u91cc\u5c3c\u4eba",
+        ["The Gutones"] = "\u53e4\u6258\u5185\u65af\u4eba",
+        ["The Cimbri"] = "\u8f9b\u5e03\u91cc\u4eba",
+        ["The Teutons"] = "\u6761\u987f\u4eba",
+        ["The Chauci"] = "\u8003\u57fa\u4eba",
+        ["The Lemovii"] = "\u83b1\u83ab\u7ef4\u4eba",
+        ["The Quadi"] = "\u5938\u8fea\u4eba",
+        ["The Iazyges"] = "\u4f0a\u963f\u9f50\u683c\u65af\u4eba",
+        ["The Marcomanni"] = "\u9a6c\u79d1\u66fc\u5c3c\u4eba",
+        ["The Costoboci"] = "\u79d1\u65af\u6258\u535a\u5947\u4eba",
+        ["The Hasdingi"] = "\u54c8\u65af\u4e01\u5409\u4eba",
+        ["The Lacringi"] = "\u62c9\u514b\u6797\u5409\u4eba",
+        ["The Buri"] = "\u5e03\u91cc\u4eba",
+        ["The Cotini"] = "\u79d1\u8482\u5c3c\u4eba",
+        ["The Carpi"] = "\u5361\u5c14\u76ae\u4eba",
+        ["The Taifali"] = "\u6cf0\u6cd5\u5229\u4eba",
+        ["The Victohali"] = "\u7ef4\u514b\u6258\u54c8\u5229\u4eba",
+        ["The Salians"] = "\u8428\u5229\u5b89\u4eba"
+    };
+    foreach (var faction in neutralFactions)
+        DisplayStringLocalizer.RegisterConceptDisplay("FACTION", faction.Key, faction.Value);
+
+    DisplayStringLocalizer.RegisterPlainTextFragment("from ", "\u6765\u81ea");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" from ", "\u6765\u81ea");
+
+    Equal("[\u5f71\u54cd\u529b|INFLUENCE]\u6765\u81ea[\u5308\u4eba|FACTION]",
+        DisplayStringLocalizer.LocalizeRichText("[Influence|INFLUENCE] from [The Huns|FACTION]"));
+    foreach (var faction in factions)
+        Equal($"[{faction.Value}|FACTION]",
+            DisplayStringLocalizer.LocalizeRichText($"[{faction.Key}|FACTION]"));
+    foreach (var faction in neutralFactions)
+        Equal($"[{faction.Value}|FACTION]",
+            DisplayStringLocalizer.LocalizeRichText($"[{faction.Key}|FACTION]"));
+}
+
+static void WastefulAndClanTitleFragmentsLocalize()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterConceptKey("PRODUCE");
+    DisplayStringLocalizer.RegisterConceptKey("FACTION");
+    DisplayStringLocalizer.RegisterConceptDisplay("PRODUCE", "Resource Production", "资源产出");
+    DisplayStringLocalizer.RegisterConceptDisplay("FACTION", "The Goths", "哥特人");
+    DisplayStringLocalizer.RegisterPlainTextFragment("自己建造建筑降低", "（由自己建造的建筑）降低");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" in.", "。");
+    DisplayStringLocalizer.Register("资源产出自己建造建筑降低-10%",
+        "资源产出（由自己建造的建筑）降低-10%");
+    DisplayStringLocalizer.Register("若位于地块补给等级低于1，则会受到伤害1",
+        "若所在地块的补给等级低于1，则会受到伤害。");
+
+    Equal("[资源产出|PRODUCE]（由自己建造的建筑）降低-10%",
+        DisplayStringLocalizer.LocalizeRichText("[Resource Production|PRODUCE]自己建造建筑降低-10%"));
+    Equal("资源产出（由自己建造的建筑）降低-10%",
+        DisplayStringLocalizer.LocalizeRichText("资源产出自己建造建筑降低-10%"));
+    Equal("若所在地块的补给等级低于1，则会受到伤害。",
+        DisplayStringLocalizer.LocalizeRichText("若位于地块补给等级低于1，则会受到伤害1"));
+    Equal("。", DisplayStringLocalizer.LocalizeRichText(" in."));
+    Equal("[哥特人|FACTION]",
+        DisplayStringLocalizer.LocalizeRichText("[The Goths|FACTION]"));
 }
 
 static void RuntimeDisplayFragmentsPreserveLinks()

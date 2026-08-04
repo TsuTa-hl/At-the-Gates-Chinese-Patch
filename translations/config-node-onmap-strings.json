@@ -235,6 +235,104 @@
         "ID": "STRUCTURE_WRECKAGE",
         "Description": "一座昔日尚可使用的[建筑|STRUCTURE]如今留下的残骸。"
       }
+      ],
+      "CompositeReplacements": [
+        {
+          "XPath": "descendant::fromDescription",
+          "OriginalValue": "Innate",
+          "LocalizedValue": "先天",
+          "ExpectedMatchCount": 10
+        }
+      ]
+    },
+  "Content\\Config\\OnMap\\Deposits.xml": {
+    "Source": "source\\Content\\Config\\OnMap\\Deposits.original.xml",
+    "Container": "deposit",
+    "Items": [
+      {
+        "ID": "DEPOSIT_HORSES",
+        "Description": "[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。"
+      },
+      {
+        "ID": "DEPOSIT_HORSES_LARGE",
+        "Description": "[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。[BLANK-LINE]这是一大群马！"
+      },
+      {
+        "ID": "DEPOSIT_HORSES_VAST",
+        "Description": "[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。[BLANK-LINE]这是迄今发现的最大马群之一！"
+      },
+      {
+        "ID": "DEPOSIT_PUREBREDS",
+        "Description": "[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。[BLANK-LINE]纯种马群比普通马群包含更多有用的牲畜！"
+      },
+      {
+        "ID": "DEPOSIT_PUREBREDS_LARGE",
+        "Description": "[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。[BLANK-LINE]纯种马群比普通马群包含更多有用的牲畜！[BLANK-LINE]这是一大群马！"
+      },
+      {
+        "ID": "DEPOSIT_PUREBREDS_VAST",
+        "Description": "[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。[BLANK-LINE]纯种马群比普通马群包含更多有用的牲畜！[BLANK-LINE]这是迄今发现的最大马群之一！"
+      },
+      {
+        "ID": "DEPOSIT_BEEHIVE",
+        "Description": "蜂巢可被[采收|HARVEST]，由[GATHERER]或[APIARY-1]进行，以[产出|PRODUCE][HONEY]。"
+      },
+      {
+        "ID": "DEPOSIT_BEEHIVE_LARGE",
+        "Description": "蜂巢可被[采收|HARVEST]，由[GATHERER]或[APIARY-1]进行，以[产出|PRODUCE][HONEY]。[BLANK-LINE]这是一座特别大的蜂巢！"
+      },
+      {
+        "ID": "DEPOSIT_BEEHIVE_VAST",
+        "Description": "蜂巢可被[采收|HARVEST]，由[GATHERER]或[APIARY-1]进行，以[产出|PRODUCE][HONEY]。[BLANK-LINE]这是迄今发现的最大蜂巢之一！"
+      },
+      {
+        "ID": "DEPOSIT_FISH",
+        "Description": "鱼群可由[FISHERMAN][采收|HARVEST]，以[产出|PRODUCE][FISH]。"
+      },
+      {
+        "ID": "DEPOSIT_FISH_LARGE",
+        "Description": "鱼群可由[FISHERMAN][采收|HARVEST]，以[产出|PRODUCE][FISH]。[BLANK-LINE]这是一大群鱼！"
+      },
+      {
+        "ID": "DEPOSIT_FISH_VAST",
+        "Description": "鱼群可由[FISHERMAN][采收|HARVEST]，以[产出|PRODUCE][FISH]。[BLANK-LINE]这是迄今发现的最大鱼群之一！"
+      },
+      {
+        "ID": "DEPOSIT_WHEAT",
+        "Description": "小麦田可由[REAPER]或[WHEAT-FARM-1][采收|HARVEST]，以[产出|PRODUCE][WHEAT]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，小麦无法继续采收。"
+      },
+      {
+        "ID": "DEPOSIT_WHEAT_LARGE",
+        "Description": "小麦田可由[REAPER]或[WHEAT-FARM-1][采收|HARVEST]，以[产出|PRODUCE][WHEAT]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，小麦无法继续采收。[BLANK-LINE]这是一大片麦田！"
+      },
+      {
+        "ID": "DEPOSIT_WHEAT_VAST",
+        "Description": "小麦田可由[REAPER]或[WHEAT-FARM-1][采收|HARVEST]，以[产出|PRODUCE][WHEAT]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，小麦无法继续采收。[BLANK-LINE]这是迄今发现的最大麦田之一！"
+      },
+      {
+        "ID": "DEPOSIT_BERRIES",
+        "Description": "浆果丛可被[采收|HARVEST]，由[GATHERER]进行，以[产出|PRODUCE][FRUIT]。"
+      },
+      {
+        "ID": "DEPOSIT_BERRIES_LARGE",
+        "Description": "浆果丛可被[采收|HARVEST]，由[GATHERER]进行，以[产出|PRODUCE][FRUIT]。[BLANK-LINE]这是一大片浆果丛！"
+      },
+      {
+        "ID": "DEPOSIT_BERRIES_VAST",
+        "Description": "浆果丛可被[采收|HARVEST]，由[GATHERER]进行，以[产出|PRODUCE][FRUIT]。[BLANK-LINE]这是迄今发现的最大浆果丛之一！"
+      },
+      {
+        "ID": "DEPOSIT_COAL",
+          "Description": "煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。"
+      },
+      {
+        "ID": "DEPOSIT_COAL_LARGE",
+          "Description": "煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]这是一处特别大的煤矿床！"
+      },
+      {
+        "ID": "DEPOSIT_COAL_VAST",
+          "Description": "煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]这是迄今发现的最大煤矿床之一！"
+      }
     ]
   }
 }

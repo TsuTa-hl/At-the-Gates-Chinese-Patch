@@ -4,7 +4,8 @@ public sealed record StringRewriteSpec(
     string MethodToken,
     int IlOffset,
     string Original,
-    string Translation);
+    string Translation,
+    string? Operation = null);
 
 public sealed record RewriteResult(int RewrittenCount, string OutputPath);
 

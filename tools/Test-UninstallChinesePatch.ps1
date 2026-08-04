@@ -38,6 +38,7 @@ if (Test-Path -LiteralPath $TempRoot) {
 New-Item -ItemType Directory -Force -Path $TempRoot | Out-Null
 
 $repoRoot = Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")
+. (Join-Path $repoRoot "tools\AtGSaveNameCompatibility.ps1")
 $gameRoot = Join-Path $TempRoot "FakeGame"
 $backupRoot = Join-Path $gameRoot "_ChinesePatchBackup\20000101-000000"
 $manifestPath = Join-Path $gameRoot ".atg-chinese-patch.json"
@@ -87,5 +88,13 @@ $uninstallSource = Get-Content -LiteralPath (Join-Path $repoRoot "Uninstall-Chin
 $noticeSource = Get-Content -LiteralPath (Join-Path $repoRoot "tools\AtGSaveNameCompatibility.ps1") -Raw -Encoding UTF8
 Assert-AtG ($uninstallSource -match "SkipSaveNameCompatibility") "Uninstall does not expose an explicit refresh bypass."
 Assert-AtG ($noticeSource -match "MessageBox\]::Show") "Uninstall does not include the post-action informational popup."
+$messageProbe = @(
+    [pscustomobject]@{ OldName = ("World " + $chinese + ".AtGSave"); NewName = "World -2.AtGSave" },
+    [pscustomobject]@{ OldName = ($chinese + ".AtGSave"); NewName = "SavedGame.AtGSave" }
+)
+$noticeMessage = Get-AtGSaveNameCompatibilityMessage -RenamedSaves $messageProbe
+Assert-AtG (!$noticeMessage.Contains("System.Object[]")) "Uninstall notice stringified the preview array."
+Assert-AtG (!$noticeMessage.EndsWith([Environment]::NewLine)) "Uninstall notice has a trailing empty line/object."
+Assert-AtG ($noticeMessage.Contains("World -2.AtGSave")) "Uninstall notice omitted the rename preview."
 
 Write-Host "Uninstall Chinese patch save-name compatibility checks passed."
