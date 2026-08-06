@@ -45,6 +45,11 @@ F3=(2025,25), Peucini=(1280,718), and Relationship Level=(1795,644).
 - The disposable run passed all nine capture points without a crash. Its
   points remain out of the registry until the cursor-marked calibration is
   manually promoted.
+- The 2026-08-06 uninstall-completeness verification restored the original
+  Factions.xml (The Carpi) and removed the runtime localization DLL/TSV by
+  exact file checks before the unpatched main-menu smoke. It did not open the
+  diplomacy panel, so this is rollback evidence rather than a new Diplomacy UI
+  replay or coordinate calibration.
 
 ## Main Menu, Load, and Reload
 
@@ -146,14 +151,18 @@ F3=(2025,25), Peucini=(1280,718), and Relationship Level=(1795,644).
   designated run. Use only approved absolute coordinates and the same save;
   repeated new-world creation remains separately gated by explicit user
   confirmation and manual confirmation that the procedure behaves correctly.
-- The 2026-07-30 `VMP-MLE` fixed-save replay is a completed targeted case for
-  Deserted City, Deserted Village, and the village basic tile detail. It used
-  only the three recorded hover coordinates after a fresh patch installation.
-  City and village rumours are Chinese. The tile detail's Supply, Terrain, and
-  Defense links are parsed through `RichTextLabel`/`TextFormatter`, not shown
-  as literal `[display|KEY]` text; the recorded Supply glyph coordinate opens
-  the Chinese recursive Supply card. This is a fixed-save result, not terrain
-  discovery coverage.
+- The 2026-07-30 `VMP-MLE` fixed-save replay remains historical evidence for
+  Deserted City and the village basic tile detail, but its Deserted Village
+  rumor conclusion is superseded by the 2026-08-05 user capture. That capture
+  showed the unpatched `GOODY_HUT_VILLAGE` config description beginning with
+  `All that remains`; the prior runtime-fragment repair did not own this
+  surface. The replacement is an ID-scoped `GoodyHuts.xml` patch, built and
+  installed with a passing default main-menu smoke. No fixed-save or target
+  hover was run under the smoke-only scope, so the repaired village tooltip is
+  pending visual verification. The tile detail's Supply, Terrain, and Defense
+  links are parsed through `RichTextLabel`/`TextFormatter`, not shown as
+  literal `[display|KEY]` text; the recorded Supply glyph coordinate opens the
+  Chinese recursive Supply card.
 - Run `tools\Test-TerrainTooltipBoundaryCoverage.ps1` before a manual review
   or terrain/resource translation change.
   It verifies all 143 source name entries against the patched XML, all 22

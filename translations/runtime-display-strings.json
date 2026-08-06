@@ -7,6 +7,16 @@
   ],
   "CompositeFragmentSources": [],
   "CompositeTemplateSources": [],
+  "Templates": [
+    {
+      "Original": "Leader Trait ({arg:0})",
+      "Translation": "领袖特质（{arg:0}）"
+    },
+    {
+      "Original": "Leader 特质（{arg:0}）",
+      "Translation": "领袖特质（{arg:0}）"
+    }
+  ],
   "Exact": [
     {
       "Original": "This is a farm that has been recently abandoned.\r\n\r\nIt may still contain useful supplies, and can be investigated by an [EXPLORER].",
@@ -15,14 +25,6 @@
     {
       "Original": "This is among the largest fields ever found!",
       "Translation": "\u8fd9\u662f\u8fc4\u4eca\u53d1\u73b0\u7684\u6700\u5927\u7530\u5730\u4e4b\u4e00\uff01"
-    },
-    {
-      "Original": "\u0080\u5f88\u53ef\u80fd\u53d8\u5f97\u76f8\u5f53\u4e0d\u6ee1 \u6570\u6708\u5185\uff0c\u5982\u679cunable\u4ee5 spend the winter inside the",
-      "Translation": "\u0080\u5f88\u53ef\u80fd\u53d8\u5f97\u76f8\u5f53\u4e0d\u6ee1 \u6570\u6708\u5185\uff0c\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728"
-    },
-    {
-      "Original": "\u0080\u5f88\u53ef\u80fd\u53d8\u5f97\u76f8\u5f53\u4e0d\u6ee1\u5728\u4e00\u5e74\u5185\uff0c\u5982\u679cunable\u4ee5 spend the winter inside the",
-      "Translation": "\u0080\u5f88\u53ef\u80fd\u53d8\u5f97\u76f8\u5f53\u4e0d\u6ee1\u5728\u4e00\u5e74\u5185\uff0c\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728"
     },
     {
       "Original": "Herds of [DEER] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], or for [PARCHMENT] or [CLOTH] by a [TRAPPER].[BLANK-LINE]Note that unlike other kinds of [Animals|ANIMAL] Deer cannot be added to your [Stockpile|STOCKPILE] by [Constructing|CONSTRUCT] a [Pasture|PASTURE] on them.[BLANK-LINE]This is a particularly large herd!",
@@ -91,6 +93,14 @@
   ],
   "PlainText": [
     {
+      "Original": "Leader Trait",
+      "Translation": "领袖特质"
+    },
+    {
+      "Original": "Leader 特质",
+      "Translation": "领袖特质"
+    },
+    {
       "Original": "Content",
       "Translation": "\u6ee1\u8db3"
     },
@@ -141,14 +151,6 @@
     {
       "Original": "\u4f20\u95fb\u6709\u4e00\u4e2aDeserted City",
       "Translation": "\u4f20\u95fb\u6709\u4e00\u4e2a\u5e9f\u5f03\u57ce\u5e02"
-    },
-    {
-      "Original": "All that remains of a once-thriving community.",
-      "Translation": "\u8fd9\u662f\u6614\u65e5\u7e41\u8363\u793e\u533a\u7684\u6b8b\u8ff9\u3002"
-    },
-    {
-      "Original": "All that remains, is of a once-thriving community.",
-      "Translation": "\u8fd9\u91cc\u4ec5\u4f59\u6614\u65e5\u7e41\u8363\u793e\u533a\u7684\u9057\u8ff9\u3002"
     },
     {
       "Original": "All that remains of a once-magnificent Roman City, abandoned only recently.",
@@ -321,20 +323,12 @@
       "Translation": "\u5185\uff0c\u6216\u4f5c\u4e3a"
     },
     {
-      "Original": " of a",
-      "Translation": "\uFF0C\u9A7B\u7559\u5728"
-    },
-    {
       "Original": "become obsessed with the idea of",
       "Translation": "\u4F1A\u75F4\u8FF7\u4E8E"
     },
     {
       "Original": "become obsessed with the idea of ",
       "Translation": "\u4F1A\u75F4\u8FF7\u4E8E"
-    },
-    {
-      "Original": "All that remains, is of a once-thriving community.",
-      "Translation": "\u8fd9\u91cc\u4ec5\u4f59\u6614\u65e5\u7e41\u8363\u793e\u533a\u7684\u9057\u8ff9\u3002"
     },
     {
       "Original": "Minor Leader",
@@ -347,6 +341,10 @@
     {
       "Original": "strong Leader",
       "Translation": "\u5F3A\u52BF\u9886\u8896"
+    },
+    {
+      "Original": "Leader Trait (",
+      "Translation": "\u9886\u8896\u7279\u8D28\uFF08"
     },
     {
       "Original": "No extra",
@@ -446,15 +444,15 @@
     },
     {
       "Original": "Bandit Leader",
-      "Translation": "\u5F3A\u76D7\u8425\u5730\u5934\u76EE"
+      "Translation": "\u5F3A\u76D7\u5934\u76EE"
     },
     {
       "Original": "\u5F3A\u76D7Leader",
-      "Translation": "\u5F3A\u76D7\u8425\u5730\u5934\u76EE"
+      "Translation": "\u5F3A\u76D7\u5934\u76EE"
     },
     {
       "Original": "\u532A\u5E2ELeader",
-      "Translation": "\u5F3A\u76D7\u8425\u5730\u5934\u76EE"
+      "Translation": "\u5F3A\u76D7\u5934\u76EE"
     },
     {
       "Original": "Pillage Bandits",
@@ -486,19 +484,15 @@
     },
     {
       "Original": "Bandits",
-      "Translation": "\u5F3A\u76D7\u8425\u5730"
+      "Translation": "\u5F3A\u76D7"
     },
     {
       "Original": "Bandit",
-      "Translation": "\u5F3A\u76D7\u8425\u5730"
+      "Translation": "\u5F3A\u76D7"
     },
     {
       "Original": "\u532A\u5E2E",
-      "Translation": "\u5F3A\u76D7\u8425\u5730"
-    },
-    {
-      "Original": "\u5F3A\u76D7",
-      "Translation": "\u5F3A\u76D7\u8425\u5730"
+      "Translation": "\u5F3A\u76D7"
     },
     {
       "Original": "Settlement",
@@ -643,10 +637,6 @@
     {
       "Original": "Wheat can no longer be Harvested when a",
       "Translation": "\u5c0f\u9ea6\u65e0\u6cd5\u518d\u91c7\u6536\uff0c\u82e5"
-    },
-    {
-      "Original": "unable\u4ee5 spend the winter inside the",
-      "Translation": "\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728"
     },
     {
       "Original": " becomes",
@@ -1113,6 +1103,198 @@
       "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc712\u683c\uff09\u3002"
     },
     {
+      "Original": ", borders being too close (1 tile apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc71\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (1 tile apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc71\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (2 tiles apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc72\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (2 tiles apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc72\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (3 tiles apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc73\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (3 tiles apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc73\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (4 tiles apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc74\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (4 tiles apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc74\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (5 tiles apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc75\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (5 tiles apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc75\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (6 tiles apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc76\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (6 tiles apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc76\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (7 tiles apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc77\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (7 tiles apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc77\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (8 tiles apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc78\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (8 tiles apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc78\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (9 tiles apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc79\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (9 tiles apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc79\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (10 tiles apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc710\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (10 tiles apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc710\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (11 tiles apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc711\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (11 tiles apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc711\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (12 tiles apart or less.)",
+      "Translation": "\uff0c\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc712\u683c\uff09\u3002"
+    },
+    {
+      "Original": "borders being too close (12 tiles apart or less.)",
+      "Translation": "\u56e0\u8fb9\u754c\u8fc7\u8fd1\uff08\u76f8\u8ddd\u4e0d\u8d85\u8fc712\u683c\uff09\u3002"
+    },
+    {
+      "Original": ", borders being too close (1 tile apart or less).",
+      "Translation": "，因边界过近（相距不超过1格）。"
+    },
+    {
+      "Original": "borders being too close (1 tile apart or less).",
+      "Translation": "因边界过近（相距不超过1格）。"
+    },
+    {
+      "Original": ", borders being too close (2 tiles apart or less).",
+      "Translation": "，因边界过近（相距不超过2格）。"
+    },
+    {
+      "Original": "borders being too close (2 tiles apart or less).",
+      "Translation": "因边界过近（相距不超过2格）。"
+    },
+    {
+      "Original": ", borders being too close (3 tiles apart or less).",
+      "Translation": "，因边界过近（相距不超过3格）。"
+    },
+    {
+      "Original": "borders being too close (3 tiles apart or less).",
+      "Translation": "因边界过近（相距不超过3格）。"
+    },
+    {
+      "Original": ", borders being too close (4 tiles apart or less).",
+      "Translation": "，因边界过近（相距不超过4格）。"
+    },
+    {
+      "Original": "borders being too close (4 tiles apart or less).",
+      "Translation": "因边界过近（相距不超过4格）。"
+    },
+    {
+      "Original": ", borders being too close (5 tiles apart or less).",
+      "Translation": "，因边界过近（相距不超过5格）。"
+    },
+    {
+      "Original": "borders being too close (5 tiles apart or less).",
+      "Translation": "因边界过近（相距不超过5格）。"
+    },
+    {
+      "Original": ", borders being too close (6 tiles apart or less).",
+      "Translation": "，因边界过近（相距不超过6格）。"
+    },
+    {
+      "Original": "borders being too close (6 tiles apart or less).",
+      "Translation": "因边界过近（相距不超过6格）。"
+    },
+    {
+      "Original": ", borders being too close (7 tiles apart or less).",
+      "Translation": "，因边界过近（相距不超过7格）。"
+    },
+    {
+      "Original": "borders being too close (7 tiles apart or less).",
+      "Translation": "因边界过近（相距不超过7格）。"
+    },
+    {
+      "Original": ", borders being too close (8 tiles apart or less).",
+      "Translation": "，因边界过近（相距不超过8格）。"
+    },
+    {
+      "Original": "borders being too close (8 tiles apart or less).",
+      "Translation": "因边界过近（相距不超过8格）。"
+    },
+    {
+      "Original": ", borders being too close (9 tiles apart or less).",
+      "Translation": "，因边界过近（相距不超过9格）。"
+    },
+    {
+      "Original": "borders being too close (9 tiles apart or less).",
+      "Translation": "因边界过近（相距不超过9格）。"
+    },
+    {
+      "Original": ", borders being too close (10 tiles apart or less).",
+      "Translation": "，因边界过近（相距不超过10格）。"
+    },
+    {
+      "Original": "borders being too close (10 tiles apart or less).",
+      "Translation": "因边界过近（相距不超过10格）。"
+    },
+    {
+      "Original": ", borders being too close (11 tiles apart or less).",
+      "Translation": "，因边界过近（相距不超过11格）。"
+    },
+    {
+      "Original": "borders being too close (11 tiles apart or less).",
+      "Translation": "因边界过近（相距不超过11格）。"
+    },
+    {
+      "Original": ", borders being too close (12 tiles apart or less).",
+      "Translation": "，因边界过近（相距不超过12格）。"
+    },
+    {
+      "Original": "borders being too close (12 tiles apart or less).",
+      "Translation": "因边界过近（相距不超过12格）。"
+    },
+    {
       "Original": ", shared religious beliefs.",
       "Translation": "\uff0c\u56e0\u5b97\u6559\u4fe1\u4ef0\u76f8\u540c\u3002"
     },
@@ -1435,6 +1617,10 @@
   ],
   "RichTextFragments": [
     {
+      "Original": "unable to spend the winter inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE]",
+      "Translation": "\u65e0\u6cd5\u5728[SETTLEMENT]\u5185\u8fc7\u51ac\uff0c\u6216\u4f5c\u4e3a[Resident|RESIDENT]\u5c45\u4f4f\u5728[Structure|STRUCTURE]\u4e2d"
+    },
+    {
       "Original": "become obsessed with the idea of",
       "Translation": "会痴迷于"
     },
@@ -1533,6 +1719,16 @@
       "ConceptKey": "LEVEL",
       "Original": "Levels",
       "Translation": "\u7b49\u7ea7"
+    },
+    {
+      "ConceptKey": "LEVEL",
+      "Original": "Level Up",
+      "Translation": "\u5347\u7ea7"
+    },
+    {
+      "ConceptKey": "LEVEL",
+      "Original": "Level-Up",
+      "Translation": "\u5347\u7ea7"
     },
     {
       "ConceptKey": "RESOURCE",

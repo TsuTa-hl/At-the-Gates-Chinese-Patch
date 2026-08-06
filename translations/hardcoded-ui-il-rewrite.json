@@ -9977,7 +9977,7 @@
 },
 {
     "Original":  " (will start at ",
-    "Translation":  "（将从",
+    "Translation":  "纪律中（将从",
     "MethodToken":  "0x06000522",
     "ILOffset":  224,
     "StringToken":  "0x70016c53",
@@ -11994,11 +11994,35 @@
 },
 {
     "Original":  " reduces the amount of ",
-    "Translation":  "减少",
+    "Translation":  "会使可用",
     "MethodToken":  "0x06000384",
     "ILOffset":  185,
     "Safety":  "SafeUI",
-    "Note":  "Trial UI exact-catalog besiege tooltip fragment."
+    "Note":  "Exact besiege-tooltip connector; preserves the composed supply and tile operands."
+},
+{
+    "Original":  " available on its ",
+    "Translation":  "在其所在的",
+    "MethodToken":  "0x06000384",
+    "ILOffset":  201,
+    "Safety":  "SafeUI",
+    "Note":  "Exact besiege-tooltip connector; preserves the composed supply and tile operands."
+},
+{
+    "Original":  " by ",
+    "Translation":  "上的数值减少",
+    "MethodToken":  "0x06000384",
+    "ILOffset":  217,
+    "Safety":  "SafeUI",
+    "Note":  "Exact besiege-tooltip connector; preserves the dynamic reduction value and turn."
+},
+{
+    "Original":  ".",
+    "Translation":  "。",
+    "MethodToken":  "0x06000384",
+    "ILOffset":  272,
+    "Safety":  "SafeUI",
+    "Note":  "Exact besiege-tooltip terminal punctuation."
 },
 {
     "Original":  "When this Army [Besieges|SIEGE] a [Tile|TILE], it reduces the amount of [Supply|SUPPLY] available by ",
@@ -12541,7 +12565,7 @@
 },
 {
     "Original":  " will abandon and lose all [Experience|XP] in ",
-    "Translation":  "将放弃并失去全部[Experience|XP]，原纪律：",
+    "Translation":  "将放弃并失去全部[经验|XP]，原纪律：",
     "MethodToken":  "0x06000522",
     "ILOffset":  382,
     "Safety":  "TooltipFragment",
@@ -12982,7 +13006,7 @@
 },
 {
     "Original":  " (from ",
-    "Translation":  "（来自",
+    "Translation":  "纪律中（从",
     "MethodToken":  "0x06000522",
     "ILOffset":  1277,
     "Safety":  "SafeUI",
@@ -16066,5 +16090,156 @@
     "Safety":  "SafeUI",
     "Note":  "Caravan sell-column heading.",
     "EvidenceScenario":  "latest-manual-caravan-headings"
+},
+{
+    "Original":  "Cancel",
+    "Translation":  "\u53d6\u6d88",
+    "MethodToken":  "0x060004df",
+    "ILOffset":  2,
+    "StringToken":  "0x700040f0",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_TileNote",
+    "MethodName":  "CreateControls_Fixed",
+    "Safety":  "SafeUI",
+    "Note":  "Tile-note popup cancel action.",
+    "EvidenceScenario":  "latest-manual-notes-popup-actions"
+},
+{
+    "Original":  "Accept",
+    "Translation":  "\u786e\u8ba4",
+    "MethodToken":  "0x060004df",
+    "ILOffset":  26,
+    "StringToken":  "0x70016ac3",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_TileNote",
+    "MethodName":  "CreateControls_Fixed",
+    "Safety":  "SafeUI",
+    "Note":  "Tile-note popup accept action.",
+    "EvidenceScenario":  "latest-manual-notes-popup-actions"
+},
+{
+    "Original":  "Delete",
+    "Translation":  "\u5220\u9664",
+    "MethodToken":  "0x060004e0",
+    "ILOffset":  143,
+    "StringToken":  "0x70016af9",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_TileNote",
+    "MethodName":  "CreateControls_OnRebuild",
+    "Safety":  "SafeUI",
+    "Note":  "Tile-note popup delete action.",
+    "EvidenceScenario":  "latest-manual-notes-popup-actions"
+},
+{
+    "Original":  "Cancel",
+    "Translation":  "\u53d6\u6d88",
+    "MethodToken":  "0x060004e8",
+    "ILOffset":  2,
+    "StringToken":  "0x700040f0",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ClanNote",
+    "MethodName":  "CreateControls_Fixed",
+    "Safety":  "SafeUI",
+    "Note":  "Clan-note popup cancel action.",
+    "EvidenceScenario":  "latest-manual-notes-popup-actions"
+},
+{
+    "Original":  "Accept",
+    "Translation":  "\u786e\u8ba4",
+    "MethodToken":  "0x060004e8",
+    "ILOffset":  26,
+    "StringToken":  "0x70016ac3",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ClanNote",
+    "MethodName":  "CreateControls_Fixed",
+    "Safety":  "SafeUI",
+    "Note":  "Clan-note popup accept action.",
+    "EvidenceScenario":  "latest-manual-notes-popup-actions"
+},
+{
+    "Original":  "Delete",
+    "Translation":  "\u5220\u9664",
+    "MethodToken":  "0x060004e9",
+    "ILOffset":  175,
+    "StringToken":  "0x70016af9",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ClanNote",
+    "MethodName":  "CreateControls_OnRebuild",
+    "Safety":  "SafeUI",
+    "Note":  "Clan-note popup delete action.",
+    "EvidenceScenario":  "latest-manual-notes-popup-actions"
+},
+{
+    "Original":  " in ",
+    "Translation":  "：",
+    "MethodToken":  "0x06000504",
+    "ILOffset":  133,
+    "StringToken":  "0x7000a210",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseClanToTrain",
+    "MethodName":  "CreateControls_OnRebuild",
+    "Safety":  "SafeUI",
+    "Note":  "Discipline-selection title connector; renders the composed title as 训练氏族：纪律.",
+    "EvidenceScenario":  "clan-training-connectors-smoke-only-20260805"
+},
+{
+    "Original":  "as ",
+    "Translation":  "成为",
+    "MethodToken":  "0x06000122",
+    "ILOffset":  2295,
+    "StringToken":  "0x70008b08",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ClanCard",
+    "MethodName":  "BuildTooltips",
+    "Safety":  "TooltipFragment",
+    "Note":  "Clan-card training-status connector; preserves the dynamic profession label.",
+    "EvidenceScenario":  "clan-training-connectors-smoke-only-20260805"
+},
+{
+    "Original":  " in ",
+    "Translation":  "：",
+    "MethodToken":  "0x0600051f",
+    "ILOffset":  15,
+    "StringToken":  "0x7000a210",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseDisciplineToLevelUp",
+    "MethodName":  "CreateControls_Fixed",
+    "Safety":  "SafeUI",
+    "Note":  "Discipline-training title connector; renders the composed title as 训练：纪律."
+},
+{
+    "Original":  " in ",
+    "Translation":  "，在",
+    "MethodToken":  "0x06000522",
+    "ILOffset":  152,
+    "StringToken":  "0x7000a210",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseDisciplineToLevelUp",
+    "MethodName":  "BuildTooltip_Cost",
+    "Safety":  "TooltipFragment",
+    "Note":  "Discipline-training first-level tooltip connector; paired with the exact discipline suffix at IL_00E0."
+},
+{
+    "Original":  "[COLOR:BAD-RED][FONT:CLEAN-BOLD]- WARNING -[/FONT][/COLOR] Once Training is complete ",
+    "Translation":  "[COLOR:BAD-RED][FONT:CLEAN-BOLD]- 警告 -[/FONT][/COLOR] 训练完成后，",
+    "MethodToken":  "0x06000522",
+    "ILOffset":  324,
+    "StringToken":  "0x70016c75",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseDisciplineToLevelUp",
+    "MethodName":  "BuildTooltip_Cost",
+    "Safety":  "TooltipFragment",
+    "Note":  "Discipline-training irreversible-change warning; preserves both rich-text tags."
+},
+{
+    "Original":  " ",
+    "Translation":  "",
+    "MethodToken":  "0x06000522",
+    "ILOffset":  350,
+    "StringToken":  "0x700014ce",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseDisciplineToLevelUp",
+    "MethodName":  "BuildTooltip_Cost",
+    "Safety":  "TooltipFragment",
+    "Note":  "Removes the source-only separator after the localized warning comma."
+},
+{
+    "Original":  " in ",
+    "Translation":  "，在",
+    "MethodToken":  "0x06000522",
+    "ILOffset":  1224,
+    "StringToken":  "0x7000a210",
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseDisciplineToLevelUp",
+    "MethodName":  "BuildTooltip_Cost",
+    "Safety":  "TooltipFragment",
+    "Note":  "Discipline-training level-up tooltip connector; paired with the exact discipline suffix at IL_04FD."
 }
 ]

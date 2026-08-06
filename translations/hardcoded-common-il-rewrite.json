@@ -9792,5 +9792,29 @@
     "Safety":  "CommonDisplayCandidate",
     "Note":  "Complete the command-status family fallback so an invalid state cannot leak its raw enum label.",
     "EvidenceScenario":  "ubl-tvf-turn002-targeted-replay"
+},
+{
+    "Original":  "Leader Trait (",
+    "Translation":  "领袖特质（",
+    "MethodToken":  "0x06000c08",
+    "ILOffset":  8,
+    "StringToken":  "0x7002f387",
+    "TypeFullName":  "AtTheGatesCommon.ns_Config.Weight_LeaderTrait",
+    "MethodName":  "ToString",
+    "Safety":  "TooltipFragment",
+    "Note":  "Leader-trait weight tooltip prefix; preserve the dynamic trait value and localize only this exact display operand.",
+    "EvidenceScenario":  "leader-trait-tooltip-smoke-only-20260805"
+},
+{
+    "Original":  ")",
+    "Translation":  "）",
+    "MethodToken":  "0x06000c08",
+    "ILOffset":  33,
+    "StringToken":  "0x70000125",
+    "TypeFullName":  "AtTheGatesCommon.ns_Config.Weight_LeaderTrait",
+    "MethodName":  "ToString",
+    "Safety":  "TooltipFragment",
+    "Note":  "Leader-trait weight tooltip closing punctuation paired with the scoped full-width prefix.",
+    "EvidenceScenario":  "leader-trait-tooltip-smoke-only-20260805"
 }
 ]

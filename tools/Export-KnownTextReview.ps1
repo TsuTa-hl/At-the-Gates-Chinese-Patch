@@ -993,7 +993,7 @@ function Add-RuntimeDisplayMapKnownTexts {
     }
 
     $sourceFile = "translations\runtime-display-strings.json"
-    foreach ($section in @("Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "ConceptDisplay")) {
+    foreach ($section in @("Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "Templates", "ConceptDisplay")) {
         foreach ($item in @($map.$section)) {
             if ($null -eq $item -or $null -eq $item.Original -or $null -eq $item.Translation) {
                 continue

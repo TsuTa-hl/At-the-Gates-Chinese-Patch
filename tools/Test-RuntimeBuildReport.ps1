@@ -29,8 +29,8 @@ if ($report.RendererMode -ne "DynamicCjk") {
 if ($null -eq $report.RuntimeText) {
     throw "DynamicCjk build report is missing RuntimeText details."
 }
-if ([int]$report.RuntimeText.RedirectedCount -ne 145) {
-    throw "Expected 145 runtime redirects, got $($report.RuntimeText.RedirectedCount)."
+if ([int]$report.RuntimeText.RedirectedCount -ne 149) {
+    throw "Expected 149 runtime redirects, got $($report.RuntimeText.RedirectedCount)."
 }
 if ([int]$report.RuntimeText.FrameBoundaryHookCount -ne 1) {
     throw "Expected one runtime frame-boundary hook, got $($report.RuntimeText.FrameBoundaryHookCount)."
@@ -50,8 +50,11 @@ if ([int]$report.RuntimeText.ConceptDisplayCount -lt 31) {
 if ([int]$report.RuntimeText.ExactCount -lt 5) {
     throw "Expected the five entry-specific resource-tooltip exact mappings, got $($report.RuntimeText.ExactCount)."
 }
-if ([int]$report.RuntimeText.TemplateCount -ne 0) {
-    throw "Runtime final-display templates must remain disabled without an EntryPoint context; got $($report.RuntimeText.TemplateCount)."
+$repositoryRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+$runtimeMap = Get-Content -Raw -Encoding utf8 (Join-Path $repositoryRoot 'translations\runtime-display-strings.json') | ConvertFrom-Json
+$expectedTemplateCount = @($runtimeMap.Templates).Count
+if ([int]$report.RuntimeText.TemplateCount -ne $expectedTemplateCount) {
+    throw "Expected $expectedTemplateCount scoped runtime display templates, got $($report.RuntimeText.TemplateCount)."
 }
 if ([int64]$report.RuntimeText.AtlasBudgetBytes -ne 33554432) {
     throw "Expected a 32 MiB runtime atlas budget."

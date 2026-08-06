@@ -1,5 +1,24 @@
 # Runtime, Font, and Reload Risks
 
+## 2026-08-06: transient patch-output mapping during Relationship Level fallback build
+
+The first build after adding the external-period Relationship Level
+border-distance fallbacks generated the runtime map (336 plain fragments) but
+stopped in the unrelated config-node stage when `File.Create` reported that
+`patch\Content\Config\OnMap\GoodyHuts.xml` had a user-mapped section open.
+No installation or game launch followed. The failed build had first been
+interrupted by a one-second diagnostic timeout; after it exited, an exclusive
+read/write probe of the same file succeeded. Treat this as a transient output
+mapping condition rather than a translation or generated-map failure. Record
+the result before retrying, confirm no interrupted build child remains, then
+rerun the normal build path.
+
+The normal retry completed in 6.7 seconds with the same 336-fragment runtime
+map. The manifest-backed installation then refreshed successfully, and the
+default main-menu smoke reached a stable window in 8.22 seconds and held it for
+4.13 seconds without a crash, settings error, or Windows error. This was
+smoke-only: no save, target tooltip, or Relationship Level panel was opened.
+
 Read when changing DynamicCjk, fallback fonts, text calibration, SpriteFont
 references, asset memory behavior, or loading a save from the running game.
 

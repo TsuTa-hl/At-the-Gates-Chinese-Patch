@@ -1,0 +1,187 @@
+<!--
+
+
+NOTES:
+
+
+The only possible event outcomes for failed Storyline event completion are defined as
+individual 'afterEvent' blocks. If only one is defined, that is the only one which
+will be picked, and no further loss will occur.
+
+
+A 'stopMoodDrop' block can be used to further control how much impact an ungranted
+Desire has on a Clan's Mood.
+
+
+The 'extraLossChance' field inside a 'stopMoodDrop' block can be used to randomly
+have the Mood drop by an additional -1.
+
+
+-->
+<intensitys>
+  <!--*******************************-->
+  <!--                               -->
+  <!--      Curious                  -->
+  <!--                               -->
+  <intensity>
+    <ID>INTENSITY_CURIOUS</ID>
+    <name>Interested</name>
+    <description>expressed interest in</description>
+    <feudDescription>minor dispute</feudDescription>
+    <afterEvent>
+      <mood>0</mood>
+    </afterEvent>
+    <afterEvent>
+      <mood>0</mood>
+      <fadeChance>33</fadeChance>
+      <extraLossChance>50</extraLossChance>
+    </afterEvent>
+    <afterEvent>
+      <mood>-1</mood>
+    </afterEvent>
+    <afterEvent>
+      <mood>-1</mood>
+      <extraLossChance>50</extraLossChance>
+    </afterEvent>
+  </intensity>
+  <!--*******************************-->
+  <!--                               -->
+  <!--      Interested               -->
+  <!--                               -->
+  <intensity>
+    <ID>INTENSITY_INTERESTED</ID>
+    <name>Interested</name>
+    <description>expressed interest in</description>
+    <feudDescription>minor dispute</feudDescription>
+    <afterEvent>
+      <mood>0</mood>
+    </afterEvent>
+    <afterEvent>
+      <mood>0</mood>
+      <fadeChance>33</fadeChance>
+      <extraLossChance>50</extraLossChance>
+    </afterEvent>
+    <afterEvent>
+      <mood>-1</mood>
+    </afterEvent>
+    <afterEvent>
+      <mood>-1</mood>
+      <extraLossChance>50</extraLossChance>
+    </afterEvent>
+    <!--
+
+      MERGED WITH FIRST CONFIG
+
+      <name>Interested</name>
+      <description>developed interest in</description>
+      <feudDescription>serious quarrel</feudDescription>
+
+      -->
+    <!--
+		<stopMoodDrop>
+      <mood>-1</mood>
+      <chance>25</chance>
+    </stopMoodDrop>
+    <stopMoodDrop>
+      <mood>-1</mood>
+      <chance>75</chance>
+    </stopMoodDrop>-->
+    <!--
+
+    MERGED WITH FIRST CONFIG
+
+    <afterEvent>
+      <mood>0</mood>
+    </afterEvent>
+    <afterEvent>
+      <mood>-1</mood>
+    </afterEvent>
+    <afterEvent>
+      <mood>-1</mood>
+      <extraLossChance>25</extraLossChance>
+    </afterEvent>
+    <afterEvent>
+      <mood>-1</mood>
+      <extraLossChance>50</extraLossChance>
+    </afterEvent>
+
+    -->
+  </intensity>
+  <!--*******************************-->
+  <!--                               -->
+  <!--      Distracted               -->
+  <!--                               -->
+  <intensity>
+    <ID>INTENSITY_DISTRACTED</ID>
+    <name>Interested</name>
+    <description>expressed interest in</description>
+    <feudDescription>minor dispute</feudDescription>
+    <afterEvent>
+      <mood>0</mood>
+    </afterEvent>
+    <afterEvent>
+      <mood>0</mood>
+      <fadeChance>33</fadeChance>
+      <extraLossChance>50</extraLossChance>
+    </afterEvent>
+    <afterEvent>
+      <mood>-1</mood>
+    </afterEvent>
+    <afterEvent>
+      <mood>-1</mood>
+      <extraLossChance>50</extraLossChance>
+    </afterEvent>
+    <!--
+
+      MERGED WITH FIRST CONFIG
+
+      <name>Distracted</name>
+      <description>become distracted by the idea of</description>
+      <feudDescription>major feud</feudDescription>
+
+      -->
+    <!--
+          <stopMoodDrop>
+        <mood>-1</mood>
+        <chance>50</chance>
+      </stopMoodDrop>-->
+    <!--
+
+    MERGED WITH FIRST CONFIG
+
+		<afterEvent>
+			<mood>-1</mood>
+		</afterEvent>
+		<afterEvent>
+			<mood>-1</mood>
+			<extraLossChance>50</extraLossChance>
+		</afterEvent>
+		<afterEvent>
+			<mood>-2</mood>
+		</afterEvent>
+
+    -->
+  </intensity>
+  <!--*******************************-->
+  <!--                               -->
+  <!--      Obsessed                 -->
+  <!--                               -->
+  <intensity>
+    <ID>INTENSITY_OBSESSED</ID>
+    <name>痴迷</name>
+    <description>[COLOR:BAD-RED]会痴迷[/COLOR]于</description>
+    <feudDescription>[COLOR:BAD-RED]war in all but name[/COLOR]</feudDescription>
+    <afterEvent>
+      <mood>0</mood>
+    </afterEvent>
+    <afterEvent>
+      <mood>-1</mood>
+    </afterEvent>
+    <afterEvent>
+      <mood>-2</mood>
+    </afterEvent>
+    <afterEvent>
+      <mood>-3</mood>
+    </afterEvent>
+  </intensity>
+</intensitys>

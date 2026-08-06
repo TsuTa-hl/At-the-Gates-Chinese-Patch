@@ -62,10 +62,17 @@ map or an exact UI rewrite, not to the source catalogs.
 The 2026-08-03 UBL-TVF forage-tooltip repair keeps the two residual connectors
 as method-scoped UI operands in `AtTheGatesUI.ns_InGame.SelectionPanel` /
 `AddButton_Forage` (`0x06000389`, IL offsets 944 and 1013): ` will ` -> `将`
-and `This ` -> `该`. The remaining `become obsessed with the idea of` phrase
-is a rich final-display fragment and is registered in both the plain fallback
-and `RichTextFragments` paths as `会痴迷于`; the rich rule is the authoritative
-path for concept-linked tooltips. The refreshed Composite authority contains
+and `This ` -> `该`. The `become obsessed with the idea of` case was corrected
+at its config source on 2026-08-06: `Content/Config/Misc/Intensities.xml`,
+`INTENSITY_OBSESSED` / `description`, whose actual source format is
+`[COLOR:BAD-RED]become obsessed[/COLOR] with the idea of`. The colour tag
+splits the phrase, so an uninterrupted runtime-map entry cannot match this
+form. `GAME.BuildDescription_Desire` (`0x06001732`) resolves the intensity
+description into the displayed desire clause. The config-node map now emits
+`[COLOR:BAD-RED]会痴迷[/COLOR]于`; its Composite entry point is
+`xml:source/Content/Config/Misc/Intensities.original.xml:c606cffb9531ea63`
+under `xml-existing-translation`. The previous runtime-map entries remain only
+as fallbacks for any separate uninterrupted display path. The refreshed Composite authority contains
 11,914 entries, 15 rules, and 293 runtime-map bindings. This was a static-only
 repair; the user will perform the visual replay.
 
@@ -73,10 +80,21 @@ The priority continuation fixed a rich-text display-path omission rather than
 adding a global word replacement. `DisplayStringLocalizer` now preserves
 bracketed tags and applies plain fragments only to text outside those tags,
 while rich fragments handle concept-linked text. The same source-scoped pass
-covers Relationship Level delta reasons and diplomacy-operation keywords, and
+covers Relationship Level delta reasons, including both exact `less.)` and
+`less).` punctuation variants of the finite border-distance family, and
+diplomacy-operation keywords, and
 the UBL-TVF residual group (`Bandit`, `Pillage`, `This`, `next`, `As`,
 movement/status/combat-XP labels, and training `as`). The persistent KnownTexts
 refresh imported 19,407 source occurrences; the current Composite authority is
 11,945 entry points, 15 rules, and 308 runtime-map bindings. The patch was
 rebuilt and the installed files were refreshed for manual testing; no game was
 started.
+
+The 2026-08-06 Leader-trait repair adds a narrow final-display fallback for a
+RichTextLabel token boundary, not another source-string rewrite: exact runtime
+plain forms `Leader Trait` and `Leader 特质` use `runtime-display-plain`, and
+the two complete Leader-trait templates use `runtime-display-template` through
+the bounded CJK word-bridge template path. Route future work on this display
+form to `leader-trait-weight-tooltip-audit.md` and
+`runtime-entrypoint-audit.md`; do not introduce a global `Leader` or `Trait`
+translation.

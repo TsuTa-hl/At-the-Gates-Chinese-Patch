@@ -9,6 +9,7 @@ check. It supplements the invariants in `../operations.md`.
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Build-Patch.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\Install-ChinesePatch.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\Uninstall-ChinesePatch.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-PatchUninstallCompleteness.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-GameLaunch.ps1
 ```
 
@@ -31,13 +32,24 @@ are added when necessary, then an informational OK-only popup lists the changes.
 The 2026-07-30 fake-game regression covers direct-uninstall removal, collision
 suffixing, empty-name fallback, original-file restoration, and the refresh
 bypass; it intentionally does not rename a live player's saves during testing.
+Every install now prepares a schema-2 manifest before the first patch copy,
+recording every generated patch file together with its original and patch hashes.
+Only after every copy hash verifies does it mark the manifest installed. Direct
+uninstall validates each restored/deleted path before removing that manifest.
+It also merges the backup inventory and known runtime-only artifacts, so a
+legacy or incomplete manifest cannot leave an original DLL/XML file or the
+AtG.RuntimeText mapping behind. Test-PatchUninstallCompleteness.ps1 enumerates
+the live patch tree dynamically; any future translated artifact therefore has
+to be represented in the install manifest and be restored or removed by the
+fake-game round trip.
 
 ## Required Gates
 
 1. Close the game process.
 2. Build the patch and inspect `patch\.atg-build-report.json`.
-3. Run the text-tag, generated-alias, font-budget, and affected subsystem
-   checks named by `package-and-install.md`.
+3. Run the text-tag, generated-alias, font-budget, current-patch
+   install/uninstall completeness, and affected subsystem checks named by
+   package-and-install.md.
 4. Confirm `patch\Content\Text\English.xml` starts with `<english>`.
 5. Install the patch. `Install-ChinesePatch.ps1` first uninstalls its
    manifest-backed previous installation, so an explicit separate uninstall is

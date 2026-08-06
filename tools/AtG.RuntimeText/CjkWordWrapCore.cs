@@ -41,6 +41,23 @@ namespace AtG.RuntimeText
             var access = Resolve(processor.GetType());
             var sourceWord = (string)access.Word.GetValue(processor);
             var word = DisplayStringLocalizer.LocalizeRichText(sourceWord);
+            var consumedFollowingWords = 0;
+            if (StringComparer.Ordinal.Equals(sourceWord, word) &&
+                DisplayStringLocalizer.HasTokenizedRichTextWordSequenceStart(sourceWord))
+            {
+                List<string> followingWords;
+                string sequenceTranslation;
+                int sequenceConsumedFollowingWords;
+                var splitter = access.WordsInLine.GetValue(processor);
+                if (TryGetFollowingWords(access, splitter, out followingWords) &&
+                    DisplayStringLocalizer.TryLocalizeRichTextWordSequence(sourceWord,
+                        followingWords, out sequenceTranslation,
+                        out sequenceConsumedFollowingWords))
+                {
+                    word = sequenceTranslation;
+                    consumedFollowingWords = sequenceConsumedFollowingWords;
+                }
+            }
             if (sourceWord.IndexOf("unable以", StringComparison.Ordinal) >= 0)
                 word = word.Replace("unable以", "无法在冬季留在");
             if (!StringComparer.Ordinal.Equals(sourceWord, word))
@@ -135,10 +152,7 @@ namespace AtG.RuntimeText
             }
 
             access.AppendSpaceBeforeNextWord.SetValue(processor, true);
-            var splitter = access.WordsInLine.GetValue(processor);
-            var next = (string)access.SplitterNext.Invoke(splitter, null);
-            access.WordsInLine.SetValue(processor, splitter);
-            access.Word.SetValue(processor, next);
+            AdvanceWords(access, processor, consumedFollowingWords);
         }
 
         public static void ProcessOriginal(object processor)
@@ -176,6 +190,44 @@ namespace AtG.RuntimeText
             return suppressed;
         }
 
+        private static bool TryGetFollowingWords(Accessors access, object splitter,
+            out List<string> words)
+        {
+            words = null;
+            if (splitter == null || access.SplitterText == null ||
+                access.SplitterStartIndex == null || access.SplitterLength == null ||
+                access.SplitterDelimiter == null) return false;
+
+            var source = access.SplitterText.GetValue(splitter) as string;
+            if (source == null) return false;
+            var startIndex = Convert.ToInt32(access.SplitterStartIndex.GetValue(splitter));
+            var length = Convert.ToInt32(access.SplitterLength.GetValue(splitter));
+            if (length < 0 || length > source.Length || startIndex < 0 || startIndex > length)
+                return false;
+
+            var delimiter = Convert.ToChar(access.SplitterDelimiter.GetValue(splitter));
+            words = new List<string>();
+            while (startIndex < length)
+            {
+                var endIndex = source.IndexOf(delimiter, startIndex);
+                if (endIndex < 0 || endIndex > length) endIndex = length;
+                words.Add(source.Substring(startIndex, endIndex - startIndex));
+                startIndex = endIndex + 1;
+            }
+            return true;
+        }
+
+        private static void AdvanceWords(Accessors access, object processor,
+            int consumedFollowingWords)
+        {
+            var splitter = access.WordsInLine.GetValue(processor);
+            string next = null;
+            for (var index = 0; index <= consumedFollowingWords; index++)
+                next = (string)access.SplitterNext.Invoke(splitter, null);
+            access.WordsInLine.SetValue(processor, splitter);
+            access.Word.SetValue(processor, next);
+        }
+
         private static Accessors Resolve(Type type)
         {
             lock (Gate)
@@ -211,6 +263,10 @@ namespace AtG.RuntimeText
                 OriginalWordMethod = Method(type, "ProcessChunk_Normal_Word");
                 FinishFullLine = Method(type, "ProcessChunk_Normal_FinishFullLine");
                 SplitterNext = Method(WordsInLine.FieldType, "Next");
+                SplitterText = OptionalField(WordsInLine.FieldType, "str");
+                SplitterDelimiter = OptionalField(WordsInLine.FieldType, "delimeter");
+                SplitterStartIndex = OptionalField(WordsInLine.FieldType, "startIndex");
+                SplitterLength = OptionalField(WordsInLine.FieldType, "length");
             }
 
             public readonly FieldInfo ChunkFont;
@@ -227,11 +283,20 @@ namespace AtG.RuntimeText
             public readonly MethodInfo OriginalWordMethod;
             public readonly MethodInfo FinishFullLine;
             public readonly MethodInfo SplitterNext;
+            public readonly FieldInfo SplitterText;
+            public readonly FieldInfo SplitterDelimiter;
+            public readonly FieldInfo SplitterStartIndex;
+            public readonly FieldInfo SplitterLength;
 
             private static FieldInfo Field(Type type, string name)
             {
                 return type.GetField(name, Flags) ??
                     throw new MissingFieldException(type.FullName, name);
+            }
+
+            private static FieldInfo OptionalField(Type type, string name)
+            {
+                return type.GetField(name, Flags);
             }
 
             private static MethodInfo Method(Type type, string name)

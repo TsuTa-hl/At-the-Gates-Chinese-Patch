@@ -5660,5 +5660,29 @@
     "Safety":  "SafeUI",
     "Note":  "Seized-site popup operation label; exact source catalog locator.",
     "EvidenceScenario":  "latest-manual-bandit-pillage-popup"
+},
+{
+    "Original":  "No ",
+    "Translation":  "\u6ca1\u6709",
+    "MethodToken":  "0x06001308",
+    "ILOffset":  25,
+    "StringToken":  "0x700195f2",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_AnyMovesRemaining",
+    "MethodName":  "PerformCheck",
+    "Safety":  "TooltipFragment",
+    "Note":  "Exact no-moves-remaining prefix; pairs with localized suffix in the same static check.",
+    "EvidenceScenario":  "latest-manual-unit-action-remaining"
+},
+{
+    "Original":  " remaining.",
+    "Translation":  "\u3002",
+    "MethodToken":  "0x06001308",
+    "ILOffset":  35,
+    "StringToken":  "0x700195fa",
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_AnyMovesRemaining",
+    "MethodName":  "PerformCheck",
+    "Safety":  "TooltipFragment",
+    "Note":  "Exact no-moves-remaining suffix; pairs with localized prefix in the same static check.",
+    "EvidenceScenario":  "latest-manual-unit-action-remaining"
 }
 ]

@@ -7,6 +7,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 . "$PSScriptRoot\tools\AtGPaths.ps1"
+. "$PSScriptRoot\tools\AtGPatchManifest.ps1"
 . "$PSScriptRoot\tools\AtGPatchNotice.ps1"
 
 $GamePath = Resolve-AtGGamePath $GamePath
@@ -45,36 +46,13 @@ if (Test-Path -LiteralPath $backupBase) {
         Select-Object -First 1
 }
 
-$existingManifest = $null
-$reusingExistingBackup = $false
-if (Test-Path -LiteralPath $manifestPath) {
-    $existingManifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
-    $backupRoot = [string]$existingManifest.BackupRoot
-    if ($oldestBackup) {
-        $backupRoot = $oldestBackup.FullName
-    }
-    if (!(Test-Path -LiteralPath $backupRoot)) {
-        throw "Existing patch manifest points to a missing backup: $backupRoot"
-    }
-    $reusingExistingBackup = $true
+if ($oldestBackup) {
+    $backupRoot = $oldestBackup.FullName
 }
 else {
-    if ($oldestBackup) {
-        $backupRoot = $oldestBackup.FullName
-        $reusingExistingBackup = $true
-    }
-    else {
-        $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
-        $backupRoot = Join-Path $backupBase $timestamp
-        New-Item -ItemType Directory -Force -Path $backupRoot | Out-Null
-    }
-}
-
-$existingFiles = @{}
-if ($existingManifest) {
-    foreach ($file in $existingManifest.Files) {
-        $existingFiles[[string]$file.RelativePath] = [bool]$file.HadOriginal
-    }
+    $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
+    $backupRoot = Join-Path $backupBase $timestamp
+    New-Item -ItemType Directory -Force -Path $backupRoot | Out-Null
 }
 
 function Test-AtGFontPatchFile {
@@ -88,20 +66,17 @@ $fontMarkerRelative = "Content\Images\Interface\Components\Fonts\.atg-merged-fon
 $fontMarker = Join-AtGRelativePath $patchRoot $fontMarkerRelative
 $shouldInstallFonts = ($InstallFonts -or (Test-Path -LiteralPath $fontMarker)) -and !$PreserveFonts
 
-$allPatchFiles = Get-ChildItem -LiteralPath $patchRoot -Recurse -File
+$allPatchFiles = @(Get-AtGPatchInventory -PatchRoot $patchRoot)
 $files = @()
 $skippedFontFiles = @()
 foreach ($file in $allPatchFiles) {
-    $relative = $file.FullName.Substring($patchRoot.Length).TrimStart([char[]]@("\", "/"))
+    $relative = [string]$file.RelativePath
     if (($relative -replace "/", "\") -eq $fontMarkerRelative) {
         continue
     }
 
     if ((Test-AtGFontPatchFile $relative) -and !$shouldInstallFonts) {
-        $skippedFontFiles += [pscustomobject]@{
-            File         = $file
-            RelativePath = $relative
-        }
+        $skippedFontFiles += $file
     }
     else {
         $files += $file
@@ -130,7 +105,7 @@ if ($skippedFontFiles.Count -gt 0) {
 $manifestFiles = @()
 
 foreach ($file in $files) {
-    $relative = $file.FullName.Substring($patchRoot.Length).TrimStart([char[]]@("\", "/"))
+    $relative = [string]$file.RelativePath
     $target = Join-AtGRelativePath $GamePath $relative
     $backup = Join-AtGRelativePath $backupRoot $relative
 
@@ -139,26 +114,10 @@ foreach ($file in $files) {
         New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
     }
 
-    if ($existingFiles.ContainsKey($relative)) {
-        $hadOriginal = $existingFiles[$relative]
+    if (Test-Path -LiteralPath $backup -PathType Leaf) {
+        $hadOriginal = $true
     }
-    elseif ($reusingExistingBackup) {
-        if (Test-Path -LiteralPath $backup) {
-            $hadOriginal = $true
-        }
-        elseif (Test-Path -LiteralPath $target) {
-            $backupDir = Split-Path -Parent $backup
-            if ($backupDir) {
-                New-Item -ItemType Directory -Force -Path $backupDir | Out-Null
-            }
-            Copy-Item -LiteralPath $target -Destination $backup -Force
-            $hadOriginal = $true
-        }
-        else {
-            $hadOriginal = $false
-        }
-    }
-    elseif (Test-Path -LiteralPath $target) {
+    elseif (Test-Path -LiteralPath $target -PathType Leaf) {
         $backupDir = Split-Path -Parent $backup
         if ($backupDir) {
             New-Item -ItemType Directory -Force -Path $backupDir | Out-Null
@@ -170,22 +129,41 @@ foreach ($file in $files) {
         $hadOriginal = $false
     }
 
-    Copy-Item -LiteralPath $file.FullName -Destination $target -Force
     $manifestFiles += [pscustomobject]@{
-        RelativePath = $relative
-        HadOriginal  = $hadOriginal
+        RelativePath   = $relative
+        HadOriginal    = $hadOriginal
+        OriginalSha256 = if ($hadOriginal) { Get-AtGFileSha256 -Path $backup } else { $null }
+        PatchSha256    = [string]$file.PatchSha256
     }
 }
 
 $manifest = [pscustomobject]@{
-    Name       = "At the Gates Chinese Patch"
-    Installed  = (Get-Date).ToString("s")
-    GamePath   = (Resolve-Path -LiteralPath $GamePath).Path
-    BackupRoot = $backupRoot
-    Files      = $manifestFiles
+    SchemaVersion = 2
+    Name          = "At the Gates Chinese Patch"
+    InstallState  = "Prepared"
+    Prepared      = (Get-Date).ToString("s")
+    Installed     = $null
+    GamePath      = (Resolve-Path -LiteralPath $GamePath).Path
+    BackupRoot    = $backupRoot
+    Files         = $manifestFiles
 }
 
-$manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $manifestPath -Encoding UTF8
+Write-AtGPatchManifest -ManifestPath $manifestPath -Manifest $manifest
+
+foreach ($file in $files) {
+    $relative = [string]$file.RelativePath
+    $target = Join-AtGRelativePath $GamePath $relative
+    Copy-Item -LiteralPath $file.SourcePath -Destination $target -Force
+
+    $actualHash = Get-AtGFileSha256 -Path $target
+    if ($actualHash -ne $file.PatchSha256) {
+        throw "Installed patch file hash does not match the planned artifact: $relative"
+    }
+}
+
+$manifest.InstallState = "Installed"
+$manifest.Installed = (Get-Date).ToString("s")
+Write-AtGPatchManifest -ManifestPath $manifestPath -Manifest $manifest
 
 Write-Host "Chinese patch installed."
 Write-Host "Backup: $backupRoot"

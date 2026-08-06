@@ -95,3 +95,8 @@ Assert-AtG (!(Test-Path -LiteralPath $staleFile)) "Repeated install restored the
 Assert-AtG (@($secondManifest.Files).Count -gt 0) "Repeated install produced an empty manifest."
 
 Write-Host "Install refresh regression checks passed."
+
+& (Join-Path $PSScriptRoot "Test-PatchUninstallCompleteness.ps1")
+if (-not $?) {
+    throw "Patch install/uninstall completeness regression failed."
+}

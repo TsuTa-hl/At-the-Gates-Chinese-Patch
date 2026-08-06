@@ -61,7 +61,8 @@ $env:ATG_GAME_PATH = "D:\SteamLibrary\steamapps\common\Jon Shafer's At the Gates
    powershell -ExecutionPolicy Bypass -File .\Uninstall-ChinesePatch.ps1
    ```
 
-安装过程会把被覆盖的原文件备份到游戏目录的 `_ChinesePatchBackup`。
+安装过程会把被覆盖的原文件备份到游戏目录的 `_ChinesePatchBackup`。安装清单会记录
+全部补丁文件及其哈希；卸载会逐项验证原文件已恢复或补丁专用文件已删除后，才移除清单。
 
 ## 开发与本地化
 

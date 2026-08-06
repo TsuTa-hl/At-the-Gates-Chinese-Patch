@@ -245,6 +245,17 @@
         }
       ]
     },
+  "Content\\Config\\OnMap\\GoodyHuts.xml": {
+    "Source": "source\\Content\\Config\\OnMap\\GoodyHuts.original.xml",
+    "Container": "goodyHut",
+    "Items": [
+      {
+        "ID": "GOODY_HUT_VILLAGE",
+        "Name": "废弃村落",
+        "Description": "这是昔日繁荣社区的遗迹。[NEWLINE]其中可能仍有有用的物资，可由[EXPLORER]调查。"
+      }
+    ]
+  },
   "Content\\Config\\OnMap\\Deposits.xml": {
     "Source": "source\\Content\\Config\\OnMap\\Deposits.original.xml",
     "Container": "deposit",
@@ -332,6 +343,18 @@
       {
         "ID": "DEPOSIT_COAL_VAST",
           "Description": "煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]这是迄今发现的最大煤矿床之一！"
+      },
+      {
+        "ID": "DEPOSIT_PEAT",
+        "Description": "泥炭[矿床|DEPOSIT]可由[DIGGER]或[PEAT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]泥炭仅分布于[MARSH:S]。"
+      },
+      {
+        "ID": "DEPOSIT_PEAT_LARGE",
+        "Description": "泥炭[矿床|DEPOSIT]可由[DIGGER]或[PEAT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]泥炭仅分布于[MARSH:S]。[BLANK-LINE]这是一处特别大的泥炭矿床！"
+      },
+      {
+        "ID": "DEPOSIT_PEAT_VAST",
+        "Description": "泥炭[矿床|DEPOSIT]可由[DIGGER]或[PEAT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]泥炭仅分布于[MARSH:S]。[BLANK-LINE]这是迄今发现的最大泥炭矿床之一！"
       }
     ]
   }

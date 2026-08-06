@@ -45,7 +45,7 @@ public static class RuntimeDisplayMapBuilder
         var plain = model.PlainText ?? [];
         var plainFragments = (model.PlainTextFragments ?? []).ToList();
         var richTextFragments = (model.RichTextFragments ?? []).ToList();
-        var templates = new List<RuntimeDisplayEntry>();
+        var templates = (model.Templates ?? []).ToList();
         var configuredConceptDisplay = model.ConceptDisplay ?? [];
         var conceptDisplay = configuredConceptDisplay.ToList();
 
@@ -98,6 +98,10 @@ public static class RuntimeDisplayMapBuilder
         {
             ValidateRequired(entry.Original, "Template.Original");
             ValidateRequired(entry.Translation, "Template.Translation");
+            if (!IsRuntimeSafeTemplate(entry.Original))
+                throw new InvalidDataException(
+                    $"Template.Original is not specific enough for the runtime display boundary: '{entry.Original}'.");
+            ValidateTemplateArguments(entry.Original, entry.Translation);
         }
         foreach (var entry in conceptDisplay)
         {
@@ -369,6 +373,21 @@ public static class RuntimeDisplayMapBuilder
         return RuntimeTemplateAnchor.IsMatch(literalText);
     }
 
+    private static void ValidateTemplateArguments(string original, string translation)
+    {
+        var originalArguments = RuntimeTemplateArgument.Matches(original)
+            .Select(match => match.Value)
+            .OrderBy(value => value, StringComparer.Ordinal)
+            .ToArray();
+        var translationArguments = RuntimeTemplateArgument.Matches(translation)
+            .Select(match => match.Value)
+            .OrderBy(value => value, StringComparer.Ordinal)
+            .ToArray();
+        if (!originalArguments.SequenceEqual(translationArguments, StringComparer.Ordinal))
+            throw new InvalidDataException(
+                $"Runtime display template must preserve every argument: '{original}' -> '{translation}'.");
+    }
+
     private static HashSet<string> DiscoverConceptKeys(string assemblyPath,
         string conceptsTypeFullName)
     {
@@ -437,6 +456,7 @@ public static class RuntimeDisplayMapBuilder
         public RuntimeDisplayEntry[]? PlainText { get; set; }
         public RuntimeDisplayEntry[]? PlainTextFragments { get; set; }
         public RuntimeDisplayEntry[]? RichTextFragments { get; set; }
+        public RuntimeDisplayEntry[]? Templates { get; set; }
         public RuntimeConceptDisplayEntry[]? ConceptDisplay { get; set; }
         public string[]? ConceptDisplaySources { get; set; }
         public string[]? CompositeExactSources { get; set; }
