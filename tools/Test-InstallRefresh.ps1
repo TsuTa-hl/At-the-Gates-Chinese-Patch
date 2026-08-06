@@ -100,3 +100,8 @@ Write-Host "Install refresh regression checks passed."
 if (-not $?) {
     throw "Patch install/uninstall completeness regression failed."
 }
+
+& (Join-Path $PSScriptRoot "Test-ReleasePackage.ps1")
+if (-not $?) {
+    throw "Release package export regression failed."
+}

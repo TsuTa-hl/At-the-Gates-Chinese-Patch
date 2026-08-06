@@ -15,7 +15,7 @@ $GamePath = Resolve-AtGGamePath $GamePath
 $patchRoot = Join-Path $PSScriptRoot "patch"
 $patchText = Join-Path $patchRoot "Content\Text\English.xml"
 if (!(Test-Path -LiteralPath $patchText)) {
-    throw "Patch content not found. Run tools\Build-Patch.ps1 first."
+    throw "Patch content not found. The patch package is incomplete."
 }
 
 $gameExe = Join-Path $GamePath "At The Gates.exe"
