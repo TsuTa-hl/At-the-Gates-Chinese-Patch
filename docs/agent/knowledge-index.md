@@ -11,6 +11,7 @@ rule JSON remain the facts; disposable CSV views support filtering and review.
 | Cleanup | `operations.md` | `black-box-tests.md` when a fixed save or test run may be protected |
 | Assess/fix | `text-sources.md`, `translation-style.md` | `catalog-review.md` for visible text; `managed-patching.md` for XML/DLL; `ui-source-map.md` for UI mapping; composition-rule JSON or a temporary filtered `Composite` CSV for dynamic text; crash-risk index plus its symptom topic; black-box interface and automation for reproduction; trial topic/state for explicit fast-fail work |
 | Package/install | `operations/build-and-install.md`, `crash-risks.md` | text/managed topic after text-generation or rewrite changes; composition-rule JSON after dynamic/rich-text changes; crash-risk topic matching the changed subsystem |
+| Release branch | `workflows/publish-release-branch.md`, `operations/build-and-install.md` | `crash-risks.md` after installer, uninstaller, or patch-artifact changes |
 | Test/loop | `black-box-tests.md`, selected interface topic, `operations/game-automation.md` | text/catalog/composite/style/crash topics only after a matching failure symptom |
 | Update knowledge | latest test handoff and this index | only the owner files implicated by the result or source change |
 
