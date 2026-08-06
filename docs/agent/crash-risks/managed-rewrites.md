@@ -66,6 +66,38 @@ forms belong to the runtime display map. Neutral duplicate-name entries may be
 translated only through their indexed source list, not by changing playable
 faction identifiers.
 
+## 2026-08-06: Complete uninstall recovery for faction and runtime artifacts
+
+The reported post-uninstall diplomacy crash included the residual Chinese
+卡尔皮人. The catalog locates The Carpi both in the neutral duplicate-name
+list of Factions.xml and in the display-safe runtime map. The generated patch
+therefore changes both a logic-adjacent XML file and runtime-only artifacts.
+The former uninstall implementation trusted only manifest.Files, with no
+backup-inventory recovery, patch-only fallback, or post-restore hash check. A
+stale or incomplete manifest could consequently leave a translated
+Factions.xml, AtG.RuntimeText.dll, or AtG.RuntimeText.tsv behind.
+
+Schema-2 installation now backs up and hashes every file in the generated
+patch tree, writes a Prepared manifest before the first copy, verifies each
+installed hash, and only then marks it Installed. Uninstall merges the
+manifest with every file in the original-backup tree and known runtime-only
+artifacts, verifies each restored hash or removal, and removes its manifest
+only after that succeeds. Test-PatchUninstallCompleteness.ps1 dynamically
+enumerates the entire current patch tree, so later patch outputs are covered
+without a hand-maintained file list.
+
+The fake-game test passed for all 58 current patch files and for a simulated
+legacy manifest omitting AtTheGatesCommon.dll, AtG.RuntimeText.dll, and
+the runtime TSV. A live direct-uninstall verification restored 49 original
+backup files and removed 43 patch-only files; Factions.xml contained
+The Carpi, while the runtime DLL and TSV were absent. The unpatched
+main-menu smoke reached a stable window in 7.74 seconds and held it for
+4.16 seconds without a crash, settings error, or Windows error. A second live
+schema-2 uninstall/reinstall round trip repeated the 49 restored and 43 removed
+artifacts before rebuilding the complete 58-file manifest. Its final patched
+main-menu smoke reached 7.70 seconds plus 4.12 seconds with the same clean
+result. Neither smoke entered a save or the diplomacy panel.
+
 The 2026-08-02 CLR `InvalidProgramException` at the profession screen was
 caused by the first `HumanReadableModDynamicPercent` rewrite removing the
 original `ldarg.1` that preceded the retained `%` string-concat suffix. The

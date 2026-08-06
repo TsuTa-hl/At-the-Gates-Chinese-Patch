@@ -9,6 +9,8 @@ public sealed record RuntimeRedirectJob(
     string RuntimeAssemblyPath,
     IReadOnlyList<CallRedirectSpec> Specs,
     IReadOnlyList<StringFieldFilterSpec> StringFieldFilters,
+    IReadOnlyList<StringReturnFilterSpec> StringReturnFilters,
+    IReadOnlyList<MethodArgumentFilterSpec> MethodArgumentFilters,
     IReadOnlyList<MethodEntryHookSpec> MethodEntryHooks,
     int ExpectedRenderingRedirectCount,
     int ExpectedFontLoadRedirectCount,
@@ -33,7 +35,7 @@ public static class RuntimeTextRedirectPlan
     private static readonly RedirectDefinition[] Definitions =
     [
         new("elftools", "ElfTools.dll", "ElfTools.original.dll", 17, 5, 14, 1, 0, 0, 0, 0),
-        new("common", "AtTheGatesCommon.dll", "AtTheGatesCommon.original.dll", 11, 26, 4, 0, 1, 0, 0, 0),
+        new("common", "AtTheGatesCommon.dll", "AtTheGatesCommon.original.dll", 11, 26, 4, 0, 5, 0, 0, 0),
         new("game", "At The Gates.exe", "AtTheGatesGame.original.exe", 6, 4, 44, 0, 0, 1, 1, 1),
         new("ui", "AtTheGatesUI.dll", "AtTheGatesUI.original.dll", 0, 0, 12, 0, 0, 0, 0, 0),
     ];
@@ -54,6 +56,8 @@ public static class RuntimeTextRedirectPlan
             if (!File.Exists(source)) continue;
             var specs = BuildSpecs(ManagedCallCatalog.Read(source), targetMethods);
             var filters = BuildStringFieldFilters(definition, source, targetMethods);
+            var returnFilters = BuildStringReturnFilters(definition, source, targetMethods);
+            var argumentFilters = BuildMethodArgumentFilters(definition, source, targetMethods);
             var entryHooks = BuildMethodEntryHooks(definition, source, targetMethods);
             var expectedCount = definition.ExpectedRenderingCount + definition.ExpectedFontLoadCount +
                 definition.ExpectedLifecycleCount + definition.ExpectedLayoutCount;
@@ -67,6 +71,8 @@ public static class RuntimeTextRedirectPlan
                 runtime,
                 specs,
                 filters,
+                returnFilters,
+                argumentFilters,
                 entryHooks,
                 definition.ExpectedRenderingCount,
                 definition.ExpectedFontLoadCount,
@@ -118,6 +124,50 @@ public static class RuntimeTextRedirectPlan
             new StringFieldFilterSpec(caller.MetadataToken,
                 "System.String AtTheGatesCommon.ns_Text.TextFormatter::RawText",
                 target.MetadataToken, 1),
+        ];
+    }
+
+    private static IReadOnlyList<StringReturnFilterSpec> BuildStringReturnFilters(
+        RedirectDefinition definition,
+        string sourceAssemblyPath,
+        IReadOnlyList<ManagedMethodEntry> targetMethods)
+    {
+        if (!StringComparer.Ordinal.Equals(definition.Name, "common")) return [];
+        var sourceMethods = ManagedMethodCatalog.Read(sourceAssemblyPath);
+        var target = targetMethods.Single(method => method.FullName ==
+            "System.String AtG.RuntimeText.DisplayStringLocalizer::LocalizeRichText(System.String)");
+        var desireDescription = sourceMethods.Single(method => method.FullName ==
+            "System.String AtTheGatesCommon.ns_Config.ClanDesireConfig::get_DescriptionForTrait()");
+        var desireDescription2 = sourceMethods.Single(method => method.FullName ==
+            "System.String AtTheGatesCommon.ns_Config.ClanDesireConfig::get_DescriptionForTrait2()");
+        return
+        [
+            new StringReturnFilterSpec(desireDescription.MetadataToken, target.MetadataToken, 1),
+            new StringReturnFilterSpec(desireDescription2.MetadataToken, target.MetadataToken, 1),
+        ];
+    }
+
+    private static IReadOnlyList<MethodArgumentFilterSpec> BuildMethodArgumentFilters(
+        RedirectDefinition definition,
+        string sourceAssemblyPath,
+        IReadOnlyList<ManagedMethodEntry> targetMethods)
+    {
+        if (!StringComparer.Ordinal.Equals(definition.Name, "common")) return [];
+        var sourceMethods = ManagedMethodCatalog.Read(sourceAssemblyPath);
+        var localizeString = targetMethods.Single(method => method.FullName ==
+            "System.String AtG.RuntimeText.DisplayStringLocalizer::LocalizeRichText(System.String)");
+        var localizeBuilder = targetMethods.Single(method => method.FullName ==
+            "System.Void AtG.RuntimeText.DisplayStringLocalizer::LocalizeRichText(System.Text.StringBuilder)");
+        var appendBuilder = sourceMethods.Single(method => method.FullName ==
+            "System.Void AtTheGatesCommon.ns_Text.CompositeString::Append_RawTextToFormat(System.Text.StringBuilder,Microsoft.Xna.Framework.Graphics.SpriteFont,System.Boolean,System.Nullable`1<Microsoft.Xna.Framework.Color>)");
+        var appendString = sourceMethods.Single(method => method.FullName ==
+            "System.Void AtTheGatesCommon.ns_Text.CompositeString::Append_RawTextToFormat(System.String,Microsoft.Xna.Framework.Graphics.SpriteFont,System.Boolean,System.Nullable`1<Microsoft.Xna.Framework.Color>)");
+        return
+        [
+            new MethodArgumentFilterSpec(appendBuilder.MetadataToken, 0,
+                localizeBuilder.MetadataToken, 1),
+            new MethodArgumentFilterSpec(appendString.MetadataToken, 0,
+                localizeString.MetadataToken, 1),
         ];
     }
 
@@ -215,10 +265,14 @@ public static class RuntimeTextRedirectCoordinator
         {
             cancellationToken.ThrowIfCancellationRequested();
             var hash = ContentHasher.HashFiles([job.SourcePath, job.RuntimeAssemblyPath],
-                "runtime-text-redirect-v3-tile-tooltip-richtext|" + string.Join("|", job.Specs.Select(spec =>
+                "runtime-text-redirect-v5-tooltip-raw-argument-localization|" + string.Join("|", job.Specs.Select(spec =>
                     spec.CallerMethodToken + ":" + spec.IlOffset + ":" + spec.SourceTargetFullName)) +
                 "|filters=" + string.Join("|", job.StringFieldFilters.Select(spec =>
                     spec.CallerMethodToken + ":" + spec.FieldFullName + ":" + spec.TargetMethodToken)) +
+                "|return-filters=" + string.Join("|", job.StringReturnFilters.Select(spec =>
+                    spec.CallerMethodToken + ":" + spec.TargetMethodToken)) +
+                "|argument-filters=" + string.Join("|", job.MethodArgumentFilters.Select(spec =>
+                    spec.CallerMethodToken + ":" + spec.ParameterIndex + ":" + spec.TargetMethodToken)) +
                 "|entry-hooks=" + string.Join("|", job.MethodEntryHooks.Select(spec =>
                     spec.CallerMethodToken + ":" + spec.TargetMethodToken + ":" +
                     (spec.PassCallerInstance ? "instance" : "none"))));
@@ -235,40 +289,62 @@ public static class RuntimeTextRedirectCoordinator
                 if (StringComparer.Ordinal.Equals(job.Name, "ui"))
                     TileTooltipRichTextPatcher.Verify(job.OutputPath);
                 return new RuntimeRedirectJobResult(job.Name, job.OutputPath,
-                    job.Specs.Count + job.StringFieldFilters.Count,
+                    job.Specs.Count + job.StringFieldFilters.Count + job.StringReturnFilters.Count +
+                    job.MethodArgumentFilters.Count,
                     job.ExpectedFrameBoundaryHookCount,
                     job.ExpectedWarmsetStartupHookCount,
                     job.ExpectedStartupGraphicsHookCount, true);
             }
             var hasPostCallInjection =
-                job.StringFieldFilters.Count > 0 || job.MethodEntryHooks.Count > 0;
+                job.StringFieldFilters.Count > 0 || job.StringReturnFilters.Count > 0 ||
+                job.MethodArgumentFilters.Count > 0 ||
+                job.MethodEntryHooks.Count > 0;
             var callOutput = !hasPostCallInjection
                 ? job.OutputPath
                 : job.OutputPath + ".calls.tmp";
             var result = ManagedCallRedirector.Redirect(job.SourcePath, callOutput,
                 job.RuntimeAssemblyPath, job.Specs);
             var injected = 0;
-            var filteredOutput = job.MethodEntryHooks.Count == 0
-                ? job.OutputPath
-                : job.OutputPath + ".filters.tmp";
+            var currentOutput = callOutput;
             if (job.StringFieldFilters.Count > 0)
             {
-                injected = ManagedStringFieldFilterInjector.Inject(callOutput, filteredOutput,
+                var filteredOutput = job.StringReturnFilters.Count == 0 &&
+                    job.MethodArgumentFilters.Count == 0 && job.MethodEntryHooks.Count == 0
+                    ? job.OutputPath
+                    : job.OutputPath + ".filters.tmp";
+                injected += ManagedStringFieldFilterInjector.Inject(currentOutput, filteredOutput,
                     job.RuntimeAssemblyPath, job.StringFieldFilters).InjectedCount;
-                File.Delete(callOutput);
+                if (!StringComparer.Ordinal.Equals(currentOutput, job.OutputPath)) File.Delete(currentOutput);
+                currentOutput = filteredOutput;
             }
-            else if (job.MethodEntryHooks.Count > 0)
+            if (job.StringReturnFilters.Count > 0)
             {
-                if (File.Exists(filteredOutput)) File.Delete(filteredOutput);
-                File.Move(callOutput, filteredOutput);
+                var returnFilteredOutput = job.MethodArgumentFilters.Count == 0 &&
+                    job.MethodEntryHooks.Count == 0
+                    ? job.OutputPath
+                    : job.OutputPath + ".return-filters.tmp";
+                injected += ManagedStringReturnFilterInjector.Inject(currentOutput, returnFilteredOutput,
+                    job.RuntimeAssemblyPath, job.StringReturnFilters).InjectedCount;
+                if (!StringComparer.Ordinal.Equals(currentOutput, job.OutputPath)) File.Delete(currentOutput);
+                currentOutput = returnFilteredOutput;
+            }
+            if (job.MethodArgumentFilters.Count > 0)
+            {
+                var argumentFilteredOutput = job.MethodEntryHooks.Count == 0
+                    ? job.OutputPath
+                    : job.OutputPath + ".argument-filters.tmp";
+                injected += ManagedMethodArgumentFilterInjector.Inject(currentOutput, argumentFilteredOutput,
+                    job.RuntimeAssemblyPath, job.MethodArgumentFilters).InjectedCount;
+                if (!StringComparer.Ordinal.Equals(currentOutput, job.OutputPath)) File.Delete(currentOutput);
+                currentOutput = argumentFilteredOutput;
             }
             var entryHookCount = 0;
             if (job.MethodEntryHooks.Count > 0)
             {
                 entryHookCount = ManagedMethodEntryInjector.Inject(
-                    filteredOutput, job.OutputPath,
+                    currentOutput, job.OutputPath,
                     job.RuntimeAssemblyPath, job.MethodEntryHooks).InjectedCount;
-                File.Delete(filteredOutput);
+                if (!StringComparer.Ordinal.Equals(currentOutput, job.OutputPath)) File.Delete(currentOutput);
             }
             if (StringComparer.Ordinal.Equals(job.Name, "ui"))
             {

@@ -12,12 +12,19 @@ var tests = new (string Name, Action Body)[]
     ("Managed rewriter replaces one exact ldstr", ManagedRewriterReplacesExactString),
     ("Rewrite map loads exact context", RewriteMapLoadsExactContext),
     ("Clan-list distance unit covers singular and plural forms", ClanListDistanceUnitCoversSingularAndPluralForms),
+    ("Leader-trait tooltip prefix preserves its dynamic value", LeaderTraitTooltipPrefixPreservesDynamicValue),
+    ("Clan-training connectors preserve their dynamic labels", ClanTrainingConnectorsPreserveDynamicLabels),
+    ("Discipline tooltip config map covers all six entries", DisciplineTooltipConfigMapCoversAllSixEntries),
+    ("Obsessed intensity tooltip config preserves its rich-text boundary", ObsessedIntensityTooltipConfigPreservesRichTextBoundary),
+    ("Besiege tooltip maps every composed literal", BesiegeTooltipMapsEveryComposedLiteral),
     ("Rewrite coordinator caches completed jobs", RewriteCoordinatorCachesJobs),
     ("Repository rewrite plan discovers all available assemblies", RepositoryRewritePlanDiscoversAssemblies),
     ("Managed rewriter redirects an instance call to a static shim", ManagedRewriterRedirectsCall),
     ("Managed rewriter registers a returned value with exact metadata", ManagedRewriterRegistersReturnedValue),
     ("Managed rewriter redirects a constructed generic call", ManagedRewriterRedirectsConstructedGenericCall),
     ("Managed rewriter filters one string field at method entry", ManagedRewriterFiltersStringField),
+    ("Managed rewriter filters string return values", ManagedRewriterFiltersStringReturn),
+    ("Managed rewriter filters explicit method arguments", ManagedRewriterFiltersMethodArgument),
     ("Managed rewriter injects one static frame hook at method entry", ManagedRewriterInjectsMethodEntryHook),
     ("Managed rewriter injects caller instance for startup hook", ManagedRewriterInjectsInstanceEntryHook),
     ("Runtime display map preserves all valid concept keys", RuntimeDisplayMapPreservesConceptKeys),
@@ -177,6 +184,221 @@ static void ClanListDistanceUnitCoversSingularAndPluralForms()
     }
 }
 
+static void LeaderTraitTooltipPrefixPreservesDynamicValue()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-common-il-rewrite.json");
+    var specs = RewriteMap.Load(mapPath);
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesCommon.original.dll");
+    var familySpecs = specs.Where(candidate => candidate.MethodToken == "0x06000c08" &&
+        (candidate.IlOffset == 8 || candidate.IlOffset == 33)).ToArray();
+
+    foreach (var expected in new[]
+    {
+        (Original: "Leader Trait (", Translation: "领袖特质（", IlOffset: 8),
+        (Original: ")", Translation: "）", IlOffset: 33),
+    })
+    {
+        var spec = specs.Single(candidate =>
+            candidate.MethodToken == "0x06000c08" &&
+            candidate.IlOffset == expected.IlOffset &&
+            candidate.Original == expected.Original);
+        Assert.Equal(expected.Translation, spec.Translation);
+    }
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "AtTheGatesCommon.dll");
+    var result = ManagedAssemblyRewriter.Rewrite(source, output, familySpecs);
+    Assert.Equal(2, result.RewrittenCount);
+
+    var rewritten = LdstrCatalog.Read(output);
+    foreach (var expected in new[]
+    {
+        (Value: "领袖特质（", IlOffset: 8),
+        (Value: "）", IlOffset: 33),
+    })
+    {
+        Assert.True(rewritten.Any(candidate =>
+            candidate.MethodToken == "0x06000c08" && candidate.IlOffset == expected.IlOffset &&
+            candidate.Value == expected.Value));
+    }
+}
+
+static void ClanTrainingConnectorsPreserveDynamicLabels()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-ui-il-rewrite.json");
+    var specs = RewriteMap.Load(mapPath);
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesUI.original.dll");
+    var expected = new[]
+    {
+        (MethodToken: "0x06000504", Original: " in ", Translation: "：", IlOffset: 133),
+        (MethodToken: "0x06000122", Original: "as ", Translation: "成为", IlOffset: 2295),
+        (MethodToken: "0x0600051f", Original: " in ", Translation: "：", IlOffset: 15),
+        (MethodToken: "0x06000522", Original: " in ", Translation: "，在", IlOffset: 152),
+        (MethodToken: "0x06000522", Original: " (will start at ", Translation: "纪律中（将从", IlOffset: 224),
+        (MethodToken: "0x06000522", Original: "[COLOR:BAD-RED][FONT:CLEAN-BOLD]- WARNING -[/FONT][/COLOR] Once Training is complete ", Translation: "[COLOR:BAD-RED][FONT:CLEAN-BOLD]- 警告 -[/FONT][/COLOR] 训练完成后，", IlOffset: 324),
+        (MethodToken: "0x06000522", Original: " ", Translation: "", IlOffset: 350),
+        (MethodToken: "0x06000522", Original: " will abandon and lose all [Experience|XP] in ", Translation: "将放弃并失去全部[经验|XP]，原纪律：", IlOffset: 382),
+        (MethodToken: "0x06000522", Original: " in ", Translation: "，在", IlOffset: 1224),
+        (MethodToken: "0x06000522", Original: " (from ", Translation: "纪律中（从", IlOffset: 1277),
+    };
+    var familySpecs = specs.Where(candidate => expected.Any(item =>
+        candidate.MethodToken == item.MethodToken && candidate.IlOffset == item.IlOffset &&
+        candidate.Original == item.Original)).ToArray();
+
+    foreach (var item in expected)
+    {
+        var spec = specs.Single(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Original == item.Original);
+        Assert.Equal(item.Translation, spec.Translation);
+    }
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "AtTheGatesUI.dll");
+    var result = ManagedAssemblyRewriter.Rewrite(source, output, familySpecs);
+    Assert.Equal(expected.Length, result.RewrittenCount);
+
+    var rewritten = LdstrCatalog.Read(output);
+    foreach (var item in expected)
+    {
+        Assert.True(rewritten.Any(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Translation));
+    }
+}
+
+static void DisciplineTooltipConfigMapCoversAllSixEntries()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var sourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "Misc",
+        "Disciplines.original.xml");
+    var mapPath = Path.Combine(repositoryRoot, "translations", "config-node-misc-strings.json");
+    var source = System.Xml.Linq.XDocument.Load(sourcePath);
+    using var map = System.Text.Json.JsonDocument.Parse(File.ReadAllText(mapPath));
+    var disciplineMap = map.RootElement.GetProperty(@"Content\Config\Misc\Disciplines.xml");
+
+    Assert.Equal(@"source\Content\Config\Misc\Disciplines.original.xml",
+        disciplineMap.GetProperty("Source").GetString());
+    Assert.Equal("discipline", disciplineMap.GetProperty("Container").GetString());
+
+    var translations = disciplineMap.GetProperty("Items").EnumerateArray()
+        .ToDictionary(
+            item => item.GetProperty("ID").GetString()!,
+            item => item.GetProperty("Description").GetString()!,
+            StringComparer.Ordinal);
+    var expectedNames = new Dictionary<string, string>(StringComparer.Ordinal)
+    {
+        ["DISCIPLINE_HONOR"] = "荣誉",
+        ["DISCIPLINE_AGRICULTURE"] = "农业",
+        ["DISCIPLINE_LIVESTOCK"] = "畜牧",
+        ["DISCIPLINE_METALWORKING"] = "冶金",
+        ["DISCIPLINE_CRAFTING"] = "工艺",
+        ["DISCIPLINE_DISCOVERY"] = "探索",
+    };
+    const string SharedPrefix = "是六种[纪律|DISCIPLINE]之一，[职业|PROFESSION]和[氏族|CLAN]都可归属其中。[BLANK-LINE]";
+
+    Assert.Equal(expectedNames.Count, translations.Count);
+    foreach (var expected in expectedNames)
+    {
+        Assert.True(translations.TryGetValue(expected.Key, out var translation));
+        if (translation is null) throw new InvalidOperationException("Discipline translation was not found.");
+        Assert.True(translation.StartsWith(expected.Value + SharedPrefix, StringComparison.Ordinal));
+
+        var sourceDescription = source.Root!.Elements("discipline")
+            .Single(node => (string?)node.Element("ID") == expected.Key)
+            .Element("description")!.Value;
+        foreach (System.Text.RegularExpressions.Match match in
+            System.Text.RegularExpressions.Regex.Matches(sourceDescription, @"\[[^\]]+\]"))
+        {
+            var sourceTag = match.Value;
+            var separator = sourceTag.IndexOf('|');
+            var preservedToken = separator >= 0 ? sourceTag[separator..] : sourceTag;
+            Assert.True(translation.Contains(preservedToken, StringComparison.Ordinal));
+        }
+
+        var displayText = System.Text.RegularExpressions.Regex.Replace(translation, @"\[[^\]]+\]", "");
+        Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+    }
+}
+
+static void ObsessedIntensityTooltipConfigPreservesRichTextBoundary()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var sourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "Misc",
+        "Intensities.original.xml");
+    var mapPath = Path.Combine(repositoryRoot, "translations", "config-node-misc-strings.json");
+    var source = System.Xml.Linq.XDocument.Load(sourcePath);
+    using var map = System.Text.Json.JsonDocument.Parse(File.ReadAllText(mapPath));
+    var intensityMap = map.RootElement.GetProperty(@"Content\Config\Misc\Intensities.xml");
+
+    Assert.Equal(@"source\Content\Config\Misc\Intensities.original.xml",
+        intensityMap.GetProperty("Source").GetString());
+    Assert.Equal("intensity", intensityMap.GetProperty("Container").GetString());
+
+    var item = intensityMap.GetProperty("Items").EnumerateArray()
+        .Single(candidate => candidate.GetProperty("ID").GetString() == "INTENSITY_OBSESSED");
+    Assert.Equal("痴迷", item.GetProperty("Name").GetString());
+    const string ExpectedTranslation = "[COLOR:BAD-RED]会痴迷[/COLOR]于";
+    Assert.Equal(ExpectedTranslation, item.GetProperty("Description").GetString());
+
+    var sourceDescription = source.Root!.Elements("intensity")
+        .Single(node => (string?)node.Element("ID") == "INTENSITY_OBSESSED")
+        .Element("description")!.Value;
+    Assert.Equal("[COLOR:BAD-RED]become obsessed[/COLOR] with the idea of", sourceDescription);
+    foreach (System.Text.RegularExpressions.Match tag in
+        System.Text.RegularExpressions.Regex.Matches(sourceDescription, @"\[[^\]]+\]"))
+    {
+        Assert.True(ExpectedTranslation.Contains(tag.Value, StringComparison.Ordinal));
+    }
+
+    var displayText = System.Text.RegularExpressions.Regex.Replace(ExpectedTranslation, @"\[[^\]]+\]", "");
+    Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+}
+
+static void BesiegeTooltipMapsEveryComposedLiteral()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-ui-il-rewrite.json");
+    var specs = RewriteMap.Load(mapPath);
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesUI.original.dll");
+    const string methodToken = "0x06000384";
+
+    var sourceStrings = LdstrCatalog.Read(source)
+        .Where(candidate => candidate.MethodToken == methodToken)
+        .OrderBy(candidate => candidate.IlOffset)
+        .ToArray();
+    Assert.Equal(16, sourceStrings.Length);
+
+    var familySpecs = specs.Where(candidate =>
+        candidate.MethodToken == methodToken && sourceStrings.Any(sourceString =>
+            sourceString.IlOffset == candidate.IlOffset && sourceString.Value == candidate.Original))
+        .ToArray();
+    Assert.Equal(sourceStrings.Length, familySpecs.Length);
+
+    foreach (var sourceString in sourceStrings)
+    {
+        Assert.True(familySpecs.Any(candidate =>
+            candidate.IlOffset == sourceString.IlOffset && candidate.Original == sourceString.Value));
+    }
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "AtTheGatesUI.dll");
+    var result = ManagedAssemblyRewriter.Rewrite(source, output, familySpecs);
+    Assert.Equal(sourceStrings.Length, result.RewrittenCount);
+
+    var rewritten = LdstrCatalog.Read(output);
+    foreach (var spec in familySpecs)
+    {
+        Assert.True(rewritten.Any(candidate =>
+            candidate.MethodToken == methodToken && candidate.IlOffset == spec.IlOffset &&
+            candidate.Value == spec.Translation));
+    }
+}
+
 static void RewriteCoordinatorCachesJobs()
 {
     using var temp = new TempDirectory();
@@ -331,6 +553,67 @@ static void ManagedRewriterFiltersStringField()
     Assert.True(injected.TargetFullName.Contains(nameof(FieldFilterTarget), StringComparison.Ordinal));
 }
 
+static void ManagedRewriterFiltersStringReturn()
+{
+    using var temp = new TempDirectory();
+    var source = typeof(ReturnFilterFixture).Assembly.Location;
+    var output = Path.Combine(temp.Path, "return-filtered.dll");
+    var caller = ManagedMethodCatalog.Read(source).Single(method =>
+        method.DeclaringType.EndsWith(nameof(ReturnFilterFixture), StringComparison.Ordinal) &&
+        method.Name == nameof(ReturnFilterFixture.Get));
+    var target = ManagedMethodCatalog.Read(source).Single(method =>
+        method.DeclaringType.EndsWith(nameof(ReturnFilterTarget), StringComparison.Ordinal) &&
+        method.Name == nameof(ReturnFilterTarget.Filter));
+
+    var result = ManagedStringReturnFilterInjector.Inject(source, output, source,
+    [
+        new StringReturnFilterSpec(caller.MetadataToken, target.MetadataToken, 1),
+    ]);
+
+    Assert.Equal(1, result.InjectedCount);
+    var injected = ManagedCallCatalog.Read(output).Single(call =>
+        call.CallerType.EndsWith(nameof(ReturnFilterFixture), StringComparison.Ordinal) &&
+        call.CallerMethod == nameof(ReturnFilterFixture.Get));
+    Assert.True(injected.TargetFullName.Contains(nameof(ReturnFilterTarget), StringComparison.Ordinal));
+}
+
+static void ManagedRewriterFiltersMethodArgument()
+{
+    using var temp = new TempDirectory();
+    var source = typeof(ArgumentFilterFixture).Assembly.Location;
+    var output = Path.Combine(temp.Path, "argument-filtered.dll");
+    var methods = ManagedMethodCatalog.Read(source);
+    var stringCaller = methods.Single(method =>
+        method.DeclaringType.EndsWith(nameof(ArgumentFilterFixture), StringComparison.Ordinal) &&
+        method.Name == nameof(ArgumentFilterFixture.RewriteString));
+    var builderCaller = methods.Single(method =>
+        method.DeclaringType.EndsWith(nameof(ArgumentFilterFixture), StringComparison.Ordinal) &&
+        method.Name == nameof(ArgumentFilterFixture.RewriteBuilder));
+    var stringTarget = methods.Single(method =>
+        method.DeclaringType.EndsWith(nameof(ArgumentFilterTarget), StringComparison.Ordinal) &&
+        method.Name == nameof(ArgumentFilterTarget.FilterString));
+    var builderTarget = methods.Single(method =>
+        method.DeclaringType.EndsWith(nameof(ArgumentFilterTarget), StringComparison.Ordinal) &&
+        method.Name == nameof(ArgumentFilterTarget.FilterBuilder));
+
+    var result = ManagedMethodArgumentFilterInjector.Inject(source, output, source,
+    [
+        new MethodArgumentFilterSpec(stringCaller.MetadataToken, 0, stringTarget.MetadataToken, 1),
+        new MethodArgumentFilterSpec(builderCaller.MetadataToken, 0, builderTarget.MetadataToken, 1),
+    ]);
+
+    Assert.Equal(2, result.InjectedCount);
+    var calls = ManagedCallCatalog.Read(output);
+    Assert.True(calls.Any(call =>
+        call.CallerType.EndsWith(nameof(ArgumentFilterFixture), StringComparison.Ordinal) &&
+        call.CallerMethod == nameof(ArgumentFilterFixture.RewriteString) &&
+        call.TargetFullName.Contains(nameof(ArgumentFilterTarget.FilterString), StringComparison.Ordinal)));
+    Assert.True(calls.Any(call =>
+        call.CallerType.EndsWith(nameof(ArgumentFilterFixture), StringComparison.Ordinal) &&
+        call.CallerMethod == nameof(ArgumentFilterFixture.RewriteBuilder) &&
+        call.TargetFullName.Contains(nameof(ArgumentFilterTarget.FilterBuilder), StringComparison.Ordinal)));
+}
+
 static void ManagedRewriterInjectsMethodEntryHook()
 {
     using var temp = new TempDirectory();
@@ -390,6 +673,7 @@ static void RuntimeDisplayMapPreservesConceptKeys()
           "PlainText": [{ "Original": "Train ", "Translation": "\u8bad\u7ec3" }],
           "PlainTextFragments": [{ "Original": "engage in ", "Translation": "\u5377\u5165" }],
           "RichTextFragments": [{ "Original": "[Clan|CLAN] in the [Turn|TURN]", "Translation": "[Clan|CLAN]\uFF0C\u6240\u5C5E\u4E3A[Turn|TURN]" }],
+          "Templates": [{ "Original": "Leader Trait ({arg:0})", "Translation": "\u9886\u8896\u7279\u8D28\uFF08{arg:0}\uFF09" }],
           "ConceptDisplay": [{ "ConceptKey": "CLAN", "Original": "Clan", "Translation": "\u6c0f\u65cf" }]
         }
         """);
@@ -411,6 +695,8 @@ static void RuntimeDisplayMapPreservesConceptKeys()
         RuntimeMapConceptFixture.Encode("\u5377\u5165")));
     Assert.True(lines.Any(line => line == "R\t" + RuntimeMapConceptFixture.Encode("[Clan|CLAN] in the [Turn|TURN]") + "\t" +
         RuntimeMapConceptFixture.Encode("[Clan|CLAN]\uFF0C\u6240\u5C5E\u4E3A[Turn|TURN]")));
+    Assert.True(lines.Any(line => line == "T\t" + RuntimeMapConceptFixture.Encode("Leader Trait ({arg:0})") + "\t" +
+        RuntimeMapConceptFixture.Encode("\u9886\u8896\u7279\u8D28\uFF08{arg:0}\uFF09")));
 }
 
 static void RuntimeDisplayMapImportsConceptTags()
@@ -976,6 +1262,32 @@ sealed class FieldFilterFixture
 static class FieldFilterTarget
 {
     public static string Filter(string value) => "filtered:" + value;
+}
+
+sealed class ReturnFilterFixture
+{
+    public string Get() => "before";
+}
+
+static class ReturnFilterTarget
+{
+    public static string Filter(string value) => "filtered:" + value;
+}
+
+sealed class ArgumentFilterFixture
+{
+    public void RewriteString(string value) => _ = value.Length;
+
+    public void RewriteBuilder(System.Text.StringBuilder value) => _ = value.Length;
+}
+
+static class ArgumentFilterTarget
+{
+    public static string FilterString(string value) => value;
+
+    public static void FilterBuilder(System.Text.StringBuilder value)
+    {
+    }
 }
 
 sealed class MethodEntryFixture

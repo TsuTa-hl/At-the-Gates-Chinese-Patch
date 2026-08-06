@@ -1,3 +1,4 @@
+using System.Text;
 using AtG.RuntimeText;
 
 var tests = new (string Name, Action Body)[]
@@ -21,6 +22,7 @@ var tests = new (string Name, Action Body)[]
     ("Tile-detail rich text preserves localized concept links and wrapped city text", TileDetailFallbacksLocalize),
     ("Split mood-tooltip fragments localize without changing the UI composition", RuntimeDisplayMoodFragmentsLocalize),
     ("Runtime display fragments localize plain nodes without breaking concept links", RuntimeDisplayFragmentsPreserveLinks),
+    ("Runtime display fallback localizes declared concept-link labels without changing keys", RuntimeDisplayConceptLinkFallbacksLocalize),
     ("Scoped rich-text fragments preserve concept links", RuntimeDisplayRichTextFragmentsPreserveLinks),
     ("Chinese concept links collapse inherited English word spaces", RuntimeDisplayConceptSpacingPreservesLinks),
     ("Runtime display templates preserve runtime arguments", RuntimeDisplayTemplatesPreserveArguments),
@@ -29,6 +31,8 @@ var tests = new (string Name, Action Body)[]
     ("CJK fitting breaks preserve punctuation and grapheme clusters", CjkFittingBreaksPreserveTextElements),
     ("CJK word layout splits only at invisible line boundaries", CjkWordLayoutUsesLineBoundaries),
     ("CJK word bridge preserves ASCII and wraps CJK without spaces", CjkWordBridgePreservesOriginalPath),
+    ("CJK word bridge localizes configured rich phrase sequences", CjkWordBridgeLocalizesTokenizedRichTextPhrase),
+    ("CJK word bridge localizes configured rich-text templates", CjkWordBridgeLocalizesTokenizedRichTextTemplate),
     ("CJK word bridge removes split winter-clause source advances", CjkWordBridgeRemovesWinterResidualWords),
     ("Display templates localize only exact approved strings", ExactTemplatesOnly),
     ("Localization cache invalidates as one generation", LocalizationCacheInvalidatesGeneration),
@@ -190,15 +194,45 @@ static void GeneratedRuntimeDisplayMapLoads()
         "become\u00a0obsessed\u200bwith the idea of"));
     Equal("[COLOR:NEGATIVE]会痴迷于[/COLOR]", DisplayStringLocalizer.LocalizeRichText(
         "[COLOR:NEGATIVE]become obsessed with the idea of[/COLOR]"));
+    Equal("[会痴迷于|DESIRE]", DisplayStringLocalizer.LocalizeRichText(
+        "[become obsessed with the idea of|DESIRE]"));
+    Equal("无法在[SETTLEMENT]内过冬，或作为[居民|RESIDENT]居住在[建筑|STRUCTURE]中",
+        DisplayStringLocalizer.LocalizeRichText(
+            "unable to spend the winter inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE]"));
     Equal("• -1，因边界过近（相距不超过6格）。", DisplayStringLocalizer.LocalizeRichText(
         "• -1, borders being too close (within 6 tiles)."));
     Equal("• -1，因边界过近（相距不超过3格）。", DisplayStringLocalizer.LocalizeRichText(
         "• -1, borders being too close (within 3 tiles)."));
+    for (var distance = 1; distance <= 12; distance++)
+    {
+        var unit = distance == 1 ? "tile" : "tiles";
+        var expected = $"因边界过近（相距不超过{distance}格）。";
+        foreach (var source in new[]
+        {
+            $"borders being too close ({distance} {unit} apart or less.)",
+            $"borders being too close ({distance} {unit} apart or less).",
+        })
+        {
+            Equal("• -1，" + expected, DisplayStringLocalizer.LocalizeRichText(
+                "• -1, " + source));
+            Equal(expected, DisplayStringLocalizer.LocalizeDisplayString(source));
+            Equal("，" + expected, DisplayStringLocalizer.LocalizeDisplayString(
+                ", " + source));
+        }
+    }
     Equal("无剩余移动力。", DisplayStringLocalizer.LocalizeRichText("无移动力 remaining."));
-    Equal("这里仅余昔日繁荣社区的遗迹。", DisplayStringLocalizer.LocalizeRichText(
-        "All that remains, is of a once-thriving community."));
-    Equal("强盗营地头目 (强盗营地 5)", DisplayStringLocalizer.LocalizeRichText(
+    Equal("强盗头目 (强盗 5)", DisplayStringLocalizer.LocalizeRichText(
         "Bandit Leader (Bandits 5)"));
+    Equal("领袖特质（随和）", DisplayStringLocalizer.LocalizeRichText(
+        "Leader Trait (随和)"));
+    Equal("领袖特质（随和）", DisplayStringLocalizer.LocalizeRichText(
+        "Leader 特质（随和）"));
+    Equal("领袖特质", DisplayStringLocalizer.LocalizeRichText("Leader Trait"));
+    Equal("领袖特质", DisplayStringLocalizer.LocalizeRichText("Leader 特质"));
+    Equal("[升级|LEVEL]", DisplayStringLocalizer.LocalizeRichText(
+        "[Level Up|LEVEL]"));
+    Equal("[升级|LEVEL]", DisplayStringLocalizer.LocalizeRichText(
+        "[Level-Up|LEVEL]"));
     Equal("• +1，因宗教信仰相同。", DisplayStringLocalizer.LocalizeRichText(
         "• +1, shared religious beliefs."));
 }
@@ -498,7 +532,7 @@ static void RuntimeDisplayFragmentsPreserveLinks()
     DisplayStringLocalizer.RegisterPlainTextFragment(" outside of", "\uff0c\u4e14\u4e0d\u5728");
     DisplayStringLocalizer.RegisterPlainTextFragment(" outside the", "\uff0c\u4e14\u4e0d\u5728");
     DisplayStringLocalizer.RegisterPlainTextFragment(" or as the", "\u5185\uff0c\u6216\u4f5c\u4e3a");
-    DisplayStringLocalizer.RegisterPlainTextFragment(" of a", "\uff0c\u9a7b\u7559\u5728");
+    DisplayStringLocalizer.RegisterPlainTextFragment(" at", "\uff0c\u9a7b\u7559\u5728");
     DisplayStringLocalizer.RegisterPlainTextFragment("seafaring", "\u822a\u6d77");
 
     Equal("\u53e6\u6709[\u6c0f\u65cf|CLAN]\u53c2\u4e0e\u6597\u6bb4",
@@ -536,7 +570,7 @@ static void RuntimeDisplayFragmentsPreserveLinks()
             "\u5f88\u53ef\u80fd\u53d8\u5f97\u4e0d\u6ee1\u5728\u4e00\u5e74\u5185\uff0c\u5982\u679cforced into an[Profession|PROFESSION]"));
     Equal("\u88ab\u8feb\u4ece\u4e8b[\u4e3b\u52a8|ACTIVE]\uFF0C\u65E2\u4E0D\u5728[\u5b9a\u5c45|SETTLED]\uFF0C\u4E5F\u4E0D\u4F5C\u4E3A[\u5c45\u6c11|RESIDENT]\uFF0C\u9A7B\u7559\u5728[\u5efa\u7B51|STRUCTURE]",
         DisplayStringLocalizer.LocalizeRichText(
-            "forced into an [Active|ACTIVE] where they're neither within the [Settled|SETTLED] nor the [Resident|RESIDENT] of a [Structure|STRUCTURE]"));
+            "forced into an [Active|ACTIVE] where they're neither within the [Settled|SETTLED] nor the [Resident|RESIDENT] at[Structure|STRUCTURE]"));
     Equal("\u5982\u679c\u88ab\u8feb\u4ece\u4e8b\u822a\u6d77[\u804c\u4e1a|PROFESSION]",
         DisplayStringLocalizer.LocalizeRichText("\u5982\u679c\u88ab\u8feb\u4ece\u4e8bseafaring[Profession|PROFESSION]"));
     Equal("\u5982\u679c\u88ab\u8feb\u4ece\u4e8b[\u4e3b\u52a8|ACTIVE]\uff0c\u4e14\u4e0d\u5728[\u5b9a\u5c45\u70b9|SETTLEMENT]",
@@ -546,7 +580,7 @@ static void RuntimeDisplayFragmentsPreserveLinks()
         DisplayStringLocalizer.LocalizeRichText("\u5982\u679cforced into a [Warrior|WARRIOR]"));
     Equal("\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728[\u5b9a\u5c45\u70b9|SETTLEMENT]\u5185\uff0c\u6216\u4f5c\u4e3a[\u5c45\u6c11|RESIDENT]\uff0c\u9a7b\u7559\u5728[\u5efa\u7b51|STRUCTURE]",
         DisplayStringLocalizer.LocalizeRichText(
-            "\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728[Settlement|SETTLEMENT] or as the[Resident|RESIDENT] of a[Structure|STRUCTURE]"));
+            "\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728[Settlement|SETTLEMENT] or as the[Resident|RESIDENT] at[Structure|STRUCTURE]"));
 
     Equal("\u5982\u679c\u65e0\u6cd5\u5728\u51ac\u5b63\u7559\u5728[\u5b9a\u5c45\u70b9|SETTLEMENT]",
         DisplayStringLocalizer.LocalizeRichText(
@@ -686,6 +720,18 @@ static void RuntimeDisplayRichTextFragmentsPreserveLinks()
             "[Profession|PROFESSION] in the [DISCOVERY] [Discipline|DISCIPLINE]"));
 }
 
+static void RuntimeDisplayConceptLinkFallbacksLocalize()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterConceptKey("DESIRE");
+    DisplayStringLocalizer.RegisterPlainText(
+        "become obsessed with the idea of", "\u4f1a\u75f4\u8ff7\u4e8e");
+
+    Equal("[\u4f1a\u75f4\u8ff7\u4e8e|DESIRE]",
+        DisplayStringLocalizer.LocalizeRichText(
+            "[become obsessed with the idea of|DESIRE]"));
+}
+
 static void RuntimeDisplayConceptSpacingPreservesLinks()
 {
     DisplayStringLocalizer.ResetForTests();
@@ -775,6 +821,62 @@ static void CjkWordBridgePreservesOriginalPath()
     Equal("\u6d4b\u8bd5", cjk.TextSoFar.ToString());
     Equal(null, cjk.Word);
     True(cjk.Emitted.All(text => text.IndexOf(' ') < 0));
+}
+
+static void CjkWordBridgeLocalizesTokenizedRichTextPhrase()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterRichTextFragment(
+        "become obsessed with the idea of", "会痴迷于");
+    var processor = new FakeWordProcessor("become", 200);
+    processor.WordsInLine = new FakeStringSplitter(new[]
+    {
+        "obsessed", "with", "the", "idea", "of", "something",
+    });
+
+    CjkWordWrapCore.ProcessWord(processor,
+        (_, text) => new CjkMeasuredText(text.Length, 1f));
+
+    Equal("会痴迷于", processor.TextSoFar.ToString());
+    Equal("something", processor.Word);
+    Equal(0, processor.OriginalCalls);
+
+    var nonMatch = new FakeWordProcessor("become", 200);
+    nonMatch.WordsInLine = new FakeStringSplitter(new[]
+    {
+        "interested", "in", "something",
+    });
+    CjkWordWrapCore.ProcessWord(nonMatch,
+        (_, text) => new CjkMeasuredText(text.Length, 1f));
+    Equal(1, nonMatch.OriginalCalls);
+    Equal("interested", nonMatch.Word);
+}
+
+static void CjkWordBridgeLocalizesTokenizedRichTextTemplate()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterTemplate("Leader Trait ({arg:0})", "领袖特质（{arg:0}）");
+    DisplayStringLocalizer.RegisterTemplate("Leader 特质（{arg:0}）", "领袖特质（{arg:0}）");
+
+    var english = new FakeWordProcessor("Leader", 200);
+    english.WordsInLine = new FakeStringSplitter(new[] { "Trait", "(随和)", "tail" });
+    CjkWordWrapCore.ProcessWord(english, (_, text) => new CjkMeasuredText(text.Length, 1f));
+    Equal("领袖特质（随和）", english.TextSoFar.ToString());
+    Equal("tail", english.Word);
+    Equal(0, english.OriginalCalls);
+
+    var mixed = new FakeWordProcessor("Leader", 200);
+    mixed.WordsInLine = new FakeStringSplitter(new[] { "特质（随和）", "tail" });
+    CjkWordWrapCore.ProcessWord(mixed, (_, text) => new CjkMeasuredText(text.Length, 1f));
+    Equal("领袖特质（随和）", mixed.TextSoFar.ToString());
+    Equal("tail", mixed.Word);
+    Equal(0, mixed.OriginalCalls);
+
+    var nonMatch = new FakeWordProcessor("Leader", 200);
+    nonMatch.WordsInLine = new FakeStringSplitter(new[] { "Traits", "(随和)", "tail" });
+    CjkWordWrapCore.ProcessWord(nonMatch, (_, text) => new CjkMeasuredText(text.Length, 1f));
+    Equal(1, nonMatch.OriginalCalls);
+    Equal("Traits", nonMatch.Word);
 }
 
 static void CjkWordBridgeRemovesWinterResidualWords()
@@ -1376,8 +1478,32 @@ sealed class FakeWordProcessor
 
 struct FakeStringSplitter
 {
-    private readonly string[] _values;
-    private int _index;
-    public FakeStringSplitter(string[] values) { _values = values; _index = 0; }
-    public string Next() => _index < _values.Length ? _values[_index++] : null;
+    public string str;
+    public char delimeter;
+    public int startIndex;
+    public int endIndex;
+    public int length;
+
+    public FakeStringSplitter(string[] values)
+    {
+        str = string.Join(" ", values);
+        delimeter = ' ';
+        startIndex = 0;
+        length = str.Length;
+        endIndex = str.IndexOf(delimeter);
+        if (endIndex < 0) endIndex = length;
+    }
+
+    public string Next()
+    {
+        if (startIndex >= length) return null;
+        var value = str.Substring(startIndex, endIndex - startIndex);
+        startIndex = endIndex + 1;
+        if (endIndex != length)
+        {
+            endIndex = str.IndexOf(delimeter, startIndex);
+            if (endIndex < 0) endIndex = length;
+        }
+        return value;
+    }
 }

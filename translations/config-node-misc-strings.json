@@ -52,5 +52,46 @@
         "Name": "高兴"
       }
     ]
+  },
+  "Content\\Config\\Misc\\Intensities.xml": {
+    "Source": "source\\Content\\Config\\Misc\\Intensities.original.xml",
+    "Container": "intensity",
+    "Items": [
+      {
+        "ID": "INTENSITY_OBSESSED",
+        "Name": "痴迷",
+        "Description": "[COLOR:BAD-RED]会痴迷[/COLOR]于"
+      }
+    ]
+  },
+  "Content\\Config\\Misc\\Disciplines.xml": {
+    "Source": "source\\Content\\Config\\Misc\\Disciplines.original.xml",
+    "Container": "discipline",
+    "Items": [
+      {
+        "ID": "DISCIPLINE_HONOR",
+        "Description": "荣誉是六种[纪律|DISCIPLINE]之一，[职业|PROFESSION]和[氏族|CLAN]都可归属其中。[BLANK-LINE]荣誉中的大多数职业是[战士|WARRIOR]，例如[HUNTER]和[ARCHER]；此外还有少数独特且实用的[平民|CIVILIAN]职业，例如[FEAST-MASTER]和[PRIEST]。"
+      },
+      {
+        "ID": "DISCIPLINE_AGRICULTURE",
+        "Description": "农业是六种[纪律|DISCIPLINE]之一，[职业|PROFESSION]和[氏族|CLAN]都可归属其中。[BLANK-LINE]更广义地说，它涵盖[植物|PLANT]的培育与利用。许多涉及[FOOD]加工的职业都需要这一纪律，例如[GATHERER]和[FARMER]。"
+      },
+      {
+        "ID": "DISCIPLINE_LIVESTOCK",
+        "Description": "畜牧是六种[纪律|DISCIPLINE]之一，[职业|PROFESSION]和[氏族|CLAN]都可归属其中。[BLANK-LINE]更广义地说，它涵盖[动物|ANIMAL]的饲养和利用，可助力部族经济。畜牧类职业包括[TRAPPER]和[RANCHER]。"
+      },
+      {
+        "ID": "DISCIPLINE_METALWORKING",
+        "Description": "冶金是六种[纪律|DISCIPLINE]之一，[职业|PROFESSION]和[氏族|CLAN]都可归属其中。[BLANK-LINE]更广义地说，它涵盖将[矿物|MINERAL]开采并锻造成[TOOLS]、[WEAPONS]等实用物品；前提是你已[训练|TRAIN][BLACKSMITH]或[WEAPONSMITH]。"
+      },
+      {
+        "ID": "DISCIPLINE_CRAFTING",
+        "Description": "工艺是六种[纪律|DISCIPLINE]之一，[职业|PROFESSION]和[氏族|CLAN]都可归属其中。[BLANK-LINE]更广义地说，它涵盖[建筑|STRUCTURE]的建造和维护，以及用[TIMBER]、[STONE]制作其他物品并生产[CLOTH]。工艺类职业包括[WOOD-COLLECTOR]、[LOGGER]和[WEAVER]。"
+      },
+      {
+        "ID": "DISCIPLINE_DISCOVERY",
+        "Description": "探索是六种[纪律|DISCIPLINE]之一，[职业|PROFESSION]和[氏族|CLAN]都可归属其中。[BLANK-LINE]更广义地说，它着重揭示有形或抽象的未知事物。它对能[产出|PRODUCE][KNOWLEDGE]的职业尤为重要，例如[LOREKEEPER]；也适用于帮助你了解周遭世界的[EXPLORER]和[SURVEYOR]。"
+      }
+    ]
   }
 }

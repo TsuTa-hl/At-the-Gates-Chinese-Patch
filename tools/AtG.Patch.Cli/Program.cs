@@ -176,7 +176,7 @@ static async Task<int> RewriteRuntimeCallsAsync(string[] args)
     var frameBoundaryHooks = results.Sum(result => result.FrameBoundaryHookCount);
     var warmsetStartupHooks = results.Sum(result => result.WarmsetStartupHookCount);
     var startupGraphicsHooks = results.Sum(result => result.StartupGraphicsHookCount);
-    if (total != 145) throw new InvalidDataException($"Expected 145 runtime text redirects, got {total}.");
+    if (total != 149) throw new InvalidDataException($"Expected 149 runtime text redirects, got {total}.");
     if (frameBoundaryHooks != 1)
         throw new InvalidDataException(
             $"Expected one runtime frame-boundary hook, got {frameBoundaryHooks}.");

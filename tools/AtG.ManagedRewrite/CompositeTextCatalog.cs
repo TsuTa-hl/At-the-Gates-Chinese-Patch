@@ -305,6 +305,7 @@ public static class CompositeTextCatalog
         "PlainText",
         "PlainTextFragments",
         "RichTextFragments",
+        "Templates",
         "ConceptDisplay",
     };
     private static readonly IReadOnlyDictionary<string, string> LegacyBareConceptAliases =
@@ -1008,7 +1009,7 @@ public static class CompositeTextCatalog
                 Status = "Active",
                 EntryPointId = "runtime-map:Templates",
                 Description = "Entry-specific display templates preserve every runtime argument and rich-text structure.",
-                Source = "translations/composite-entry-specific-rules.json",
+                Source = "translations/runtime-display-strings.json; translations/composite-entry-specific-rules.json",
             },
             ["runtime-display-argument-only"] = new()
             {
@@ -1093,7 +1094,7 @@ public static class CompositeTextCatalog
         if (!File.Exists(path)) yield break;
         using var document = OpenJson(path);
         if (document.RootElement.ValueKind != JsonValueKind.Object) yield break;
-        foreach (var section in new[] { "Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "ConceptDisplay" })
+        foreach (var section in new[] { "Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "Templates", "ConceptDisplay" })
         {
             if (!document.RootElement.TryGetProperty(section, out var values) ||
                 values.ValueKind != JsonValueKind.Array) continue;
@@ -1136,6 +1137,7 @@ public static class CompositeTextCatalog
                     "PlainText" => "runtime-display-plain",
                     "PlainTextFragments" => "runtime-display-fragment",
                     "RichTextFragments" => "runtime-display-richtext-fragment",
+                    "Templates" => "runtime-display-template",
                     _ => "runtime-display-concept",
                 };
                 entry.Notes = key is null ? "Generated from runtime display-map binding."

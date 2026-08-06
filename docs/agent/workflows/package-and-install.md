@@ -25,7 +25,8 @@ Complete task cleanup first and reuse its handoff.
 
 1. Close the game process.
 2. Build with `tools\Build-Patch.ps1`.
-3. Run required static gates: text tags, aliases, font budget, and any test
+3. Run required static gates: text tags, aliases, font budget, the
+   current-patch install/uninstall completeness regression, and any test
    selected by the changed subsystem.
 4. Refresh and validate the composite-rule JSON when composition sources or
    runtime display rules changed. Generate a temporary CSV only for inspection.

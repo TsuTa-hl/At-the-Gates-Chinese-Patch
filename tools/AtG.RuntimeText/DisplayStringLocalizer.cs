@@ -35,6 +35,7 @@ namespace AtG.RuntimeText
             new BoundedLocalizationCache(4096, 2 * 1024 * 1024);
         private static volatile LocalizationSnapshot Snapshot;
         private static bool DefaultLoadAttempted;
+        private const int MaximumTokenizedTemplateWords = 8;
 
         private sealed class LocalizationSnapshot
         {
@@ -42,6 +43,8 @@ namespace AtG.RuntimeText
             public Dictionary<string, string> Plain;
             public Dictionary<char, KeyValuePair<string, string>[]> FragmentsByFirstCharacter;
             public Dictionary<char, KeyValuePair<string, string>[]> RichTextFragmentsByFirstCharacter;
+            public Dictionary<string, KeyValuePair<string[], string>[]> TokenizedRichTextFragmentsByFirstWord;
+            public Dictionary<string, KeyValuePair<string, string>[]> TokenizedRichTextTemplatesByFirstWord;
             public KeyValuePair<string, string>[] Templates;
             public Dictionary<string, Dictionary<string, string>> Concepts;
             public HashSet<string> Keys;
@@ -300,7 +303,25 @@ namespace AtG.RuntimeText
                         mapped.Add(new ConceptLinkNode(translated, link.ConceptKey));
                         changed = true;
                     }
-                    else mapped.Add(link);
+                    else if (snapshot.Plain.TryGetValue(link.DisplayText, out translated))
+                    {
+                        // Some runtime callers supply a localized concept key but an
+                        // untranslated display label.  Translate only an explicitly
+                        // registered label and retain the original opaque key.
+                        mapped.Add(new ConceptLinkNode(translated, link.ConceptKey));
+                        changed = true;
+                    }
+                    else
+                    {
+                        translated = ApplyPlainTextFragments(
+                            link.DisplayText, snapshot.FragmentsByFirstCharacter);
+                        if (!StringComparer.Ordinal.Equals(translated, link.DisplayText))
+                        {
+                            mapped.Add(new ConceptLinkNode(translated, link.ConceptKey));
+                            changed = true;
+                        }
+                        else mapped.Add(link);
+                    }
                     continue;
                 }
                 mapped.Add(node);
@@ -309,6 +330,99 @@ namespace AtG.RuntimeText
             var result = changed ? RichTextAst.Render(mapped) : value;
             resultCache.Add('R', value, result);
             return result;
+        }
+
+        /// <summary>
+        /// Localizes a rich-text buffer in place.  CompositeString builds some
+        /// tooltip bodies incrementally in a StringBuilder and never exposes an
+        /// intermediate string to TextFormatter, so this overload gives that
+        /// final raw-text path the same map and markup preservation as strings.
+        /// </summary>
+        public static void LocalizeRichText(StringBuilder value)
+        {
+            if (value == null) return;
+            var original = value.ToString();
+            var localized = LocalizeRichText(original);
+            if (StringComparer.Ordinal.Equals(original, localized)) return;
+            value.Length = 0;
+            value.Append(localized);
+        }
+
+        /// <summary>
+        /// Resolves a complete rich-text fragment when RichTextLabel has already
+        /// split its source text into individual words.  The caller supplies the
+        /// current word and the unconsumed words; only an exact configured
+        /// sequence can match, so this never becomes a word-level replacement.
+        /// </summary>
+        public static bool TryLocalizeRichTextWordSequence(string firstWord,
+            IList<string> followingWords, out string translation,
+            out int consumedFollowingWords)
+        {
+            translation = firstWord;
+            consumedFollowingWords = 0;
+            if (string.IsNullOrEmpty(firstWord) || followingWords == null) return false;
+
+            EnsureDefaultLoaded();
+            var snapshot = GetSnapshot();
+            KeyValuePair<string[], string>[] fragmentCandidates;
+            if (snapshot.TokenizedRichTextFragmentsByFirstWord.TryGetValue(firstWord,
+                    out fragmentCandidates))
+            {
+                foreach (var candidate in fragmentCandidates)
+                {
+                    var words = candidate.Key;
+                    if (followingWords.Count < words.Length - 1) continue;
+                    var matched = true;
+                    for (var index = 1; index < words.Length; index++)
+                    {
+                        if (!StringComparer.Ordinal.Equals(words[index], followingWords[index - 1]))
+                        {
+                            matched = false;
+                            break;
+                        }
+                    }
+                    if (!matched) continue;
+
+                    translation = candidate.Value;
+                    consumedFollowingWords = words.Length - 1;
+                    return true;
+                }
+            }
+
+            KeyValuePair<string, string>[] templateCandidates;
+            if (!snapshot.TokenizedRichTextTemplatesByFirstWord.TryGetValue(firstWord,
+                    out templateCandidates)) return false;
+            var maximumWordCount = Math.Min(followingWords.Count + 1,
+                MaximumTokenizedTemplateWords);
+            var candidateText = new StringBuilder(firstWord);
+            for (var wordCount = 1; wordCount <= maximumWordCount; wordCount++)
+            {
+                if (wordCount > 1)
+                {
+                    var nextWord = followingWords[wordCount - 2];
+                    if (nextWord == null) return false;
+                    candidateText.Append(' ');
+                    candidateText.Append(nextWord);
+                }
+                string localized;
+                if (!TryApplyTemplate(candidateText.ToString(), templateCandidates,
+                        out localized)) continue;
+
+                translation = localized;
+                consumedFollowingWords = wordCount - 1;
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool HasTokenizedRichTextWordSequenceStart(string firstWord)
+        {
+            if (string.IsNullOrEmpty(firstWord)) return false;
+            EnsureDefaultLoaded();
+            var snapshot = GetSnapshot();
+            return snapshot.TokenizedRichTextFragmentsByFirstWord.ContainsKey(firstWord) ||
+                snapshot.TokenizedRichTextTemplatesByFirstWord.ContainsKey(firstWord);
         }
 
         private static bool CollapseInlineWhitespaceBetweenChineseConcepts(List<RichNode> nodes)
@@ -835,6 +949,98 @@ namespace AtG.RuntimeText
             return result;
         }
 
+        private static Dictionary<string, KeyValuePair<string[], string>[]>
+            BuildTokenizedRichTextFragmentIndex(Dictionary<string, string> values)
+        {
+            var buckets = new Dictionary<string, List<KeyValuePair<string[], string>>>(
+                StringComparer.Ordinal);
+            foreach (var entry in values)
+            {
+                var source = entry.Key;
+                if (source.Length == 0 || source.Length != source.Trim().Length ||
+                    source.IndexOf('[') >= 0 || source.IndexOf(']') >= 0 ||
+                    source.IndexOf('|') >= 0) continue;
+                var words = source.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                if (words.Length < 3 || !StringComparer.Ordinal.Equals(
+                        string.Join(" ", words), source)) continue;
+
+                List<KeyValuePair<string[], string>> bucket;
+                if (!buckets.TryGetValue(words[0], out bucket))
+                {
+                    bucket = new List<KeyValuePair<string[], string>>();
+                    buckets.Add(words[0], bucket);
+                }
+                bucket.Add(new KeyValuePair<string[], string>(words, entry.Value));
+            }
+
+            var result = new Dictionary<string, KeyValuePair<string[], string>[]>(
+                StringComparer.Ordinal);
+            foreach (var bucket in buckets)
+            {
+                bucket.Value.Sort((left, right) =>
+                {
+                    var length = right.Key.Length.CompareTo(left.Key.Length);
+                    return length != 0 ? length : StringComparer.Ordinal.Compare(
+                        string.Join("\u001f", left.Key), string.Join("\u001f", right.Key));
+                });
+                result.Add(bucket.Key, bucket.Value.ToArray());
+            }
+            return result;
+        }
+
+        private static Dictionary<string, KeyValuePair<string, string>[]>
+            BuildTokenizedRichTextTemplateIndex(KeyValuePair<string, string>[] templates)
+        {
+            var buckets = new Dictionary<string, List<KeyValuePair<string, string>>>(
+                StringComparer.Ordinal);
+            foreach (var template in templates)
+            {
+                string firstWord;
+                if (!TryGetTokenizedRichTextTemplateFirstWord(template.Key, out firstWord))
+                    continue;
+
+                List<KeyValuePair<string, string>> bucket;
+                if (!buckets.TryGetValue(firstWord, out bucket))
+                {
+                    bucket = new List<KeyValuePair<string, string>>();
+                    buckets.Add(firstWord, bucket);
+                }
+                bucket.Add(template);
+            }
+
+            var result = new Dictionary<string, KeyValuePair<string, string>[]>(
+                StringComparer.Ordinal);
+            foreach (var bucket in buckets)
+            {
+                bucket.Value.Sort((left, right) =>
+                {
+                    var length = right.Key.Length.CompareTo(left.Key.Length);
+                    return length != 0 ? length : StringComparer.Ordinal.Compare(left.Key, right.Key);
+                });
+                result.Add(bucket.Key, bucket.Value.ToArray());
+            }
+            return result;
+        }
+
+        private static bool TryGetTokenizedRichTextTemplateFirstWord(string source,
+            out string firstWord)
+        {
+            firstWord = null;
+            if (source.IndexOf('[') >= 0 || source.IndexOf(']') >= 0 ||
+                source.IndexOf('|') >= 0) return false;
+            var firstArgument = source.IndexOf("{arg:", StringComparison.Ordinal);
+            if (firstArgument <= 0 || GetTemplateArguments(source).Count != 1) return false;
+            var lastArgument = source.LastIndexOf("{arg:", StringComparison.Ordinal);
+            var lastArgumentEnd = source.IndexOf('}', lastArgument + 5);
+            if (lastArgumentEnd < 0 || lastArgumentEnd >= source.Length - 1) return false;
+
+            var prefixWords = source.Substring(0, firstArgument).Split(
+                new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if (prefixWords.Length < 2) return false;
+            firstWord = prefixWords[0];
+            return true;
+        }
+
         private static void RegisterValue(Dictionary<string, string> values,
             string source, string translation, bool gateAlreadyHeld)
         {
@@ -875,6 +1081,8 @@ namespace AtG.RuntimeText
 
                 var fragmentIndex = BuildFragmentIndex(PlainTextFragments);
                 var richTextFragmentIndex = BuildFragmentIndex(RichTextFragments);
+                var tokenizedRichTextFragmentIndex =
+                    BuildTokenizedRichTextFragmentIndex(RichTextFragments);
 
                 var concepts =
                     new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
@@ -889,13 +1097,18 @@ namespace AtG.RuntimeText
                         ? length
                         : StringComparer.Ordinal.Compare(left.Key, right.Key);
                 });
+                var templateArray = templates.ToArray();
+                var tokenizedRichTextTemplateIndex =
+                    BuildTokenizedRichTextTemplateIndex(templateArray);
                 snapshot = new LocalizationSnapshot
                 {
                     Exact = new Dictionary<string, string>(ExactStrings, StringComparer.Ordinal),
                     Plain = new Dictionary<string, string>(PlainText, StringComparer.Ordinal),
                     FragmentsByFirstCharacter = fragmentIndex,
                     RichTextFragmentsByFirstCharacter = richTextFragmentIndex,
-                    Templates = templates.ToArray(),
+                    TokenizedRichTextFragmentsByFirstWord = tokenizedRichTextFragmentIndex,
+                    TokenizedRichTextTemplatesByFirstWord = tokenizedRichTextTemplateIndex,
+                    Templates = templateArray,
                     Concepts = concepts,
                     Keys = new HashSet<string>(ConceptKeys, StringComparer.Ordinal),
                 };

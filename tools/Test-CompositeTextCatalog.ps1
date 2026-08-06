@@ -83,7 +83,7 @@ $runtimeMapKnownTextParts = @($knownTextReferenceParts | Where-Object {
 })
 $runtimeDisplayMap = Get-Content -LiteralPath (Join-Path $repoRoot "translations\runtime-display-strings.json") -Raw -Encoding UTF8 | ConvertFrom-Json
 $expectedRuntimeMapBindings = @(
-    foreach ($section in @("Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "ConceptDisplay")) {
+    foreach ($section in @("Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "Templates", "ConceptDisplay")) {
         foreach ($entry in @($runtimeDisplayMap.$section)) {
             if ($null -ne $entry -and ![string]::IsNullOrWhiteSpace([string]$entry.Original) -and
                 $null -ne $entry.Translation) {

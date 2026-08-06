@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 7,
-  "GeneratedAtUtc": "2026-08-03T23:02:37.1280593Z",
+  "GeneratedAtUtc": "2026-08-05T21:00:41.4932287Z",
   "RepositoryRoot": ".",
   "Entries": [
     {
@@ -26884,6 +26884,78 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-common-il-rewrite.json:0x06000c08:IL_0008",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-common-il-rewrite.json",
+        "TypeFullName": "AtTheGatesCommon.ns_Config.Weight_LeaderTrait",
+        "MethodName": "ToString",
+        "MethodToken": "0x06000c08",
+        "ILOffset": 8,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "Leader Trait (",
+      "LocalizedFormat": "\u9886\u8896\u7279\u8D28\uFF08",
+      "Classification": "LogicSensitive",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-common",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Leader Trait (",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesCommon.original.dll",
+            "Original": "Leader Trait (",
+            "MethodToken": "0x06000c08",
+            "ILOffset": 8
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Leader-trait weight tooltip prefix; preserve the dynamic trait value and localize only this exact display operand.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-common-il-rewrite.json:0x06000c08:IL_0021",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-common-il-rewrite.json",
+        "TypeFullName": "AtTheGatesCommon.ns_Config.Weight_LeaderTrait",
+        "MethodName": "ToString",
+        "MethodToken": "0x06000c08",
+        "ILOffset": 33,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": ")",
+      "LocalizedFormat": "\uFF09",
+      "Classification": "LogicSensitive",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-common",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ")",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesCommon.original.dll",
+            "Original": ")",
+            "MethodToken": "0x06000c08",
+            "ILOffset": 33
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Leader-trait weight tooltip closing punctuation paired with the scoped full-width prefix.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-common-il-rewrite.json:0x06000c5e:IL_0021",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -47605,6 +47677,78 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-game-il-rewrite.json:0x06001308:IL_0019",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-game-il-rewrite.json",
+        "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_AnyMovesRemaining",
+        "MethodName": "PerformCheck",
+        "MethodToken": "0x06001308",
+        "ILOffset": 25,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "No ",
+      "LocalizedFormat": "\u6CA1\u6709",
+      "Classification": "LogicSensitive",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-game",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "No ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesGame.original.exe",
+            "Original": "No ",
+            "MethodToken": "0x06001308",
+            "ILOffset": 25
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Exact no-moves-remaining prefix; pairs with localized suffix in the same static check.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-game-il-rewrite.json:0x06001308:IL_0023",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-game-il-rewrite.json",
+        "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_AnyMovesRemaining",
+        "MethodName": "PerformCheck",
+        "MethodToken": "0x06001308",
+        "ILOffset": 35,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " remaining.",
+      "LocalizedFormat": "\u3002",
+      "Classification": "LogicSensitive",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-game",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " remaining.",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesGame.original.exe",
+            "Original": " remaining.",
+            "MethodToken": "0x06001308",
+            "ILOffset": 35
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Exact no-moves-remaining suffix; pairs with localized prefix in the same static check.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-game-il-rewrite.json:0x0600130b:IL_0021",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -63610,6 +63754,42 @@
       ],
       "StructuralFlags": [],
       "Notes": "Trial fast-fail auto batch generated from glossary and high-confidence phrase rules; smoke safety only.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000122:IL_08F7",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ClanCard",
+        "MethodName": "BuildTooltips",
+        "MethodToken": "0x06000122",
+        "ILOffset": 2295,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "as ",
+      "LocalizedFormat": "\u6210\u4E3A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "as ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": "as ",
+            "MethodToken": "0x06000122",
+            "ILOffset": 2295
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Clan-card training-status connector; preserves the dynamic profession label.",
       "Stale": false
     },
     {
@@ -81332,7 +81512,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " reduces the amount of ",
-      "LocalizedFormat": "\u51CF\u5C11",
+      "LocalizedFormat": "\u4F1A\u4F7F\u53EF\u7528",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-ui",
@@ -81354,6 +81534,74 @@
       ],
       "StructuralFlags": [],
       "Notes": "Trial UI exact-catalog besiege tooltip fragment.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000384:IL_00C9",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "MethodToken": "0x06000384",
+        "ILOffset": 201,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " available on its ",
+      "LocalizedFormat": "\u5728\u5176\u6240\u5728\u7684",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " available on its ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": " available on its ",
+            "MethodToken": "0x06000384",
+            "ILOffset": 201
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Exact besiege-tooltip connector; preserves the composed supply and tile operands.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000384:IL_00D9",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "MethodToken": "0x06000384",
+        "ILOffset": 217,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " by ",
+      "LocalizedFormat": "\u4E0A\u7684\u6570\u503C\u51CF\u5C11",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " by ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": " by ",
+            "MethodToken": "0x06000384",
+            "ILOffset": 217
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Exact besiege-tooltip connector; preserves the dynamic reduction value and turn.",
       "Stale": false
     },
     {
@@ -81427,6 +81675,40 @@
       ],
       "StructuralFlags": [],
       "Notes": "Generated from existing UI hardcoded maps and ldstr catalog to avoid equal-length padding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000384:IL_0110",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "MethodToken": "0x06000384",
+        "ILOffset": 272,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": ".",
+      "LocalizedFormat": "\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ".",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": ".",
+            "MethodToken": "0x06000384",
+            "ILOffset": 272
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Exact besiege-tooltip terminal punctuation.",
       "Stale": false
     },
     {
@@ -89250,6 +89532,42 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x060003e8:IL_084F",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.ClanListEntry",
+        "MethodName": "BuildPanel_Contents",
+        "MethodToken": "0x060003e8",
+        "ILOffset": 2127,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "tile",
+      "LocalizedFormat": "\u683C",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "tile",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": "tile",
+            "MethodToken": "0x060003e8",
+            "ILOffset": 2127
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Clan-list distance unit singular counterpart; keep the numeric distance and localize only the tile suffix.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x060003e9:IL_01F2",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -91019,6 +91337,78 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x060004df:IL_0002",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_TileNote",
+        "MethodName": "CreateControls_Fixed",
+        "MethodToken": "0x060004df",
+        "ILOffset": 2,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "Cancel",
+      "LocalizedFormat": "\u53D6\u6D88",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Cancel",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": "Cancel",
+            "MethodToken": "0x060004df",
+            "ILOffset": 2
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Tile-note popup cancel action.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x060004df:IL_001A",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_TileNote",
+        "MethodName": "CreateControls_Fixed",
+        "MethodToken": "0x060004df",
+        "ILOffset": 26,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "Accept",
+      "LocalizedFormat": "\u786E\u8BA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Accept",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": "Accept",
+            "MethodToken": "0x060004df",
+            "ILOffset": 26
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Tile-note popup accept action.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x060004e0:IL_0009",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -91053,6 +91443,114 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x060004e0:IL_008F",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_TileNote",
+        "MethodName": "CreateControls_OnRebuild",
+        "MethodToken": "0x060004e0",
+        "ILOffset": 143,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "Delete",
+      "LocalizedFormat": "\u5220\u9664",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Delete",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": "Delete",
+            "MethodToken": "0x060004e0",
+            "ILOffset": 143
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Tile-note popup delete action.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x060004e8:IL_0002",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ClanNote",
+        "MethodName": "CreateControls_Fixed",
+        "MethodToken": "0x060004e8",
+        "ILOffset": 2,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "Cancel",
+      "LocalizedFormat": "\u53D6\u6D88",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Cancel",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": "Cancel",
+            "MethodToken": "0x060004e8",
+            "ILOffset": 2
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Clan-note popup cancel action.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x060004e8:IL_001A",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ClanNote",
+        "MethodName": "CreateControls_Fixed",
+        "MethodToken": "0x060004e8",
+        "ILOffset": 26,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "Accept",
+      "LocalizedFormat": "\u786E\u8BA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Accept",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": "Accept",
+            "MethodToken": "0x060004e8",
+            "ILOffset": 26
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Clan-note popup accept action.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x060004e9:IL_0011",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -91084,6 +91582,42 @@
       ],
       "StructuralFlags": [],
       "Notes": "Retry with exact-catalog trailing space after previous original mismatch.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x060004e9:IL_00AF",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ClanNote",
+        "MethodName": "CreateControls_OnRebuild",
+        "MethodToken": "0x060004e9",
+        "ILOffset": 175,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "Delete",
+      "LocalizedFormat": "\u5220\u9664",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Delete",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": "Delete",
+            "MethodToken": "0x060004e9",
+            "ILOffset": 175
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Clan-note popup delete action.",
       "Stale": false
     },
     {
@@ -91193,6 +91727,42 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000504:IL_0085",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseClanToTrain",
+        "MethodName": "CreateControls_OnRebuild",
+        "MethodToken": "0x06000504",
+        "ILOffset": 133,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " in ",
+      "LocalizedFormat": "\uFF1A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " in ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": " in ",
+            "MethodToken": "0x06000504",
+            "ILOffset": 133
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Discipline-selection title connector; renders the composed title as \u8BAD\u7EC3\u6C0F\u65CF\uFF1A\u7EAA\u5F8B.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000512:IL_0002",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -91262,6 +91832,42 @@
       ],
       "StructuralFlags": [],
       "Notes": "Trial visible popup text.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x0600051f:IL_000F",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseDisciplineToLevelUp",
+        "MethodName": "CreateControls_Fixed",
+        "MethodToken": "0x0600051f",
+        "ILOffset": 15,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " in ",
+      "LocalizedFormat": "\uFF1A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " in ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": " in ",
+            "MethodToken": "0x0600051f",
+            "ILOffset": 15
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Discipline-training title connector; renders the composed title as \u8BAD\u7EC3\uFF1A\u7EAA\u5F8B.",
       "Stale": false
     },
     {
@@ -91335,6 +91941,42 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000522:IL_0098",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseDisciplineToLevelUp",
+        "MethodName": "BuildTooltip_Cost",
+        "MethodToken": "0x06000522",
+        "ILOffset": 152,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " in ",
+      "LocalizedFormat": "\uFF0C\u5728",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " in ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": " in ",
+            "MethodToken": "0x06000522",
+            "ILOffset": 152
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Discipline-training first-level tooltip connector; paired with the exact discipline suffix at IL_00E0.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000522:IL_00E0",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -91346,7 +91988,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " (will start at ",
-      "LocalizedFormat": "\uFF08\u5C06\u4ECE",
+      "LocalizedFormat": "\u7EAA\u5F8B\u4E2D\uFF08\u5C06\u4ECE",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-ui",
@@ -91371,6 +92013,80 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000522:IL_0144",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseDisciplineToLevelUp",
+        "MethodName": "BuildTooltip_Cost",
+        "MethodToken": "0x06000522",
+        "ILOffset": 324,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "[COLOR:BAD-RED][FONT:CLEAN-BOLD]- WARNING -[/FONT][/COLOR] Once Training is complete ",
+      "LocalizedFormat": "[COLOR:BAD-RED][FONT:CLEAN-BOLD]- \u8B66\u544A -[/FONT][/COLOR] \u8BAD\u7EC3\u5B8C\u6210\u540E\uFF0C",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[COLOR:BAD-RED][FONT:CLEAN-BOLD]- WARNING -[/FONT][/COLOR] Once Training is complete ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": "[COLOR:BAD-RED][FONT:CLEAN-BOLD]- WARNING -[/FONT][/COLOR] Once Training is complete ",
+            "MethodToken": "0x06000522",
+            "ILOffset": 324
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Discipline-training irreversible-change warning; preserves both rich-text tags.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000522:IL_015E",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseDisciplineToLevelUp",
+        "MethodName": "BuildTooltip_Cost",
+        "MethodToken": "0x06000522",
+        "ILOffset": 350,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " ",
+      "LocalizedFormat": "",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": " ",
+            "MethodToken": "0x06000522",
+            "ILOffset": 350
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Removes the source-only separator after the localized warning comma.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000522:IL_017E",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -91380,7 +92096,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " will abandon and lose all [Experience|XP] in ",
-      "LocalizedFormat": "\u5C06\u653E\u5F03\u5E76\u5931\u53BB\u5168\u90E8[Experience|XP]\uFF0C\u539F\u7EAA\u5F8B\uFF1A",
+      "LocalizedFormat": "\u5C06\u653E\u5F03\u5E76\u5931\u53BB\u5168\u90E8[\u7ECF\u9A8C|XP]\uFF0C\u539F\u7EAA\u5F8B\uFF1A",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-ui",
@@ -91868,6 +92584,42 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000522:IL_04C8",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.ns_Popups.Popup_ChooseDisciplineToLevelUp",
+        "MethodName": "BuildTooltip_Cost",
+        "MethodToken": "0x06000522",
+        "ILOffset": 1224,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " in ",
+      "LocalizedFormat": "\uFF0C\u5728",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " in ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": " in ",
+            "MethodToken": "0x06000522",
+            "ILOffset": 1224
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Discipline-training level-up tooltip connector; paired with the exact discipline suffix at IL_04FD.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x06000522:IL_04FD",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -91877,7 +92629,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " (from ",
-      "LocalizedFormat": "\uFF08\u6765\u81EA",
+      "LocalizedFormat": "\u7EAA\u5F8B\u4E2D\uFF08\u4ECE",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-ui",
@@ -298774,6 +299526,42 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:ConceptDisplay:4f2aacac1b5b8aae",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "ConceptDisplay"
+      },
+      "OriginalFormat": "[Level-Up|LEVEL]",
+      "LocalizedFormat": "[\u5347\u7EA7|LEVEL]",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-concept",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[Level-Up|LEVEL]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[Level-Up|LEVEL]",
+            "RuntimeMapSection": "ConceptDisplay",
+            "RuntimeMapOriginal": "Level-Up",
+            "RuntimeMapConceptKey": "LEVEL"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "ConceptLink",
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime concept-display binding for key \u0027LEVEL\u0027.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:ConceptDisplay:58a37ba8e52a3c6e",
       "Source": {
         "Kind": "RuntimeMap",
@@ -298987,6 +299775,42 @@
         "RichTextMarkup"
       ],
       "Notes": "Generated from runtime concept-display binding for key \u0027SETTLED\u0027.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:ConceptDisplay:bd21556041202d46",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "ConceptDisplay"
+      },
+      "OriginalFormat": "[Level Up|LEVEL]",
+      "LocalizedFormat": "[\u5347\u7EA7|LEVEL]",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-concept",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[Level Up|LEVEL]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[Level Up|LEVEL]",
+            "RuntimeMapSection": "ConceptDisplay",
+            "RuntimeMapOriginal": "Level Up",
+            "RuntimeMapConceptKey": "LEVEL"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "ConceptLink",
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime concept-display binding for key \u0027LEVEL\u0027.",
       "Stale": false
     },
     {
@@ -299358,70 +300182,6 @@
             "Original": "location of a major battle. Old equipment lies scattered about.",
             "RuntimeMapSection": "Exact",
             "RuntimeMapOriginal": "location of a major battle. Old equipment lies scattered about."
-          }
-        }
-      ],
-      "StructuralFlags": [],
-      "Notes": "Generated from runtime display-map binding.",
-      "Stale": false
-    },
-    {
-      "EntryPointId": "runtime-map:Exact:64168891b4b65791",
-      "Source": {
-        "Kind": "RuntimeMap",
-        "RelativePath": "translations/runtime-display-strings.json",
-        "CallKind": "Exact"
-      },
-      "OriginalFormat": "\u0080\u5F88\u53EF\u80FD\u53D8\u5F97\u76F8\u5F53\u4E0D\u6EE1 \u6570\u6708\u5185\uFF0C\u5982\u679Cunable\u4EE5 spend the winter inside the",
-      "LocalizedFormat": "\u0080\u5F88\u53EF\u80FD\u53D8\u5F97\u76F8\u5F53\u4E0D\u6EE1 \u6570\u6708\u5185\uFF0C\u5982\u679C\u65E0\u6CD5\u5728\u51AC\u5B63\u7559\u5728",
-      "Classification": "DisplaySafe",
-      "Status": "ExistingRule",
-      "RuleId": "runtime-display-exact",
-      "AuditStatus": "Localized",
-      "RuleScope": "RuntimeMap",
-      "Confidence": "Exact",
-      "Parts": [
-        {
-          "Position": 0,
-          "Kind": "Literal",
-          "Value": "\u0080\u5F88\u53EF\u80FD\u53D8\u5F97\u76F8\u5F53\u4E0D\u6EE1 \u6570\u6708\u5185\uFF0C\u5982\u679Cunable\u4EE5 spend the winter inside the",
-          "KnownTextReference": {
-            "SourceFile": "translations/runtime-display-strings.json",
-            "Original": "\u0080\u5F88\u53EF\u80FD\u53D8\u5F97\u76F8\u5F53\u4E0D\u6EE1 \u6570\u6708\u5185\uFF0C\u5982\u679Cunable\u4EE5 spend the winter inside the",
-            "RuntimeMapSection": "Exact",
-            "RuntimeMapOriginal": "\u0080\u5F88\u53EF\u80FD\u53D8\u5F97\u76F8\u5F53\u4E0D\u6EE1 \u6570\u6708\u5185\uFF0C\u5982\u679Cunable\u4EE5 spend the winter inside the"
-          }
-        }
-      ],
-      "StructuralFlags": [],
-      "Notes": "Generated from runtime display-map binding.",
-      "Stale": false
-    },
-    {
-      "EntryPointId": "runtime-map:Exact:65de9372d3a53904",
-      "Source": {
-        "Kind": "RuntimeMap",
-        "RelativePath": "translations/runtime-display-strings.json",
-        "CallKind": "Exact"
-      },
-      "OriginalFormat": "\u0080\u5F88\u53EF\u80FD\u53D8\u5F97\u76F8\u5F53\u4E0D\u6EE1\u5728\u4E00\u5E74\u5185\uFF0C\u5982\u679Cunable\u4EE5 spend the winter inside the",
-      "LocalizedFormat": "\u0080\u5F88\u53EF\u80FD\u53D8\u5F97\u76F8\u5F53\u4E0D\u6EE1\u5728\u4E00\u5E74\u5185\uFF0C\u5982\u679C\u65E0\u6CD5\u5728\u51AC\u5B63\u7559\u5728",
-      "Classification": "DisplaySafe",
-      "Status": "ExistingRule",
-      "RuleId": "runtime-display-exact",
-      "AuditStatus": "Localized",
-      "RuleScope": "RuntimeMap",
-      "Confidence": "Exact",
-      "Parts": [
-        {
-          "Position": 0,
-          "Kind": "Literal",
-          "Value": "\u0080\u5F88\u53EF\u80FD\u53D8\u5F97\u76F8\u5F53\u4E0D\u6EE1\u5728\u4E00\u5E74\u5185\uFF0C\u5982\u679Cunable\u4EE5 spend the winter inside the",
-          "KnownTextReference": {
-            "SourceFile": "translations/runtime-display-strings.json",
-            "Original": "\u0080\u5F88\u53EF\u80FD\u53D8\u5F97\u76F8\u5F53\u4E0D\u6EE1\u5728\u4E00\u5E74\u5185\uFF0C\u5982\u679Cunable\u4EE5 spend the winter inside the",
-            "RuntimeMapSection": "Exact",
-            "RuntimeMapOriginal": "\u0080\u5F88\u53EF\u80FD\u53D8\u5F97\u76F8\u5F53\u4E0D\u6EE1\u5728\u4E00\u5E74\u5185\uFF0C\u5982\u679Cunable\u4EE5 spend the winter inside the"
           }
         }
       ],
@@ -300512,70 +301272,6 @@
       "Stale": false
     },
     {
-      "EntryPointId": "runtime-map:PlainText:5b8e04f7dda232da",
-      "Source": {
-        "Kind": "RuntimeMap",
-        "RelativePath": "translations/runtime-display-strings.json",
-        "CallKind": "PlainText"
-      },
-      "OriginalFormat": "All that remains of a once-thriving community.",
-      "LocalizedFormat": "\u8FD9\u662F\u6614\u65E5\u7E41\u8363\u793E\u533A\u7684\u6B8B\u8FF9\u3002",
-      "Classification": "DisplaySafe",
-      "Status": "ExistingRule",
-      "RuleId": "runtime-display-plain",
-      "AuditStatus": "Localized",
-      "RuleScope": "RuntimeMap",
-      "Confidence": "Exact",
-      "Parts": [
-        {
-          "Position": 0,
-          "Kind": "Literal",
-          "Value": "All that remains of a once-thriving community.",
-          "KnownTextReference": {
-            "SourceFile": "translations/runtime-display-strings.json",
-            "Original": "All that remains of a once-thriving community.",
-            "RuntimeMapSection": "PlainText",
-            "RuntimeMapOriginal": "All that remains of a once-thriving community."
-          }
-        }
-      ],
-      "StructuralFlags": [],
-      "Notes": "Generated from runtime display-map binding.",
-      "Stale": false
-    },
-    {
-      "EntryPointId": "runtime-map:PlainText:6071a74da48a952c",
-      "Source": {
-        "Kind": "RuntimeMap",
-        "RelativePath": "translations/runtime-display-strings.json",
-        "CallKind": "PlainText"
-      },
-      "OriginalFormat": "All that remains, is of a once-thriving community.",
-      "LocalizedFormat": "\u8FD9\u91CC\u4EC5\u4F59\u6614\u65E5\u7E41\u8363\u793E\u533A\u7684\u9057\u8FF9\u3002",
-      "Classification": "DisplaySafe",
-      "Status": "ExistingRule",
-      "RuleId": "runtime-display-plain",
-      "AuditStatus": "Localized",
-      "RuleScope": "RuntimeMap",
-      "Confidence": "Exact",
-      "Parts": [
-        {
-          "Position": 0,
-          "Kind": "Literal",
-          "Value": "All that remains, is of a once-thriving community.",
-          "KnownTextReference": {
-            "SourceFile": "translations/runtime-display-strings.json",
-            "Original": "All that remains, is of a once-thriving community.",
-            "RuntimeMapSection": "PlainText",
-            "RuntimeMapOriginal": "All that remains, is of a once-thriving community."
-          }
-        }
-      ],
-      "StructuralFlags": [],
-      "Notes": "Generated from runtime display-map binding.",
-      "Stale": false
-    },
-    {
       "EntryPointId": "runtime-map:PlainText:69036f6d579259b3",
       "Source": {
         "Kind": "RuntimeMap",
@@ -301056,6 +301752,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainText:cd5d0a56aa59a818",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "Leader Trait",
+      "LocalizedFormat": "\u9886\u8896\u7279\u8D28",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Leader Trait",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Leader Trait",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "Leader Trait"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainText:e07fa68560eda4bd",
       "Source": {
         "Kind": "RuntimeMap",
@@ -301176,6 +301904,38 @@
             "Original": ",",
             "RuntimeMapSection": "PlainText",
             "RuntimeMapOriginal": ","
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainText:f2ecf552fa5dc74b",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainText"
+      },
+      "OriginalFormat": "Leader \u7279\u8D28",
+      "LocalizedFormat": "\u9886\u8896\u7279\u8D28",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-plain",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Leader \u7279\u8D28",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Leader \u7279\u8D28",
+            "RuntimeMapSection": "PlainText",
+            "RuntimeMapOriginal": "Leader \u7279\u8D28"
           }
         }
       ],
@@ -301664,6 +302424,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:0dd7923353bdc001",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (1 tile apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC71\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (1 tile apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (1 tile apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (1 tile apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:0e02b4f5b9443ed0",
       "Source": {
         "Kind": "RuntimeMap",
@@ -301888,6 +302680,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:139cd9d28b43965c",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (9 tiles apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC79\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (9 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (9 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (9 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:143bf7c93846d25d",
       "Source": {
         "Kind": "RuntimeMap",
@@ -301912,6 +302736,38 @@
             "Original": "borders being too close (within 9 tiles).",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "borders being too close (within 9 tiles)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:14e048c907962f1c",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (10 tiles apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC710\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (10 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (10 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (10 tiles apart or less)."
           }
         }
       ],
@@ -301976,6 +302832,38 @@
             "Original": "borders being too close (within 6 tiles).",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "borders being too close (within 6 tiles)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:162231bc505423b4",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (4 tiles apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC74\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (4 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (4 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (4 tiles apart or less)."
           }
         }
       ],
@@ -302176,6 +303064,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:1ca29d6060ce6e1e",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (11 tiles apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC711\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (11 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (11 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (11 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:1d1682bb463a1db3",
       "Source": {
         "Kind": "RuntimeMap",
@@ -302336,6 +303256,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:22ac3d767a7b2126",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (12 tiles apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC712\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (12 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (12 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (12 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:22ddfab897c8ede7",
       "Source": {
         "Kind": "RuntimeMap",
@@ -302488,6 +303440,38 @@
             "Original": "Jats",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "Jats"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:264728374f9252d9",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (1 tile apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC71\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (1 tile apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (1 tile apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (1 tile apart or less.)"
           }
         }
       ],
@@ -302688,14 +303672,14 @@
       "Stale": false
     },
     {
-      "EntryPointId": "runtime-map:PlainTextFragments:2d068038698036e0",
+      "EntryPointId": "runtime-map:PlainTextFragments:2cfefb630b86e1ab",
       "Source": {
         "Kind": "RuntimeMap",
         "RelativePath": "translations/runtime-display-strings.json",
         "CallKind": "PlainTextFragments"
       },
-      "OriginalFormat": " of a",
-      "LocalizedFormat": "\uFF0C\u9A7B\u7559\u5728",
+      "OriginalFormat": "borders being too close (9 tiles apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC79\u683C\uFF09\u3002",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "runtime-display-fragment",
@@ -302706,12 +303690,12 @@
         {
           "Position": 0,
           "Kind": "Literal",
-          "Value": " of a",
+          "Value": "borders being too close (9 tiles apart or less.)",
           "KnownTextReference": {
             "SourceFile": "translations/runtime-display-strings.json",
-            "Original": " of a",
+            "Original": "borders being too close (9 tiles apart or less.)",
             "RuntimeMapSection": "PlainTextFragments",
-            "RuntimeMapOriginal": " of a"
+            "RuntimeMapOriginal": "borders being too close (9 tiles apart or less.)"
           }
         }
       ],
@@ -303008,6 +303992,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:35dd63ce34d5bc1d",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (3 tiles apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC73\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (3 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (3 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (3 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:369c93ea42e5cf36",
       "Source": {
         "Kind": "RuntimeMap",
@@ -303040,6 +304056,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:3704016eb2d7da19",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (4 tiles apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC74\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (4 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (4 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (4 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:38b22cd32f715b47",
       "Source": {
         "Kind": "RuntimeMap",
@@ -303064,6 +304112,38 @@
             "Original": "Angles",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "Angles"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:39ad7773f23337de",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (10 tiles apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC710\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (10 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (10 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (10 tiles apart or less.)"
           }
         }
       ],
@@ -303456,14 +304536,14 @@
       "Stale": false
     },
     {
-      "EntryPointId": "runtime-map:PlainTextFragments:4443c57f748d1e17",
+      "EntryPointId": "runtime-map:PlainTextFragments:43fc9a6c05f9523b",
       "Source": {
         "Kind": "RuntimeMap",
         "RelativePath": "translations/runtime-display-strings.json",
         "CallKind": "PlainTextFragments"
       },
-      "OriginalFormat": "unable\u4EE5 spend the winter inside the",
-      "LocalizedFormat": "\u65E0\u6CD5\u5728\u51AC\u5B63\u7559\u5728",
+      "OriginalFormat": "borders being too close (11 tiles apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC711\u683C\uFF09\u3002",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "runtime-display-fragment",
@@ -303474,12 +304554,12 @@
         {
           "Position": 0,
           "Kind": "Literal",
-          "Value": "unable\u4EE5 spend the winter inside the",
+          "Value": "borders being too close (11 tiles apart or less.)",
           "KnownTextReference": {
             "SourceFile": "translations/runtime-display-strings.json",
-            "Original": "unable\u4EE5 spend the winter inside the",
+            "Original": "borders being too close (11 tiles apart or less.)",
             "RuntimeMapSection": "PlainTextFragments",
-            "RuntimeMapOriginal": "unable\u4EE5 spend the winter inside the"
+            "RuntimeMapOriginal": "borders being too close (11 tiles apart or less.)"
           }
         }
       ],
@@ -303712,6 +304792,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:4a98ae15819400d7",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (6 tiles apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC76\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (6 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (6 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (6 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:4b80cd61a9dc2852",
       "Source": {
         "Kind": "RuntimeMap",
@@ -303808,38 +304920,6 @@
       "Stale": false
     },
     {
-      "EntryPointId": "runtime-map:PlainTextFragments:4ea7e9cf530bab4c",
-      "Source": {
-        "Kind": "RuntimeMap",
-        "RelativePath": "translations/runtime-display-strings.json",
-        "CallKind": "PlainTextFragments"
-      },
-      "OriginalFormat": "\u5F3A\u76D7",
-      "LocalizedFormat": "\u5F3A\u76D7\u8425\u5730",
-      "Classification": "DisplaySafe",
-      "Status": "ExistingRule",
-      "RuleId": "runtime-display-fragment",
-      "AuditStatus": "Localized",
-      "RuleScope": "UniformFragment",
-      "Confidence": "Exact",
-      "Parts": [
-        {
-          "Position": 0,
-          "Kind": "Literal",
-          "Value": "\u5F3A\u76D7",
-          "KnownTextReference": {
-            "SourceFile": "translations/runtime-display-strings.json",
-            "Original": "\u5F3A\u76D7",
-            "RuntimeMapSection": "PlainTextFragments",
-            "RuntimeMapOriginal": "\u5F3A\u76D7"
-          }
-        }
-      ],
-      "StructuralFlags": [],
-      "Notes": "Generated from runtime display-map binding.",
-      "Stale": false
-    },
-    {
       "EntryPointId": "runtime-map:PlainTextFragments:504d8478b38f5736",
       "Source": {
         "Kind": "RuntimeMap",
@@ -303904,6 +304984,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:50f2789db0d018c5",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (2 tiles apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC72\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (2 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (2 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (2 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:520261bde7dc2114",
       "Source": {
         "Kind": "RuntimeMap",
@@ -303928,6 +305040,38 @@
             "Original": "When \u4E0D\u60A6...",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "When \u4E0D\u60A6..."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:521544b85ff96955",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "Leader Trait (",
+      "LocalizedFormat": "\u9886\u8896\u7279\u8D28\uFF08",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Leader Trait (",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Leader Trait (",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "Leader Trait ("
           }
         }
       ],
@@ -304224,6 +305368,70 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:5ac1729bf6a2ff6b",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (4 tiles apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC74\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (4 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (4 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (4 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:5ad00fdc50846039",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (2 tiles apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC72\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (2 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (2 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (2 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:5b43444739f9aad5",
       "Source": {
         "Kind": "RuntimeMap",
@@ -304384,6 +305592,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:5d209de96af439a8",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (5 tiles apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC75\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (5 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (5 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (5 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:5d67c845c54e4638",
       "Source": {
         "Kind": "RuntimeMap",
@@ -304408,38 +305648,6 @@
             "Original": "The Scythians",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "The Scythians"
-          }
-        }
-      ],
-      "StructuralFlags": [],
-      "Notes": "Generated from runtime display-map binding.",
-      "Stale": false
-    },
-    {
-      "EntryPointId": "runtime-map:PlainTextFragments:6071a74da48a952c",
-      "Source": {
-        "Kind": "RuntimeMap",
-        "RelativePath": "translations/runtime-display-strings.json",
-        "CallKind": "PlainTextFragments"
-      },
-      "OriginalFormat": "All that remains, is of a once-thriving community.",
-      "LocalizedFormat": "\u8FD9\u91CC\u4EC5\u4F59\u6614\u65E5\u7E41\u8363\u793E\u533A\u7684\u9057\u8FF9\u3002",
-      "Classification": "DisplaySafe",
-      "Status": "ExistingRule",
-      "RuleId": "runtime-display-fragment",
-      "AuditStatus": "Localized",
-      "RuleScope": "UniformFragment",
-      "Confidence": "Exact",
-      "Parts": [
-        {
-          "Position": 0,
-          "Kind": "Literal",
-          "Value": "All that remains, is of a once-thriving community.",
-          "KnownTextReference": {
-            "SourceFile": "translations/runtime-display-strings.json",
-            "Original": "All that remains, is of a once-thriving community.",
-            "RuntimeMapSection": "PlainTextFragments",
-            "RuntimeMapOriginal": "All that remains, is of a once-thriving community."
           }
         }
       ],
@@ -304576,6 +305784,70 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:666aee935437ed5c",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (10 tiles apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC710\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (10 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (10 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (10 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:676d564e03d3747c",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (12 tiles apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC712\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (12 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (12 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (12 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:67d58d0d522b3720",
       "Source": {
         "Kind": "RuntimeMap",
@@ -304664,6 +305936,38 @@
             "Original": "This is a particularly large hive!",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "This is a particularly large hive!"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:69b29fcd9aae5b19",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (8 tiles apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC78\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (8 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (8 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (8 tiles apart or less)."
           }
         }
       ],
@@ -305120,6 +306424,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:721aacf6bb161f0c",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (11 tiles apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC711\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (11 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (11 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (11 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:72ce3c4d1149a6db",
       "Source": {
         "Kind": "RuntimeMap",
@@ -305536,6 +306872,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:7bbf39f867e5251b",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (11 tiles apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC711\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (11 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (11 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (11 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:7cad752ed1220a5c",
       "Source": {
         "Kind": "RuntimeMap",
@@ -305632,6 +307000,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:7de1eec9ec04fc9e",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (6 tiles apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC76\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (6 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (6 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (6 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:7ee63622251eb02d",
       "Source": {
         "Kind": "RuntimeMap",
@@ -305656,6 +307056,38 @@
             "Original": "Cimbri",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "Cimbri"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:7f9fdf2a95656d73",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (8 tiles apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC78\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (8 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (8 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (8 tiles apart or less.)"
           }
         }
       ],
@@ -305760,6 +307192,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:82d956054908c142",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (12 tiles apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC712\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (12 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (12 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (12 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:83c59fcb21d0bcc8",
       "Source": {
         "Kind": "RuntimeMap",
@@ -305816,6 +307280,38 @@
             "Original": "The Massagetae",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "The Massagetae"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:84572f040c452ee6",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (4 tiles apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC74\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (4 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (4 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (4 tiles apart or less.)"
           }
         }
       ],
@@ -305944,6 +307440,38 @@
             "Original": "Burgundians",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "Burgundians"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:88381514e234d3eb",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (1 tile apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC71\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (1 tile apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (1 tile apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (1 tile apart or less)."
           }
         }
       ],
@@ -306296,6 +307824,38 @@
             "Original": "Massagetae",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "Massagetae"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:94d49898043826cd",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (1 tile apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC71\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (1 tile apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (1 tile apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (1 tile apart or less)."
           }
         }
       ],
@@ -306688,6 +308248,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:a0f4ad1463ef434f",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (3 tiles apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC73\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (3 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (3 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (3 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:a107124b1adc655c",
       "Source": {
         "Kind": "RuntimeMap",
@@ -306808,6 +308400,38 @@
             "Original": "Berbers",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "Berbers"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:a3f27eaf7f3b227a",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (7 tiles apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC77\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (7 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (7 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (7 tiles apart or less.)"
           }
         }
       ],
@@ -307008,6 +308632,70 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:a8ceef3ff0a87884",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (5 tiles apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC75\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (5 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (5 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (5 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:a8d0c5c4f4ed2e7b",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (12 tiles apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC712\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (12 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (12 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (12 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:a913877960a43fac",
       "Source": {
         "Kind": "RuntimeMap",
@@ -307192,6 +308880,38 @@
             "Original": "This is a particularly large patch!",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "This is a particularly large patch!"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:ab186ed8ce58f35e",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (5 tiles apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC75\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (5 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (5 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (5 tiles apart or less)."
           }
         }
       ],
@@ -307648,6 +309368,166 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:b33886e093a3b1a7",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (9 tiles apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC79\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (9 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (9 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (9 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:b377e353e9a614f5",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (10 tiles apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC710\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (10 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (10 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (10 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:b4c9521a9001acc0",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (5 tiles apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC75\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (5 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (5 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (5 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:b4d4113ece0b8c77",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (7 tiles apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC77\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (7 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (7 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (7 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:b4d873962d0d9242",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (6 tiles apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC76\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (6 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (6 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (6 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:b5a44c6270f8259b",
       "Source": {
         "Kind": "RuntimeMap",
@@ -308056,6 +309936,38 @@
             "Original": "This ",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "This "
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:c0aa4d1fd3f654d3",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (6 tiles apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC76\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (6 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (6 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (6 tiles apart or less.)"
           }
         }
       ],
@@ -308480,6 +310392,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:c987db34b4fcfd5c",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (8 tiles apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC78\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (8 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (8 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (8 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:c9db2e93f470075e",
       "Source": {
         "Kind": "RuntimeMap",
@@ -308576,6 +310520,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:cc1ae5fad43978ca",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (9 tiles apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC79\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (9 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (9 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (9 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:ccc311c42c530e82",
       "Source": {
         "Kind": "RuntimeMap",
@@ -308600,6 +310576,38 @@
             "Original": "The Franks",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "The Franks"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:cd8e812c96b8980e",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (7 tiles apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC77\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (7 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (7 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (7 tiles apart or less)."
           }
         }
       ],
@@ -308760,6 +310768,38 @@
             "Original": "Rugii",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "Rugii"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:d2eb0176fa35cbf3",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (3 tiles apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC73\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (3 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (3 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (3 tiles apart or less.)"
           }
         }
       ],
@@ -308984,6 +311024,38 @@
             "Original": "Bandit Stronghold",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "Bandit Stronghold"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:d76b2201859b9169",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (8 tiles apart or less.)",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC78\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (8 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (8 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (8 tiles apart or less.)"
           }
         }
       ],
@@ -309408,6 +311480,70 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:e0319a1a196fe7cc",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (2 tiles apart or less).",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC72\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (2 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (2 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (2 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:e2588a3e7d8294ab",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "borders being too close (3 tiles apart or less).",
+      "LocalizedFormat": "\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC73\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "borders being too close (3 tiles apart or less).",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "borders being too close (3 tiles apart or less).",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "borders being too close (3 tiles apart or less)."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:e301e62a2f82742d",
       "Source": {
         "Kind": "RuntimeMap",
@@ -309720,6 +311856,38 @@
             "Original": "\u2022 Default is ",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "\u2022 Default is "
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:f03d27e094f52e7f",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (7 tiles apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC77\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (7 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (7 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (7 tiles apart or less.)"
           }
         }
       ],
@@ -310144,6 +312312,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:f994d3188341fadf",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", borders being too close (2 tiles apart or less.)",
+      "LocalizedFormat": "\uFF0C\u56E0\u8FB9\u754C\u8FC7\u8FD1\uFF08\u76F8\u8DDD\u4E0D\u8D85\u8FC72\u683C\uFF09\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", borders being too close (2 tiles apart or less.)",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", borders being too close (2 tiles apart or less.)",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", borders being too close (2 tiles apart or less.)"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:f9a4a7ce098900d3",
       "Source": {
         "Kind": "RuntimeMap",
@@ -310552,6 +312752,41 @@
             "Original": "[Profession|PROFESSION] in the [AGRICULTURE] [Discipline|DISCIPLINE]",
             "RuntimeMapSection": "RichTextFragments",
             "RuntimeMapOriginal": "[Profession|PROFESSION] in the [AGRICULTURE] [Discipline|DISCIPLINE]"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "ConceptLink",
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:RichTextFragments:07d0b0d6c9a3e514",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "RichTextFragments"
+      },
+      "OriginalFormat": "unable to spend the winter inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE]",
+      "LocalizedFormat": "\u65E0\u6CD5\u5728[SETTLEMENT]\u5185\u8FC7\u51AC\uFF0C\u6216\u4F5C\u4E3A[Resident|RESIDENT]\u5C45\u4F4F\u5728[Structure|STRUCTURE]\u4E2D",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-richtext-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "unable to spend the winter inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "unable to spend the winter inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE]",
+            "RuntimeMapSection": "RichTextFragments",
+            "RuntimeMapOriginal": "unable to spend the winter inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE]"
           }
         }
       ],
@@ -311108,6 +313343,560 @@
         "RichTextMarkup"
       ],
       "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:Templates:b980e5404127c4f4",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "Templates"
+      },
+      "OriginalFormat": "Leader \u7279\u8D28\uFF08{arg:0}\uFF09",
+      "LocalizedFormat": "\u9886\u8896\u7279\u8D28\uFF08{arg:0}\uFF09",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-template",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Leader \u7279\u8D28\uFF08{arg:0}\uFF09",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Leader \u7279\u8D28\uFF08{arg:0}\uFF09",
+            "RuntimeMapSection": "Templates",
+            "RuntimeMapOriginal": "Leader \u7279\u8D28\uFF08{arg:0}\uFF09"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "Placeholder"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:Templates:cc458ab18efb0749",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "Templates"
+      },
+      "OriginalFormat": "Leader Trait ({arg:0})",
+      "LocalizedFormat": "\u9886\u8896\u7279\u8D28\uFF08{arg:0}\uFF09",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-template",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Leader Trait ({arg:0})",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Leader Trait ({arg:0})",
+            "RuntimeMapSection": "Templates",
+            "RuntimeMapOriginal": "Leader Trait ({arg:0})"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "Placeholder"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:04a04caaace4c147",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[2]/name[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "TEXT.Name.Discipline.Agriculture",
+      "LocalizedFormat": "TEXT.Name.Discipline.Agriculture",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-text-key-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "TextKeyReference",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "TEXT.Name.Discipline.Agriculture",
+          "KnownTextReference": {
+            "SourceFile": "source/English.original.xml",
+            "Original": "TEXT.Name.Discipline.Agriculture",
+            "TextKey": "TEXT.Name.Discipline.Agriculture"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RuntimeKey"
+      ],
+      "Notes": "The TEXT.* reference resolves to the localized English.xml entry in the patch.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:1412ad2db12fcfb2",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[2]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "Agriculture is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the cultivation and use of [Plants|PLANT]. It is required by many Professions involving [FOOD] preparation like the [GATHERER] and [FARMER].",
+      "LocalizedFormat": "\u519C\u4E1A\u662F\u516D\u79CD[\u7EAA\u5F8B|DISCIPLINE]\u4E4B\u4E00\uFF0C[\u804C\u4E1A|PROFESSION]\u548C[\u6C0F\u65CF|CLAN]\u90FD\u53EF\u5F52\u5C5E\u5176\u4E2D\u3002[BLANK-LINE]\u66F4\u5E7F\u4E49\u5730\u8BF4\uFF0C\u5B83\u6DB5\u76D6[\u690D\u7269|PLANT]\u7684\u57F9\u80B2\u4E0E\u5229\u7528\u3002\u8BB8\u591A\u6D89\u53CA[FOOD]\u52A0\u5DE5\u7684\u804C\u4E1A\u90FD\u9700\u8981\u8FD9\u4E00\u7EAA\u5F8B\uFF0C\u4F8B\u5982[GATHERER]\u548C[FARMER]\u3002",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Agriculture is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the cultivation and use of [Plants|PLANT]. It is required by many Professions involving [FOOD] preparation like the [GATHERER] and [FARMER].",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/Misc/Disciplines.original.xml",
+            "Original": "Agriculture is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the cultivation and use of [Plants|PLANT]. It is required by many Professions involving [FOOD] preparation like the [GATHERER] and [FARMER].",
+            "ConfigId": "DISCIPLINE_AGRICULTURE",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "ConceptLink",
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from the matching patch XML node.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:3dca96b6b0d60566",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[1]/name[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "TEXT.Name.Discipline.Honor",
+      "LocalizedFormat": "TEXT.Name.Discipline.Honor",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-text-key-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "TextKeyReference",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "TEXT.Name.Discipline.Honor",
+          "KnownTextReference": {
+            "SourceFile": "source/English.original.xml",
+            "Original": "TEXT.Name.Discipline.Honor",
+            "TextKey": "TEXT.Name.Discipline.Honor"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RuntimeKey"
+      ],
+      "Notes": "The TEXT.* reference resolves to the localized English.xml entry in the patch.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:57213b71d22acff5",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[3]/name[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "TEXT.Name.Discipline.Livestock",
+      "LocalizedFormat": "TEXT.Name.Discipline.Livestock",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-text-key-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "TextKeyReference",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "TEXT.Name.Discipline.Livestock",
+          "KnownTextReference": {
+            "SourceFile": "source/English.original.xml",
+            "Original": "TEXT.Name.Discipline.Livestock",
+            "TextKey": "TEXT.Name.Discipline.Livestock"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RuntimeKey"
+      ],
+      "Notes": "The TEXT.* reference resolves to the localized English.xml entry in the patch.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:5cc0cdc34a50c711",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[4]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "Metalworking is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the extraction and forging of [Minerals|MINERAL] into useful products like [TOOLS] and [WEAPONS] if you\u0027ve [Trained|TRAIN] a [BLACKSMITH] or [WEAPONSMITH].",
+      "LocalizedFormat": "\u51B6\u91D1\u662F\u516D\u79CD[\u7EAA\u5F8B|DISCIPLINE]\u4E4B\u4E00\uFF0C[\u804C\u4E1A|PROFESSION]\u548C[\u6C0F\u65CF|CLAN]\u90FD\u53EF\u5F52\u5C5E\u5176\u4E2D\u3002[BLANK-LINE]\u66F4\u5E7F\u4E49\u5730\u8BF4\uFF0C\u5B83\u6DB5\u76D6\u5C06[\u77FF\u7269|MINERAL]\u5F00\u91C7\u5E76\u953B\u9020\u6210[TOOLS]\u3001[WEAPONS]\u7B49\u5B9E\u7528\u7269\u54C1\uFF1B\u524D\u63D0\u662F\u4F60\u5DF2[\u8BAD\u7EC3|TRAIN][BLACKSMITH]\u6216[WEAPONSMITH]\u3002",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Metalworking is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the extraction and forging of [Minerals|MINERAL] into useful products like [TOOLS] and [WEAPONS] if you\u0027ve [Trained|TRAIN] a [BLACKSMITH] or [WEAPONSMITH].",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/Misc/Disciplines.original.xml",
+            "Original": "Metalworking is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the extraction and forging of [Minerals|MINERAL] into useful products like [TOOLS] and [WEAPONS] if you\u0027ve [Trained|TRAIN] a [BLACKSMITH] or [WEAPONSMITH].",
+            "ConfigId": "DISCIPLINE_METALWORKING",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "ConceptLink",
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from the matching patch XML node.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:77e21a8f255c8c91",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[4]/name[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "TEXT.Name.Discipline.Metalworking",
+      "LocalizedFormat": "TEXT.Name.Discipline.Metalworking",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-text-key-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "TextKeyReference",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "TEXT.Name.Discipline.Metalworking",
+          "KnownTextReference": {
+            "SourceFile": "source/English.original.xml",
+            "Original": "TEXT.Name.Discipline.Metalworking",
+            "TextKey": "TEXT.Name.Discipline.Metalworking"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RuntimeKey"
+      ],
+      "Notes": "The TEXT.* reference resolves to the localized English.xml entry in the patch.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:8114aca5ba583a4c",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[5]/name[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "TEXT.Name.Discipline.Crafting",
+      "LocalizedFormat": "TEXT.Name.Discipline.Crafting",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-text-key-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "TextKeyReference",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "TEXT.Name.Discipline.Crafting",
+          "KnownTextReference": {
+            "SourceFile": "source/English.original.xml",
+            "Original": "TEXT.Name.Discipline.Crafting",
+            "TextKey": "TEXT.Name.Discipline.Crafting"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RuntimeKey"
+      ],
+      "Notes": "The TEXT.* reference resolves to the localized English.xml entry in the patch.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:896db2a4e3cc5f7e",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[1]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "Honor is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]Most of the Professions in Honor are [Warriors|WARRIOR] like the [HUNTER] and [ARCHER], but it also has a handful of unique and useful [Civilians|CIVILIAN] Professions like the [FEAST-MASTER] and [PRIEST].",
+      "LocalizedFormat": "\u8363\u8A89\u662F\u516D\u79CD[\u7EAA\u5F8B|DISCIPLINE]\u4E4B\u4E00\uFF0C[\u804C\u4E1A|PROFESSION]\u548C[\u6C0F\u65CF|CLAN]\u90FD\u53EF\u5F52\u5C5E\u5176\u4E2D\u3002[BLANK-LINE]\u8363\u8A89\u4E2D\u7684\u5927\u591A\u6570\u804C\u4E1A\u662F[\u6218\u58EB|WARRIOR]\uFF0C\u4F8B\u5982[HUNTER]\u548C[ARCHER]\uFF1B\u6B64\u5916\u8FD8\u6709\u5C11\u6570\u72EC\u7279\u4E14\u5B9E\u7528\u7684[\u5E73\u6C11|CIVILIAN]\u804C\u4E1A\uFF0C\u4F8B\u5982[FEAST-MASTER]\u548C[PRIEST]\u3002",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Honor is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]Most of the Professions in Honor are [Warriors|WARRIOR] like the [HUNTER] and [ARCHER], but it also has a handful of unique and useful [Civilians|CIVILIAN] Professions like the [FEAST-MASTER] and [PRIEST].",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/Misc/Disciplines.original.xml",
+            "Original": "Honor is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]Most of the Professions in Honor are [Warriors|WARRIOR] like the [HUNTER] and [ARCHER], but it also has a handful of unique and useful [Civilians|CIVILIAN] Professions like the [FEAST-MASTER] and [PRIEST].",
+            "ConfigId": "DISCIPLINE_HONOR",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "ConceptLink",
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from the matching patch XML node.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:af8f9e277ee41c13",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[6]/name[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "TEXT.Name.Discipline.Discovery",
+      "LocalizedFormat": "TEXT.Name.Discipline.Discovery",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-text-key-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "TextKeyReference",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "TEXT.Name.Discipline.Discovery",
+          "KnownTextReference": {
+            "SourceFile": "source/English.original.xml",
+            "Original": "TEXT.Name.Discipline.Discovery",
+            "TextKey": "TEXT.Name.Discipline.Discovery"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RuntimeKey"
+      ],
+      "Notes": "The TEXT.* reference resolves to the localized English.xml entry in the patch.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:c9ee1770edec8008",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[6]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "Discovery is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it focuses on uncovering the unknown whether tangible or abstract. It is especially important for Professions which [Produce|PRODUCE] [KNOWLEDGE] like the [LOREKEEPER], or help you learn about the world around you like the [EXPLORER] and [SURVEYOR].",
+      "LocalizedFormat": "\u63A2\u7D22\u662F\u516D\u79CD[\u7EAA\u5F8B|DISCIPLINE]\u4E4B\u4E00\uFF0C[\u804C\u4E1A|PROFESSION]\u548C[\u6C0F\u65CF|CLAN]\u90FD\u53EF\u5F52\u5C5E\u5176\u4E2D\u3002[BLANK-LINE]\u66F4\u5E7F\u4E49\u5730\u8BF4\uFF0C\u5B83\u7740\u91CD\u63ED\u793A\u6709\u5F62\u6216\u62BD\u8C61\u7684\u672A\u77E5\u4E8B\u7269\u3002\u5B83\u5BF9\u80FD[\u4EA7\u51FA|PRODUCE][KNOWLEDGE]\u7684\u804C\u4E1A\u5C24\u4E3A\u91CD\u8981\uFF0C\u4F8B\u5982[LOREKEEPER]\uFF1B\u4E5F\u9002\u7528\u4E8E\u5E2E\u52A9\u4F60\u4E86\u89E3\u5468\u906D\u4E16\u754C\u7684[EXPLORER]\u548C[SURVEYOR]\u3002",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Discovery is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it focuses on uncovering the unknown whether tangible or abstract. It is especially important for Professions which [Produce|PRODUCE] [KNOWLEDGE] like the [LOREKEEPER], or help you learn about the world around you like the [EXPLORER] and [SURVEYOR].",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/Misc/Disciplines.original.xml",
+            "Original": "Discovery is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it focuses on uncovering the unknown whether tangible or abstract. It is especially important for Professions which [Produce|PRODUCE] [KNOWLEDGE] like the [LOREKEEPER], or help you learn about the world around you like the [EXPLORER] and [SURVEYOR].",
+            "ConfigId": "DISCIPLINE_DISCOVERY",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "ConceptLink",
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from the matching patch XML node.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:f58091261e7dd567",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[3]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "Livestock is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the raising and use of [Animals|ANIMAL] in ways which aid a Tribe\u0027s economy. Professions in Livestock include the [TRAPPER] and [RANCHER].",
+      "LocalizedFormat": "\u755C\u7267\u662F\u516D\u79CD[\u7EAA\u5F8B|DISCIPLINE]\u4E4B\u4E00\uFF0C[\u804C\u4E1A|PROFESSION]\u548C[\u6C0F\u65CF|CLAN]\u90FD\u53EF\u5F52\u5C5E\u5176\u4E2D\u3002[BLANK-LINE]\u66F4\u5E7F\u4E49\u5730\u8BF4\uFF0C\u5B83\u6DB5\u76D6[\u52A8\u7269|ANIMAL]\u7684\u9972\u517B\u548C\u5229\u7528\uFF0C\u53EF\u52A9\u529B\u90E8\u65CF\u7ECF\u6D4E\u3002\u755C\u7267\u7C7B\u804C\u4E1A\u5305\u62EC[TRAPPER]\u548C[RANCHER]\u3002",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Livestock is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the raising and use of [Animals|ANIMAL] in ways which aid a Tribe\u0027s economy. Professions in Livestock include the [TRAPPER] and [RANCHER].",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/Misc/Disciplines.original.xml",
+            "Original": "Livestock is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the raising and use of [Animals|ANIMAL] in ways which aid a Tribe\u0027s economy. Professions in Livestock include the [TRAPPER] and [RANCHER].",
+            "ConfigId": "DISCIPLINE_LIVESTOCK",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "ConceptLink",
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from the matching patch XML node.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Disciplines.original.xml:f6f7c8a41b1ddd15",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Disciplines.original.xml",
+        "XPath": "/disciplines[1]/discipline[5]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "Crafting is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the creation and maintenance of [Structures|STRUCTURE], other items made from [TIMBER], [STONE], and the production of [CLOTH]. Professions in Crafting include the [WOOD-COLLECTOR], [LOGGER], and [WEAVER].",
+      "LocalizedFormat": "\u5DE5\u827A\u662F\u516D\u79CD[\u7EAA\u5F8B|DISCIPLINE]\u4E4B\u4E00\uFF0C[\u804C\u4E1A|PROFESSION]\u548C[\u6C0F\u65CF|CLAN]\u90FD\u53EF\u5F52\u5C5E\u5176\u4E2D\u3002[BLANK-LINE]\u66F4\u5E7F\u4E49\u5730\u8BF4\uFF0C\u5B83\u6DB5\u76D6[\u5EFA\u7B51|STRUCTURE]\u7684\u5EFA\u9020\u548C\u7EF4\u62A4\uFF0C\u4EE5\u53CA\u7528[TIMBER]\u3001[STONE]\u5236\u4F5C\u5176\u4ED6\u7269\u54C1\u5E76\u751F\u4EA7[CLOTH]\u3002\u5DE5\u827A\u7C7B\u804C\u4E1A\u5305\u62EC[WOOD-COLLECTOR]\u3001[LOGGER]\u548C[WEAVER]\u3002",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Crafting is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the creation and maintenance of [Structures|STRUCTURE], other items made from [TIMBER], [STONE], and the production of [CLOTH]. Professions in Crafting include the [WOOD-COLLECTOR], [LOGGER], and [WEAVER].",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/Misc/Disciplines.original.xml",
+            "Original": "Crafting is one of the six [Disciplines|DISCIPLINE] which [Professions|PROFESSION] and [Clans|CLAN] can belong to.[BLANK-LINE]More generally, it involves the creation and maintenance of [Structures|STRUCTURE], other items made from [TIMBER], [STONE], and the production of [CLOTH]. Professions in Crafting include the [WOOD-COLLECTOR], [LOGGER], and [WEAVER].",
+            "ConfigId": "DISCIPLINE_CRAFTING",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "ConceptLink",
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from the matching patch XML node.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Intensities.original.xml:22f8e4cb3dbb6549",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Intensities.original.xml",
+        "XPath": "/intensitys[1]/intensity[4]/feudDescription[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "[COLOR:BAD-RED]war in all but name[/COLOR]",
+      "Classification": "DisplayComposite",
+      "Status": "Unreviewed",
+      "AuditStatus": "NotManagedComposition",
+      "RuleScope": "None",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[COLOR:BAD-RED]war in all but name[/COLOR]",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/Misc/Intensities.original.xml",
+            "Original": "[COLOR:BAD-RED]war in all but name[/COLOR]",
+            "XPath": "/intensitys[1]/intensity[4]/feudDescription[1]"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/Misc/Intensities.original.xml:c606cffb9531ea63",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/Misc/Intensities.original.xml",
+        "XPath": "/intensitys[1]/intensity[4]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "[COLOR:BAD-RED]become obsessed[/COLOR] with the idea of",
+      "LocalizedFormat": "[COLOR:BAD-RED]\u4F1A\u75F4\u8FF7[/COLOR]\u4E8E",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[COLOR:BAD-RED]become obsessed[/COLOR] with the idea of",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/Misc/Intensities.original.xml",
+            "Original": "[COLOR:BAD-RED]become obsessed[/COLOR] with the idea of",
+            "ConfigId": "INTENSITY_OBSESSED",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -311799,10 +314588,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Peat [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [PEAT-MINE-1] to [Produce|PRODUCE] [COAL].[BLANK-LINE]Peat can only be found in [MARSH:S].[BLANK-LINE]This is a particularly large deposit!",
+      "LocalizedFormat": "\u6CE5\u70AD[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[PEAT-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][COAL]\u3002[BLANK-LINE]\u6CE5\u70AD\u4EC5\u5206\u5E03\u4E8E[MARSH:S]\u3002[BLANK-LINE]\u8FD9\u662F\u4E00\u5904\u7279\u522B\u5927\u7684\u6CE5\u70AD\u77FF\u5E8A\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -311821,6 +314612,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -313528,10 +316320,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Peat [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [PEAT-MINE-1] to [Produce|PRODUCE] [COAL].[BLANK-LINE]Peat can only be found in [MARSH:S].",
+      "LocalizedFormat": "\u6CE5\u70AD[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[PEAT-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][COAL]\u3002[BLANK-LINE]\u6CE5\u70AD\u4EC5\u5206\u5E03\u4E8E[MARSH:S]\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -313550,6 +316344,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -314110,10 +316905,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Peat [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [PEAT-MINE-1] to [Produce|PRODUCE] [COAL].[BLANK-LINE]Peat can only be found in [MARSH:S].[BLANK-LINE]This is among the largest deposits ever found!",
+      "LocalizedFormat": "\u6CE5\u70AD[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[PEAT-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][COAL]\u3002[BLANK-LINE]\u6CE5\u70AD\u4EC5\u5206\u5E03\u4E8E[MARSH:S]\u3002[BLANK-LINE]\u8FD9\u662F\u8FC4\u4ECA\u53D1\u73B0\u7684\u6700\u5927\u6CE5\u70AD\u77FF\u5E8A\u4E4B\u4E00\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -314132,6 +316929,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -316599,6 +319397,169 @@
       ],
       "StructuralFlags": [
         "ConceptLink",
+        "RichTextMarkup"
+      ],
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/OnMap/GoodyHuts.original.xml:13b5fafd5d0003f0",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/OnMap/GoodyHuts.original.xml",
+        "XPath": "/goodyHuts[1]/goodyHut[1]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "All that remains of a once-thriving community.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+      "LocalizedFormat": "\u8FD9\u662F\u6614\u65E5\u7E41\u8363\u793E\u533A\u7684\u9057\u8FF9\u3002[NEWLINE]\u5176\u4E2D\u53EF\u80FD\u4ECD\u6709\u6709\u7528\u7684\u7269\u8D44\uFF0C\u53EF\u7531[EXPLORER]\u8C03\u67E5\u3002",
+      "Classification": "DisplayComposite",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "All that remains of a once-thriving community.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/OnMap/GoodyHuts.original.xml",
+            "Original": "All that remains of a once-thriving community.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+            "ConfigId": "GOODY_HUT_VILLAGE",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from the matching patch XML node.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/OnMap/GoodyHuts.original.xml:9a28fb310c3c8569",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/OnMap/GoodyHuts.original.xml",
+        "XPath": "/goodyHuts[1]/goodyHut[5]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "All that remains of a once-magnificent Roman City, abandoned only recently.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+      "Classification": "DisplayComposite",
+      "Status": "Unreviewed",
+      "AuditStatus": "NotManagedComposition",
+      "RuleScope": "None",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "All that remains of a once-magnificent Roman City, abandoned only recently.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/OnMap/GoodyHuts.original.xml",
+            "Original": "All that remains of a once-magnificent Roman City, abandoned only recently.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+            "ConfigId": "GOODY_HUT_CITY",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/OnMap/GoodyHuts.original.xml:ac76b5cdef07f087",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/OnMap/GoodyHuts.original.xml",
+        "XPath": "/goodyHuts[1]/goodyHut[3]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "Even a fortress dilapidated and worn by time such as this might be hiding danger within.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+      "Classification": "DisplayComposite",
+      "Status": "Unreviewed",
+      "AuditStatus": "NotManagedComposition",
+      "RuleScope": "None",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Even a fortress dilapidated and worn by time such as this might be hiding danger within.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/OnMap/GoodyHuts.original.xml",
+            "Original": "Even a fortress dilapidated and worn by time such as this might be hiding danger within.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+            "ConfigId": "GOODY_HUT_FORT",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/OnMap/GoodyHuts.original.xml:d1f79d594f1c1685",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/OnMap/GoodyHuts.original.xml",
+        "XPath": "/goodyHuts[1]/goodyHut[4]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "The location of a major battle. Old equipment lies scattered about.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+      "Classification": "DisplayComposite",
+      "Status": "Unreviewed",
+      "AuditStatus": "NotManagedComposition",
+      "RuleScope": "None",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "The location of a major battle. Old equipment lies scattered about.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/OnMap/GoodyHuts.original.xml",
+            "Original": "The location of a major battle. Old equipment lies scattered about.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+            "ConfigId": "GOODY_HUT_BATTLEFIELD",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Stale": false
+    },
+    {
+      "EntryPointId": "xml:source/Content/Config/OnMap/GoodyHuts.original.xml:e1b15abe925e1e48",
+      "Source": {
+        "Kind": "Xml",
+        "RelativePath": "source/Content/Config/OnMap/GoodyHuts.original.xml",
+        "XPath": "/goodyHuts[1]/goodyHut[2]/description[1]",
+        "CallKind": "XmlTemplate"
+      },
+      "OriginalFormat": "This is a farm that has been recently abandoned.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+      "Classification": "DisplayComposite",
+      "Status": "Unreviewed",
+      "AuditStatus": "NotManagedComposition",
+      "RuleScope": "None",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "This is a farm that has been recently abandoned.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+          "KnownTextReference": {
+            "SourceFile": "source/Content/Config/OnMap/GoodyHuts.original.xml",
+            "Original": "This is a farm that has been recently abandoned.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].",
+            "ConfigId": "GOODY_HUT_FARM",
+            "ConfigXPath": "description"
+          }
+        }
+      ],
+      "StructuralFlags": [
         "RichTextMarkup"
       ],
       "Stale": false
@@ -423843,7 +426804,7 @@
       "Status": "Active",
       "EntryPointId": "runtime-map:Templates",
       "Description": "Entry-specific display templates preserve every runtime argument and rich-text structure.",
-      "Source": "translations/composite-entry-specific-rules.json"
+      "Source": "translations/runtime-display-strings.json; translations/composite-entry-specific-rules.json"
     },
     {
       "RuleId": "runtime-richtext-final-process",
