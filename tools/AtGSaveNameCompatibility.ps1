@@ -109,6 +109,7 @@ function Convert-AtGSavedGameNamesForOriginalFonts {
 function Get-AtGSaveNameCompatibilityMessage {
     param(
         [Parameter(Mandatory = $true)]
+        [AllowEmptyCollection()]
         [object[]]$RenamedSaves
     )
 
@@ -150,6 +151,7 @@ function Get-AtGSaveNameCompatibilityMessage {
 function Show-AtGSaveNameCompatibilityNotice {
     param(
         [Parameter(Mandatory = $true)]
+        [AllowEmptyCollection()]
         [object[]]$RenamedSaves
     )
 

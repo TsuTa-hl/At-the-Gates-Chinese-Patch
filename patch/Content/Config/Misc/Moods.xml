@@ -1,72 +1,117 @@
 <moods>
+  <!--*******************************-->
+  <!--                               -->
+  <!--      Resentful                -->
+  <!--                               -->
   <mood>
     <ID>MOOD_RESENTFUL</ID>
     <name>Resentful</name>
     <description>TEXT.Description.Mood.Resentful</description>
     <texturePath>Images/Interface/Icons/Mood/Resentful</texturePath>
     <level>-3</level>
+    <!--<permanent>true</permanent>-->
     <refusesToWork>true</refusesToWork>
+    <!--Morale_On_Tile-->
     <property>
       <propertyID>Morale_On_Tile</propertyID>
       <percent>-25</percent>
     </property>
+    <!--MORALE-->
     <property>
       <propertyID>MORALE</propertyID>
       <percent>-75</percent>
     </property>
+    <!--RESOURCE_PRODUCTION
+		<property>
+			<propertyID>RESOURCE_PRODUCTION</propertyID>
+			<percent>-50</percent>
+		</property>
+
+		RESOURCE_PRODUCTION (ForStructure)
+		<property>
+			<propertyID>RESOURCE_PRODUCTION</propertyID>
+			<percent>-50</percent>
+			<usage>ForStructure</usage>
+		</property>-->
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
     <property>
       <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
       <percent>-100</percent>
     </property>
   </mood>
+  <!--*******************************-->
+  <!--                               -->
+  <!--      Angry                    -->
+  <!--                               -->
   <mood>
     <ID>MOOD_ANGRY</ID>
     <name>Angry</name>
     <description>TEXT.Description.Mood.Angry</description>
     <texturePath>Images/Interface/Icons/Mood/Angry</texturePath>
     <level>-2</level>
+    <!--Morale_On_Tile
+		<property>
+			<propertyID>Morale_On_Tile</propertyID>
+			<percent>-10</percent>
+		</property>-->
+    <!--MORALE-->
     <property>
       <propertyID>MORALE</propertyID>
       <percent>-50</percent>
     </property>
+    <!--RESOURCE_PRODUCTION-->
     <property>
       <propertyID>RESOURCE_PRODUCTION</propertyID>
       <percent>-25</percent>
     </property>
+    <!--RESOURCE_PRODUCTION (ForStructure)-->
     <property>
       <propertyID>RESOURCE_PRODUCTION</propertyID>
       <percent>-25</percent>
       <usage>ForStructure</usage>
     </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
     <property>
       <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
       <percent>-100</percent>
     </property>
   </mood>
+  <!--*******************************-->
+  <!--                               -->
+  <!--      Upset                    -->
+  <!--                               -->
   <mood>
     <ID>MOOD_UPSET</ID>
     <name>不悦</name>
     <description>TEXT.Description.Mood.Upset</description>
     <texturePath>Images/Interface/Icons/Mood/Upset</texturePath>
     <level>-1</level>
+    <!--MORALE-->
     <property>
       <propertyID>MORALE</propertyID>
       <percent>-10</percent>
     </property>
+    <!--RESOURCE_PRODUCTION-->
     <property>
       <propertyID>RESOURCE_PRODUCTION</propertyID>
       <percent>-10</percent>
     </property>
+    <!--RESOURCE_PRODUCTION (ForStructure)-->
     <property>
       <propertyID>RESOURCE_PRODUCTION</propertyID>
       <percent>-10</percent>
       <usage>ForStructure</usage>
     </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
     <property>
       <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
       <percent>-25</percent>
     </property>
   </mood>
+  <!--*******************************-->
+  <!--                               -->
+  <!--      Content                  -->
+  <!--                               -->
   <mood>
     <ID>MOOD_CONTENT</ID>
     <name>满足</name>
@@ -74,49 +119,65 @@
     <texturePath>Images/Interface/Icons/Mood/Content</texturePath>
     <level>0</level>
   </mood>
+  <!--*******************************-->
+  <!--                               -->
+  <!--      Happy                    -->
+  <!--                               -->
   <mood>
     <ID>MOOD_HAPPY</ID>
     <name>高兴</name>
     <description>TEXT.Description.Mood.Happy</description>
     <texturePath>Images/Interface/Icons/Mood/Happy</texturePath>
     <level>1</level>
+    <!--MORALE-->
     <property>
       <propertyID>MORALE</propertyID>
       <percent>25</percent>
     </property>
+    <!--RESOURCE_PRODUCTION-->
     <property>
       <propertyID>RESOURCE_PRODUCTION</propertyID>
       <percent>25</percent>
     </property>
+    <!--RESOURCE_PRODUCTION (ForStructure)-->
     <property>
       <propertyID>RESOURCE_PRODUCTION</propertyID>
       <percent>25</percent>
       <usage>ForStructure</usage>
     </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
     <property>
       <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
       <percent>100</percent>
     </property>
   </mood>
+  <!--*******************************-->
+  <!--                               -->
+  <!--      Jubilant                 -->
+  <!--                               -->
   <mood>
     <ID>MOOD_JUBILANT</ID>
     <name>Jubilant</name>
     <description>TEXT.Description.Mood.Jubilant</description>
     <texturePath>Images/Interface/Icons/Mood/Jubilant</texturePath>
     <level>2</level>
+    <!--MORALE-->
     <property>
       <propertyID>MORALE</propertyID>
       <percent>50</percent>
     </property>
+    <!--RESOURCE_PRODUCTION-->
     <property>
       <propertyID>RESOURCE_PRODUCTION</propertyID>
       <percent>50</percent>
     </property>
+    <!--RESOURCE_PRODUCTION (ForStructure)-->
     <property>
       <propertyID>RESOURCE_PRODUCTION</propertyID>
       <percent>50</percent>
       <usage>ForStructure</usage>
     </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
     <property>
       <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
       <percent>200</percent>

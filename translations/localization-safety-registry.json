@@ -1,0 +1,70 @@
+{
+  "SchemaVersion": 1,
+  "Purpose": "Canonical safety summary for retired exploratory localization batches. This registry is not a patch operand; exact active operands remain in the source catalogs and active translation maps.",
+  "CurrentPolicy": {
+    "Strategy": "SafetyFirst",
+    "ExploratoryBatchWorkflow": "Retired",
+    "DevelopmentBaseline": "Current Steam original build",
+    "ExactOperandAuthority": "docs/review/generated/ and .cache/atg-catalog.sqlite",
+    "PromotionRule": "A translation enters an active map only after a display-specific source route and regression coverage are identified."
+  },
+  "AcceptedCoverage": {
+    "RetiredBatchCount": 141,
+    "AcceptedEntries": 2137,
+    "ActiveMapFamilies": [
+      "hardcoded-ui-il-rewrite.json",
+      "hardcoded-common-il-rewrite.json",
+      "hardcoded-game-il-rewrite.json",
+      "hardcoded-elftools-il-rewrite.json",
+      "config-node-*.json",
+      "runtime-display-strings.json"
+    ],
+    "Summary": "Historical accepted entries have been normalized into the active maps above; individual batch files are intentionally not retained."
+  },
+  "RejectedOperands": [
+    {
+      "Assembly": "UI",
+      "MethodToken": "0x06000125",
+      "ILOffset": 1774,
+      "Original": "Leave ",
+      "Risk": "PatchConflict",
+      "Reason": "Conflicts with verified UI offset patch 490295, which expects original Leave. Migrate or remove that fallback before retrying."
+    },
+    {
+      "Assembly": "Common",
+      "MethodToken": "0x060003ea",
+      "ILOffset": 25,
+      "Original": "Launch the game in a borderless window (0), fullscreen (1) or window (2)",
+      "Risk": "SettingsSerialization",
+      "Reason": "UserSetting descriptions are serialized into Settings.xml; non-ASCII content previously caused Error Loading User Settings."
+    },
+    {
+      "Assembly": "Common",
+      "MethodToken": "0x060003ea",
+      "ILOffset": 32,
+      "Original": "   * * *  WARNING  * * *  Right now, setting this to fullscreen can lower the framerate considerably and may cause the game to crash. It is recommended you use borderless window setting (0) instead.",
+      "Risk": "SettingsSerialization",
+      "Reason": "UserSetting descriptions are serialized into Settings.xml; non-ASCII content previously caused Error Loading User Settings."
+    },
+    {
+      "Assembly": "Common",
+      "MethodToken": "0x06000207",
+      "ILOffset": 386,
+      "Original": " No ",
+      "Risk": "SmokeUnsafe",
+      "Reason": "The isolated change failed main-menu smoke; use a separately proven display route before retrying."
+    }
+  ],
+  "StableLocators": [
+    "Assembly + MethodToken + ILOffset from the exact DLL catalog",
+    "Config source path + ID + XPath + Index",
+    "Runtime display-map section + exact original",
+    "Composite EntryPointId and RuleId for composed display text"
+  ],
+  "RiskReasons": [
+    "Use exact catalog values: review-view normalization can alter whitespace and hidden characters.",
+    "Do not patch parser glue, raw tags, technical diagnostics, IDs, paths, or logic-coupled labels without an isolated regression.",
+    "Do not patch UserSetting descriptions through managed string replacement.",
+    "A failed or invalid smoke is not evidence that unrelated text is unsafe; retain only independently isolated risks."
+  ]
+}

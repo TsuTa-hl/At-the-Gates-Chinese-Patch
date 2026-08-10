@@ -34,10 +34,22 @@ Chinese strings.
   linked Chinese term. Do not add padding characters to compensate, and do not
   remove useful concept tags solely for cosmetic spacing unless the specific UI
   has been proven safe without the tag.
-- For dynamic property lines where a concept label precedes a scope qualifier,
-  keep the concept link in place and render the qualifier parenthetically (for
-  example, `资源产出（由自己建造的建筑）降低-10%`) rather than concatenating
-  nouns into an ambiguous order.
+
+## Distinct Diplomacy Actions
+
+- Translate `Declare War` as `宣战`: this is the player's direct declaration.
+- Translate `Make War` as `挑起战争`: this orders a selected leader to declare
+  war on another faction.
+- Do not merge those labels: their targets and effects are different even when
+  they appear together in the diplomacy screen.
+
+## Roman Faction Variants
+
+- Translate the Eastern and Western Roman faction display families consistently
+  as `东罗马` and `西罗马`.
+- Apply the same distinction to full empire names, `Independents`, `Rebels`,
+  and the `(I)` / `(R)` abbreviations. These are runtime display labels; do not
+  alter the underlying faction IDs.
 
 ## Tags and Placeholders
 
@@ -52,116 +64,59 @@ translated display term:
 
 For composed or rich-text templates,
 `translations/composite-text-rules.json` owns argument ordering, structural
-preservation, and reusable rule selection. Generate a temporary `Composite` CSV
-only when filtering or sorting its navigation context is useful. Keep the term and voice decisions
-here, but do not introduce a word-level patch when the composition catalog
-identifies a full display template.
+preservation, and reusable rule selection. Query it directly by `EntryPointId`
+and `RuleId`; user review output is not AI input. Prefer the complete display
+template when it controls word order, argument binding, or rich-text structure.
+Otherwise, a verified exact replacement of a complete formatted segment may be
+reused globally.
 
-## Core Terms
+## Concept Links
 
-- Clan: `氏族`
-- Tribe: `部族`
-- Faction: `派系`
-- Profession: `职业`
-- Discipline: `纪律`
-- Settlement: `定居点`
-- Turn: `回合`
-- Knowledge screen / Study: `知识界面` / `研究`
-- Learn / Learned: `学会` / `已学会`
-- Tech: `技术`
-- Upgrade: `升级`
-- Structure: `建筑`
-- Builder: `建造者`
-- Deposit: `资源点`
-- Stockpile: `库存`
-- Supply: `补给`
-- Supply Reserve: `补给储备`
-- Support Limit: `支持上限`
-- Fame: `声望`
-- Cloth: `布料`
-- Treasure: resource label `财宝`; `财富` is acceptable in prose when it reads
-  more naturally
-- Caravan: `商队`
-- Cargo Space / Cargo: `货舱` / `货物`
-- Ennoble / Ennobled: `册封` / `已册封`
-- Approach: `态度`
-- Relationship Level: `关系等级`
-- Influence: `影响力`
-- Reputation: `声誉`
-- Leverage: `筹码`
-- Leader: `领袖`
-- Emissary: `使者`
-- Mercenary / Mercenaries: `佣兵`
-- Alliance: `同盟`
-- Magister Militum: `军务长官`
-- Luminary / Minister: `贤才` / `大臣`
-- River / Rivers: `河流`
-- Hill / Hills: `丘陵`
-- Road: `道路`
-- Marsh: `沼泽`
-- Border / Borders: `边界`
-- Control / Controlled: `控制区` / `受控`
-- Religion: `宗教`
-- Naval: `水上`
-- Active: `主动`
-- Warrior / Warriors: `战士`
-- Civilian / Civilians: `平民`
-- Apprentice / Apprentices: `学徒`
-- Resident: `驻留者`
-- Family / Families: `家庭`
-- Damage: `伤害`
-- Mood: `心情`
-- Morale: `士气`
-- Retreat: `撤退`
-- Combat XP: `战斗经验`
-- Noble: `贵族`
-- Crime / Crimes: `罪行`
-- Desire / Desires: `愿望`
-- Feud / Feuds: `纷争`
-- Siege / Besiege: `围攻`
-- Encamp: `扎营`
-- Dig In: `固守`
-- Pack Up / Packed Up / Unpack: `打包` / `已打包` / `展开`
-- Pillage / Pillaged / Pillaging: `劫掠` / `已劫掠` / `劫掠中`
-- Spoilage: `腐坏`
-- Degrade / Degraded: `枯竭` / `已枯竭`
-- Offline: `停工`
+- Treat `[display text|CONCEPT-KEY]` as an interactive concept link. Preserve
+  the key exactly and change only the display text when a display-only edit is
+  safe.
+- Before changing a concept-link label, query
+  `translations/concept-key-translations.json` by `Key`. It records each
+  source label with its observed Chinese label(s) from static inputs.
+- Prefer a keyed global replacement of the complete formatted link when the
+  same source label and `CONCEPT-KEY` have one unambiguous Chinese label, every
+  verified occurrence is display-only, and the tag structure is unchanged.
+  This is the normal way to reuse translations of common terms, short phrases,
+  and labels.
+- Do not globally replace a bare display word without its `CONCEPT-KEY`, or a
+  key/label pair with multiple observed Chinese labels. In those cases, choose
+  the full template or a scoped entry point after checking the affected
+  occurrences.
+- Rebuild and validate the concept-key map after changing either static input.
+- A concept tooltip registration is a separate, complete display boundary from
+  its `[label|KEY]` link. Before editing a tooltip description, query the
+  `concept-tooltip-static-registration` rule and the 111-entry
+  `ConceptTooltipCatalog`; do not assume the 109-key link-label map is a
+  complete tooltip inventory.
+- Keep tooltip concepts distinguishable when they can appear together. Reuse
+  the approved keyed label for a concept, but do not collapse different keys
+  into the same Chinese term merely because their English labels are similar.
 
-Update this list when a new recurring term is introduced.
+## Numbers and Values
 
-For profession production rows, translate the repeated `increased by` fragment
-as `提高` at each method offset and render the source ` ... OR ...` connector as
-`；或`; do not leave an ellipsis placeholder that obscures the relation between
-the two alternatives. Keep `Supply Level`, `Traits`, and `Crimes` as linked
-concepts rather than translating their identifiers.
+- Preserve the sign, comparison, operation, unit, and arithmetic meaning of a
+  numeric value. Keep percentages and multipliers distinct unless the complete
+  source template proves a conversion.
+- Use Arabic digits for values, percentages, and multipliers unless a displayed
+  term itself requires another form. Keep the number and its unit together and
+  avoid artificial Chinese spacing.
+- For dynamic values, use a reusable complete template or scoped rule whenever
+  argument order, unit placement, or grammatical role changes. Do not apply a
+  global fragment replacement that can alter the numeric operation or sentence
+  relation.
 
-For numeric modifiers, all positive `increased by` forms use an Arabic-number
-percentage (`提高75%`, `提高50%`, `提高33%`, `提高25%`, `提高20%`). The dynamic
-`increased by 4x` branch retains the source integer and therefore displays as
-`提高400%`; its scoped managed rewrite is recorded as
-`HumanReadableModDynamicPercent`. The separate multiplier words use Arabic
-digits in the `变为4倍` / `变为3倍` / `变为2倍` form.
+## Dynamic Requirement Messages
 
-For clan placement clauses, a standalone runtime ` of a ` is not the possessive
-`的`; map it to `，驻留在` so phrases such as `居民 of a 建筑` become
-`居民，驻留在建筑` without leaking the English connector.
-
-For the forage tooltip, keep the sentence connectors compact: ` will ` is
-Chinese “将”, `This ` is Chinese “该”, and the rich trait phrase
-`become obsessed with the idea of` is Chinese “会痴迷于”. These are
-scoped display decisions, not global word replacements.
-
-For Relationship Level tooltips, translate the delta-reason connectors and
-reason phrases as one scoped display family (`from`, `borders being too close
-(within 6 tiles)`, `shared religious beliefs`, and `suffering differing
-religious beliefs`). For diplomacy-operation tooltips, map `at`, `DENOUNCE`,
-`AND...`, `OR...`, and `You` at their method-scoped operands. Preserve all
-concept-link markup and apply plain fragments only outside bracketed tags.
-
-For the UBL-TVF residual group, direct `Bandit`/`Pillage`, `This`, `next`, and
-`As` operands are also method-scoped. Movement/status/combat-XP labels use the
-same scoped connector rules, and every training title of the form `as
-<profession>` is rendered with the unified Chinese connector `为`.
+- For resource-shortage requirements, preserve the resource and amount
+  placeholders and use `缺少足够的{资源}（还差{数量}）。`.
+- The final UI may rephrase the underlying condition (for example, `lacking
+  sufficient ...`). Bind the complete final template in
+  `runtime-display-strings.json`; do not translate loose word fragments.
 
 ## Acceptable Remaining English
 

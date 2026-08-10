@@ -62,8 +62,8 @@
   <!--*****************************************-->
   <goodyHut>
     <ID>GOODY_HUT_FARM</ID>
-    <name>Deserted Farm</name>
-    <description>This is a farm that has been recently abandoned.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].</description>
+    <name>废弃农场</name>
+    <description>这是一座最近被遗弃的农场。[NEWLINE]其中可能仍有有用的物资，可由[EXPLORER]调查。</description>
     <fontIcon>96</fontIcon>
     <texturePath>Images/Structures/Goodies/AbandonedFarm</texturePath>
     <sketchPath>Images/Structures/Goodies/AbandonedFarm_Sketch</sketchPath>
@@ -114,8 +114,8 @@
   <!--*****************************************-->
   <goodyHut>
     <ID>GOODY_HUT_FORT</ID>
-    <name>Deserted Fortress</name>
-    <description>Even a fortress dilapidated and worn by time such as this might be hiding danger within.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].</description>
+    <name>废弃要塞</name>
+    <description>即使是这般残破、饱经岁月侵蚀的要塞，也可能隐藏着危险。[NEWLINE]其中可能仍有有用的物资，可由[EXPLORER]调查。</description>
     <fontIcon>96</fontIcon>
     <texturePath>Images/Structures/Goodies/CrumblingFort</texturePath>
     <sketchPath>Images/Structures/Goodies/CrumblingFort_Sketch</sketchPath>
@@ -158,8 +158,8 @@
   <!--*****************************************-->
   <goodyHut>
     <ID>GOODY_HUT_BATTLEFIELD</ID>
-    <name>Deserted Battlefield</name>
-    <description>The location of a major battle. Old equipment lies scattered about.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].</description>
+    <name>废弃战场</name>
+    <description>这里曾是大型战役的战场，旧装备散落各处。[NEWLINE]其中可能仍有有用的物资，可由[EXPLORER]调查。</description>
     <fontIcon>96</fontIcon>
     <texturePath>Images/Structures/Goodies/RecentBattlefield</texturePath>
     <sketchPath>Images/Structures/Goodies/RecentBattlefield_Sketch</sketchPath>
@@ -202,9 +202,9 @@
   <!--*****************************************-->
   <goodyHut>
     <ID>GOODY_HUT_CITY</ID>
-    <name>Deserted City</name>
+    <name>废弃城市</name>
     <pluralName>Deserted Cities</pluralName>
-    <description>All that remains of a once-magnificent Roman City, abandoned only recently.[NEWLINE]It may still contain useful supplies, and can be investigated by an [EXPLORER].</description>
+    <description>这是一座不久前被遗弃的宏伟罗马城市遗迹。[NEWLINE]其中可能仍有有用的物资，可由[EXPLORER]调查。</description>
     <fontIcon>96</fontIcon>
     <texturePath>Images/Structures/Goodies/RuinedCity</texturePath>
     <sketchPath>Images/Structures/Goodies/RuinedCity_Sketch</sketchPath>

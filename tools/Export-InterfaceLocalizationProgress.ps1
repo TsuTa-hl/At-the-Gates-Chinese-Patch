@@ -135,7 +135,7 @@ function Get-AtGSourceState {
         return 'Localized'
     }
     if ([string]$Row.ReviewState -eq 'Rejected') { return 'Rejected' }
-    if ([string]$Row.ReviewState -in @('Skipped', 'RecheckedSkipped')) { return 'Excluded' }
+    if ([string]$Row.ReviewState -eq 'Skipped') { return 'Excluded' }
     return 'NeedsTranslation'
 }
 
@@ -211,7 +211,7 @@ else {
         $catalogValidationError = $_.Exception.Message
         $catalogState = 'ValidationFailed'
     }
-    if (!(Test-Path -LiteralPath $rawKnownTextPath -PathType Leaf)) {
+    if ($catalogState -eq 'ValidationFailed' -or !(Test-Path -LiteralPath $rawKnownTextPath -PathType Leaf)) {
         $failurePath = Join-Path $OutputDirectory 'interface-localization-failure.json'
         $failure = [ordered]@{
             SchemaVersion = 1
@@ -223,7 +223,7 @@ else {
             CompletionAllowed = $false
         }
         [IO.File]::WriteAllText($failurePath, ($failure | ConvertTo-Json -Depth 5), (New-Object Text.UTF8Encoding($false)))
-        throw "KnownText rebuild did not produce a source CSV: $rawKnownTextPath. $catalogValidationError"
+        throw "KnownText rebuild failed: $rawKnownTextPath. $catalogValidationError"
     }
 }
 

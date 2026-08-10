@@ -18,7 +18,7 @@ try {
     New-Item -ItemType Directory -Force -Path (Join-Path $fixture "trial-localization\active") | Out-Null
     New-Item -ItemType Directory -Force -Path (Join-Path $fixture "trial-game-archive") | Out-Null
     New-Item -ItemType Directory -Force -Path (Join-Path $fixture "font-compare") | Out-Null
-    Set-Content -LiteralPath (Join-Path $fixture "runs\finished\run-summary.json") -Encoding UTF8 -Value '{"Scenario":"cleanup-fixture","Status":"Failed","SaveName":"Fixture.AtGSave","Clicks":3,"Hovers":2}'
+    Set-Content -LiteralPath (Join-Path $fixture "runs\finished\run-summary.json") -Encoding UTF8 -Value '{"Scenario":"cleanup-fixture","Status":"Failed","Profile":"Localization","DocumentationOnly":true,"ChangedPaths":["translations/zh-CN.json"],"Timing":[{"Stage":"build","DurationMs":10}],"SaveName":"Fixture.AtGSave","Clicks":3,"Hovers":2}'
     Set-Content -LiteralPath (Join-Path $fixture "runs\finished\smoke.log") -Encoding UTF8 -Value "first`nsecond`nCrash summary"
     Set-Content -LiteralPath (Join-Path $fixture "runs\finished\shot.png") -Encoding ASCII -Value "not-a-real-image"
     Set-Content -LiteralPath (Join-Path $fixture "trial-localization\active-run.json") -Encoding UTF8 -Value '{"RunRoot":"active"}'
@@ -50,6 +50,8 @@ try {
     Assert-AtGTrue (Test-Path -LiteralPath $handoffPath) "Cleanup handoff was not written."
     $handoff = Get-Content -LiteralPath $handoffPath -Raw -Encoding UTF8 | ConvertFrom-Json
     Assert-AtGTrue ($handoff.JsonSummaries.Count -ge 1) "Cleanup handoff did not preserve the structured run summary."
+    $verificationSummary = @($handoff.JsonSummaries | Where-Object { $_.Profile -match 'Localization' }) | Select-Object -First 1
+    Assert-AtGTrue ($null -ne $verificationSummary -and $verificationSummary.DocumentationOnly -match 'True' -and $verificationSummary.ChangedPaths -match 'translations/zh-CN.json' -and $verificationSummary.Timing -match 'build') "Cleanup handoff did not preserve verification profile, documentation-only routing, changed paths, and timing."
     Assert-AtGTrue ($handoff.LogExcerpts.Count -ge 1) "Cleanup handoff did not preserve a log excerpt."
 
     New-Item -ItemType Directory -Force -Path (Join-Path $fixture "runs\keep-visual") | Out-Null

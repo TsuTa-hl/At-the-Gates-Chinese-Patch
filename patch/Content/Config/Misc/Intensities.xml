@@ -4,16 +4,16 @@
 NOTES:
 
 
-The only possible event outcomes for failed Storyline event completion are defined as
-individual 'afterEvent' blocks. If only one is defined, that is the only one which
+The only possible event outcomes for failed Storyline event completion are defined as 
+individual 'afterEvent' blocks. If only one is defined, that is the only one which 
 will be picked, and no further loss will occur.
 
 
-A 'stopMoodDrop' block can be used to further control how much impact an ungranted
+A 'stopMoodDrop' block can be used to further control how much impact an ungranted 
 Desire has on a Clan's Mood.
 
 
-The 'extraLossChance' field inside a 'stopMoodDrop' block can be used to randomly
+The 'extraLossChance' field inside a 'stopMoodDrop' block can be used to randomly 
 have the Mood drop by an additional -1.
 
 
@@ -27,7 +27,7 @@ have the Mood drop by an additional -1.
     <ID>INTENSITY_CURIOUS</ID>
     <name>Interested</name>
     <description>expressed interest in</description>
-    <feudDescription>minor dispute</feudDescription>
+    <feudDescription>轻微争执</feudDescription>
     <afterEvent>
       <mood>0</mood>
     </afterEvent>
@@ -52,7 +52,7 @@ have the Mood drop by an additional -1.
     <ID>INTENSITY_INTERESTED</ID>
     <name>Interested</name>
     <description>expressed interest in</description>
-    <feudDescription>minor dispute</feudDescription>
+    <feudDescription>轻微争执</feudDescription>
     <afterEvent>
       <mood>0</mood>
     </afterEvent>
@@ -69,13 +69,13 @@ have the Mood drop by an additional -1.
       <extraLossChance>50</extraLossChance>
     </afterEvent>
     <!--
-
+        
       MERGED WITH FIRST CONFIG
-
+        
       <name>Interested</name>
       <description>developed interest in</description>
       <feudDescription>serious quarrel</feudDescription>
-
+        
       -->
     <!--
 		<stopMoodDrop>
@@ -87,9 +87,9 @@ have the Mood drop by an additional -1.
       <chance>75</chance>
     </stopMoodDrop>-->
     <!--
-
+      
     MERGED WITH FIRST CONFIG
-
+      
     <afterEvent>
       <mood>0</mood>
     </afterEvent>
@@ -104,7 +104,7 @@ have the Mood drop by an additional -1.
       <mood>-1</mood>
       <extraLossChance>50</extraLossChance>
     </afterEvent>
-
+    
     -->
   </intensity>
   <!--*******************************-->
@@ -115,7 +115,7 @@ have the Mood drop by an additional -1.
     <ID>INTENSITY_DISTRACTED</ID>
     <name>Interested</name>
     <description>expressed interest in</description>
-    <feudDescription>minor dispute</feudDescription>
+    <feudDescription>轻微争执</feudDescription>
     <afterEvent>
       <mood>0</mood>
     </afterEvent>
@@ -132,13 +132,13 @@ have the Mood drop by an additional -1.
       <extraLossChance>50</extraLossChance>
     </afterEvent>
     <!--
-
+        
       MERGED WITH FIRST CONFIG
-
+        
       <name>Distracted</name>
       <description>become distracted by the idea of</description>
       <feudDescription>major feud</feudDescription>
-
+      
       -->
     <!--
           <stopMoodDrop>
@@ -146,9 +146,9 @@ have the Mood drop by an additional -1.
         <chance>50</chance>
       </stopMoodDrop>-->
     <!--
-
+      
     MERGED WITH FIRST CONFIG
-
+      
 		<afterEvent>
 			<mood>-1</mood>
 		</afterEvent>
@@ -170,7 +170,7 @@ have the Mood drop by an additional -1.
     <ID>INTENSITY_OBSESSED</ID>
     <name>痴迷</name>
     <description>[COLOR:BAD-RED]会痴迷[/COLOR]于</description>
-    <feudDescription>[COLOR:BAD-RED]war in all but name[/COLOR]</feudDescription>
+    <feudDescription>[COLOR:BAD-RED]名为争执，实为战争[/COLOR]</feudDescription>
     <afterEvent>
       <mood>0</mood>
     </afterEvent>

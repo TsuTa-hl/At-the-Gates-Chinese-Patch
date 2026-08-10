@@ -136,8 +136,8 @@ references, asset memory behavior, or loading a save from the running game.
   summarizer, and the 13-scenario black-box schema all passed. A global
   `git diff --check` was not usable as a task gate because the pre-existing
   dirty workspace contains extensive trailing-whitespace findings in generated
-   temporary review views and generated TSV output; do not rewrite those unrelated
-   user changes, and use a scoped implementation-file whitespace check instead.
+  TSV output; do not rewrite those unrelated user changes, and use a scoped
+  implementation-file whitespace check instead.
 - The completed patch was refreshed into
   `E:\\Steam\\steamapps\\common\\Jon Shafer's At the Gates` through the
   manifest-backed installer, reusing the original 2026-06-29 backup. The game
@@ -1076,10 +1076,10 @@ references, asset memory behavior, or loading a save from the running game.
   localized second sentence added a third direct `[WHEAT]` tag while the source
   has only two. The second-sentence `Wheat` is a literal: localize it as plain
   `小麦`, preserving the two source direct references and all concept links.
-- After regenerating the Composite authority, its CSV gate still found the
-  SQLite occurrence catalog predated the expanded 38 runtime-map definitions.
-  Rebuild the source occurrence catalog, then rerun the Composite gate; never
-  manufacture reverse links in a generated CSV view.
+- After regenerating the Composite authority, its validation gate still found
+  the SQLite occurrence catalog predated the expanded 38 runtime-map
+  definitions. Rebuild the source occurrence catalog, then rerun the
+  Composite validation; never manufacture reverse links outside SQLite.
 - AVR-WPR first installed retest passed the normal deer-herd exact body, but
   showed that Deserted Farm is emitted as two independent final strings and
   that `Fields of Wheat` is a literal prefix, not `[WHEAT]`. Replace the unused
@@ -1159,11 +1159,11 @@ references, asset memory behavior, or loading a save from the running game.
   save. Query the exact final-display inputs and their Composite entries before
   modifying the runtime map, then rebuild and retest this same world.
 - The first LJV-CWC repair build passed runtime-report and 1216-pair glyph
-  warmset gates, but the Composite CSV gate stopped before installation: the
+  warmset gates, but the Composite validation stopped before installation: the
   persistent occurrence catalog predates the two new runtime-map definitions.
   This is an index-refresh requirement, not permission to skip the gate. Keep
   the build uninstalled; rebuild the source occurrence catalog and rerun the
-  Composite gate before installation or fixed-save retest.
+  Composite validation before installation or fixed-save retest.
 - The occurrence refresh imported 18,907 source records and the rerun Composite
   gate passed (11,445 entries, 14 rules). An initial installer command used the
   obsolete `tools/` path and terminated before touching the game directory;

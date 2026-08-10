@@ -39,10 +39,12 @@ if ($needsBuild) {
     if ($LASTEXITCODE -ne 0) { throw "AtG.RuntimeText build failed with exit code $LASTEXITCODE." }
 }
 
-& "$PSScriptRoot\Invoke-AtGPatchCli.ps1" -Command runtime-rewrite -RepoRoot $root
-& "$PSScriptRoot\Invoke-AtGPatchCli.ps1" -Command runtime-map -RepoRoot $root
-
 $resolvedPatch = [System.IO.Path]::GetFullPath($PatchRoot)
+& "$PSScriptRoot\Invoke-AtGPatchCli.ps1" -Command runtime-rewrite -RepoRoot $root
+& "$PSScriptRoot\Invoke-AtGPatchCli.ps1" -Command runtime-map -RepoRoot $root `
+    -RuntimeMapOutputPath (Join-Path $resolvedPatch "Content\Text\AtG.RuntimeText.tsv") `
+    -RuntimeMapCommonAssembly (Join-Path $root ".cache\runtime-hook\AtTheGatesCommon.dll")
+
 Copy-AtGFileIfChanged -Source $runtimeDll -Destination (Join-Path $resolvedPatch "AtG.RuntimeText.dll") | Out-Null
 $fontDestination = Join-Path $resolvedPatch "Content\Fonts"
 New-Item -ItemType Directory -Force -Path $fontDestination | Out-Null

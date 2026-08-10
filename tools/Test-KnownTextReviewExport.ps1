@@ -145,7 +145,7 @@ if ($activeRuntimeConcept.Count -ne 1 -or $activeRuntimeConcept[0].Original -ne 
     throw "Known-text CSV must retain the concept wrapper and stable map locator for the Active runtime binding."
 }
 
-$allowedReviewStates = @("Translated", "NeedsTrial", "Skipped", "RecheckedSkipped", "Rejected")
+$allowedReviewStates = @("Translated", "ReviewRequired", "Skipped", "Rejected")
 $badReviewState = $rows | Where-Object {
     $allowedReviewStates -notcontains $_.ReviewState
 } | Select-Object -First 1
@@ -160,7 +160,8 @@ $allowedReasonCodes = @(
     "FragmentOrToken",
     "OutOfScope",
     "PatchConflict",
-    "RejectedByTest"
+    "RejectedByTest",
+    "UnverifiedDisplayRoute"
 )
 $badReasonCode = $rows | Where-Object {
     $allowedReasonCodes -notcontains $_.ReasonCode
@@ -240,7 +241,7 @@ if (Test-Path -LiteralPath $elfToolsCatalog -PathType Leaf) {
         $_.ReasonCode -eq "TechnicalInternal"
     } | Select-Object -First 1
     if ($null -eq $elfToolsInternal) {
-        throw "CSV must classify ElfTools internal exception text as Skipped/TechnicalInternal, not TrialCandidate."
+        throw "CSV must classify ElfTools internal exception text as Skipped/TechnicalInternal, not a display-review candidate."
     }
 }
 
@@ -251,7 +252,7 @@ $gameReadyMarker = $rows | Where-Object {
     $_.ReasonCode -eq "TechnicalInternal"
 } | Select-Object -First 1
 if ($null -eq $gameReadyMarker) {
-    throw "CSV must classify the game ready-marker log string '- Giving Control to Human' as Skipped/TechnicalInternal, not NeedsTrial."
+    throw "CSV must classify the game ready-marker log string '- Giving Control to Human' as Skipped/TechnicalInternal, not ReviewRequired."
 }
 
 $gameComponentDiagnostic = $rows | Where-Object {
@@ -261,7 +262,7 @@ $gameComponentDiagnostic = $rows | Where-Object {
     $_.ReasonCode -eq "TechnicalInternal"
 } | Select-Object -First 1
 if ($null -eq $gameComponentDiagnostic) {
-    throw "CSV must classify Game component diagnostics as Skipped/TechnicalInternal, not NeedsTrial."
+    throw "CSV must classify Game component diagnostics as Skipped/TechnicalInternal, not ReviewRequired."
 }
 
 $gamePlagueDiagnostic = $rows | Where-Object {
@@ -271,33 +272,24 @@ $gamePlagueDiagnostic = $rows | Where-Object {
     $_.ReasonCode -eq "TechnicalInternal"
 } | Select-Object -First 1
 if ($null -eq $gamePlagueDiagnostic) {
-    throw "CSV must classify Game PlagueMgr diagnostics as Skipped/TechnicalInternal, not NeedsTrial."
+    throw "CSV must classify Game PlagueMgr diagnostics as Skipped/TechnicalInternal, not ReviewRequired."
 }
 
-$trialStatePath = Join-Path $repoRoot "docs\agent\trial-localization-state.json"
-$expectedNotAttemptedRows = $null
-if (Test-Path -LiteralPath $trialStatePath -PathType Leaf) {
-    $trialState = Get-Content -LiteralPath $trialStatePath -Raw -Encoding UTF8 | ConvertFrom-Json
-    if ($null -ne $trialState.reviewSnapshot -and
-        $null -ne $trialState.reviewSnapshot.PSObject.Properties["notAttemptedRows"]) {
-        $expectedNotAttemptedRows = [int]$trialState.reviewSnapshot.notAttemptedRows
-    }
+$registryPath = Join-Path $repoRoot "translations\localization-safety-registry.json"
+if (!(Test-Path -LiteralPath $registryPath -PathType Leaf)) {
+    throw "Canonical localization safety registry is missing: $registryPath"
 }
 
-$notAttemptedRows = @($rows | Where-Object { $_.ReviewState -in @("NeedsTrial", "Skipped", "RecheckedSkipped") })
-if ($notAttemptedRows.Count -eq 0) {
-    if ($null -ne $expectedNotAttemptedRows -and $expectedNotAttemptedRows -gt 0) {
-        throw "CSV has no unattempted rows, but trial-localization-state.json expects $expectedNotAttemptedRows."
-    }
+$unresolvedRows = @($rows | Where-Object { $_.ReviewState -in @("ReviewRequired", "Skipped") })
+if ($unresolvedRows.Count -eq 0) {
+    throw "CSV must retain unresolved source rows for safety-first review."
 }
-else {
-    $missingReason = $notAttemptedRows | Where-Object {
-        [string]::IsNullOrWhiteSpace($_.ReviewState) -or
-        ($_.ReviewState -in @("Skipped", "RecheckedSkipped") -and [string]::IsNullOrWhiteSpace($_.ReasonCode))
-    } | Select-Object -First 1
-    if ($null -ne $missingReason) {
-        throw "CSV contains unattempted text without explicit attempt status or skip reason."
-    }
+
+$missingReason = $unresolvedRows | Where-Object {
+    [string]::IsNullOrWhiteSpace($_.ReviewState) -or [string]::IsNullOrWhiteSpace($_.ReasonCode)
+} | Select-Object -First 1
+if ($null -ne $missingReason) {
+    throw "CSV contains unresolved text without an explicit safety reason."
 }
 
 [pscustomobject]@{

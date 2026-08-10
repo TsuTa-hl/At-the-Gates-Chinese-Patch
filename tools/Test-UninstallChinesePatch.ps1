@@ -97,4 +97,8 @@ Assert-AtG (!$noticeMessage.Contains("System.Object[]")) "Uninstall notice strin
 Assert-AtG (!$noticeMessage.EndsWith([Environment]::NewLine)) "Uninstall notice has a trailing empty line/object."
 Assert-AtG ($noticeMessage.Contains("World -2.AtGSave")) "Uninstall notice omitted the rename preview."
 
+$emptyNotice = Get-AtGSaveNameCompatibilityMessage -RenamedSaves @()
+Assert-AtG ($null -eq $emptyNotice) "Uninstall notice does not accept an empty rename collection."
+Show-AtGSaveNameCompatibilityNotice -RenamedSaves @()
+
 Write-Host "Uninstall Chinese patch save-name compatibility checks passed."

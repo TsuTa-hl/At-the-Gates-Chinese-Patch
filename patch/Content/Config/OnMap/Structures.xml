@@ -7,7 +7,7 @@
     <structure>
       <ID>STRUCTURE_LOGGING_CAMP_1</ID>
       <name>TEXT.Name.Structure.LoggingCamp</name>
-      <description>伐木营由[LOGGER:S]在[森林|FOREST]中[建造|CONSTRUCT]，从所在及相邻地块[采伐|HARVEST][TIMBER]。伐木营最终会耗尽所在[地块|TILE]的可用[TIMBER]；届时营地停工，[森林|FOREST]也会退化为[BRUSH-LEAFY]。[BLANK-LINE]长期来看，伐木营的效率低于[WOOD-COLLECTOR:S]；若附近只有少量[森林|FOREST]地块，通常不宜建造。</description>
+      <description>伐木营由[LOGGER:S]在[森林|FOREST]中[建造|CONSTRUCT]，从所在及相邻地块[采收|HARVEST][TIMBER]。伐木营最终会耗尽所在[地块|TILE]的可用[TIMBER]；届时营地停工，[森林|FOREST]也会退化为[BRUSH-LEAFY]。[BLANK-LINE]长期来看，伐木营的效率低于[WOOD-COLLECTOR:S]；若附近只有少量[森林|FOREST]地块，通常不宜建造。</description>
       <texturePath>Images/Structures/Harvesters/LoggingCamp</texturePath>
       <sketchPath>Images/Structures/Harvesters/LoggingCamp_Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -90,7 +90,7 @@
     <structure>
       <ID>STRUCTURE_LOGGING_CAMP_2</ID>
       <name>TEXT.Name.Structure.Woodworks</name>
-      <description>木工作坊由[LOGGER:S]在[森林|FOREST]中[建造|CONSTRUCT]，从所在及相邻地块[采伐|HARVEST][TIMBER]。[BLANK-LINE]与[LOGGING-CAMP-1]不同，木工作坊不会[耗竭|DEGRADE]所采伐的[资源|RESOURCE]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>木工作坊由[LOGGER:S]在[森林|FOREST]中[建造|CONSTRUCT]，从所在及相邻地块[采收|HARVEST][TIMBER]。[BLANK-LINE]与[LOGGING-CAMP-1]不同，木工作坊不会[耗竭|DEGRADE]所采伐的[资源|RESOURCE]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/LoggingCamp_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/LoggingCamp_Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -187,7 +187,7 @@
     <structure>
       <ID>STRUCTURE_WHEAT_FARM_1</ID>
       <name>TEXT.Name.Structure.WheatFarm</name>
-      <description>小麦农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][WHEAT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。</description>
+      <description>小麦农场是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][WHEAT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Wheat</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -330,7 +330,7 @@
     <structure>
       <ID>STRUCTURE_WHEAT_FARM_2</ID>
       <name>TEXT.Name.Structure.WheatFarm2</name>
-      <description>小麦种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][WHEAT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[WHEAT-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>小麦种植园是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][WHEAT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[WHEAT-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Wheat_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -485,7 +485,7 @@
     <structure>
       <ID>STRUCTURE_BARLEY_FARM_1</ID>
       <name>TEXT.Name.Structure.BarleyFarm</name>
-      <description>大麦农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][BARLEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
+      <description>大麦农场是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][BARLEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Barley</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -624,7 +624,7 @@
     <structure>
       <ID>STRUCTURE_BARLEY_FARM_2</ID>
       <name>TEXT.Name.Structure.BarleyFarm2</name>
-      <description>大麦种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][BARLEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[BARLEY-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>大麦种植园是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][BARLEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[BARLEY-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Barley_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -775,7 +775,7 @@
     <structure>
       <ID>STRUCTURE_FRUIT_FARM_1</ID>
       <name>TEXT.Name.Structure.Orchard</name>
-      <description>果园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FRUIT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]果园不能建在[DEPOSIT-BERRIES:S]上；只有[GATHERER:S]能[采集|HARVEST]它们。</description>
+      <description>果园是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][FRUIT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]果园不能建在[DEPOSIT-BERRIES:S]上；只有[GATHERER:S]能[采收|HARVEST]它们。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Fruit</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -914,7 +914,7 @@
     <structure>
       <ID>STRUCTURE_FRUIT_FARM_2</ID>
       <name>TEXT.Name.Structure.Orchard2</name>
-      <description>果树种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FRUIT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[FRUIT-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。[BLANK-LINE]果园不能建在[DEPOSIT-BERRIES:S]上；只有[GATHERER:S]能[采集|HARVEST]它们。</description>
+      <description>果树种植园是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][FRUIT]的[建筑|STRUCTURE]；但在[寒冷|COLD]月份或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[FRUIT-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。[BLANK-LINE]果园不能建在[DEPOSIT-BERRIES:S]上；只有[GATHERER:S]能[采收|HARVEST]它们。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Fruit_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1065,7 +1065,7 @@
     <structure>
       <ID>STRUCTURE_VINEYARD_1</ID>
       <name>TEXT.Name.Structure.Vineyard</name>
-      <description>葡萄园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][GRAPES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
+      <description>葡萄园是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][GRAPES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Grapes</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1204,7 +1204,7 @@
     <structure>
       <ID>STRUCTURE_VINEYARD_2</ID>
       <name>TEXT.Name.Structure.Vineyard2</name>
-      <description>葡萄种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][GRAPES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[VINEYARD-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>葡萄种植园是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][GRAPES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[VINEYARD-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Grapes_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1355,7 +1355,7 @@
     <structure>
       <ID>STRUCTURE_OLIVE_FARM_1</ID>
       <name>TEXT.Name.Structure.OliveFarm</name>
-      <description>橄榄农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][OLIVES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
+      <description>橄榄农场是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][OLIVES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Olives</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1494,7 +1494,7 @@
     <structure>
       <ID>STRUCTURE_OLIVE_FARM_2</ID>
       <name>TEXT.Name.Structure.OliveFarm2</name>
-      <description>橄榄庄园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][OLIVES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[OLIVE-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>橄榄庄园是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][OLIVES]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[OLIVE-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Olives_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1645,7 +1645,7 @@
     <structure>
       <ID>STRUCTURE_FLAX_FARM_1</ID>
       <name>TEXT.Name.Structure.FlaxFarm</name>
-      <description>亚麻农场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FLAX]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
+      <description>亚麻农场是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][FLAX]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Flax</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1784,7 +1784,7 @@
     <structure>
       <ID>STRUCTURE_FLAX_FARM_2</ID>
       <name>TEXT.Name.Structure.FlaxFarm2</name>
-      <description>亚麻种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][FLAX]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[FLAX-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>亚麻种植园是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][FLAX]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[FLAX-FARM-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Farm_Flax_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Farm__Sketch</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -1937,7 +1937,7 @@
     <structure>
       <ID>STRUCTURE_APIARY_1</ID>
       <name>TEXT.Name.Structure.Apiary</name>
-      <description>养蜂场是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][HONEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
+      <description>养蜂场是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][HONEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。</description>
       <texturePath>Images/Structures/Harvesters/Apiary</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -2071,7 +2071,7 @@
     <structure>
       <ID>STRUCTURE_APIARY_2</ID>
       <name>TEXT.Name.Structure.Apiary2</name>
-      <description>蜂蜜种植园是由[FARMER:S][建造|CONSTRUCT]、用于[收获|HARVEST][HONEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[APIARY-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>蜂蜜种植园是由[FARMER:S][建造|CONSTRUCT]、用于[采收|HARVEST][HONEY]的[建筑|STRUCTURE]；但所在[地块|TILE]处于[寒冷|COLD]状态或受[天气|WEATHER]影响时无法生产。[BLANK-LINE]与[APIARY-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Apiary_2</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <!-- New Texture when on Certain Terrain Types -->
@@ -2864,7 +2864,7 @@
     <structure>
       <ID>STRUCTURE_GOLD_MINE_1</ID>
       <name>TEXT.Name.Structure.GoldMine</name>
-      <description>金矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]大量[TREASURE]的[建筑|STRUCTURE]，价值很高。</description>
+      <description>金矿是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST]大量[TREASURE]的[建筑|STRUCTURE]，价值很高。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Gold</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -2938,7 +2938,7 @@
     <structure>
       <ID>STRUCTURE_GOLD_MINE_2</ID>
       <name>TEXT.Name.Structure.GoldMine2</name>
-      <description>金矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]大量[TREASURE]的[建筑|STRUCTURE]，价值很高。[BLANK-LINE]与[GOLD-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>金矿井是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST]大量[TREASURE]的[建筑|STRUCTURE]，价值很高。[BLANK-LINE]与[GOLD-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Gold_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3022,7 +3022,7 @@
     <structure>
       <ID>STRUCTURE_GEM_MINE_1</ID>
       <name>TEXT.Name.Structure.GemMine</name>
-      <description>宝石矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]巨量[TREASURE]的[建筑|STRUCTURE]，价值极高。</description>
+      <description>宝石矿是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST]巨量[TREASURE]的[建筑|STRUCTURE]，价值极高。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Gems</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3096,7 +3096,7 @@
     <structure>
       <ID>STRUCTURE_GEM_MINE_2</ID>
       <name>TEXT.Name.Structure.GemMine2</name>
-      <description>宝石矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]巨量[TREASURE]的[建筑|STRUCTURE]，价值极高。[BLANK-LINE]与[GEM-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>宝石矿井是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST]巨量[TREASURE]的[建筑|STRUCTURE]，价值极高。[BLANK-LINE]与[GEM-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Gems_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3254,7 +3254,7 @@
     <structure>
       <ID>STRUCTURE_IRON_MINE_1</ID>
       <name>TEXT.Name.Structure.IronMine</name>
-      <description>铁矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][IRON]的[建筑|STRUCTURE]。铁可精炼为[TOOLS]、[WEAPONS]及其他资源，用于将[氏族|CLAN][训练|TRAIN]或[升级|UPGRADE]为[战士|WARRIOR][职业|PROFESSION]。</description>
+      <description>铁矿是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST][IRON]的[建筑|STRUCTURE]。铁可精炼为[TOOLS]、[WEAPONS]及其他资源，用于将[氏族|CLAN][训练|TRAIN]或[升级|UPGRADE]为[战士|WARRIOR][职业|PROFESSION]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Iron</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3333,7 +3333,7 @@
     <structure>
       <ID>STRUCTURE_IRON_MINE_2</ID>
       <name>TEXT.Name.Structure.IronMine2</name>
-      <description>铁矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][IRON]的[建筑|STRUCTURE]。铁可精炼为[TOOLS]、[WEAPONS]及其他资源，用于将[氏族|CLAN][训练|TRAIN]或升级为[战士|WARRIOR][职业|PROFESSION]。[BLANK-LINE]与[IRON-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>铁矿井是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST][IRON]的[建筑|STRUCTURE]。铁可精炼为[TOOLS]、[WEAPONS]及其他资源，用于将[氏族|CLAN][训练|TRAIN]或升级为[战士|WARRIOR][职业|PROFESSION]。[BLANK-LINE]与[IRON-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Iron_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3422,7 +3422,7 @@
     <structure>
       <ID>STRUCTURE_STONE_QUARRY_1</ID>
       <name>TEXT.Name.Structure.StoneQuarry</name>
-      <description>采石场是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][STONE]的[建筑|STRUCTURE]。石料可用于[建造|CONSTRUCT]高级[建筑|STRUCTURE]，其产出远高于以[TIMBER]建造的同类设施。</description>
+      <description>采石场是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST][STONE]的[建筑|STRUCTURE]。石料可用于[建造|CONSTRUCT]高级[建筑|STRUCTURE]，其产出远高于以[TIMBER]建造的同类设施。</description>
       <texturePath>Images/Structures/Harvesters/Quarry</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3501,7 +3501,7 @@
     <structure>
       <ID>STRUCTURE_STONE_QUARRY_2</ID>
       <name>TEXT.Name.Structure.StoneQuarry2</name>
-      <description>采石矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][STONE]的[建筑|STRUCTURE]。石料可用于[建造|CONSTRUCT]高级[建筑|STRUCTURE]，其产出远高于以[TIMBER]建造的同类设施。[BLANK-LINE]与[STONE-QUARRY-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>采石矿井是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST][STONE]的[建筑|STRUCTURE]。石料可用于[建造|CONSTRUCT]高级[建筑|STRUCTURE]，其产出远高于以[TIMBER]建造的同类设施。[BLANK-LINE]与[STONE-QUARRY-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Quarry_2</texturePath>
       <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3590,7 +3590,7 @@
     <structure>
       <ID>STRUCTURE_COAL_MINE_1</ID>
       <name>TEXT.Name.Structure.CoalMine</name>
-      <description>煤矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。</description>
+      <description>煤矿是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST][COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Coal</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3669,7 +3669,7 @@
     <structure>
       <ID>STRUCTURE_COAL_MINE_2</ID>
       <name>TEXT.Name.Structure.CoalMine2</name>
-      <description>煤矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。[BLANK-LINE]与[COAL-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>煤矿井是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST][COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。[BLANK-LINE]与[COAL-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Coal_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3758,7 +3758,7 @@
     <structure>
       <ID>STRUCTURE_PEAT_MINE_1</ID>
       <name>TEXT.Name.Structure.PeatMine</name>
-      <description>泥炭矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]少量[COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。</description>
+      <description>泥炭矿是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST]少量[COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Peat</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3837,7 +3837,7 @@
     <structure>
       <ID>STRUCTURE_PEAT_MINE_2</ID>
       <name>TEXT.Name.Structure.PeatMine2</name>
-      <description>泥炭矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST]少量[COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。[BLANK-LINE]与[PEAT-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>泥炭矿井是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST]少量[COAL]的[建筑|STRUCTURE]。煤可由[STEELMAKER]与[IRON]一同炼成[STEEL]，也有其他用途，例如供[BAKER]使用。[BLANK-LINE]与[PEAT-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Peat_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -3926,7 +3926,7 @@
     <structure>
       <ID>STRUCTURE_SALT_MINE_1</ID>
       <name>TEXT.Name.Structure.SaltMine</name>
-      <description>盐矿是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][SALT]的[建筑|STRUCTURE]。盐用途广泛且价值不菲，可出售给[商队|CARAVAN]，也可用于提高[FOOD]产出。</description>
+      <description>盐矿是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST][SALT]的[建筑|STRUCTURE]。盐用途广泛且价值不菲，可出售给[商队|CARAVAN]，也可用于提高[FOOD]产出。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Salt</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>
@@ -4005,7 +4005,7 @@
     <structure>
       <ID>STRUCTURE_SALT_MINE_2</ID>
       <name>TEXT.Name.Structure.SaltMine2</name>
-      <description>盐矿井是由[MINER:S][建造|CONSTRUCT]、用于[开采|HARVEST][SALT]的[建筑|STRUCTURE]。盐用途广泛且价值不菲，可出售给[商队|CARAVAN]，也可用于提高[FOOD]产出。[BLANK-LINE]与[SALT-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
+      <description>盐矿井是由[MINER:S][建造|CONSTRUCT]、用于[采收|HARVEST][SALT]的[建筑|STRUCTURE]。盐用途广泛且价值不菲，可出售给[商队|CARAVAN]，也可用于提高[FOOD]产出。[BLANK-LINE]与[SALT-MINE-1]不同，该建筑不会[耗竭|DEGRADE]所在位置的[资源点|DEPOSIT]。以[STONE-BLOCKS]建造的建筑还可安排[学徒|APPRENTICE]，大幅提高[产出|PRODUCE]。</description>
       <texturePath>Images/Structures/Harvesters/Mine_Salt_2</texturePath>
       <sketchPath>Images/Structures/Harvesters/Mine__Sketch</sketchPath>
       <valuePriorityID>LOW-</valuePriorityID>

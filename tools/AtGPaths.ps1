@@ -95,6 +95,29 @@ Example:
 "@
 }
 
+function Get-AtGGameProcesses {
+    # The Steam executable normally reports its process name as "At The Gates",
+    # but some launchers and diagnostic tools expose the assembly-style name.
+    # Treat either as an active game before modifying its installation.
+    return @(Get-Process -Name @("At The Gates", "AtTheGates") -ErrorAction SilentlyContinue)
+}
+
+function Assert-AtGGameNotRunning {
+    param(
+        [string]$Operation = "modifying the At the Gates installation"
+    )
+
+    $running = @(Get-AtGGameProcesses)
+    if ($running.Count -eq 0) {
+        return
+    }
+
+    $details = ($running | ForEach-Object {
+            "{0} (PID {1})" -f $_.ProcessName, $_.Id
+        }) -join ", "
+    throw "Close At the Gates before $Operation. Active process(es): $details"
+}
+
 function Join-AtGRelativePath {
     param(
         [Parameter(Mandatory = $true)][string]$Root,

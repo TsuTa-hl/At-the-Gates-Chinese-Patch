@@ -1,3 +1,5 @@
+. "$PSScriptRoot\AtGLegacyPatchOwnership.ps1"
+
 function ConvertTo-AtGNormalizedRelativePath {
     param(
         [Parameter(Mandatory = $true)][string]$RelativePath
@@ -48,6 +50,9 @@ function Get-AtGPatchInventory {
 
     foreach ($file in @(Get-ChildItem -LiteralPath $resolvedPatchRoot -Recurse -File | Sort-Object FullName)) {
         $relative = ConvertTo-AtGNormalizedRelativePath ($file.FullName.Substring($resolvedPatchRoot.Length).TrimStart([char[]]@('\', '/')))
+        if ($relative.StartsWith('.atg-', [System.StringComparison]::OrdinalIgnoreCase)) {
+            continue
+        }
         if (!$seen.Add($relative)) {
             throw "Patch root contains duplicate relative path: $relative"
         }
@@ -113,11 +118,96 @@ function Get-AtGManifestEntries {
             HadOriginal     = ConvertTo-AtGManifestBoolean -Value $file.HadOriginal -FieldName "Files[$relative].HadOriginal"
             OriginalSha256  = if ($null -ne $file.PSObject.Properties['OriginalSha256']) { [string]$file.OriginalSha256 } else { $null }
             PatchSha256     = if ($null -ne $file.PSObject.Properties['PatchSha256']) { [string]$file.PatchSha256 } else { $null }
+            BackupRelativePath = if ($null -ne $file.PSObject.Properties['BackupRelativePath']) {
+                ConvertTo-AtGNormalizedRelativePath ([string]$file.BackupRelativePath)
+            } else {
+                $relative
+            }
+            PatchExclusive = if ($null -ne $file.PSObject.Properties['PatchExclusive']) {
+                ConvertTo-AtGManifestBoolean -Value $file.PatchExclusive -FieldName "Files[$relative].PatchExclusive"
+            } else {
+                -not (ConvertTo-AtGManifestBoolean -Value $file.HadOriginal -FieldName "Files[$relative].HadOriginal")
+            }
+            TransactionState = if ($null -ne $file.PSObject.Properties['TransactionState']) {
+                [string]$file.TransactionState
+            } else {
+                'Legacy'
+            }
             RecoverySource  = 'Manifest'
         }
     }
 
     return @($entries)
+}
+
+function Test-AtGManifestRestoredState {
+    param(
+        [Parameter(Mandatory = $true)][string]$GamePath,
+        [Parameter(Mandatory = $true)][object]$Manifest
+    )
+
+    try {
+        $entries = @(Get-AtGManifestEntries -Manifest $Manifest)
+        if ($entries.Count -eq 0) {
+            return $false
+        }
+
+        foreach ($entry in $entries) {
+            if (![string]::Equals([string]$entry.TransactionState, 'Restored', [System.StringComparison]::OrdinalIgnoreCase)) {
+                return $false
+            }
+
+            $target = Join-AtGRelativePath $GamePath ([string]$entry.RelativePath)
+            if ($entry.HadOriginal) {
+                if ([string]::IsNullOrWhiteSpace([string]$entry.OriginalSha256) -or
+                    !(Test-Path -LiteralPath $target -PathType Leaf) -or
+                    (Get-AtGFileSha256 -Path $target) -ne [string]$entry.OriginalSha256) {
+                    return $false
+                }
+            }
+            elseif (Test-Path -LiteralPath $target) {
+                return $false
+            }
+        }
+
+        return $true
+    }
+    catch {
+        return $false
+    }
+}
+
+function Test-AtGManifestInstalledState {
+    param(
+        [Parameter(Mandatory = $true)][string]$GamePath,
+        [Parameter(Mandatory = $true)][object]$Manifest
+    )
+
+    try {
+        $entries = @(Get-AtGManifestEntries -Manifest $Manifest)
+        if ($entries.Count -eq 0 -or
+            ![string]::Equals([string]$Manifest.InstallState, 'Installed', [System.StringComparison]::OrdinalIgnoreCase)) {
+            return $false
+        }
+
+        foreach ($entry in $entries) {
+            if (![string]::Equals([string]$entry.TransactionState, 'Installed', [System.StringComparison]::OrdinalIgnoreCase) -or
+                [string]::IsNullOrWhiteSpace([string]$entry.PatchSha256)) {
+                return $false
+            }
+
+            $target = Join-AtGRelativePath $GamePath ([string]$entry.RelativePath)
+            if (!(Test-Path -LiteralPath $target -PathType Leaf) -or
+                (Get-AtGFileSha256 -Path $target) -ne [string]$entry.PatchSha256) {
+                return $false
+            }
+        }
+
+        return $true
+    }
+    catch {
+        return $false
+    }
 }
 
 function Get-AtGBackupEntries {
@@ -138,6 +228,9 @@ function Get-AtGBackupEntries {
             HadOriginal    = $true
             OriginalSha256 = Get-AtGFileSha256 -Path $file.FullName
             PatchSha256    = $null
+            BackupRelativePath = $relative
+            PatchExclusive = $false
+            TransactionState = 'BackupInventory'
             RecoverySource = 'BackupInventory'
         }
     }
@@ -151,30 +244,7 @@ function Test-AtGKnownPatchOnlyArtifact {
     )
 
     $normalized = ConvertTo-AtGNormalizedRelativePath $RelativePath
-    if ($normalized -in @(
-        '.atg-build-report.json',
-        'AtG.RuntimeText.dll',
-        'Content\Text\AtG.RuntimeText.tsv',
-        'Content\Fonts\AtG.RuntimeGlyphWarmset.tsv',
-        'Content\Fonts\NotoSansSC-Bold.otf',
-        'Content\Fonts\NotoSansSC-Regular.otf',
-        'Content\Fonts\OFL.txt'
-    )) {
-        return $true
-    }
-
-    $parts = $normalized.Split([char[]]@('\'))
-    if ($parts.Count -ge 7 -and
-        $parts[0] -eq 'Content' -and
-        $parts[1] -eq 'Images' -and
-        $parts[2] -eq 'Interface' -and
-        $parts[3] -eq 'ScreenSpecific' -and
-        $parts[4] -eq 'ClanCard' -and
-        $parts[5] -match '[\u4E00-\u9FFF]') {
-        return $true
-    }
-
-    return $false
+    return Test-AtGLegacyPatchOnlyArtifact -RelativePath $normalized
 }
 
 function Write-AtGPatchManifest {

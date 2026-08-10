@@ -28,9 +28,7 @@ try {
 $GamePath = Resolve-AtGGamePath $GamePath
 
 function Get-AtGProcess {
-    Get-Process | Where-Object {
-        $_.ProcessName -eq "At The Gates"
-    }
+    return @(Get-AtGGameProcesses)
 }
 
 function Get-AtGNormalizedTitle {

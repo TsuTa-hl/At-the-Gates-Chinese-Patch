@@ -1,1 +1,10 @@
 translations/composite-text-rules.json whitespace=cr-at-eol
+# PowerShell serializes project JSON with CRLF line endings. Treat the final
+# carriage return as part of the line ending, not as trailing whitespace.
+*.json whitespace=cr-at-eol
+
+# These are generated from upstream game payloads. Preserve their source
+# whitespace exactly; it is not a repository formatting defect.
+patch/Content/Config/** whitespace=-trailing-space
+docs/review/generated/*.csv whitespace=-trailing-space
+docs/review/generated/*.json whitespace=cr-at-eol

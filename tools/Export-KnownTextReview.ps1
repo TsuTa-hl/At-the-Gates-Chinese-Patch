@@ -12,6 +12,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+Set-StrictMode -Version Latest
 
 function ConvertTo-ReviewLine {
     param([AllowNull()][object]$Value)
@@ -38,6 +39,24 @@ function Get-JsonFile {
         return $null
     }
     return $raw | ConvertFrom-Json
+}
+
+function Get-ReviewPropertyString {
+    param(
+        [AllowNull()][object]$Object,
+        [Parameter(Mandatory = $true)][string]$Name
+    )
+
+    if ($null -eq $Object) {
+        return ''
+    }
+
+    $property = $Object.PSObject.Properties[$Name]
+    if ($null -eq $property -or $null -eq $property.Value) {
+        return ''
+    }
+
+    return [string]$property.Value
 }
 
 $records = New-Object System.Collections.Generic.List[object]
@@ -228,11 +247,12 @@ function Get-ReviewKeyFromObject {
     }
 
     $assembly = $DefaultAssembly
-    if ($Entry.PSObject.Properties["Assembly"] -and -not [string]::IsNullOrWhiteSpace([string]$Entry.Assembly)) {
-        $assembly = [string]$Entry.Assembly
+    $entryAssembly = Get-ReviewPropertyString -Object $Entry -Name 'Assembly'
+    if (-not [string]::IsNullOrWhiteSpace($entryAssembly)) {
+        $assembly = $entryAssembly
     }
 
-    return Get-ReviewKey -Assembly $assembly -MethodToken ([string]$Entry.MethodToken) -ILOffset $Entry.ILOffset
+    return Get-ReviewKey -Assembly $assembly -MethodToken (Get-ReviewPropertyString -Object $Entry -Name 'MethodToken') -ILOffset (Get-ReviewPropertyString -Object $Entry -Name 'ILOffset')
 }
 
 function ConvertTo-ReviewArray {
@@ -245,183 +265,34 @@ function ConvertTo-ReviewArray {
     return @($Value | ForEach-Object { $_ })
 }
 
-function New-TrialAttemptIndex {
+function New-LocalizationSafetyIndex {
+    $registry = Get-JsonFile ".\translations\localization-safety-registry.json"
+    if ($null -eq $registry -or [int]$registry.SchemaVersion -ne 1) {
+        throw "Localization safety registry must exist and use schema v1."
+    }
+
     $index = @{}
-
-    $trialBatchPaths = @(
-        ".\translations\trial-auto-display-main-batch.json",
-        ".\translations\trial-auto-display-short-batch.json",
-        ".\translations\trial-concept-tags-batch.json",
-        ".\translations\trial-exact-phrase-batch.json",
-        ".\translations\trial-ui-notification-labels.json",
-        ".\translations\trial-auto-display-more-ui-batch.json",
-        ".\translations\trial-auto-display-more-ui2-batch.json",
-        ".\translations\trial-auto-display-more-ui2-exact-batch.json",
-        ".\translations\trial-review-ui3-batch.json",
-        ".\translations\trial-review-ui4-batch.json",
-        ".\translations\trial-review-ui5-batch.json",
-        ".\translations\trial-review-ui6-batch.json",
-        ".\translations\trial-retry-skipped-ui1-exact-batch.json",
-        ".\translations\trial-ui-exact-next1-batch.json",
-        ".\translations\trial-ui-exact-next2-batch.json",
-        ".\translations\trial-ui-exact-next3-batch.json",
-        ".\translations\trial-ui-exact-next4-batch.json",
-        ".\translations\trial-ui-exact-next5-batch.json",
-        ".\translations\trial-ui-exact-next6-batch.json",
-        ".\translations\trial-ui-exact-next7-batch.json",
-        ".\translations\trial-ui-exact-next8-batch.json",
-        ".\translations\trial-common-placement-failures-1-batch.json",
-        ".\translations\trial-common-property-details-1-batch.json",
-        ".\translations\trial-common-property-details-2-batch.json",
-        ".\translations\trial-common-property-details-3-batch.json",
-        ".\translations\trial-common-property-details-4-batch.json",
-        ".\translations\trial-common-property-details-5-batch.json",
-        ".\translations\trial-common-property-details-6-batch.json",
-        ".\translations\trial-common-property-details-7-batch.json",
-        ".\translations\trial-common-property-details-8-batch.json",
-        ".\translations\trial-common-battle-projection-1-batch.json",
-        ".\translations\trial-common-battle-projection-2-batch.json",
-        ".\translations\trial-ui-notification-details-1-batch.json",
-        ".\translations\trial-ui-diplomacy-1-batch.json",
-        ".\translations\trial-common-profession-tooltip-1-batch.json",
-        ".\translations\trial-common-resource-tech-tooltip-1-batch.json",
-        ".\translations\trial-common-clan-structure-tooltip-1-batch.json",
-        ".\translations\trial-common-economy-tooltip-1-batch.json",
-        ".\translations\trial-common-structure-apprentice-1-batch.json",
-        ".\translations\trial-ui-help-tips-1-batch.json",
-        ".\translations\trial-ui-diplomacy-profession-actions-1-batch.json",
-        ".\translations\trial-common-game-abilities-1-batch.json",
-        ".\translations\trial-common-game-description-1-batch.json",
-        ".\translations\trial-common-game-description-retry-1-batch.json",
-        ".\translations\trial-ui-dialog-actions-1-batch.json",
-        ".\translations\trial-ui-dialog-actions-retry-1-batch.json",
-        ".\translations\trial-common-condition-text-1-batch.json",
-        ".\translations\trial-common-condition-text-retry-1-batch.json",
-        ".\translations\trial-common-tooltip-fragments-1-batch.json",
-        ".\translations\trial-common-resource-tooltip-2-batch.json",
-        ".\translations\trial-common-concepts-help-1-batch.json",
-        ".\translations\trial-common-concepts-help-2-batch.json",
-        ".\translations\trial-common-concepts-help-3-batch.json",
-        ".\translations\trial-common-concept-tags-2-batch.json",
-        ".\translations\trial-common-concept-tags-3-batch.json",
-        ".\translations\trial-common-concepts-help-4-batch.json",
-        ".\translations\trial-common-concepts-help-5-batch.json",
-        ".\translations\trial-common-concepts-help-6-batch.json",
-        ".\translations\trial-common-concepts-help-7-batch.json",
-        ".\translations\trial-common-concepts-help-8-batch.json",
-        ".\translations\trial-common-concepts-help-9-batch.json",
-        ".\translations\trial-common-concepts-help-10-batch.json",
-        ".\translations\trial-common-concepts-help-11-batch.json",
-        ".\translations\trial-common-concepts-help-12-batch.json",
-        ".\translations\trial-common-concepts-help-13-safe-retry-batch.json",
-        ".\translations\trial-common-concepts-help-14-batch.json",
-        ".\translations\trial-common-concepts-help-15-batch.json",
-        ".\translations\trial-common-concepts-help-16-batch.json",
-        ".\translations\trial-common-concepts-help-17-batch.json",
-        ".\translations\trial-common-concepts-help-18-batch.json",
-        ".\translations\trial-common-concepts-help-19-batch.json",
-        ".\translations\trial-common-zone-trait-placement-1-batch.json",
-        ".\translations\trial-common-zone-trait-placement-2-batch.json",
-        ".\translations\trial-common-map-placement-1-batch.json",
-        ".\translations\trial-common-map-placement-2-batch.json",
-        ".\translations\trial-common-config-description-1-batch.json",
-        ".\translations\trial-game-art-hotkeys-1-batch.json",
-        ".\translations\trial-game-static-checks-1-batch.json",
-        ".\translations\trial-game-static-checks-2-batch.json",
-        ".\translations\trial-game-static-checks-3-batch.json",
-        ".\translations\trial-game-static-checks-4-batch.json",
-        ".\translations\trial-common-command-status-1-batch.json",
-        ".\translations\trial-ui-visible-misc-1-batch.json",
-        ".\translations\trial-ui-tooltip-visible-1-batch.json",
-        ".\translations\trial-ui-visible-misc-2-batch.json",
-        ".\translations\trial-common-sage-effects-1-batch.json",
-        ".\translations\trial-common-visible-misc-1-batch.json",
-        ".\translations\trial-ui-visible-misc-3-batch.json",
-        ".\translations\trial-common-tooltip-visible-2-exact-batch.json",
-        ".\translations\trial-common-human-readable-text-1-batch.json",
-        ".\translations\trial-common-property-readable-text-1-batch.json",
-        ".\translations\trial-common-readable-text-2-batch.json",
-        ".\translations\trial-common-readable-text-3-batch.json",
-        ".\translations\trial-game-static-checks-5-batch.json",
-        ".\translations\trial-ui-visible-misc-4-batch.json",
-        ".\translations\trial-common-tostring-labels-1-batch.json",
-        ".\translations\trial-final-visible-fragments-1-batch.json",
-        ".\translations\trial-elftools-display-tooltips-1-batch.json"
-    )
-
-    foreach ($path in $trialBatchPaths) {
-        $data = Get-JsonFile $path
-        foreach ($entry in ConvertTo-ReviewArray $data) {
-            $key = Get-ReviewKeyFromObject -Entry $entry
-            if ([string]::IsNullOrWhiteSpace($key)) {
-                continue
-            }
-
-            if (-not $index.ContainsKey($key)) {
-                $index[$key] = [pscustomobject]@{
-                    Attempted = "Yes"
-                    AttemptStatus = "TrialBatch"
-                    FailureReason = ""
-                    Translation = ConvertTo-ReviewLine $entry.Translation
-                    Evidence = Split-Path -Leaf $path
-                }
-            }
+    foreach ($entry in ConvertTo-ReviewArray $registry.RejectedOperands) {
+        $key = Get-ReviewKey -Assembly (Get-ReviewPropertyString -Object $entry -Name 'Assembly') -MethodToken (Get-ReviewPropertyString -Object $entry -Name 'MethodToken') -ILOffset (Get-ReviewPropertyString -Object $entry -Name 'ILOffset')
+        if ([string]::IsNullOrWhiteSpace($key)) {
+            continue
         }
-    }
 
-    if (Test-Path -LiteralPath ".\.tmp\trial-localization") {
-        foreach ($path in Get-ChildItem -LiteralPath ".\.tmp\trial-localization" -Recurse -File | Where-Object { $_.Name -in @("accepted.json", "rejected.json") }) {
-            $data = Get-JsonFile $path.FullName
-            $isRejected = $path.Name -eq "rejected.json"
-            foreach ($entry in ConvertTo-ReviewArray $data) {
-                $key = Get-ReviewKeyFromObject -Entry $entry
-                if ([string]::IsNullOrWhiteSpace($key)) {
-                    continue
-                }
-
-                $failure = ""
-                if ($isRejected) {
-                    $failure = "Rejected by trial fast-fail; see $($path.FullName)."
-                    if ([string]$entry.MethodToken -eq "0x06000125" -and [int]$entry.ILOffset -eq 1774 -and [string]$entry.Original -eq "Leave ") {
-                        $failure = "Rejected at build time because this IL rewrite conflicts with verified UI offset patch 490295 for original 'Leave'. Migrate or remove that offset fallback before retrying."
-                    }
-                }
-
-                $index[$key] = [pscustomobject]@{
-                    Attempted = "Yes"
-                    AttemptStatus = if ($isRejected) { "Rejected" } else { "AcceptedSmoke" }
-                    FailureReason = $failure
-                    Translation = ConvertTo-ReviewLine $entry.Translation
-                    Evidence = $path.FullName
-                }
-            }
-        }
-    }
-
-    $trialState = Get-JsonFile ".\docs\agent\trial-localization-state.json"
-    if ($null -ne $trialState) {
-        foreach ($entry in ConvertTo-ReviewArray $trialState.knownRejectedSingles) {
-            $key = Get-ReviewKey -Assembly ([string]$entry.assembly) -MethodToken ([string]$entry.methodToken) -ILOffset $entry.ilOffset
-            if ([string]::IsNullOrWhiteSpace($key)) {
-                continue
-            }
-
-            $index[$key] = [pscustomobject]@{
-                Attempted = "Yes"
-                AttemptStatus = "Rejected"
-                FailureReason = ConvertTo-ReviewLine $entry.reason
-                Translation = ""
-                Evidence = "docs/agent/trial-localization-state.json:$($entry.batchId)"
-            }
+        $index[$key] = [pscustomobject]@{
+            Attempted = "Yes"
+            AttemptStatus = "Rejected"
+            FailureReason = ConvertTo-ReviewLine ([string]$entry.Reason)
+            Translation = ""
+            Evidence = "translations/localization-safety-registry.json:$([string]$entry.Risk)"
         }
     }
 
     return $index
 }
 
-$trialAttemptIndex = New-TrialAttemptIndex
+$safetyIndex = New-LocalizationSafetyIndex
 
-function Get-TrialAttempt {
+function Get-LocalizationSafetyRecord {
     param(
         [string]$Assembly,
         [string]$MethodToken,
@@ -429,8 +300,8 @@ function Get-TrialAttempt {
     )
 
     $key = Get-ReviewKey -Assembly $Assembly -MethodToken $MethodToken -ILOffset $ILOffset
-    if (-not [string]::IsNullOrWhiteSpace($key) -and $trialAttemptIndex.ContainsKey($key)) {
-        return $trialAttemptIndex[$key]
+    if (-not [string]::IsNullOrWhiteSpace($key) -and $safetyIndex.ContainsKey($key)) {
+        return $safetyIndex[$key]
     }
 
     return $null
@@ -476,14 +347,14 @@ function Get-ReviewState {
 
     $attemptStatus = [string]$Record.AttemptStatus
     switch ($attemptStatus) {
-        { $_ -in @("Mapped", "MappedByOriginal", "TrialBatch", "AcceptedSmoke") } { return "Translated" }
+        { $_ -in @("Mapped", "MappedByOriginal") } { return "Translated" }
         "Rejected" { return "Rejected" }
         "SkippedByPolicy" { return "Skipped" }
-        "TrialCandidate" { return "NeedsTrial" }
-        "NotAttempted" { return "NeedsTrial" }
+        "ReviewRequired" { return "ReviewRequired" }
+        "NotAttempted" { return "ReviewRequired" }
     }
 
-    if ([string]$Record.Status -eq "RejectedTrial") {
+    if ([string]$Record.Status -eq "RejectedSafetyRecord") {
         return "Rejected"
     }
 
@@ -492,13 +363,13 @@ function Get-ReviewState {
     }
 
     if (-not [string]::IsNullOrWhiteSpace([string]$Record.FailureReason)) {
-        if ([string]$Record.FailureReason -match '^Trial candidate:') {
-            return "NeedsTrial"
+        if ([string]$Record.FailureReason -match '^Unverified display candidate:') {
+            return "ReviewRequired"
         }
         return "Skipped"
     }
 
-    return "NeedsTrial"
+    return "ReviewRequired"
 }
 
 function Get-ReviewReasonCode {
@@ -507,8 +378,12 @@ function Get-ReviewReasonCode {
         [string]$ReviewState
     )
 
-    if ($ReviewState -in @("Translated", "NeedsTrial")) {
+    if ($ReviewState -eq "Translated") {
         return ""
+    }
+
+    if ($ReviewState -eq "ReviewRequired") {
+        return "UnverifiedDisplayRoute"
     }
 
     $reason = [string]$Record.FailureReason
@@ -692,23 +567,22 @@ function Test-AtGGameInternalOrLogText {
 function Get-DllSkipReason {
     param([object]$Row)
 
-    $assembly = [string]$Row.Assembly
-    if ([string]::IsNullOrWhiteSpace($assembly) -and $Row.PSObject.Properties["AssemblyName"]) {
-        $assembly = [string]$Row.AssemblyName
+    $assembly = Get-ReviewPropertyString -Object $Row -Name 'Assembly'
+    if ([string]::IsNullOrWhiteSpace($assembly)) {
+        $assembly = Get-ReviewPropertyString -Object $Row -Name 'AssemblyName'
     }
     $assembly = Get-AssemblyKeyFromSourceName $assembly
-    $class = [string]$Row.Class
-    $type = [string]$Row.TypeFullName
-    $method = [string]$Row.MethodName
-    $original = [string]$Row.Original
-    if ([string]::IsNullOrWhiteSpace($original) -and
-        $null -ne $Row.PSObject.Properties["Value"]) {
-        $original = [string]$Row.Value
+    $class = Get-ReviewPropertyString -Object $Row -Name 'Class'
+    $type = Get-ReviewPropertyString -Object $Row -Name 'TypeFullName'
+    $method = Get-ReviewPropertyString -Object $Row -Name 'MethodName'
+    $original = Get-ReviewPropertyString -Object $Row -Name 'Original'
+    if ([string]::IsNullOrWhiteSpace($original)) {
+        $original = Get-ReviewPropertyString -Object $Row -Name 'Value'
     }
     $trimmed = $original.Trim()
 
     if ($assembly -eq "Common" -and $type -match '^AtTheGatesCommon\.ns_GlobalSystems\.UserSetting_') {
-        return "Skipped by policy: user setting descriptions are serialized into Settings.xml without XML-safe encoding; non-ASCII trial text polluted Settings.xml and caused 'Error Loading User Settings'."
+        return "Skipped by policy: user setting descriptions are serialized into Settings.xml without XML-safe encoding; non-ASCII content previously caused 'Error Loading User Settings'."
     }
 
     if ($assembly -eq "ElfTools") {
@@ -727,7 +601,7 @@ function Get-DllSkipReason {
         )
 
         if ($isElfToolsDisplayCandidate) {
-            return "Trial candidate: ElfTools display tooltip candidate. Use small fast-fail batches; missing visual coverage alone is not a skip reason."
+            return "Unverified display candidate: ElfTools tooltip text requires an isolated display route and regression before patching."
         }
 
         return "Skipped by policy: ElfTools engine/helper text, diagnostics, parser tokens, resource IDs, hotkey labels, or internal exception text; not a standalone localization target."
@@ -789,7 +663,7 @@ function Get-DllSkipReason {
     }
 
     if ($assembly -eq "Common") {
-        return "Trial candidate: Common DLL display candidate. Use small method-scoped fast-fail batches; do not skip only because targeted UI evidence is missing."
+        return "Unverified display candidate: Common DLL display text requires an isolated display route and regression before patching."
     }
 
     if ($assembly -eq "Game") {
@@ -797,14 +671,14 @@ function Get-DllSkipReason {
             return "Skipped by policy: gameplay EXE log, diagnostic, initialization marker, or automation-dependent program marker; not player-facing display text."
         }
 
-        return "Trial candidate: gameplay EXE display candidate. Use small method-scoped fast-fail batches; do not skip only because targeted regression evidence is missing."
+        return "Unverified display candidate: gameplay EXE display text requires an isolated display route and regression before patching."
     }
 
     if ($class -eq "TooltipFragment" -or $type -match 'SelectionPanel|ClanCard|WorldScreen|Notification') {
-        return "Trial candidate: UI display fragment. Use trial fast-fail; missing visual coverage alone is not a skip reason."
+        return "Unverified display candidate: UI fragment requires a complete composition rule or method-scoped regression before patching."
     }
 
-    return "Trial candidate: discovered DLL text not yet selected for trial localization. Missing UI evidence alone is not a skip reason."
+    return "Unverified display candidate: discovered DLL text has no proven display route or regression yet."
 }
 
 function Get-SourceFromAssemblyName {
@@ -855,24 +729,35 @@ function Add-IlRewriteMap {
             continue
         }
 
+        # Safety is optional on accepted exact rewrite maps. This exporter is
+        # also invoked from strict-mode callers, so do not dereference a
+        # missing optional JSON property.
+        $itemSafety = if ($null -ne $item.PSObject.Properties['Safety']) {
+            [string]$item.Safety
+        }
+        else {
+            ''
+        }
+
         $source = $FallbackSource
-        if ($item.PSObject.Properties["Assembly"]) {
-            $source = Get-SourceFromAssemblyName ([string]$item.Assembly)
+        $itemAssembly = Get-ReviewPropertyString -Object $item -Name 'Assembly'
+        if (-not [string]::IsNullOrWhiteSpace($itemAssembly)) {
+            $source = Get-SourceFromAssemblyName $itemAssembly
         }
 
         if ($item.PSObject.Properties["MethodToken"] -and $item.PSObject.Properties["ILOffset"]) {
             $mappedAssembly = Get-AssemblyKeyFromSourceName $FallbackSource
-            if ($item.PSObject.Properties["Assembly"] -and -not [string]::IsNullOrWhiteSpace([string]$item.Assembly)) {
-                $mappedAssembly = Get-AssemblyKeyFromSourceName ([string]$item.Assembly)
+            if (-not [string]::IsNullOrWhiteSpace($itemAssembly)) {
+                $mappedAssembly = Get-AssemblyKeyFromSourceName $itemAssembly
             }
             $mappedKey = Get-ReviewKey -Assembly $mappedAssembly -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
             if (-not [string]::IsNullOrWhiteSpace($mappedKey)) {
                 [void]$script:mappedDllEntryKeys.Add($mappedKey)
                 $script:mappedDllTranslationsByEntryKey[$mappedKey] = [pscustomobject]@{
                     Translation = [string]$item.Translation
-                    Safety = [string]$item.Safety
-                    Notes = if ($item.PSObject.Properties["EvidenceScenario"] -and -not [string]::IsNullOrWhiteSpace([string]$item.EvidenceScenario)) {
-                        "Trial evidence: $($item.EvidenceScenario)"
+                    Safety = $itemSafety
+                    Notes = if ($item.PSObject.Properties["Note"] -and -not [string]::IsNullOrWhiteSpace([string]$item.Note)) {
+                        "Mapping note: $($item.Note)"
                     }
                     else {
                         ""
@@ -882,8 +767,8 @@ function Add-IlRewriteMap {
         }
 
         $assemblyForOriginal = Get-AssemblyKeyFromSourceName $FallbackSource
-        if ($item.PSObject.Properties["Assembly"] -and -not [string]::IsNullOrWhiteSpace([string]$item.Assembly)) {
-            $assemblyForOriginal = Get-AssemblyKeyFromSourceName ([string]$item.Assembly)
+        if (-not [string]::IsNullOrWhiteSpace($itemAssembly)) {
+            $assemblyForOriginal = Get-AssemblyKeyFromSourceName $itemAssembly
         }
         Add-MappedOriginalTranslation -Assembly $assemblyForOriginal -Original ([string]$item.Original) -Translation ([string]$item.Translation)
 
@@ -898,21 +783,21 @@ function Add-IlRewriteMap {
         $attempt = $null
         if ($item.PSObject.Properties["MethodToken"] -and $item.PSObject.Properties["ILOffset"]) {
             $attemptAssembly = [System.IO.Path]::GetFileNameWithoutExtension($FallbackSource)
-            if ($item.PSObject.Properties["Assembly"] -and -not [string]::IsNullOrWhiteSpace([string]$item.Assembly)) {
-                $attemptAssembly = [string]$item.Assembly
+            if (-not [string]::IsNullOrWhiteSpace($itemAssembly)) {
+                $attemptAssembly = $itemAssembly
             }
-            $attempt = Get-TrialAttempt -Assembly $attemptAssembly -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
+            $attempt = Get-LocalizationSafetyRecord -Assembly $attemptAssembly -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
             if ($null -eq $attempt -and $FallbackSource -match "AtTheGatesUI") {
-                $attempt = Get-TrialAttempt -Assembly "UI" -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
+                $attempt = Get-LocalizationSafetyRecord -Assembly "UI" -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
             }
             if ($null -eq $attempt -and $FallbackSource -match "AtTheGatesCommon") {
-                $attempt = Get-TrialAttempt -Assembly "Common" -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
+                $attempt = Get-LocalizationSafetyRecord -Assembly "Common" -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
             }
             if ($null -eq $attempt -and $FallbackSource -match "AtTheGatesGame") {
-                $attempt = Get-TrialAttempt -Assembly "Game" -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
+                $attempt = Get-LocalizationSafetyRecord -Assembly "Game" -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
             }
             if ($null -eq $attempt -and $FallbackSource -match "ElfTools") {
-                $attempt = Get-TrialAttempt -Assembly "ElfTools" -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
+                $attempt = Get-LocalizationSafetyRecord -Assembly "ElfTools" -MethodToken ([string]$item.MethodToken) -ILOffset $item.ILOffset
             }
         }
 
@@ -923,24 +808,10 @@ function Add-IlRewriteMap {
         if ($null -ne $attempt) {
             $attemptStatus = $attempt.AttemptStatus
             $failureReason = $attempt.FailureReason
-            $notes = "Trial evidence: $($attempt.Evidence)"
+            $notes = "Safety registry: $($attempt.Evidence)"
         }
-        elseif ($item.PSObject.Properties["EvidenceScenario"] -and -not [string]::IsNullOrWhiteSpace([string]$item.EvidenceScenario)) {
-            $attemptStatus = "AcceptedSmoke"
-            $notes = "Trial evidence: $($item.EvidenceScenario)"
-        }
-
-        $status = "Translated"
-        if ($Kind -like "Trial batch:*") {
-            if ($attemptStatus -eq "Rejected") {
-                $status = "RejectedTrial"
-            }
-            elseif ($attemptStatus -eq "AcceptedSmoke") {
-                $status = "Translated"
-            }
-            else {
-                $status = "TrialBatchCandidate"
-            }
+        elseif ($item.PSObject.Properties["Note"] -and -not [string]::IsNullOrWhiteSpace([string]$item.Note)) {
+            $notes = "Mapping note: $($item.Note)"
         }
 
         Add-KnownText `
@@ -948,9 +819,9 @@ function Add-IlRewriteMap {
             -Original ([string]$item.Original) `
             -Translation ([string]$item.Translation) `
             -Kind $Kind `
-            -Status $status `
+            -Status "Translated" `
             -Locator ($locatorParts -join "; ") `
-            -Safety ([string]$item.Safety) `
+            -Safety $itemSafety `
             -LocalizationAttempted $attempted `
             -AttemptStatus $attemptStatus `
             -FailureReason $failureReason `
@@ -1086,7 +957,8 @@ function Get-ConfigTranslationMap {
                 if ($item.PSObject.Properties["Description"]) {
                     $result["$sourceFile|$id|description|"] = [string]$item.Description
                 }
-                foreach ($node in @($item.Nodes)) {
+                $nodes = if ($item.PSObject.Properties['Nodes']) { @($item.Nodes) } else { @() }
+                foreach ($node in $nodes) {
                     if ($null -eq $node) {
                         continue
                     }
@@ -1204,17 +1076,8 @@ Add-IlRewriteMap -Path ".\translations\hardcoded-common-offsets.json" -FallbackS
 Add-IlRewriteMap -Path ".\translations\hardcoded-game-il-rewrite.json" -FallbackSource "source\AtTheGatesGame.original.exe" -Kind "Game EXE IL rewrite"
 Add-IlRewriteMap -Path ".\translations\hardcoded-elftools-il-rewrite.json" -FallbackSource "source\ElfTools.original.dll" -Kind "ElfTools IL rewrite"
 
-# Trial batch files are used above only as attempt-status evidence. Do not emit
-# them as separate source rows; normal maps and unmapped candidates provide the
-# actual source-file rows without duplicating review entries.
-
-# Known unmapped DLL display candidates after the most recent trial export.
-if (-not [string]::IsNullOrWhiteSpace($UnmappedDllCsv) -and -not (Test-Path -LiteralPath $UnmappedDllCsv)) {
-    $fallbackUnmapped = ".\.tmp\trial-current-unmapped-dll.csv"
-    if (Test-Path -LiteralPath $fallbackUnmapped) {
-        $UnmappedDllCsv = $fallbackUnmapped
-    }
-}
+# Active maps and the exact source catalogs provide all review rows. Retired
+# exploratory batches are summarized only in localization-safety-registry.json.
 
 function Add-UnmappedDllRowsFromCsv {
     param([string]$Path)
@@ -1228,22 +1091,22 @@ function Add-UnmappedDllRowsFromCsv {
     }
 
     foreach ($row in Import-Csv -LiteralPath $Path -Encoding UTF8) {
-        $assembly = [string]$row.Assembly
-        if ([string]::IsNullOrWhiteSpace($assembly) -and $row.PSObject.Properties["AssemblyName"]) {
-            $assembly = [string]$row.AssemblyName
+        $assembly = Get-ReviewPropertyString -Object $row -Name 'Assembly'
+        if ([string]::IsNullOrWhiteSpace($assembly)) {
+            $assembly = Get-ReviewPropertyString -Object $row -Name 'AssemblyName'
         }
         $assemblyKey = Get-AssemblyKeyFromSourceName $assembly
         $entryKey = Get-ReviewKey -Assembly $assemblyKey -MethodToken ([string]$row.MethodToken) -ILOffset $row.ILOffset
 
-        $original = [string]$row.Original
-        if ([string]::IsNullOrWhiteSpace($original) -and $row.PSObject.Properties["Value"]) {
-            $original = [string]$row.Value
+        $original = Get-ReviewPropertyString -Object $row -Name 'Original'
+        if ([string]::IsNullOrWhiteSpace($original)) {
+            $original = Get-ReviewPropertyString -Object $row -Name 'Value'
         }
         if ([string]::IsNullOrWhiteSpace($original)) {
             continue
         }
 
-        $attempt = Get-TrialAttempt -Assembly $assemblyKey -MethodToken ([string]$row.MethodToken) -ILOffset $row.ILOffset
+        $safetyRecord = Get-LocalizationSafetyRecord -Assembly $assemblyKey -MethodToken ([string]$row.MethodToken) -ILOffset $row.ILOffset
         $translation = ""
         $attempted = "No"
         $attemptStatus = "NotAttempted"
@@ -1251,13 +1114,13 @@ function Add-UnmappedDllRowsFromCsv {
         $notes = ""
         $status = "UntranslatedDiscovered"
 
-        if ($null -ne $attempt -and [string]$attempt.AttemptStatus -eq "Rejected") {
-            $translation = [string]$attempt.Translation
+        if ($null -ne $safetyRecord -and [string]$safetyRecord.AttemptStatus -eq "Rejected") {
+            $translation = [string]$safetyRecord.Translation
             $attempted = "Yes"
-            $attemptStatus = [string]$attempt.AttemptStatus
-            $failureReason = [string]$attempt.FailureReason
-            $notes = "Trial evidence: $($attempt.Evidence)"
-            $status = "RejectedTrial"
+            $attemptStatus = [string]$safetyRecord.AttemptStatus
+            $failureReason = [string]$safetyRecord.FailureReason
+            $notes = "Safety registry: $($safetyRecord.Evidence)"
+            $status = "RejectedSafetyRecord"
         }
         elseif (-not [string]::IsNullOrWhiteSpace($entryKey) -and $script:mappedDllTranslationsByEntryKey.ContainsKey($entryKey)) {
             $mapped = $script:mappedDllTranslationsByEntryKey[$entryKey]
@@ -1280,10 +1143,10 @@ function Add-UnmappedDllRowsFromCsv {
                 }
             }
 
-            if ($null -eq $attempt -and [string]::IsNullOrWhiteSpace($translation)) {
+            if ($null -eq $safetyRecord -and [string]::IsNullOrWhiteSpace($translation)) {
                 $reviewReason = Get-DllSkipReason -Row $row
-                if ($reviewReason -match '^Trial candidate:') {
-                    $attemptStatus = "TrialCandidate"
+                if ($reviewReason -match '^Unverified display candidate:') {
+                    $attemptStatus = "ReviewRequired"
                     $failureReason = $reviewReason
                 }
                 elseif (-not [string]::IsNullOrWhiteSpace($reviewReason)) {
@@ -1291,14 +1154,14 @@ function Add-UnmappedDllRowsFromCsv {
                     $failureReason = $reviewReason
                 }
             }
-            elseif ($null -ne $attempt -and [string]::IsNullOrWhiteSpace($translation)) {
-                $translation = [string]$attempt.Translation
+            elseif ($null -ne $safetyRecord -and [string]::IsNullOrWhiteSpace($translation)) {
+                $translation = [string]$safetyRecord.Translation
                 $attempted = "Yes"
-                $attemptStatus = [string]$attempt.AttemptStatus
-                $failureReason = [string]$attempt.FailureReason
-                $notes = "Trial evidence: $($attempt.Evidence)"
+                $attemptStatus = [string]$safetyRecord.AttemptStatus
+                $failureReason = [string]$safetyRecord.FailureReason
+                $notes = "Safety registry: $($safetyRecord.Evidence)"
                 if ($attemptStatus -eq "Rejected") {
-                    $status = "RejectedTrial"
+                    $status = "RejectedSafetyRecord"
                 }
             }
         }
@@ -1322,20 +1185,20 @@ foreach ($catalogPath in @($AdditionalDllCatalogCsv)) {
     Add-UnmappedDllRowsFromCsv -Path $catalogPath
 }
 
-$trialStateForRows = Get-JsonFile ".\docs\agent\trial-localization-state.json"
-if ($null -ne $trialStateForRows) {
-    foreach ($entry in ConvertTo-ReviewArray $trialStateForRows.knownRejectedSingles) {
+$safetyRegistryForRows = Get-JsonFile ".\translations\localization-safety-registry.json"
+if ($null -ne $safetyRegistryForRows) {
+    foreach ($entry in ConvertTo-ReviewArray $safetyRegistryForRows.RejectedOperands) {
         Add-KnownText `
-            -SourceFile (Get-SourceFromAssemblyName ([string]$entry.assembly)) `
-            -Original ([string]$entry.original) `
+            -SourceFile (Get-SourceFromAssemblyName ([string]$entry.Assembly)) `
+            -Original ([string]$entry.Original) `
             -Translation "" `
-            -Kind "Known rejected trial" `
-            -Status "RejectedTrial" `
-            -Locator ("MethodToken=$($entry.methodToken); ILOffset=$($entry.ilOffset)") `
+            -Kind "Known rejected safety record" `
+            -Status "RejectedSafetyRecord" `
+            -Locator ("MethodToken=$($entry.MethodToken); ILOffset=$($entry.ILOffset)") `
             -LocalizationAttempted "Yes" `
             -AttemptStatus "Rejected" `
-            -FailureReason ([string]$entry.reason) `
-            -Notes ("Trial state batch: $($entry.batchId)")
+            -FailureReason ([string]$entry.Reason) `
+            -Notes ("Safety registry risk: $($entry.Risk)")
     }
 }
 
@@ -1366,6 +1229,20 @@ if ($AggregateDuplicates) {
     $groups = @{}
     foreach ($record in $records) {
         $key = @($record.SourceFile, $record.Original, $record.Translation, $record.Kind, $record.Status, $record.Safety, $record.ReviewState, $record.ReasonCode, $record.Notes) -join $separator
+        # A runtime display-map row is an executable display match, not merely
+        # duplicate review prose.  Preserve one catalog occurrence per mapping
+        # so case and boundary-whitespace variants retain their exact locator.
+        # This also keeps reverse composite links one-to-one with map entries.
+        if ($record.Kind -like "Runtime display map (*)") {
+            # PowerShell hashtables compare string keys case-insensitively.  A
+            # byte identity prevents `Strong Leader` and `strong Leader`
+            # from being collapsed even though both are valid, distinct runtime
+            # display match inputs.
+            $locatorIdentity = [BitConverter]::ToString(
+                [Text.Encoding]::UTF8.GetBytes([string]$record.Locator)
+            ).Replace("-", "")
+            $key = @($key, $locatorIdentity) -join $separator
+        }
         if (-not $groups.ContainsKey($key)) {
             $groups[$key] = [pscustomobject]@{
                 SourceFile = $record.SourceFile
@@ -1398,9 +1275,8 @@ else {
 $translatedCount = @($items | Where-Object { -not [string]::IsNullOrWhiteSpace($_.Translation) }).Count
 $untranslatedCount = $items.Count - $translatedCount
 $translatedStateCount = @($items | Where-Object { $_.ReviewState -eq "Translated" }).Count
-$needsTrialCount = @($items | Where-Object { $_.ReviewState -eq "NeedsTrial" }).Count
+$reviewRequiredCount = @($items | Where-Object { $_.ReviewState -eq "ReviewRequired" }).Count
 $skippedCount = @($items | Where-Object { $_.ReviewState -eq "Skipped" }).Count
-$recheckedSkippedCount = @($items | Where-Object { $_.ReviewState -eq "RecheckedSkipped" }).Count
 $rejectedCount = @($items | Where-Object { $_.ReviewState -eq "Rejected" }).Count
 
 $csvOutputDirectory = Split-Path -Parent $CsvOutputPath
@@ -1467,9 +1343,8 @@ finally {
     TranslatedRows = $translatedCount
     UntranslatedRows = $untranslatedCount
     TranslatedStateRows = $translatedStateCount
-    NeedsTrialRows = $needsTrialCount
+    ReviewRequiredRows = $reviewRequiredCount
     SkippedRows = $skippedCount
-    RecheckedSkippedRows = $recheckedSkippedCount
     RejectedRows = $rejectedCount
     SourceFileCount = @($items | Select-Object -ExpandProperty SourceFile -Unique).Count
 }

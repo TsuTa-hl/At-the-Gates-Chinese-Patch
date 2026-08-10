@@ -1,0 +1,682 @@
+<constants>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Clans                    -->
+  <!--                               -->
+  <growthResourceID>RESOURCE_FAME</growthResourceID>
+  <newClanFirstXTurns>1</newClanFirstXTurns>
+  <!-- Growth Formula = Base + ((NextPop - NumSubtracted) * AddedPer) + (((NextPop - NumSubtracted) * ExponentBase) ^ Exponent) -->
+  <newClanThreshold_NumSubtracted>3.0</newClanThreshold_NumSubtracted>
+  <newClanThreshold_Base>1.0</newClanThreshold_Base>
+  <newClanThreshold_AddedPer>0.5</newClanThreshold_AddedPer>
+  <newClanThreshold_ExponentBase>0.14</newClanThreshold_ExponentBase>
+  <newClanThreshold_Exponent>4.0</newClanThreshold_Exponent>
+  <newClanThreshold_FinalMultiplier>4</newClanThreshold_FinalMultiplier>
+  <newFamilyAfterTurnsBase>12</newFamilyAfterTurnsBase>
+  <subsequentFamilyArrivalDiscountPercent>10</subsequentFamilyArrivalDiscountPercent>
+  <maxFamilies>30</maxFamilies>
+  <resourceProductionModPerFamily>0</resourceProductionModPerFamily>
+  <powerModPerFamily>5</powerModPerFamily>
+  <canSwitchClanDisciplineViaTraining>true</canSwitchClanDisciplineViaTraining>
+  <canLevelUpClansWithParchment>false</canLevelUpClansWithParchment>
+  <doClansLevelUpAfterTraining>false</doClansLevelUpAfterTraining>
+  <maxDisciplineLevel>10</maxDisciplineLevel>
+  <isFreeUpgradeAtMaxLevel>true</isFreeUpgradeAtMaxLevel>
+  <baseXPNeededForDisciplineLevel>20</baseXPNeededForDisciplineLevel>
+  <extraXPNeededPerDisciplineLevel>15</extraXPNeededPerDisciplineLevel>
+  <!--
+    
+    Discipline Level    1    2    3    4    5    6    7    8    9    10
+    
+               10-5
+    
+          XP needed     0    10   15   20   35   30   35   40   45   50
+       Total needed     0    10   25   45   80   110  145  185  230  280
+    
+              20-10
+    
+          XP needed     0    20   30   40   50   60   70   80   90   100
+       Total needed     0    20   50   90   140  200  270  350  440  540
+    
+              20-15
+    
+          XP needed     0    20   35   50   65   80   95   110  125  140
+       Total needed     0    20   55   105  170  250  345  455  580  720
+        
+    -->
+  <minTraits>2</minTraits>
+  <maxTraits>2</maxTraits>
+  <minPersonalityTraits>1</minPersonalityTraits>
+  <minCouncilTraits>0</minCouncilTraits>
+  <maxCouncilTraits>0</maxCouncilTraits>
+  <defaultMoodID>MOOD_CONTENT</defaultMoodID>
+  <moodChangeAfterCrimePunishment>-1</moodChangeAfterCrimePunishment>
+  <moodChangeForNobility>0</moodChangeForNobility>
+  <moodLossPerTurnWhenStarving>1</moodLossPerTurnWhenStarving>
+  <moodRecoveryPerTurnAfterStarving>1</moodRecoveryPerTurnAfterStarving>
+  <canEnnobleClansByDefault>true</canEnnobleClansByDefault>
+  <propertiesWhenEnnobled>
+    <property>
+      <propertyID>Mood</propertyID>
+      <num>1</num>
+      <fromDescription>[已册封|NOBLE]</fromDescription>
+    </property>
+    <!--
+        
+		<property>
+			<propertyID>RESOURCE_PRODUCTION</propertyID>
+			<num>4</num>
+			<resourceID>RESOURCE_FAME</resourceID>
+			<fromDescription>being [Ennobled|NOBLE]</fromDescription>
+		</property>
+		
+		-->
+    <property>
+      <propertyID>Choose_Property</propertyID>
+      <fromDescription>[已册封|NOBLE]</fromDescription>
+      <property>
+        <propertyID>DISCIPLINE_LEVEL</propertyID>
+        <ID>DISCIPLINE_HONOR</ID>
+        <num>5</num>
+        <fromDescription>[已册封|NOBLE]</fromDescription>
+        <usage>荣誉等级+5</usage>
+      </property>
+      <property>
+        <propertyID>DISCIPLINE_LEVEL</propertyID>
+        <ID>DISCIPLINE_AGRICULTURE</ID>
+        <num>5</num>
+        <fromDescription>[已册封|NOBLE]</fromDescription>
+        <usage>农业等级+5</usage>
+      </property>
+      <property>
+        <propertyID>DISCIPLINE_LEVEL</propertyID>
+        <ID>DISCIPLINE_LIVESTOCK</ID>
+        <num>5</num>
+        <fromDescription>[已册封|NOBLE]</fromDescription>
+        <usage>畜牧等级+5</usage>
+      </property>
+      <property>
+        <propertyID>DISCIPLINE_LEVEL</propertyID>
+        <ID>DISCIPLINE_METALWORKING</ID>
+        <num>5</num>
+        <fromDescription>[已册封|NOBLE]</fromDescription>
+        <usage>冶金等级+5</usage>
+      </property>
+      <property>
+        <propertyID>DISCIPLINE_LEVEL</propertyID>
+        <ID>DISCIPLINE_CRAFTING</ID>
+        <num>5</num>
+        <fromDescription>[已册封|NOBLE]</fromDescription>
+        <usage>工艺等级+5</usage>
+      </property>
+      <property>
+        <propertyID>DISCIPLINE_LEVEL</propertyID>
+        <ID>DISCIPLINE_DISCOVERY</ID>
+        <num>5</num>
+        <fromDescription>[已册封|NOBLE]</fromDescription>
+        <usage>探索等级+5</usage>
+      </property>
+    </property>
+  </propertiesWhenEnnobled>
+  <propertiesWhenClanCaptured>
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>-50</percent>
+      <fromDescription>Captured</fromDescription>
+    </property>
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>-50</percent>
+      <fromDescription>Captured</fromDescription>
+      <usage>ForStructure</usage>
+    </property>
+    <property>
+      <propertyID>MORALE</propertyID>
+      <percent>-50</percent>
+      <fromDescription>Captured</fromDescription>
+    </property>
+  </propertiesWhenClanCaptured>
+  <storylineMinTurns>20</storylineMinTurns>
+  <storylineMaxTurns>28</storylineMaxTurns>
+  <!-- Free Deposit Reveals 
+  <startFreeDepositRevealsAtNumClans>8</startFreeDepositRevealsAtNumClans>
+
+  <freeDepositRevealNumClansBetween_Min>6</freeDepositRevealNumClansBetween_Min>
+  <freeDepositRevealNumClansBetween_Max>10</freeDepositRevealNumClansBetween_Max>
+  
+  <threeFreeDepositRevealsNumClansBetween_Min>15</threeFreeDepositRevealsNumClansBetween_Min>
+  <threeFreeDepositRevealsNumClansBetween_Max>17</threeFreeDepositRevealsNumClansBetween_Max>-->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Popcap                   -->
+  <!--                               -->
+  <popcapResourceID>RESOURCE_CLOTH</popcapResourceID>
+  <popcap>
+    <limit>12</limit>
+    <cost>5</cost>
+  </popcap>
+  <popcap>
+    <limit>18</limit>
+    <cost>20</cost>
+  </popcap>
+  <popcap>
+    <limit>24</limit>
+    <cost>80</cost>
+  </popcap>
+  <popcap>
+    <limit>30</limit>
+    <cost>150</cost>
+  </popcap>
+  <popcap>
+    <limit>36</limit>
+    <cost>300</cost>
+  </popcap>
+  <popcap>
+    <limit>42</limit>
+    <cost>600</cost>
+  </popcap>
+  <popcap>
+    <limit>48</limit>
+    <cost>1250</cost>
+  </popcap>
+  <popcap>
+    <limit>54</limit>
+    <cost>2500</cost>
+  </popcap>
+  <popcap>
+    <limit>60</limit>
+    <cost>5000</cost>
+  </popcap>
+  <popcap>
+    <limit>66</limit>
+    <cost>10000</cost>
+  </popcap>
+  <popcap>
+    <limit>72</limit>
+    <cost>20000</cost>
+  </popcap>
+  <popcap>
+    <limit>78</limit>
+    <cost>40000</cost>
+  </popcap>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Cities                   -->
+  <!--                               -->
+  <settlementStartsGamePackedUp>false</settlementStartsGamePackedUp>
+  <newCityStartingPop>0</newCityStartingPop>
+  <cityMinimumPop>0</cityMinimumPop>
+  <cityGrowthBase>0</cityGrowthBase>
+  <cityGrowthPerExtraPop>0</cityGrowthPerExtraPop>
+  <romanCityGrowthBase>0</romanCityGrowthBase>
+  <romanCityGrowthPerExtraPop>0</romanCityGrowthPerExtraPop>
+  <cityPopulationPercentLostWhenPillaged>0</cityPopulationPercentLostWhenPillaged>
+  <treasurePerPopTimesPop100>0</treasurePerPopTimesPop100>
+  <maxTreasurePerPop100>0</maxTreasurePerPop100>
+  <foodPerPop100>0</foodPerPop100>
+  <numSimultaneousTrainingAllowed>1</numSimultaneousTrainingAllowed>
+  <popularitySpawningMaxTurns>10</popularitySpawningMaxTurns>
+  <popularitySpawningMinTurns>1</popularitySpawningMinTurns>
+  <racialConversionTurns>4</racialConversionTurns>
+  <racialConversionTurnsMixed>2</racialConversionTurnsMixed>
+  <maxCityAttachmentsOfOneType>1</maxCityAttachmentsOfOneType>
+  <siegeSupplyLossDelay>1</siegeSupplyLossDelay>
+  <siegeMaxSupplyLoss>3</siegeMaxSupplyLoss>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Victory                  -->
+  <!--                               -->
+  <declareKingdomResourceID>RESOURCE_PARCHMENT</declareKingdomResourceID>
+  <declareKingdomResourceCost100>5000</declareKingdomResourceCost100>
+  <turnsToDeclareKingdom>0</turnsToDeclareKingdom>
+  <declareKingdomExtraControl>2</declareKingdomExtraControl>
+  <declareKingdomResourceProducedID>RESOURCE_FAME</declareKingdomResourceProducedID>
+  <declareKingdomResourceProduced100>2000</declareKingdomResourceProduced100>
+  <!--<becomeMagisterMilitumResourceID>RESOURCE_PARCHMENT</becomeMagisterMilitumResourceID>-->
+  <!--<becomeMagisterMilitumResourceCost100>-1</becomeMagisterMilitumResourceCost100>-->
+  <becomeMagisterMilitumTurns>24</becomeMagisterMilitumTurns>
+  <!--<becomeMagisterMilitumExtraControl>0</becomeMagisterMilitumExtraControl>-->
+  <!--<becomeMagisterMilitumResourceProducedID>RESOURCE_FAME</becomeMagisterMilitumResourceProducedID>-->
+  <!--<becomeMagisterMilitumResourceProduced100>-1</becomeMagisterMilitumResourceProduced100>-->
+  <becomeMagisterMilitumDeployedUnitID>UNIT_ROMAN_LEGION</becomeMagisterMilitumDeployedUnitID>
+  <becomeMagisterMilitumDeployedUnitCount>5</becomeMagisterMilitumDeployedUnitCount>
+  <becomeMagisterMilitumDeployUnitTurns>24</becomeMagisterMilitumDeployUnitTurns>
+  <becomeMagisterMilitumDeployUnitCost>
+    <resourceID>RESOURCE_STEEL_WEAPONS</resourceID>
+    <num100>1000</num100>
+  </becomeMagisterMilitumDeployUnitCost>
+  <becomeMagisterMilitumDeployUnitCost>
+    <resourceID>RESOURCE_STEEL_ARMOR</resourceID>
+    <num100>1000</num100>
+  </becomeMagisterMilitumDeployUnitCost>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Structures               -->
+  <!--                               -->
+  <expandControlResourceID>RESOURCE_WEAPONS</expandControlResourceID>
+  <expandControlResourceCost>5</expandControlResourceCost>
+  <!-- 1 tile range -->
+  <expandControlResourceCost>20</expandControlResourceCost>
+  <!-- 2 tile range -->
+  <expandControlResourceCost>50</expandControlResourceCost>
+  <!-- 3 tile range -->
+  <expandControlResourceCost>100</expandControlResourceCost>
+  <!-- 4 tile range -->
+  <apprenticeSlotCostMod>50</apprenticeSlotCostMod>
+  <apprenticeCostMod>50</apprenticeCostMod>
+  <structuresOutsideControlGoOffline>false</structuresOutsideControlGoOffline>
+  <mustConstructStructuresWithinControl>true</mustConstructStructuresWithinControl>
+  <mustConstructStructuresNextToSettlement>false</mustConstructStructuresNextToSettlement>
+  <structuresPerTile>1</structuresPerTile>
+  <exhaustedAfterTimesDegraded>2</exhaustedAfterTimesDegraded>
+  <abandonExhaustedStructures>false</abandonExhaustedStructures>
+  <turnsToRepair>2</turnsToRepair>
+  <turnsToExpandControl>0</turnsToExpandControl>
+  <turnsToAbandon>1</turnsToAbandon>
+  <capturedClanOccupationTurns>0</capturedClanOccupationTurns>
+  <capturedStructureOccupationTurns>6</capturedStructureOccupationTurns>
+  <capturedCityOccupationTurns>66666</capturedCityOccupationTurns>
+  <neutralDiscoveryMinExhaustionPercent>4</neutralDiscoveryMinExhaustionPercent>
+  <neutralDiscoveryMaxExhaustionPercent>53</neutralDiscoveryMaxExhaustionPercent>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Armies                   -->
+  <!--                               -->
+  <navalCanEnterCities>true</navalCanEnterCities>
+  <turnsToPillage>1</turnsToPillage>
+  <turnsToEncamp>0</turnsToEncamp>
+  <turnsToHeal>1</turnsToHeal>
+  <turnsToUndock>1</turnsToUndock>
+  <digInBonusPerTurn>25</digInBonusPerTurn>
+  <digInBonusMaxTurns>4</digInBonusMaxTurns>
+  <zocMoveCost>-1</zocMoveCost>
+  <!-- If negative, moving through enemy ZoC is impossible -->
+  <cityPopRefundPercent>100</cityPopRefundPercent>
+  <cityResourcesRefundPercent>0</cityResourcesRefundPercent>
+  <!-- Combat, Health, Morale -->
+  <!-- NOTE: Health and Morale-related values are always in percents of a Unit's max. -->
+  <minimumMoraleToAttack>50</minimumMoraleToAttack>
+  <moveCostToAttack>66666</moveCostToAttack>
+  <healthLossWhenDefending>10</healthLossWhenDefending>
+  <moraleLossWhenDefending>50</moraleLossWhenDefending>
+  <healthLossForAttacking>30</healthLossForAttacking>
+  <moraleLossForAttacking>30</moraleLossForAttacking>
+  <canUnitsRetreat>true</canUnitsRetreat>
+  <healthLossForRetreating>50</healthLossForRetreating>
+  <healthLossPerTurnWhenEmbarked>10</healthLossPerTurnWhenEmbarked>
+  <healthRecoveredPerTurn>100</healthRecoveredPerTurn>
+  <moraleRecoveredPerTurn>10</moraleRecoveredPerTurn>
+  <strengthModWhileEncamped>-50</strengthModWhileEncamped>
+  <strengthModWhilePillaging>-50</strengthModWhilePillaging>
+  <strengthModForAmphibAttack>-50</strengthModForAmphibAttack>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Supply                   -->
+  <!--                               -->
+  <baseSupplyRequired>1</baseSupplyRequired>
+  <freeSupplyInsideControl>2</freeSupplyInsideControl>
+  <supplyForEncamping>2</supplyForEncamping>
+  <minSupplyFromTerrain>0</minSupplyFromTerrain>
+  <graceTurnsBeforeSupplyDamage>1</graceTurnsBeforeSupplyDamage>
+  <noSupplyHealthChange>-10</noSupplyHealthChange>
+  <noSupplyMoraleChange>-10</noSupplyMoraleChange>
+  <defaultSupplyReserve>0</defaultSupplyReserve>
+  <canExceedMaxSupplyReserve>false</canExceedMaxSupplyReserve>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Research                 -->
+  <!--                               -->
+  <researchResourceID>RESOURCE_KNOWLEDGE</researchResourceID>
+  <researchMinTurns>0</researchMinTurns>
+  <freeTechsFromRomanCity>1</freeTechsFromRomanCity>
+  <canBuyTechsWithTreasure>false</canBuyTechsWithTreasure>
+  <techSwitchInstabilityTurns>6</techSwitchInstabilityTurns>
+  <defaultStabilityLevelID>STABILITY_LEVEL_NORMAL</defaultStabilityLevelID>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Diplomacy                -->
+  <!--                               -->
+  <defaultRelationshipLevelID>RELATIONSHIP_LEVEL_ZERO</defaultRelationshipLevelID>
+  <stepDistanceStartingContact>40</stepDistanceStartingContact>
+  <!-- Emissaries -->
+  <resourceCreatesEmissaryUponReachingThresholdID>RESOURCE_PRESTIGE</resourceCreatesEmissaryUponReachingThresholdID>
+  <emissaryThresholdBase>100</emissaryThresholdBase>
+  <emissaryThresholdIncreaseMultiplierPer>1.0</emissaryThresholdIncreaseMultiplierPer>
+  <emissaryRLChangeWithMinor>1</emissaryRLChangeWithMinor>
+  <emissaryInfluenceChangeWithMinor>1</emissaryInfluenceChangeWithMinor>
+  <emissaryRLChangeWithMajorOrRome>1</emissaryRLChangeWithMajorOrRome>
+  <emissaryInfluenceChangeWithMajorOrRome>0</emissaryInfluenceChangeWithMajorOrRome>
+  <!-- Bribes -->
+  <diplomaticGiftResourceID>RESOURCE_TREASURE</diplomaticGiftResourceID>
+  <diplomaticGiftCostBase>50</diplomaticGiftCostBase>
+  <diplomaticGiftCostMultiplierPer>1.0</diplomaticGiftCostMultiplierPer>
+  <diplomaticGiftRLChange>0</diplomaticGiftRLChange>
+  <diplomaticGiftInfluenceChange>1</diplomaticGiftInfluenceChange>
+  <!-- Relationship Level -->
+  <bordersTooClose3TileDistance>6</bordersTooClose3TileDistance>
+  <bordersTooClose2TileDistance>3</bordersTooClose2TileDistance>
+  <bordersTooClose1TileDistance>1</bordersTooClose1TileDistance>
+  <bordersTooClose3RL>-1</bordersTooClose3RL>
+  <bordersTooClose2RL>-2</bordersTooClose2RL>
+  <bordersTooClose1RL>-3</bordersTooClose1RL>
+  <unitTooCloseWarningTileDistance>1</unitTooCloseWarningTileDistance>
+  <perNiceToFriendRLChange>1</perNiceToFriendRLChange>
+  <perMeanToFriendRLChange>-1</perMeanToFriendRLChange>
+  <perNiceToEnemyRLChange>-2</perNiceToEnemyRLChange>
+  <perMeanToEnemyRLChange>2</perMeanToEnemyRLChange>
+  <religionSharedRLChange>1</religionSharedRLChange>
+  <religionDiffersRLChange>-1</religionDiffersRLChange>
+  <religionAbandonedRLChange>-1</religionAbandonedRLChange>
+  <!-- Approach -->
+  <defaultApproachHeartbeatMinTurns>22</defaultApproachHeartbeatMinTurns>
+  <defaultApproachHeartbeatMaxTurns>26</defaultApproachHeartbeatMaxTurns>
+  <friendApproachWeightValue>10</friendApproachWeightValue>
+  <enemyApproachWeightValue>10</enemyApproachWeightValue>
+  <previousApproachWeightValue>5</previousApproachWeightValue>
+  <!-- Interactions -->
+  <defaultInteractionHeartbeatMinTurns>18</defaultInteractionHeartbeatMinTurns>
+  <defaultInteractionHeartbeatMaxTurns>32</defaultInteractionHeartbeatMaxTurns>
+  <defaultProactiveInteractionWeightThreshold>20</defaultProactiveInteractionWeightThreshold>
+  <allianceLeverageRequired>5</allianceLeverageRequired>
+  <requestDoWLeverageRequired>2</requestDoWLeverageRequired>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                                       -->
+  <!--      The Council   [ DEPRECATED ]     -->
+  <!--                                       -->
+  <maxCouncilMembers>2</maxCouncilMembers>
+  <!--
+	<councilUnitID>UNIT_COUNCILOR</councilUnitID>
+  <dismissedFromCouncilUnitID>UNIT_NO_PROFESSION</dismissedFromCouncilUnitID>
+	-->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Players                  -->
+  <!--                               -->
+  <caravanSellPriceMod>-25</caravanSellPriceMod>
+  <defaultCaravanLevelID>CARAVANLEVEL_1</defaultCaravanLevelID>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Events                   -->
+  <!--                               -->
+  <!-- Caravan Specials -->
+  <possibleCaravanSpecialPercents>
+    <percent>0</percent>
+    <percent>0</percent>
+    <percent>10</percent>
+    <percent>15</percent>
+    <percent>15</percent>
+    <percent>15</percent>
+    <percent>15</percent>
+    <percent>20</percent>
+    <percent>25</percent>
+    <percent>30</percent>
+  </possibleCaravanSpecialPercents>
+  <!-- Plague -->
+  <earliestTurnForPlague>24</earliestTurnForPlague>
+  <minTurnsBetweenPlagues>12</minTurnsBetweenPlagues>
+  <maxTurnsBetweenPlagues>400</maxTurnsBetweenPlagues>
+  <minTurnsPlagueWarning>4</minTurnsPlagueWarning>
+  <maxTurnsPlagueWarning>8</maxTurnsPlagueWarning>
+  <!-- Political Events -->
+  <politicalEventsEnabled>false</politicalEventsEnabled>
+  <earliestTurnForPoliticalEvent>18</earliestTurnForPoliticalEvent>
+  <newLeaderPoliticalEventChanceMod>200</newLeaderPoliticalEventChanceMod>
+  <forcePoliticalEventAfterLull>
+    <minTurns>48</minTurns>
+    <maxTurns>72</maxTurns>
+    <politicalEventID>POLITICALEVENT_ASSASSINATION</politicalEventID>
+  </forcePoliticalEventAfterLull>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Leaders                  -->
+  <!--                               -->
+  <leaderLifespanMinTurns>12</leaderLifespanMinTurns>
+  <leaderLifespanMaxTurns>120</leaderLifespanMaxTurns>
+  <numTraitsWeight>2</numTraitsWeight>
+  <!-- 1 Trait -->
+  <numTraitsWeight>5</numTraitsWeight>
+  <!-- 2 Traits -->
+  <numTraitsWeight>2</numTraitsWeight>
+  <!-- 3 Traits -->
+  <numTraitsWeight>1</numTraitsWeight>
+  <!-- 4 Traits -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Calendar                 -->
+  <!--                               -->
+  <turnsPerMonth>2</turnsPerMonth>
+  <startingYear>400</startingYear>
+  <startingMonth>Early April</startingMonth>
+  <summerNotificationMonth>Early March</summerNotificationMonth>
+  <winterNotificationMonth>Early September</winterNotificationMonth>
+  <!--
+	<councilMonth>Early July</councilMonth>
+  <councilMonth>Early January</councilMonth>
+	-->
+  <caravanMonth>Late March</caravanMonth>
+  <caravanMonth>Late June</caravanMonth>
+  <caravanMonth>Late September</caravanMonth>
+  <determineContactMonth>Early December</determineContactMonth>
+  <possibleContactMonth>Early December</possibleContactMonth>
+  <possibleContactMonth>Late December</possibleContactMonth>
+  <possibleContactMonth>Early January</possibleContactMonth>
+  <possibleContactMonth>Late January</possibleContactMonth>
+  <possibleContactMonth>Early February</possibleContactMonth>
+  <possibleContactMonth>Late February</possibleContactMonth>
+  <minTurnsBetweenLeaderRequests>24</minTurnsBetweenLeaderRequests>
+  <minTurnsAfterContactForLeaderRequest>6</minTurnsAfterContactForLeaderRequest>
+  <possibleLeaderRequestMonth>Late November</possibleLeaderRequestMonth>
+  <possibleLeaderRequestMonth>Early December</possibleLeaderRequestMonth>
+  <possibleLeaderRequestMonth>Late December</possibleLeaderRequestMonth>
+  <possibleLeaderRequestMonth>Early January</possibleLeaderRequestMonth>
+  <possibleLeaderRequestMonth>Late January</possibleLeaderRequestMonth>
+  <angryHostilesMonth>Early September</angryHostilesMonth>
+  <angryHostilesMonth>Late September</angryHostilesMonth>
+  <angryHostilesMonth>Early October</angryHostilesMonth>
+  <angryHostilesMonth>Late October</angryHostilesMonth>
+  <angryHostilesMonth>Early November</angryHostilesMonth>
+  <angryHostilesMonth>Late November</angryHostilesMonth>
+  <monthTemperaturePercent>0</monthTemperaturePercent>
+  <!-- January -->
+  <monthTemperaturePercent>2</monthTemperaturePercent>
+  <monthTemperaturePercent>6</monthTemperaturePercent>
+  <!-- February -->
+  <monthTemperaturePercent>23</monthTemperaturePercent>
+  <monthTemperaturePercent>40</monthTemperaturePercent>
+  <!-- March -->
+  <monthTemperaturePercent>50</monthTemperaturePercent>
+  <monthTemperaturePercent>60</monthTemperaturePercent>
+  <!-- April -->
+  <monthTemperaturePercent>65</monthTemperaturePercent>
+  <monthTemperaturePercent>70</monthTemperaturePercent>
+  <!-- May -->
+  <monthTemperaturePercent>75</monthTemperaturePercent>
+  <monthTemperaturePercent>80</monthTemperaturePercent>
+  <!-- June -->
+  <monthTemperaturePercent>89</monthTemperaturePercent>
+  <monthTemperaturePercent>94</monthTemperaturePercent>
+  <!-- July -->
+  <monthTemperaturePercent>99</monthTemperaturePercent>
+  <monthTemperaturePercent>100</monthTemperaturePercent>
+  <!-- August -->
+  <monthTemperaturePercent>96</monthTemperaturePercent>
+  <monthTemperaturePercent>82</monthTemperaturePercent>
+  <!-- September -->
+  <monthTemperaturePercent>69</monthTemperaturePercent>
+  <monthTemperaturePercent>50</monthTemperaturePercent>
+  <!-- October -->
+  <monthTemperaturePercent>36</monthTemperaturePercent>
+  <monthTemperaturePercent>21</monthTemperaturePercent>
+  <!-- November -->
+  <monthTemperaturePercent>15</monthTemperaturePercent>
+  <monthTemperaturePercent>10</monthTemperaturePercent>
+  <!-- December -->
+  <monthTemperaturePercent>6</monthTemperaturePercent>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Misc                     -->
+  <!--                               -->
+  <numFactionTraitsPerPlayer>2</numFactionTraitsPerPlayer>
+  <fortsOrWatchtowersTechID>UNIT_QUARTERMASTER</fortsOrWatchtowersTechID>
+  <startingStockpileProductionMultiplier100>500</startingStockpileProductionMultiplier100>
+  <startingStockpileConsumptionMultiplier100>1000</startingStockpileConsumptionMultiplier100>
+  <startingStockpileVariance100>50</startingStockpileVariance100>
+  <gloryRequiredForVictory>1000</gloryRequiredForVictory>
+  <minTilesToHintAtStart>6</minTilesToHintAtStart>
+  <maxTilesToHintAtStart>9</maxTilesToHintAtStart>
+  <zonesAwayFromStartLocationToReveal>1</zonesAwayFromStartLocationToReveal>
+  <onlyShowInterestingTilesNearStart>true</onlyShowInterestingTilesNearStart>
+  <revealNearbyWaterAndMountainsAtStart>false</revealNearbyWaterAndMountainsAtStart>
+  <convertNeutralsToBanditsWithinStepDistance>-1</convertNeutralsToBanditsWithinStepDistance>
+  <hostileTribesUnit>
+    <unitID>UNIT_BANDIT_INFANTRY</unitID>
+    <weight>6</weight>
+  </hostileTribesUnit>
+  <hostileTribesUnit>
+    <unitID>UNIT_BANDIT_CAVALRY</unitID>
+    <weight>1</weight>
+  </hostileTribesUnit>
+  <neutralStructureDefender>
+    <unitID>UNIT_HUNTER</unitID>
+    <weight>2</weight>
+  </neutralStructureDefender>
+  <neutralStructureDefender>
+    <unitID>UNIT_ARCHER</unitID>
+    <weight>6</weight>
+  </neutralStructureDefender>
+  <neutralStructureDefender>
+    <unitID>UNIT_SPEARMAN</unitID>
+    <weight>1</weight>
+  </neutralStructureDefender>
+  <neutralStructureDefender>
+    <unitID>UNIT_LIGHT_CAVALRY</unitID>
+    <weight>1</weight>
+  </neutralStructureDefender>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Engine                   -->
+  <!--                               -->
+  <cameraArrowKeyMovement>1.0</cameraArrowKeyMovement>
+  <closestZoomDistance>1.0</closestZoomDistance>
+  <strategicViewZoomThreshold>0.5</strategicViewZoomThreshold>
+  <borderWidth>60</borderWidth>
+  <borderAlpha>150</borderAlpha>
+  <borderColorDrop>1</borderColorDrop>
+  <armySize1Unit1Offset>0,0</armySize1Unit1Offset>
+  <armySize2Unit1Offset>-20,2</armySize2Unit1Offset>
+  <armySize2Unit2Offset>20,-20</armySize2Unit2Offset>
+  <armySize3Unit1Offset>-20,2</armySize3Unit1Offset>
+  <armySize3Unit2Offset>29,9</armySize3Unit2Offset>
+  <armySize3Unit3Offset>20,-20</armySize3Unit3Offset>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Clan Names               -->
+  <!--                               -->
+  <clanName>Adalbert</clanName>
+  <clanName>Adalfried</clanName>
+  <clanName>Adalric</clanName>
+  <clanName>Adelhard</clanName>
+  <clanName>Adelland</clanName>
+  <clanName>Adelmar</clanName>
+  <clanName>Ahlert</clanName>
+  <clanName>Aland</clanName>
+  <clanName>Alberic</clanName>
+  <clanName>Albrecht</clanName>
+  <clanName>Aldemar</clanName>
+  <clanName>Alman</clanName>
+  <clanName>Alram</clanName>
+  <clanName>Alwin</clanName>
+  <clanName>Ansgar</clanName>
+  <clanName>Arminius</clanName>
+  <clanName>Arnhelm</clanName>
+  <clanName>Arnt</clanName>
+  <clanName>Askan</clanName>
+  <clanName>Audric</clanName>
+  <clanName>Bader</clanName>
+  <clanName>Baldric</clanName>
+  <clanName>Bera</clanName>
+  <clanName>Berne</clanName>
+  <clanName>Bertram</clanName>
+  <clanName>Biegel</clanName>
+  <clanName>Bolle</clanName>
+  <clanName>Dankward</clanName>
+  <clanName>Detmar</clanName>
+  <clanName>Eberhardt</clanName>
+  <clanName>Edelbert</clanName>
+  <clanName>Edlef</clanName>
+  <clanName>Egmond</clanName>
+  <clanName>Ehren</clanName>
+  <clanName>Einar</clanName>
+  <clanName>Eldric</clanName>
+  <clanName>Emerich</clanName>
+  <clanName>Everard</clanName>
+  <clanName>Ewout</clanName>
+  <clanName>Faramond</clanName>
+  <clanName>Frieder</clanName>
+  <clanName>Geisbert</clanName>
+  <clanName>Gerhold</clanName>
+  <clanName>Gijs</clanName>
+  <clanName>Godefroi</clanName>
+  <clanName>Habel</clanName>
+  <clanName>Hagius</clanName>
+  <clanName>Hasel</clanName>
+  <clanName>Helmar</clanName>
+  <clanName>Hereweald</clanName>
+  <clanName>Herrick</clanName>
+  <clanName>Hilbrand</clanName>
+  <clanName>Hrodric</clanName>
+  <clanName>Hulbert</clanName>
+  <clanName>Imre</clanName>
+  <clanName>Ingel</clanName>
+  <clanName>Ivo</clanName>
+  <clanName>Keil</clanName>
+  <clanName>Konrad</clanName>
+  <clanName>Landbert</clanName>
+  <clanName>Lenhard</clanName>
+  <clanName>Lothar</clanName>
+  <clanName>Lume</clanName>
+  <clanName>Malfred</clanName>
+  <clanName>Manheim</clanName>
+  <clanName>Meinrad</clanName>
+  <clanName>Nanne</clanName>
+  <clanName>Obrecht</clanName>
+  <clanName>Ogier</clanName>
+  <clanName>Ottokar</clanName>
+  <clanName>Pepijn</clanName>
+  <clanName>Radulf</clanName>
+  <clanName>Raimund</clanName>
+  <clanName>Rand</clanName>
+  <clanName>Raulf</clanName>
+  <clanName>Reinald</clanName>
+  <clanName>Remshard</clanName>
+  <clanName>Rigobert</clanName>
+  <clanName>Roch</clanName>
+  <clanName>Roderic</clanName>
+  <clanName>Roehl</clanName>
+  <clanName>Ruud</clanName>
+  <clanName>Sigefrid</clanName>
+  <clanName>Sorrel</clanName>
+  <clanName>Stijn</clanName>
+  <clanName>Talbot</clanName>
+  <clanName>Theobald</clanName>
+  <clanName>Ulfert</clanName>
+  <clanName>Valborg</clanName>
+  <clanName>Vander</clanName>
+  <clanName>Varick</clanName>
+  <clanName>Waldemar</clanName>
+  <clanName>Waller</clanName>
+  <clanName>Warren</clanName>
+  <clanName>Wilmot</clanName>
+  <clanName>Wolfrik</clanName>
+  <!-- Challenge Reward Names -->
+  <clanName>Belmar</clanName>
+  <!--jkuhfuss-->
+  <clanName>Auel</clanName>
+  <!--fungalreason-->
+  <clanName>Relindis</clanName>
+  <!--rulethechaos-->
+  <clanName>Kendrick</clanName>
+  <!--fungalreason-->
+  <clanName>Ritter</clanName>
+  <!--jaldaen-->
+</constants>

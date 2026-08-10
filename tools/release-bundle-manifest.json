@@ -1,0 +1,29 @@
+{
+  "SchemaVersion": 1,
+  "ReleaseRootFiles": [
+    "README.md",
+    "Install-ChinesePatch.ps1",
+    "Uninstall-ChinesePatch.ps1"
+  ],
+  "Entries": [
+    {
+      "EntryScript": "Install-ChinesePatch.ps1",
+      "Dependencies": [
+        "tools\\AtGPaths.ps1",
+        "tools\\AtGPatchManifest.ps1",
+        "tools\\AtGLegacyPatchOwnership.ps1",
+        "tools\\AtGPatchNotice.ps1"
+      ]
+    },
+    {
+      "EntryScript": "Uninstall-ChinesePatch.ps1",
+      "Dependencies": [
+        "tools\\AtGPaths.ps1",
+        "tools\\AtGFileOps.ps1",
+        "tools\\AtGPatchManifest.ps1",
+        "tools\\AtGLegacyPatchOwnership.ps1",
+        "tools\\AtGSaveNameCompatibility.ps1"
+      ]
+    }
+  ]
+}

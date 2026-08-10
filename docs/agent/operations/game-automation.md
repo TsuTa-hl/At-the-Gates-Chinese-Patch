@@ -16,6 +16,15 @@ Start-Process -FilePath (Join-Path $game 'At The Gates.exe') -WorkingDirectory $
 A merely visible window is not proof that the game is ready. For an in-game
 scenario, wait for the selected state marker or stable target interface.
 
+### Smoke-capture limitation
+
+The main-menu smoke's lifecycle result is valid only for its owned AtG process
+and window checks. A `CopyFromScreen` image can still show an unrelated
+foreground window when Windows denies foreground activation or another
+full-screen application occludes AtG. Treat such an image as a visual-capture
+limitation, not as evidence of the AtG menu or a localization result; rerun
+with an unoccluded owned-window capture before making a visual UI claim.
+
 Computer-use may be attempted first. If XNA capture fails, immediately use the
 Win32 scripts below; their coordinates are window-relative:
 

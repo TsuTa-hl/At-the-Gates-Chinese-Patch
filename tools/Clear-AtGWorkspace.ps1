@@ -93,6 +93,8 @@ function Get-AtGJsonSummary {
 
         $preferredNames = @(
             "Id", "Scenario", "ScenarioId", "Title", "Status", "Result", "Outcome",
+            "Profile", "DocumentationOnly", "ChangedPaths", "ChangedPathCategories", "UnmappedChangedPaths",
+            "SelectedChecks", "StageResults", "Timing", "Recovery", "PatchLeftInstalled",
             "Save", "SaveName", "SavePath", "LoadPath", "WorldId", "WorldID",
             "CrashLogUpdated", "CrashDialogSeen", "Crash", "Error", "Failure",
             "ElapsedMilliseconds", "ElapsedSeconds", "DurationMilliseconds", "DurationSeconds",

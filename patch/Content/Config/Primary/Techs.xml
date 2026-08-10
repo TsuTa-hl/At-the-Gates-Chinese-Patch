@@ -5774,11 +5774,11 @@
           <propertyID>UPGRADE</propertyID>
           <resourceID>RESOURCE_TOOLS</resourceID>
           <cost>10</cost>
-          <fromDescription>[SURVEYOR] [Deposit ID Speed|UNIDENTIFIED] 升级</fromDescription>
+          <fromDescription>[SURVEYOR] [资源点识别速度|UNIDENTIFIED] 升级</fromDescription>
           <property>
             <propertyID>TURNS_TO_SURVEY</propertyID>
             <percent>-33</percent>
-            <fromDescription>[SURVEYOR] [Deposit ID Speed|UNIDENTIFIED] 升级</fromDescription>
+            <fromDescription>[SURVEYOR] [资源点识别速度|UNIDENTIFIED] 升级</fromDescription>
           </property>
         </property>
       </givePropertyToUnits>

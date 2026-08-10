@@ -19,6 +19,46 @@ function Test-AtGTransientFileWriteFailure {
     return $message -match "user-mapped section|being used by another process|sharing violation|mapped.*open|映射|另一进程"
 }
 
+function Copy-AtGFileContentsInPlace {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Source,
+
+        [Parameter(Mandatory = $true)]
+        [string]$Destination
+    )
+
+    # A memory-mapped destination can forbid replacement/rename while still
+    # permitting a shared write handle.  This narrowly scoped fallback keeps
+    # the transaction recoverable: callers verify the final hash immediately.
+    $resolvedSource = [System.IO.Path]::GetFullPath($Source)
+    $resolvedDestination = [System.IO.Path]::GetFullPath($Destination)
+    $sourceStream = [System.IO.File]::Open(
+        $resolvedSource,
+        [System.IO.FileMode]::Open,
+        [System.IO.FileAccess]::Read,
+        [System.IO.FileShare]::ReadWrite)
+    try {
+        $destinationStream = [System.IO.File]::Open(
+            $resolvedDestination,
+            [System.IO.FileMode]::OpenOrCreate,
+            [System.IO.FileAccess]::Write,
+            [System.IO.FileShare]::ReadWrite)
+        try {
+            $destinationStream.SetLength(0)
+            $sourceStream.CopyTo($destinationStream)
+            $destinationStream.Flush($true)
+        }
+        finally {
+            $destinationStream.Dispose()
+        }
+    }
+    finally {
+        $sourceStream.Dispose()
+    }
+}
+
 function Copy-AtGFileIfChanged {
     [CmdletBinding()]
     param(
@@ -61,8 +101,15 @@ function Copy-AtGFileIfChanged {
             return $true
         }
         catch {
-            if ($attempt -ge $MaxAttempts -or !(Test-AtGTransientFileWriteFailure -ErrorRecord $_)) {
+            $isTransient = Test-AtGTransientFileWriteFailure -ErrorRecord $_
+            if (!$isTransient) {
                 throw
+            }
+
+            if ($attempt -ge $MaxAttempts) {
+                Write-Warning "Destination remains mapped after $MaxAttempts replacement attempts; trying a hash-verified in-place copy: $resolvedDestination"
+                Copy-AtGFileContentsInPlace -Source $resolvedSource -Destination $resolvedDestination
+                return $true
             }
 
             $delayMilliseconds = [Math]::Min(

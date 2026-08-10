@@ -513,13 +513,13 @@
     <e ntry="TEXT.Description.Terrain.ShallowWater">浅水是一种[地形|TERRAIN]，[GALLEY:S]可以穿过，且可能含有可由[FISHERMAN]采集的珍贵[FISH][来源|DEPOSIT]。</e>
     <e ntry="TEXT.Description.Terrain.Mountain">山脉是不可通行的[地形|TERRAIN]，过于崎岖，无法用于经济或军事目的。</e>
     <e ntry="TEXT.Description.Terrain.Hill">丘陵是一种轻微[地形|TERRAIN]障碍。[*]进入时额外消耗 1 点[移动点数|MOVE-POINT]。[*]使[单位|UNIT]可用[补给|SUPPLY]减少 1。[*]提供 25% [防御|DEFENSE]加成。[*]会阻挡[视野|VISION]，除非……站在丘陵[COLOR:EMPHASIS]上[/COLOR]可以越过[森林|FOREST]和其他丘陵观察，因此探索时很适合让[EXPLORER:S]前往。丘陵也可能含有[DEPOSIT-IRON:S]、[DEPOSIT-STONE:S]等珍贵[矿物|MINERAL]。</e>
-    <e ntry="TEXT.Description.Terrain.Fertile">草原是 AtG 中最宜居的[地形|TERRAIN]。[*]进入只需 1 点[移动点数|MOVE-POINT]。[*]为[单位|UNIT]提供 3 点[补给|SUPPLY]。如果草原[地块|TILE]还含有[森林|FOREST]或[HILL]等崎岖地形，或受到[寒冷|COLD]或[天气|WEATHER]影响，这些数值会改变。草原也常有各种可[采集|HARVEST]的[植物|PLANT]和[动物|ANIMAL]，例如[DEPOSIT-WHEAT:S]和[DEPOSIT-SHEEP:S]。</e>
-    <e ntry="TEXT.Description.Terrain.Dry">干草原是一种平坦、干燥的[地形|TERRAIN]。[*]进入只需 1 点[移动点数|MOVE-POINT]。[*]为[单位|UNIT]提供 2 点[补给|SUPPLY]。如果干草原[地块|TILE]还含有[森林|FOREST]或[HILL]等崎岖地形，或受到[寒冷|COLD]或[天气|WEATHER]影响，这些数值会改变。干草原也常有各种可[采集|HARVEST]的[植物|PLANT]和[动物|ANIMAL]，例如[DEPOSIT-WHEAT:S]和[DEPOSIT-CATTLE:S]。</e>
-    <e ntry="TEXT.Description.Terrain.Desert">沙漠是一种平坦、荒凉的[地形|TERRAIN]。[*]进入只需 1 点[移动点数|MOVE-POINT]。[*]不会为[单位|UNIT]提供[补给|SUPPLY]。如果沙漠[地块|TILE]还含有[HILL]等崎岖地形，移动消耗会改变。沙漠从不含可[采集|HARVEST]的[资源|RESOURCE]或任何植被。</e>
-    <e ntry="TEXT.Description.Terrain.Marsh">沼泽是一种极难进入的[地形|TERRAIN]，但有时含有可[采集|HARVEST]的[矿藏|MINERAL]。[*]进入时会消耗所有剩余[移动点数|MOVE-POINT]，并额外消耗下一[回合|TURN]的移动点。[*]为[单位|UNIT]提供 1 点[补给|SUPPLY]。由于移动惩罚严厉，沼泽通常最好避开，除非是为了[采集|HARVEST][IRON]或[COAL]等[矿物|MINERAL]。</e>
-    <e ntry="TEXT.Description.Terrain.Cold">冻原是一种平坦、荒凉的[地形|TERRAIN]。[*]进入只需 1 点[移动点数|MOVE-POINT]。[*]为[单位|UNIT]提供 1 点[补给|SUPPLY]。如果冻原[地块|TILE]还含有[森林|FOREST]或[HILL]等崎岖地形，或受到[寒冷|COLD]或[天气|WEATHER]影响，这些数值会改变。地图上的冻原区域通常含有大量可[采集|HARVEST]的[矿物|MINERAL]，有时甚至还有[动物|ANIMAL]。</e>
-    <e ntry="TEXT.Description.Terrain.Forest">森林是主要[地形|TERRAIN]障碍，可以被[采集|HARVEST]以获得[TIMBER]。[*]进入后失去[COLOR:EMPHASIS]全部[/COLOR]剩余[移动点数|MOVE-POINT]。[*]使[单位|UNIT]可用[补给|SUPPLY]减少 1。[*]提供 25% [防御|DEFENSE]加成。[*]会阻挡[视野|VISION]（除非站在附近的[HILL]上）。森林也是木材的唯一来源，而[TIMBER]是[建造|CONSTRUCT][建筑|STRUCTURE]所需的[资源|RESOURCE]，因此在大部分游戏阶段都很关键。不要把森林与更易穿越但没有木材的[BRUSH-LEAFY]混淆。</e>
-    <e ntry="TEXT.Description.Terrain.Brush">灌木丛是一种不含有用[资源|RESOURCE]的[地形|TERRAIN]障碍。[*]进入时额外消耗 1 点[移动点数|MOVE-POINT]。[*]使[单位|UNIT]可用[补给|SUPPLY]减少 1。[*]提供 10% [防御|DEFENSE]加成。[*]需要额外 1 点[视野|VISION]才能看穿（除非站在附近的[HILL]上）。不要把灌木丛与[森林|FOREST]混淆；森林更难穿越，但含有可[采集|HARVEST]的[TIMBER]。</e>
+    <e ntry="TEXT.Description.Terrain.Fertile">草原是 AtG 中最宜居的[地形|TERRAIN]。[*]进入只需 1 点[移动点数|MOVE-POINT]。[*]为[单位|UNIT]提供 3 点[补给|SUPPLY]。如果草原[地块|TILE]还含有[森林|FOREST]或[HILL]等崎岖地形，或受到[寒冷|COLD]或[天气|WEATHER]影响，这些数值会改变。草原也常有各种可[采收|HARVEST]的[植物|PLANT]和[动物|ANIMAL]，例如[DEPOSIT-WHEAT:S]和[DEPOSIT-SHEEP:S]。</e>
+    <e ntry="TEXT.Description.Terrain.Dry">干草原是一种平坦、干燥的[地形|TERRAIN]。[*]进入只需 1 点[移动点数|MOVE-POINT]。[*]为[单位|UNIT]提供 2 点[补给|SUPPLY]。如果干草原[地块|TILE]还含有[森林|FOREST]或[HILL]等崎岖地形，或受到[寒冷|COLD]或[天气|WEATHER]影响，这些数值会改变。干草原也常有各种可[采收|HARVEST]的[植物|PLANT]和[动物|ANIMAL]，例如[DEPOSIT-WHEAT:S]和[DEPOSIT-CATTLE:S]。</e>
+    <e ntry="TEXT.Description.Terrain.Desert">沙漠是一种平坦、荒凉的[地形|TERRAIN]。[*]进入只需 1 点[移动点数|MOVE-POINT]。[*]不会为[单位|UNIT]提供[补给|SUPPLY]。如果沙漠[地块|TILE]还含有[HILL]等崎岖地形，移动消耗会改变。沙漠从不含可[采收|HARVEST]的[资源|RESOURCE]或任何植被。</e>
+    <e ntry="TEXT.Description.Terrain.Marsh">沼泽是一种极难进入的[地形|TERRAIN]，但有时含有可[采收|HARVEST]的[矿藏|MINERAL]。[*]进入时会消耗所有剩余[移动点数|MOVE-POINT]，并额外消耗下一[回合|TURN]的移动点。[*]为[单位|UNIT]提供 1 点[补给|SUPPLY]。由于移动惩罚严厉，沼泽通常最好避开，除非是为了[采收|HARVEST][IRON]或[COAL]等[矿物|MINERAL]。</e>
+    <e ntry="TEXT.Description.Terrain.Cold">冻原是一种平坦、荒凉的[地形|TERRAIN]。[*]进入只需 1 点[移动点数|MOVE-POINT]。[*]为[单位|UNIT]提供 1 点[补给|SUPPLY]。如果冻原[地块|TILE]还含有[森林|FOREST]或[HILL]等崎岖地形，或受到[寒冷|COLD]或[天气|WEATHER]影响，这些数值会改变。地图上的冻原区域通常含有大量可[采收|HARVEST]的[矿物|MINERAL]，有时甚至还有[动物|ANIMAL]。</e>
+    <e ntry="TEXT.Description.Terrain.Forest">森林是主要[地形|TERRAIN]障碍，可以被[采收|HARVEST]以获得[TIMBER]。[*]进入后失去[COLOR:EMPHASIS]全部[/COLOR]剩余[移动点数|MOVE-POINT]。[*]使[单位|UNIT]可用[补给|SUPPLY]减少 1。[*]提供 25% [防御|DEFENSE]加成。[*]会阻挡[视野|VISION]（除非站在附近的[HILL]上）。森林也是木材的唯一来源，而[TIMBER]是[建造|CONSTRUCT][建筑|STRUCTURE]所需的[资源|RESOURCE]，因此在大部分游戏阶段都很关键。不要把森林与更易穿越但没有木材的[BRUSH-LEAFY]混淆。</e>
+    <e ntry="TEXT.Description.Terrain.Brush">灌木丛是一种不含有用[资源|RESOURCE]的[地形|TERRAIN]障碍。[*]进入时额外消耗 1 点[移动点数|MOVE-POINT]。[*]使[单位|UNIT]可用[补给|SUPPLY]减少 1。[*]提供 10% [防御|DEFENSE]加成。[*]需要额外 1 点[视野|VISION]才能看穿（除非站在附近的[HILL]上）。不要把灌木丛与[森林|FOREST]混淆；森林更难穿越，但含有可[采收|HARVEST]的[TIMBER]。</e>
     <e ntry="TEXT.Description.Terrain.Snow">雪地是一种临时的、基于[季节|SEASON]的[地形|TERRAIN]，会替换[地块|TILE]上原本的内容。[*]进入需要 2 点[移动点数|MOVE-POINT]。[*]不会为[单位|UNIT]提供[补给|SUPPLY]。</e>
     <e ntry="TEXT.Description.Terrain.Blizzard">暴风雪是一种临时的、基于[天气|WEATHER]的[地形|TERRAIN]，可以添加到[地块|TILE]上。[*]带有暴风雪的地块无法进入或离开。[*]不会为[单位|UNIT]提供[补给|SUPPLY]。[*]大幅增加看入和看出该地块所需的[视野|VISION]消耗。</e>
     <e ntry="TEXT.Description.Terrain.Scorched">焦土地是一种临时的、基于[天气|WEATHER]的[地形|TERRAIN]，会替换[地块|TILE]上原本的内容。[*]焦土地块上的[建筑|STRUCTURE]会停摆并[离线|OFFLINE]。[*]不会为[单位|UNIT]提供[补给|SUPPLY]。</e>
@@ -540,10 +540,10 @@
     <!--                                                                  -->
     <!--                              Honor                               -->
     <!--                                                                  -->
-    <e ntry="TEXT.Description.Profession.Hunter">猎人可以通过[移动|MOVE-POINT]到含有[动物群|ANIMAL]的[地块|TILE]并进行[采集|FORAGE]来[采集|HARVEST][MEAT]。他们还可以[识别|UNIDENTIFIED][DEPOSIT-UNKNOWN-ANIMAL:S]。猎人也是你最早可用的[战士|WARRIOR][职业|PROFESSION]，不过战斗不是他们的本职，因此在多数严肃战斗中会吃亏。游戏初期把一个[氏族|CLAN][训练|TRAIN]成猎人，是维持部族口粮的好办法。</e>
+    <e ntry="TEXT.Description.Profession.Hunter">猎人可以通过[移动|MOVE-POINT]到含有[动物群|ANIMAL]的[地块|TILE]并进行[采集|FORAGE]来[采收|HARVEST][MEAT]。他们还可以[识别|UNIDENTIFIED][DEPOSIT-UNKNOWN-ANIMAL:S]。猎人也是你最早可用的[战士|WARRIOR][职业|PROFESSION]，不过战斗不是他们的本职，因此在多数严肃战斗中会吃亏。游戏初期把一个[氏族|CLAN][训练|TRAIN]成猎人，是维持部族口粮的好办法。</e>
     <e ntry="TEXT.Description.Profession.Archer">弓箭手是《At the Gates》中第一个“全职”[战士|WARRIOR][职业|PROFESSION]。他们在早期很有用，但如果你预期会有激烈战斗，应尽快用[SPEARMAN:S]替换。你可以用[WEAPONS]和[ARMOR]为弓箭手[升级|UPGRADE]，提高他们的[战力|POWER]。</e>
     <e ntry="TEXT.Description.Profession.FeastMaster">宴会主持人会[产出|PRODUCE]大量[FAME]。[训练|TRAIN]他们需要[ALCOHOL]。</e>
-    <e ntry="TEXT.Description.Profession.Watchman">守望者可以大幅扩展你的[边境|BORDERS]，并允许你用[TIMBER][建造|CONSTRUCT][WATCHTOWER:S]，从而[采集|HARVEST]远处的[资源矿藏|DEPOSIT]。即使在你现有边境之外也可以这样做。</e>
+    <e ntry="TEXT.Description.Profession.Watchman">守望者可以大幅扩展你的[边境|BORDERS]，并允许你用[TIMBER][建造|CONSTRUCT][WATCHTOWER:S]，从而[采收|HARVEST]远处的[资源矿藏|DEPOSIT]。即使在你现有边境之外也可以这样做。</e>
     <e ntry="TEXT.Description.Profession.Huntsman">猎户会提高你的[HUNTER:S][产出|PRODUCE][MEAT]的数量。[训练|TRAIN]他们需要[WEAPONS]。</e>
     <e ntry="TEXT.Description.Profession.Priest">祭司会[产出|PRODUCE]大量[KNOWLEDGE]，帮助你更快[学习|LEARN]新的[职业|PROFESSION]。[训练|TRAIN]他们需要[OIL]和[CLOTH]。</e>
     <e ntry="TEXT.Description.Profession.Cleric">教士会[产出|PRODUCE]巨量[KNOWLEDGE]，帮助你更快[学习|LEARN]新的[职业|PROFESSION]。[训练|TRAIN]他们需要[FINE-CLOTH]、[OIL]，并且需要一个[氏族|CLAN]已被[晋封贵族|NOBLE]。</e>
@@ -555,8 +555,8 @@
     <!--                                                                  -->
     <!--                          Agriculture                             -->
     <!--                                                                  -->
-    <e ntry="TEXT.Description.Profession.Gatherer">采集者可以通过[移动|MOVE-POINT]到含有[FRUIT]、[HONEY]、[GRAPES]或[OLIVES]等[来源|DEPOSIT]的[地块|TILE]并进行[采集|FORAGE]来[采集|HARVEST]这些资源。他们还可以[识别|UNIDENTIFIED][DEPOSIT-UNKNOWN-PLANT:S]。[寒冷|COLD]月份里，采集者只能从[DEPOSIT-BEEHIVE:S]和[DEPOSIT-BERRIES:S][采集|FORAGE]，这时可以让他们去[识别|UNIDENTIFIED]附近的[DEPOSIT-UNKNOWN-PLANT:S]。游戏初期把一个[氏族|CLAN][训练|TRAIN]成采集者，是维持部族口粮的好办法。</e>
-    <e ntry="TEXT.Description.Profession.Reaper">收割者可以通过[移动|MOVE-POINT]到含有[WHEAT]、[BARLEY]或[FLAX]等[植物|PLANT][来源|DEPOSIT]的[地块|TILE]并进行[采集|FORAGE]来[采集|HARVEST]这些资源。他们还可以[识别|UNIDENTIFIED][DEPOSIT-UNKNOWN-PLANT:S]。[寒冷|COLD]月份里，收割者无法采集任何东西，这时可以让他们去[识别|UNIDENTIFIED]附近的[DEPOSIT-UNKNOWN-PLANT:S]。游戏初期把一个[氏族|CLAN][训练|TRAIN]成收割者，是维持部族口粮的好办法。</e>
+    <e ntry="TEXT.Description.Profession.Gatherer">采集者可以通过[移动|MOVE-POINT]到含有[FRUIT]、[HONEY]、[GRAPES]或[OLIVES]等[来源|DEPOSIT]的[地块|TILE]并进行[采集|FORAGE]来[采收|HARVEST]这些资源。他们还可以[识别|UNIDENTIFIED][DEPOSIT-UNKNOWN-PLANT:S]。[寒冷|COLD]月份里，采集者只能从[DEPOSIT-BEEHIVE:S]和[DEPOSIT-BERRIES:S][采集|FORAGE]，这时可以让他们去[识别|UNIDENTIFIED]附近的[DEPOSIT-UNKNOWN-PLANT:S]。游戏初期把一个[氏族|CLAN][训练|TRAIN]成采集者，是维持部族口粮的好办法。</e>
+    <e ntry="TEXT.Description.Profession.Reaper">收割者可以通过[移动|MOVE-POINT]到含有[WHEAT]、[BARLEY]或[FLAX]等[植物|PLANT][来源|DEPOSIT]的[地块|TILE]并进行[采集|FORAGE]来[采收|HARVEST]这些资源。他们还可以[识别|UNIDENTIFIED][DEPOSIT-UNKNOWN-PLANT:S]。[寒冷|COLD]月份里，收割者无法采集任何东西，这时可以让他们去[识别|UNIDENTIFIED]附近的[DEPOSIT-UNKNOWN-PLANT:S]。游戏初期把一个[氏族|CLAN][训练|TRAIN]成收割者，是维持部族口粮的好办法。</e>
     <e ntry="TEXT.Description.Profession.Farmer">农夫可以在[植物|PLANT]上用[TIMBER]或[STONE-BLOCKS][建造|CONSTRUCT][农场|FARM]，也可以在[DEPOSIT-BEEHIVE:S]上建造[APIARY-1:S]。这些[建筑|STRUCTURE]的[产出|PRODUCE]高于使用[GATHERER]或[REAPER][采集|FORAGE]。游戏后期，农夫还可以作为[学徒|APPRENTICE]分配到高级的[STONE-BLOCKS:SINGULAR]农场，每名学徒都会使该建筑的[产出|PRODUCE]翻倍。</e>
     <e ntry="TEXT.Description.Profession.Beekeeper">养蜂人会提高你的[HONEY][产出|PRODUCE]。[训练|TRAIN]他们需要[TIMBER]。</e>
     <e ntry="TEXT.Description.Profession.BreadMaker">面包师会提高你的[WHEAT]和[BARLEY][产出|PRODUCE]。[训练|TRAIN]他们免费，但他们每回合会消耗[TIMBER]。</e>
@@ -575,9 +575,9 @@
     <!--                                                                  -->
     <!--                            Livestock                             -->
     <!--                                                                  -->
-    <e ntry="TEXT.Description.Profession.Trapper">捕兽人可以通过[采集|FORAGE][动物群|ANIMAL]来[采集|HARVEST][PARCHMENT]或[CLOTH]（作为皮革）。不过，这样做会比借助[牧场|PASTURE]和[PARCHMENT-MAKER]等加工[职业|PROFESSION][产出|PRODUCE]资源更快耗尽兽群。捕兽人还可以[识别|UNIDENTIFIED][DEPOSIT-UNKNOWN-ANIMAL:S]。游戏初期把一个[氏族|CLAN][训练|TRAIN]成捕兽人，是利用附近动物群、启动经济的好办法。</e>
+    <e ntry="TEXT.Description.Profession.Trapper">捕兽人可以通过[采集|FORAGE][动物群|ANIMAL]来[采收|HARVEST][PARCHMENT]或[CLOTH]（作为皮革）。不过，这样做会比借助[牧场|PASTURE]和[PARCHMENT-MAKER]等加工[职业|PROFESSION][产出|PRODUCE]资源更快耗尽兽群。捕兽人还可以[识别|UNIDENTIFIED][DEPOSIT-UNKNOWN-ANIMAL:S]。游戏初期把一个[氏族|CLAN][训练|TRAIN]成捕兽人，是利用附近动物群、启动经济的好办法。</e>
     <e ntry="TEXT.Description.Profession.Rancher">牧场主可以在[动物群|ANIMAL]上用[TIMBER]或[STONE-BLOCKS][建造|CONSTRUCT][牧场|PASTURE]，把它们加入你的[库存|STOCKPILE]，并允许其他[氏族|CLAN]从中[产出|PRODUCE]更高级的[资源|RESOURCE]（例如[MEAT-CUTTER:S]）。游戏后期，牧场主还可以作为[学徒|APPRENTICE]分配到高级的[STONE-BLOCKS:SINGULAR]牧场，每名学徒都会使加入[库存|STOCKPILE]的动物数量翻倍。</e>
-    <e ntry="TEXT.Description.Profession.Fisherman">渔夫是水域相关的[职业|PROFESSION]，可以通过[采集|FORAGE][DEPOSIT-FISH:S]来[采集|HARVEST]大量[FISH]。只有当你的[SETTLEMENT]毗邻大片水域时才能[训练|TRAIN]他们。如果你看到附近有一两个[FISH][来源|DEPOSIT]，可以考虑训练渔夫；这在游戏初期是供养部族的好办法。</e>
+    <e ntry="TEXT.Description.Profession.Fisherman">渔夫是水域相关的[职业|PROFESSION]，可以通过[采集|FORAGE][DEPOSIT-FISH:S]来[采收|HARVEST]大量[FISH]。只有当你的[SETTLEMENT]毗邻大片水域时才能[训练|TRAIN]他们。如果你看到附近有一两个[FISH][来源|DEPOSIT]，可以考虑训练渔夫；这在游戏初期是供养部族的好办法。</e>
     <e ntry="TEXT.Description.Profession.Trawler">拖网渔民会使你的[FISHERMAN:S][产出|PRODUCE][FISH]的数量翻倍。[训练|TRAIN]他们需要[CLOTH]。</e>
     <e ntry="TEXT.Description.Profession.WoolCollector">采毛工会[产出|PRODUCE][WOOL]，数量取决于你[库存|STOCKPILE]中的[SHEEP]数量。你的羊在这个过程中不会受伤！[训练|TRAIN]他们需要[TOOLS]。</e>
     <e ntry="TEXT.Description.Profession.Shearer">剪毛工会[产出|PRODUCE]巨量[WOOL]，数量取决于你[库存|STOCKPILE]中的[SHEEP]数量。你的羊在这个过程中不会受伤！[训练|TRAIN]他们需要[STEEL-TOOLS]。</e>
@@ -596,11 +596,11 @@
     <!--                                                                  -->
     <!--                          Metalworking                            -->
     <!--                                                                  -->
-    <e ntry="TEXT.Description.Profession.Digger">挖掘者可以通过[移动|MOVE-POINT]到含有矿藏的[地块|TILE]并进行[采集|FORAGE]来[采集|HARVEST][矿物|MINERAL][资源|RESOURCE]。他们还可以[识别|UNIDENTIFIED][DEPOSIT-UNKNOWN-MINERAL:S]。游戏初期把一个[氏族|CLAN][训练|TRAIN]成挖掘者，是利用附近矿物、启动经济的好办法。</e>
+    <e ntry="TEXT.Description.Profession.Digger">挖掘者可以通过[移动|MOVE-POINT]到含有矿藏的[地块|TILE]并进行[采集|FORAGE]来[采收|HARVEST][矿物|MINERAL][资源|RESOURCE]。他们还可以[识别|UNIDENTIFIED][DEPOSIT-UNKNOWN-MINERAL:S]。游戏初期把一个[氏族|CLAN][训练|TRAIN]成挖掘者，是利用附近矿物、启动经济的好办法。</e>
     <e ntry="TEXT.Description.Profession.Miner">矿工可以在[矿物|MINERAL]上用[TIMBER]或[STONE-BLOCKS][建造|CONSTRUCT][矿井|MINE]。矿井的[产出|PRODUCE]高于使用[DIGGER][采集|FORAGE]。游戏后期，矿工还可以作为[学徒|APPRENTICE]分配到高级的[STONE-BLOCKS:SINGULAR]矿井，每名学徒都会使该建筑的[产出|PRODUCE]翻倍。</e>
     <e ntry="TEXT.Description.Profession.Dredger">采矿督工会提高你的[DIGGER:S][产出|PRODUCE]。[训练|TRAIN]他们需要[TOOLS]。</e>
-    <e ntry="TEXT.Description.Profession.Blacksmith">铁匠会用[IRON][产出|PRODUCE][TOOLS]。先用[DIGGER][采集|HARVEST][IRON]，再让铁匠把铁制成工具，是游戏早期启动经济的好办法。</e>
-    <e ntry="TEXT.Description.Profession.Weaponsmith">武器匠会用[IRON][产出|PRODUCE][WEAPONS]。先用[DIGGER][采集|HARVEST][IRON]，再让武器匠把铁制成武器，是游戏早期启动经济的好办法。</e>
+    <e ntry="TEXT.Description.Profession.Blacksmith">铁匠会用[IRON][产出|PRODUCE][TOOLS]。先用[DIGGER][采收|HARVEST][IRON]，再让铁匠把铁制成工具，是游戏早期启动经济的好办法。</e>
+    <e ntry="TEXT.Description.Profession.Weaponsmith">武器匠会用[IRON][产出|PRODUCE][WEAPONS]。先用[DIGGER][采收|HARVEST][IRON]，再让武器匠把铁制成武器，是游戏早期启动经济的好办法。</e>
     <e ntry="TEXT.Description.Profession.Bladesmith">刀匠会用[IRON][产出|PRODUCE]大量[WEAPONS]。[训练|TRAIN]他们需要[TOOLS]。</e>
     <e ntry="TEXT.Description.Profession.Smelter">熔炼工会极大提高你的[IRON][产出|PRODUCE]。[训练|TRAIN]他们需要[STONE-BLOCKS]，并且每回合会消耗[COAL]。</e>
     <e ntry="TEXT.Description.Profession.AnvilMaker">铁砧匠会使你的[TOOLS]和[WEAPONS][产出|PRODUCE]变为三倍。[训练|TRAIN]他们需要[TOOLS]，并且每回合会消耗[COAL]。</e>
@@ -619,7 +619,7 @@
     <!--                                                                  -->
     <!--                            Crafting                              -->
     <!--                                                                  -->
-    <e ntry="TEXT.Description.Profession.WoodCollector">伐木采集者可以通过[移动|MOVE-POINT]到含有[森林|FOREST]的[地块|TILE]（但不能是外观相似的[BRUSH-LEAFY]）并进行[采集|FORAGE]来[采集|HARVEST][TIMBER]。游戏初期把一个[氏族|CLAN][训练|TRAIN]成伐木采集者，是利用附近森林、启动经济的好办法。</e>
+    <e ntry="TEXT.Description.Profession.WoodCollector">伐木采集者可以通过[移动|MOVE-POINT]到含有[森林|FOREST]的[地块|TILE]（但不能是外观相似的[BRUSH-LEAFY]）并进行[采集|FORAGE]来[采收|HARVEST][TIMBER]。游戏初期把一个[氏族|CLAN][训练|TRAIN]成伐木采集者，是利用附近森林、启动经济的好办法。</e>
     <e ntry="TEXT.Description.Profession.Logger">伐木工可以[建造|CONSTRUCT][LOGGING-CAMP-1:S]，从建筑所在以及相邻的含[森林|FOREST][地块|TILE][产出|PRODUCE][TIMBER]。伐木工也可以作为[学徒|APPRENTICE]分配到用[STONE-BLOCKS]建成的高级[LOGGING-CAMP-2]，每名学徒都会使[TIMBER]产量增加 4。</e>
     <e ntry="TEXT.Description.Profession.Potter">陶工会提高你的[HUNTER:S]、[GATHERER:S]和[REAPER:S]的[产出|PRODUCE]。[训练|TRAIN]他们需要[TIMBER]。</e>
     <e ntry="TEXT.Description.Profession.WoodBundler">捆木工会提高你的[WOOD-COLLECTOR:S][产出|PRODUCE]。[训练|TRAIN]他们需要[TOOLS]。</e>
@@ -690,11 +690,11 @@
     <e ntry="TEXT.Description.Resource.Knowledge">你[产出|PRODUCE]的知识越多，就能越快[学习|LEARN]新的[职业|PROFESSION]来[训练|TRAIN]你的[氏族|CLAN]，也能更快学习[升级|UPGRADE]使他们更强。游戏开始时你每[回合|TURN][产出|PRODUCE] 4 点知识，但可以通过把氏族训练成[LOREKEEPER]、[PRIEST]、[TINKERER]等产出知识的职业来大幅提高。</e>
     <e ntry="TEXT.Description.Resource.Treasure">财富可以让你从[商队|CARAVAN]购买其他[资源|RESOURCE]。获得财富的三种主要方式是：把不需要的资源卖给商队，[建造|CONSTRUCT][TRADING-POST-1:S]，以及在黄金或宝石等稀有[矿藏|MINERAL]上建造[矿井|MINE]。你也会因[劫掠|PILLAGE]敌方[建筑|STRUCTURE]而获得少量财富。</e>
     <e ntry="TEXT.Description.Resource.Food">食物是游戏中最重要的[资源|RESOURCE]，因为一旦耗尽，你的部族就会[挨饿|STARVE]。与所有其他资源不同，它以[可维持回合数|STORED-TURN]储存，而不是具体数量。你的每个[氏族|CLAN]的每个[家庭|FAMILY]每[回合|TURN][消耗|CONSUME] 0.2 食物。开局时你有 3 个氏族、每个 1 个家庭，总共每回合消耗 0.6 食物。你早期的大部分食物来自[采集|FORAGE]，通常由[GATHERER]完成。之后，[建造|CONSTRUCT][农场|STRUCTURE]和[牧场|PASTURE]能让你[产出|PRODUCE]更多食物。</e>
-    <e ntry="TEXT.Description.Resource.Wheat">小麦是一种[FOOD]，可以由[REAPER:S]和[WHEAT-FARM-1:S]从特殊[来源|DEPOSIT]中[采集|HARVEST]。小麦也可以由[ALE-MAKER]转化为[ALCOHOL]。</e>
-    <e ntry="TEXT.Description.Resource.Fish">鱼是一种[FOOD]，可以由[FISHERMAN:S]从特殊[来源|DEPOSIT]中[采集|HARVEST]。</e>
+    <e ntry="TEXT.Description.Resource.Wheat">小麦是一种[FOOD]，可以由[REAPER:S]和[WHEAT-FARM-1:S]从特殊[来源|DEPOSIT]中[采收|HARVEST]。小麦也可以由[ALE-MAKER]转化为[ALCOHOL]。</e>
+    <e ntry="TEXT.Description.Resource.Fish">鱼是一种[FOOD]，可以由[FISHERMAN:S]从特殊[来源|DEPOSIT]中[采收|HARVEST]。</e>
     <e ntry="TEXT.Description.Resource.Meat">肉是一种[FOOD]，可以由[MEAT-CUTTER:S]利用你[库存|STOCKPILE]中的[动物|ANIMAL][产出|PRODUCE]。</e>
     <e ntry="TEXT.Description.Resource.Cheese">奶酪是一种[FOOD]，可以由[CHEESEMAKER:S][产出|PRODUCE]，数量取决于你[库存|STOCKPILE]中拥有多少[CATTLE]和[SHEEP]。</e>
-    <e ntry="TEXT.Description.Resource.Fruit">水果是一种[FOOD]，可以由[REAPER:S]和[WHEAT-FARM-1:S]从特殊[来源|DEPOSIT]中[采集|HARVEST]。</e>
+    <e ntry="TEXT.Description.Resource.Fruit">水果是一种[FOOD]，可以由[REAPER:S]和[WHEAT-FARM-1:S]从特殊[来源|DEPOSIT]中[采收|HARVEST]。</e>
     <e ntry="TEXT.Description.Resource.Warhorse">战马用于[训练|TRAIN]快速而强大的[骑兵|CAVALRY]。如果部族正在挨饿，1 匹[WARHORSES:SINGULAR]会自动转化为 5 [FOOD]。</e>
     <e ntry="TEXT.Description.Resource.Horse">马可以像其他[动物|ANIMAL]一样使用，也可以由[HORSE-TRAINER]转化为[WARHORSES]。如果部族正在挨饿，你[库存|STOCKPILE]中的 1 匹[HORSES:SINGULAR]会自动转化为 5 [FOOD]。</e>
     <e ntry="TEXT.Description.Resource.Sheep">羊可以像其他[动物|ANIMAL]一样使用，也可以在[WOOL-COLLECTOR]和[WEAVER]帮助下用于制造[CLOTH]。如果部族正在挨饿，你[库存|STOCKPILE]中的 1 只[SHEEP:SINGULAR]会自动转化为 4 [FOOD]。</e>
@@ -708,24 +708,24 @@
     <e ntry="TEXT.Description.Resource.Armor">盔甲可用于[训练|TRAIN]高级[步兵|INFANTRY]和[骑兵|CAVALRY]，也是部分高级[升级|UPGRADE]的需求。盔甲由[ARMORSMITH]使用[IRON]锻造。</e>
     <e ntry="TEXT.Description.Resource.Weapons">武器用于[训练|TRAIN]几乎所有[战士|WARRIOR][职业|PROFESSION]，也可以用于[升级|UPGRADE]他们的[战力|POWER]。武器由[WEAPONSMITH]使用[IRON]锻造。</e>
     <e ntry="TEXT.Description.Resource.Tool">工具用于[训练|TRAIN]许多[定居|SETTLED][平民|CIVILIAN][职业|PROFESSION]，也是许多游戏早期[升级|UPGRADE]的需求。工具由[BLACKSMITH]使用[IRON]锻造。</e>
-    <e ntry="TEXT.Description.Resource.Iron">铁由[DIGGER:S]或[IRON-MINE-1:S]从[矿藏|MINERAL]中[采集|HARVEST]。铁可以由[BLACKSMITH]锻造成[TOOLS]，由[WEAPONSMITH]锻造成[WEAPONS]，或由[STEELMAKER]锻造成[STEEL]。</e>
-    <e ntry="TEXT.Description.Resource.Coal">煤由[DIGGER:S]或[IRON-MINE-1:S]从[矿藏|MINERAL]中[采集|HARVEST]。[STEELMAKER:S]可以把煤和[IRON]结合制成[STEEL]；少数提高[FOOD]的高级[职业|PROFESSION]也需要煤，例如[BAKER]。</e>
+    <e ntry="TEXT.Description.Resource.Iron">铁由[DIGGER:S]或[IRON-MINE-1:S]从[矿藏|MINERAL]中[采收|HARVEST]。铁可以由[BLACKSMITH]锻造成[TOOLS]，由[WEAPONSMITH]锻造成[WEAPONS]，或由[STEELMAKER]锻造成[STEEL]。</e>
+    <e ntry="TEXT.Description.Resource.Coal">煤由[DIGGER:S]或[IRON-MINE-1:S]从[矿藏|MINERAL]中[采收|HARVEST]。[STEELMAKER:S]可以把煤和[IRON]结合制成[STEEL]；少数提高[FOOD]的高级[职业|PROFESSION]也需要煤，例如[BAKER]。</e>
     <e ntry="TEXT.Description.Resource.StoneBlock">石块由[BLOCK-CUTTER]使用[STONE]制造。石块是非常重要的[资源|RESOURCE]，可用于[建造|CONSTRUCT]永不[损耗|DEGRADE]的永久性[建筑|STRUCTURE]。部分[职业|PROFESSION][升级|UPGRADE]也需要石块。</e>
-    <e ntry="TEXT.Description.Resource.Stone">石料由[DIGGER:S]或[STONE-QUARRY-1:S]从[矿藏|MINERAL]中[采集|HARVEST]。石料的主要用途是由[BLOCK-CUTTER]转化为[STONE-BLOCKS]，再用来[建造|CONSTRUCT]永不[损耗|DEGRADE]的[建筑|STRUCTURE]。它也能用于其他杂项用途，例如让[STONECARVER]把它转化为[FAME]。</e>
+    <e ntry="TEXT.Description.Resource.Stone">石料由[DIGGER:S]或[STONE-QUARRY-1:S]从[矿藏|MINERAL]中[采收|HARVEST]。石料的主要用途是由[BLOCK-CUTTER]转化为[STONE-BLOCKS]，再用来[建造|CONSTRUCT]永不[损耗|DEGRADE]的[建筑|STRUCTURE]。它也能用于其他杂项用途，例如让[STONECARVER]把它转化为[FAME]。</e>
     <e ntry="TEXT.Description.Resource.Board">木板由[WOODSPLITTER:S]使用[TIMBER]制造，可用于几种用途：[*]花费它为高级[STONE-BLOCKS:SINGULAR][建筑|STRUCTURE]添加[学徒槽位|APPRENTICE]。[*]花费用于获得部分[职业|PROFESSION][升级|UPGRADE]。[*]在游戏后期用于建造[GALLEY:S]和[CATAPULT:S]。</e>
-    <e ntry="TEXT.Description.Resource.Timber">木材由[WOOD-COLLECTOR:S]或[LOGGING-CAMP-1:S]从[森林|FOREST]中[采集|HARVEST]，用途很多：[*]与[商队|CARAVAN]交易，换取其他[资源|RESOURCE]。[*]用于有经济价值的用途，例如让[WOODCARVER]把它转化为[FAME]。[*]由[WOODSPLITTER]转化为[BOARDS]。</e>
-    <e ntry="TEXT.Description.Resource.Parchment">羊皮纸由[TRAPPER:S]从[动物|ANIMAL]中[采集|HARVEST]，或由[PARCHMENT-MAKER:S]从[库存中的|STOCKPILE]动物中[产出|PRODUCE]，用途很多：[*][训练|TRAIN]氏族成为部分[平民|CIVILIAN][职业|PROFESSION]，尤其是[DISCOVERY]类职业。[*]花费用于获得部分[职业|PROFESSION][升级|UPGRADE]。[*]用于[宣布你的王国|DECLARE-KINGDOM]。[*]花费用于从氏族身上移除[特质|CLAN-TRAIT]或[罪行|CRIME]（通过[INSTRUCTOR]）。</e>
+    <e ntry="TEXT.Description.Resource.Timber">木材由[WOOD-COLLECTOR:S]或[LOGGING-CAMP-1:S]从[森林|FOREST]中[采收|HARVEST]，用途很多：[*]与[商队|CARAVAN]交易，换取其他[资源|RESOURCE]。[*]用于有经济价值的用途，例如让[WOODCARVER]把它转化为[FAME]。[*]由[WOODSPLITTER]转化为[BOARDS]。</e>
+    <e ntry="TEXT.Description.Resource.Parchment">羊皮纸由[TRAPPER:S]从[动物|ANIMAL]中[采收|HARVEST]，或由[PARCHMENT-MAKER:S]从[库存中的|STOCKPILE]动物中[产出|PRODUCE]，用途很多：[*][训练|TRAIN]氏族成为部分[平民|CIVILIAN][职业|PROFESSION]，尤其是[DISCOVERY]类职业。[*]花费用于获得部分[职业|PROFESSION][升级|UPGRADE]。[*]用于[宣布你的王国|DECLARE-KINGDOM]。[*]花费用于从氏族身上移除[特质|CLAN-TRAIT]或[罪行|CRIME]（通过[INSTRUCTOR]）。</e>
     <e ntry="TEXT.Description.Resource.FineCloth">精布是一种高级[资源|RESOURCE]，主要用于[晋封|NOBLE][氏族|CLAN]，也用于[训练|TRAIN]他们成为少数后期[平民|CIVILIAN][职业|PROFESSION]（例如[CLERIC]）。精布由[COUTURIER]使用普通[CLOTH]制造。</e>
-    <e ntry="TEXT.Description.Resource.Cloth">布料由[TRAPPER:S]从[动物|ANIMAL]中[采集|HARVEST]（作为皮革），或由[WEAVER:S]用[WOOL]或[FLAX][产出|PRODUCE]，用途很多：[*]在氏族界面花费以提高你的[氏族上限|POPCAP]。[*]花费用于获得部分[职业|PROFESSION][升级|UPGRADE]（例如[FISHERMAN:S]或[GATHERER:S]）。[*]花费用于[训练|TRAIN]氏族成为部分[职业|PROFESSION]（例如[PRIEST]、[GALLEY]）。[*]与[OIL]一起花费用于[治疗|DAMAGE]受伤的[战士|WARRIOR]。</e>
+    <e ntry="TEXT.Description.Resource.Cloth">布料由[TRAPPER:S]从[动物|ANIMAL]中[采收|HARVEST]（作为皮革），或由[WEAVER:S]用[WOOL]或[FLAX][产出|PRODUCE]，用途很多：[*]在氏族界面花费以提高你的[氏族上限|POPCAP]。[*]花费用于获得部分[职业|PROFESSION][升级|UPGRADE]（例如[FISHERMAN:S]或[GATHERER:S]）。[*]花费用于[训练|TRAIN]氏族成为部分[职业|PROFESSION]（例如[PRIEST]、[GALLEY]）。[*]与[OIL]一起花费用于[治疗|DAMAGE]受伤的[战士|WARRIOR]。</e>
     <e ntry="TEXT.Description.Resource.Wool">羊毛由[WOOL-COLLECTOR:S][产出|PRODUCE]，数量取决于你[库存|STOCKPILE]中有多少[SHEEP]。你的羊在这个过程中不会受伤！[WEAVER:S]可以把[WOOL]转化为[CLOTH]。</e>
-    <e ntry="TEXT.Description.Resource.Flax">亚麻由[REAPER:S]或[FLAX-FARM-1:S]从[DEPOSIT-FLAX:S]中[采集|HARVEST]，用途有几种：[*]与[商队|CARAVAN]交易，换取其他[资源|RESOURCE]。[*]由[WEAVER]转化为[CLOTH]。[*]由[OIL-PRESSER]转化为[OIL]。</e>
+    <e ntry="TEXT.Description.Resource.Flax">亚麻由[REAPER:S]或[FLAX-FARM-1:S]从[DEPOSIT-FLAX:S]中[采收|HARVEST]，用途有几种：[*]与[商队|CARAVAN]交易，换取其他[资源|RESOURCE]。[*]由[WEAVER]转化为[CLOTH]。[*]由[OIL-PRESSER]转化为[OIL]。</e>
     <e ntry="TEXT.Description.Resource.Oil">油由[OLIVES]或[FLAX][产出|PRODUCE]，用途有几种：[*]与[商队|CARAVAN]交易，换取其他[资源|RESOURCE]。[*]花费用于[训练|TRAIN]氏族成为部分高级[职业|PROFESSION]，尤其是[HONOR]类职业。[*]与[CLOTH]一起花费用于[治疗|DAMAGE]受伤的[战士|WARRIOR]。</e>
     <e ntry="TEXT.Description.Resource.Olives">当你的部族没有其他东西可吃时，橄榄会自动转化为[FOOD]。不过更好的用途是让[OIL-PRESSER]把橄榄转化为[OIL]。</e>
     <e ntry="TEXT.Description.Resource.Alcohol">酒由[GRAPES]、[HONEY]、[BARLEY]和[WHEAT][产出|PRODUCE]。它有几种用途：[*]与[商队|CARAVAN]交易，换取其他[资源|RESOURCE]。[*]花费用于暂时提高一个氏族的[心情|MOOD]（按钮显示在氏族卡片上）。[*]花费用于[训练|TRAIN]氏族成为少数[职业|PROFESSION]（例如[FEAST-MASTER]）。</e>
     <e ntry="TEXT.Description.Resource.Grapes">当你的部族没有其他东西可吃时，葡萄会自动转化为[FOOD]。不过更好的用途是让[WINEMAKER]把葡萄转化为[ALCOHOL]。</e>
     <e ntry="TEXT.Description.Resource.Honey">当你的部族没有其他东西可吃时，蜂蜜会自动转化为[FOOD]。不过更好的用途是让[WINEMAKER]把蜂蜜转化为[ALCOHOL]。</e>
     <e ntry="TEXT.Description.Resource.Barley">当你的部族没有其他东西可吃时，大麦会自动转化为[FOOD]。不过更好的用途是让[ALE-MAKER]把大麦转化为[ALCOHOL]。</e>
-    <e ntry="TEXT.Description.Resource.Salt">盐由[DIGGER:S]或[SALT-MINE-1:S]从[DEPOSIT-SALT:S]中[采集|HARVEST]，用途有几种：[*]与[商队|CARAVAN]交易，换取其他[资源|RESOURCE]。[*]供[BRINER]和[CHEESEMAKER]等[职业|PROFESSION]使用，大幅提高你的[FOOD][产出|PRODUCE]。</e>
+    <e ntry="TEXT.Description.Resource.Salt">盐由[DIGGER:S]或[SALT-MINE-1:S]从[DEPOSIT-SALT:S]中[采收|HARVEST]，用途有几种：[*]与[商队|CARAVAN]交易，换取其他[资源|RESOURCE]。[*]供[BRINER]和[CHEESEMAKER]等[职业|PROFESSION]使用，大幅提高你的[FOOD][产出|PRODUCE]。</e>
   </resources>
   <techs>
     <e ntry="TEXT.Description.Tech.Upgrade.1">升级 #1</e>
@@ -856,10 +856,10 @@
     <e ntry="TEXT.Interface.Heading.Produces">[产出|PRODUCE][资源|RESOURCE]</e>
     <e ntry="TEXT.Interface.Heading.Consumes">[消耗|CONSUME][资源|RESOURCE]</e>
     <e ntry="TEXT.Interface.Heading.ProducedPerTurn">每[回合|TURN][产出|PRODUCE][???:RESOURCE]</e>
-    <e ntry="TEXT.Interface.Heading.HarvestedPerTurn">每[回合|TURN][采集|HARVEST][???:RESOURCE]</e>
-    <e ntry="TEXT.Interface.Heading.HarvestedPerTurnWhenForaging">[采集|FORAGE]时每[回合|TURN][采集|HARVEST][???:RESOURCE]</e>
-    <e ntry="TEXT.Interface.Heading.ResourcesHarvestedPerTurnWhenForaging">[采集|FORAGE]时每[回合|TURN][采集|HARVEST]</e>
-    <e ntry="TEXT.Interface.Heading.CanBeHarvested">可被[采集|HARVEST]</e>
+    <e ntry="TEXT.Interface.Heading.HarvestedPerTurn">每[回合|TURN][采收|HARVEST][???:RESOURCE]</e>
+    <e ntry="TEXT.Interface.Heading.HarvestedPerTurnWhenForaging">[采集|FORAGE]时每[回合|TURN][采收|HARVEST][???:RESOURCE]</e>
+    <e ntry="TEXT.Interface.Heading.ResourcesHarvestedPerTurnWhenForaging">[采集|FORAGE]时每[回合|TURN][采收|HARVEST]</e>
+    <e ntry="TEXT.Interface.Heading.CanBeHarvested">可被[采收|HARVEST]</e>
     <e ntry="TEXT.Interface.Heading.CostToTrain">[训练|TRAIN]费用</e>
     <e ntry="TEXT.Interface.Heading.CostToConstruct">[建造|CONSTRUCT]费用</e>
     <e ntry="TEXT.Interface.Heading.CostAndProduction">费用[AND][产出|PRODUCE][资源|RESOURCE]</e>
@@ -962,41 +962,41 @@
     <e ntry="TEXT.Tip.BasicGameSummary.3">你的最终[目标|WINNING]是[建立王国|DECLARE-KINGDOM]，强大到足以推翻[罗马帝国|ROME]，无论是通过军事手段，还是更间接的方式。每局开始时，你会先[采集|FORAGE][FOOD]，最终在一个地点[定居|DECLARE-KINGDOM]下来，并用[STONE-BLOCKS]建造更高级、更永久的[建筑|STRUCTURE]。</e>
     <e ntry="TEXT.Tip.BasicGameSummary.4">世界上还有其他已经在地图上存在一段时间的[派系|FACTION]，其中一些从游戏一开始就极其强大。在 AtG 中，你并不直接与任何人竞争，但这并不意味着你可以无视邻居。[其他领袖|LEADER]可能拥有强烈的[个性|LEADER-TRAIT]（以及军队），如果你激怒了某人，可能会后悔。</e>
     <e ntry="TEXT.Tip.WhatToDoOnTheFirstTurn.1">你的第一项事务，是决定将 3 个[氏族|CLAN]中的哪一个[训练|TRAIN]为什么[职业|PROFESSION]。我们建议从[EXPLORER]开始。接下来，你需要选择一项[科技|TECH]开始[研究|STUDY]。我们建议从[AGRICULTURE]开始。这些都是你之后会经常做出的决定。</e>
-    <e ntry="TEXT.Tip.WhatToDoOnTheFirstTurn.2">第一回合你只需要做这些；不过下一回合，你会有一个崭新的[单位|UNIT]准备开始探索，或从地图上[采集资源|HARVEST]。你当前最重要的任务会始终显示在世界界面右上角发光的按钮中。</e>
+    <e ntry="TEXT.Tip.WhatToDoOnTheFirstTurn.2">第一回合你只需要做这些；不过下一回合，你会有一个崭新的[单位|UNIT]准备开始探索，或从地图上[采收|HARVEST]。你当前最重要的任务会始终显示在世界界面右上角发光的按钮中。</e>
     <e ntry="TEXT.Tip.WhatToDoOnTheFirstTurn.3">记住，你随时可以在世界界面按 [HOTKEY:?] 重新阅读这些提示。</e>
     <!-- , then click the "What should I do right now?" button (COMING SOON) -->
-    <e ntry="TEXT.Tip.WhatToDoOnTheFirstTurnContinued.1">游戏最初几个回合的高层目标是：[*]用[EXPLORER]揭开周围地图，寻找[废弃遗迹|DESERTED-LOCATION]（其中常有有用物品）以及你可以[采集|HARVEST]的[资源矿藏|DEPOSIT]。[*]将[氏族|CLAN][训练|TRAIN]成[采集者|FORAGE]，以便[采集矿藏|HARVEST]你已经知道的资源。</e>
+    <e ntry="TEXT.Tip.WhatToDoOnTheFirstTurnContinued.1">游戏最初几个回合的高层目标是：[*]用[EXPLORER]揭开周围地图，寻找[废弃遗迹|DESERTED-LOCATION]（其中常有有用物品）以及你可以[采收|HARVEST]的[资源矿藏|DEPOSIT]。[*]将[氏族|CLAN][训练|TRAIN]成[采集者|FORAGE]，以便[采收|HARVEST]你已经知道的资源。</e>
     <e ntry="TEXT.Tip.WhatToDoOnTheFirstTurnContinued.2">在很大程度上，你可以用地图来引导战略决策。附近可用的任何[资源矿藏|DEPOSIT]通常都应成为经济基础，因为即便是你不需要的东西，也能在[商队|CARAVAN]到访时交易成你缺少的东西。至少，你很快会想要一个[HUNTER]、[GATHERER]或[REAPER]，赶在[冬寒|SEASON]降临之前。</e>
     <e ntry="TEXT.Tip.HowToWin.1">AtG 有 2 种[获胜方式|WINNING]：[*]征服两个[罗马帝国派系|ROME]之一的[首都|CAPITAL]。[*]成为“军事统帅”，派出五个[氏族|CLAN]成为罗马军团，从内部接管[罗马|ROME]。注意，罗马[派系|FACTION]有两个：曾经完整而辉煌的罗马帝国的东西两半，任意一方都能满足你的[胜利条件|WINNING]。</e>
     <e ntry="TEXT.Tip.HowToWin.2">征服罗马首都需要先在地图上找到它，并做好大量军事准备。虽然罗马会遭遇各种挫折，但他们开局仍相当强大，也能打出一场硬仗。成为军事统帅更像是一种经济胜利，因为派遣一个[氏族|CLAN]前往[罗马|ROME]不仅意味着让它离开一年，还要为它提供昂贵的后期装备。</e>
     <e ntry="TEXT.Tip.HowToWinContinued.1">在此过程中，你最好尽力让邻近[派系|FACTION]的[领袖|LEADER]保持高兴，因为如果惹恼他们，他们也可能非常强大而危险。他们的实力差异巨大，也不会与你争夺[胜利|WINNING]，但他们的[个性|LEADER-TRAIT]都非常独特，你绝对不想意外树错敌人！好的一面是，这些[领袖|LEADER]并不试图达成和你相同的目标，只是在彼此之间争夺支配地位。</e>
     <e ntry="TEXT.Tip.HowToWinContinued.2">你可以在胜利进度界面（F7）查看并管理自己的[胜利|WINNING]进展。</e>
     <e ntry="TEXT.Tip.BasicGameRules.1">你主要会与自己的[氏族|CLAN]互动。它们一开始位于你的[SETTLEMENT]内，可以被[训练|TRAIN]为各种[职业|PROFESSION]，其中一些职业允许它们作为[单位|UNIT]在地图上[移动|MOVE-POINT]。你拥有的[氏族|CLAN]越多，能做的事情就越多，但部族消耗的[FOOD]也越多。新[氏族|CLAN]每隔几回合抵达一次，速度取决于你正在产生多少[FAME]。</e>
-    <e ntry="TEXT.Tip.BasicGameRules.2">[资源|RESOURCE]由[采集者|FORAGE]从地图上的[矿藏|DEPOSIT]和[茂密森林|FOREST]中[采集|HARVEST]，游戏后期则由更高效也更昂贵的[建筑|STRUCTURE]产出。[矿藏|DEPOSIT]最终会耗尽，因此你需要不断寻找新的矿藏，至少在你能够[建造|CONSTRUCT]高度先进、基于[STONE-BLOCKS:SINGULAR]且永久存在的[建筑|STRUCTURE]之前是这样。</e>
+    <e ntry="TEXT.Tip.BasicGameRules.2">[资源|RESOURCE]由[采集者|FORAGE]从地图上的[矿藏|DEPOSIT]和[茂密森林|FOREST]中[采收|HARVEST]，游戏后期则由更高效也更昂贵的[建筑|STRUCTURE]产出。[矿藏|DEPOSIT]最终会耗尽，因此你需要不断寻找新的矿藏，至少在你能够[建造|CONSTRUCT]高度先进、基于[STONE-BLOCKS:SINGULAR]且永久存在的[建筑|STRUCTURE]之前是这样。</e>
     <e ntry="TEXT.Tip.BasicGameRules.3">每个回合代表半个月，最终会进入[冬季|COLD]。大多数[FOOD]来源会在[寒冷月份|COLD]停止[产出|PRODUCE]，所以在天气变冷前务必储备足够的[食物回合数|STORED-TURN]！[冬季|COLD]通常持续约 10 回合，所以尽量始终至少保有这么多。</e>
     <e ntry="TEXT.Tip.InterfaceAndBasicGameControls.1">《At the Gates》拥有有史以来最酷的提示框，所以一定要好好利用它们！把鼠标移到游戏中任何高亮词语上，就能了解更多，甚至可以在其他提示框内部继续这样做。</e>
     <e ntry="TEXT.Tip.InterfaceAndBasicGameControls.2">游戏也有若干快捷键帮助你浏览界面；当鼠标悬停在有对应按键的按钮上时，会显示这些快捷键。最重要的按键是空格键，它会打开[氏族|CLAN]界面；以及 ENTER，它会结束回合，或激活下一个尚未处理的高优先级通知。</e>
     <e ntry="TEXT.Tip.InterfaceAndBasicGameControlsContinued.1">世界界面是你花费最多时间的地方，主要由地图组成。最重要的 3 个按钮位于右上角，涉及影响部族的高层决策。当你点击地图对象时，选择面板会出现在左下角，提供相关信息和命令。</e>
     <e ntry="TEXT.Tip.InterfaceAndBasicGameControlsContinued.2">游戏中最重要的 3 个界面是[氏族|CLAN]界面、[训练|TRAIN]界面和[研究|STUDY]界面。后两个都会显示[氏族|CLAN]可以被[训练|TRAIN]成的[职业|PROFESSION]“树”（前提是已经[研究|LEARN]）。其他较不重要的游戏界面大多可以通过世界界面顶部的小按钮打开（或通过对应快捷键）。</e>
     <e ntry="TEXT.Tip.FoundingAKingdom.1">游戏最初几年，你会在某个区域的[资源|RESOURCE][耗尽|EXHAUST]后，寻找可以迁移[SETTLEMENT]的新地点。第一年这并非必要，但在第一个[冬季|COLD]之后就该开始考虑。</e>
-    <e ntry="TEXT.Tip.FoundingAKingdom.2">当你稍微发展经济，并找到一个拥有多个[矿藏|DEPOSIT]、希望长期[采集|HARVEST]的地区后，可以在[氏族|CLAN]界面使用[“建立王国”|DECLARE-KINGDOM]命令。这会把你的[SETTLEMENT]永久固定在当前所在的地块上，但会大幅提高其[控制等级|CONTROL]（[边境|BORDERS]），并大幅提高你的[FAME]（帮助你更快获得新[氏族|CLAN]）。</e>
+    <e ntry="TEXT.Tip.FoundingAKingdom.2">当你稍微发展经济，并找到一个拥有多个[矿藏|DEPOSIT]、希望长期[采收|HARVEST]的地区后，可以在[氏族|CLAN]界面使用[“建立王国”|DECLARE-KINGDOM]命令。这会把你的[SETTLEMENT]永久固定在当前所在的地块上，但会大幅提高其[控制等级|CONTROL]（[边境|BORDERS]），并大幅提高你的[FAME]（帮助你更快获得新[氏族|CLAN]）。</e>
     <e ntry="TEXT.Tip.FoundingAKingdom.3">[建立你的王国|DECLARE-KINGDOM]是一大步，需要花费 20 羊皮纸。你大概至少要到第 50 回合才会准备好这样做；在此之前，你的目标只是探索地图并发展经济，为中期更大的战略行动打开空间。</e>
     <e ntry="TEXT.Tip.TheSettlement.1">与你一样的 10 个主要部族各自拥有一个[SETTLEMENT]，其功能类似其他 4X 战略游戏中的城市，最大区别是你永远只会拥有一个。</e>
     <e ntry="TEXT.Tip.TheSettlement.2">[SETTLEMENT]包含你部族的所有[氏族|CLAN]（除了那些被[训练|TRAIN]为[主动职业|ACTIVE]的氏族）。它也可以一次训练一个[氏族|CLAN]成为一个[职业|PROFESSION]；由于你只有一个[SETTLEMENT]，如何使用这条训练管线非常重要。</e>
     <e ntry="TEXT.Tip.TheSettlement.3">与其他游戏中的城市相比，你的[SETTLEMENT]另一个独特之处是它可以[打包|PACKED]并在地图上移动。当你最终用尽起始位置附近的[资源|RESOURCE]、需要接触更多资源时，这会变得必要。不过迁移应当是谨慎的战略决策，因为[打包|PACKED]会使你的[SETTLEMENT]无法[训练|TRAIN][氏族|CLAN]。</e>
     <e ntry="TEXT.Tip.TheSettlement.4">你的[SETTLEMENT]还有[控制等级|CONTROL]，它决定你的[边境|BORDERS]能延伸多远，并允许你的[单位|UNIT][建造|CONSTRUCT][建筑|STRUCTURE]，以及在[冬季|COLD]获得免费[补给|SUPPLY]。</e>
-    <e ntry="TEXT.Tip.TheMap.1">AtG 的地图是一组随机生成的地块，包含各种[地形|TERRAIN]。地块也可能含有可由[采集者|FORAGE]和[建筑|STRUCTURE][采集|HARVEST]的[资源矿藏|DEPOSIT]。</e>
+    <e ntry="TEXT.Tip.TheMap.1">AtG 的地图是一组随机生成的地块，包含各种[地形|TERRAIN]。地块也可能含有可由[采集者|FORAGE]和[建筑|STRUCTURE][采收|HARVEST]的[资源矿藏|DEPOSIT]。</e>
     <e ntry="TEXT.Tip.TheMap.2">每种[地形|TERRAIN]都有供[单位|UNIT]穿越的[移动消耗|MOVE-POINT]，也有[补给|SUPPLY]评级，用于决定单位能否安全停留在该地块上（避免长时间穿越[SNOW]或[DESERT]！）。</e>
-    <e ntry="TEXT.Tip.TheMap.3">随着[季节|SEASON]更替，地块的[地形|TERRAIN]会发生变化；根据你所在纬度，到了[冬季|COLD]情况可能会很糟。很少有[FOOD]来源能在[寒冷月份|COLD]继续被[采集|HARVEST]，所以务必做好准备！恶劣[天气|WEATHER]也可能随机影响地块，降低其提供的[补给|SUPPLY]，甚至阻止[移动|MOVE-POINT]和[资源采集|HARVEST]（例如降雨后的洪水）。</e>
+    <e ntry="TEXT.Tip.TheMap.3">随着[季节|SEASON]更替，地块的[地形|TERRAIN]会发生变化；根据你所在纬度，到了[冬季|COLD]情况可能会很糟。很少有[FOOD]来源能在[寒冷月份|COLD]继续被[采收|HARVEST]，所以务必做好准备！恶劣[天气|WEATHER]也可能随机影响地块，降低其提供的[补给|SUPPLY]，甚至阻止[移动|MOVE-POINT]和[采收|HARVEST]（例如降雨后的洪水）。</e>
     <e ntry="TEXT.Tip.Clans.1">你的[氏族|CLAN]是部族的主要构成单位。开局你有 3 个，成功通关时通常会超过 40 个。每个[氏族|CLAN]都可以被[训练|TRAIN]成一个[职业|PROFESSION]，使其能够[产出资源|PRODUCE]、作为[单位|UNIT]在地图上行动（例如战斗和探索），或提供其他效果。</e>
     <e ntry="TEXT.Tip.Clans.2">除了[职业|PROFESSION]外，[氏族|CLAN]还可以拥有一项[学科|DISCIPLINE]，并在其中获得[经验|XP]和[等级|LEVEL]。这主要决定将该[氏族|CLAN][训练|TRAIN]成新[职业|PROFESSION]需要多久（同一[学科|DISCIPLINE]内会快得多），但[氏族|CLAN]的[心情|MOOD]也可能根据其[性格特质|CLAN-TRAIT]受到影响。每个[氏族|CLAN]有 2 个[性格特质|CLAN-TRAIT]，它们可能是好事、坏事，或只是需要围绕它规划的因素。</e>
     <e ntry="TEXT.Tip.Clans.3">[氏族|CLAN]的[心情|MOOD]由两件事决定：其[特质|CLAN-TRAIT]，以及其[愿望|DESIRE]是否得到满足（如果有愿望的话）。快乐的[氏族|CLAN]会获得[资源产出|PRODUCE]和战斗加成，不快乐的氏族则相反。大多数氏族只会处于满足状态，不需要额外关注。</e>
     <e ntry="TEXT.Tip.Clans.4">每个[氏族|CLAN]抵达时都有一个家庭，并会慢慢增长到更多。家庭每回合消耗少量[FOOD]。由于家庭数量会在整局游戏中持续增加，务必始终计划好如何喂饱新的饥饿人口！你可以右键点击[氏族|CLAN]“卡片”来给它附加颜色标记的备注（例如记录之后想把它[训练|TRAIN]成什么）。</e>
     <!-- **************************************************************************************************************** -->
-    <e ntry="TEXT.Tip.Professions.1">每个[氏族|CLAN]都可以被[训练|TRAIN]成一个[职业|PROFESSION]，职业有两种基本类型：[主动|ACTIVE]和[定居|SETTLED]。处于[主动职业|ACTIVE]的[氏族|CLAN]可以在地图上行动，例如战斗或[采集资源|HARVEST]。大多数[职业|PROFESSION]都是[定居|SETTLED]职业，意思是[氏族|CLAN]留在[SETTLEMENT]内，精炼[资源|RESOURCE]或提供其他经济效果。</e>
+    <e ntry="TEXT.Tip.Professions.1">每个[氏族|CLAN]都可以被[训练|TRAIN]成一个[职业|PROFESSION]，职业有两种基本类型：[主动|ACTIVE]和[定居|SETTLED]。处于[主动职业|ACTIVE]的[氏族|CLAN]可以在地图上行动，例如战斗或[采收|HARVEST]。大多数[职业|PROFESSION]都是[定居|SETTLED]职业，意思是[氏族|CLAN]留在[SETTLEMENT]内，精炼[资源|RESOURCE]或提供其他经济效果。</e>
     <e ntry="TEXT.Tip.Professions.2">整个部族同一时间只能[训练|TRAIN]一个[氏族|CLAN]，所以要仔细考虑你真正想要什么，以及训练顺序。将[氏族|CLAN][训练|TRAIN]成新职业所需的回合数取决于该氏族的[学科|DISCIPLINE]、它在该学科中的[等级|LEVEL]，以及目标[职业|PROFESSION]等级有多高。效率很重要，因此尽量不要让[氏族|CLAN]频繁切换[学科|DISCIPLINE]，因为这会把他们的[等级|LEVEL]重置为 0。</e>
-    <e ntry="TEXT.Tip.Professions.3">单个[氏族|CLAN]的效能可以通过[研究|STUDY]并[购买基于职业的升级|UPGRADE]来提高。一般来说，你应优先[训练|TRAIN][氏族|CLAN]成为与地图局势直接相关的[职业|PROFESSION]，例如用[ARCHER:S]对付[强盗|BANDIT]，或用[DIGGER][采集|HARVEST][矿藏|MINERAL]。</e>
-    <e ntry="TEXT.Tip.Units.1">[单位|UNIT]就是已经被[训练|TRAIN]成[主动职业|ACTIVE]、现在能够在地图上[移动|MOVE-POINT]的[氏族|CLAN]。多个[单位|UNIT]可以组合成[编队|STACK]。[战士单位|WARRIOR]可以战斗并俘获无防御、专注于[采集资源|HARVEST]等经济活动的[平民单位|CIVILIAN]。战士也可以占领或[劫掠|PILLAGE]敌方[建筑|STRUCTURE]。</e>
+    <e ntry="TEXT.Tip.Professions.3">单个[氏族|CLAN]的效能可以通过[研究|STUDY]并[购买基于职业的升级|UPGRADE]来提高。一般来说，你应优先[训练|TRAIN][氏族|CLAN]成为与地图局势直接相关的[职业|PROFESSION]，例如用[ARCHER:S]对付[强盗|BANDIT]，或用[DIGGER][采收|HARVEST][矿藏|MINERAL]。</e>
+    <e ntry="TEXT.Tip.Units.1">[单位|UNIT]就是已经被[训练|TRAIN]成[主动职业|ACTIVE]、现在能够在地图上[移动|MOVE-POINT]的[氏族|CLAN]。多个[单位|UNIT]可以组合成[编队|STACK]。[战士单位|WARRIOR]可以战斗并俘获无防御、专注于[采收|HARVEST]等经济活动的[平民单位|CIVILIAN]。战士也可以占领或[劫掠|PILLAGE]敌方[建筑|STRUCTURE]。</e>
     <e ntry="TEXT.Tip.Units.2">每个[单位|UNIT]都有一定数量的[移动点数|MOVE-POINT]，决定它一回合能移动多远。清晰平坦的[地形|TERRAIN]进入时消耗 1 点[移动点数|MOVE-POINT]，大多数[单位|UNIT]每回合有 3 点可用。[单位|UNIT]也需要来自所在地块的[补给|SUPPLY]；如果地块提供的[补给|SUPPLY]低于需求，它们会失去[士气|MORALE]和[生命值|HEALTH]（通常由[季节|SEASON]或[天气|WEATHER]变化造成）。</e>
     <e ntry="TEXT.Tip.Units.3">在地图上，你还会遇到属于其他[派系|FACTION]的[单位|UNIT]。如果你拥有[战士单位|WARRIOR]，可以投入战斗，或俘获他人无人防守的[平民|CIVILIAN]，但要注意该单位实际属于谁，因为有些[领袖|LEADER]相当强大！</e>
     <e ntry="TEXT.Tip.Research.1">游戏开始时，你只能将[氏族|CLAN][训练|TRAIN]成少数几种[职业|PROFESSION]；要增加选择，需要通过[研究|STUDY]解锁更多。你将[研究|STUDY]的大多数[“科技”|TECH]其实是[职业|PROFESSION]，但你也可以解锁[基于职业的升级|UPGRADE]，甚至少数全局永久加成，这些通常相当昂贵。</e>
@@ -1007,29 +1007,29 @@
     <e ntry="TEXT.Tip.TheOtherFactions.2">你会遇到两个特殊[派系|FACTION]：西罗马帝国和东罗马帝国，也就是[罗马帝国|ROME]的两半。近来帝国并不顺遂，虽然游戏开始时仍很强大，但会随着岁月推移逐渐衰弱。你的最终目标是：(1) 征服其中一个首都；或 (2) 派出足够多的[氏族|CLAN]加入帝国，从内部接管它。</e>
     <e ntry="TEXT.Tip.TheOtherFactions.3">另外两个特殊[派系|FACTION]是[强盗|BANDIT]和[中立者|NEUTRAL]。两者都没有[领袖|LEADER]，也不进行外交，你与它们永久交战。强盗会主动追杀你，而中立者各自为政，在地图上拥有各种有用[建筑|STRUCTURE]，你可以自由将其“并入”部族（前提是击败在场防御者）。</e>
     <e ntry="TEXT.Tip.Diplomacy.1">每个[派系|FACTION][领袖|LEADER]都有独特的[性格|LEADER-TRAIT]，会极大塑造其行为，尤其是对你的态度。让其他[领袖|LEADER]保持高兴（尤其是那些比你强得多的领袖）是游戏的重要部分。不过满足所有人的要求可能很难，因为领袖们常常想要相互矛盾的东西。</e>
-    <e ntry="TEXT.Tip.Diplomacy.2">你与另一位[领袖|LEADER]的[关系等级（RL）|RL]衡量他们有多喜欢你，范围从 -10 到 +10。[影响力|INFLUENCE]通常会与[RL|RL]一起获得，但它像金钱一样被“花费”，用来让领袖替你做事。[声望|REPUTATION]是全局资源，难以获得，可以像影响力一样用于任何领袖。[筹码|LEVERAGE]是这三项属性的总和，用于判断领袖最终是否会同意你的提议。</e>
+    <e ntry="TEXT.Tip.Diplomacy.2">你与另一位[领袖|LEADER]的[关系等级（RL）|RL]衡量他们有多喜欢你，范围从 -10 到 +10。[影响力|INFLUENCE]通常会与[关系等级|RL]一起获得，但它像金钱一样被“花费”，用来让领袖替你做事。[声望|REPUTATION]是全局资源，难以获得，可以像影响力一样用于任何领袖。[筹码|LEVERAGE]是这三项属性的总和，用于判断领袖最终是否会同意你的提议。</e>
     <e ntry="TEXT.Tip.Diplomacy.3">当你最初与一位[领袖|LEADER]接触时，会发生“首次会面”事件。领袖会根据其[性格|LEADER-TRAIT]选择如何问候你（送礼、提出要求，或只是打招呼），而你可以选择如何回应。这给了你一个早期机会，用自己的礼物把关系导向对你有利，或者也许用一次时机恰当的侮辱赚取一些声望！</e>
     <e ntry="TEXT.Tip.BasicEconomics.1">你最重要的职责之一，是防止部族[挨饿|STARVE]。你开局在[库存|STOCKPILE]中有一些[FOOD]，但不足以熬过[冬季|COLD]，所以务必在几个月内用[GATHERER]或[HUNTER]等[采集者|FORAGE]开始收集更多食物。</e>
     <e ntry="TEXT.Tip.BasicEconomics.2">其他重要的早期[资源|RESOURCE]包括[KNOWLEDGE]，它让你能够[研究|STUDY]新的[职业|PROFESSION]；以及[FAME]，它帮助你更快获得新[氏族|CLAN]。[商队|CARAVAN]到访时，你也可以用[TREASURE]购买[资源|RESOURCE]，或出售自己过多的资源。[CLOTH]是扩大部族[人口上限|POPCAP]所必需的，这样部族才能继续成长并增加新[氏族|CLAN]。</e>
-    <e ntry="TEXT.Tip.BasicEconomicsContinued.1">你有一个[SETTLEMENT]，一次可以把一个[氏族|CLAN][训练|TRAIN]成一个[职业|PROFESSION]，所以尽量提前规划。早期把[氏族|CLAN][训练|TRAIN]成[采集者|FORAGE]很重要，因为你希望尽快从地图上开始[采集资源|HARVEST]。游戏后期，你可以让[氏族|CLAN][建造|CONSTRUCT][建筑|STRUCTURE]，更高效地[产出资源|PRODUCE]。</e>
-    <e ntry="TEXT.Tip.BasicEconomicsContinued.2">[研究|STUDY]新的[职业|PROFESSION]及其[升级|UPGRADE]，对于维持经济和军事发展非常重要。最佳做法是优先建立基础[资源|RESOURCE]加工链（例如[采集|HARVEST][IRON]，再通过初始[研究|STUDY]选择把它转化为[WEAPONS]），这样你就有东西可以卖给[商队|CARAVAN]，换取可能缺少的其他资源。</e>
-    <e ntry="TEXT.Tip.Resources.1">[资源|RESOURCE]是游戏经济的两大基础之一（另一个是[氏族|CLAN]）。你的主要来源是[采集矿藏|HARVEST]，不过也可以从[茂密森林|FOREST]采集[TIMBER]。最初几年你会使用[采集者|FORAGE][采集资源|HARVEST]，之后开始[建造|CONSTRUCT][建筑|STRUCTURE]；如果[商队|CARAVAN]来访，也可以通过购买来补充这种[产出|PRODUCE]。</e>
+    <e ntry="TEXT.Tip.BasicEconomicsContinued.1">你有一个[SETTLEMENT]，一次可以把一个[氏族|CLAN][训练|TRAIN]成一个[职业|PROFESSION]，所以尽量提前规划。早期把[氏族|CLAN][训练|TRAIN]成[采集者|FORAGE]很重要，因为你希望尽快从地图上开始[采收|HARVEST]。游戏后期，你可以让[氏族|CLAN][建造|CONSTRUCT][建筑|STRUCTURE]，更高效地[产出资源|PRODUCE]。</e>
+    <e ntry="TEXT.Tip.BasicEconomicsContinued.2">[研究|STUDY]新的[职业|PROFESSION]及其[升级|UPGRADE]，对于维持经济和军事发展非常重要。最佳做法是优先建立基础[资源|RESOURCE]加工链（例如[采收|HARVEST][IRON]，再通过初始[研究|STUDY]选择把它转化为[WEAPONS]），这样你就有东西可以卖给[商队|CARAVAN]，换取可能缺少的其他资源。</e>
+    <e ntry="TEXT.Tip.Resources.1">[资源|RESOURCE]是游戏经济的两大基础之一（另一个是[氏族|CLAN]）。你的主要来源是[采收|HARVEST]，不过也可以从[茂密森林|FOREST]采集[TIMBER]。最初几年你会使用[采集者|FORAGE][采收|HARVEST]，之后开始[建造|CONSTRUCT][建筑|STRUCTURE]；如果[商队|CARAVAN]来访，也可以通过购买来补充这种[产出|PRODUCE]。</e>
     <e ntry="TEXT.Tip.Resources.2">[采集者|FORAGE]和基于[TIMBER]的[建筑|STRUCTURE]会[消耗|DEPLETE]并最终[耗尽|EXHAUST]地块上的可用[资源|RESOURCE]，因此你通常需要迁移[SETTLEMENT]几次来寻找更多资源。游戏中期，你将能够[建立王国|DECLARE-KINGDOM]，在一个地点定居，并[建造|CONSTRUCT]基于[STONE-BLOCKS:SINGULAR]、可永久存在的[建筑|STRUCTURE]。</e>
     <e ntry="TEXT.Tip.Resources.3">[FOOD]是最重要的[资源|RESOURCE]，因为一旦耗尽，部族就会[挨饿|STARVE]。[TREASURE]也很有用，因为它可以从[商队|CARAVAN]购买各种[资源|RESOURCE]（也可以升级商队货物），甚至可以用礼物拉拢邻近[领袖|LEADER]。你的[FAME]决定新[氏族|CLAN]加入部族的频率，也有少数[职业|PROFESSION]可以帮助你[产出|PRODUCE]更多名声。</e>
-    <e ntry="TEXT.Tip.Resources.4">[资源|RESOURCE]有 3 类：[植物|PLANT]、[动物|ANIMAL]和[矿物|MINERAL]。每一类都有不同用途。[采集资源|HARVEST]很重要，但你最终也会想把它们精炼成更高级的[资源|RESOURCE]（例如把[IRON]变成[WEAPONS]，或把[WOOL]变成[CLOTH]）。许多可通过[研究|STUDY]解锁的[职业|PROFESSION]都与[资源|RESOURCE]精炼有关，因此可以查看科技树来构思可行策略。</e>
-    <e ntry="TEXT.Tip.Food.1">[FOOD]是你的[氏族|CLAN]每回合都会食用的关键[资源|RESOURCE]。如果耗尽，部族会[挨饿|STARVE]，降低[资源产出|PRODUCE]、[士气|MORALE]等。你可以借助[采集者|FORAGE]从地图上的各种[矿藏|DEPOSIT]中[采集|HARVEST]食物。[商队|CARAVAN]偶尔会出售[FOOD]，但不要指望能长期靠这种方式养活你的[氏族|CLAN]。</e>
+    <e ntry="TEXT.Tip.Resources.4">[资源|RESOURCE]有 3 类：[植物|PLANT]、[动物|ANIMAL]和[矿物|MINERAL]。每一类都有不同用途。[采收|HARVEST]很重要，但你最终也会想把它们精炼成更高级的[资源|RESOURCE]（例如把[IRON]变成[WEAPONS]，或把[WOOL]变成[CLOTH]）。许多可通过[研究|STUDY]解锁的[职业|PROFESSION]都与[资源|RESOURCE]精炼有关，因此可以查看科技树来构思可行策略。</e>
+    <e ntry="TEXT.Tip.Food.1">[FOOD]是你的[氏族|CLAN]每回合都会食用的关键[资源|RESOURCE]。如果耗尽，部族会[挨饿|STARVE]，降低[资源产出|PRODUCE]、[士气|MORALE]等。你可以借助[采集者|FORAGE]从地图上的各种[矿藏|DEPOSIT]中[采收|HARVEST]食物。[商队|CARAVAN]偶尔会出售[FOOD]，但不要指望能长期靠这种方式养活你的[氏族|CLAN]。</e>
     <e ntry="TEXT.Tip.Food.2">[FOOD]不同于其他[资源|RESOURCE]，它进入[库存|STOCKPILE]时不是固定可花费数量，而是[“储备回合”|STORED-TURN]。你每回合正好消耗 1 [食物回合|STORED-TURN]。你能[产出|PRODUCE]的、超过需求的原始[FOOD]会转化为以后可用的盈余回合（100% 额外[产出|PRODUCE]等于 +1 [储备回合|STORED-TURN]）。</e>
-    <e ntry="TEXT.Tip.Food.3">在最初几个回合中，选择一个用于供养成长中部族的[矿藏|DEPOSIT]（通常是[植物|PLANT]）很重要，然后把一个[氏族|CLAN][训练|TRAIN]成[采集者|FORAGE]去[采集|HARVEST]它。它应该能维持一两年，之后会耗尽，你需要寻找新的、更大的来源（也许还能精炼成更高级的东西）。</e>
+    <e ntry="TEXT.Tip.Food.3">在最初几个回合中，选择一个用于供养成长中部族的[矿藏|DEPOSIT]（通常是[植物|PLANT]）很重要，然后把一个[氏族|CLAN][训练|TRAIN]成[采集者|FORAGE]去[采收|HARVEST]它。它应该能维持一两年，之后会耗尽，你需要寻找新的、更大的来源（也许还能精炼成更高级的东西）。</e>
     <e ntry="TEXT.Tip.HarvestingResources.1">你可以让一个被[训练|TRAIN]为[采集|FORAGE][职业|PROFESSION]的[氏族|CLAN]，从地图上的[矿藏|DEPOSIT]和[茂密森林|FOREST][产出资源|PRODUCE]。当经济更先进后，你可以让具备合适[职业|PROFESSION]的氏族（例如[FARMER]、[MINER]）在那里[建造|CONSTRUCT][建筑|STRUCTURE]，从而[产出|PRODUCE]更多。</e>
-    <e ntry="TEXT.Tip.HarvestingResources.2">许多[矿藏|DEPOSIT]一开始是[未识别|UNIDENTIFIED]的，你需要正确类型的[采集者|FORAGE]（例如用[DIGGER]识别[矿藏|MINERAL]）或更高级的[SURVEYOR]查明它们是什么，然后才能从中[采集任何资源|HARVEST]。</e>
-    <e ntry="TEXT.Tip.HarvestingResources.3">从地块[采集资源|HARVEST]会使其[枯竭|DEPLETE]，并最终完全[耗尽|EXHAUST]。避免这种情况的唯一办法是[建造|CONSTRUCT]高级的[STONE-BLOCKS:SINGULAR][建筑|STRUCTURE]；它们既能永久存在，也可以通过指派[学徒|APPRENTICE]提高[产出|PRODUCE]。</e>
+    <e ntry="TEXT.Tip.HarvestingResources.2">许多[矿藏|DEPOSIT]一开始是[未识别|UNIDENTIFIED]的，你需要正确类型的[采集者|FORAGE]（例如用[DIGGER]识别[矿藏|MINERAL]）或更高级的[SURVEYOR]查明它们是什么，然后才能从中[采收|HARVEST]。</e>
+    <e ntry="TEXT.Tip.HarvestingResources.3">从地块[采收|HARVEST]会使其[枯竭|DEPLETE]，并最终完全[耗尽|EXHAUST]。避免这种情况的唯一办法是[建造|CONSTRUCT]高级的[STONE-BLOCKS:SINGULAR][建筑|STRUCTURE]；它们既能永久存在，也可以通过指派[学徒|APPRENTICE]提高[产出|PRODUCE]。</e>
     <e ntry="TEXT.Tip.HarvestingResources.4">提高[资源产出|PRODUCE]的另一种方式，是将[氏族|CLAN][训练|TRAIN]成能提升其他氏族产出的“协同”[职业|PROFESSION]（例如面包师）。你也可以通过[研究|STUDY]并[购买基于职业的升级|UPGRADE]来强化单个氏族（按钮会出现在[氏族|CLAN]卡片上）。</e>
     <e ntry="TEXT.Tip.BasicWarfare.1">[战士单位|WARRIOR]有几项重要属性。首先是[战力|POWER]，它是衡量[单位|UNIT]战斗强度的总体指标。一般来说，一个[单位编队|STACK]或单个单位若拥有另一方两倍的[战力|POWER]，就能痛击敌人，但未必能杀死对方。防御者可以从所在[地形|TERRAIN]获得加成，或通过多回合掘壕固守获得加成。</e>
     <e ntry="TEXT.Tip.BasicWarfare.2">[生命值|HEALTH]是另一个重要属性。它从 100 开始，如果降到 0，[单位|UNIT]就会死亡。生命值下降时，也会降低单位的[战力|POWER]。在长期战役中避免[生命值|HEALTH]损失尤其重要，因为[单位|UNIT]不会自动恢复生命值，只能在[SETTLEMENT]中花费[OIL]和[CLOTH]恢复。</e>
     <e ntry="TEXT.Tip.BasicWarfare.3">[士气|MORALE]类似[生命值|HEALTH]，但每回合会自动恢复。进攻[单位|UNIT]在战斗中损失更多生命值，防御者则损失更多[士气|MORALE]。进攻方的目标是把防御者士气降到 0，这会使其混乱地从所在地块撤退，失去所有防御加成，并在逃跑时损失大量[生命值|HEALTH]。</e>
     <e ntry="TEXT.Tip.BasicWarfare.4">战争中另一个需要考虑的重要因素是[补给|SUPPLY]。每个地块会自动提供一定补给，并在[冬季|COLD]下降；如果超过一回合没有补给，[单位|UNIT]会失去[士气|MORALE]和[生命值|HEALTH]。[扎营|ENCAMP]会暂时为单位提供[补给|SUPPLY]，但会使其极易受到攻击，所以要谨慎规划战役！</e>
     <!-- **************************************************************************************************************** -->
-    <e ntry="TEXT.Tip.TheWorldScreen.1">你大部分时间会在世界界面查看并操作地图（其余大多用于管理[氏族|CLAN]）。点击带有非[地形|TERRAIN]对象的地块会打开选择面板，你可以了解该对象的更多信息，并可能与其互动（例如命令[单位|UNIT]开始[采集|HARVEST]）。</e>
+    <e ntry="TEXT.Tip.TheWorldScreen.1">你大部分时间会在世界界面查看并操作地图（其余大多用于管理[氏族|CLAN]）。点击带有非[地形|TERRAIN]对象的地块会打开选择面板，你可以了解该对象的更多信息，并可能与其互动（例如命令[单位|UNIT]开始[采收|HARVEST]）。</e>
     <e ntry="TEXT.Tip.TheWorldScreen.2">最重要的 3 个按钮位于右上角。最大的按钮是“任务按钮”，会自动指向本回合下一个重要决策；如果所有事项都已处理，它会结束回合。重要通知也会显示在这里。另外两个大按钮让你可以轻松选择一个[氏族|CLAN][训练|TRAIN]成一个[职业|PROFESSION]，以及选择一项新[科技|TECH][研究|STUDY]。</e>
     <e ntry="TEXT.Tip.TheWorldScreen.3">世界界面上有各种小按钮，可打开提供更多信息的界面或其他有用工具，例如用于记录想法的记事本。还有其他一些很实用的高级界面功能，你可以在下方选择“高级界面概念”了解更多。</e>
     <e ntry="TEXT.Tip.OtherScreens.1">除世界界面外，游戏中最重要的界面是[氏族|CLAN]界面。你可以按空格键打开或关闭它。此界面会显示你[SETTLEMENT]中的所有[氏族|CLAN]，你可以把他们[训练|TRAIN]成各种[职业|PROFESSION]。它还包含少数重要但不常用的部族级行动，例如[建立王国|DECLARE-KINGDOM]。你会花很多时间在这个界面里！</e>
@@ -1041,17 +1041,17 @@
     <e ntry="TEXT.Tip.AdvancedInterfaceConcepts.1">任何用于打开界面的快捷键，也可以用于关闭该界面（例如按空格键既能打开也能关闭[氏族|CLAN]界面）。你可以按“G”开启或关闭地图网格，或改变网格线粗细。</e>
     <e ntry="TEXT.Tip.AdvancedInterfaceConcepts.2">游戏中有几处可以给自己写小备注，用来追踪事务。右键点击[氏族|CLAN]卡片或地图地块（未选中任何对象时），可以给该[氏族|CLAN]或地块附加备注。氏族卡片备注特别有用，因为它会直接在卡片上添加彩色标签。你也可以使用世界界面左上角的按钮，或按 F5，为自己写全局游戏备注。</e>
     <e ntry="TEXT.Tip.ControlAndBorders.1">主要[派系|FACTION]可以通过附近的[SETTLEMENT]或其他[建筑|STRUCTURE]成为某个地块的拥有者。要在某地[建造|CONSTRUCT][建筑|STRUCTURE]，该地块必须已经被你拥有并位于你的[边境|BORDERS]内。无论[季节|SEASON]或[天气|WEATHER]如何，你边境内的地块也始终提供完整[补给|SUPPLY]，因此是重要的战略资产，尤其在防御时。</e>
-    <e ntry="TEXT.Tip.ControlAndBorders.2">[建筑|STRUCTURE]或[SETTLEMENT]的[控制等级|CONTROL]等于[边境|BORDERS]距离，并且可以花费[WEAPONS][加固|FORTIFY]来升级。不过每次这样做费用都会提高，所以要有战略地使用。注意，[采集者|FORAGE]可以从地图上任何地块[采集资源|HARVEST]，无论它是否在你的[边境|BORDERS]内；但别忘了他们仍然需要[补给|SUPPLY]！</e>
+    <e ntry="TEXT.Tip.ControlAndBorders.2">[建筑|STRUCTURE]或[SETTLEMENT]的[控制等级|CONTROL]等于[边境|BORDERS]距离，并且可以花费[WEAPONS][加固|FORTIFY]来升级。不过每次这样做费用都会提高，所以要有战略地使用。注意，[采集者|FORAGE]可以从地图上任何地块[采收|HARVEST]，无论它是否在你的[边境|BORDERS]内；但别忘了他们仍然需要[补给|SUPPLY]！</e>
     <e ntry="TEXT.Tip.Structures.1">[建筑|STRUCTURE]可以由被[训练|TRAIN]成特殊[职业|PROFESSION]、具备建造能力的[氏族|CLAN]建造（例如[FARMER]、[MINER]）。敌方[建筑|STRUCTURE]可以被[战士单位|WARRIOR][劫掠|PILLAGE]，甚至永久夺取，尽管[占领|OCCUPIED]建筑的产出会大幅降低。</e>
     <e ntry="TEXT.Tip.Structures.2">[建造|CONSTRUCT][建筑|STRUCTURE]会消耗[TIMBER]或[STONE-BLOCKS]，取决于你想要基础（临时）建筑还是高级（永久）建筑。基于[STONE-BLOCKS:SINGULAR]的建筑极其有用，因为它们永久存在，甚至可以分配学徒来提高[产出|PRODUCE]；但它们相当昂贵，所以至少到第 50 回合前别指望拥有。</e>
     <e ntry="TEXT.Tip.Structures.3">[TIMBER][建筑|STRUCTURE]也很有用，但通常先[训练|TRAIN]一两个[采集者|FORAGE]更合理，因为这样能让经济启动，而不会过早把你锁定在某个方向。若你开局在大片[森林|FOREST]中或附近，大量投资[建筑|STRUCTURE]也可能合理。</e>
     <e ntry="TEXT.Tip.Terrain.1">一个地块包含一种或多种[地形|TERRAIN]，这些组合决定[移动|MOVE-POINT]进入该地块有多困难、它为[单位|UNIT]提供多少[补给|SUPPLY]，以及哪些类型的[资源|RESOURCE]和[矿藏|DEPOSIT]可能出现。</e>
     <e ntry="TEXT.Tip.Terrain.2">[河流|RIVER]是重要的地图障碍，需要仔细规划。[单位|UNIT]进入带有小河的地块需要额外整整一回合，而大河无法穿越，除非在[冬季|COLD]，[河流|RIVER]结冰并基本变成没有额外[移动消耗|MOVE-POINT]的平坦[地形|TERRAIN]。</e>
     <e ntry="TEXT.Tip.Terrain.3">还有各种[季节性|SEASON]和不可预测的[天气|WEATHER]效果会影响地块，包括暴风雪、洪水和干旱。AtG 的地图非常动态，你需要把这一点纳入计划。特别严酷的[冬季|COLD]甚至会在经济和战场上摧毁准备充分的统治者。</e>
-    <e ntry="TEXT.Tip.SeasonsAndWeather.1">[季节|SEASON]变化会从 3 个方面影响地块：能否[采集|HARVEST][FOOD]、可供[单位|UNIT]使用的[补给|SUPPLY]数量，以及[移动|MOVE-POINT]进入地块有多困难。[天气|WEATHER]，例如降雨和暴风雪，也可能随机袭击地块并显著影响其[地形|TERRAIN]。</e>
+    <e ntry="TEXT.Tip.SeasonsAndWeather.1">[季节|SEASON]变化会从 3 个方面影响地块：能否[采收|HARVEST][FOOD]、可供[单位|UNIT]使用的[补给|SUPPLY]数量，以及[移动|MOVE-POINT]进入地块有多困难。[天气|WEATHER]，例如降雨和暴风雪，也可能随机袭击地块并显著影响其[地形|TERRAIN]。</e>
     <e ntry="TEXT.Tip.SeasonsAndWeather.2">一般来说，当地块变为[寒冷|COLD]时，它会停止[产出|PRODUCE][FOOD]（浆果和肉类例外）。当它变得更冷时，所有可用[补给|SUPPLY]都会消失（你的[边境|BORDERS]内除外）。当地块变为[SNOW]时，[移动|MOVE-POINT]穿越会更困难；但一旦[河流|RIVER]结冰，它们就会更容易通过。</e>
     <e ntry="TEXT.Tip.SeasonsAndWeather.3">以下是[季节性|SEASON]和[天气|WEATHER]效果的完整列表：[*][寒冷|COLD][*][BLIZZARD][*][RAIN][*][FLOODED][*][SCORCHED]</e>
-    <e ntry="TEXT.Tip.TheCaravan.1">[商队|CARAVAN]非常重要，因为它允许你把过多的[资源|RESOURCE]换成你需要的资源。这意味着你可以发展经济，从[SHEEP][采集|HARVEST][WOOL]，把它转化为[CLOTH]，然后如果愿意，再交易成[WEAPONS]。不要害怕全力发展某种[资源|RESOURCE]！</e>
+    <e ntry="TEXT.Tip.TheCaravan.1">[商队|CARAVAN]非常重要，因为它允许你把过多的[资源|RESOURCE]换成你需要的资源。这意味着你可以发展经济，从[SHEEP][采收|HARVEST][WOOL]，把它转化为[CLOTH]，然后如果愿意，再交易成[WEAPONS]。不要害怕全力发展某种[资源|RESOURCE]！</e>
     <e ntry="TEXT.Tip.TheCaravan.2">唯一的缺点是[商队|CARAVAN]并不总是可用，而且其[资源|RESOURCE]库存一开始很少。你每年只能与商队交易 3 次资源（春、夏、秋），所以要让每次来访都有价值。</e>
     <e ntry="TEXT.Tip.TheCaravan.3">[商队|CARAVAN]最初可用的[资源|RESOURCE]库存相当有限，但通过花费[TREASURE]升级商队，你可以显著提高其出售货物的数量和质量。如果你需要更多某种东西，或需要目前尚未供应的东西，花费[TREASURE]升级[商队|CARAVAN]可能是明智投资。</e>
     <e ntry="TEXT.Tip.Supply.1">如果[单位|UNIT]在回合结束时位于提供[补给|SUPPLY]少于其需求（通常为 1）的地块上，它会有一回合“宽限期”，之后才开始失去[士气|MORALE]和[生命值|HEALTH]。非[冬季|COLD]时，你只需要特别注意[DESERT:S]。但一旦开始变得[寒冷|COLD]，情况就会完全不同；冬季意味着要用全新的方式思考地图。</e>
@@ -1071,7 +1071,7 @@
         
 -->
   <helpTips_Tutorial>
-    <e ntry="TEXT.Tip.Tutorial.Turn1.1">把鼠标移到任何[黄色词语|TOOLTIPS]上即可了解更多。你的第一项事务是[训练|TRAIN] 3 个[氏族|CLAN]中的一个，让它开始为成长中的部族[采集|HARVEST][FOOD]。按 [HOTKEY:Esc] 关闭此消息框，然后按 [HOTKEY:Spacebar] 打开氏族界面。</e>
+    <e ntry="TEXT.Tip.Tutorial.Turn1.1">把鼠标移到任何[黄色词语|TOOLTIPS]上即可了解更多。你的第一项事务是[训练|TRAIN] 3 个[氏族|CLAN]中的一个，让它开始为成长中的部族[采收|HARVEST][FOOD]。按 [HOTKEY:Esc] 关闭此消息框，然后按 [HOTKEY:Spacebar] 打开氏族界面。</e>
     <e ntry="TEXT.Tip.Tutorial.ClansScreenOpened.1">点击右侧的[氏族|CLAN] Relindis，然后选择[HUNTER][职业|PROFESSION]，开始将 Relindis [训练|TRAIN]成猎人。与其他[氏族|CLAN]不同，他们一开始就在[HONOR][学科|DISCIPLINE]中，因此所需时间会比平常短得多。关闭氏族界面，然后查看你[SETTLEMENT]周围的地图。</e>
     <e ntry="TEXT.Tip.Tutorial.ClansScreenOpened.2">你的[SETTLEMENT]旁边有[HORSES]，Relindis 可以从下回合开始从中[采集|FORAGE][MEAT]。</e>
     <e ntry="TEXT.Tip.Tutorial.10sec.1">按 [HOTKEY:Spacebar] 回到氏族界面。点击氏族 Wilmot 下方的“离开”按钮。他们抵达时已经处于[WOOD-COLLECTOR][职业|PROFESSION]。当他们离开你的[SETTLEMENT]并能够在地图上移动后，右键点击你的[SETTLEMENT]西南方的[森林|FOREST]地块，把他们移动到那里。我们下回合开始收集[TIMBER]。</e>
@@ -1116,24 +1116,24 @@
     <e ntry="TEXT.Tip.MoreAboutStudyingProfessions.2">一旦你[学习|LEARN]了新[职业|PROFESSION]，就可以开始把[氏族|CLAN][训练|TRAIN]成该职业。不过要确保你负担得起所需[资源|RESOURCE]！</e>
     <e ntry="TEXT.Tip.MoreAboutStudyingProfessions.3">一旦你[学习|LEARN]了研究树某一“层级”中的一个[职业|PROFESSION]，就可以[研究|STUDY]下一层级中的任意[职业|PROFESSION]，这样如果你愿意，就能跳过同层级的其他职业，转向更高级的[职业|PROFESSION]。有些[职业|PROFESSION]也允许你[研究|STUDY]与其相关的其他职业。</e>
     <e ntry="TEXT.Tip.TrainingClans.1">此界面显示你可以把[氏族|CLAN][训练|TRAIN]成的[职业|PROFESSION]。你的部族一次可以训练一个氏族。它看起来很像“[研究|STUDY]界面”；与研究界面一样，每个按钮右侧的数字显示将[氏族|CLAN][训练|TRAIN]成该[职业|PROFESSION]需要多少回合（如果你是通过点击某个特定氏族打开此界面）。</e>
-    <e ntry="TEXT.Tip.TrainingClans.2">你可以把[氏族|CLAN][训练|TRAIN]成两类[职业|PROFESSION]：[主动|ACTIVE]和[定居|SETTLED]。处于主动职业的氏族可以在地图上移动，用于探索、战斗，或从地图上的[矿藏|DEPOSIT][采集|HARVEST][资源|RESOURCE]。处于定居职业的氏族留在[SETTLEMENT]内，通常提供经济加成，例如把[IRON]转化为[WEAPONS]，或提高你[学习|LEARN]新职业的速度。</e>
+    <e ntry="TEXT.Tip.TrainingClans.2">你可以把[氏族|CLAN][训练|TRAIN]成两类[职业|PROFESSION]：[主动|ACTIVE]和[定居|SETTLED]。处于主动职业的氏族可以在地图上移动，用于探索、战斗，或从地图上的[矿藏|DEPOSIT][采收|HARVEST][资源|RESOURCE]。处于定居职业的氏族留在[SETTLEMENT]内，通常提供经济加成，例如把[IRON]转化为[WEAPONS]，或提高你[学习|LEARN]新职业的速度。</e>
     <e ntry="TEXT.Tip.MoreAboutTheTrainingScreen.1">此界面也可以命令一个[定居|SETTLED][氏族|CLAN]停止工作（通常只在其[职业|PROFESSION]会[消耗|CONSUME]你想保留的[资源|RESOURCE]时使用），或命令暂时返回[SETTLEMENT]的[主动|ACTIVE]氏族回到地图上。</e>
     <e ntry="TEXT.Tip.MoreAboutTheTrainingScreen.2">点击左下角按钮可以切换显示多少[职业|PROFESSION]。默认情况下，你只会看到当前可以把[氏族|CLAN][训练|TRAIN]成的职业。当可用[职业|PROFESSION]多到屏幕放不下时，你可以用鼠标滚轮、方向键或 [HOTKEY:W]/[HOTKEY:S] 滚动浏览。</e>
     <e ntry="TEXT.Tip.KeepingYourTribeFed.1">你的部族只有一定数量的[储备回合|STORED-TURN][FOOD]，一旦耗尽，你的人民就会[挨饿|STARVE]。确保这种事不发生非常重要！</e>
     <e ntry="TEXT.Tip.HowToGetMoreFood.1">最初一两年，你的大部分[FOOD]都来自[采集|FORAGE]，依靠[GATHERER]、[HARVESTER]和[HUNTER]等基础[职业|PROFESSION]。</e>
-    <e ntry="TEXT.Tip.HowToGetMoreFood.2">一旦你开始[采集|HARVEST][TIMBER]，就能[建造|CONSTRUCT][建筑|STRUCTURE]。建筑的经济产出优于[采集者|FORAGE]，因为它们既能[产出|PRODUCE]更多[资源|RESOURCE]，也能提供[控制|CONTROL]（还可以通过花费[WEAPONS]进一步扩展）。不过，[建筑|STRUCTURE]只能[建造|CONSTRUCT]在你已经[控制|CONTROL]的[地块|TILE]上，所以务必相应规划[SETTLEMENT]的位置。</e>
+    <e ntry="TEXT.Tip.HowToGetMoreFood.2">一旦你开始[采收|HARVEST][TIMBER]，就能[建造|CONSTRUCT][建筑|STRUCTURE]。建筑的经济产出优于[采集者|FORAGE]，因为它们既能[产出|PRODUCE]更多[资源|RESOURCE]，也能提供[控制|CONTROL]（还可以通过花费[WEAPONS]进一步扩展）。不过，[建筑|STRUCTURE]只能[建造|CONSTRUCT]在你已经[控制|CONTROL]的[地块|TILE]上，所以务必相应规划[SETTLEMENT]的位置。</e>
     <e ntry="TEXT.Tip.HowToGetMoreFood.3">几年后，你将能够开始制造[STONE-BLOCKS]（或从[商队|CARAVAN]购买），从而[建造|CONSTRUCT]永久性[建筑|STRUCTURE]。它们极其宝贵，因为不仅能[产出|PRODUCE]大量[资源|RESOURCE]，而且永远不会[损耗|DEGRADE]。</e>
     <e ntry="TEXT.Tip.FindingUnidentifiedDeposits.1">你的起始位置附近有几个[未识别矿藏|UNIDENTIFIED]。它们刚被发现时显得阴暗而“遮蔽”。你可以根据外观缩小[未识别矿藏|UNIDENTIFIED]的类型范围（[植物|PLANT]、[矿物|MINERAL]或[动物|ANIMAL]），但在识别前不能使用。</e>
     <e ntry="TEXT.Tip.FindingUnidentifiedDeposits.2">识别[未识别矿藏|UNIDENTIFIED]的唯一办法，是让[采集者|FORAGE]、[建造者|CONSTRUCT]或[SURVEYOR]检查它。通常你应该尽早这样做，因为所有成功帝国都建立在稳定的[资源|RESOURCE]流动之上！</e>
-    <e ntry="TEXT.Tip.MoreAboutDepositsAndStructures.1">[矿藏|DEPOSIT]可以提供用于[训练|TRAIN]、[建造|CONSTRUCT]和贸易的[资源|RESOURCE]。你可以通过[采集|FORAGE]来[采集|HARVEST]它们，也可以在其上建造[建筑|STRUCTURE]。[植物|PLANT]由[农场|FARM]采集，[动物群|ANIMAL]由[牧场|PASTURE]采集，[矿物|MINERAL]由[矿井|MINE]采集。[TIMBER]不是来自特定[矿藏|DEPOSIT]，而是从[LOGGING-CAMP-1:S]所在及[COLOR:EMPHASIS]相邻[/COLOR]的[森林|FOREST]中[采集|HARVEST]。</e>
+    <e ntry="TEXT.Tip.MoreAboutDepositsAndStructures.1">[矿藏|DEPOSIT]可以提供用于[训练|TRAIN]、[建造|CONSTRUCT]和贸易的[资源|RESOURCE]。你可以通过[采集|FORAGE]来[采收|HARVEST]它们，也可以在其上建造[建筑|STRUCTURE]。[植物|PLANT]由[农场|FARM]采集，[动物群|ANIMAL]由[牧场|PASTURE]采集，[矿物|MINERAL]由[矿井|MINE]采集。[TIMBER]不是来自特定[矿藏|DEPOSIT]，而是从[LOGGING-CAMP-1:S]所在及[COLOR:EMPHASIS]相邻[/COLOR]的[森林|FOREST]中[采收|HARVEST]。</e>
     <e ntry="TEXT.Tip.MoreAboutDepositsAndStructures.2">[建筑|STRUCTURE]只能由拥有合适[职业|PROFESSION]的[氏族|CLAN][建造|CONSTRUCT]：农场由[FARMER]建造，牧场由[RANCHER]建造，矿井由[MINER]建造，依此类推。完成[建造|CONSTRUCT][建筑|STRUCTURE]的[氏族|CLAN]随后会离开地图，成为该建筑的居民。[氏族|CLAN]可以随时返回地图，但[建筑|STRUCTURE]会在此过程中被摧毁。</e>
-    <e ntry="TEXT.Tip.MoreAboutDepositsAndStructures.3">几年后，[矿藏|DEPOSIT]会随着其[地块|TILE]上的[资源|RESOURCE]被用尽而最终[枯竭|DEPLETE]。你最终需要迁徙，寻找新的[矿藏|DEPOSIT]来[采集|HARVEST]。留意你可能围绕其建立经济的新[资源|RESOURCE]！</e>
+    <e ntry="TEXT.Tip.MoreAboutDepositsAndStructures.3">几年后，[矿藏|DEPOSIT]会随着其[地块|TILE]上的[资源|RESOURCE]被用尽而最终[枯竭|DEPLETE]。你最终需要迁徙，寻找新的[矿藏|DEPOSIT]来[采收|HARVEST]。留意你可能围绕其建立经济的新[资源|RESOURCE]！</e>
     <e ntry="TEXT.Tip.FindingDesertedLocations.1">你发现了一个[废弃地点|DESERTED-LOCATION]！废弃地点散布在地图各处，用[EXPLORER]访问它们可以获得[资源|RESOURCE]、有用信息，有时甚至能获得免费[氏族|CLAN]。</e>
     <e ntry="TEXT.Tip.FindingDesertedLocations.2">[废弃地点|DESERTED-LOCATION]有五种类型，每种提供不同的可能奖励。有些（如“废弃农场”）很常见，提供小量[FOOD]库存等有用但不大的奖励。另一些（如“废弃城市”）相当稀有而宝贵，所以看到时一定要在别人之前拿下！</e>
     <e ntry="TEXT.Tip.FindingDesertedLocations.3">大多数[废弃地点|DESERTED-LOCATION]是安全的，但不要放松警惕，因为某些类型可能隐藏危险。不过也不要完全忽视任何[废弃地点|DESERTED-LOCATION]，高风险也意味着高回报的可能！</e>
-    <e ntry="TEXT.Tip.MovingYourTribe.1">由于你的技术水平原始，每当你[采集|HARVEST]一种[资源|RESOURCE]时，它都会慢慢[损耗|DEGRADE]并最终彻底耗尽。一旦某个区域的[资源|RESOURCE]（尤其是[FOOD]来源）充分耗尽，你就需要迁移到别处。</e>
+    <e ntry="TEXT.Tip.MovingYourTribe.1">由于你的技术水平原始，每当你[采收|HARVEST]一种[资源|RESOURCE]时，它都会慢慢[损耗|DEGRADE]并最终彻底耗尽。一旦某个区域的[资源|RESOURCE]（尤其是[FOOD]来源）充分耗尽，你就需要迁移到别处。</e>
     <e ntry="TEXT.Tip.MovingYourTribe.2">要迁移，首先需要[打包|PACKED]你的[SETTLEMENT]，这会花费一个[回合|TURN]。打包期间，定居点无法[训练|TRAIN]任何[氏族|CLAN]，所以要谨慎规划迁移。</e>
-    <e ntry="TEXT.Tip.MovingYourTribe.3">由[STONE-BLOCKS][建造|CONSTRUCT]的[建筑|STRUCTURE]不会[消耗|DEPLETE][资源|RESOURCE]，因此极其宝贵，也是建立[永久王国|DECLARE-KINGDOM]的关键。最终，你会希望所有[资源|RESOURCE]都由石制[建筑|STRUCTURE][采集|HARVEST]，但现在距离能做到这一点还有 50-100 [回合|TURN]。</e>
+    <e ntry="TEXT.Tip.MovingYourTribe.3">由[STONE-BLOCKS][建造|CONSTRUCT]的[建筑|STRUCTURE]不会[消耗|DEPLETE][资源|RESOURCE]，因此极其宝贵，也是建立[永久王国|DECLARE-KINGDOM]的关键。最终，你会希望所有[资源|RESOURCE]都由石制[建筑|STRUCTURE][采收|HARVEST]，但现在距离能做到这一点还有 50-100 [回合|TURN]。</e>
     <e ntry="TEXT.Tip.GettingInfoAboutATile.1">你可以把鼠标移到地图上的[地块|TILE]上，了解其上任何内容的更多信息。如果一个[地块|TILE]包含多个项目，继续点击会在它们之间循环切换。</e>
     <e ntry="TEXT.Tip.GettingInfoAboutATile.2">你也可以在屏幕右下角的快速参考面板中，一眼查看[地块|TILE]的[地形|TERRAIN]、可用[补给|SUPPLY]、[移动消耗|MOVE-POINT]等信息。</e>
     <e ntry="TEXT.Tip.KeepingYourArmiesSupplied.1">位于你的[控制|CONTROL]之外的[军队|ARMY]不再自动拥有[补给|SUPPLY]。被强调的[地块|TILE]就是一个例子。屏幕右下角的悬停帮助框会显示某个[地块|TILE]上的可用[补给|SUPPLY]。</e>
@@ -1151,10 +1151,10 @@
     <e ntry="TEXT.Tip.TheChangingOfTheSeasons.2">在深雪中跋涉并不容易，尝试这样做的[军队|ARMY]很快会陷入困境。好的一面是，一旦结冰，通常构成重大障碍的[河流|RIVER]和[MARSH:S]会变得容易穿越，所以不要害怕利用新机会。话虽如此，冬季可能很残酷，别毫无准备地被它抓住！</e>
     <e ntry="TEXT.Tip.RunningOutOfFood.1">你的[FOOD]供应正在减少！你的每个[氏族|CLAN]的每个[家庭|FAMILY]每[回合|TURN][消耗|CONSUME] 1 [FOOD]。</e>
     <e ntry="TEXT.Tip.RunningOutOfFood.2">如果你负担不起，就会停止积累[FAME]和[KNOWLEDGE]，最终[氏族|CLAN]会受到[伤害|DAMAGE]，整体效率也会降低。</e>
-    <e ntry="TEXT.Tip.IdentifyingResourceDeposits.1">恭喜，你已将一个[未识别矿藏|UNIDENTIFIED]识别为 ???！现在可以让一个被[训练|TRAIN]成合适[职业|PROFESSION]的[氏族|CLAN]，通过[采集|FORAGE]或在其上[建造|CONSTRUCT][建筑|STRUCTURE]来开始[采集|HARVEST]它。</e>
+    <e ntry="TEXT.Tip.IdentifyingResourceDeposits.1">恭喜，你已将一个[未识别矿藏|UNIDENTIFIED]识别为 ???！现在可以让一个被[训练|TRAIN]成合适[职业|PROFESSION]的[氏族|CLAN]，通过[采集|FORAGE]或在其上[建造|CONSTRUCT][建筑|STRUCTURE]来开始[采收|HARVEST]它。</e>
     <e ntry="TEXT.Tip.IdentifyingResourceDeposits.2">[采集|FORAGE]可以在任何地方的任何[地块|TILE]上进行，但不会提供很多[资源|RESOURCE]。另一方面，[建造|CONSTRUCT][建筑|STRUCTURE]是更好的长期投资，但需要更高级的[职业|PROFESSION]、花费[资源|RESOURCE]，且相关[矿藏|DEPOSIT]必须位于你的[控制|CONTROL]内（这通常需要迁移[SETTLEMENT]）。</e>
     <e ntry="TEXT.Tip.DegradationOfStructures.1">由[TIMBER][建造|CONSTRUCT]的[建筑|STRUCTURE]会随着消耗所在[地块|TILE]上的[资源|RESOURCE]而逐渐[损耗|DEGRADE]。每座[建筑|STRUCTURE]上方都有一条进度条，显示距离此事发生还剩多久。被强调的 ??? 将在 ??? [回合|TURN]后遭遇这种命运。</e>
-    <e ntry="TEXT.Tip.DegradationOfStructures.2">AtG 的很大一部分内容，就是不断寻找并[采集|HARVEST]新的[矿藏|DEPOSIT]；这不是一款可以坐下来放松、期待幸福结局的游戏。永远留意新的机会！</e>
+    <e ntry="TEXT.Tip.DegradationOfStructures.2">AtG 的很大一部分内容，就是不断寻找并[采收|HARVEST]新的[矿藏|DEPOSIT]；这不是一款可以坐下来放松、期待幸福结局的游戏。永远留意新的机会！</e>
     <e ntry="TEXT.Tip.MeetingTheRomans.1">你发现了[罗马人|ROME]！好吧，至少是一部分。实际上有两个彼此独立运作的[罗马帝国|ROME]。两者在早期都相当强大，和他们挑起战斗非常危险。</e>
     <e ntry="TEXT.Tip.MeetingTheRomans.2">你的最终目标是变得足够强大，能够正面对抗其中一个[罗马帝国|ROME]并夺取其首都[CITY]。随着时间推移，你会强大许多，而[罗马人|ROME]会弱很多；但现在最好还是与他们保持良好关系。</e>
     <e ntry="TEXT.Tip.MeetingOtherPlayers.1">你发现了 ???，另一个主要蛮族部族！他们是与你争夺土地、资源和荣耀的几个对手之一。你可以（也将会）与其他王国作战，但外交合作也可能很有成效，尤其是在艰难时期。</e>

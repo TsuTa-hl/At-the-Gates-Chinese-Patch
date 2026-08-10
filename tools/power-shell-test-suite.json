@@ -1,0 +1,514 @@
+{
+  "SchemaVersion": 2,
+  "PathCategories": [
+    {
+      "Id": "text",
+      "Patterns": [
+        "translations/zh-CN.json",
+        "translations/entries.csv",
+        "translations/runtime-text-key-additions.json",
+        "translations/config-node-*.json",
+        "source/English.original.xml",
+        "source/Content/Config/**",
+        "tools/Build-ChineseXml.ps1",
+        "tools/Build-ConfigNodePatch.ps1"
+      ]
+    },
+    {
+      "Id": "composite",
+      "Patterns": [
+        "translations/composite-text-rules.json",
+        "translations/composite-entry-specific-rules.json",
+        "translations/runtime-display-strings.json",
+        "translations/concept-key-translations.json",
+        "tools/Build-RuntimeText.ps1",
+        "tools/Export-ConceptKeyTranslations.ps1",
+        "tools/AtG.RuntimeText/DisplayStringLocalizer.cs",
+        "tools/AtG.ManagedRewrite/CompositeTextCatalog.cs",
+        "tools/AtG.ManagedRewrite/ConceptTooltipCatalog.cs"
+      ]
+    },
+    {
+      "Id": "managed",
+      "Patterns": [
+        "translations/hardcoded-*.json",
+        "tools/Build-Il*.ps1",
+        "tools/Build-HardcodedPatch.ps1",
+        "tools/Build-OffsetStringPatch.ps1",
+        "tools/AtG.ManagedRewrite/**",
+        "tools/AtG.IlRewrite/**",
+        "source/*.original.dll",
+        "source/*.original.exe"
+      ]
+    },
+    {
+      "Id": "font",
+      "Patterns": [
+        "translations/runtime-glyph-warmset.tsv",
+        "tools/Build-Font*.ps1",
+        "tools/New-XnaMergedSpriteFont.ps1",
+        "tools/Export-RuntimeGlyphWarmset.ps1",
+        "tools/AtG.RuntimeText/DynamicGlyph*.cs",
+        "tools/AtG.RuntimeText/RuntimeGlyph*.cs",
+        "tools/AtG.RuntimeText/Glyph*.cs",
+        "source/fonts-original/**"
+      ]
+    },
+    {
+      "Id": "automation",
+      "Patterns": [
+        "docs/agent/black-box-scenarios.json",
+        "docs/agent/black-box/**",
+        "tools/AtG.TestHarness/**",
+        "tools/AtG.TestHarness.Tests/**",
+        "tools/Test-GameLaunch*.ps1"
+      ]
+    },
+    {
+      "Id": "documentation",
+      "Patterns": [
+        "AGENTS.md",
+        "README.md",
+        "docs/agent/**",
+        "docs/review/**"
+      ]
+    },
+    {
+      "Id": "verification",
+      "Patterns": [
+        "tools/Invoke-AtGVerification.ps1",
+        "tools/AtGVerificationProfile.ps1",
+        "tools/AtGTiming.ps1",
+        "tools/power-shell-test-suite.json",
+        "tools/AtG.ScriptIntegration.Tests/**",
+        "tools/Test-AtGVerification*.ps1",
+        "tools/Publish-AtGRelease.ps1",
+        "tools/Test-PublishAtGReleaseContract.ps1"
+      ]
+    }
+  ],
+  "Tests": [
+    {
+      "Id": "atg-file-ops",
+      "Script": "Test-AtGFileOps.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "atg-verification-contract",
+      "Script": "Test-AtGVerificationContract.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "atg-verification-profile",
+      "Script": "Test-AtGVerificationProfile.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "atg-window-finder-fallback",
+      "Script": "Test-AtGWindowFinderFallback.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["automation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "black-box-scenario-schema",
+      "Script": "Test-BlackBoxScenarioSchema.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["automation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "cached-validation",
+      "Script": "Test-CachedValidation.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "clear-workspace",
+      "Script": "Test-Clear-AtGWorkspace.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["documentation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "compact-evidence-references",
+      "Script": "Test-Compact-AtGEvidenceReferences.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["documentation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "composite-text-catalog",
+      "Script": "Test-CompositeTextCatalog.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["composite"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "concept-key-translation-map",
+      "Script": "Test-ConceptKeyTranslationMap.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["composite"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "concept-link-targets",
+      "Script": "Test-ConceptLinkTargets.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["composite", "managed"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "concept-tooltip-localization",
+      "Script": "Test-ConceptTooltipLocalization.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["composite", "managed"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "documentation-routing",
+      "Script": "Test-DocumentationRouting.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["documentation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "export-runtime-glyph-warmset",
+      "Script": "Test-Export-RuntimeGlyphWarmset.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["font"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "font-patch-budget",
+      "Script": "Test-FontPatchBudget.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["font"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "font-patch-removal-retry",
+      "Script": "Test-FontPatchRemovalRetry.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["font"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "font-references",
+      "Script": "Test-FontReferences.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["font"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "game-launch",
+      "Script": "Test-GameLaunch.ps1",
+      "Kind": "Smoke",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["core"],
+      "AlwaysForLocalization": true,
+      "EnvironmentPrerequisites": ["AtGProcessStopped"]
+    },
+    {
+      "Id": "game-launch-main-loop-gate",
+      "Script": "Test-GameLaunchMainLoopGate.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["automation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "game-launch-single-instance-guard",
+      "Script": "Test-GameLaunchSingleInstanceGuard.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["automation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "game-load-memory-patch",
+      "Script": "Test-GameLoadMemoryPatch.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["managed"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "generated-text-aliases",
+      "Script": "Test-GeneratedTextAliases.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["text"],
+      "AlwaysForLocalization": true,
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "hover-localization-regressions",
+      "Script": "Test-HoverLocalizationRegressions.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["managed"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "il-rewrite-mapped-file-retry",
+      "Script": "Test-IlRewriteMappedFileRetry.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["managed"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "il-rewrite-map-risk",
+      "Script": "Test-IlRewriteMapRisk.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["managed"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "initialize-atg-source",
+      "Script": "Test-InitializeAtGSource.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": ["AtGProcessStopped"]
+    },
+    {
+      "Id": "install-notice",
+      "Script": "Test-InstallNotice.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "install-refresh",
+      "Script": "Test-InstallRefresh.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": ["AtGProcessStopped"]
+    },
+    {
+      "Id": "interface-localization-progress",
+      "Script": "Test-InterfaceLocalizationProgress.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["documentation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "known-text-review-export",
+      "Script": "Test-KnownTextReviewExport.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["documentation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "localization-safety-registry",
+      "Script": "Test-LocalizationSafetyRegistry.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["composite", "managed"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "localization-todo-list",
+      "Script": "Test-LocalizationTodoList.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["documentation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "measure-atg-resource-usage",
+      "Script": "Test-Measure-AtGResourceUsage.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["automation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "measure-runtime-glyph-performance",
+      "Script": "Test-Measure-RuntimeGlyphPerformance.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["font"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "notification-composition-localization",
+      "Script": "Test-NotificationCompositionLocalization.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["composite", "managed"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "operational-knowledge-ownership",
+      "Script": "Test-OperationalKnowledgeOwnership.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["documentation"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "optimization-tooling",
+      "Script": "Test-OptimizationTooling.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "patch-cli-build-cache",
+      "Script": "Test-PatchCliBuildCache.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "patch-uninstall-completeness",
+      "Script": "Test-PatchUninstallCompleteness.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": ["AtGProcessStopped"]
+    },
+    {
+      "Id": "publish-release-contract",
+      "Script": "Test-PublishAtGReleaseContract.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "release-package",
+      "Script": "Test-ReleasePackage.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": ["AtGProcessStopped"]
+    },
+    {
+      "Id": "rich-text-tag-preservation",
+      "Script": "Test-RichTextTagPreservation.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["text", "composite", "managed"],
+      "AlwaysForLocalization": true,
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "runtime-build-report",
+      "Script": "Test-RuntimeBuildReport.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["text", "composite", "managed", "font"],
+      "AlwaysForLocalization": true,
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "runtime-glyph-warmset",
+      "Script": "Test-RuntimeGlyphWarmset.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["font"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "terrain-tooltip-boundary-coverage",
+      "Script": "Test-TerrainTooltipBoundaryCoverage.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["text", "composite"],
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "text-tags",
+      "Script": "Test-TextTags.ps1",
+      "Kind": "Static",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["text"],
+      "AlwaysForLocalization": true,
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "uninstall-chinese-patch",
+      "Script": "Test-UninstallChinesePatch.ps1",
+      "Kind": "Static",
+      "Profiles": ["Release"],
+      "Triggers": ["verification"],
+      "EnvironmentPrerequisites": ["AtGProcessStopped"]
+    }
+  ],
+  "DotNetTestGroups": [
+    {
+      "Id": "patch-core",
+      "Project": "tools/AtG.Patch.Tests/AtG.Patch.Tests.csproj",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["core"],
+      "AlwaysForLocalization": true,
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "catalog-core",
+      "Project": "tools/AtG.Catalog.Tests/AtG.Catalog.Tests.csproj",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["core"],
+      "AlwaysForLocalization": true,
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "runtime-text-core",
+      "Project": "tools/AtG.RuntimeText.Tests/AtG.RuntimeText.Tests.csproj",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["core"],
+      "AlwaysForLocalization": true,
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "script-integration",
+      "Project": "tools/AtG.ScriptIntegration.Tests/AtG.ScriptIntegration.Tests.csproj",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["core", "documentation"],
+      "AlwaysForLocalization": true,
+      "EnvironmentPrerequisites": []
+    },
+    {
+      "Id": "test-harness",
+      "Project": "tools/AtG.TestHarness.Tests/AtG.TestHarness.Tests.csproj",
+      "Profiles": ["Localization", "Release"],
+      "Triggers": ["automation"],
+      "EnvironmentPrerequisites": []
+    }
+  ]
+}

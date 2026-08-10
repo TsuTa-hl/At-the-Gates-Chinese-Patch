@@ -1,5 +1,6 @@
 using AtG.TestHarness;
 
+#if LEGACY_MANUAL_RUNNER
 var tests = new (string Name, Func<Task> Body)[]
 {
     ("Adaptive wait stops after two stable frames", AdaptiveWaitStopsEarly),
@@ -50,6 +51,10 @@ foreach (var test in tests)
     catch (Exception ex) { failures++; Console.Error.WriteLine($"FAIL {test.Name}: {ex.Message}"); }
 }
 return failures == 0 ? 0 : 1;
+#endif
+
+// The named cases below are executed by XunitBridge.cs through dotnet test.
+return;
 
 static async Task AdaptiveWaitStopsEarly()
 {
@@ -886,6 +891,10 @@ sealed class FakeWindowDriver : IWindowDriver
         ClickCount++;
         _operationCount++;
     }
+    public void Scroll(int referenceX, int referenceY, int wheelDelta)
+    {
+        _operationCount++;
+    }
     public void KeyPress(string key)
     {
         KeyCount++;
@@ -912,6 +921,7 @@ sealed class ConstantWindowDriver : IWindowDriver
     public int ClientHeight => 1440;
     public void Move(int referenceX, int referenceY) { }
     public void Click(int referenceX, int referenceY) { }
+    public void Scroll(int referenceX, int referenceY, int wheelDelta) { }
     public void KeyPress(string key) { }
     public string ReadFingerprint(CropRegion? referenceRegion) => "unchanged";
     public void Capture(string outputPath, CropRegion? referenceRegion, bool markCursor) =>
@@ -926,6 +936,7 @@ sealed class ChangingWindowDriver : IWindowDriver
     public int FingerprintReadCount { get; private set; }
     public void Move(int referenceX, int referenceY) { }
     public void Click(int referenceX, int referenceY) { }
+    public void Scroll(int referenceX, int referenceY, int wheelDelta) { }
     public void KeyPress(string key) { }
     public string ReadFingerprint(CropRegion? referenceRegion) =>
         (++FingerprintReadCount).ToString();

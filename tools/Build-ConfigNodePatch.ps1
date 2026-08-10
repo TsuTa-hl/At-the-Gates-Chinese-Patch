@@ -150,7 +150,8 @@ foreach ($mapPath in $MapJson) {
             }
 
             if (Test-JsonProperty $item "Nodes") {
-                foreach ($nodePatch in @($item.Nodes)) {
+                $nodes = if ($item.PSObject.Properties['Nodes']) { @($item.Nodes) } else { @() }
+                foreach ($nodePatch in $nodes) {
                     $xpath = [string]$nodePatch.XPath
                     if ([string]::IsNullOrWhiteSpace($xpath)) {
                         throw "Missing XPath for node patch on ID '$id' in $relativeOutput"

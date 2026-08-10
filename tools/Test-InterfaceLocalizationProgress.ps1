@@ -94,6 +94,9 @@ Assert-AtGProgress ([int]$metadata.Totals.AllKnownCount -eq @($items).Count) 'Me
 Assert-AtGProgress ([int]$metadata.Totals.UnclassifiedCount -eq @($items | Where-Object RouteId -eq 'Unclassified').Count) 'Metadata UnclassifiedCount must equal item rows.'
 Assert-AtGProgress ([int]$metadata.Totals.VisibleLocalizedCount -le [int]$metadata.Totals.VisibleTranslatableCount) 'Localized visible count cannot exceed visible denominator.'
 Assert-AtGProgress ([string]$metadata.BuildArtifactState -in @('Current', 'Stale', 'Unavailable')) 'Build artifact state is invalid.'
+if ([string]::IsNullOrWhiteSpace($KnownTextCsvPath)) {
+    Assert-AtGProgress ([string]$metadata.CatalogState -eq 'Validated') 'A rebuilt KnownText catalog must be validated; a partial CSV cannot make this test pass.'
+}
 
 $tooltipRoutes = @($summary | Where-Object Surface -eq 'Tooltip' | ForEach-Object RouteId)
 foreach ($routeId in @('map-terrain-resource-tooltip', 'tile-tooltip', 'generic-mouseover-tooltip', 'profession-tooltip', 'clan-tooltip', 'structure-resource-tooltip', 'knowledge-tech-tooltip')) {

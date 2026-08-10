@@ -307,14 +307,14 @@ internal static class ReviewViewCsvExporter
     }
 
     private static bool IsOpenTextRow(SourceOccurrence row) =>
-        row.Status is "UntranslatedDiscovered" or "UntranslatedCandidate" or "RejectedTrial" &&
+        row.Status is "UntranslatedDiscovered" or "UntranslatedCandidate" or "RejectedSafetyRecord" &&
         !string.IsNullOrWhiteSpace(row.Original);
 
     private static TodoCategory GetTextCategory(SourceOccurrence row)
     {
-        if (string.Equals(row.Status, "RejectedTrial", StringComparison.Ordinal))
-            return new TodoCategory("RejectedTrial", "已拒绝的试探项（不自动重试）",
-                "保留失败原因；仅在补丁机制或隔离回归条件改变后，使用单条试验重新评估。");
+        if (string.Equals(row.Status, "RejectedSafetyRecord", StringComparison.Ordinal))
+            return new TodoCategory("RejectedSafetyRecord", "已拒绝的安全记录（不自动重试）",
+                "保留风险原因；仅在补丁机制或隔离回归条件改变后，重新评估精确入口。");
         if (string.Equals(row.ReasonCode, "TechnicalInternal", StringComparison.Ordinal) ||
             string.Equals(row.Kind, "Technical", StringComparison.Ordinal))
             return new TodoCategory("Technical", "技术、诊断或内部字符串（默认不汉化）",
@@ -351,7 +351,7 @@ internal static class ReviewViewCsvExporter
         "CommonCandidate" => 2,
         "CompositeOrKey" => 3,
         "LogicSensitive" => 4,
-        "RejectedTrial" => 5,
+        "RejectedSafetyRecord" => 5,
         "Technical" => 6,
         _ => 7,
     };

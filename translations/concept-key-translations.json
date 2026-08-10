@@ -1,0 +1,2901 @@
+{
+    "SchemaVersion":  1,
+    "StaticInputs":  [
+                         {
+                             "Original":  "source/English.original.xml",
+                             "Localized":  "patch/Content/Text/English.xml"
+                         },
+                         {
+                             "Original":  "translations/composite-text-rules.json:OriginalFormat",
+                             "Localized":  "translations/composite-text-rules.json:LocalizedFormat"
+                         },
+                         {
+                             "Original":  "source/AtTheGatesCommon.original.dll:AtTheGatesCommon.ns_UI.Concepts",
+                             "Localized":  "canonical concept-key resolver"
+                         }
+                     ],
+    "ConceptCount":  109,
+    "Concepts":  [
+                     {
+                         "Key":  "ACTIVE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Active",
+                                            "Chinese":  [
+                                                            "主动"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Active Clans",
+                                            "Chinese":  [
+                                                            "主动氏族"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Active Profession",
+                                            "Chinese":  [
+                                                            "主动职业"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Active Professions",
+                                            "Chinese":  [
+                                                            "主动职业"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "ALLIANCE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Alliance",
+                                            "Chinese":  [
+                                                            "同盟"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "ANIMAL",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Animal",
+                                            "Chinese":  [
+                                                            "动物"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Animal Herd",
+                                            "Chinese":  [
+                                                            "动物群"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Animal Herds",
+                                            "Chinese":  [
+                                                            "动物群",
+                                                            "兽群"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Animals",
+                                            "Chinese":  [
+                                                            "动物"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Herd",
+                                            "Chinese":  [
+                                                            "兽群"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Herd of Animals",
+                                            "Chinese":  [
+                                                            "动物"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "APPRENTICE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Apprenctice",
+                                            "Chinese":  [
+                                                            "学徒"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Apprentice",
+                                            "Chinese":  [
+                                                            "学徒"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Apprentice Slot",
+                                            "Chinese":  [
+                                                            "学徒槽位",
+                                                            "学徒栏位"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Apprentice Slots",
+                                            "Chinese":  [
+                                                            "学徒槽位"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Apprentices",
+                                            "Chinese":  [
+                                                            "学徒"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "APPROACH",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Approach",
+                                            "Chinese":  [
+                                                            "态度"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Approaches",
+                                            "Chinese":  [
+                                                            "态度"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "ARMY",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Armies",
+                                            "Chinese":  [
+                                                            "军队"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Army",
+                                            "Chinese":  [
+                                                            "军队"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "ATTACK",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Attack",
+                                            "Chinese":  [
+                                                            "攻击",
+                                                            "进攻"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Attack Power",
+                                            "Chinese":  [
+                                                            "攻击力"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "BANDIT",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Bandit",
+                                            "Chinese":  [
+                                                            "强盗"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Bandit Camps",
+                                            "Chinese":  [
+                                                            "强盗营地"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Bandits",
+                                            "Chinese":  [
+                                                            "强盗"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "BORDERS",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Border",
+                                            "Chinese":  [
+                                                            "边界",
+                                                            "边境"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Border Range",
+                                            "Chinese":  [
+                                                            "边界范围",
+                                                            "边境范围"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Borders",
+                                            "Chinese":  [
+                                                            "边界",
+                                                            "边境"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CAPITAL",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Capital",
+                                            "Chinese":  [
+                                                            "首都"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Capital City",
+                                            "Chinese":  [
+                                                            "首都"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CAPTURED",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Captured",
+                                            "Chinese":  [
+                                                            "俘获"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CARAVAN",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Caravan",
+                                            "Chinese":  [
+                                                            "商队"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Caravans",
+                                            "Chinese":  [
+                                                            "商队"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CARGO",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Cargo",
+                                            "Chinese":  [
+                                                            "货物"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Cargo Space",
+                                            "Chinese":  [
+                                                            "货舱"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CAVALRY",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Cavalry",
+                                            "Chinese":  [
+                                                            "骑兵"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Cavalry Units",
+                                            "Chinese":  [
+                                                            "骑兵单位"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Horsemen",
+                                            "Chinese":  [
+                                                            "骑兵"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CIVILIAN",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Civilian",
+                                            "Chinese":  [
+                                                            "平民"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Civilian Units",
+                                            "Chinese":  [
+                                                            "平民单位"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Civilians",
+                                            "Chinese":  [
+                                                            "平民"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CLAN",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Clan",
+                                            "Chinese":  [
+                                                            "氏族"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Clan Management Screen",
+                                            "Chinese":  [
+                                                            "氏族管理界面"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Clans",
+                                            "Chinese":  [
+                                                            "氏族"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Clans\u0027",
+                                            "Chinese":  [
+                                                            "氏族"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Clan\u0027s",
+                                            "Chinese":  [
+                                                            "氏族"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CLAN-TRAIT",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Clan Traits",
+                                            "Chinese":  [
+                                                            "氏族特质"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Personality Traits",
+                                            "Chinese":  [
+                                                            "性格特质"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Trait",
+                                            "Chinese":  [
+                                                            "特质"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Traits",
+                                            "Chinese":  [
+                                                            "特质"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "COLD",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Cold",
+                                            "Chinese":  [
+                                                            "寒冷"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Cold Months",
+                                            "Chinese":  [
+                                                            "寒冷月份"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "winter",
+                                            "Chinese":  [
+                                                            "冬季",
+                                                            "寒冬"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "COMBAT-XP",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Combat Experience",
+                                            "Chinese":  [
+                                                            "战斗经验"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Combat XP",
+                                            "Chinese":  [
+                                                            "战斗经验"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CONSTRUCT",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Builder",
+                                            "Chinese":  [
+                                                            "建造者"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Construct",
+                                            "Chinese":  [
+                                                            "建造",
+                                                            "修建"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Constructed",
+                                            "Chinese":  [
+                                                            "建造",
+                                                            "已建造"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Constructing",
+                                            "Chinese":  [
+                                                            "建造"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Construction",
+                                            "Chinese":  [
+                                                            "建造"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CONSUME",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Consume",
+                                            "Chinese":  [
+                                                            "消耗"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Consumed",
+                                            "Chinese":  [
+                                                            "消耗",
+                                                            "已消耗"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Consumes",
+                                            "Chinese":  [
+                                                            "消耗"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Consuming",
+                                            "Chinese":  [
+                                                            "消耗"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Consumption",
+                                            "Chinese":  [
+                                                            "消耗"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CONTROL",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Control",
+                                            "Chinese":  [
+                                                            "控制"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Control Level",
+                                            "Chinese":  [
+                                                            "控制等级"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Controlled",
+                                            "Chinese":  [
+                                                            "控制",
+                                                            "受控"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "CRIME",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Crime",
+                                            "Chinese":  [
+                                                            "犯罪",
+                                                            "罪行"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Crimes",
+                                            "Chinese":  [
+                                                            "罪行"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "DAMAGE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Damage",
+                                            "Chinese":  [
+                                                            "伤害"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Heal",
+                                            "Chinese":  [
+                                                            "治疗"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Health",
+                                            "Chinese":  [
+                                                            "生命"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "伤害",
+                                            "Chinese":  [
+                                                            "伤害"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "DECLARE-KINGDOM",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Build a Kingdom",
+                                            "Chinese":  [
+                                                            "建立王国"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Declare Your Kingdom",
+                                            "Chinese":  [
+                                                            "宣布你的王国"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Declaring a Kingdom",
+                                            "Chinese":  [
+                                                            "宣布建国"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Found a Kingdom",
+                                            "Chinese":  [
+                                                            "建立王国"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "\u0027Found Kingdom\u0027",
+                                            "Chinese":  [
+                                                            "“建立王国”"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Founding a Kingdom",
+                                            "Chinese":  [
+                                                            "建立王国"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Founding your Kingdom",
+                                            "Chinese":  [
+                                                            "建立你的王国"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "permanent kingdom",
+                                            "Chinese":  [
+                                                            "永久王国"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Settle Down",
+                                            "Chinese":  [
+                                                            "定居"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "settling down",
+                                            "Chinese":  [
+                                                            "定居"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "DEFENSE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Defending",
+                                            "Chinese":  [
+                                                            "防御"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Defense",
+                                            "Chinese":  [
+                                                            "防御"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Defense Power",
+                                            "Chinese":  [
+                                                            "防御力"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "DEGRADE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Degradation",
+                                            "Chinese":  [
+                                                            "枯竭"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Degrade",
+                                            "Chinese":  [
+                                                            "耗竭",
+                                                            "枯竭",
+                                                            "损耗"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Degraded",
+                                            "Chinese":  [
+                                                            "已枯竭"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Degrades",
+                                            "Chinese":  [
+                                                            "枯竭"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Degrading",
+                                            "Chinese":  [
+                                                            "枯竭中"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Depleted",
+                                            "Chinese":  [
+                                                            "枯竭"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Depletes",
+                                            "Chinese":  [
+                                                            "枯竭"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "DEPLETE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Degraded",
+                                            "Chinese":  [
+                                                            "枯竭"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Deplete",
+                                            "Chinese":  [
+                                                            "消耗"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Depleted",
+                                            "Chinese":  [
+                                                            "枯竭"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Depletes",
+                                            "Chinese":  [
+                                                            "枯竭"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "DEPOSIT",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Deposit",
+                                            "Chinese":  [
+                                                            "矿藏",
+                                                            "资源点"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Deposits",
+                                            "Chinese":  [
+                                                            "矿藏",
+                                                            "矿床",
+                                                            "资源点"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Resource Deposit",
+                                            "Chinese":  [
+                                                            "资源点"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Resource Deposits",
+                                            "Chinese":  [
+                                                            "资源矿藏"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "source",
+                                            "Chinese":  [
+                                                            "来源"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "source of Resources",
+                                            "Chinese":  [
+                                                            "资源来源"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "sources",
+                                            "Chinese":  [
+                                                            "来源"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "DESERTED-LOCATION",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Abandoned Ruins",
+                                            "Chinese":  [
+                                                            "废弃遗迹"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Deserted Location",
+                                            "Chinese":  [
+                                                            "废弃地点"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Deserted Locations",
+                                            "Chinese":  [
+                                                            "废弃地点"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "DESIRE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Desire",
+                                            "Chinese":  [
+                                                            "愿望"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Desires",
+                                            "Chinese":  [
+                                                            "愿望"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "DIG-IN",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Dig In",
+                                            "Chinese":  [
+                                                            "固守"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Digging In",
+                                            "Chinese":  [
+                                                            "固守中"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Dug In",
+                                            "Chinese":  [
+                                                            "固守",
+                                                            "掘壕固守"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "DISCIPLINE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Discipline",
+                                            "Chinese":  [
+                                                            "纪律",
+                                                            "学科"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Disciplines",
+                                            "Chinese":  [
+                                                            "纪律",
+                                                            "学科"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "EMISSARY",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Emissaries",
+                                            "Chinese":  [
+                                                            "使者"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Emissary",
+                                            "Chinese":  [
+                                                            "使者"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "ENCAMP",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Encamp",
+                                            "Chinese":  [
+                                                            "扎营"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Encamped",
+                                            "Chinese":  [
+                                                            "已扎营"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Encamping",
+                                            "Chinese":  [
+                                                            "扎营",
+                                                            "扎营中"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "EXHAUST",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Exhaust",
+                                            "Chinese":  [
+                                                            "耗尽"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Exhausted",
+                                            "Chinese":  [
+                                                            "耗尽"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Exhausts",
+                                            "Chinese":  [
+                                                            "耗尽"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "FACTION",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Faction",
+                                            "Chinese":  [
+                                                            "派系"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Factions",
+                                            "Chinese":  [
+                                                            "派系"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "other tribes",
+                                            "Chinese":  [
+                                                            "其他部族"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "FACTION-TRAIT",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Faction Traits",
+                                            "Chinese":  [
+                                                            "派系特质"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "FAMILY",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Clan Family",
+                                            "Chinese":  [
+                                                            "氏族家庭"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Families",
+                                            "Chinese":  [
+                                                            "家庭"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Family",
+                                            "Chinese":  [
+                                                            "家庭"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "FARM",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Farm",
+                                            "Chinese":  [
+                                                            "农场"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Farms",
+                                            "Chinese":  [
+                                                            "农场"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "FEUD",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Feud",
+                                            "Chinese":  [
+                                                            "纷争",
+                                                            "世仇",
+                                                            "宿怨"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Feuds",
+                                            "Chinese":  [
+                                                            "纷争",
+                                                            "世仇"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "FORAGE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Forage",
+                                            "Chinese":  [
+                                                            "采集"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Foraged",
+                                            "Chinese":  [
+                                                            "采集"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Forager",
+                                            "Chinese":  [
+                                                            "采集者"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Forager Units",
+                                            "Chinese":  [
+                                                            "采集单位"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Foragers",
+                                            "Chinese":  [
+                                                            "采集者"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Foraging",
+                                            "Chinese":  [
+                                                            "采集"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "FOREST",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Dense Forest",
+                                            "Chinese":  [
+                                                            "森林"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "dense Forests",
+                                            "Chinese":  [
+                                                            "茂密森林",
+                                                            "森林"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Forest",
+                                            "Chinese":  [
+                                                            "森林"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Forests",
+                                            "Chinese":  [
+                                                            "森林"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "heavily-Forested",
+                                            "Chinese":  [
+                                                            "森林茂密"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "FORTIFY",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Fortify",
+                                            "Chinese":  [
+                                                            "加固"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "HARVEST",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Harvest",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Harvest any Resources",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Harvest Deposits",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Harvest Resources",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Harvest your Resources",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Harvestable",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Harvested",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Harvesting",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Harvesting Deposits",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Harvesting of Resources",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Harvesting Resources",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Harvests",
+                                            "Chinese":  [
+                                                            "采收"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "HEALTH",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Health",
+                                            "Chinese":  [
+                                                            "生命值"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "INFANTRY",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Infantry",
+                                            "Chinese":  [
+                                                            "步兵"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Unmounted",
+                                            "Chinese":  [
+                                                            "徒步"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "INFLUENCE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Influence",
+                                            "Chinese":  [
+                                                            "影响力"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "INTERACTION",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Interactions",
+                                            "Chinese":  [
+                                                            "互动"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "LEADER",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Leader",
+                                            "Chinese":  [
+                                                            "领袖"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Leaders",
+                                            "Chinese":  [
+                                                            "领袖"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "The other Leaders",
+                                            "Chinese":  [
+                                                            "其他领袖"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "LEADER-TRAIT",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Leader Trait",
+                                            "Chinese":  [
+                                                            "领袖特质"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Personalities",
+                                            "Chinese":  [
+                                                            "个性"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Personality",
+                                            "Chinese":  [
+                                                            "性格"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Personality Traits",
+                                            "Chinese":  [
+                                                            "个性特质",
+                                                            "性格特质"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Traits",
+                                            "Chinese":  [
+                                                            "特质"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "LEARN",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Learn",
+                                            "Chinese":  [
+                                                            "习得",
+                                                            "学会",
+                                                            "学习"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Learned",
+                                            "Chinese":  [
+                                                            "习得",
+                                                            "学会",
+                                                            "学习",
+                                                            "已学会"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Learning",
+                                            "Chinese":  [
+                                                            "学会",
+                                                            "学习",
+                                                            "研究"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Researched",
+                                            "Chinese":  [
+                                                            "研究"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Studied",
+                                            "Chinese":  [
+                                                            "研究"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "LEVEL",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Level",
+                                            "Chinese":  [
+                                                            "等级"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Level Up",
+                                            "Chinese":  [
+                                                            "升级"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Levels",
+                                            "Chinese":  [
+                                                            "等级"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Level-Up",
+                                            "Chinese":  [
+                                                            "升级"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "LEVERAGE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Leverage",
+                                            "Chinese":  [
+                                                            "筹码",
+                                                            "影响力"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "MINE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Mines",
+                                            "Chinese":  [
+                                                            "矿井"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "MINERAL",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Mineral",
+                                            "Chinese":  [
+                                                            "矿物"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Mineral Deposit",
+                                            "Chinese":  [
+                                                            "矿藏"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Mineral Deposits",
+                                            "Chinese":  [
+                                                            "矿藏"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Minerals",
+                                            "Chinese":  [
+                                                            "矿物"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "MOOD",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "become unhappy",
+                                            "Chinese":  [
+                                                            "不满"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Mood",
+                                            "Chinese":  [
+                                                            "心情"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "unhappy",
+                                            "Chinese":  [
+                                                            "不满"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "MORALE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Morale",
+                                            "Chinese":  [
+                                                            "士气"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "MOVE-POINT",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Move",
+                                            "Chinese":  [
+                                                            "移动"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Move cost",
+                                            "Chinese":  [
+                                                            "移动消耗"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Move Point",
+                                            "Chinese":  [
+                                                            "移动点数",
+                                                            "移动力"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Move Points",
+                                            "Chinese":  [
+                                                            "移动点数",
+                                                            "移动力"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Movement",
+                                            "Chinese":  [
+                                                            "移动",
+                                                            "移动力"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Movement Cost",
+                                            "Chinese":  [
+                                                            "移动消耗"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Moves",
+                                            "Chinese":  [
+                                                            "移动"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Moving",
+                                            "Chinese":  [
+                                                            "移动"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "NEUTRAL",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Neutral",
+                                            "Chinese":  [
+                                                            "中立"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Neutral Tribe",
+                                            "Chinese":  [
+                                                            "中立部族"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Neutrals",
+                                            "Chinese":  [
+                                                            "中立者"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "NOBLE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Ennoble",
+                                            "Chinese":  [
+                                                            "册封",
+                                                            "晋封"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Ennobled",
+                                            "Chinese":  [
+                                                            "晋封贵族",
+                                                            "已册封"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Ennobling",
+                                            "Chinese":  [
+                                                            "册封"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Noble",
+                                            "Chinese":  [
+                                                            "贵族"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "OCCUPIED",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Occupied",
+                                            "Chinese":  [
+                                                            "被占据",
+                                                            "已占用",
+                                                            "占领"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "OFFLINE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Offline",
+                                            "Chinese":  [
+                                                            "离线",
+                                                            "停工"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "PACKED",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Migrating",
+                                            "Chinese":  [
+                                                            "迁徙"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Pack Up",
+                                            "Chinese":  [
+                                                            "打包"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Packed Up",
+                                            "Chinese":  [
+                                                            "打包"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Packing Up",
+                                            "Chinese":  [
+                                                            "打包"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Unpacked",
+                                            "Chinese":  [
+                                                            "未打包"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "PASTURE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Pasture",
+                                            "Chinese":  [
+                                                            "牧场"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Pastures",
+                                            "Chinese":  [
+                                                            "牧场"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "PILLAGE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Pillage",
+                                            "Chinese":  [
+                                                            "劫掠"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Pillaged",
+                                            "Chinese":  [
+                                                            "劫掠"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Pillaging",
+                                            "Chinese":  [
+                                                            "劫掠"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "PLANT",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Plant",
+                                            "Chinese":  [
+                                                            "植物"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Plants",
+                                            "Chinese":  [
+                                                            "植物"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "POPCAP",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Clan Limit",
+                                            "Chinese":  [
+                                                            "氏族上限"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Clan Limit (popcap)",
+                                            "Chinese":  [
+                                                            "氏族上限（人口上限）"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Popcap",
+                                            "Chinese":  [
+                                                            "人口上限"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Support",
+                                            "Chinese":  [
+                                                            "支持"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "POWER",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Combat Power",
+                                            "Chinese":  [
+                                                            "战斗力",
+                                                            "战力"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Power",
+                                            "Chinese":  [
+                                                            "力量",
+                                                            "战力"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "PRODUCE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Produce",
+                                            "Chinese":  [
+                                                            "产出",
+                                                            "生产"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Produce Resources",
+                                            "Chinese":  [
+                                                            "产出资源"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Produced",
+                                            "Chinese":  [
+                                                            "产出",
+                                                            "生产"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Produces",
+                                            "Chinese":  [
+                                                            "产出"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Producing",
+                                            "Chinese":  [
+                                                            "产出",
+                                                            "生产"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Production",
+                                            "Chinese":  [
+                                                            "产出",
+                                                            "生产"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Resource Production",
+                                            "Chinese":  [
+                                                            "资源产出",
+                                                            "资源生产"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "PROFESSION",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Profession",
+                                            "Chinese":  [
+                                                            "职业"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Professions",
+                                            "Chinese":  [
+                                                            "职业"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "PUNISH",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Punish",
+                                            "Chinese":  [
+                                                            "惩罚"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Punishing",
+                                            "Chinese":  [
+                                                            "惩罚"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "RELIGION",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Religion",
+                                            "Chinese":  [
+                                                            "宗教"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "REPUTATION",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Reputation",
+                                            "Chinese":  [
+                                                            "声望",
+                                                            "声誉"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "RESIDENT",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Resident",
+                                            "Chinese":  [
+                                                            "居民"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "RESOURCE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Resource",
+                                            "Chinese":  [
+                                                            "资源"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Resources",
+                                            "Chinese":  [
+                                                            "资源"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "RETREAT",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Retreat",
+                                            "Chinese":  [
+                                                            "撤退"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Retreating",
+                                            "Chinese":  [
+                                                            "撤退"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "RIVER",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "River",
+                                            "Chinese":  [
+                                                            "河流"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Rivers",
+                                            "Chinese":  [
+                                                            "河流"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Small Rivers",
+                                            "Chinese":  [
+                                                            "小河"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "RL",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Relationship Level",
+                                            "Chinese":  [
+                                                            "关系等级"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Relationship Level (RL)",
+                                            "Chinese":  [
+                                                            "关系等级（RL）"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "RL",
+                                            "Chinese":  [
+                                                            "关系等级"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "ROAD",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Road",
+                                            "Chinese":  [
+                                                            "道路"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "ROME",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Roman",
+                                            "Chinese":  [
+                                                            "罗马"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Roman Empire",
+                                            "Chinese":  [
+                                                            "罗马帝国"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Roman Empire Factions",
+                                            "Chinese":  [
+                                                            "罗马帝国派系"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Roman Empires",
+                                            "Chinese":  [
+                                                            "罗马帝国"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Romans",
+                                            "Chinese":  [
+                                                            "罗马",
+                                                            "罗马人"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Rome",
+                                            "Chinese":  [
+                                                            "罗马"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "the Romans",
+                                            "Chinese":  [
+                                                            "罗马人"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "RUMOR",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Rumors",
+                                            "Chinese":  [
+                                                            "传闻"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "SEASON",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Season",
+                                            "Chinese":  [
+                                                            "季节"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Seasonal",
+                                            "Chinese":  [
+                                                            "季节",
+                                                            "季节性"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Seasons",
+                                            "Chinese":  [
+                                                            "季节"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "winter",
+                                            "Chinese":  [
+                                                            "冬季"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "winter\u0027s chill",
+                                            "Chinese":  [
+                                                            "冬寒"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "SETTLED",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Settled",
+                                            "Chinese":  [
+                                                            "定居"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Settled Profession",
+                                            "Chinese":  [
+                                                            "定居职业",
+                                                            "已定居职业"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Settled Professions",
+                                            "Chinese":  [
+                                                            "定居职业"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "SIEGE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Besiege",
+                                            "Chinese":  [
+                                                            "围攻",
+                                                            "围困"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Besieged",
+                                            "Chinese":  [
+                                                            "被围攻"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Besieges",
+                                            "Chinese":  [
+                                                            "围攻"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Besieging",
+                                            "Chinese":  [
+                                                            "围攻中"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Siege",
+                                            "Chinese":  [
+                                                            "围攻"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Sieges",
+                                            "Chinese":  [
+                                                            "围攻"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "SOCIAL",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Social",
+                                            "Chinese":  [
+                                                            "社交"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "SPOIL",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Spoilage",
+                                            "Chinese":  [
+                                                            "腐坏"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "STACK",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Stack of Units",
+                                            "Chinese":  [
+                                                            "单位编队"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Stacks",
+                                            "Chinese":  [
+                                                            "编队"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "STARVE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Starvation",
+                                            "Chinese":  [
+                                                            "饥饿"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Starve",
+                                            "Chinese":  [
+                                                            "挨饿"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Starving",
+                                            "Chinese":  [
+                                                            "挨饿",
+                                                            "饥荒"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "STOCKPILE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Stockpile",
+                                            "Chinese":  [
+                                                            "储备",
+                                                            "存栏",
+                                                            "库存"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Stockpiled",
+                                            "Chinese":  [
+                                                            "库存中的"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "STORED-TURN",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "\"Stored Turns\"",
+                                            "Chinese":  [
+                                                            "“储备回合”"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Stored",
+                                            "Chinese":  [
+                                                            "储存"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "stored as a number of Turns",
+                                            "Chinese":  [
+                                                            "可维持回合数"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Stored Turn",
+                                            "Chinese":  [
+                                                            "储备回合",
+                                                            "存粮回合"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Stored Turns",
+                                            "Chinese":  [
+                                                            "储备回合",
+                                                            "存粮回合"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "\u0027Stored Turns\u0027",
+                                            "Chinese":  [
+                                                            "“储存回合”"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Turn of Food",
+                                            "Chinese":  [
+                                                            "食物回合"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Turns of Food",
+                                            "Chinese":  [
+                                                            "食物回合数"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "STRUCTURE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Farms",
+                                            "Chinese":  [
+                                                            "农场"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Structure",
+                                            "Chinese":  [
+                                                            "建筑"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Structures",
+                                            "Chinese":  [
+                                                            "建筑"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "STUDY",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Knowledge Screen",
+                                            "Chinese":  [
+                                                            "知识界面"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Research",
+                                            "Chinese":  [
+                                                            "研究"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Researched",
+                                            "Chinese":  [
+                                                            "研究"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Researching",
+                                            "Chinese":  [
+                                                            "研究"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Studied",
+                                            "Chinese":  [
+                                                            "研究"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Study",
+                                            "Chinese":  [
+                                                            "研究"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Studying",
+                                            "Chinese":  [
+                                                            "研究"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "SUPPLY",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Supply",
+                                            "Chinese":  [
+                                                            "补给"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Supply Level",
+                                            "Chinese":  [
+                                                            "补给等级"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Supply Reserve",
+                                            "Chinese":  [
+                                                            "补给储备"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Suppy",
+                                            "Chinese":  [
+                                                            "补给"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "补给等级",
+                                            "Chinese":  [
+                                                            "补给等级"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "TECH",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Tech",
+                                            "Chinese":  [
+                                                            "技术",
+                                                            "科技"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Tech Tree",
+                                            "Chinese":  [
+                                                            "科技树"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Techs",
+                                            "Chinese":  [
+                                                            "科技"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "\u0027Techs\u0027",
+                                            "Chinese":  [
+                                                            "“科技”"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "TERRAIN",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Terrain",
+                                            "Chinese":  [
+                                                            "地形"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "TILE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "EMPHASISed concept",
+                                            "Chinese":  [
+                                                            "强调概念"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Map Tiles",
+                                            "Chinese":  [
+                                                            "地图地块"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Tile",
+                                            "Chinese":  [
+                                                            "地格",
+                                                            "地块"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Tiles",
+                                            "Chinese":  [
+                                                            "地格",
+                                                            "地块"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Tile\u0027s",
+                                            "Chinese":  [
+                                                            "地块"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "地格",
+                                            "Chinese":  [
+                                                            "地格"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "TOOLTIPS",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "in yellow",
+                                            "Chinese":  [
+                                                            "黄色词语"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "inside other tooltips",
+                                            "Chinese":  [
+                                                            "其他提示框内部"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "inside other tooltips!",
+                                            "Chinese":  [
+                                                            "其他悬停提示内部继续查看！"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "yellow",
+                                            "Chinese":  [
+                                                            "黄色"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "TRAIN",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Train",
+                                            "Chinese":  [
+                                                            "训练"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Trained",
+                                            "Chinese":  [
+                                                            "训练"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Training",
+                                            "Chinese":  [
+                                                            "训练"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Training Screen",
+                                            "Chinese":  [
+                                                            "训练界面"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "TURN",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Turn",
+                                            "Chinese":  [
+                                                            "回合"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "turn-based",
+                                            "Chinese":  [
+                                                            "回合制"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Turns",
+                                            "Chinese":  [
+                                                            "回合"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "UNIDENTIFIED",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Deposit ID Speed",
+                                            "Chinese":  [
+                                                            "资源点识别速度"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Identification",
+                                            "Chinese":  [
+                                                            "识别"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Identified",
+                                            "Chinese":  [
+                                                            "鉴定",
+                                                            "识别"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Identify",
+                                            "Chinese":  [
+                                                            "识别"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "identifying Deposits",
+                                            "Chinese":  [
+                                                            "识别矿藏"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "identity",
+                                            "Chinese":  [
+                                                            "身份"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Unidentified",
+                                            "Chinese":  [
+                                                            "未识别"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Unidentified Deposit",
+                                            "Chinese":  [
+                                                            "未辨识资源点",
+                                                            "未识别矿藏"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Unidentified Deposits",
+                                            "Chinese":  [
+                                                            "未辨识资源点",
+                                                            "未识别矿藏"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "UNIT",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Unit",
+                                            "Chinese":  [
+                                                            "单位"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Units",
+                                            "Chinese":  [
+                                                            "单位"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "UPGRADE",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Profession-based Upgrades",
+                                            "Chinese":  [
+                                                            "基于职业的升级"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "purchasing Profession-based Upgrades",
+                                            "Chinese":  [
+                                                            "购买基于职业的升级"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Upgrade",
+                                            "Chinese":  [
+                                                            "升级"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Upgraded",
+                                            "Chinese":  [
+                                                            "升级"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Upgrades",
+                                            "Chinese":  [
+                                                            "升级"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Upgrading",
+                                            "Chinese":  [
+                                                            "升级"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "VISION",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Vision",
+                                            "Chinese":  [
+                                                            "视野"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "WARRIOR",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Fight",
+                                            "Chinese":  [
+                                                            "战斗",
+                                                            "作战"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Warrior",
+                                            "Chinese":  [
+                                                            "战士"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Warrior Unit",
+                                            "Chinese":  [
+                                                            "战士单位"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Warrior Units",
+                                            "Chinese":  [
+                                                            "战士单位"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Warriors",
+                                            "Chinese":  [
+                                                            "战士"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "WATER",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Body of Water",
+                                            "Chinese":  [
+                                                            "水域"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Naval",
+                                            "Chinese":  [
+                                                            "水上"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Water",
+                                            "Chinese":  [
+                                                            "水域"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "WEATHER",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Weather",
+                                            "Chinese":  [
+                                                            "天气"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "WINNING",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "goal",
+                                            "Chinese":  [
+                                                            "目标"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "ultimate goal",
+                                            "Chinese":  [
+                                                            "最终目标"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Victory",
+                                            "Chinese":  [
+                                                            "胜利"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "Victory Conditions",
+                                            "Chinese":  [
+                                                            "胜利条件"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "ways to win",
+                                            "Chinese":  [
+                                                            "获胜方式",
+                                                            "胜利方式"
+                                                        ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Key":  "XP",
+                         "Status":  "Complete",
+                         "Labels":  [
+                                        {
+                                            "English":  "Experience",
+                                            "Chinese":  [
+                                                            "经验"
+                                                        ]
+                                        },
+                                        {
+                                            "English":  "XP",
+                                            "Chinese":  [
+                                                            "经验"
+                                                        ]
+                                        }
+                                    ]
+                     }
+                 ]
+}

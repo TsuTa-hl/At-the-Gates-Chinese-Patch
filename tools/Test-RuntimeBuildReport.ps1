@@ -23,14 +23,35 @@ if ([string]$report.LocalizationInputs.Digest -notmatch '^[0-9a-f]{64}$') {
 if (@($report.LocalizationInputs.Files).Count -eq 0) {
     throw "Build report localization input fingerprint must list its source files."
 }
+if ($null -eq $report.BuildContract -or [int]$report.BuildContract.SchemaVersion -ne 2) {
+    throw "Build report is missing the staged build-contract metadata."
+}
+if (@($report.BuildContract.InputHashes.PSObject.Properties).Count -lt @($report.BuildContract.RequiredInputs).Count) {
+    throw "Build report does not hash every declared build input."
+}
+if (@($report.BuildContract.Stages).Count -lt 5) {
+    throw "Build report does not contain every required stage contract."
+}
+foreach ($stage in @($report.BuildContract.Stages)) {
+    if ([string]::IsNullOrWhiteSpace([string]$stage.Name) -or
+        @($stage.ExpectedOutputs).Count -eq 0 -or
+        @($stage.OutputHashes.PSObject.Properties).Count -ne @($stage.ExpectedOutputs).Count) {
+        throw "Build report has an incomplete stage contract: $($stage.Name)"
+    }
+    foreach ($hash in @($stage.OutputHashes.PSObject.Properties | ForEach-Object { [string]$_.Value })) {
+        if ($hash -notmatch '^[0-9a-f]{64}$') {
+            throw "Build report has a malformed stage output hash for $($stage.Name)."
+        }
+    }
+}
 if ($report.RendererMode -ne "DynamicCjk") {
     throw "Runtime build report test requires a DynamicCjk build report."
 }
 if ($null -eq $report.RuntimeText) {
     throw "DynamicCjk build report is missing RuntimeText details."
 }
-if ([int]$report.RuntimeText.RedirectedCount -ne 149) {
-    throw "Expected 149 runtime redirects, got $($report.RuntimeText.RedirectedCount)."
+if ([int]$report.RuntimeText.RedirectedCount -ne 150) {
+    throw "Expected 150 runtime redirects, got $($report.RuntimeText.RedirectedCount)."
 }
 if ([int]$report.RuntimeText.FrameBoundaryHookCount -ne 1) {
     throw "Expected one runtime frame-boundary hook, got $($report.RuntimeText.FrameBoundaryHookCount)."

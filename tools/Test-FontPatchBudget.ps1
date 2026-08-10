@@ -200,7 +200,8 @@ function Add-AtGConfigNodeDisplayTextToBuilder {
                 [void]$Builder.Append([string]$item.Description)
             }
             if ($null -ne $item.PSObject.Properties["Nodes"]) {
-                foreach ($nodePatch in @($item.Nodes)) {
+                $nodes = if ($item.PSObject.Properties['Nodes']) { @($item.Nodes) } else { @() }
+                foreach ($nodePatch in $nodes) {
                     if ($null -ne $nodePatch.PSObject.Properties["Value"]) {
                         [void]$Builder.Append([string]$nodePatch.Value)
                     }

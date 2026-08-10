@@ -3,6 +3,7 @@ using AtG.ManagedRewrite;
 using dnlib.DotNet;
 using dnlib.DotNet.Emit;
 
+#if LEGACY_MANUAL_RUNNER
 var tests = new (string Name, Action Body)[]
 {
     ("Content hash is stable across input ordering", ContentHashIsStable),
@@ -12,10 +13,16 @@ var tests = new (string Name, Action Body)[]
     ("Managed rewriter replaces one exact ldstr", ManagedRewriterReplacesExactString),
     ("Rewrite map loads exact context", RewriteMapLoadsExactContext),
     ("Clan-list distance unit covers singular and plural forms", ClanListDistanceUnitCoversSingularAndPluralForms),
+    ("Diplomacy war actions keep their distinct meanings", DiplomacyWarActionsKeepTheirDistinctMeanings),
     ("Leader-trait tooltip prefix preserves its dynamic value", LeaderTraitTooltipPrefixPreservesDynamicValue),
     ("Clan-training connectors preserve their dynamic labels", ClanTrainingConnectorsPreserveDynamicLabels),
+    ("Caravan action buttons preserve transaction direction at every quantity", CaravanActionButtonsPreserveTransactionDirection),
+    ("Caravan unavailable tooltip localizes the plural concept label", CaravanUnavailableTooltipLocalizesPluralConceptLabel),
     ("Discipline tooltip config map covers all six entries", DisciplineTooltipConfigMapCoversAllSixEntries),
     ("Obsessed intensity tooltip config preserves its rich-text boundary", ObsessedIntensityTooltipConfigPreservesRichTextBoundary),
+    ("Deserted-location exploration configs cover all event outcomes", DesertedLocationExplorationConfigsCoverAllEventOutcomes),
+    ("Flax deposit tooltips cover all field sizes", FlaxDepositTooltipsCoverAllFieldSizes),
+    ("Clan-feud tooltips and pack warning use exact safe mappings", ClanFeudTooltipsAndPackWarningUseExactSafeMappings),
     ("Besiege tooltip maps every composed literal", BesiegeTooltipMapsEveryComposedLiteral),
     ("Rewrite coordinator caches completed jobs", RewriteCoordinatorCachesJobs),
     ("Repository rewrite plan discovers all available assemblies", RepositoryRewritePlanDiscoversAssemblies),
@@ -33,7 +40,9 @@ var tests = new (string Name, Action Body)[]
     ("Runtime display map imports only uniform composite fragments", RuntimeDisplayMapImportsUniformCompositeFragments),
     ("Runtime display map rejects generic composite templates", RuntimeDisplayMapRejectsGenericCompositeTemplates),
     ("Composite catalog discovers templates and preserves approved rules", CompositeCatalogDiscoversTemplatesAndPreservesRules),
+    ("Composite catalog refreshes runtime-map translations", CompositeCatalogRefreshesRuntimeMapTranslations),
     ("Composite catalog permits only plain bare runtime display replacements", CompositeCatalogPermitsBareRuntimeDisplayReplacements),
+    ("Concept tooltip catalog covers every static registration", ConceptTooltipCatalogCoversEveryStaticRegistration),
     ("Load lifecycle patch releases only IdSpriteBatch owned resources", LoadLifecyclePatchReleasesOwnedResources),
     ("Load lifecycle patch clears stale world roots before loading", LoadLifecyclePatchClearsStaleWorldRoots),
 };
@@ -54,6 +63,10 @@ foreach (var test in tests)
 }
 
 return failures == 0 ? 0 : 1;
+#endif
+
+// The named cases below are executed by XunitBridge.cs through dotnet test.
+return;
 
 static void ContentHashIsStable()
 {
@@ -184,6 +197,40 @@ static void ClanListDistanceUnitCoversSingularAndPluralForms()
     }
 }
 
+static void DiplomacyWarActionsKeepTheirDistinctMeanings()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-ui-il-rewrite.json");
+    var specs = RewriteMap.Load(mapPath);
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesUI.original.dll");
+    var expected = new[]
+    {
+        (Original: "Declare War", Translation: "\u5BA3\u6218", IlOffset: 1526),
+        (Original: "Make War", Translation: "\u6311\u8D77\u6218\u4E89", IlOffset: 1582),
+    };
+
+    var familySpecs = expected.Select(item => specs.Single(candidate =>
+        candidate.MethodToken == "0x06000678" &&
+        candidate.IlOffset == item.IlOffset &&
+        candidate.Original == item.Original)).ToArray();
+
+    Assert.NotEqual(familySpecs[0].Translation, familySpecs[1].Translation);
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "AtTheGatesUI.dll");
+    var result = ManagedAssemblyRewriter.Rewrite(source, output, familySpecs);
+    Assert.Equal(expected.Length, result.RewrittenCount);
+
+    var rewritten = LdstrCatalog.Read(output);
+    foreach (var item in expected)
+    {
+        Assert.True(rewritten.Any(candidate =>
+            candidate.MethodToken == "0x06000678" &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Translation));
+    }
+}
+
 static void LeaderTraitTooltipPrefixPreservesDynamicValue()
 {
     var repositoryRoot = FindRepositoryRoot();
@@ -222,6 +269,122 @@ static void LeaderTraitTooltipPrefixPreservesDynamicValue()
             candidate.MethodToken == "0x06000c08" && candidate.IlOffset == expected.IlOffset &&
             candidate.Value == expected.Value));
     }
+}
+
+static void KnowledgeStudyCountdownConnectorUsesCompleteChinesePhrase()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-common-il-rewrite.json");
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesCommon.original.dll");
+    const string MethodToken = "0x06000348";
+    const int IlOffset = 4818;
+    const string Original = " to ";
+    const string Translation = "\u5373\u53ef";
+
+    Assert.True(LdstrCatalog.Read(source).Any(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Value == Original));
+
+    var spec = RewriteMap.Load(mapPath).Single(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Original == Original);
+    Assert.Equal(Translation, spec.Translation);
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "AtTheGatesCommon.dll");
+    Assert.Equal(1, ManagedAssemblyRewriter.Rewrite(source, output, [spec]).RewrittenCount);
+    Assert.True(LdstrCatalog.Read(output).Any(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Value == Translation));
+}
+
+static void EasternRomanDiplomacyDisplayNamesRemainAtRuntimeBoundary()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var runtimeMap = File.ReadAllText(Path.Combine(repositoryRoot, "translations",
+        "runtime-display-strings.json"));
+    var expectedMappings = new[]
+    {
+        (Original: "The Eastern Roman Empire", Translation: "东罗马帝国"),
+        (Original: "Eastern Roman Empire", Translation: "东罗马帝国"),
+        (Original: "Eastern Roman", Translation: "东罗马"),
+        (Original: "Eastern Roman Independents", Translation: "东罗马独立派"),
+        (Original: "Eastern Roman Rebels", Translation: "东罗马叛军"),
+        (Original: "Eastern Roman (I)", Translation: "东罗马（独立派）"),
+        (Original: "Eastern Roman (R)", Translation: "东罗马（叛军）"),
+        (Original: "Roman", Translation: "罗马"),
+    };
+
+    foreach (var expected in expectedMappings)
+    {
+        Assert.True(runtimeMap.Contains(
+            $"\"Original\": \"{expected.Original}\",\n      \"Translation\": \"{expected.Translation}\"",
+            StringComparison.Ordinal));
+    }
+
+    var factionsSource = File.ReadAllText(Path.Combine(repositoryRoot, "source", "Content",
+        "Config", "Primary", "Factions.original.xml"));
+    Assert.True(factionsSource.Contains("<ID>FACTION_EASTERN_ROME</ID>",
+        StringComparison.Ordinal));
+    Assert.True(factionsSource.Contains("<name>The Eastern Roman Empire</name>",
+        StringComparison.Ordinal));
+
+    var configNodeMap = File.ReadAllText(Path.Combine(repositoryRoot, "translations",
+        "config-node-strings.json"));
+    Assert.False(configNodeMap.Contains("FACTION_EASTERN_ROME", StringComparison.Ordinal));
+}
+
+static void DiplomacyInteractionTagsCoverEveryConfiguredKeyword()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var runtimeMapPath = Path.Combine(repositoryRoot, "translations", "runtime-display-strings.json");
+    using var runtimeMap = System.Text.Json.JsonDocument.Parse(File.ReadAllText(runtimeMapPath));
+    var expectedMappings = new[]
+    {
+        (Original: "BULLYING", Translation: "恃强凌弱"),
+        (Original: "DEFIANT", Translation: "挑衅"),
+        (Original: "GENEROUS", Translation: "慷慨"),
+        (Original: "HOSTILE", Translation: "敌对"),
+        (Original: "NEUTRAL", Translation: "中立"),
+        (Original: "PLEASANT", Translation: "友善"),
+        (Original: "RUDE", Translation: "粗鲁"),
+        (Original: "SUBMISSIVE", Translation: "顺从"),
+        (Original: "TRAITOR", Translation: "叛徒"),
+        (Original: "UNPLEASANT", Translation: "不友善"),
+    };
+
+    foreach (var sectionName in new[] { "PlainText", "PlainTextFragments" })
+    {
+        var mappings = runtimeMap.RootElement.GetProperty(sectionName)
+            .EnumerateArray()
+            .ToDictionary(
+                entry => entry.GetProperty("Original").GetString()!,
+                entry => entry.GetProperty("Translation").GetString()!,
+                StringComparer.Ordinal);
+
+        foreach (var expected in expectedMappings)
+        {
+            Assert.True(mappings.TryGetValue(expected.Original, out var translation) &&
+                translation == expected.Translation);
+        }
+    }
+
+    var diplomacySource = Path.Combine(repositoryRoot, "source", "Content", "Config", "Diplomacy");
+    var configuredTags = Directory.EnumerateFiles(diplomacySource, "*.original.xml",
+            SearchOption.AllDirectories)
+        .SelectMany(path => System.Text.RegularExpressions.Regex
+            .Matches(File.ReadAllText(path), @"INTERACTIONTAG_[A-Z_]+")
+            .Select(match => match.Value))
+        .ToHashSet(StringComparer.Ordinal);
+    var expectedTags = expectedMappings
+        .Select(expected => $"INTERACTIONTAG_{expected.Original}")
+        .ToHashSet(StringComparer.Ordinal);
+
+    Assert.Equal(expectedTags.Count, configuredTags.Count);
+    Assert.True(expectedTags.SetEquals(configuredTags));
 }
 
 static void ClanTrainingConnectorsPreserveDynamicLabels()
@@ -269,6 +432,340 @@ static void ClanTrainingConnectorsPreserveDynamicLabels()
             candidate.IlOffset == item.IlOffset &&
             candidate.Value == item.Translation));
     }
+}
+
+static void TrainingAsConnectorsCoverEveryDisplayPath()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var uiMapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-ui-il-rewrite.json");
+    var gameMapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-game-il-rewrite.json");
+    var uiSource = Path.Combine(repositoryRoot, "source", "AtTheGatesUI.original.dll");
+    var gameSource = Path.Combine(repositoryRoot, "source", "AtTheGatesGame.original.exe");
+    var uiExpected = new[]
+    {
+        (MethodToken: "0x06000504", IlOffset: 84, Original: " as ", Translation: "为"),
+        (MethodToken: "0x060005c1", IlOffset: 258, Original: "as ", Translation: "为"),
+        (MethodToken: "0x06000122", IlOffset: 2295, Original: "as ", Translation: "成为"),
+        // Profession-study completion uses a different notification branch from
+        // training completion, but it also appends a dynamic profession concept.
+        (MethodToken: "0x0600002f", IlOffset: 3196, Original: " as ", Translation: "成为"),
+        // Notification.AppendDetails takes every completed profession through
+        // this one concept-tagged branch, so it covers all "as a <profession>"
+        // variants without a hazardous global article replacement.
+        (MethodToken: "0x0600002d", IlOffset: 2538, Original: "a [", Translation: "["),
+        (MethodToken: "0x0600002f", IlOffset: 3494, Original: " as ", Translation: "，成为"),
+        (MethodToken: "0x0600002f", IlOffset: 3522, Original: ":A/AN]", Translation: "]"),
+    };
+    var gameExpected = new[]
+    {
+        (MethodToken: "0x06000864", IlOffset: 369, Original: " as ", Translation: "为"),
+        (MethodToken: "0x0600086c", IlOffset: 73, Original: " as ", Translation: "成为"),
+    };
+
+    var uiSpecs = RewriteMap.Load(uiMapPath);
+    var gameSpecs = RewriteMap.Load(gameMapPath);
+    var sourceUiEntries = LdstrCatalog.Read(uiSource);
+    var sourceGameEntries = LdstrCatalog.Read(gameSource);
+
+    foreach (var item in uiExpected)
+    {
+        Assert.True(sourceUiEntries.Any(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Original));
+        var spec = uiSpecs.Single(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Original == item.Original);
+        Assert.Equal(item.Translation, spec.Translation);
+    }
+
+    foreach (var item in gameExpected)
+    {
+        Assert.True(sourceGameEntries.Any(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Original));
+        var spec = gameSpecs.Single(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Original == item.Original);
+        Assert.Equal(item.Translation, spec.Translation);
+    }
+
+    var selectedUiSpecs = uiSpecs.Where(candidate => uiExpected.Any(item =>
+        candidate.MethodToken == item.MethodToken &&
+        candidate.IlOffset == item.IlOffset &&
+        candidate.Original == item.Original)).ToArray();
+    var selectedGameSpecs = gameSpecs.Where(candidate => gameExpected.Any(item =>
+        candidate.MethodToken == item.MethodToken &&
+        candidate.IlOffset == item.IlOffset &&
+        candidate.Original == item.Original)).ToArray();
+
+    using var temp = new TempDirectory();
+    var uiOutput = Path.Combine(temp.Path, "AtTheGatesUI.dll");
+    var gameOutput = Path.Combine(temp.Path, "At The Gates.exe");
+    Assert.Equal(uiExpected.Length, ManagedAssemblyRewriter.Rewrite(uiSource, uiOutput, selectedUiSpecs).RewrittenCount);
+    Assert.Equal(gameExpected.Length, ManagedAssemblyRewriter.Rewrite(gameSource, gameOutput, selectedGameSpecs).RewrittenCount);
+
+    var rewrittenUiEntries = LdstrCatalog.Read(uiOutput);
+    var rewrittenGameEntries = LdstrCatalog.Read(gameOutput);
+    foreach (var item in uiExpected)
+    {
+        Assert.True(rewrittenUiEntries.Any(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Translation));
+    }
+
+    foreach (var item in gameExpected)
+    {
+        Assert.True(rewrittenGameEntries.Any(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Translation));
+    }
+
+    var patchedUi = Path.Combine(repositoryRoot, "patch", "AtTheGatesUI.dll");
+    Assert.True(File.Exists(patchedUi));
+    var patchedUiEntries = LdstrCatalog.Read(patchedUi);
+    foreach (var item in uiExpected)
+    {
+        Assert.True(patchedUiEntries.Any(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Translation));
+    }
+
+    var patchedGame = Path.Combine(repositoryRoot, "patch", "At The Gates.exe");
+    Assert.True(File.Exists(patchedGame));
+    var patchedGameEntries = LdstrCatalog.Read(patchedGame);
+    foreach (var item in gameExpected)
+    {
+        Assert.True(patchedGameEntries.Any(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Translation));
+    }
+}
+
+static void CaravanActionButtonsPreserveTransactionDirection()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-ui-il-rewrite.json");
+    var specs = RewriteMap.Load(mapPath);
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesUI.original.dll");
+    const string MethodToken = "0x06000577";
+    var expected = new[]
+    {
+        (Original: "for ", Translation: "，花费 ", IlOffset: 534),
+        (Original: "for ", Translation: "，花费 ", IlOffset: 1055),
+        (Original: " Buy ", Translation: "买入 ", IlOffset: 1496),
+        (Original: "for ", Translation: "，花费 ", IlOffset: 1594),
+        (Original: "for ", Translation: "，获得 ", IlOffset: 2121),
+        (Original: "for ", Translation: "，获得 ", IlOffset: 2644),
+        (Original: "for ", Translation: "，获得 ", IlOffset: 3194),
+    };
+
+    var sourceCatalog = LdstrCatalog.Read(source);
+    foreach (var item in expected)
+    {
+        Assert.True(sourceCatalog.Any(candidate =>
+            candidate.MethodToken == MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Original));
+
+        var spec = specs.Single(candidate =>
+            candidate.MethodToken == MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Original == item.Original);
+        Assert.Equal(item.Translation, spec.Translation);
+    }
+
+    var familySpecs = specs.Where(candidate => expected.Any(item =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == item.IlOffset &&
+        candidate.Original == item.Original)).ToArray();
+    Assert.Equal(expected.Length, familySpecs.Length);
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "AtTheGatesUI.dll");
+    var result = ManagedAssemblyRewriter.Rewrite(source, output, familySpecs);
+    Assert.Equal(expected.Length, result.RewrittenCount);
+
+    var rewritten = LdstrCatalog.Read(output);
+    foreach (var item in expected)
+    {
+        Assert.True(rewritten.Any(candidate =>
+            candidate.MethodToken == MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Translation));
+    }
+}
+
+static void CaravanUnavailableTooltipLocalizesPluralConceptLabel()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-ui-il-rewrite.json");
+    var specs = RewriteMap.Load(mapPath);
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesUI.original.dll");
+    const string MethodToken = "0x06000267";
+    const int IlOffset = 92;
+    const string Original = "\n\nAlas, no [Caravans|CARAVAN] are in our area this [Turn|TURN].";
+    const string Translation = "\n\n遗憾的是，本[回合|TURN]没有[商队|CARAVAN]来到附近。";
+
+    Assert.True(LdstrCatalog.Read(source).Any(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Value == Original));
+
+    var spec = specs.Single(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Original == Original);
+    Assert.Equal(Translation, spec.Translation);
+    Assert.False(spec.Translation.Contains("[Caravans|CARAVAN]", StringComparison.Ordinal));
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "AtTheGatesUI.dll");
+    var result = ManagedAssemblyRewriter.Rewrite(source, output, [spec]);
+    Assert.Equal(1, result.RewrittenCount);
+    Assert.True(LdstrCatalog.Read(output).Any(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Value == Translation));
+}
+
+static void EnnobledEventChoiceUsesLocalizedMoodReason()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-game-il-rewrite.json");
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesGame.original.exe");
+    const string MethodToken = "0x06000da7";
+    const int IlOffset = 703;
+    const string Original = " from being [Ennobled|NOBLE]";
+    const string Translation = "，源于[已册封|NOBLE]";
+
+    Assert.True(LdstrCatalog.Read(source).Any(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Value == Original));
+
+    var spec = RewriteMap.Load(mapPath).Single(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Original == Original);
+    Assert.Equal(Translation, spec.Translation);
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "At The Gates.exe");
+    var result = ManagedAssemblyRewriter.Rewrite(source, output, [spec]);
+    Assert.Equal(1, result.RewrittenCount);
+    Assert.True(LdstrCatalog.Read(output).Any(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.Value == Translation));
+}
+
+static void FinalGamePatchRetainsLocalizedEnnobledMoodReason()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var patchedGame = Path.Combine(repositoryRoot, "patch", "At The Gates.exe");
+    const string MethodToken = "0x06000da7";
+    const string Translation = "，源于[已册封|NOBLE]";
+
+    Assert.True(File.Exists(patchedGame));
+    Assert.True(LdstrCatalog.Read(patchedGame).Any(candidate =>
+        candidate.MethodToken == MethodToken && candidate.Value == Translation));
+}
+
+static void EnnobledDisciplineChoiceOptionsCoverAllSixEffects()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var sourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "Constants",
+        "GameConstants.original.xml");
+    var mapPath = Path.Combine(repositoryRoot, "translations", "config-node-misc-strings.json");
+    var patchedPath = Path.Combine(repositoryRoot, "patch", "Content", "Config", "Constants",
+        "GameConstants.xml");
+    var expected = new Dictionary<string, (string Source, string Translation)>(StringComparer.Ordinal)
+    {
+        ["DISCIPLINE_HONOR"] = ("+5 Levels in Honor", "荣誉等级+5"),
+        ["DISCIPLINE_AGRICULTURE"] = ("+5 Levels in Agriculture", "农业等级+5"),
+        ["DISCIPLINE_LIVESTOCK"] = ("+5 Levels in Livestock", "畜牧等级+5"),
+        ["DISCIPLINE_METALWORKING"] = ("+5 Levels in Metalworking", "冶金等级+5"),
+        ["DISCIPLINE_CRAFTING"] = ("+5 Levels in Crafting", "工艺等级+5"),
+        ["DISCIPLINE_DISCOVERY"] = ("+5 Levels in Discovery", "探索等级+5"),
+    };
+
+    var source = System.Xml.Linq.XDocument.Load(sourcePath);
+    var ennobledProperties = source.Root!.Element("propertiesWhenEnnobled")!;
+    var choice = ennobledProperties.Elements("property")
+        .Single(node => (string?)node.Element("propertyID") == "Choose_Property");
+    var sourceOptions = choice.Elements("property")
+        .ToDictionary(
+            node => node.Element("ID")!.Value,
+            node => node.Element("usage")!.Value,
+            StringComparer.Ordinal);
+    Assert.True(expected.Keys.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        sourceOptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    foreach (var item in expected)
+    {
+        Assert.Equal(item.Value.Source, sourceOptions[item.Key]);
+    }
+
+    using var map = System.Text.Json.JsonDocument.Parse(File.ReadAllText(mapPath));
+    var gameConstantsMap = map.RootElement.GetProperty(@"Content\Config\Constants\GameConstants.xml");
+    Assert.Equal(@"source\Content\Config\Constants\GameConstants.original.xml",
+        gameConstantsMap.GetProperty("Source").GetString());
+    Assert.Equal("property", gameConstantsMap.GetProperty("Container").GetString());
+    var translations = gameConstantsMap.GetProperty("Items").EnumerateArray()
+        .ToDictionary(
+            item => item.GetProperty("ID").GetString()!,
+            item => item.GetProperty("Nodes").EnumerateArray().Single(
+                node => node.GetProperty("XPath").GetString() == "usage").GetProperty("Value").GetString()!,
+            StringComparer.Ordinal);
+    Assert.True(expected.Keys.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        translations.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    foreach (var item in expected)
+    {
+        Assert.Equal(item.Value.Translation, translations[item.Key]);
+        Assert.False(System.Text.RegularExpressions.Regex.IsMatch(translations[item.Key], "[A-Za-z]"));
+    }
+
+    const string sourceReason = "being [Ennobled|NOBLE]";
+    const string localizedReason = "[已册封|NOBLE]";
+    var sourceReasons = ennobledProperties.Descendants("fromDescription")
+        .Where(node => node.Value == sourceReason)
+        .ToArray();
+    Assert.Equal(8, sourceReasons.Length);
+
+    var reasonReplacement = gameConstantsMap.GetProperty("CompositeReplacements")
+        .EnumerateArray()
+        .Single(item => item.GetProperty("OriginalValue").GetString() == sourceReason);
+    Assert.Equal("descendant::fromDescription", reasonReplacement.GetProperty("XPath").GetString());
+    Assert.Equal(localizedReason, reasonReplacement.GetProperty("LocalizedValue").GetString());
+    Assert.Equal(sourceReasons.Length, reasonReplacement.GetProperty("ExpectedMatchCount").GetInt32());
+
+    Assert.True(File.Exists(patchedPath));
+    var patched = System.Xml.Linq.XDocument.Load(patchedPath);
+    var patchedChoice = patched.Root!.Element("propertiesWhenEnnobled")!.Elements("property")
+        .Single(node => (string?)node.Element("propertyID") == "Choose_Property");
+    var patchedOptions = patchedChoice.Elements("property")
+        .ToDictionary(
+            node => node.Element("ID")!.Value,
+            node => node.Element("usage")!.Value,
+            StringComparer.Ordinal);
+    Assert.True(expected.Keys.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        patchedOptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    foreach (var item in expected)
+    {
+        Assert.Equal(item.Value.Translation, patchedOptions[item.Key]);
+    }
+
+    var patchedReasons = patched.Root!.Element("propertiesWhenEnnobled")!
+        .Descendants("fromDescription")
+        .Where(node => node.Value == localizedReason)
+        .ToArray();
+    Assert.Equal(sourceReasons.Length, patchedReasons.Length);
 }
 
 static void DisciplineTooltipConfigMapCoversAllSixEntries()
@@ -357,6 +854,473 @@ static void ObsessedIntensityTooltipConfigPreservesRichTextBoundary()
 
     var displayText = System.Text.RegularExpressions.Regex.Replace(ExpectedTranslation, @"\[[^\]]+\]", "");
     Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+}
+
+static void DesertedLocationExplorationConfigsCoverAllEventOutcomes()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var goodyResultsSourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "Misc",
+        "GoodyResults.original.xml");
+    var goodyHutsSourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "OnMap",
+        "GoodyHuts.original.xml");
+    var miscMapPath = Path.Combine(repositoryRoot, "translations", "config-node-misc-strings.json");
+    var onMapPath = Path.Combine(repositoryRoot, "translations", "config-node-onmap-strings.json");
+
+    var goodyResultsSource = System.Xml.Linq.XDocument.Load(goodyResultsSourcePath);
+    var goodyHutsSource = System.Xml.Linq.XDocument.Load(goodyHutsSourcePath);
+    using var miscMap = System.Text.Json.JsonDocument.Parse(File.ReadAllText(miscMapPath));
+    using var onMapMap = System.Text.Json.JsonDocument.Parse(File.ReadAllText(onMapPath));
+    var goodyResultsMap = miscMap.RootElement.GetProperty(@"Content\Config\Misc\GoodyResults.xml");
+    var goodyHutsMap = onMapMap.RootElement.GetProperty(@"Content\Config\OnMap\GoodyHuts.xml");
+
+    Assert.Equal(@"source\Content\Config\Misc\GoodyResults.original.xml",
+        goodyResultsMap.GetProperty("Source").GetString());
+    Assert.Equal("goodyResult", goodyResultsMap.GetProperty("Container").GetString());
+    var sourceResults = goodyResultsSource.Root!.Descendants("goodyResult")
+        .ToDictionary(
+            node => node.Element("ID")!.Value,
+            node => node.Element("name")!.Value,
+            StringComparer.Ordinal);
+    var translatedResults = goodyResultsMap.GetProperty("Items").EnumerateArray()
+        .ToDictionary(
+            item => item.GetProperty("ID").GetString()!,
+            item => item.GetProperty("Name").GetString()!,
+            StringComparer.Ordinal);
+
+    Assert.Equal(27, sourceResults.Count);
+    Assert.True(sourceResults.Keys.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        translatedResults.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    Assert.Equal("在城市遗迹中，你的[EXPLORER]发现了一群[TRADER:S]，希望加入你！",
+        translatedResults["GOODY_RESULT_TRADER"]);
+
+    foreach (var sourceResult in sourceResults)
+    {
+        var translation = translatedResults[sourceResult.Key];
+        Assert.True(ReadRichTextKeys(sourceResult.Value).OrderBy(key => key, StringComparer.Ordinal)
+            .SequenceEqual(ReadRichTextKeys(translation).OrderBy(key => key, StringComparer.Ordinal),
+                StringComparer.Ordinal));
+        var displayText = System.Text.RegularExpressions.Regex.Replace(translation, @"\[[^\]]+\]", "");
+        Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+    }
+
+    var fromDescriptions = goodyResultsSource.Root.Descendants("fromDescription").ToArray();
+    Assert.Equal(31, fromDescriptions.Length);
+    Assert.True(fromDescriptions.All(description =>
+        StringComparer.Ordinal.Equals("from [Deserted Location|DESERTED-LOCATION]", description.Value)));
+    var replacement = goodyResultsMap.GetProperty("CompositeReplacements").EnumerateArray().Single();
+    Assert.Equal("descendant::fromDescription", replacement.GetProperty("XPath").GetString());
+    Assert.Equal("from [Deserted Location|DESERTED-LOCATION]", replacement.GetProperty("OriginalValue").GetString());
+    Assert.Equal("来自[废弃地点|DESERTED-LOCATION]", replacement.GetProperty("LocalizedValue").GetString());
+    Assert.Equal(fromDescriptions.Length, replacement.GetProperty("ExpectedMatchCount").GetInt32());
+
+    Assert.Equal(@"source\Content\Config\OnMap\GoodyHuts.original.xml",
+        goodyHutsMap.GetProperty("Source").GetString());
+    Assert.Equal("goodyHut", goodyHutsMap.GetProperty("Container").GetString());
+    var sourceHutIds = goodyHutsSource.Root!.Elements("goodyHut")
+        .Select(node => node.Element("ID")!.Value)
+        .OrderBy(id => id, StringComparer.Ordinal)
+        .ToArray();
+    var translatedHuts = goodyHutsMap.GetProperty("Items").EnumerateArray()
+        .ToDictionary(item => item.GetProperty("ID").GetString()!, StringComparer.Ordinal);
+    Assert.Equal(5, sourceHutIds.Length);
+    Assert.True(sourceHutIds.SequenceEqual(
+        translatedHuts.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    foreach (var hut in translatedHuts)
+    {
+        var name = hut.Value.GetProperty("Name").GetString()!;
+        var description = hut.Value.GetProperty("Description").GetString()!;
+        Assert.False(System.Text.RegularExpressions.Regex.IsMatch(name, "[A-Za-z]"));
+        Assert.True(description.Contains("[NEWLINE]", StringComparison.Ordinal));
+        Assert.True(description.Contains("[EXPLORER]", StringComparison.Ordinal));
+    }
+
+    static string[] ReadRichTextKeys(string value) =>
+        System.Text.RegularExpressions.Regex.Matches(value, @"\[([^\]]+)\]")
+            .Select(match =>
+            {
+                var contents = match.Groups[1].Value;
+                var separator = contents.IndexOf('|');
+                return separator >= 0 ? contents[(separator + 1)..] : contents;
+            })
+            .ToArray();
+}
+
+static void RomanConceptTooltipLocalizesNestedConceptLinks()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-common-il-rewrite.json");
+    var compositeRulesPath = Path.Combine(repositoryRoot, "translations", "composite-text-rules.json");
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesCommon.original.dll");
+    const string MethodToken = "0x0600026a";
+    const int IlOffset = 1458;
+    const string Original = "There are two distinct and independently-run Roman Empires. Both are quite strong in the early going, and picking a fight with them is very dangerous. In time you'll grow much stronger and the Romans weaker, but for now it's probably best to stay on their good side.[BLANK-LINE]Your [ultimate goal|WINNING] in AtG is to defeat the Romans by capturing the [Capital City|CAPITAL] of either half of the Empire, or take the empire over from within by becoming Magister Militum.";
+    const string Translation = "世界上有两个彼此独立运作的罗马帝国。它们在前期都相当强大，贸然与其开战十分危险。随着时间推移，你会更强而罗马人会更弱；但眼下最好还是与他们保持良好关系。[BLANK-LINE]你在 AtG 中的[最终目标|WINNING]，是通过攻占帝国任一半部的[首都|CAPITAL]来击败罗马人，或成为军务长官，从内部接管帝国。";
+
+    Assert.True(LdstrCatalog.Read(source).Any(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Value == Original));
+
+    var spec = RewriteMap.Load(mapPath).Single(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Original == Original);
+    Assert.Equal(Translation, spec.Translation);
+
+    using var compositeRules = System.Text.Json.JsonDocument.Parse(File.ReadAllText(compositeRulesPath));
+    var compositeRule = compositeRules.RootElement.GetProperty("Entries").EnumerateArray().Single(entry =>
+        entry.GetProperty("EntryPointId").GetString() ==
+        "managed-map:hardcoded-common-il-rewrite.json:0x0600026a:IL_05B2");
+    Assert.Equal(Translation, compositeRule.GetProperty("LocalizedFormat").GetString());
+
+    static string[] ReadRichTextKeys(string value) =>
+        System.Text.RegularExpressions.Regex.Matches(value, @"\[([^\]]+)\]")
+            .Select(match =>
+            {
+                var contents = match.Groups[1].Value;
+                var separator = contents.IndexOf('|');
+                return separator >= 0 ? contents[(separator + 1)..] : contents;
+            })
+            .ToArray();
+
+    Assert.True(ReadRichTextKeys(Original).OrderBy(key => key, StringComparer.Ordinal)
+        .SequenceEqual(ReadRichTextKeys(Translation).OrderBy(key => key, StringComparer.Ordinal),
+            StringComparer.Ordinal));
+    Assert.False(Translation.Contains("ultimate goal", StringComparison.Ordinal));
+    Assert.False(Translation.Contains("Capital City", StringComparison.Ordinal));
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "AtTheGatesCommon.dll");
+    Assert.Equal(1, ManagedAssemblyRewriter.Rewrite(source, output, [spec]).RewrittenCount);
+    Assert.True(LdstrCatalog.Read(output).Any(candidate =>
+        candidate.MethodToken == MethodToken && candidate.IlOffset == IlOffset &&
+        candidate.Value == Translation));
+}
+
+static void FactionConceptTooltipLocalizesNestedConceptLinks()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-common-il-rewrite.json");
+    var compositeRulesPath = Path.Combine(repositoryRoot, "translations", "composite-text-rules.json");
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesCommon.original.dll");
+    const string MethodToken = "0x0600026a";
+    const int IlOffset = 1567;
+    const string Original = "Factions are the different kinds of tribes, kingdoms, and empires to be found throughout the world.[BLANK-LINE]Different Factions all start in different situations, and are at different level of advancement, except for the human player, who always starts with a single [SETTLEMENT] and 3 [Clans|CLAN].[BLANK-LINE]You start the game only able to play as the Goths, but more can be unlocked by conquering the [Capital|CAPITAL] of another Faction, or forming an [Alliance|ALLIANCE] with it.[BLANK-LINE]Special, non-playable Factions include the [Romans|ROME], the [Bandits|BANDIT], and [Neutral|NEUTRAL] minor tribes.";
+    const string Translation = "派系代表世界各地不同的部族、王国和帝国。[BLANK-LINE]不同派系开局形势和发展水平各不相同；人类玩家例外，总是以一个[SETTLEMENT]和3个[氏族|CLAN]开局。[BLANK-LINE]游戏开始时你只能扮演哥特人，但可以通过征服其他派系的[首都|CAPITAL]，或与其结成[同盟|ALLIANCE]来解锁更多派系。[BLANK-LINE]特殊的非可玩派系包括[罗马人|ROME]、[强盗|BANDIT]和[中立|NEUTRAL]小部族。";
+
+    Assert.True(LdstrCatalog.Read(source).Any(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Value == Original));
+
+    var spec = RewriteMap.Load(mapPath).Single(candidate =>
+        candidate.MethodToken == MethodToken &&
+        candidate.IlOffset == IlOffset &&
+        candidate.Original == Original);
+    Assert.Equal(Translation, spec.Translation);
+
+    using var compositeRules = System.Text.Json.JsonDocument.Parse(File.ReadAllText(compositeRulesPath));
+    var compositeRule = compositeRules.RootElement.GetProperty("Entries").EnumerateArray().Single(entry =>
+        entry.GetProperty("EntryPointId").GetString() ==
+        "managed-map:hardcoded-common-il-rewrite.json:0x0600026a:IL_061F");
+    Assert.Equal(Translation, compositeRule.GetProperty("LocalizedFormat").GetString());
+
+    static string[] ReadRichTextKeys(string value) =>
+        System.Text.RegularExpressions.Regex.Matches(value, @"\[([^\]]+)\]")
+            .Select(match =>
+            {
+                var contents = match.Groups[1].Value;
+                var separator = contents.IndexOf('|');
+                return separator >= 0 ? contents[(separator + 1)..] : contents;
+            })
+            .ToArray();
+
+    Assert.True(ReadRichTextKeys(Original).OrderBy(key => key, StringComparer.Ordinal)
+        .SequenceEqual(ReadRichTextKeys(Translation).OrderBy(key => key, StringComparer.Ordinal),
+            StringComparer.Ordinal));
+    Assert.False(System.Text.RegularExpressions.Regex.IsMatch(
+        System.Text.RegularExpressions.Regex.Replace(Translation, @"\[[^\]]+\]", ""), "[A-Za-z]"));
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "AtTheGatesCommon.dll");
+    Assert.Equal(1, ManagedAssemblyRewriter.Rewrite(source, output, [spec]).RewrittenCount);
+    Assert.True(LdstrCatalog.Read(output).Any(candidate =>
+        candidate.MethodToken == MethodToken && candidate.IlOffset == IlOffset &&
+        candidate.Value == Translation));
+}
+
+static void ConceptTooltipCatalogCoversEveryStaticRegistration()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesCommon.original.dll");
+    var catalog = ConceptTooltipCatalog.Read(source);
+
+    Assert.Equal("AtTheGatesCommon.ns_UI.Concepts", catalog.TypeFullName);
+    Assert.Equal("0x0600026a", catalog.StaticConstructorToken);
+    Assert.Equal(111, catalog.Entries.Count);
+    Assert.Equal(111, catalog.Entries.Select(entry => entry.Key).Distinct(StringComparer.Ordinal).Count());
+    Assert.True(catalog.Entries.All(entry => entry.IsComplete));
+
+    var expectedRegistrationOnlyKeys = new[] { "DEFEND", "ENEMY", "FOOD", "FRIEND" };
+    var mapPath = Path.Combine(repositoryRoot, "translations", "concept-key-translations.json");
+    using var map = System.Text.Json.JsonDocument.Parse(File.ReadAllText(mapPath));
+    var mapKeys = map.RootElement.GetProperty("Concepts")
+        .EnumerateArray()
+        .Select(entry => entry.GetProperty("Key").GetString()!)
+        .ToHashSet(StringComparer.Ordinal);
+    var registrationOnlyKeys = catalog.Entries
+        .Select(entry => entry.Key)
+        .Where(key => !mapKeys.Contains(key))
+        .OrderBy(key => key, StringComparer.Ordinal)
+        .ToArray();
+    Assert.Equal(string.Join("|", expectedRegistrationOnlyKeys), string.Join("|", registrationOnlyKeys));
+
+    var food = catalog.Entries.Single(entry => entry.RegistrationOffset == "IL_0578");
+    var bandit = catalog.Entries.Single(entry => entry.RegistrationOffset == "IL_05fa");
+    Assert.Equal("FOOD", food.Key);
+    Assert.Equal("BANDIT", bandit.Key);
+
+    var social = catalog.Entries.Single(entry => entry.Key == "SOCIAL");
+    Assert.Equal("Concat", social.Composition);
+    Assert.True(social.Parts.Any(part =>
+        part.IlOffset == "<dynamic>" && part.Value == "{font-icon:Social}"));
+}
+
+static void FlaxDepositTooltipsCoverAllFieldSizes()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var sourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "OnMap",
+        "Deposits.original.xml");
+    var mapPath = Path.Combine(repositoryRoot, "translations", "config-node-onmap-strings.json");
+    var flaxIds = new[] { "DEPOSIT_FLAX", "DEPOSIT_FLAX_LARGE", "DEPOSIT_FLAX_VAST" };
+    var expectedTranslations = new Dictionary<string, string>(StringComparer.Ordinal)
+    {
+        ["DEPOSIT_FLAX"] = "亚麻田可由[REAPER]或[FLAX-FARM-1][采收|HARVEST]，以[产出|PRODUCE][FLAX]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，亚麻无法继续采收。",
+        ["DEPOSIT_FLAX_LARGE"] = "亚麻田可由[REAPER]或[FLAX-FARM-1][采收|HARVEST]，以[产出|PRODUCE][FLAX]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，亚麻无法继续采收。[BLANK-LINE]这是一大片亚麻田！",
+        ["DEPOSIT_FLAX_VAST"] = "亚麻田可由[REAPER]或[FLAX-FARM-1][采收|HARVEST]，以[产出|PRODUCE][FLAX]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，亚麻无法继续采收。[BLANK-LINE]这是迄今发现的最大亚麻田之一！"
+    };
+
+    var source = System.Xml.Linq.XDocument.Load(sourcePath);
+    using var map = System.Text.Json.JsonDocument.Parse(File.ReadAllText(mapPath));
+    var depositsMap = map.RootElement.GetProperty(@"Content\Config\OnMap\Deposits.xml");
+    Assert.Equal(@"source\Content\Config\OnMap\Deposits.original.xml",
+        depositsMap.GetProperty("Source").GetString());
+    Assert.Equal("deposit", depositsMap.GetProperty("Container").GetString());
+
+    var sourceDescriptions = source.Root!.Element("Plants")!.Elements("deposit")
+        .Where(node => flaxIds.Contains(node.Element("ID")!.Value, StringComparer.Ordinal))
+        .ToDictionary(
+            node => node.Element("ID")!.Value,
+            node => node.Element("description")!.Value,
+            StringComparer.Ordinal);
+    var translatedDescriptions = depositsMap.GetProperty("Items").EnumerateArray()
+        .Where(item => flaxIds.Contains(item.GetProperty("ID").GetString(), StringComparer.Ordinal))
+        .ToDictionary(
+            item => item.GetProperty("ID").GetString()!,
+            item => item.GetProperty("Description").GetString()!,
+            StringComparer.Ordinal);
+
+    Assert.True(flaxIds.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        sourceDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    Assert.True(flaxIds.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        translatedDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+
+    foreach (var id in flaxIds)
+    {
+        var translation = translatedDescriptions[id];
+        Assert.Equal(expectedTranslations[id], translation);
+        Assert.True(ReadFlaxRichTextKeys(sourceDescriptions[id]).OrderBy(key => key, StringComparer.Ordinal)
+            .SequenceEqual(ReadFlaxRichTextKeys(translation).OrderBy(key => key, StringComparer.Ordinal),
+                StringComparer.Ordinal));
+
+        var displayText = System.Text.RegularExpressions.Regex.Replace(translation, @"\[[^\]]+\]", "");
+        Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+    }
+
+    static string[] ReadFlaxRichTextKeys(string value) =>
+        System.Text.RegularExpressions.Regex.Matches(value, @"\[([^\]]+)\]")
+            .Select(match =>
+            {
+                var contents = match.Groups[1].Value;
+                var separator = contents.IndexOf('|');
+                return separator >= 0 ? contents[(separator + 1)..] : contents;
+            })
+            .ToArray();
+}
+
+static void SheepDepositTooltipsCoverAllHerdSizes()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var sourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "OnMap",
+        "Deposits.original.xml");
+    var mapPath = Path.Combine(repositoryRoot, "translations", "config-node-onmap-strings.json");
+    var sheepIds = new[] { "DEPOSIT_SHEEP", "DEPOSIT_SHEEP_LARGE", "DEPOSIT_SHEEP_VAST" };
+    var expectedTranslations = new Dictionary<string, string>(StringComparer.Ordinal)
+    {
+        ["DEPOSIT_SHEEP"] = "[SHEEP]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][SHEEP-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供采集[WOOL]、制作[CLOTH]等其他用途使用。",
+        ["DEPOSIT_SHEEP_LARGE"] = "[SHEEP]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][SHEEP-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供采集[WOOL]、制作[CLOTH]等其他用途使用。[BLANK-LINE]这是一大群羊！",
+        ["DEPOSIT_SHEEP_VAST"] = "[SHEEP]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][SHEEP-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供采集[WOOL]、制作[CLOTH]等其他用途使用。[BLANK-LINE]这是迄今发现的最大羊群之一！"
+    };
+
+    var source = System.Xml.Linq.XDocument.Load(sourcePath);
+    using var map = System.Text.Json.JsonDocument.Parse(File.ReadAllText(mapPath));
+    var depositsMap = map.RootElement.GetProperty(@"Content\Config\OnMap\Deposits.xml");
+    var sourceDescriptions = source.Root!.Element("Animals")!.Elements("deposit")
+        .Where(node => sheepIds.Contains(node.Element("ID")!.Value, StringComparer.Ordinal))
+        .ToDictionary(
+            node => node.Element("ID")!.Value,
+            node => node.Element("description")!.Value,
+            StringComparer.Ordinal);
+    var translatedDescriptions = depositsMap.GetProperty("Items").EnumerateArray()
+        .Where(item => sheepIds.Contains(item.GetProperty("ID").GetString(), StringComparer.Ordinal))
+        .ToDictionary(
+            item => item.GetProperty("ID").GetString()!,
+            item => item.GetProperty("Description").GetString()!,
+            StringComparer.Ordinal);
+
+    Assert.True(sheepIds.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        sourceDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    Assert.True(sheepIds.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        translatedDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+
+    foreach (var id in sheepIds)
+    {
+        var translation = translatedDescriptions[id];
+        Assert.Equal(expectedTranslations[id], translation);
+        Assert.True(ReadSheepRichTextKeys(sourceDescriptions[id]).OrderBy(key => key, StringComparer.Ordinal)
+            .SequenceEqual(ReadSheepRichTextKeys(translation).OrderBy(key => key, StringComparer.Ordinal),
+                StringComparer.Ordinal));
+
+        var displayText = System.Text.RegularExpressions.Regex.Replace(translation, @"\[[^\]]+\]", "");
+        Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+    }
+
+    static string[] ReadSheepRichTextKeys(string value) =>
+        System.Text.RegularExpressions.Regex.Matches(value, @"\[([^\]]+)\]")
+            .Select(match =>
+            {
+                var contents = match.Groups[1].Value;
+                var separator = contents.IndexOf('|');
+                return separator >= 0 ? contents[(separator + 1)..] : contents;
+            })
+            .ToArray();
+}
+
+static void ClanFeudTooltipsAndPackWarningUseExactSafeMappings()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var uiMapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-ui-il-rewrite.json");
+    var uiSourcePath = Path.Combine(repositoryRoot, "source", "AtTheGatesUI.original.dll");
+    var uiSpecs = RewriteMap.Load(uiMapPath);
+    var expectedUiMappings = new[]
+    {
+        (Original: "\n\nWhen a ", Translation: "\n\n当一个", MethodToken: "0x06000122", IlOffset: 1043),
+        (Original: "WARNING: This will result in the current ", Translation: "警告：这会导致当前", MethodToken: "0x0600038a", IlOffset: 529),
+    };
+
+    var selectedUiSpecs = expectedUiMappings.Select(expected => uiSpecs.Single(candidate =>
+        candidate.MethodToken == expected.MethodToken && candidate.IlOffset == expected.IlOffset &&
+        candidate.Original == expected.Original && candidate.Translation == expected.Translation)).ToArray();
+    using (var temp = new TempDirectory())
+    {
+        var output = Path.Combine(temp.Path, "AtTheGatesUI.dll");
+        Assert.Equal(selectedUiSpecs.Length,
+            ManagedAssemblyRewriter.Rewrite(uiSourcePath, output, selectedUiSpecs).RewrittenCount);
+        var rewritten = LdstrCatalog.Read(output);
+        foreach (var expected in expectedUiMappings)
+        {
+            Assert.True(rewritten.Any(candidate => candidate.MethodToken == expected.MethodToken &&
+                candidate.IlOffset == expected.IlOffset && candidate.Value == expected.Translation));
+        }
+    }
+
+    var feudIds = new[]
+    {
+        "DESIRE_Feud_HatesBadlyBehaved",
+        "DESIRE_Feud_SharingTile",
+        "DESIRE_Feud_HatesUnpure",
+        "DESIRE_Feud_HatesCriminals",
+        "DESIRE_Feud_PersonalityClash_TooDemanding",
+        "DESIRE_Feud_DramaQueen",
+        "DESIRE_Feud_PersonalityClash_Immorality",
+        "DESIRE_Feud_PersonalityClash_TooNosy",
+        "DESIRE_Feud_PersonalityClash_Competition",
+    };
+    var configMapPath = Path.Combine(repositoryRoot, "translations", "config-node-strings.json");
+    var sourceConfigPath = Path.Combine(repositoryRoot, "source", "Content", "Config", "Primary",
+        "ClanDesires.original.xml");
+    var sourceConfig = System.Xml.Linq.XDocument.Load(sourceConfigPath);
+    using var configMap = System.Text.Json.JsonDocument.Parse(File.ReadAllText(configMapPath));
+    var feudMap = configMap.RootElement.GetProperty(@"Content\Config\Primary\ClanDesires.xml");
+    Assert.Equal(@"source\Content\Config\Primary\ClanDesires.original.xml",
+        feudMap.GetProperty("Source").GetString());
+    Assert.Equal("clanDesire", feudMap.GetProperty("Container").GetString());
+    var translatedDescriptions = feudMap.GetProperty("Items").EnumerateArray()
+        .ToDictionary(
+            item => item.GetProperty("ID").GetString()!,
+            item => item.GetProperty("Description").GetString()!,
+            StringComparer.Ordinal);
+    var sourceDescriptions = sourceConfig.Descendants("clanDesire")
+        .Where(node => feudIds.Contains(node.Element("ID")!.Value, StringComparer.Ordinal))
+        .ToDictionary(
+            node => node.Element("ID")!.Value,
+            node => node.Element("description")!.Value,
+            StringComparer.Ordinal);
+
+    Assert.True(feudIds.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        translatedDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    Assert.True(feudIds.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        sourceDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    foreach (var translation in translatedDescriptions.Values)
+    {
+        Assert.True(translation.Contains("(FEUD-DESC)", StringComparison.Ordinal));
+        Assert.True(translation.Contains("(NAME)", StringComparison.Ordinal));
+        Assert.True(translation.Contains("(NAME2)", StringComparison.Ordinal));
+        Assert.True(translation.Contains("[SETTLEMENT]", StringComparison.Ordinal));
+        var displayText = System.Text.RegularExpressions.Regex.Replace(
+            translation, @"\([A-Z0-9-]+\)|\[[A-Z-]+\]", "");
+        Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+    }
+
+    var intensitiesSourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "Misc",
+        "Intensities.original.xml");
+    var intensitiesMap = configMap.RootElement.GetProperty(@"Content\Config\Misc\Intensities.xml");
+    Assert.Equal(@"source\Content\Config\Misc\Intensities.original.xml",
+        intensitiesMap.GetProperty("Source").GetString());
+    Assert.Equal("intensity", intensitiesMap.GetProperty("Container").GetString());
+    var expectedFeudDescriptions = new Dictionary<string, string>(StringComparer.Ordinal)
+    {
+        ["INTENSITY_CURIOUS"] = "轻微争执",
+        ["INTENSITY_INTERESTED"] = "轻微争执",
+        ["INTENSITY_DISTRACTED"] = "轻微争执",
+        ["INTENSITY_OBSESSED"] = "[COLOR:BAD-RED]名为争执，实为战争[/COLOR]",
+    };
+    var translatedFeudDescriptions = intensitiesMap.GetProperty("Items").EnumerateArray()
+        .ToDictionary(
+            item => item.GetProperty("ID").GetString()!,
+            item => item.GetProperty("Nodes").EnumerateArray().Single().GetProperty("Value").GetString()!,
+            StringComparer.Ordinal);
+    var sourceIntensities = System.Xml.Linq.XDocument.Load(intensitiesSourcePath)
+        .Descendants("intensity")
+        .Where(node => expectedFeudDescriptions.ContainsKey(node.Element("ID")!.Value))
+        .ToDictionary(
+            node => node.Element("ID")!.Value,
+            node => node.Element("feudDescription")!.Value,
+            StringComparer.Ordinal);
+
+    Assert.True(expectedFeudDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        translatedFeudDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    foreach (var expected in expectedFeudDescriptions)
+    {
+        Assert.Equal(expected.Value, translatedFeudDescriptions[expected.Key]);
+    }
+    Assert.True(expectedFeudDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        sourceIntensities.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    foreach (var value in translatedFeudDescriptions.Values)
+    {
+        var displayText = System.Text.RegularExpressions.Regex.Replace(value, @"\[[^\]]+\]", "");
+        Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+    }
 }
 
 static void BesiegeTooltipMapsEveryComposedLiteral()
@@ -577,6 +1541,40 @@ static void ManagedRewriterFiltersStringReturn()
     Assert.True(injected.TargetFullName.Contains(nameof(ReturnFilterTarget), StringComparison.Ordinal));
 }
 
+static void ManagedRewriterFiltersOneExplicitCallResult()
+{
+    using var temp = new TempDirectory();
+    var source = typeof(CallResultFilterFixture).Assembly.Location;
+    var output = Path.Combine(temp.Path, "call-result-filtered.dll");
+    var methods = ManagedMethodCatalog.Read(source);
+    var caller = methods.Single(method =>
+        method.DeclaringType.EndsWith(nameof(CallResultFilterFixture), StringComparison.Ordinal) &&
+        method.Name == nameof(CallResultFilterFixture.BuildLabel));
+    var target = methods.Single(method =>
+        method.DeclaringType.EndsWith(nameof(CallResultFilterTarget), StringComparison.Ordinal) &&
+        method.Name == nameof(CallResultFilterTarget.Filter));
+    var sourceCall = ManagedCallCatalog.Read(source).Single(call =>
+        call.CallerToken == caller.MetadataToken &&
+        call.TargetFullName.Contains(nameof(CallResultFilterFixture.GetFactionName), StringComparison.Ordinal));
+
+    var result = ManagedCallResultFilterInjector.Inject(source, output, source,
+    [
+        new CallResultFilterSpec(caller.MetadataToken, sourceCall.IlOffset,
+            sourceCall.TargetFullName, target.MetadataToken, 1),
+    ]);
+
+    Assert.Equal(1, result.InjectedCount);
+    var outputCalls = ManagedCallCatalog.Read(output)
+        .Where(call => call.CallerToken == caller.MetadataToken)
+        .OrderBy(call => call.IlOffset)
+        .ToArray();
+    var sourceIndex = Array.FindIndex(outputCalls, call =>
+        call.TargetFullName.Contains(nameof(CallResultFilterFixture.GetFactionName), StringComparison.Ordinal));
+    Assert.True(sourceIndex >= 0 && sourceIndex + 1 < outputCalls.Length);
+    Assert.True(outputCalls[sourceIndex + 1].TargetFullName.Contains(
+        nameof(CallResultFilterTarget.Filter), StringComparison.Ordinal));
+}
+
 static void ManagedRewriterFiltersMethodArgument()
 {
     using var temp = new TempDirectory();
@@ -742,7 +1740,7 @@ static void RuntimeDisplayMapImportsCompositeExactEntries()
               "OriginalFormat": "A Clan is idle.",
               "LocalizedFormat": "\u6709\u6C0F\u65CF\u5904\u4E8E\u7A7A\u95F2\u72B6\u6001\u3002",
               "Classification": "DisplayComposite",
-              "Status": "Trial",
+              "Status": "Mapped",
               "RuleId": "runtime-display-exact",
               "Stale": false
             },
@@ -1017,6 +2015,37 @@ static void CompositeCatalogDiscoversTemplatesAndPreservesRules()
     Assert.True(rejected);
 }
 
+static void CompositeCatalogRefreshesRuntimeMapTranslations()
+{
+    using var temp = new TempDirectory();
+    const string mapPath = "translations/runtime-display-strings.json";
+    var rulesPath = Path.Combine(temp.Path, "translations", "composite-text-rules.json");
+
+    temp.Write(mapPath, """
+        {
+          "PlainTextFragments": [
+            { "Original": "Make War", "Translation": "\u5BA3\u6218" }
+          ]
+        }
+        """);
+    CompositeTextCatalog.Build(temp.Path, rulesPath);
+
+    temp.Write(mapPath, """
+        {
+          "PlainTextFragments": [
+            { "Original": "Make War", "Translation": "\u6311\u8D77\u6218\u4E89" }
+          ]
+        }
+        """);
+    CompositeTextCatalog.Build(temp.Path, rulesPath);
+
+    var regenerated = ReadCompositeCatalog(rulesPath);
+    var entry = regenerated.Entries.Single(candidate =>
+        candidate.Source.Kind == "RuntimeMap" &&
+        candidate.OriginalFormat == "Make War");
+    Assert.Equal("\u6311\u8D77\u6218\u4E89", entry.LocalizedFormat);
+}
+
 static void CompositeCatalogPermitsBareRuntimeDisplayReplacements()
 {
     CompositeTextCatalog.Validate(
@@ -1272,6 +2301,18 @@ sealed class ReturnFilterFixture
 static class ReturnFilterTarget
 {
     public static string Filter(string value) => "filtered:" + value;
+}
+
+static class CallResultFilterFixture
+{
+    public static string BuildLabel() => " of " + GetFactionName();
+
+    public static string GetFactionName() => "Eastern Roman Empire";
+}
+
+static class CallResultFilterTarget
+{
+    public static string Filter(string value) => "localized:" + value;
 }
 
 sealed class ArgumentFilterFixture
