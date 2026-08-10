@@ -641,9 +641,15 @@
     "CompositeReplacements": [
       {
         "XPath": "descendant::fromDescription",
+        "OriginalValue": "[SURVEYOR] [Deposit ID Speed|UNIDENTIFIED] Upgrade",
+        "LocalizedValue": "[SURVEYOR] [资源点识别速度|UNIDENTIFIED] 升级",
+        "ExpectedMatchCount": 2
+      },
+      {
+        "XPath": "descendant::fromDescription",
         "OriginalSuffix": " Upgrade",
         "LocalizedValue": " 升级",
-        "ExpectedMatchCount": 448
+        "ExpectedMatchCount": 446
       },
       {
         "XPath": "descendant::fromDescription",

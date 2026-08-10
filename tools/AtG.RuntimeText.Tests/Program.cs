@@ -1,6 +1,7 @@
 using System.Text;
 using AtG.RuntimeText;
 
+#if LEGACY_MANUAL_RUNNER
 var tests = new (string Name, Action Body)[]
 {
     ("Concept links preserve their machine key", ConceptLinkPreservesKey),
@@ -32,6 +33,7 @@ var tests = new (string Name, Action Body)[]
     ("CJK word layout splits only at invisible line boundaries", CjkWordLayoutUsesLineBoundaries),
     ("CJK word bridge preserves ASCII and wraps CJK without spaces", CjkWordBridgePreservesOriginalPath),
     ("CJK word bridge localizes configured rich phrase sequences", CjkWordBridgeLocalizesTokenizedRichTextPhrase),
+    ("CJK word bridge localizes tokenized Roman faction names", CjkWordBridgeLocalizesTokenizedRomanFactionNames),
     ("CJK word bridge localizes configured rich-text templates", CjkWordBridgeLocalizesTokenizedRichTextTemplate),
     ("CJK word bridge removes split winter-clause source advances", CjkWordBridgeRemovesWinterResidualWords),
     ("Display templates localize only exact approved strings", ExactTemplatesOnly),
@@ -72,6 +74,10 @@ foreach (var test in tests)
     catch (Exception ex) { failures++; Console.Error.WriteLine($"FAIL {test.Name}: {ex.Message}"); }
 }
 return failures == 0 ? 0 : 1;
+#endif
+
+// The named cases below are executed by XunitBridge.cs through dotnet test.
+return;
 
 static void ConceptLinkPreservesKey()
 {
@@ -181,7 +187,7 @@ static void RuntimeDisplayMapLoads()
 
 static void GeneratedRuntimeDisplayMapLoads()
 {
-    var path = Path.Combine(Directory.GetCurrentDirectory(), "patch", "Content", "Text",
+    var path = Path.Combine(FindRepositoryRoot(), "patch", "Content", "Text",
         "AtG.RuntimeText.tsv");
     True(File.Exists(path));
 
@@ -229,12 +235,65 @@ static void GeneratedRuntimeDisplayMapLoads()
         "Leader 特质（随和）"));
     Equal("领袖特质", DisplayStringLocalizer.LocalizeRichText("Leader Trait"));
     Equal("领袖特质", DisplayStringLocalizer.LocalizeRichText("Leader 特质"));
+    var westernFaction = new FakeWordProcessor("Western", 200);
+    westernFaction.WordsInLine = new FakeStringSplitter(new[] { "Roman", "Empire", "tail" });
+    CjkWordWrapCore.ProcessWord(westernFaction,
+        (_, text) => new CjkMeasuredText(text.Length, 1f));
+    Equal("西罗马帝国", westernFaction.TextSoFar.ToString());
+    Equal("tail", westernFaction.Word);
+    Equal(0, westernFaction.OriginalCalls);
+
+    var easternFaction = new FakeWordProcessor("Eastern", 200);
+    easternFaction.WordsInLine = new FakeStringSplitter(new[] { "Roman", "Empire", "tail" });
+    CjkWordWrapCore.ProcessWord(easternFaction,
+        (_, text) => new CjkMeasuredText(text.Length, 1f));
+    Equal("东罗马帝国", easternFaction.TextSoFar.ToString());
+    Equal("tail", easternFaction.Word);
+    Equal(0, easternFaction.OriginalCalls);
     Equal("[升级|LEVEL]", DisplayStringLocalizer.LocalizeRichText(
         "[Level Up|LEVEL]"));
     Equal("[升级|LEVEL]", DisplayStringLocalizer.LocalizeRichText(
         "[Level-Up|LEVEL]"));
     Equal("• +1，因宗教信仰相同。", DisplayStringLocalizer.LocalizeRichText(
         "• +1, shared religious beliefs."));
+    Equal("-2, 善待敌对领袖（匈人）", DisplayStringLocalizer.LocalizeRichText(
+        "-2, being nice to Enemy（匈人）"));
+    Equal("+2, 苛待敌对领袖（匈人）", DisplayStringLocalizer.LocalizeRichText(
+        "+2, being mean to Enemy（匈人）"));
+    Equal("+1, 善待友方领袖（卡尔皮人）", DisplayStringLocalizer.LocalizeRichText(
+        "+1, being nice to Friend（卡尔皮人）"));
+    Equal("-1, 苛待友方领袖（卡尔皮人）", DisplayStringLocalizer.LocalizeRichText(
+        "-1, being mean to Friend（卡尔皮人）"));
+    Equal("缺少足够的财富（还差10）。", DisplayStringLocalizer.LocalizeRichText(
+        "lacking sufficient 财富 (10 more needed)."));
+    Equal("• 缺少足够的财富（还差10）。", DisplayStringLocalizer.LocalizeRichText(
+        "• lacking sufficient 财富 (10 more needed)."));
+    Equal("缺少足够的食物（还差5）。", DisplayStringLocalizer.LocalizeRichText(
+        "You lack sufficient 食物 (5 more needed)."));
+    Equal("• 缺少足够的食物（还差5）。", DisplayStringLocalizer.LocalizeRichText(
+        "• You lack sufficient 食物 (5 more needed)."));
+    Equal("\u6311\u8D77\u6218\u4E89", DisplayStringLocalizer.LocalizeRichText("Make War"));
+    Equal("\u897f\u7f57\u9a6c\u5e1d\u56fd", DisplayStringLocalizer.LocalizeRichText("The Western Roman Empire"));
+    Equal("\u897f\u7f57\u9a6c\u5e1d\u56fd", DisplayStringLocalizer.LocalizeRichText("Western Roman Empire"));
+    Equal("\u897f\u7f57\u9a6c", DisplayStringLocalizer.LocalizeRichText("Western Roman"));
+    Equal("\u897f\u7f57\u9a6c\u72ec\u7acb\u6d3e", DisplayStringLocalizer.LocalizeRichText("Western Roman Independents"));
+    Equal("\u897f\u7f57\u9a6c\u53db\u519b", DisplayStringLocalizer.LocalizeRichText("Western Roman Rebels"));
+    Equal("\u897f\u7f57\u9a6c\uff08\u72ec\u7acb\u6d3e\uff09", DisplayStringLocalizer.LocalizeRichText("Western Roman (I)"));
+    Equal("\u897f\u7f57\u9a6c\uff08\u53db\u519b\uff09", DisplayStringLocalizer.LocalizeRichText("Western Roman (R)"));
+}
+
+static string FindRepositoryRoot()
+{
+    for (var directory = new DirectoryInfo(AppContext.BaseDirectory); directory is not null; directory = directory.Parent)
+    {
+        if (File.Exists(Path.Combine(directory.FullName, "AtG.Patch.sln")) &&
+            Directory.Exists(Path.Combine(directory.FullName, "patch")))
+        {
+            return directory.FullName;
+        }
+    }
+
+    throw new DirectoryNotFoundException("Could not locate the repository root from the test output directory.");
 }
 
 static void RuntimeDisplayFragmentsTolerateUiSpacing()
@@ -850,6 +909,30 @@ static void CjkWordBridgeLocalizesTokenizedRichTextPhrase()
         (_, text) => new CjkMeasuredText(text.Length, 1f));
     Equal(1, nonMatch.OriginalCalls);
     Equal("interested", nonMatch.Word);
+}
+
+static void CjkWordBridgeLocalizesTokenizedRomanFactionNames()
+{
+    DisplayStringLocalizer.ResetForTests();
+    DisplayStringLocalizer.RegisterRichTextFragment("Western Roman Empire", "西罗马帝国");
+    DisplayStringLocalizer.RegisterRichTextFragment("Eastern Roman Empire", "东罗马帝国");
+
+    foreach (var (firstWord, expected) in new[]
+    {
+        ("Western", "西罗马帝国"),
+        ("Eastern", "东罗马帝国"),
+    })
+    {
+        var processor = new FakeWordProcessor(firstWord, 200);
+        processor.WordsInLine = new FakeStringSplitter(new[] { "Roman", "Empire", "tail" });
+
+        CjkWordWrapCore.ProcessWord(processor,
+            (_, text) => new CjkMeasuredText(text.Length, 1f));
+
+        Equal(expected, processor.TextSoFar.ToString());
+        Equal("tail", processor.Word);
+        Equal(0, processor.OriginalCalls);
+    }
 }
 
 static void CjkWordBridgeLocalizesTokenizedRichTextTemplate()

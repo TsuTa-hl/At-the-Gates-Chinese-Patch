@@ -48,8 +48,9 @@ if ([string]::IsNullOrWhiteSpace($OutputDirectory)) {
 }
 $resolvedOutputDirectory = Get-AtGFullPath -Path $OutputDirectory -RepositoryRoot $repositoryRoot
 
-# Views are disposable CSV files. Keep their output outside every source-data and
-# documentation root that this script reads from.
+# Views are user-operated disposable exports. AI workflows maintain this script
+# but never generate or read its output. Keep output outside every
+# source-data and documentation root that this script reads from.
 $protectedRoots = @(
     (Join-Path $repositoryRoot "docs\review"),
     (Join-Path $repositoryRoot "docs\agent"),

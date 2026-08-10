@@ -93,5 +93,177 @@
         "Description": "探索是六种[纪律|DISCIPLINE]之一，[职业|PROFESSION]和[氏族|CLAN]都可归属其中。[BLANK-LINE]更广义地说，它着重揭示有形或抽象的未知事物。它对能[产出|PRODUCE][KNOWLEDGE]的职业尤为重要，例如[LOREKEEPER]；也适用于帮助你了解周遭世界的[EXPLORER]和[SURVEYOR]。"
       }
     ]
+  },
+  "Content\\Config\\Constants\\GameConstants.xml": {
+    "Source": "source\\Content\\Config\\Constants\\GameConstants.original.xml",
+    "Container": "property",
+    "Items": [
+      {
+        "ID": "DISCIPLINE_HONOR",
+        "Nodes": [
+          { "XPath": "usage", "Value": "荣誉等级+5" }
+        ]
+      },
+      {
+        "ID": "DISCIPLINE_AGRICULTURE",
+        "Nodes": [
+          { "XPath": "usage", "Value": "农业等级+5" }
+        ]
+      },
+      {
+        "ID": "DISCIPLINE_LIVESTOCK",
+        "Nodes": [
+          { "XPath": "usage", "Value": "畜牧等级+5" }
+        ]
+      },
+      {
+        "ID": "DISCIPLINE_METALWORKING",
+        "Nodes": [
+          { "XPath": "usage", "Value": "冶金等级+5" }
+        ]
+      },
+      {
+        "ID": "DISCIPLINE_CRAFTING",
+        "Nodes": [
+          { "XPath": "usage", "Value": "工艺等级+5" }
+        ]
+      },
+      {
+        "ID": "DISCIPLINE_DISCOVERY",
+        "Nodes": [
+          { "XPath": "usage", "Value": "探索等级+5" }
+        ]
+      }
+    ],
+    "CompositeReplacements": [
+      {
+        "XPath": "descendant::fromDescription",
+        "OriginalValue": "being [Ennobled|NOBLE]",
+        "LocalizedValue": "[已册封|NOBLE]",
+        "ExpectedMatchCount": 8
+      }
+    ]
+  },
+  "Content\\Config\\Misc\\GoodyResults.xml": {
+    "Source": "source\\Content\\Config\\Misc\\GoodyResults.original.xml",
+    "Container": "goodyResult",
+    "Items": [
+      {
+        "ID": "GOODY_RESULT_FOOD",
+        "Name": "在最近废弃农场的仓库中，你的[EXPLORER]发现了大量[FOOD]！"
+      },
+      {
+        "ID": "GOODY_RESULT_TIMBER",
+        "Name": "在农场的一间仓库中，你的[EXPLORER]发现了几捆可用的[TIMBER]！"
+      },
+      {
+        "ID": "GOODY_RESULT_TREASURE",
+        "Name": "在村落遗迹中，你的[EXPLORER]发现了被遗弃的贵重物品！"
+      },
+      {
+        "ID": "GOODY_RESULT_TOOLS",
+        "Name": "在村落遗迹中，你的[EXPLORER]发现了一批[TOOLS]！"
+      },
+      {
+        "ID": "GOODY_RESULT_WEAPONS",
+        "Name": "在废墟中，你的[EXPLORER]发现了数件可用的[WEAPONS]！"
+      },
+      {
+        "ID": "GOODY_RESULT_LUXURIES",
+        "Name": "在城市遗迹中，你的[EXPLORER]发现了前居民遗留的各类奢侈品！"
+      },
+      {
+        "ID": "GOODY_RESULT_FARMER",
+        "Name": "在废墟中，你的[EXPLORER]发现了一个由[FARMER:S]组成的[氏族|CLAN]，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_GATHERER",
+        "Name": "在废墟中，你的[EXPLORER]发现了一个由[GATHERER:S]组成的[氏族|CLAN]，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_REAPER",
+        "Name": "在废墟中，你的[EXPLORER]发现了一个由[REAPER:S]组成的[氏族|CLAN]，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_DIGGER",
+        "Name": "在村落遗迹中，你的[EXPLORER]发现了一个由[DIGGER:S]组成的[氏族|CLAN]，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_WOOD_COLLECTOR",
+        "Name": "在村落遗迹中，你的[EXPLORER]发现了一个由[WOOD-COLLECTOR:S]组成的[氏族|CLAN]，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_MINER",
+        "Name": "在村落遗迹中，你的[EXPLORER]发现了一个由[MINER:S]组成的[氏族|CLAN]，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_LOGGER",
+        "Name": "在村落遗迹中，你的[EXPLORER]发现了一个由[LOGGER:S]组成的[氏族|CLAN]，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_TRADER",
+        "Name": "在城市遗迹中，你的[EXPLORER]发现了一群[TRADER:S]，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_SURVEYOR",
+        "Name": "在城市遗迹中，你的[EXPLORER]发现了一群[SURVEYOR:S]，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_EXPLORER",
+        "Name": "在要塞遗迹中，你的[EXPLORER]发现了另一群四处流浪的探索者，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_ARCHER",
+        "Name": "在要塞遗迹中，你的[EXPLORER]发现了一群流浪的[战士|WARRIOR]，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_LANCER",
+        "Name": "在要塞遗迹中，你的[EXPLORER]发现了一群流浪的[骑兵|CAVALRY]，希望加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_ROMAN_LEGION",
+        "Name": "在城市遗迹中，你的[EXPLORER]发现了一群对罗马失望的士兵，愿意加入你！"
+      },
+      {
+        "ID": "GOODY_RESULT_VISION_POINT",
+        "Name": "在废墟中，你的[EXPLORER]发现了能提升视野范围的装备！（+1 [视野|VISION]）"
+      },
+      {
+        "ID": "GOODY_RESULT_MOVE_POINT",
+        "Name": "在废墟中，你的[EXPLORER]发现了能提升移动能力的轻便装备！（+1 [移动|MOVE-POINT]）"
+      },
+      {
+        "ID": "GOODY_RESULT_SUPPLY_COST",
+        "Name": "在农场的仓库中，你的[EXPLORER]发现了愿意加入他的生存专家！（所需[补给|SUPPLY] -1）"
+      },
+      {
+        "ID": "GOODY_RESULT_POWER_UPGRADE",
+        "Name": "在废墟中，你的[EXPLORER]发现了能提升其[力量|POWER]的更好装备！"
+      },
+      {
+        "ID": "GOODY_RESULT_VISION_MOVE_POWER",
+        "Name": "在废墟中，你的[EXPLORER]发现了一批精良装备！其[力量|POWER]、[移动|MOVE-POINT]和[视野|VISION]均得到提升！"
+      },
+      {
+        "ID": "GOODY_RESULT_REVEAL_NEARBY_GOODIES",
+        "Name": "在破碎的建筑中，你的[EXPLORER]发现了一张勉强可辨的地图，揭示附近其他[废弃地点|DESERTED-LOCATION]！"
+      },
+      {
+        "ID": "GOODY_RESULT_BANDITS",
+        "Name": "在要塞遗迹中，你的[EXPLORER]意外撞见了一支埋伏的[强盗|BANDIT]部队！"
+      },
+      {
+        "ID": "GOODY_RESULT_TECH",
+        "Name": "在废墟中，你的[EXPLORER]发现了失传罗马技艺的秘密！"
+      }
+    ],
+    "CompositeReplacements": [
+      {
+        "XPath": "descendant::fromDescription",
+        "OriginalValue": "from [Deserted Location|DESERTED-LOCATION]",
+        "LocalizedValue": "来自[废弃地点|DESERTED-LOCATION]",
+        "ExpectedMatchCount": 31
+      }
+    ]
   }
 }

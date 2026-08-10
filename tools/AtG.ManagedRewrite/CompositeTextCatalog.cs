@@ -330,7 +330,7 @@ public static class CompositeTextCatalog
         var merged = Merge(entries, existing);
         ApplyEntrySpecificRules(merged, Path.Combine(root, "translations",
             "composite-entry-specific-rules.json"));
-        ApplyStaticAudit(merged, ReadKnownSmokeRejections(root));
+        ApplyStaticAudit(merged, ReadKnownSafetyRejections(root));
         var rules = BuildRules(merged, existing?.Rules);
         Validate(merged, rules);
 
@@ -610,8 +610,8 @@ public static class CompositeTextCatalog
         {
             if (oldEntries.TryGetValue(entry.EntryPointId, out var old))
             {
-                // Source-owned XML and managed-map translations are regenerated
-                // from the current patch sources. Prefer that value when the
+                // Source-owned XML, managed-map, and runtime-map translations are
+                // regenerated from the current patch sources. Prefer that value when the
                 // previous row was also source-owned, so corrected tags or
                 // wording cannot be masked forever by a stale generated row.
                 // Manually supplied fixture/rule values remain durable and are
@@ -620,7 +620,8 @@ public static class CompositeTextCatalog
                     (StringComparer.Ordinal.Equals(entry.Source.Kind, "Xml") &&
                         old.RuleId is "xml-existing-translation" or "xml-text-key-translation" or
                         "xml-text-key-structural") ||
-                    StringComparer.Ordinal.Equals(entry.Source.Kind, "ManagedRewriteMap");
+                    StringComparer.Ordinal.Equals(entry.Source.Kind, "ManagedRewriteMap") ||
+                    StringComparer.Ordinal.Equals(entry.Source.Kind, "RuntimeMap");
                 if (old.LocalizedFormat is not null &&
                     (entry.LocalizedFormat is null || !oldIsSourceOwned))
                     entry.LocalizedFormat = old.LocalizedFormat;
@@ -651,7 +652,7 @@ public static class CompositeTextCatalog
     }
 
     private static void ApplyStaticAudit(IReadOnlyList<CompositeTextEntry> entries,
-        IReadOnlyList<CompositeSmokeRejection> smokeRejections)
+        IReadOnlyList<CompositeSafetyRejection> safetyRejections)
     {
         var rewriteTranslations = entries
             .Where(entry => !entry.Stale &&
@@ -673,16 +674,16 @@ public static class CompositeTextCatalog
                 entry.RuleScope = "None";
                 continue;
             }
-            if (TryFindSmokeRejection(entry, smokeRejections, out var rejection))
+            if (TryFindSafetyRejection(entry, safetyRejections, out var rejection))
             {
                 if (!string.IsNullOrWhiteSpace(entry.RuleId) || entry.LocalizedFormat is not null)
                     throw new InvalidDataException(
-                        $"Composite entry '{entry.EntryPointId}' is localized despite a recorded smoke rejection.");
-                entry.Status = "RejectedBySmoke";
-                entry.AuditStatus = "RejectedBySmoke";
+                        $"Composite entry '{entry.EntryPointId}' is localized despite a canonical safety rejection.");
+                entry.Status = "RejectedBySafetyRecord";
+                entry.AuditStatus = "RejectedBySafetyRecord";
                 entry.RuleScope = "None";
                 entry.Notes = AppendNote(entry.Notes,
-                    $"Static audit: localization intentionally omitted after recorded smoke failure ({rejection.Reason}).");
+                    $"Static audit: localization intentionally omitted by the canonical safety registry ({rejection.Reason}).");
                 continue;
             }
             if (!string.IsNullOrWhiteSpace(entry.RuleId) || entry.LocalizedFormat is not null)
@@ -823,6 +824,15 @@ public static class CompositeTextCatalog
         })
         {
             notes = notes.Replace(retired, "", StringComparison.Ordinal);
+        }
+        if (Regex.IsMatch(notes,
+                @"\b(?:trial|needstrial|batch)\b|\b20\d{2}-\d{2}-\d{2}\b",
+                RegexOptions.IgnoreCase))
+        {
+            // Historic exploratory-batch provenance is intentionally retained
+            // only in localization-safety-registry.json. Active entries keep
+            // their exact source locators, safety class, and current mapping.
+            return "Accepted mapping; exact source locator is authoritative.";
         }
         notes = Regex.Replace(notes, @"\s{2,}", " ").Trim();
         return notes.Length == 0 ? null : notes;
@@ -965,6 +975,15 @@ public static class CompositeTextCatalog
                 EntryPointId = "AtTheGatesCommon.ns_Text.TextFormatter::Process",
                 Description = "Final rich-text localization preserves concept keys and recursive hover structure.",
                 Source = "tools/AtG.RuntimeText/DisplayStringLocalizer.cs",
+            },
+            ["concept-tooltip-static-registration"] = new()
+            {
+                RuleId = "concept-tooltip-static-registration",
+                Kind = "ManagedTooltipRegistration",
+                Status = "Active",
+                EntryPointId = "AtTheGatesCommon.ns_UI.Concepts::.cctor -> Concepts.c(key, label, description)",
+                Description = "Concept hover text is registered from literal, concatenated, and XML-key operands in the Concepts static constructor, then localized at the final rich-text display boundary.",
+                Source = "tools/AtG.ManagedRewrite/ConceptTooltipCatalog.cs; translations/hardcoded-common-il-rewrite.json; translations/concept-key-translations.json",
             },
             ["runtime-display-exact"] = new()
             {
@@ -1147,24 +1166,24 @@ public static class CompositeTextCatalog
         }
     }
 
-    private static IReadOnlyList<CompositeSmokeRejection> ReadKnownSmokeRejections(string root)
+    private static IReadOnlyList<CompositeSafetyRejection> ReadKnownSafetyRejections(string root)
     {
-        var path = Path.Combine(root, "docs", "agent", "trial-localization-state.json");
+        var path = Path.Combine(root, "translations", "localization-safety-registry.json");
         if (!File.Exists(path)) return [];
         using var document = OpenJson(path);
         if (document.RootElement.ValueKind != JsonValueKind.Object ||
-            !document.RootElement.TryGetProperty("knownRejectedSingles", out var values) ||
+            !document.RootElement.TryGetProperty("RejectedOperands", out var values) ||
             values.ValueKind != JsonValueKind.Array)
             return [];
 
-        var result = new List<CompositeSmokeRejection>();
+        var result = new List<CompositeSafetyRejection>();
         foreach (var value in values.EnumerateArray())
         {
-            if (!TryGetString(value, "assembly", out var assembly) ||
-                !TryGetString(value, "methodToken", out var methodToken) ||
-                !TryGetString(value, "original", out var original) ||
-                !TryGetString(value, "reason", out var reason) ||
-                !value.TryGetProperty("ilOffset", out var offset) ||
+            if (!TryGetString(value, "Assembly", out var assembly) ||
+                !TryGetString(value, "MethodToken", out var methodToken) ||
+                !TryGetString(value, "Original", out var original) ||
+                !TryGetString(value, "Reason", out var reason) ||
+                !value.TryGetProperty("ILOffset", out var offset) ||
                 !offset.TryGetInt32(out var ilOffset))
                 continue;
             var sourceFile = assembly switch
@@ -1176,21 +1195,21 @@ public static class CompositeTextCatalog
                 _ => "",
             };
             if (string.IsNullOrWhiteSpace(sourceFile)) continue;
-            result.Add(new CompositeSmokeRejection(sourceFile, methodToken, ilOffset,
+            result.Add(new CompositeSafetyRejection(sourceFile, methodToken, ilOffset,
                 original, reason));
         }
         return result;
     }
 
-    private static bool TryFindSmokeRejection(CompositeTextEntry entry,
-        IReadOnlyList<CompositeSmokeRejection> smokeRejections,
-        out CompositeSmokeRejection rejection)
+    private static bool TryFindSafetyRejection(CompositeTextEntry entry,
+        IReadOnlyList<CompositeSafetyRejection> safetyRejections,
+        out CompositeSafetyRejection rejection)
     {
         foreach (var part in entry.Parts)
         {
             var reference = part.KnownTextReference;
             if (reference is null) continue;
-            var match = smokeRejections.FirstOrDefault(candidate =>
+            var match = safetyRejections.FirstOrDefault(candidate =>
                 StringComparer.Ordinal.Equals(candidate.SourceFile, reference.SourceFile) &&
                 StringComparer.OrdinalIgnoreCase.Equals(candidate.MethodToken, reference.MethodToken) &&
                 candidate.ILOffset == reference.ILOffset &&
@@ -1203,9 +1222,9 @@ public static class CompositeTextCatalog
         return false;
     }
 
-    // Older trial evidence normalized the leading space of one literal. The DLL locator
-    // (assembly, method token, and IL offset) remains exact, so allow only edge-space
-    // normalization when applying a recorded smoke rejection.
+    // A historic safety record normalized the leading space of one literal. The DLL
+    // locator (assembly, method token, and IL offset) remains exact, so allow only
+    // edge-space normalization when applying that rejected safety record.
     private static bool MatchesRecordedSmokeOriginal(string recorded, string current) =>
         StringComparer.Ordinal.Equals(recorded, current) ||
         StringComparer.Ordinal.Equals(recorded.Trim(), current.Trim());
@@ -1808,7 +1827,7 @@ public static class CompositeTextCatalog
             : existing + " " + additional;
     }
 
-    private sealed record CompositeSmokeRejection(string SourceFile, string MethodToken,
+    private sealed record CompositeSafetyRejection(string SourceFile, string MethodToken,
         int ILOffset, string Original, string Reason);
 
     private sealed record XmlValue(string XPath, string Value, string? TextKey,

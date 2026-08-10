@@ -7,7 +7,8 @@ param(
     [switch]$PatchCommonConceptTerms,
     [switch]$SkipFonts,
     [ValidateSet("MergedFonts", "DynamicCjk")]
-    [string]$RendererMode = "DynamicCjk"
+    [string]$RendererMode = "DynamicCjk",
+    [switch]$InternalStagingRun
 )
 
 $ErrorActionPreference = "Stop"
@@ -15,6 +16,79 @@ $ErrorActionPreference = "Stop"
 . "$PSScriptRoot\AtGCache.ps1"
 . "$PSScriptRoot\AtGFileOps.ps1"
 . "$PSScriptRoot\AtGLocalizationInputDigest.ps1"
+. "$PSScriptRoot\AtGBuildContract.ps1"
+
+$projectRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
+if (!$InternalStagingRun) {
+    $buildContract = Get-AtGBuildContract -ProjectRoot $projectRoot -RendererMode $RendererMode -SkipFonts:$SkipFonts
+    $finalPatchRoot = [System.IO.Path]::GetFullPath($PatchRoot)
+    $finalParent = Split-Path -Parent $finalPatchRoot
+    $finalLeaf = Split-Path -Leaf $finalPatchRoot
+    if ([string]::IsNullOrWhiteSpace($finalParent) -or [string]::IsNullOrWhiteSpace($finalLeaf)) {
+        throw "PatchRoot must resolve to a named directory: $PatchRoot"
+    }
+    New-Item -ItemType Directory -Force -Path $finalParent | Out-Null
+    $stagingPatchRoot = Join-Path $finalParent (".{0}.atg-staging-{1}" -f $finalLeaf, [guid]::NewGuid().ToString("N"))
+    $backupPatchRoot = Join-Path $finalParent (".{0}.atg-previous-{1}" -f $finalLeaf, [guid]::NewGuid().ToString("N"))
+    $hadPreviousPatch = Test-Path -LiteralPath $finalPatchRoot -PathType Container
+    $committed = $false
+
+    New-Item -ItemType Directory -Force -Path $stagingPatchRoot | Out-Null
+    try {
+        $innerArguments = @{
+            SourceXml = $SourceXml
+            TranslationJson = $TranslationJson
+            AdditionalTextEntriesJson = $AdditionalTextEntriesJson
+            PatchRoot = $stagingPatchRoot
+            OriginalFontDir = $OriginalFontDir
+            PatchCommonConceptTerms = [bool]$PatchCommonConceptTerms
+            SkipFonts = [bool]$SkipFonts
+            RendererMode = $RendererMode
+            InternalStagingRun = $true
+        }
+        & $PSCommandPath @innerArguments
+
+        Test-AtGBuildOutputs -PatchRoot $stagingPatchRoot -ProjectRoot $projectRoot -RendererMode $RendererMode
+        $stagedReport = Join-Path $stagingPatchRoot ".atg-build-report.json"
+        if (!(Test-Path -LiteralPath $stagedReport -PathType Leaf)) {
+            throw "Staged patch build did not produce a build report: $stagedReport"
+        }
+        Update-AtGBuildReportContract -ReportPath $stagedReport -FinalPatchRoot $finalPatchRoot -BuildContract $buildContract
+
+        if ($hadPreviousPatch) {
+            Move-Item -LiteralPath $finalPatchRoot -Destination $backupPatchRoot
+        }
+        try {
+            Move-Item -LiteralPath $stagingPatchRoot -Destination $finalPatchRoot
+            $committed = $true
+        }
+        catch {
+            if ($hadPreviousPatch -and !(Test-Path -LiteralPath $finalPatchRoot) -and (Test-Path -LiteralPath $backupPatchRoot)) {
+                Move-Item -LiteralPath $backupPatchRoot -Destination $finalPatchRoot
+            }
+            throw
+        }
+
+        if (Test-Path -LiteralPath $backupPatchRoot) {
+            Remove-Item -LiteralPath $backupPatchRoot -Recurse -Force
+        }
+        Write-Host "Patch build committed atomically: $finalPatchRoot"
+
+        # Composite KnownText locators are derived from both the current source
+        # and the committed patch. Refresh them only after the atomic swap so a
+        # runtime-map edit cannot leave a stale review/catalog binding behind.
+        & "$PSScriptRoot\Invoke-AtGPatchCli.ps1" -Command composite-catalog | Out-Host
+    }
+    finally {
+        if (Test-Path -LiteralPath $stagingPatchRoot) {
+            Remove-Item -LiteralPath $stagingPatchRoot -Recurse -Force
+        }
+        if (!$committed -and $hadPreviousPatch -and !(Test-Path -LiteralPath $finalPatchRoot) -and (Test-Path -LiteralPath $backupPatchRoot)) {
+            Move-Item -LiteralPath $backupPatchRoot -Destination $finalPatchRoot
+        }
+    }
+    return
+}
 
 $timing = New-AtGTimingSummary
 
@@ -172,6 +246,15 @@ else {
     Write-Host "Skipping hardcoded DLL patch; source\AtTheGatesUI.original.dll not found."
 }
 
+$notificationUiAssembly = Join-Path $PatchRoot "AtTheGatesUI.dll"
+if (Test-Path -LiteralPath $notificationUiAssembly -PathType Leaf) {
+    Measure-AtGStage -Summary $timing -Name "notification-composition" -ScriptBlock {
+        & "$PSScriptRoot\Test-NotificationCompositionLocalization.ps1" `
+            -SourceAssemblyPath $hardcodedSource `
+            -PatchAssemblyPath $notificationUiAssembly
+    }
+}
+
 $hardcodedCommonSource = Join-Path $PSScriptRoot "..\source\AtTheGatesCommon.original.dll"
 $hardcodedCommonMap = Join-Path $PSScriptRoot "..\translations\hardcoded-common-strings.json"
 if ((Test-Path -LiteralPath $hardcodedCommonSource) -and (Test-Path -LiteralPath $hardcodedCommonMap)) {
@@ -209,6 +292,15 @@ else {
     Write-Host "Skipping common DLL patch; source\AtTheGatesCommon.original.dll or translations\hardcoded-common-strings.json not found."
 }
 
+$conceptTooltipAssembly = Join-Path $PatchRoot "AtTheGatesCommon.dll"
+if (Test-Path -LiteralPath $conceptTooltipAssembly -PathType Leaf) {
+    Measure-AtGStage -Summary $timing -Name "concept-tooltips" -ScriptBlock {
+        & "$PSScriptRoot\Test-ConceptTooltipLocalization.ps1" `
+            -AssemblyPath $conceptTooltipAssembly `
+            -PatchTextPath (Join-Path $PatchRoot "Content\Text\English.xml")
+    }
+}
+
 $gameExeSource = Join-Path $PSScriptRoot "..\source\AtTheGatesGame.original.exe"
 $gameExeRewriteMap = Join-Path $PSScriptRoot "..\translations\hardcoded-game-il-rewrite.json"
 if (Test-Path -LiteralPath $gameExeRewriteMap) {
@@ -243,29 +335,14 @@ if (Test-Path -LiteralPath $elfToolsRewriteMap) {
     }
 }
 
-$configMap = Join-Path $PSScriptRoot "..\translations\config-strings.json"
-if (Test-Path -LiteralPath $configMap) {
-    Measure-AtGStage -Summary $timing -Name "config" -ScriptBlock {
-        & "$PSScriptRoot\Build-ConfigPatch.ps1" -MapJson $configMap -PatchRoot $PatchRoot
-    }
-}
-else {
-    Write-Host "Skipping config patch; translations\config-strings.json not found."
-}
-
 $configNodeMaps = @(
     (Join-Path $PSScriptRoot "..\translations\config-node-strings.json"),
     (Join-Path $PSScriptRoot "..\translations\config-node-extra-strings.json"),
     (Join-Path $PSScriptRoot "..\translations\config-node-onmap-strings.json"),
     (Join-Path $PSScriptRoot "..\translations\config-node-misc-strings.json")
-) | Where-Object { Test-Path -LiteralPath $_ }
-if ($configNodeMaps.Count -gt 0) {
-    Measure-AtGStage -Summary $timing -Name "config-node" -ScriptBlock {
-        & "$PSScriptRoot\Build-ConfigNodePatch.ps1" -MapJson $configNodeMaps -PatchRoot $PatchRoot
-    }
-}
-else {
-    Write-Host "Skipping config node patch; translations\config-node-strings.json not found."
+)
+Measure-AtGStage -Summary $timing -Name "config-node" -ScriptBlock {
+    & "$PSScriptRoot\Build-ConfigNodePatch.ps1" -MapJson $configNodeMaps -PatchRoot $PatchRoot
 }
 
 function Remove-AtGGeneratedPatchDirectory {
@@ -472,16 +549,6 @@ if ($PatchCommonConceptTerms -and (Test-Path -LiteralPath $hardcodedCommonOffset
     Add-AtGJsonMapTranslationsToBuilder -Builder $charsBuilder -MapPath $hardcodedCommonOffsetMapPath
 }
 
-$configMapPath = Join-Path $PSScriptRoot "..\translations\config-strings.json"
-if (Test-Path -LiteralPath $configMapPath) {
-    $configTextMap = Get-Content -LiteralPath $configMapPath -Raw -Encoding UTF8 | ConvertFrom-Json
-    foreach ($fileEntry in $configTextMap.PSObject.Properties) {
-        foreach ($replacement in $fileEntry.Value.Replacements.PSObject.Properties) {
-            [void]$charsBuilder.Append([string]$replacement.Value)
-        }
-    }
-}
-
 $configNodeMapPaths = @(
     (Join-Path $PSScriptRoot "..\translations\config-node-strings.json"),
     (Join-Path $PSScriptRoot "..\translations\config-node-extra-strings.json"),
@@ -499,7 +566,8 @@ foreach ($configNodeMapPath in $configNodeMapPaths) {
                 [void]$charsBuilder.Append([string]$item.Description)
             }
             if ($null -ne $item.PSObject.Properties["Nodes"]) {
-                foreach ($nodePatch in @($item.Nodes)) {
+                $nodes = if ($item.PSObject.Properties['Nodes']) { @($item.Nodes) } else { @() }
+                foreach ($nodePatch in $nodes) {
                     [void]$charsBuilder.Append([string]$nodePatch.Value)
                 }
             }
@@ -574,7 +642,8 @@ function Get-AtGConfigNodeDisplayText {
                     }
                 }
                 if ($IncludeNodes -and $null -ne $item.PSObject.Properties["Nodes"]) {
-                    foreach ($nodePatch in @($item.Nodes)) {
+                    $nodes = if ($item.PSObject.Properties['Nodes']) { @($item.Nodes) } else { @() }
+                    foreach ($nodePatch in $nodes) {
                         if ($null -eq $nodePatch.PSObject.Properties["Value"]) {
                             continue
                         }
@@ -601,7 +670,6 @@ function New-AtGFontCharacterText {
         [int]$MaxMapTranslationLength,
         [int]$MaxConfigTextLength,
         [switch]$IncludeDescriptionText,
-        [switch]$IncludeConfigStringMap,
         [switch]$IncludeConfigNodeNodes,
         [switch]$IncludeAllConfigNodeText,
         [switch]$IncludeAllMapTranslations
@@ -628,15 +696,6 @@ function New-AtGFontCharacterText {
         Add-AtGJsonMapTranslationsToBuilder -Builder $builder -MapPath $hardcodedCommonOffsetMapPath -MaxTranslationLength $limit
     }
 
-    if ($IncludeConfigStringMap -and (Test-Path -LiteralPath $configMapPath)) {
-        $configTextMap = Get-Content -LiteralPath $configMapPath -Raw -Encoding UTF8 | ConvertFrom-Json
-        foreach ($fileEntry in $configTextMap.PSObject.Properties) {
-            foreach ($replacement in $fileEntry.Value.Replacements.PSObject.Properties) {
-                [void]$builder.Append([string]$replacement.Value)
-            }
-        }
-    }
-
     [void]$builder.Append((Get-AtGConfigNodeDisplayText `
         -MapPaths $configNodeMapPaths `
         -MaxTextLength $MaxConfigTextLength `
@@ -650,7 +709,6 @@ $bodyFontChars = New-AtGFontCharacterText `
     -MaxMapTranslationLength 0 `
     -MaxConfigTextLength 96 `
     -IncludeDescriptionText `
-    -IncludeConfigStringMap `
     -IncludeConfigNodeNodes `
     -IncludeAllConfigNodeText `
     -IncludeAllMapTranslations
@@ -1036,6 +1094,7 @@ $buildReport = [ordered]@{
     PatchRoot = (Resolve-Path -LiteralPath $PatchRoot).Path
     RendererMode = $RendererMode
     LocalizationInputs = $localizationInputs
+    BuildContract = Get-AtGBuildContract -ProjectRoot $projectRoot -RendererMode $RendererMode -SkipFonts:$SkipFonts
     Text = [ordered]@{
         EnglishXml = Get-AtGBuildArtifactStatus -Path $textOut -ExpectedFirstLine "<english>"
         EntryCount = Get-AtGXmlEntryCount -Path $textOut

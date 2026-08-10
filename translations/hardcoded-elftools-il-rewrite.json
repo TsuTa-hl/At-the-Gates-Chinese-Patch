@@ -8,8 +8,7 @@
     "TypeFullName":  "ElfTools.Inputs.Hotkey",
     "MethodName":  "BuildTooltip",
     "Safety":  "SafeUI",
-    "Note":  "Generic hotkey tooltip shown when hovering [HOTKEY:*] tags inside UI tooltips.",
-    "EvidenceScenario":  "load-save-main-loop-tile-tooltip-20260702"
+    "Note":  "Generic hotkey tooltip shown when hovering [HOTKEY:*] tags inside UI tooltips."
 },
 {
     "Original":  "on your keyboard.",
@@ -20,8 +19,7 @@
     "TypeFullName":  "ElfTools.Inputs.Hotkey",
     "MethodName":  "BuildTooltip",
     "Safety":  "SafeUI",
-    "Note":  "Generic hotkey tooltip shown when hovering [HOTKEY:*] tags inside UI tooltips.",
-    "EvidenceScenario":  "load-save-main-loop-tile-tooltip-20260702"
+    "Note":  "Generic hotkey tooltip shown when hovering [HOTKEY:*] tags inside UI tooltips."
 },
 {
     "Original":  "Click to make this panel disappear completely.\n\nTo undo this, click the thin gold bar which replaces the panel.",
@@ -31,8 +29,7 @@
     "TypeFullName":  "ElfTools.Interfaces.Layout.CollapsibleContainer",
     "MethodName":  "Init",
     "Safety":  "SafeUI",
-    "Note":  "Generic ElfTools collapsible-panel tooltip.",
-    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+    "Note":  "Generic ElfTools collapsible-panel tooltip."
 },
 {
     "Original":  "Click to make this panel disappear completely.\n\nTo undo this, click the thin gold bar which replaces the panel.",
@@ -42,8 +39,7 @@
     "TypeFullName":  "ElfTools.Interfaces.Layout.CollapsibleContainer",
     "MethodName":  "Init",
     "Safety":  "SafeUI",
-    "Note":  "Generic ElfTools collapsible-panel tooltip.",
-    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+    "Note":  "Generic ElfTools collapsible-panel tooltip."
 },
 {
     "Original":  "Click to expand this panel and see ",
@@ -53,8 +49,7 @@
     "TypeFullName":  "ElfTools.Interfaces.Layout.CollapsibleContainer",
     "MethodName":  "Init",
     "Safety":  "SafeUI",
-    "Note":  "Generic ElfTools collapsible-panel tooltip prefix.",
-    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+    "Note":  "Generic ElfTools collapsible-panel tooltip prefix."
 },
 {
     "Original":  "Click to expand this panel and see ",
@@ -64,8 +59,7 @@
     "TypeFullName":  "ElfTools.Interfaces.Layout.CollapsibleContainer",
     "MethodName":  "Init",
     "Safety":  "SafeUI",
-    "Note":  "Generic ElfTools collapsible-panel tooltip prefix.",
-    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+    "Note":  "Generic ElfTools collapsible-panel tooltip prefix."
 },
 {
     "Original":  "Click to minimize this panel.",
@@ -75,8 +69,7 @@
     "TypeFullName":  "ElfTools.Interfaces.Layout.CollapsibleContainer",
     "MethodName":  "Init",
     "Safety":  "SafeUI",
-    "Note":  "Generic ElfTools collapsible-panel tooltip.",
-    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+    "Note":  "Generic ElfTools collapsible-panel tooltip."
 },
 {
     "Original":  "Click to select...",
@@ -86,8 +79,7 @@
     "TypeFullName":  "ElfTools.UI.Objects.Dropdown",
     "MethodName":  ".ctor",
     "Safety":  "SafeUI",
-    "Note":  "Generic ElfTools dropdown tooltip.",
-    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+    "Note":  "Generic ElfTools dropdown tooltip."
 },
 {
     "Original":  "Hotkey: [Y]",
@@ -97,8 +89,7 @@
     "TypeFullName":  "ElfTools.Dialogs.TwoButtonDialog",
     "MethodName":  "Initialize",
     "Safety":  "SafeUI",
-    "Note":  "Generic ElfTools two-button dialog hotkey tooltip.",
-    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+    "Note":  "Generic ElfTools two-button dialog hotkey tooltip."
 },
 {
     "Original":  "Hotkey: [ESC]",
@@ -108,7 +99,6 @@
     "TypeFullName":  "ElfTools.Dialogs.TwoButtonDialog",
     "MethodName":  "Initialize",
     "Safety":  "SafeUI",
-    "Note":  "Generic ElfTools two-button dialog hotkey tooltip.",
-    "EvidenceScenario":  "trial-elftools-display-tooltips-1"
+    "Note":  "Generic ElfTools two-button dialog hotkey tooltip."
 }
 ]

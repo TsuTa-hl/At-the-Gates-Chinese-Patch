@@ -100,7 +100,6 @@ function Compact-AtGEvidenceObject {
 
 $scenarioPath = Join-Path $ProjectRoot "docs\agent\black-box-scenarios.json"
 $traitPath = Join-Path $ProjectRoot "docs\agent\clan-trait-verification.json"
-$trialStatePath = Join-Path $ProjectRoot "docs\agent\trial-localization-state.json"
 
 $scenarioChanges = 0
 $scenario = Read-AtGJson -Path $scenarioPath
@@ -156,60 +155,8 @@ if ($null -ne $traits) {
     }
 }
 
-$trialChanges = 0
-$trialState = Read-AtGJson -Path $trialStatePath
-if ($null -ne $trialState) {
-    foreach ($batch in @($trialState.batches)) {
-        $property = $batch.PSObject.Properties["runRoot"]
-        if ($null -eq $property) {
-            continue
-        }
-
-        if (Test-AtGTemporaryEvidencePath -Value $property.Value) {
-            $batch.PSObject.Properties.Remove("runRoot")
-            Add-AtGProperty -Object $batch -Name "evidenceHandoff" -Value $HandoffId
-            Add-AtGProperty -Object $batch -Name "evidenceRetention" -Value "TextOnly"
-            $trialChanges++
-        }
-        elseif ($null -eq $property.Value) {
-            $batch.PSObject.Properties.Remove("runRoot")
-            $trialChanges++
-        }
-    }
-
-    if ($null -ne $trialState.latestSmoke) {
-        $notes = [string]$trialState.latestSmoke.notes
-        $updatedNotes = $notes -replace '(?i), run \.tmp\\trial-localization\\[^.]+\.', '.'
-        if ($updatedNotes -ne $notes) {
-            $trialState.latestSmoke.notes = $updatedNotes
-            $trialChanges++
-        }
-        Add-AtGProperty -Object $trialState.latestSmoke -Name "evidenceHandoff" -Value $HandoffId
-    }
-
-    $sparkSmoke = $null
-    if ($null -ne $trialState.latestSparkAudit) {
-        $sparkSmoke = $trialState.latestSparkAudit.postCleanupSmoke
-    }
-    if ($null -ne $sparkSmoke) {
-        $screenshot = $sparkSmoke.PSObject.Properties["screenshot"]
-        if ($null -ne $screenshot -and (Test-AtGTemporaryEvidencePath -Value $screenshot.Value)) {
-            $sparkSmoke.PSObject.Properties.Remove("screenshot")
-            Add-AtGProperty -Object $sparkSmoke -Name "evidenceHandoff" -Value $HandoffId
-            Add-AtGProperty -Object $sparkSmoke -Name "evidenceRetention" -Value "TextOnly"
-            $trialChanges++
-        }
-    }
-
-    if ($trialChanges -gt 0) {
-        Add-AtGProperty -Object $trialState -Name "cleanupHandoff" -Value $HandoffId
-        Write-AtGJson -Path $trialStatePath -Value $trialState
-    }
-}
-
 [pscustomobject]@{
     HandoffId = $HandoffId
     ScenarioChanges = $scenarioChanges
     TraitChanges = $traitChanges
-    TrialStateChanges = $trialChanges
 }

@@ -84,24 +84,17 @@ Assert-AtG (Test-Path -LiteralPath $gameText) "Install did not copy patch text."
 Assert-AtG (Test-Path -LiteralPath (Join-Path $saveDirectory $chineseSave)) "Patch refresh must not rename saves; compatibility cleanup belongs only to direct uninstall."
 
 $firstManifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
-Assert-AtG ((Get-ResolvedLiteralPath ([string]$firstManifest.BackupRoot)) -eq (Get-ResolvedLiteralPath $backupRoot)) "Install did not reuse the existing original backup."
+Assert-AtG (!(Test-Path -LiteralPath $backupRoot)) "Refresh retained an obsolete transaction backup."
+Assert-AtG (Test-Path -LiteralPath ([string]$firstManifest.BackupRoot)) "Refresh did not create a new transaction backup."
+Assert-AtG ((Get-Content -LiteralPath (Join-Path ([string]$firstManifest.BackupRoot) 'Content\Text\English.xml') -Raw -Encoding UTF8).Trim() -eq 'original text') "Refresh did not back up the restored original text."
 Assert-AtG (@($firstManifest.Files | Where-Object { $_.RelativePath -eq "Content\Obsolete\OldPatchOnly.txt" }).Count -eq 0) "New manifest kept a stale old-patch-only file."
 
 & (Join-Path $repoRoot "Install-ChinesePatch.ps1") -GamePath $gameRoot -PreserveFonts -NoInstallNotice
 
 $secondManifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
-Assert-AtG ((Get-ResolvedLiteralPath ([string]$secondManifest.BackupRoot)) -eq (Get-ResolvedLiteralPath $backupRoot)) "Repeated install did not preserve the original backup root."
+Assert-AtG (!(Test-Path -LiteralPath ([string]$firstManifest.BackupRoot))) "Repeated install retained the prior transaction backup."
+Assert-AtG ([IO.Path]::GetFullPath([string]$secondManifest.BackupRoot) -ne [IO.Path]::GetFullPath($backupRoot)) "Repeated install did not create a fresh transaction backup."
 Assert-AtG (!(Test-Path -LiteralPath $staleFile)) "Repeated install restored the stale manifest-managed file."
 Assert-AtG (@($secondManifest.Files).Count -gt 0) "Repeated install produced an empty manifest."
 
 Write-Host "Install refresh regression checks passed."
-
-& (Join-Path $PSScriptRoot "Test-PatchUninstallCompleteness.ps1")
-if (-not $?) {
-    throw "Patch install/uninstall completeness regression failed."
-}
-
-& (Join-Path $PSScriptRoot "Test-ReleasePackage.ps1")
-if (-not $?) {
-    throw "Release package export regression failed."
-}

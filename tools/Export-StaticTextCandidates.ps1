@@ -197,7 +197,8 @@ function Get-AtGPatchedIndex {
                     $index["$relativePath|$id|description|"] = $true
                 }
                 if ($null -ne $item.PSObject.Properties["Nodes"]) {
-                    foreach ($nodePatch in @($item.Nodes)) {
+                    $nodes = if ($item.PSObject.Properties['Nodes']) { @($item.Nodes) } else { @() }
+                    foreach ($nodePatch in $nodes) {
                         $xpath = [string]$nodePatch.XPath
                         $idx = ""
                         if ($null -ne $nodePatch.PSObject.Properties["Index"]) {

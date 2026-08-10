@@ -2,7 +2,8 @@
 
 ## Purpose
 
-Build the patch, refresh its installation, and prove it reaches the main menu.
+Build from the Steam-current development source, test the generated package,
+install it transactionally, and prove that the game reaches the main menu.
 Complete task cleanup first and reuse its handoff.
 
 ## Read First
@@ -11,39 +12,37 @@ Complete task cleanup first and reuse its handoff.
 - `docs/agent/operations/build-and-install.md`
 - `docs/agent/crash-risks.md`
 
-## Conditional Reading
-
-- Read `text-sources/managed-patching.md` after XML/DLL/rewrite changes.
-- Read only the matching crash-risk detail: `startup-and-content.md` for
-  XML/settings/ClanCard output, `runtime-and-assets.md` for renderer or reload
-  changes, or `managed-rewrites.md` for managed rewrite changes.
-- Read `translations/composite-text-rules.json` after dynamic/rich-text/runtime
-  display-map changes; generate a temporary `Composite` CSV only when needed.
-- Read `operations/game-automation.md` only if smoke behavior itself fails.
-
 ## Steps
 
-1. Close the game process.
-2. Build with `tools\Build-Patch.ps1`.
-3. Run required static gates: text tags, aliases, font budget, the
-   current-patch install/uninstall completeness regression, and any test
-   selected by the changed subsystem.
-4. Refresh and validate the composite-rule JSON when composition sources or
-   runtime display rules changed. Generate a temporary CSV only for inspection.
-5. Confirm renderer and critical generated artifacts in the build report.
-6. Install through `Install-ChinesePatch.ps1`; it refreshes only the prior
-   manifest-backed patch.
-7. Unless the user explicitly excludes testing, run one default
-   `Test-GameLaunch.ps1` main-menu smoke. Do not pass `-IncludeNewGame` unless
-   the selected test specifically requires it. If testing is excluded, still
-   complete the install refresh in step 6 (it uninstalls the manifest-backed
-   prior patch first), verify static artifacts, and record a static smoke.
-8. Hand test/loop the build result, install refresh outcome, smoke or static
-   smoke result, crash-log status when applicable, concise visual limitation,
-   and timing.
+1. Close the game process and identify the Steam-current original AtG directory.
+2. From the current task handoff, pass only the files changed by this
+   localization to the default `Localization` profile. For example:
+
+   ```powershell
+   powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Invoke-AtGVerification.ps1 `
+     -GamePath '<AtG>' -Profile Localization -ChangedPath 'translations\zh-CN.json'
+   ```
+
+   It captures source inputs, builds into staging, runs the local core plus
+   checks selected for those explicit paths, installs transactionally, and
+   performs the one main-menu smoke. It never reads `git diff`; an unmapped
+   path is reported and still receives the conservative local core checks.
+   A documentation-only task uses the same selector without `-GamePath` and
+   runs only its selected static documentation checks; it does not capture
+   source, install, or smoke.
+3. Use `-StaticOnly` only when the user explicitly excludes the real smoke.
+   It still builds, tests, and performs the transaction-backed installation.
+   It never enables black-box scenarios.
+4. The installer validates only the AtG directory shape. It does not reject
+   a player MOD or a changed game fingerprint; uninstall restores the exact
+   state captured before installation.
+5. Hand off the gate outcome, smoke evidence or its explicit limitation,
+   recovery result, selected checks, and stage timings from its task-local
+   `.tmp\runs\verification-*\verification-result.json` evidence.
 
 ## Failure
 
-Build, install, smoke, settings, crash-log, or incomplete-window failures are
-test-session failures. Record the concise evidence through the knowledge-update
-workflow before returning to assess/fix.
+Any failed stage is a test-session failure. The unified gate restores its
+pre-test game state on failure. Keep the task evidence and cleanup handoff;
+use the knowledge-update workflow only if the failure establishes a durable
+project fact, not as a test-results log.

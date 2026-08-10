@@ -22,6 +22,9 @@ try
         "todo-csv" => ExportTodoCsv(args[1..]),
         "calls" => ExportCalls(args[1..]),
         "methods" => ExportMethods(args[1..]),
+        "ldstr" => ExportLdstr(args[1..]),
+        "instructions" => ExportInstructions(args[1..]),
+        "concept-tooltips" => ExportConceptTooltips(args[1..]),
         "runtime-rewrite" => await RewriteRuntimeCallsAsync(args[1..]),
         "runtime-map" => BuildRuntimeDisplayMap(args[1..]),
         "load-lifecycle" => PatchLoadLifecycle(args[1..]),
@@ -112,6 +115,30 @@ static int ExportMethods(string[] args)
     return 0;
 }
 
+static int ExportLdstr(string[] args)
+{
+    var assembly = GetOption(args, "--assembly")
+                   ?? throw new ArgumentException("--assembly is required.");
+    var methodToken = GetOption(args, "--method-token");
+    var values = LdstrCatalog.Read(assembly)
+        .Where(entry => methodToken is null ||
+            string.Equals(entry.MethodToken, methodToken, StringComparison.OrdinalIgnoreCase))
+        .ToArray();
+    Console.WriteLine(JsonSerializer.Serialize(values, new JsonSerializerOptions { WriteIndented = true }));
+    return 0;
+}
+
+static int ExportInstructions(string[] args)
+{
+    var assembly = GetOption(args, "--assembly")
+                   ?? throw new ArgumentException("--assembly is required.");
+    var methodToken = GetOption(args, "--method-token");
+    var instructions = ManagedInstructionCatalog.Read(assembly, methodToken);
+    Console.WriteLine(JsonSerializer.Serialize(instructions,
+        new JsonSerializerOptions { WriteIndented = true }));
+    return 0;
+}
+
 static int BuildCompositeCatalog(string[] args)
 {
     var repositoryRoot = Path.GetFullPath(GetOption(args, "--repo") ?? Directory.GetCurrentDirectory());
@@ -173,10 +200,16 @@ static async Task<int> RewriteRuntimeCallsAsync(string[] args)
     var jobs = RuntimeTextRedirectPlan.Create(repositoryRoot, runtimeAssembly);
     var results = await RuntimeTextRedirectCoordinator.RunAsync(jobs, new BuildCache(cachePath));
     var total = results.Sum(result => result.RedirectedCount);
+    var expectedTotal = jobs.Sum(job =>
+        job.ExpectedRenderingRedirectCount + job.ExpectedFontLoadRedirectCount +
+        job.ExpectedLifecycleRedirectCount + job.ExpectedLayoutRedirectCount +
+        job.ExpectedLocalizationRedirectCount);
     var frameBoundaryHooks = results.Sum(result => result.FrameBoundaryHookCount);
     var warmsetStartupHooks = results.Sum(result => result.WarmsetStartupHookCount);
     var startupGraphicsHooks = results.Sum(result => result.StartupGraphicsHookCount);
-    if (total != 149) throw new InvalidDataException($"Expected 149 runtime text redirects, got {total}.");
+    if (total != expectedTotal)
+        throw new InvalidDataException(
+            $"Expected {expectedTotal} runtime text redirects from the declared job contract, got {total}.");
     if (frameBoundaryHooks != 1)
         throw new InvalidDataException(
             $"Expected one runtime frame-boundary hook, got {frameBoundaryHooks}.");
@@ -220,6 +253,24 @@ static int BuildRuntimeDisplayMap(string[] args)
         "AtTheGatesCommon.ns_UI.Concepts", mapPath, outputPath);
     Console.WriteLine(JsonSerializer.Serialize(result,
         new JsonSerializerOptions { WriteIndented = true }));
+    return 0;
+}
+
+static int ExportConceptTooltips(string[] args)
+{
+    var repositoryRoot = Path.GetFullPath(GetOption(args, "--repo") ?? Directory.GetCurrentDirectory());
+    var assemblyPath = Path.GetFullPath(GetOption(args, "--assembly")
+        ?? Path.Combine(repositoryRoot, "source", "AtTheGatesCommon.original.dll"));
+    var result = ConceptTooltipCatalog.Read(assemblyPath);
+    var json = JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true });
+    var outputPath = GetOption(args, "--output");
+    if (outputPath is not null)
+    {
+        outputPath = Path.GetFullPath(outputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
+        File.WriteAllText(outputPath, json + "\n", new System.Text.UTF8Encoding(false));
+    }
+    Console.WriteLine(json);
     return 0;
 }
 
@@ -297,7 +348,10 @@ static void PrintUsage()
     Console.WriteLine("AtG.Patch.Cli todo-csv --repo PATH [--database PATH] [--rules PATH] --csv PATH");
     Console.WriteLine("AtG.Patch.Cli calls --assembly PATH [--contains TEXT]");
     Console.WriteLine("AtG.Patch.Cli methods --assembly PATH [--contains TEXT]");
+    Console.WriteLine("AtG.Patch.Cli ldstr --assembly PATH [--method-token TOKEN]");
+    Console.WriteLine("AtG.Patch.Cli instructions --assembly PATH [--method-token TOKEN]");
     Console.WriteLine("AtG.Patch.Cli runtime-rewrite --repo PATH --runtime-assembly PATH");
-    Console.WriteLine("AtG.Patch.Cli runtime-map --repo PATH [--map PATH] [--output PATH]");
+    Console.WriteLine("AtG.Patch.Cli runtime-map --repo PATH [--map PATH] [--output PATH] [--common-assembly PATH]");
+    Console.WriteLine("AtG.Patch.Cli concept-tooltips --repo PATH [--assembly PATH] [--output PATH]");
     Console.WriteLine("AtG.Patch.Cli load-lifecycle --repo PATH --renderer-mode <DynamicCjk|MergedFonts>");
 }

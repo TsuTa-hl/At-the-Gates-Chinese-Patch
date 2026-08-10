@@ -878,7 +878,7 @@
     <deposit>
       <ID>DEPOSIT_SHEEP</ID>
       <name>TEXT.Name.Deposit.HerdOfSheep</name>
-      <description>Herds of [SHEEP] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes (such as collecting their [WOOL] and making [CLOTH] from it) by [Constructing|CONSTRUCT] a [SHEEP-PASTURE-1] on them.</description>
+      <description>[SHEEP]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][SHEEP-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供采集[WOOL]、制作[CLOTH]等其他用途使用。</description>
       <fontIcon>61</fontIcon>
       <texturePath>Images/Deposits/Animals/Sheep</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
@@ -904,7 +904,7 @@
     <deposit>
       <ID>DEPOSIT_SHEEP_LARGE</ID>
       <name>TEXT.Name.Deposit.LargeHerdOfSheep</name>
-      <description>Herds of [SHEEP] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes (such as collecting their [WOOL] and making [CLOTH] from it) by [Constructing|CONSTRUCT] a [SHEEP-PASTURE-1] on them.[BLANK-LINE]This is a particularly large herd!</description>
+      <description>[SHEEP]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][SHEEP-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供采集[WOOL]、制作[CLOTH]等其他用途使用。[BLANK-LINE]这是一大群羊！</description>
       <fontIcon>61</fontIcon>
       <texturePath>Images/Deposits/Animals/Sheep_Large</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
@@ -930,7 +930,7 @@
     <deposit>
       <ID>DEPOSIT_SHEEP_VAST</ID>
       <name>TEXT.Name.Deposit.VastHerdOfSheep</name>
-      <description>Herds of [SHEEP] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes (such as collecting their [WOOL] and making [CLOTH] from it) by [Constructing|CONSTRUCT] a [SHEEP-PASTURE-1] on them.[BLANK-LINE]This is among the largest herds ever found!</description>
+      <description>[SHEEP]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][SHEEP-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供采集[WOOL]、制作[CLOTH]等其他用途使用。[BLANK-LINE]这是迄今发现的最大羊群之一！</description>
       <fontIcon>61</fontIcon>
       <texturePath>Images/Deposits/Animals/Sheep_Vast</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
@@ -1844,7 +1844,7 @@
     <deposit>
       <ID>DEPOSIT_FLAX</ID>
       <name>TEXT.Name.Deposit.FieldOfFlax</name>
-      <description>Fields of Flax can be [Harvested|HARVEST] by a [REAPER] or [FLAX-FARM-1] to [Produce|PRODUCE] [FLAX].[BLANK-LINE]Flax can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].</description>
+      <description>亚麻田可由[REAPER]或[FLAX-FARM-1][采收|HARVEST]，以[产出|PRODUCE][FLAX]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，亚麻无法继续采收。</description>
       <texturePath>Images/Deposits/Plants/Flax</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
       <terrainTexturePath>
@@ -1877,7 +1877,7 @@
     <deposit>
       <ID>DEPOSIT_FLAX_LARGE</ID>
       <name>TEXT.Name.Deposit.LargeFieldOfFlax</name>
-      <description>Fields of Flax can be [Harvested|HARVEST] by a [REAPER] or [FLAX-FARM-1] to [Produce|PRODUCE] [FLAX].[BLANK-LINE]Flax can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].[BLANK-LINE]This is a particularly large field!</description>
+      <description>亚麻田可由[REAPER]或[FLAX-FARM-1][采收|HARVEST]，以[产出|PRODUCE][FLAX]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，亚麻无法继续采收。[BLANK-LINE]这是一大片亚麻田！</description>
       <texturePath>Images/Deposits/Plants/Flax_Large</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
       <terrainTexturePath>
@@ -1910,7 +1910,7 @@
     <deposit>
       <ID>DEPOSIT_FLAX_VAST</ID>
       <name>TEXT.Name.Deposit.VastFieldOfFlax</name>
-      <description>Fields of Flax can be [Harvested|HARVEST] by a [REAPER] or [FLAX-FARM-1] to [Produce|PRODUCE] [FLAX].[BLANK-LINE]Flax can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].[BLANK-LINE]This is among the largest fields ever found!</description>
+      <description>亚麻田可由[REAPER]或[FLAX-FARM-1][采收|HARVEST]，以[产出|PRODUCE][FLAX]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，亚麻无法继续采收。[BLANK-LINE]这是迄今发现的最大亚麻田之一！</description>
       <texturePath>Images/Deposits/Plants/Flax_Vast</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
       <terrainTexturePath>

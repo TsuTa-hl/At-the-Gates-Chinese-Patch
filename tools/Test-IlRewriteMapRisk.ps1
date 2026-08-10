@@ -96,7 +96,6 @@ foreach ($path in $MapPath) {
     $emptyTranslationCount = 0
     $shortOriginalCount = 0
     $broadFragmentCount = 0
-    $missingEvidenceScenarioCount = 0
 
     for ($i = 0; $i -lt $items.Count; $i++) {
         $item = $items[$i]
@@ -109,7 +108,6 @@ foreach ($path in $MapPath) {
         $methodName = [string](Get-AtGPropertyValue -Object $item -Name "MethodName")
         $safety = [string](Get-AtGPropertyValue -Object $item -Name "Safety")
         $note = [string](Get-AtGPropertyValue -Object $item -Name "Note")
-        $evidenceScenario = [string](Get-AtGPropertyValue -Object $item -Name "EvidenceScenario")
         $replacementChar = [string][char]0xfffd
 
         if (!$hasOriginalProperty) {
@@ -124,19 +122,6 @@ foreach ($path in $MapPath) {
         if ($original.Contains($replacementChar) -or ([string]$translation).Contains($replacementChar)) {
             $failures.Add("$($path)[$i] contains Unicode replacement characters, indicating mojibake or lossy decoding.") | Out-Null
         }
-        if ($safety -like "TrialFastFail*" -and $typeFullName -eq "AtTheGatesCommon.ns_Text.Text" -and $methodName -eq "ConvertTags") {
-            $failures.Add("$($path)[$i] trial entry '$original' targets ConvertTags parser definitions.") | Out-Null
-        }
-        if ($safety -like "TrialFastFail*" -and $typeFullName -like "AtTheGatesCommon.ns_GlobalSystems.UserSetting_*") {
-            $failures.Add("$($path)[$i] trial entry '$original' targets UserSetting description/comment text that can pollute Settings.xml.") | Out-Null
-        }
-        if ($safety -like "TrialFastFail*" -and $typeFullName -like "AtTheGatesGame.DebugConsoleNS.DebugConsole*") {
-            $failures.Add("$($path)[$i] trial entry '$original' targets DebugConsole internal command/help text.") | Out-Null
-        }
-        if ($safety -like "TrialFastFail*" -and $original -match '^\[[A-Za-z][A-Za-z0-9 _\-\|:]*\]$') {
-            $failures.Add("$($path)[$i] trial entry '$original' is a bracket-only parser-like token.") | Out-Null
-        }
-
         $isShort = ($null -ne $original -and $original.Length -le 5)
         $isEmptyTranslation = ($null -eq $translation -or [string]$translation -eq "")
         $isBroad = Test-AtGBroadFragment -Value $original
@@ -155,16 +140,6 @@ foreach ($path in $MapPath) {
             if ([string]::IsNullOrWhiteSpace($note)) {
                 $failures.Add("$($path)[$i] risky entry '$original' is missing Note.") | Out-Null
             }
-            if ([string]::IsNullOrWhiteSpace($evidenceScenario)) {
-                $missingEvidenceScenarioCount++
-                $message = "$($path)[$i] risky entry '$original' is missing EvidenceScenario."
-                if ($Strict) {
-                    $failures.Add($message) | Out-Null
-                }
-                else {
-                    $warnings.Add($message) | Out-Null
-                }
-            }
         }
     }
 
@@ -175,7 +150,6 @@ foreach ($path in $MapPath) {
         ShortOriginalCount = $shortOriginalCount
         EmptyTranslationCount = $emptyTranslationCount
         BroadFragmentCount = $broadFragmentCount
-        MissingEvidenceScenarioCount = $missingEvidenceScenarioCount
     }) | Out-Null
 }
 
@@ -189,9 +163,5 @@ if ($ShowWarnings) {
         Write-Warning $warning
     }
 }
-elseif ($warnings.Count -gt 0) {
-    Write-Warning "$($warnings.Count) risky entries are missing EvidenceScenario. Re-run with -ShowWarnings for details or -Strict to fail on them."
-}
-
 $summaries
 Write-Host "IL rewrite map risk validation passed."

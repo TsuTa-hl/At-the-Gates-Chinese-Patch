@@ -7,6 +7,10 @@ Logs/
 # Original game resources and extracted backups are not uploaded.
 source/
 
+# Build evidence is intentionally local and volatile (timestamps, timing, and
+# Steam-source provenance). It is verified by the gate but never released.
+/patch/.atg-build-report.json
+
 # .NET build outputs for the IL rewriter.
 tools/AtG.IlRewrite/bin/
 tools/AtG.IlRewrite/obj/

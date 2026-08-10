@@ -429,6 +429,90 @@
       }
     ]
   },
+  "Content\\Config\\Primary\\ClanDesires.xml": {
+    "Source": "source\\Content\\Config\\Primary\\ClanDesires.original.xml",
+    "Container": "clanDesire",
+    "Items": [
+      {
+        "ID": "DESIRE_Feud_HatesBadlyBehaved",
+        "Description": "(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为他们认为对方举止不端并当众羞辱自己！双方都要求在[SETTLEMENT]惩罚对方。"
+      },
+      {
+        "ID": "DESIRE_Feud_SharingTile",
+        "Description": "(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为他们长时间相处，反复发生冲突！双方都要求在[SETTLEMENT]惩罚对方。"
+      },
+      {
+        "ID": "DESIRE_Feud_HatesUnpure",
+        "Description": "(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为有人议论对方不洁且道德败坏！双方都要求在[SETTLEMENT]惩罚对方。"
+      },
+      {
+        "ID": "DESIRE_Feud_HatesCriminals",
+        "Description": "(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为有人议论对方过去的犯罪行为！双方都要求在[SETTLEMENT]惩罚对方。"
+      },
+      {
+        "ID": "DESIRE_Feud_PersonalityClash_TooDemanding",
+        "Description": "(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为有人指责对方无能！双方都要求在[SETTLEMENT]惩罚对方。"
+      },
+      {
+        "ID": "DESIRE_Feud_DramaQueen",
+        "Description": "(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为流言蜚语和名声问题！双方都要求在[SETTLEMENT]惩罚对方。"
+      },
+      {
+        "ID": "DESIRE_Feud_PersonalityClash_Immorality",
+        "Description": "(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为有人议论对方不道德且不配属于本部族！双方都要求在[SETTLEMENT]惩罚对方。"
+      },
+      {
+        "ID": "DESIRE_Feud_PersonalityClash_TooNosy",
+        "Description": "(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为有人认为对方反复侵犯隐私！双方都要求在[SETTLEMENT]惩罚对方。"
+      },
+      {
+        "ID": "DESIRE_Feud_PersonalityClash_Competition",
+        "Description": "(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为他们争论谁更优秀！双方都要求在[SETTLEMENT]惩罚对方。"
+      }
+    ]
+  },
+  "Content\\Config\\Misc\\Intensities.xml": {
+    "Source": "source\\Content\\Config\\Misc\\Intensities.original.xml",
+    "Container": "intensity",
+    "Items": [
+      {
+        "ID": "INTENSITY_CURIOUS",
+        "Nodes": [
+          {
+            "XPath": "feudDescription",
+            "Value": "轻微争执"
+          }
+        ]
+      },
+      {
+        "ID": "INTENSITY_INTERESTED",
+        "Nodes": [
+          {
+            "XPath": "feudDescription",
+            "Value": "轻微争执"
+          }
+        ]
+      },
+      {
+        "ID": "INTENSITY_DISTRACTED",
+        "Nodes": [
+          {
+            "XPath": "feudDescription",
+            "Value": "轻微争执"
+          }
+        ]
+      },
+      {
+        "ID": "INTENSITY_OBSESSED",
+        "Nodes": [
+          {
+            "XPath": "feudDescription",
+            "Value": "[COLOR:BAD-RED]名为争执，实为战争[/COLOR]"
+          }
+        ]
+      }
+    ]
+  },
   "Content\\Config\\Primary\\Factions.xml": {
     "Source": "source\\Content\\Config\\Primary\\Factions.original.xml",
     "Container": "faction",

@@ -74,6 +74,7 @@ if (Test-Path -LiteralPath $TempRoot) {
 New-Item -ItemType Directory -Force -Path $TempRoot | Out-Null
 
 $repoRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
+. (Join-Path $repoRoot 'tools\AtGPatchManifest.ps1')
 $packageRoot = Join-Path $TempRoot 'ReleasePackage'
 & (Join-Path $repoRoot 'tools\Export-ReleasePackage.ps1') -SourceRoot $repoRoot -OutputPath $packageRoot
 if (!$?) {
@@ -86,12 +87,16 @@ Assert-AtG (Test-Path -LiteralPath (Join-Path $packageRoot 'patch') -PathType Co
 Assert-AtG (!(Test-Path -LiteralPath (Join-Path $packageRoot 'tools'))) 'Release package must not retain development tools.'
 Assert-AtG (!(Test-Path -LiteralPath (Join-Path $packageRoot 'docs'))) 'Release package must not retain development documentation.'
 
-$sourcePatchFiles = @(Get-ChildItem -LiteralPath (Join-Path $repoRoot 'patch') -Recurse -File | Sort-Object FullName)
+$sourcePatchFiles = @(Get-AtGPatchInventory -PatchRoot (Join-Path $repoRoot 'patch'))
 $releasePatchFiles = @(Get-ChildItem -LiteralPath (Join-Path $packageRoot 'patch') -Recurse -File | Sort-Object FullName)
 Assert-AtG ($sourcePatchFiles.Count -eq $releasePatchFiles.Count) 'Release package did not retain every patch file.'
-$sourcePatchHashes = Get-AtGFileHashMap -Root (Join-Path $repoRoot 'patch')
+$sourcePatchHashes = @{}
+foreach ($file in $sourcePatchFiles) {
+    $sourcePatchHashes[[string]$file.RelativePath] = [string]$file.PatchSha256
+}
 $releasePatchHashes = Get-AtGFileHashMap -Root (Join-Path $packageRoot 'patch')
 Assert-AtGSnapshotEqual -Expected $sourcePatchHashes -Actual $releasePatchHashes
+Assert-AtG (!(Test-Path -LiteralPath (Join-Path $packageRoot 'patch\.atg-build-report.json'))) 'Release package retained build-only metadata in patch/.'
 
 foreach ($scriptName in @('Install-ChinesePatch.ps1', 'Uninstall-ChinesePatch.ps1')) {
     $scriptPath = Join-Path $packageRoot $scriptName
@@ -102,6 +107,7 @@ foreach ($scriptName in @('Install-ChinesePatch.ps1', 'Uninstall-ChinesePatch.ps
     $content = [IO.File]::ReadAllText($scriptPath, [Text.Encoding]::UTF8)
     Assert-AtG (!$content.Contains('$PSScriptRoot\tools\')) "Release entry script still depends on tools/: $scriptName"
 }
+Assert-AtG (Test-Path -LiteralPath (Join-Path $repoRoot 'tools\release-bundle-manifest.json')) 'Release export has no explicit dependency manifest.'
 
 $gameRoot = Join-Path $TempRoot 'FakeGame'
 Write-AtGFixtureFile -Path (Join-Path $gameRoot 'At The Gates.exe') -Value 'original executable'

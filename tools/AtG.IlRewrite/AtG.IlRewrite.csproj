@@ -9,6 +9,6 @@
     <UseAppHost>false</UseAppHost>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="dnlib" Version="4.5.0" />
+    <PackageReference Include="dnlib" />
   </ItemGroup>
 </Project>

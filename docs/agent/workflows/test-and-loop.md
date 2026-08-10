@@ -16,8 +16,8 @@ knowledge, then either finish or return to repair.
 
 | Failure | Also read |
 | --- | --- |
-| Raw key, English, mojibake, unknown source | `text-sources.md`, then catalog/review topic |
-| Dynamic ordering, broken link/highlight, recursive hover | composition-rule JSON, then filter the temporary Composite CSV by EntryPointId or source locator if needed |
+| Raw key, English, mojibake, unknown source | `text-sources.md`, then catalog-operations topic |
+| Dynamic ordering, broken link/highlight, recursive hover | composition-rule JSON queried directly by `EntryPointId` or source locator |
 | Translation quality | `translation-style.md` |
 | Startup/XML/settings/religion/ClanCard crash | `crash-risks.md`, then `crash-risks/startup-and-content.md` |
 | Font, atlas, icon, missing glyph, reload/OOM | `crash-risks.md`, then `crash-risks/runtime-and-assets.md` |
@@ -44,11 +44,11 @@ knowledge, then either finish or return to repair.
 6. Produce a session conclusion of `Stopped` (user-run pending) only when no
    replay was authorized; otherwise report the measured replay result.
 7. **Run `update-knowledge.md` for every conclusion before doing anything
-   else.** It records passing coverage, failures, limitations, and text evidence
-   in their owning files.
-8. If the conclusion is `Failed` from a user-provided manual result, return to
-   assess/fix using the now-updated knowledge; do not autonomously retry the
-   game.
+   else.** Use its knowledge-maintenance steps to incorporate passing coverage,
+   failures, limitations, and text evidence into their owning files.
+8. If the conclusion is `Failed`, return to assess/fix using the now-updated
+   knowledge unless a stop condition applies. For a user-provided manual
+   result, do not autonomously retry the game.
 9. Report the stopped/manual-pending result after the knowledge update.
 
 ## User-confirmed exploratory boundary

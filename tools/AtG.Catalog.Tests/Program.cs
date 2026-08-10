@@ -1,6 +1,7 @@
 using AtG.Catalog;
 using Microsoft.Data.Sqlite;
 
+#if LEGACY_MANUAL_RUNNER
 var tests = new (string Name, Action Body)[]
 {
     ("duplicate source occurrences survive CSV import", DuplicateOccurrencesSurvive),
@@ -32,6 +33,10 @@ foreach (var test in tests)
 }
 
 return failed == 0 ? 0 : 1;
+#endif
+
+// The named cases below are executed by XunitBridge.cs through dotnet test.
+return;
 
 static void DuplicateOccurrencesSurvive()
 {
@@ -72,7 +77,7 @@ static void StatusAndEvidenceRoundTrip()
     using (var database = CatalogDatabase.Open(fixture.DatabasePath))
     {
         database.Initialize();
-        var occurrence = database.AddOccurrence(new SourceOccurrenceInput("ui.dll", "DisplayComposite", "Clan {0}", "氏族 {0}", "Trial", "Pending", "", "DisplayComposite", "", "token=1"));
+        var occurrence = database.AddOccurrence(new SourceOccurrenceInput("ui.dll", "DisplayComposite", "Clan {0}", "氏族 {0}", "Mapped", "Pending", "", "DisplayComposite", "", "token=1"));
         groupId = occurrence.SemanticGroupId;
         occurrenceId = occurrence.Id;
         database.UpsertTranslation(new TranslationBindingInput(groupId, "氏族 {0}", "Accepted", "DisplayComposite", "RuntimeTemplate", "verified"));

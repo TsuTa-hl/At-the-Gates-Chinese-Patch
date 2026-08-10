@@ -1,5 +1,5 @@
 param(
-    [ValidateSet("rewrite", "runtime-rewrite", "runtime-map", "load-lifecycle", "catalog", "composite-catalog", "known-texts-csv", "composite-csv", "todo-csv")]
+    [ValidateSet("rewrite", "runtime-rewrite", "runtime-map", "concept-tooltips", "load-lifecycle", "catalog", "composite-catalog", "known-texts-csv", "composite-csv", "todo-csv", "calls", "methods", "ldstr", "instructions")]
     [string]$Command = "rewrite",
     [ValidateSet("MergedFonts", "DynamicCjk")]
     [string]$RendererMode = "DynamicCjk",
@@ -8,6 +8,8 @@ param(
     [string]$DotNetPath = "$PSScriptRoot\..\.tools\dotnet\dotnet.exe",
     [string]$NuGetPackages = "$PSScriptRoot\..\.tools\nuget-cache",
     [string[]]$CommandArguments = @(),
+    [string]$RuntimeMapOutputPath = "",
+    [string]$RuntimeMapCommonAssembly = "",
     [ValidateSet("stats", "search")]
     [string]$CatalogAction = "stats",
     [string]$CatalogDatabasePath = "$PSScriptRoot\..\.cache\atg-catalog.sqlite",
@@ -124,7 +126,7 @@ $toolArguments = if ($Command -eq "catalog") {
     }
     @($toolDll, "catalog") + $catalogArguments
 }
-elseif ($Command -in @("composite-catalog", "known-texts-csv", "composite-csv", "todo-csv")) {
+elseif ($Command -in @("composite-catalog", "known-texts-csv", "composite-csv", "todo-csv", "concept-tooltips", "calls", "methods", "ldstr", "instructions")) {
     @($toolDll, $Command, "--repo", $resolvedRoot) + @($CommandArguments)
 }
 else {
@@ -134,6 +136,12 @@ else {
         "--repo", $resolvedRoot,
         "--summary", ([System.IO.Path]::GetFullPath($SummaryPath))
     )
+}
+if ($Command -eq "runtime-map" -and -not [string]::IsNullOrWhiteSpace($RuntimeMapOutputPath)) {
+    $toolArguments += @("--output", ([System.IO.Path]::GetFullPath($RuntimeMapOutputPath)))
+}
+if ($Command -eq "runtime-map" -and -not [string]::IsNullOrWhiteSpace($RuntimeMapCommonAssembly)) {
+    $toolArguments += @("--common-assembly", ([System.IO.Path]::GetFullPath($RuntimeMapCommonAssembly)))
 }
 if ($Command -eq "load-lifecycle") {
     $toolArguments += @("--renderer-mode", $RendererMode)

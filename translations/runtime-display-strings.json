@@ -15,6 +15,22 @@
     {
       "Original": "Leader 特质（{arg:0}）",
       "Translation": "领袖特质（{arg:0}）"
+    },
+    {
+      "Original": "lacking sufficient {arg:0} ({arg:1} more needed).",
+      "Translation": "缺少足够的{arg:0}（还差{arg:1}）。"
+    },
+    {
+      "Original": "• lacking sufficient {arg:0} ({arg:1} more needed).",
+      "Translation": "• 缺少足够的{arg:0}（还差{arg:1}）。"
+    },
+    {
+      "Original": "You lack sufficient {arg:0} ({arg:1} more needed).",
+      "Translation": "缺少足够的{arg:0}（还差{arg:1}）。"
+    },
+    {
+      "Original": "• You lack sufficient {arg:0} ({arg:1} more needed).",
+      "Translation": "• 缺少足够的{arg:0}（还差{arg:1}）。"
     }
   ],
   "Exact": [
@@ -99,6 +115,94 @@
     {
       "Original": "Leader 特质",
       "Translation": "领袖特质"
+    },
+    {
+      "Original": "The Eastern Roman Empire",
+      "Translation": "东罗马帝国"
+    },
+    {
+      "Original": "Eastern Roman Empire",
+      "Translation": "东罗马帝国"
+    },
+    {
+      "Original": "Eastern Roman",
+      "Translation": "东罗马"
+    },
+    {
+      "Original": "Eastern Roman Independents",
+      "Translation": "东罗马独立派"
+    },
+    {
+      "Original": "Eastern Roman Rebels",
+      "Translation": "东罗马叛军"
+    },
+    {
+      "Original": "Eastern Roman (I)",
+      "Translation": "东罗马（独立派）"
+    },
+    {
+      "Original": "Eastern Roman (R)",
+      "Translation": "东罗马（叛军）"
+    },
+    {
+      "Original": "The Western Roman Empire",
+      "Translation": "西罗马帝国"
+    },
+    {
+      "Original": "Western Roman Empire",
+      "Translation": "西罗马帝国"
+    },
+    {
+      "Original": "Western Roman",
+      "Translation": "西罗马"
+    },
+    {
+      "Original": "Western Roman Independents",
+      "Translation": "西罗马独立派"
+    },
+    {
+      "Original": "Western Roman Rebels",
+      "Translation": "西罗马叛军"
+    },
+    {
+      "Original": "Western Roman (I)",
+      "Translation": "西罗马（独立派）"
+    },
+    {
+      "Original": "Western Roman (R)",
+      "Translation": "西罗马（叛军）"
+    },
+    {
+      "Original": "Roman",
+      "Translation": "罗马"
+    },
+    {
+      "Original": "BULLYING",
+      "Translation": "\u6043\u5f3a\u51cc\u5f31"
+    },
+    {
+      "Original": "GENEROUS",
+      "Translation": "\u6177\u6168"
+    },
+    {
+      "Original": "NEUTRAL",
+      "Translation": "\u4e2d\u7acb"
+    },
+    {
+      "Original": "PLEASANT",
+      "Translation": "\u53cb\u5584"
+    },
+    {
+      "Original": "RUDE",
+      "Translation": "\u7c97\u9c81"
+    },
+    {
+      "Original": "TRAITOR",
+      "Translation": "\u53db\u5f92"
+    },
+    {
+      "Original": "UNPLEASANT",
+      "Translation": "\u4e0d\u53cb\u5584"
     },
     {
       "Original": "Content",
@@ -331,6 +435,22 @@
       "Translation": "\u4F1A\u75F4\u8FF7\u4E8E"
     },
     {
+      "Original": "being nice to Friend",
+      "Translation": "\u5584\u5F85\u53CB\u65B9\u9886\u8896"
+    },
+    {
+      "Original": "being mean to Friend",
+      "Translation": "\u82DB\u5F85\u53CB\u65B9\u9886\u8896"
+    },
+    {
+      "Original": "being nice to Enemy",
+      "Translation": "\u5584\u5F85\u654C\u5BF9\u9886\u8896"
+    },
+    {
+      "Original": "being mean to Enemy",
+      "Translation": "\u82DB\u5F85\u654C\u5BF9\u9886\u8896"
+    },
+    {
       "Original": "Minor Leader",
       "Translation": "\u5C0F\u90E8\u65CF\u9886\u8896"
     },
@@ -363,12 +483,40 @@
       "Translation": "\u654C\u5BF9"
     },
     {
+      "Original": "BULLYING",
+      "Translation": "\u6043\u5f3a\u51cc\u5f31"
+    },
+    {
+      "Original": "GENEROUS",
+      "Translation": "\u6177\u6168"
+    },
+    {
+      "Original": "NEUTRAL",
+      "Translation": "\u4e2d\u7acb"
+    },
+    {
+      "Original": "PLEASANT",
+      "Translation": "\u53cb\u5584"
+    },
+    {
+      "Original": "RUDE",
+      "Translation": "\u7c97\u9c81"
+    },
+    {
+      "Original": "TRAITOR",
+      "Translation": "\u53db\u5f92"
+    },
+    {
+      "Original": "UNPLEASANT",
+      "Translation": "\u4e0d\u53cb\u5584"
+    },
+    {
       "Original": "DENOUNCE",
       "Translation": "\u8C34\u8D23"
     },
     {
       "Original": "Make War",
-      "Translation": "\u5BA3\u6218"
+      "Translation": "\u6311\u8D77\u6218\u4E89"
     },
     {
       "Original": "Send Emissary",
@@ -1616,6 +1764,22 @@
     }
   ],
   "RichTextFragments": [
+    {
+      "Original": "The Eastern Roman Empire",
+      "Translation": "东罗马帝国"
+    },
+    {
+      "Original": "Eastern Roman Empire",
+      "Translation": "东罗马帝国"
+    },
+    {
+      "Original": "The Western Roman Empire",
+      "Translation": "西罗马帝国"
+    },
+    {
+      "Original": "Western Roman Empire",
+      "Translation": "西罗马帝国"
+    },
     {
       "Original": "unable to spend the winter inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE]",
       "Translation": "\u65e0\u6cd5\u5728[SETTLEMENT]\u5185\u8fc7\u51ac\uff0c\u6216\u4f5c\u4e3a[Resident|RESIDENT]\u5c45\u4f4f\u5728[Structure|STRUCTURE]\u4e2d"

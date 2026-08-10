@@ -1,12 +1,20 @@
 param(
     [string]$RulesPath = "$PSScriptRoot\..\translations\composite-text-rules.json",
-    [string]$OutputDirectory = "$PSScriptRoot\..\.tmp\composite-text-catalog-test"
+    [string]$OutputDirectory = "$PSScriptRoot\..\.tmp\composite-text-catalog-test",
+    [ValidateSet('Localization', 'Release')]
+    [string]$Profile = ''
 )
 
 $ErrorActionPreference = "Stop"
 
 $repoRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
 $OutputDirectory = [System.IO.Path]::GetFullPath($OutputDirectory)
+$Profile = if ([string]::IsNullOrWhiteSpace($Profile)) {
+    if ([string]::IsNullOrWhiteSpace($env:ATG_VERIFICATION_PROFILE)) { 'Release' } else { $env:ATG_VERIFICATION_PROFILE }
+} else {
+    $Profile
+}
+$runCatalogAudit = $Profile -eq 'Release'
 $reviewViewGeneratorPath = Join-Path $repoRoot "docs\review\Generate-ReviewViews.ps1"
 $CsvPath = Join-Path $OutputDirectory "composite-text-localization.csv"
 
@@ -14,13 +22,20 @@ if (!(Test-Path -LiteralPath $RulesPath -PathType Leaf)) {
     throw "Composite text rules were not generated: $RulesPath"
 }
 
-& $reviewViewGeneratorPath -View Composite -OutputDirectory $OutputDirectory | Out-Host
-if (!(Test-Path -LiteralPath $CsvPath -PathType Leaf)) {
-    throw "Composite text CSV view was not generated: $CsvPath"
-}
-if ((Test-Path -LiteralPath (Join-Path $OutputDirectory "composite-text-localization.md") -PathType Leaf) -or
-    (Test-Path -LiteralPath (Join-Path $OutputDirectory "composite-text") -PathType Container)) {
-    throw "Composite review view generation must not emit Markdown indexes or shards."
+if ($runCatalogAudit) {
+    # Full catalog/CSV audits are release-only. The ordinary Localization
+    # profile verifies the rule source directly and never pays for rebuilding
+    # the whole KnownText SQLite database or a user review view.
+    $catalogRefreshCsv = Join-Path $OutputDirectory 'known-texts-catalog.csv'
+    & (Join-Path $PSScriptRoot 'Export-KnownTextReview.ps1') -CsvOutputPath $catalogRefreshCsv | Out-Host
+    & $reviewViewGeneratorPath -View Composite -OutputDirectory $OutputDirectory | Out-Host
+    if (!(Test-Path -LiteralPath $CsvPath -PathType Leaf)) {
+        throw "Composite text CSV view was not generated: $CsvPath"
+    }
+    if ((Test-Path -LiteralPath (Join-Path $OutputDirectory "composite-text-localization.md") -PathType Leaf) -or
+        (Test-Path -LiteralPath (Join-Path $OutputDirectory "composite-text") -PathType Container)) {
+        throw "Composite review view generation must not emit Markdown indexes or shards."
+    }
 }
 
 $catalog = Get-Content -LiteralPath $RulesPath -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -197,10 +212,10 @@ if ($unreviewedCompositions.Count -gt 0) {
 }
 
 $nonterminalCompositions = @($auditedCompositions | Where-Object {
-    [string]$_.AuditStatus -notin @("Localized", "RejectedBySmoke")
+    [string]$_.AuditStatus -notin @("Localized", "RejectedBySafetyRecord")
 })
 if ($nonterminalCompositions.Count -gt 0) {
-    throw "Composite text catalog has $($nonterminalCompositions.Count) Managed or XML composition entry point(s) without a Chinese template, resolved text-key translation, or recorded smoke rollback."
+    throw "Composite text catalog has $($nonterminalCompositions.Count) Managed or XML composition entry point(s) without a Chinese template, resolved text-key translation, or recorded safety exclusion."
 }
 $argumentOnlyCompositions = @($entries | Where-Object {
     [string]$_.Source.Kind -eq "Managed" -and @($_.Parts).Count -gt 1 -and
@@ -214,25 +229,51 @@ if (@($argumentOnlyCompositions | Where-Object {
     throw "Argument-only composite entries must remain auditable pass-through records rather than runtime templates."
 }
 
-$smokeRejectedComposites = @($entries | Where-Object {
-    [string]$_.AuditStatus -eq "RejectedBySmoke"
-})
-$expectedSmokeRejectedEntries = @(
-    "managed:source/AtTheGatesCommon.original.dll:06000207:IL_0188",
-    "managed:source/AtTheGatesCommon.original.dll:060003EA:IL_0025",
-    "managed:source/AtTheGatesUI.original.dll:06000125:IL_06F3"
+$safetyRegistryPath = Join-Path $repoRoot "translations\localization-safety-registry.json"
+$safetyRegistry = Get-Content -LiteralPath $safetyRegistryPath -Raw -Encoding UTF8 | ConvertFrom-Json
+$assemblySource = @{
+    UI = "source/AtTheGatesUI.original.dll"
+    Common = "source/AtTheGatesCommon.original.dll"
+    Game = "source/AtTheGatesGame.original.exe"
+    ElfTools = "source/ElfTools.original.dll"
+}
+$expectedSafetyRejectedEntries = @(
+    foreach ($entry in $entries) {
+        foreach ($part in @($entry.Parts)) {
+            $reference = $part.KnownTextReference
+            if ($null -eq $reference) { continue }
+            $match = @($safetyRegistry.RejectedOperands | Where-Object {
+                $assemblySource[[string]$_.Assembly] -eq [string]$reference.SourceFile -and
+                [string]$_.MethodToken -eq [string]$reference.MethodToken -and
+                [int]$_.ILOffset -eq [int]$reference.ILOffset -and
+                ([string]$_.Original).Trim() -eq ([string]$reference.Original).Trim()
+            })
+            if ($match.Count -gt 0) {
+                $entry
+                break
+            }
+        }
+    }
 )
-$actualSmokeRejectedIds = (@($smokeRejectedComposites | ForEach-Object {
+if ($expectedSafetyRejectedEntries.Count -lt 3) {
+    throw "Composite catalog did not resolve the canonical rejected safety records to their exact managed entry points."
+}
+$safetyRejectedComposites = @($entries | Where-Object {
+    [string]$_.AuditStatus -eq "RejectedBySafetyRecord"
+})
+$actualSafetyRejectedIds = (@($safetyRejectedComposites | ForEach-Object {
     [string]$_.EntryPointId
 } | Sort-Object) -join "`n")
-$expectedSmokeRejectedIds = (($expectedSmokeRejectedEntries | Sort-Object) -join "`n")
-if ($smokeRejectedComposites.Count -ne $expectedSmokeRejectedEntries.Count -or
-    $actualSmokeRejectedIds -ne $expectedSmokeRejectedIds -or
-    @($smokeRejectedComposites | Where-Object {
+$expectedSafetyRejectedIds = (@($expectedSafetyRejectedEntries | ForEach-Object {
+    [string]$_.EntryPointId
+} | Sort-Object) -join "`n")
+if ($safetyRejectedComposites.Count -ne $expectedSafetyRejectedEntries.Count -or
+    $actualSafetyRejectedIds -ne $expectedSafetyRejectedIds -or
+    @($safetyRejectedComposites | Where-Object {
         ![string]::IsNullOrWhiteSpace([string]$_.LocalizedFormat) -or
         [string]$_.RuleScope -ne "None"
     }).Count -gt 0) {
-    throw "Composite catalog must retain every exact KnownText entry with a recorded post-localization smoke failure as an untranslated RejectedBySmoke entry."
+    throw "Composite catalog must retain every exact canonical safety record as an untranslated RejectedBySafetyRecord entry."
 }
 
 $rewriteEntries = @($entries | Where-Object {
@@ -269,41 +310,44 @@ if ($legacyEnnoble.Count -eq 0) {
     throw "Composite text catalog must preserve the legacy [Ennoble] NOBLE concept alias."
 }
 
-$csvRows = @(Import-Csv -LiteralPath $CsvPath -Encoding UTF8)
-if ($csvRows.Count -ne ($entries.Count + $rules.Count)) {
-    throw "Composite text CSV row count $($csvRows.Count) does not match JSON entries plus rules ($($entries.Count + $rules.Count))."
-}
-$entryRows = @($csvRows | Where-Object { $_.RowKind -eq "Entry" })
-$ruleRows = @($csvRows | Where-Object { $_.RowKind -eq "Rule" })
-if ($entryRows.Count -ne $entries.Count -or $ruleRows.Count -ne $rules.Count) {
-    throw "Composite text CSV must retain every entry and every reusable rule."
-}
-foreach ($column in @("RowKind", "EntryPointId", "OriginalFormat", "LocalizedFormat", "RuleId", "AuditStatus", "KnownTextReferenceStatus", "KnownTextExcludedLiteralCount", "KnownTextReferencesJson", "KnownTextUnresolvedReferencesJson", "KnownTextReferenceExclusionsJson", "PartsJson")) {
-    if ($csvRows.Count -gt 0 -and -not $csvRows[0].PSObject.Properties[$column]) {
-        throw "Composite text CSV is missing required column: $column"
+if ($runCatalogAudit) {
+    $csvRows = @(Import-Csv -LiteralPath $CsvPath -Encoding UTF8)
+    if ($csvRows.Count -ne ($entries.Count + $rules.Count)) {
+        throw "Composite text CSV row count $($csvRows.Count) does not match JSON entries plus rules ($($entries.Count + $rules.Count))."
+    }
+    $entryRows = @($csvRows | Where-Object { $_.RowKind -eq "Entry" })
+    $ruleRows = @($csvRows | Where-Object { $_.RowKind -eq "Rule" })
+    if ($entryRows.Count -ne $entries.Count -or $ruleRows.Count -ne $rules.Count) {
+        throw "Composite text CSV must retain every entry and every reusable rule."
+    }
+    foreach ($column in @("RowKind", "EntryPointId", "OriginalFormat", "LocalizedFormat", "RuleId", "AuditStatus", "KnownTextReferenceStatus", "KnownTextExcludedLiteralCount", "KnownTextReferencesJson", "KnownTextUnresolvedReferencesJson", "KnownTextReferenceExclusionsJson", "PartsJson")) {
+        if ($csvRows.Count -gt 0 -and -not $csvRows[0].PSObject.Properties[$column]) {
+            throw "Composite text CSV is missing required column: $column"
+        }
+    }
+
+    if (@($csvRows | Where-Object { $_.RowKind -eq "Rule" -and $_.RuleId -eq "runtime-richtext-final-process" }).Count -eq 0) {
+        throw "Composite text CSV is missing the runtime rich-text rule."
+    }
+    if (@($csvRows | Where-Object {
+        $_.RowKind -eq "Entry" -and [string]::IsNullOrWhiteSpace([string]$_.EntryPointId)
+    }).Count -gt 0) {
+        throw "Composite text CSV contains a row without EntryPointId."
+    }
+    $apiaryCsv = @($entryRows | Where-Object { $_.EntryPointId -eq [string]$apiaryEntry[0].EntryPointId })
+    if ($apiaryCsv.Count -ne 1 -or $apiaryCsv[0].KnownTextReferenceStatus -ne "Resolved" -or
+        [string]::IsNullOrWhiteSpace([string]$apiaryCsv[0].KnownTextOccurrenceIds) -or
+        $apiaryCsv[0].KnownTextReferencesJson -notmatch 'ConfigIdXPathIndexLocator') {
+        throw "Composite CSV must resolve the Apiary config locator to an exact KnownText occurrence."
+    }
+    $runtimeMapCsv = @($entryRows | Where-Object { $_.SourceKind -eq "RuntimeMap" })
+    if ($runtimeMapCsv.Count -ne $runtimeMapKnownTextParts.Count -or @($runtimeMapCsv | Where-Object {
+        $_.KnownTextReferenceStatus -ne "Resolved" -or
+        [int]$_.KnownTextExcludedLiteralCount -ne 0 -or
+        $_.KnownTextReferencesJson -notmatch "RuntimeMapExactLocator"
+    }).Count -gt 0) {
+        throw "Composite CSV must resolve every runtime-map definition to its runtime-display-map KnownText occurrence."
     }
 }
-if (@($csvRows | Where-Object { $_.RowKind -eq "Rule" -and $_.RuleId -eq "runtime-richtext-final-process" }).Count -eq 0) {
-    throw "Composite text CSV is missing the runtime rich-text rule."
-}
-if (@($csvRows | Where-Object {
-    $_.RowKind -eq "Entry" -and [string]::IsNullOrWhiteSpace([string]$_.EntryPointId)
-}).Count -gt 0) {
-    throw "Composite text CSV contains a row without EntryPointId."
-}
-$apiaryCsv = @($entryRows | Where-Object { $_.EntryPointId -eq [string]$apiaryEntry[0].EntryPointId })
-if ($apiaryCsv.Count -ne 1 -or $apiaryCsv[0].KnownTextReferenceStatus -ne "Resolved" -or
-    [string]::IsNullOrWhiteSpace([string]$apiaryCsv[0].KnownTextOccurrenceIds) -or
-    $apiaryCsv[0].KnownTextReferencesJson -notmatch 'ConfigIdXPathIndexLocator') {
-    throw "Composite CSV must resolve the Apiary config locator to an exact KnownText occurrence."
-}
-$runtimeMapCsv = @($entryRows | Where-Object { $_.SourceKind -eq "RuntimeMap" })
-if ($runtimeMapCsv.Count -ne $runtimeMapKnownTextParts.Count -or @($runtimeMapCsv | Where-Object {
-    $_.KnownTextReferenceStatus -ne "Resolved" -or
-    [int]$_.KnownTextExcludedLiteralCount -ne 0 -or
-    $_.KnownTextReferencesJson -notmatch "RuntimeMapExactLocator"
-}).Count -gt 0) {
-    throw "Composite CSV must resolve every runtime-map definition to its runtime-display-map KnownText occurrence."
-}
 
-Write-Host "Composite text catalog validation passed: $($entries.Count) entries, $($rules.Count) rules, schema $($catalog.SchemaVersion)."
+Write-Host "Composite text catalog validation passed: $($entries.Count) entries, $($rules.Count) rules, schema $($catalog.SchemaVersion), profile $Profile."

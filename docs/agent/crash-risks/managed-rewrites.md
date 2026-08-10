@@ -111,3 +111,48 @@ without a new crash log or Windows error. The designated fixed-save profession
 replay was attempted but stopped before any click because the input driver
 returned `SetCursorPos failed`; this is an automation limitation, not a game
 crash, so visual profession-screen verification remains pending.
+
+## 2026-08-07: Stale restored transaction manifests
+
+An observed main-menu crash after the diplomacy-keyword change was not caused
+by those display strings. `Logs\\Crash.AtGLog` instead reported that
+`AtG.RuntimeText.dll` could not be loaded while `MainMenu.CreateMenuButtons`
+initialized. The game directory had a manifest marked Installed, but every
+file entry was already marked Restored, its backup directory had been removed,
+and the runtime DLL/TSV were absent. This is a terminal-cleanup manifest left
+behind after all files had been restored, not a valid installed patch.
+
+`Test-AtGManifestInstalledState` now hash-checks every current manifest target
+before install and before smoke. `Test-AtGManifestRestoredState` accepts a
+missing backup only when every entry is marked Restored and exactly matches its
+recorded pre-install bytes (or a patch-exclusive file is absent). Install and
+uninstall then remove only that proven-stale manifest; every ambiguous missing
+backup remains a hard failure. The normal backup copy path also uses
+`Copy-AtGFileIfChanged`, so a short-lived Windows mapped-file lock is retried
+before a transaction remains partially restored. This prevents an apparent
+Installed state from launching with a missing runtime component.
+
+### 2026-08-07 verification limitation
+
+After the above repair was built, the real game transaction could not yet be
+completed because Windows reported `Content\\Text\\English.xml` as having a
+user-mapped section open. No `At The Gates` / `AtTheGates` process and no
+repo-local `dotnet` test host was running; Restart Manager did not identify an
+owner, while Steam client processes remained active. The transaction remains
+recoverable: its backup still contains the pre-install bytes and its manifest
+is deliberately retained as `Uninstalling` until both `English.xml` and
+`ElfTools.dll` can be restored and hash-verified. Do not force a padded or
+partial in-place write, because that would break byte-exact MOD recovery.
+
+`Build-Patch.ps1`, `Test-AtGFileOps.ps1`, and
+`Test-PatchUninstallCompleteness.ps1` passed in this session. Real main-menu
+smoke remains pending after the external mapped-file lock is released; no
+black-box scenario was run.
+
+The lock persisted after the Steam client and all `At The Gates` processes
+were confirmed exited. A process-directory scan found no remaining executable
+or command line from the game directory. Treat the remaining user-mapped
+section as an external Windows service or kernel-held mapping; a system reboot
+is required before attempting another byte-exact restore. Do not misattribute
+this to the `being` localization operand or force a shorter replacement over
+the locked `English.xml`.

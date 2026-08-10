@@ -6,7 +6,7 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="dnlib" Version="4.5.0" />
+    <PackageReference Include="dnlib" />
     <ProjectReference Include="..\AtG.Patch.Core\AtG.Patch.Core.csproj" />
   </ItemGroup>
 </Project>

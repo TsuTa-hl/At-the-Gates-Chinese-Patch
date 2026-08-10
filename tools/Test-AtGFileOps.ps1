@@ -39,6 +39,12 @@ if ([System.IO.File]::ReadAllText($destination) -ne "changed-content") {
     throw "Changed destination content was not installed."
 }
 
+[System.IO.File]::WriteAllText($source, "in-place-content")
+Copy-AtGFileContentsInPlace -Source $source -Destination $destination
+if ([System.IO.File]::ReadAllText($destination) -ne "in-place-content") {
+    throw "In-place fallback did not preserve source content."
+}
+
 $ready = Join-Path $root "mapped-ready.flag"
 Remove-Item -LiteralPath $ready -Force -ErrorAction SilentlyContinue
 [System.IO.File]::WriteAllText($source, "mapped-change")

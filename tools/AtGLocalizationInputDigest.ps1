@@ -21,7 +21,6 @@ function Get-AtGLocalizationInputDigest {
         "translations\hardcoded-common-offsets.json",
         "translations\hardcoded-game-il-rewrite.json",
         "translations\hardcoded-elftools-il-rewrite.json",
-        "translations\config-strings.json",
         "translations\config-node-strings.json",
         "translations\config-node-extra-strings.json",
         "translations\config-node-onmap-strings.json",
