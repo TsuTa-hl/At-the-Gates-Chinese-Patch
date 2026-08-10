@@ -336,7 +336,10 @@ public static class CompositeTextCatalog
 
         var document = new CompositeCatalogDocument
         {
-            GeneratedAtUtc = DateTime.UtcNow.ToString("o"),
+            // This catalog is a committed build input. Keeping its generation
+            // timestamp stable prevents an otherwise identical verification
+            // build from dirtying main and blocking release publication.
+            GeneratedAtUtc = existing?.GeneratedAtUtc ?? string.Empty,
             RepositoryRoot = ".",
             Entries = merged.OrderBy(entry => entry.EntryPointId, StringComparer.Ordinal).ToList(),
             Rules = rules.OrderBy(rule => rule.RuleId, StringComparer.Ordinal).ToList(),
