@@ -46,6 +46,15 @@ and confirms each required mapping is present in the patched UI assembly.
 `Build-Patch.ps1` runs this gate against staging output before atomically
 replacing `patch/`.
 
+Some notification operands are runtime resource identifiers rather than final
+text (for example `[STONE_LARGE]`). `DisplayStringLocalizer` may render these
+only through the allow-listed `BareTags` section of
+`translations/runtime-display-strings.json`; it must not globally translate
+unknown bracketed tokens, rich-text tags, or other engine identifiers. Keep
+the resource entries synchronized with the `DEPOSIT_*` IDs in
+`source/Content/Config/OnMap/Deposits.original.xml`, including all size
+variants, and cover the parity with a runtime-display regression.
+
 ### Concept Tooltip Registrations
 
 `AtTheGatesCommon.ns_UI.Concepts::.cctor` (method token `0x0600026a`) is the

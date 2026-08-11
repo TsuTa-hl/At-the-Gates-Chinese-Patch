@@ -127,7 +127,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Profession_Active</ID>
       <name>Wanderlust</name>
-      <description>(NAME) has (INTENSITY) switching to an [Active|ACTIVE] [Profession|PROFESSION].</description>
+      <description>(NAME)对改任[活跃|ACTIVE]的[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into an [Settled|SETTLED] [Profession|PROFESSION] within the [SETTLEMENT]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -169,7 +169,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Profession_Settled</ID>
       <name>A City Life</name>
-      <description>(NAME) has (INTENSITY) switching to a [Settled|SETTLED] [Profession|PROFESSION].</description>
+      <description>(NAME)对改任[定居|SETTLED]的[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into an [Active|ACTIVE] [Profession|PROFESSION] outside the [SETTLEMENT]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -211,7 +211,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Profession_SettledOrResident</ID>
       <name>Home Sweet Home</name>
-      <description>(NAME) has (INTENSITY) switching to either a [Settled|SETTLED] [Profession|PROFESSION] or becoming a [Resident|RESIDENT] of a [Structure|STRUCTURE].</description>
+      <description>(NAME)对改任[定居|SETTLED]的[职业|PROFESSION]，或成为[建筑|STRUCTURE]的[住民|RESIDENT]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into an [Active|ACTIVE] [Profession|PROFESSION] where they're neither within the [SETTLEMENT] nor the [Resident|RESIDENT] of a [Structure|STRUCTURE]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -255,7 +255,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Profession_Warrior</ID>
       <name>For Glory</name>
-      <description>(NAME) has (INTENSITY) switching to a [Warrior|WARRIOR] [Profession|PROFESSION].</description>
+      <description>(NAME)对改任[战士|WARRIOR]类[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Civilian|CIVILIAN] [Profession|PROFESSION]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -281,7 +281,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Profession_Civilian</ID>
       <name>Swords to Ploughshares</name>
-      <description>(NAME) has (INTENSITY) switching to a [Civilian|CIVILIAN] [Profession|PROFESSION].</description>
+      <description>(NAME)对改任[平民|CIVILIAN]类[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Warrior|WARRIOR] [Profession|PROFESSION]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -313,7 +313,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Profession_Land</ID>
       <name>Back to Solid Ground</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] which doesn't have anything to do with the sea.</description>
+      <description>(NAME)对改任不涉海的[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a seafaring [Profession|PROFESSION]</descriptionForTrait>
       <!-- Conditions ... Prereq -->
       <prereqCondition>
@@ -341,7 +341,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Discipline_Honor</ID>
       <name>A Life of Honor</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [HONOR].</description>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[HONOR]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [HONOR]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -373,7 +373,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Discipline_Agriculture</ID>
       <name>A Life of Cultivation</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [AGRICULTURE].</description>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[AGRICULTURE]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [AGRICULTURE]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -405,7 +405,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Discipline_Livestock</ID>
       <name>A Life on the Range</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [LIVESTOCK].</description>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[LIVESTOCK]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [LIVESTOCK]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -437,7 +437,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Discipline_Metalworking</ID>
       <name>A Life of Iron</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [METALWORKING].</description>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[METALWORKING]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [METALWORKING]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -469,7 +469,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Discipline_Crafting</ID>
       <name>A Life of Craftsmanship</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [CRAFTING].</description>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[CRAFTING]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [CRAFTING]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -500,7 +500,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Discipline_Discovery</ID>
       <name>A Life of Learning</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [DISCOVERY].</description>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[DISCOVERY]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [DISCOVERY]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -534,7 +534,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_SpecificWork_Rustic</ID>
       <name>A Life in the Country</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [AGRICULTURE] or [LIVESTOCK].</description>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[AGRICULTURE]或[LIVESTOCK]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [AGRICULTURE] or [LIVESTOCK]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -565,7 +565,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_SpecificWork_Creative</ID>
       <name>A Life of Creation</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [METALWORKING], [CRAFTING], or [DISCOVERY].</description>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[METALWORKING]、[CRAFTING]或[DISCOVERY]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [METALWORKING], [CRAFTING], or [DISCOVERY]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -598,7 +598,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_SpecificWork_NotAgriculture</ID>
       <name>Everything Keeps Dying...</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] outside of [AGRICULTURE].</description>
+      <description>(NAME)对改任不属[AGRICULTURE]的[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] in the [AGRICULTURE] [Discipline|DISCIPLINE]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -627,7 +627,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_SpecificWork_NotLivestock</ID>
       <name>It Wants to Kill Me!</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] outside of [LIVESTOCK].</description>
+      <description>(NAME)对改任不属[LIVESTOCK]的[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] in the [LIVESTOCK] [Discipline|DISCIPLINE]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -656,7 +656,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_SpecificWork_NotMetalworking</ID>
       <name>Put That Out...</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] outside of [METALWORKING].</description>
+      <description>(NAME)对改任不属[METALWORKING]的[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] in the [METALWORKING] [Discipline|DISCIPLINE]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -685,7 +685,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_SpecificWork_NotCrafting</ID>
       <name>My Thumb!</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] outside of [CRAFTING].</description>
+      <description>(NAME)对改任不属[CRAFTING]的[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] in the [CRAFTING] [Discipline|DISCIPLINE]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -714,7 +714,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_SpecificWork_NotDiscovery</ID>
       <name>A Life of Work</name>
-      <description>(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] outside of [DISCOVERY].</description>
+      <description>(NAME)对改任不属[DISCOVERY]的[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced into a [Profession|PROFESSION] in the [DISCOVERY] [Discipline|DISCIPLINE]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -746,7 +746,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Bored</ID>
       <name>The Itch</name>
-      <description>(NAME) has (INTENSITY) switching to a [Warrior|WARRIOR] [Profession|PROFESSION].</description>
+      <description>(NAME)对改任[战士|WARRIOR]类[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>stuck in the same [Professions|PROFESSION] for more than a year or two</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -772,7 +772,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Stressed</ID>
       <name>Overwhelmed</name>
-      <description>(NAME) has (INTENSITY) switching to a [Warrior|WARRIOR] [Profession|PROFESSION].</description>
+      <description>(NAME)对改任[战士|WARRIOR]类[职业|PROFESSION]表现出(INTENSITY)。</description>
       <descriptionForTrait>forced to switch [Professions|PROFESSION]</descriptionForTrait>
       <!-- Conditions ... Desired -->
       <conditionDesired>
@@ -798,7 +798,7 @@ NOTES:
     <clanDesire>
       <ID>DESIRE_Warmth</ID>
       <name>Brrr...</name>
-      <description>(NAME) has (INTENSITY) finding a Warm place (either inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE].</description>
+      <description>(NAME)对寻找温暖的去处表现出(INTENSITY)（可在[SETTLEMENT]内，或成为[建筑|STRUCTURE]的[住民|RESIDENT]）。</description>
       <descriptionForTrait>unable to spend the winter inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE]</descriptionForTrait>
       <shouldOnlyTestOnce>true</shouldOnlyTestOnce>
       <!-- Desired Conditions -->

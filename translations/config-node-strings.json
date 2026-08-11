@@ -434,6 +434,94 @@
     "Container": "clanDesire",
     "Items": [
       {
+        "ID": "DESIRE_Profession_Active",
+        "Description": "(NAME)对改任[活跃|ACTIVE]的[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Profession_Settled",
+        "Description": "(NAME)对改任[定居|SETTLED]的[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Profession_SettledOrResident",
+        "Description": "(NAME)对改任[定居|SETTLED]的[职业|PROFESSION]，或成为[建筑|STRUCTURE]的[住民|RESIDENT]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Profession_Warrior",
+        "Description": "(NAME)对改任[战士|WARRIOR]类[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Profession_Civilian",
+        "Description": "(NAME)对改任[平民|CIVILIAN]类[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Profession_Land",
+        "Description": "(NAME)对改任不涉海的[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Discipline_Honor",
+        "Description": "(NAME)对改任[职业|PROFESSION]并归入[HONOR]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Discipline_Agriculture",
+        "Description": "(NAME)对改任[职业|PROFESSION]并归入[AGRICULTURE]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Discipline_Livestock",
+        "Description": "(NAME)对改任[职业|PROFESSION]并归入[LIVESTOCK]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Discipline_Metalworking",
+        "Description": "(NAME)对改任[职业|PROFESSION]并归入[METALWORKING]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Discipline_Crafting",
+        "Description": "(NAME)对改任[职业|PROFESSION]并归入[CRAFTING]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Discipline_Discovery",
+        "Description": "(NAME)对改任[职业|PROFESSION]并归入[DISCOVERY]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_SpecificWork_Rustic",
+        "Description": "(NAME)对改任[职业|PROFESSION]并归入[AGRICULTURE]或[LIVESTOCK]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_SpecificWork_Creative",
+        "Description": "(NAME)对改任[职业|PROFESSION]并归入[METALWORKING]、[CRAFTING]或[DISCOVERY]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_SpecificWork_NotAgriculture",
+        "Description": "(NAME)对改任不属[AGRICULTURE]的[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_SpecificWork_NotLivestock",
+        "Description": "(NAME)对改任不属[LIVESTOCK]的[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_SpecificWork_NotMetalworking",
+        "Description": "(NAME)对改任不属[METALWORKING]的[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_SpecificWork_NotCrafting",
+        "Description": "(NAME)对改任不属[CRAFTING]的[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_SpecificWork_NotDiscovery",
+        "Description": "(NAME)对改任不属[DISCOVERY]的[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Bored",
+        "Description": "(NAME)对改任[战士|WARRIOR]类[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Stressed",
+        "Description": "(NAME)对改任[战士|WARRIOR]类[职业|PROFESSION]表现出(INTENSITY)。"
+      },
+      {
+        "ID": "DESIRE_Warmth",
+        "Description": "(NAME)对寻找温暖的去处表现出(INTENSITY)（可在[SETTLEMENT]内，或成为[建筑|STRUCTURE]的[住民|RESIDENT]）。"
+      },
+      {
         "ID": "DESIRE_Feud_HatesBadlyBehaved",
         "Description": "(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为他们认为对方举止不端并当众羞辱自己！双方都要求在[SETTLEMENT]惩罚对方。"
       },

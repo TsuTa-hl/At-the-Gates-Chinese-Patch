@@ -5247,5 +5247,25 @@
     "MethodName":  "PerformCheck",
     "Safety":  "TooltipFragment",
     "Note":  "Exact no-moves-remaining suffix; pairs with localized prefix in the same static check."
+},
+{
+    "Original":  " a ",
+    "Translation":  "\u4e00\u5ea7",
+    "MethodToken":  "0x06001243",
+    "ILOffset":  73,
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_NotAlreadyBuilding",
+    "MethodName":  "PerformCheck",
+    "Safety":  "TooltipFragment",
+    "Note":  "Build-path availability tooltip; localized contextual article before the structure concept."
+},
+{
+    "Original":  " a ",
+    "Translation":  "",
+    "MethodToken":  "0x06001265",
+    "ILOffset":  91,
+    "TypeFullName":  "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_IsNotCouncilor",
+    "MethodName":  "PerformCheck",
+    "Safety":  "TooltipFragment",
+    "Note":  "Councilor-training availability tooltip; removes the English-only article before the clan concept."
 }
 ]

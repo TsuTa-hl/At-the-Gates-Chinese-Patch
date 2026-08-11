@@ -43692,6 +43692,42 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-game-il-rewrite.json:0x06001243:IL_0049",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-game-il-rewrite.json",
+        "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_NotAlreadyBuilding",
+        "MethodName": "PerformCheck",
+        "MethodToken": "0x06001243",
+        "ILOffset": 73,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " a ",
+      "LocalizedFormat": "\u4E00\u5EA7",
+      "Classification": "LogicSensitive",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-game",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " a ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesGame.original.exe",
+            "Original": " a ",
+            "MethodToken": "0x06001243",
+            "ILOffset": 73
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Build-path availability tooltip; localized contextual article before the structure concept.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-game-il-rewrite.json:0x06001246:IL_001C",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -44124,6 +44160,42 @@
       ],
       "StructuralFlags": [],
       "Notes": "Accepted mapping; exact source locator is authoritative.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-game-il-rewrite.json:0x06001265:IL_005B",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-game-il-rewrite.json",
+        "TypeFullName": "AtTheGatesGame.ns_GameCode.ns_StaticChecks.Check_IsNotCouncilor",
+        "MethodName": "PerformCheck",
+        "MethodToken": "0x06001265",
+        "ILOffset": 91,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " a ",
+      "LocalizedFormat": "",
+      "Classification": "LogicSensitive",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-game",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " a ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesGame.original.exe",
+            "Original": " a ",
+            "MethodToken": "0x06001265",
+            "ILOffset": 91
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Councilor-training availability tooltip; removes the English-only article before the clan concept.",
       "Stale": false
     },
     {
@@ -77583,6 +77655,42 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x0600036e:IL_00B9",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.SelectionPanel",
+        "MethodName": "AddLabel_SupplyStatus",
+        "MethodToken": "0x0600036e",
+        "ILOffset": 185,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "This ",
+      "LocalizedFormat": "\u8BE5",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "This ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": "This ",
+            "MethodToken": "0x0600036e",
+            "ILOffset": 185
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Supply critical tooltip prefix.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x0600036e:IL_00D0",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -77802,7 +77910,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " on another ",
-      "LocalizedFormat": "on \u53E6\u4E00\u4E2A",
+      "LocalizedFormat": "\u53E6\u4E00",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-ui",
@@ -78279,6 +78387,42 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x0600036e:IL_030E",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.SelectionPanel",
+        "MethodName": "AddLabel_SupplyStatus",
+        "MethodToken": "0x0600036e",
+        "ILOffset": 782,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "This ",
+      "LocalizedFormat": "\u8BE5",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "This ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": "This ",
+            "MethodToken": "0x0600036e",
+            "ILOffset": 782
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Supply recovery tooltip prefix.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x0600036e:IL_0318",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -78663,6 +78807,42 @@
       ],
       "StructuralFlags": [],
       "Notes": "Accepted mapping; exact source locator is authoritative.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-ui-il-rewrite.json:0x0600036f:IL_002A",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-ui-il-rewrite.json",
+        "TypeFullName": "AtTheGatesUI.ns_InGame.SelectionPanel",
+        "MethodName": "AppendSupplyPenalties",
+        "MethodToken": "0x0600036f",
+        "ILOffset": 42,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " and suffer ",
+      "LocalizedFormat": "\u5E76\u906D\u53D7",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-ui",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " and suffer ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesUI.original.dll",
+            "Original": " and suffer ",
+            "MethodToken": "0x0600036f",
+            "ILOffset": 42
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Supply penalty connector shared by critical and exhausted states.",
       "Stale": false
     },
     {
@@ -301214,6 +301394,2658 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:BareTags:00cdaa0803c98b9d",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[PIGS_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u732A\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[PIGS_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[PIGS_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "PIGS_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:019504b4a4274435",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[IRON_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u94C1\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[IRON_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[IRON_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "IRON_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:05350d16c88aa7c1",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[FRUIT_TREES_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u679C\u6811\u6797",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[FRUIT_TREES_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[FRUIT_TREES_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "FRUIT_TREES_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:07e5912f7aee4815",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[PIGS]",
+      "LocalizedFormat": "\u732A\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[PIGS]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[PIGS]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "PIGS"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:08f44e1779635b75",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[DEER_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u9E7F\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[DEER_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[DEER_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "DEER_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:095763c75bd31bcd",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[RARE_FOREST]",
+      "LocalizedFormat": "\u7A00\u6709\u6728\u6750\u68EE\u6797",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[RARE_FOREST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[RARE_FOREST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "RARE_FOREST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:0ac090ef01b8ba17",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[FISH_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u9C7C\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[FISH_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[FISH_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "FISH_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:0e2601e0698c5abc",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[CATTLE]",
+      "LocalizedFormat": "\u725B\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[CATTLE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[CATTLE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "CATTLE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:11fc66cfaa175506",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[COAL_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u7164\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[COAL_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[COAL_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "COAL_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:15512fe0dadcde9c",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[SHEEP]",
+      "LocalizedFormat": "\u7F8A\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[SHEEP]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[SHEEP]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "SHEEP"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:16484bac743d1d37",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[SHEEP_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u7F8A\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[SHEEP_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[SHEEP_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "SHEEP_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:1ca244e0cc3c0f57",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[GRAPES_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u8461\u8404\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[GRAPES_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[GRAPES_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "GRAPES_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:1ef811c2eb1827c8",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[HORSES_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u9A6C\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[HORSES_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[HORSES_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "HORSES_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:225615853e7711d3",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[OLIVES_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u6A44\u6984\u6797",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[OLIVES_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[OLIVES_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "OLIVES_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:2a7922e2826e7e0c",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[FISH]",
+      "LocalizedFormat": "\u9C7C\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[FISH]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[FISH]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "FISH"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:2e0c84a275c7f016",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[GOLD_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u91D1\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[GOLD_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[GOLD_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "GOLD_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:31f0ad6f6bd2be1c",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[STONE_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u77F3\u6599\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[STONE_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[STONE_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "STONE_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:354ae05aa729c264",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[GEMS_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u5B9D\u77F3\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[GEMS_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[GEMS_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "GEMS_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:406661fd3664ebdd",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[OLIVES]",
+      "LocalizedFormat": "\u6A44\u6984\u6797",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[OLIVES]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[OLIVES]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "OLIVES"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:49b4b035a0f901bc",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[BEEHIVE_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u8702\u5DE2",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[BEEHIVE_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[BEEHIVE_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "BEEHIVE_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:4a5b1e28584517b8",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[STONE]",
+      "LocalizedFormat": "\u77F3\u6599\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[STONE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[STONE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "STONE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:58128886902b6c94",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[FLAX_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u4E9A\u9EBB\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[FLAX_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[FLAX_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "FLAX_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:5944cd140f7cc151",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[MINERAL_SPRING]",
+      "LocalizedFormat": "\u77FF\u6CC9",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[MINERAL_SPRING]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[MINERAL_SPRING]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "MINERAL_SPRING"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:5dd921ea196560cb",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[DEER_VISIBLE]",
+      "LocalizedFormat": "\u9E7F\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[DEER_VISIBLE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[DEER_VISIBLE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "DEER_VISIBLE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:620ed60c8e128e31",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[HORSES_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u9A6C\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[HORSES_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[HORSES_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "HORSES_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:630683eeec3c9644",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[GOLD_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u91D1\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[GOLD_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[GOLD_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "GOLD_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:654950d63d9bbb48",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[UNKNOWN_PLANT]",
+      "LocalizedFormat": "\u672A\u8BC6\u522B\u690D\u7269",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[UNKNOWN_PLANT]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[UNKNOWN_PLANT]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "UNKNOWN_PLANT"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:6582e2d62fe3f598",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[HORSES]",
+      "LocalizedFormat": "\u9A6C\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[HORSES]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[HORSES]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "HORSES"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:6a8f28b933d990c5",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[BARLEY]",
+      "LocalizedFormat": "\u5927\u9EA6\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[BARLEY]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[BARLEY]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "BARLEY"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:6dc746415bab53bd",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[WHEAT_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u5C0F\u9EA6\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[WHEAT_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[WHEAT_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "WHEAT_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:70d4078202ce245a",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[PEAT_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u6CE5\u70AD\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[PEAT_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[PEAT_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "PEAT_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:713d7a8f5c5cab2a",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[BEEHIVE_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u8702\u5DE2",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[BEEHIVE_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[BEEHIVE_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "BEEHIVE_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:7250ddf335209046",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[FISH_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u9C7C\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[FISH_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[FISH_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "FISH_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:77dc72489a208e4b",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[METEORITE_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u9668\u77F3",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[METEORITE_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[METEORITE_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "METEORITE_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:79c11ab65c1c3dee",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[FRUIT_TREES]",
+      "LocalizedFormat": "\u679C\u6811\u6797",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[FRUIT_TREES]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[FRUIT_TREES]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "FRUIT_TREES"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:79f17df6b993eee2",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[AUROCHS_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u539F\u725B\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[AUROCHS_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[AUROCHS_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "AUROCHS_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:7c28404fa22e2656",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[FLAX_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u4E9A\u9EBB\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[FLAX_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[FLAX_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "FLAX_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:805511b3b20f37b6",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[METEORITE_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u9668\u77F3",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[METEORITE_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[METEORITE_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "METEORITE_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:816d50dd23ab9d1e",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[CATTLE_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u725B\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[CATTLE_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[CATTLE_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "CATTLE_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:8541ee0a7182a312",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[DEER_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u9E7F\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[DEER_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[DEER_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "DEER_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:860342a615e00a27",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[GRAPES]",
+      "LocalizedFormat": "\u8461\u8404\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[GRAPES]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[GRAPES]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "GRAPES"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:884609c56f49c44e",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[PUREBREDS]",
+      "LocalizedFormat": "\u7EAF\u79CD\u9A6C\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[PUREBREDS]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[PUREBREDS]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "PUREBREDS"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:8a7558a54d5c3fb3",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[AUROCHS_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u539F\u725B\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[AUROCHS_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[AUROCHS_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "AUROCHS_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:8da171492a0852d1",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[IRON]",
+      "LocalizedFormat": "\u94C1\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[IRON]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[IRON]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "IRON"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:8ddae9832abbe451",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[SALT]",
+      "LocalizedFormat": "\u76D0\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[SALT]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[SALT]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "SALT"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:8fe8b57086893750",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[STONE_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u77F3\u6599\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[STONE_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[STONE_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "STONE_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:9a45714da0b9ee3b",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[UNKNOWN_MINERAL]",
+      "LocalizedFormat": "\u672A\u8BC6\u522B\u77FF\u7269",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[UNKNOWN_MINERAL]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[UNKNOWN_MINERAL]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "UNKNOWN_MINERAL"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:9adb75b554510f63",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[COAL]",
+      "LocalizedFormat": "\u7164\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[COAL]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[COAL]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "COAL"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:9d5649efb06cda38",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[PUREBREDS_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u7EAF\u79CD\u9A6C\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[PUREBREDS_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[PUREBREDS_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "PUREBREDS_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:a0a5e2ac136d0c85",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[BARLEY_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u5927\u9EA6\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[BARLEY_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[BARLEY_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "BARLEY_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:acaca2d785c6d6f6",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[PEAT_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u6CE5\u70AD\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[PEAT_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[PEAT_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "PEAT_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:b055be4b0adccfb6",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[WHEAT_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u5C0F\u9EA6\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[WHEAT_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[WHEAT_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "WHEAT_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:b621be9a26104636",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[SHEEP_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u7F8A\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[SHEEP_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[SHEEP_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "SHEEP_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:b832363b8246bcfb",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[GRAPES_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u8461\u8404\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[GRAPES_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[GRAPES_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "GRAPES_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:b92122e45fe5a522",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[BARLEY_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u5927\u9EA6\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[BARLEY_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[BARLEY_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "BARLEY_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:b9953badefb172db",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[FRUIT_TREES_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u679C\u6811\u6797",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[FRUIT_TREES_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[FRUIT_TREES_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "FRUIT_TREES_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:bc3a6e3df6973adc",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[CATTLE_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u725B\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[CATTLE_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[CATTLE_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "CATTLE_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:bca90b8189bb4159",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[PUREBREDS_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u7EAF\u79CD\u9A6C\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[PUREBREDS_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[PUREBREDS_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "PUREBREDS_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:be876d043a8ad33e",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[AUROCHS]",
+      "LocalizedFormat": "\u539F\u725B\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[AUROCHS]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[AUROCHS]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "AUROCHS"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:c02b2fc807f4d8e4",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[OLIVES_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u6A44\u6984\u6797",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[OLIVES_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[OLIVES_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "OLIVES_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:c4f2507fadca0dd2",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[GEMS]",
+      "LocalizedFormat": "\u5B9D\u77F3\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[GEMS]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[GEMS]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "GEMS"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:c760c5f2bb6a2e15",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[UNKNOWN_ANIMAL]",
+      "LocalizedFormat": "\u672A\u8BC6\u522B\u52A8\u7269",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[UNKNOWN_ANIMAL]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[UNKNOWN_ANIMAL]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "UNKNOWN_ANIMAL"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:c786b54bcae52d58",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[PIGS_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u732A\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[PIGS_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[PIGS_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "PIGS_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:c86af51046f28923",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[FLAX]",
+      "LocalizedFormat": "\u4E9A\u9EBB\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[FLAX]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[FLAX]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "FLAX"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:c8adb3adf6ac77e7",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[GEMS_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u5B9D\u77F3\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[GEMS_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[GEMS_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "GEMS_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:d56f02fccaf411b3",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[BERRIES]",
+      "LocalizedFormat": "\u6D46\u679C\u4E1B",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[BERRIES]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[BERRIES]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "BERRIES"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:d5bfb117efb345e8",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[METEORITE]",
+      "LocalizedFormat": "\u9668\u77F3",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[METEORITE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[METEORITE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "METEORITE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:dd930e5c8ccc45ed",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[COAL_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u7164\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[COAL_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[COAL_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "COAL_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:ddc070d615bcae7d",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[GOLD]",
+      "LocalizedFormat": "\u91D1\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[GOLD]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[GOLD]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "GOLD"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:deb9f64bdcc497ea",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[WHEAT]",
+      "LocalizedFormat": "\u5C0F\u9EA6\u7530",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[WHEAT]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[WHEAT]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "WHEAT"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:e8e9fcd3e99d3237",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[PEAT]",
+      "LocalizedFormat": "\u6CE5\u70AD\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[PEAT]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[PEAT]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "PEAT"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:edcff64e1e58a2ad",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[IRON_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u94C1\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[IRON_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[IRON_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "IRON_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:f2791ef47f7f0da5",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[BERRIES_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u6D46\u679C\u4E1B",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[BERRIES_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[BERRIES_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "BERRIES_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:f3b0f5fc0c0ead89",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[SALT_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u76D0\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[SALT_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[SALT_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "SALT_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:f4997e4e555ee36a",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[SALT_LARGE]",
+      "LocalizedFormat": "\u5927\u578B\u76D0\u77FF\u5E8A",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[SALT_LARGE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[SALT_LARGE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "SALT_LARGE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:fe818aefc01a7f91",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[DEER]",
+      "LocalizedFormat": "\u9E7F\u7FA4",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[DEER]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[DEER]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "DEER"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:ffca5f7561aa43d8",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[BEEHIVE]",
+      "LocalizedFormat": "\u8702\u5DE2",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[BEEHIVE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[BEEHIVE]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "BEEHIVE"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:BareTags:fff7f520132023ec",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "BareTags"
+      },
+      "OriginalFormat": "[BERRIES_VAST]",
+      "LocalizedFormat": "\u5DE8\u578B\u6D46\u679C\u4E1B",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-bare-tag",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "[BERRIES_VAST]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "[BERRIES_VAST]",
+            "RuntimeMapSection": "BareTags",
+            "RuntimeMapOriginal": "BERRIES_VAST"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:ConceptDisplay:04e8ce87670ce652",
       "Source": {
         "Kind": "RuntimeMap",
@@ -336022,7 +338854,7 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "[COLOR:BAD-RED]become obsessed[/COLOR] with the idea of",
-      "LocalizedFormat": "[COLOR:BAD-RED]\u4F1A\u75F4\u8FF7[/COLOR]\u4E8E",
+      "LocalizedFormat": "[COLOR:BAD-RED]\u75F4\u8FF7[/COLOR]",
       "Classification": "DisplayComposite",
       "Status": "ExistingRule",
       "RuleId": "xml-existing-translation",
@@ -336635,10 +339467,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Meteorite [Deposits|DEPOSIT] are incredibly rare![BLANK-LINE]They can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].[BLANK-LINE]This is one of the largest meteorites ever found!",
+      "LocalizedFormat": "\u9668\u77F3[\u77FF\u5E8A|DEPOSIT]\u6781\u5176\u7F55\u89C1\uFF01[BLANK-LINE]\u5B83\u4EEC\u53EF\u7531[DIGGER]\u6216[IRON-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][IRON]\u3002[BLANK-LINE]\u8FD9\u662F\u8FC4\u4ECA\u53D1\u73B0\u7684\u6700\u5927\u9668\u77F3\u4E4B\u4E00\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -336657,6 +339491,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -336873,10 +339708,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Stone [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [STONE-QUARRY-1] to [Produce|PRODUCE] [STONE].[BLANK-LINE]This is among the largest deposits ever found!",
+      "LocalizedFormat": "\u77F3\u6599[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[STONE-QUARRY-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][STONE]\u3002[BLANK-LINE]\u8FD9\u662F\u8FC4\u4ECA\u53D1\u73B0\u7684\u6700\u5927\u77F3\u6599\u77FF\u5E8A\u4E4B\u4E00\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -336895,6 +339732,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -337593,10 +340431,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Salt [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [SALT-MINE-1] to [Produce|PRODUCE] [SALT].[BLANK-LINE]This is a particularly large deposit!",
+      "LocalizedFormat": "\u76D0[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[SALT-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][SALT]\u3002[BLANK-LINE]\u8FD9\u662F\u4E00\u5904\u7279\u522B\u5927\u7684\u76D0\u77FF\u5E8A\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -337615,6 +340455,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -337935,10 +340776,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Stone [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [STONE-QUARRY-1] to [Produce|PRODUCE] [STONE].[BLANK-LINE]This is a particularly large deposit!",
+      "LocalizedFormat": "\u77F3\u6599[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[STONE-QUARRY-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][STONE]\u3002[BLANK-LINE]\u8FD9\u662F\u4E00\u5904\u7279\u522B\u5927\u7684\u77F3\u6599\u77FF\u5E8A\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -337957,6 +340800,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -338004,10 +340848,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Gem [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GEM-MINE-1] to [Produce|PRODUCE] a huge amount of [TREASURE].[BLANK-LINE]This is among the largest deposits ever found!",
+      "LocalizedFormat": "\u5B9D\u77F3[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[GEM-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE]\u5DE8\u91CF[TREASURE]\u3002[BLANK-LINE]\u8FD9\u662F\u8FC4\u4ECA\u53D1\u73B0\u7684\u6700\u5927\u5B9D\u77F3\u77FF\u5E8A\u4E4B\u4E00\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -338026,6 +340872,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -338139,10 +340986,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Gold [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GOLD-MINE-1] to [Produce|PRODUCE] a large amount of [TREASURE].[BLANK-LINE]This is a particularly large deposit!",
+      "LocalizedFormat": "\u91D1[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[GOLD-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE]\u5927\u91CF[TREASURE]\u3002[BLANK-LINE]\u8FD9\u662F\u4E00\u5904\u7279\u522B\u5927\u7684\u91D1\u77FF\u5E8A\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -338161,6 +341010,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -338206,10 +341056,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Gold [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GOLD-MINE-1] to [Produce|PRODUCE] a large amount of [TREASURE].",
+      "LocalizedFormat": "\u91D1[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[GOLD-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE]\u5927\u91CF[TREASURE]\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -338228,6 +341080,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -338309,10 +341162,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Gem [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GEM-MINE-1] to [Produce|PRODUCE] a huge amount of [TREASURE].",
+      "LocalizedFormat": "\u5B9D\u77F3[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[GEM-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE]\u5DE8\u91CF[TREASURE]\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -338331,6 +341186,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -338620,10 +341476,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Gem [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GEM-MINE-1] to [Produce|PRODUCE] a huge amount of [TREASURE].[BLANK-LINE]This is a particularly large deposit!",
+      "LocalizedFormat": "\u5B9D\u77F3[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[GEM-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE]\u5DE8\u91CF[TREASURE]\u3002[BLANK-LINE]\u8FD9\u662F\u4E00\u5904\u7279\u522B\u5927\u7684\u5B9D\u77F3\u77FF\u5E8A\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -338642,6 +341500,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -339374,10 +342233,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Salt [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [SALT-MINE-1] to [Produce|PRODUCE] [SALT].[BLANK-LINE]This is among the largest deposits ever found!",
+      "LocalizedFormat": "\u76D0[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[SALT-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][SALT]\u3002[BLANK-LINE]\u8FD9\u662F\u8FC4\u4ECA\u53D1\u73B0\u7684\u6700\u5927\u76D0\u77FF\u5E8A\u4E4B\u4E00\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -339396,6 +342257,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -339576,10 +342438,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Salt [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [SALT-MINE-1] to [Produce|PRODUCE] [SALT].",
+      "LocalizedFormat": "\u76D0[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[SALT-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][SALT]\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -339598,6 +342462,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -339609,10 +342474,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Iron [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].[BLANK-LINE]This is a particularly large deposit!",
+      "LocalizedFormat": "\u94C1[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[IRON-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][IRON]\u3002[BLANK-LINE]\u8FD9\u662F\u4E00\u5904\u7279\u522B\u5927\u7684\u94C1\u77FF\u5E8A\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -339631,6 +342498,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -340154,10 +343022,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Iron [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].",
+      "LocalizedFormat": "\u94C1[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[IRON-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][IRON]\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -340176,6 +343046,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -341173,10 +344044,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Stone [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [STONE-QUARRY-1] to [Produce|PRODUCE] [STONE].",
+      "LocalizedFormat": "\u77F3\u6599[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[STONE-QUARRY-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][STONE]\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -341195,6 +344068,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -341343,10 +344217,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Gold [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GOLD-MINE-1] to [Produce|PRODUCE] a large amount of [TREASURE].[BLANK-LINE]This is among the largest deposits ever found!",
+      "LocalizedFormat": "\u91D1[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[GOLD-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE]\u5927\u91CF[TREASURE]\u3002[BLANK-LINE]\u8FD9\u662F\u8FC4\u4ECA\u53D1\u73B0\u7684\u6700\u5927\u91D1\u77FF\u5E8A\u4E4B\u4E00\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -341365,6 +344241,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -341376,10 +344253,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Meteorite [Deposits|DEPOSIT] are incredibly rare![BLANK-LINE]They can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].[BLANK-LINE]This is a truly massive meteorite, possibly the largest in history!",
+      "LocalizedFormat": "\u9668\u77F3[\u77FF\u5E8A|DEPOSIT]\u6781\u5176\u7F55\u89C1\uFF01[BLANK-LINE]\u5B83\u4EEC\u53EF\u7531[DIGGER]\u6216[IRON-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][IRON]\u3002[BLANK-LINE]\u8FD9\u662F\u4E00\u5757\u771F\u6B63\u5DE8\u5927\u7684\u9668\u77F3\uFF0C\u53EF\u80FD\u662F\u6709\u53F2\u4EE5\u6765\u6700\u5927\u7684\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -341398,6 +344277,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -341511,10 +344391,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Iron [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].[BLANK-LINE]This is among the largest deposits ever found!",
+      "LocalizedFormat": "\u94C1[\u77FF\u5E8A|DEPOSIT]\u53EF\u7531[DIGGER]\u6216[IRON-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][IRON]\u3002[BLANK-LINE]\u8FD9\u662F\u8FC4\u4ECA\u53D1\u73B0\u7684\u6700\u5927\u94C1\u77FF\u5E8A\u4E4B\u4E00\uFF01",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -341533,6 +344415,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -341544,10 +344427,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "Meteorite [Deposits|DEPOSIT] are incredibly rare![BLANK-LINE]They can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].",
+      "LocalizedFormat": "\u9668\u77F3[\u77FF\u5E8A|DEPOSIT]\u6781\u5176\u7F55\u89C1\uFF01[BLANK-LINE]\u5B83\u4EEC\u53EF\u7531[DIGGER]\u6216[IRON-MINE-1][\u91C7\u6536|HARVEST]\uFF0C\u4EE5[\u4EA7\u51FA|PRODUCE][IRON]\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -341566,6 +344451,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -354066,10 +356952,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [METALWORKING].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u804C\u4E1A|PROFESSION]\u5E76\u5F52\u5165[METALWORKING]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -354088,6 +356976,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -354134,10 +357023,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] which doesn\u0027t have anything to do with the sea.",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB\u4E0D\u6D89\u6D77\u7684[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -354156,6 +357047,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -354429,10 +357321,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] outside of [AGRICULTURE].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB\u4E0D\u5C5E[AGRICULTURE]\u7684[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -354451,6 +357345,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -354494,10 +357389,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [HONOR].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u804C\u4E1A|PROFESSION]\u5E76\u5F52\u5165[HONOR]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -354516,6 +357413,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -354591,10 +357489,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [CRAFTING].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u804C\u4E1A|PROFESSION]\u5E76\u5F52\u5165[CRAFTING]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -354613,6 +357513,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -354723,10 +357624,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [AGRICULTURE] or [LIVESTOCK].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u804C\u4E1A|PROFESSION]\u5E76\u5F52\u5165[AGRICULTURE]\u6216[LIVESTOCK]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -354745,6 +357648,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -354855,10 +357759,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Civilian|CIVILIAN] [Profession|PROFESSION].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u5E73\u6C11|CIVILIAN]\u7C7B[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -354877,6 +357783,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355115,10 +358022,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Settled|SETTLED] [Profession|PROFESSION].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u5B9A\u5C45|SETTLED]\u7684[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355137,6 +358046,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355250,10 +358160,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [AGRICULTURE].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u804C\u4E1A|PROFESSION]\u5E76\u5F52\u5165[AGRICULTURE]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355272,6 +358184,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355315,10 +358228,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] outside of [DISCOVERY].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB\u4E0D\u5C5E[DISCOVERY]\u7684[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355337,6 +358252,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355412,10 +358328,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [DISCOVERY].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u804C\u4E1A|PROFESSION]\u5E76\u5F52\u5165[DISCOVERY]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355434,6 +358352,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355445,10 +358364,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] outside of [CRAFTING].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB\u4E0D\u5C5E[CRAFTING]\u7684[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355467,6 +358388,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355510,10 +358432,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Warrior|WARRIOR] [Profession|PROFESSION].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u6218\u58EB|WARRIOR]\u7C7B[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355532,6 +358456,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355671,10 +358596,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) finding a Warm place (either inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE].",
+      "LocalizedFormat": "(NAME)\u5BF9\u5BFB\u627E\u6E29\u6696\u7684\u53BB\u5904\u8868\u73B0\u51FA(INTENSITY)\uFF08\u53EF\u5728[SETTLEMENT]\u5185\uFF0C\u6216\u6210\u4E3A[\u5EFA\u7B51|STRUCTURE]\u7684[\u4F4F\u6C11|RESIDENT]\uFF09\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355693,6 +358620,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355704,10 +358632,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [LIVESTOCK].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u804C\u4E1A|PROFESSION]\u5E76\u5F52\u5165[LIVESTOCK]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355726,6 +358656,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355737,10 +358668,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] outside of [LIVESTOCK].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB\u4E0D\u5C5E[LIVESTOCK]\u7684[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355759,6 +358692,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355770,10 +358704,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Warrior|WARRIOR] [Profession|PROFESSION].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u6218\u58EB|WARRIOR]\u7C7B[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355792,6 +358728,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355803,10 +358740,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to an [Active|ACTIVE] [Profession|PROFESSION].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u6D3B\u8DC3|ACTIVE]\u7684[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355825,6 +358764,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355932,10 +358872,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] outside of [METALWORKING].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB\u4E0D\u5C5E[METALWORKING]\u7684[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -355954,6 +358896,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -355997,10 +358940,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to either a [Settled|SETTLED] [Profession|PROFESSION] or becoming a [Resident|RESIDENT] of a [Structure|STRUCTURE].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u5B9A\u5C45|SETTLED]\u7684[\u804C\u4E1A|PROFESSION]\uFF0C\u6216\u6210\u4E3A[\u5EFA\u7B51|STRUCTURE]\u7684[\u4F4F\u6C11|RESIDENT]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -356019,6 +358964,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -356161,10 +359107,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Profession|PROFESSION] in [METALWORKING], [CRAFTING], or [DISCOVERY].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u804C\u4E1A|PROFESSION]\u5E76\u5F52\u5165[METALWORKING]\u3001[CRAFTING]\u6216[DISCOVERY]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -356183,6 +359131,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -356194,10 +359143,12 @@
         "CallKind": "XmlTemplate"
       },
       "OriginalFormat": "(NAME) has (INTENSITY) switching to a [Warrior|WARRIOR] [Profession|PROFESSION].",
+      "LocalizedFormat": "(NAME)\u5BF9\u6539\u4EFB[\u6218\u58EB|WARRIOR]\u7C7B[\u804C\u4E1A|PROFESSION]\u8868\u73B0\u51FA(INTENSITY)\u3002",
       "Classification": "DisplayComposite",
-      "Status": "Unreviewed",
-      "AuditStatus": "NotManagedComposition",
-      "RuleScope": "None",
+      "Status": "ExistingRule",
+      "RuleId": "xml-existing-translation",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
       "Confidence": "Exact",
       "Parts": [
         {
@@ -356216,6 +359167,7 @@
         "ConceptLink",
         "RichTextMarkup"
       ],
+      "Notes": "Generated from the matching patch XML node.",
       "Stale": false
     },
     {
@@ -467576,6 +470528,14 @@
       "EntryPointId": "runtime-map:ArgumentsOnly",
       "Description": "Argument-only and non-linguistic composite operands need no display template; registering an all-argument template would match unrelated text.",
       "Source": "tools/AtG.ManagedRewrite/CompositeTextCatalog.cs"
+    },
+    {
+      "RuleId": "runtime-display-bare-tag",
+      "Kind": "RuntimeDisplayMap",
+      "Status": "Active",
+      "EntryPointId": "runtime-map:BareTags",
+      "Description": "Curated internal resource tags are rendered as plain localized labels at the final display boundary without turning them into concept links.",
+      "Source": "translations/runtime-display-strings.json"
     },
     {
       "RuleId": "runtime-display-concept",

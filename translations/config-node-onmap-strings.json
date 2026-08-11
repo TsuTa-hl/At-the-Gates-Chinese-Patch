@@ -386,7 +386,79 @@
       },
       {
         "ID": "DEPOSIT_COAL_VAST",
-          "Description": "煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]这是迄今发现的最大煤矿床之一！"
+        "Description": "煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]这是迄今发现的最大煤矿床之一！"
+      },
+      {
+        "ID": "DEPOSIT_IRON",
+        "Description": "铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。"
+      },
+      {
+        "ID": "DEPOSIT_IRON_LARGE",
+        "Description": "铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是一处特别大的铁矿床！"
+      },
+      {
+        "ID": "DEPOSIT_IRON_VAST",
+        "Description": "铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是迄今发现的最大铁矿床之一！"
+      },
+      {
+        "ID": "DEPOSIT_METEORITE",
+        "Description": "陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。"
+      },
+      {
+        "ID": "DEPOSIT_METEORITE_LARGE",
+        "Description": "陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是迄今发现的最大陨石之一！"
+      },
+      {
+        "ID": "DEPOSIT_METEORITE_VAST",
+        "Description": "陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是一块真正巨大的陨石，可能是有史以来最大的！"
+      },
+      {
+        "ID": "DEPOSIT_GOLD",
+        "Description": "金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。"
+      },
+      {
+        "ID": "DEPOSIT_GOLD_LARGE",
+        "Description": "金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。[BLANK-LINE]这是一处特别大的金矿床！"
+      },
+      {
+        "ID": "DEPOSIT_GOLD_VAST",
+        "Description": "金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。[BLANK-LINE]这是迄今发现的最大金矿床之一！"
+      },
+      {
+        "ID": "DEPOSIT_GEMS",
+        "Description": "宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。"
+      },
+      {
+        "ID": "DEPOSIT_GEMS_LARGE",
+        "Description": "宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。[BLANK-LINE]这是一处特别大的宝石矿床！"
+      },
+      {
+        "ID": "DEPOSIT_GEMS_VAST",
+        "Description": "宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。[BLANK-LINE]这是迄今发现的最大宝石矿床之一！"
+      },
+      {
+        "ID": "DEPOSIT_STONE",
+        "Description": "石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。"
+      },
+      {
+        "ID": "DEPOSIT_STONE_LARGE",
+        "Description": "石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。[BLANK-LINE]这是一处特别大的石料矿床！"
+      },
+      {
+        "ID": "DEPOSIT_STONE_VAST",
+        "Description": "石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。[BLANK-LINE]这是迄今发现的最大石料矿床之一！"
+      },
+      {
+        "ID": "DEPOSIT_SALT",
+        "Description": "盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。"
+      },
+      {
+        "ID": "DEPOSIT_SALT_LARGE",
+        "Description": "盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。[BLANK-LINE]这是一处特别大的盐矿床！"
+      },
+      {
+        "ID": "DEPOSIT_SALT_VAST",
+        "Description": "盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。[BLANK-LINE]这是迄今发现的最大盐矿床之一！"
       },
       {
         "ID": "DEPOSIT_PEAT",

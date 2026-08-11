@@ -19,6 +19,12 @@ namespace AtG.RuntimeText
             new Dictionary<string, string>(StringComparer.Ordinal);
         private static readonly Dictionary<string, string> Templates =
             new Dictionary<string, string>(StringComparer.Ordinal);
+        // Some notification paths wrap an internal resource identifier directly in
+        // brackets (for example [STONE_LARGE]).  These are not concept links and
+        // are rendered literally by the game.  Keep their display-only mapping
+        // separate from concepts so arbitrary formatting tags remain untouched.
+        private static readonly Dictionary<string, string> BareTags =
+            new Dictionary<string, string>(StringComparer.Ordinal);
         private static readonly Dictionary<string, Dictionary<string, string>> ConceptDisplay =
             new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
         private static readonly HashSet<string> ConceptKeys =
@@ -48,6 +54,7 @@ namespace AtG.RuntimeText
             public KeyValuePair<string, string>[] Templates;
             public Dictionary<string, Dictionary<string, string>> Concepts;
             public HashSet<string> Keys;
+            public Dictionary<string, string> BareTags;
         }
 
         private sealed class BoundedLocalizationCache
@@ -164,6 +171,14 @@ namespace AtG.RuntimeText
         {
             ValidateTemplate(source, translation);
             lock (Gate) RegisterValue(Templates, source, translation, true);
+        }
+
+        public static void RegisterBareTag(string source, string translation)
+        {
+            if (string.IsNullOrEmpty(source) || source.IndexOfAny(new[] { '[', ']', '|' }) >= 0)
+                throw new ArgumentException("Bare tag identifier is required and must not contain markup.", "source");
+            ValidateDisplayValue(translation, "translation");
+            lock (Gate) RegisterValue(BareTags, source, translation, true);
         }
 
         public static void RegisterConceptKey(string conceptKey)
@@ -322,6 +337,18 @@ namespace AtG.RuntimeText
                         }
                         else mapped.Add(link);
                     }
+                    continue;
+                }
+
+                var rawTag = node as RawTagNode;
+                if (rawTag != null && TryGetBareTagIdentifier(rawTag.RawText, out var identifier) &&
+                    snapshot.BareTags.TryGetValue(identifier, out var bareTagTranslation))
+                {
+                    // A curated bare-tag entry is display-only.  Do not invent a
+                    // concept key: that would create a link to an unknown concept
+                    // and can destabilize later hover handling.
+                    mapped.Add(new PlainTextNode(bareTagTranslation));
+                    changed = true;
                     continue;
                 }
                 mapped.Add(node);
@@ -555,6 +582,9 @@ namespace AtG.RuntimeText
                         case "T" when fields.Length == 3:
                             RegisterTemplate(Decode(fields[1]), Decode(fields[2]));
                             break;
+                        case "B" when fields.Length == 3:
+                            RegisterBareTag(Decode(fields[1]), Decode(fields[2]));
+                            break;
                         case "C" when fields.Length == 4:
                             RegisterConceptDisplay(Decode(fields[1]), Decode(fields[2]), Decode(fields[3]));
                             break;
@@ -579,6 +609,7 @@ namespace AtG.RuntimeText
                 PlainTextFragments.Clear();
                 RichTextFragments.Clear();
                 Templates.Clear();
+                BareTags.Clear();
                 ConceptDisplay.Clear();
                 ConceptKeys.Clear();
                 Snapshot = null;
@@ -1070,6 +1101,18 @@ namespace AtG.RuntimeText
                 throw new ArgumentException("Display text must not contain rich-text markup.", parameterName);
         }
 
+        private static bool TryGetBareTagIdentifier(string rawText, out string identifier)
+        {
+            identifier = null;
+            if (string.IsNullOrEmpty(rawText) || rawText.Length < 3 ||
+                rawText[0] != '[' || rawText[rawText.Length - 1] != ']')
+                return false;
+            var candidate = rawText.Substring(1, rawText.Length - 2);
+            if (candidate.IndexOfAny(new[] { '[', ']', '|' }) >= 0) return false;
+            identifier = candidate;
+            return true;
+        }
+
         private static LocalizationSnapshot GetSnapshot()
         {
             var snapshot = Snapshot;
@@ -1111,6 +1154,7 @@ namespace AtG.RuntimeText
                     Templates = templateArray,
                     Concepts = concepts,
                     Keys = new HashSet<string>(ConceptKeys, StringComparer.Ordinal),
+                    BareTags = new Dictionary<string, string>(BareTags, StringComparer.Ordinal),
                 };
                 Snapshot = snapshot;
                 return snapshot;

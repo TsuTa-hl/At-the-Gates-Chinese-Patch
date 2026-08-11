@@ -1030,7 +1030,7 @@ if ($RendererMode -eq "DynamicCjk") {
         throw "Runtime glyph warmset is missing: $runtimeWarmsetPath"
     }
     $runtimeSummary = Get-Content -LiteralPath $runtimeSummaryPath -Raw -Encoding UTF8 | ConvertFrom-Json
-    $runtimeMapCounts = @{ K = 0; E = 0; P = 0; F = 0; T = 0; C = 0 }
+    $runtimeMapCounts = @{ K = 0; E = 0; P = 0; F = 0; R = 0; B = 0; T = 0; C = 0 }
     foreach ($line in Get-Content -LiteralPath $runtimeMapPath -Encoding UTF8) {
         if ([string]::IsNullOrEmpty($line) -or $line.StartsWith("#")) {
             continue
@@ -1075,6 +1075,8 @@ if ($RendererMode -eq "DynamicCjk") {
         ExactCount = [int]$runtimeMapCounts.E
         PlainTextCount = [int]$runtimeMapCounts.P
         PlainTextFragmentCount = [int]$runtimeMapCounts.F
+        RichTextFragmentCount = [int]$runtimeMapCounts.R
+        BareTagCount = [int]$runtimeMapCounts.B
         TemplateCount = [int]$runtimeMapCounts.T
         ConceptDisplayCount = [int]$runtimeMapCounts.C
         AtlasPageSize = 1024

@@ -58,9 +58,24 @@
     "Container": "intensity",
     "Items": [
       {
+        "ID": "INTENSITY_CURIOUS",
+        "Name": "兴趣",
+        "Description": "兴趣"
+      },
+      {
+        "ID": "INTENSITY_INTERESTED",
+        "Name": "兴趣",
+        "Description": "兴趣"
+      },
+      {
+        "ID": "INTENSITY_DISTRACTED",
+        "Name": "兴趣",
+        "Description": "兴趣"
+      },
+      {
         "ID": "INTENSITY_OBSESSED",
         "Name": "痴迷",
-        "Description": "[COLOR:BAD-RED]会痴迷[/COLOR]于"
+        "Description": "[COLOR:BAD-RED]痴迷[/COLOR]"
       }
     ]
   },

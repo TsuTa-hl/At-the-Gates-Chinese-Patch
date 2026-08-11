@@ -8,7 +8,7 @@
     <deposit>
       <ID>DEPOSIT_IRON</ID>
       <name>TEXT.Name.Deposit.IronDeposit</name>
-      <description>Iron [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].</description>
+      <description>铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。</description>
       <texturePath>Images/Deposits/Minerals/Iron</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -33,7 +33,7 @@
     <deposit>
       <ID>DEPOSIT_IRON_LARGE</ID>
       <name>TEXT.Name.Deposit.LargeIronDeposit</name>
-      <description>Iron [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].[BLANK-LINE]This is a particularly large deposit!</description>
+      <description>铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是一处特别大的铁矿床！</description>
       <texturePath>Images/Deposits/Minerals/Iron_Large</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -58,7 +58,7 @@
     <deposit>
       <ID>DEPOSIT_IRON_VAST</ID>
       <name>TEXT.Name.Deposit.VastIronDeposit</name>
-      <description>Iron [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].[BLANK-LINE]This is among the largest deposits ever found!</description>
+      <description>铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是迄今发现的最大铁矿床之一！</description>
       <texturePath>Images/Deposits/Minerals/Iron_Vast</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -87,7 +87,7 @@
     <deposit>
       <ID>DEPOSIT_METEORITE</ID>
       <name>TEXT.Name.Deposit.Meteorite</name>
-      <description>Meteorite [Deposits|DEPOSIT] are incredibly rare![BLANK-LINE]They can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].</description>
+      <description>陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。</description>
       <texturePath>Images/Deposits/Minerals/Meteorite</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -112,7 +112,7 @@
     <deposit>
       <ID>DEPOSIT_METEORITE_LARGE</ID>
       <name>TEXT.Name.Deposit.LargeMeteorite</name>
-      <description>Meteorite [Deposits|DEPOSIT] are incredibly rare![BLANK-LINE]They can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].[BLANK-LINE]This is one of the largest meteorites ever found!</description>
+      <description>陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是迄今发现的最大陨石之一！</description>
       <texturePath>Images/Deposits/Minerals/Meteorite_Large</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -137,7 +137,7 @@
     <deposit>
       <ID>DEPOSIT_METEORITE_VAST</ID>
       <name>TEXT.Name.Deposit.VastMeteorite</name>
-      <description>Meteorite [Deposits|DEPOSIT] are incredibly rare![BLANK-LINE]They can be [Harvested|HARVEST] by a [DIGGER] or [IRON-MINE-1] to [Produce|PRODUCE] [IRON].[BLANK-LINE]This is a truly massive meteorite, possibly the largest in history!</description>
+      <description>陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是一块真正巨大的陨石，可能是有史以来最大的！</description>
       <texturePath>Images/Deposits/Minerals/Meteorite_Vast</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -166,7 +166,7 @@
     <deposit>
       <ID>DEPOSIT_GOLD</ID>
       <name>TEXT.Name.Deposit.GoldDeposit</name>
-      <description>Gold [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GOLD-MINE-1] to [Produce|PRODUCE] a large amount of [TREASURE].</description>
+      <description>金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。</description>
       <texturePath>Images/Deposits/Minerals/Gold</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -187,7 +187,7 @@
     <deposit>
       <ID>DEPOSIT_GOLD_LARGE</ID>
       <name>TEXT.Name.Deposit.LargeGoldDeposit</name>
-      <description>Gold [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GOLD-MINE-1] to [Produce|PRODUCE] a large amount of [TREASURE].[BLANK-LINE]This is a particularly large deposit!</description>
+      <description>金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。[BLANK-LINE]这是一处特别大的金矿床！</description>
       <texturePath>Images/Deposits/Minerals/Gold_Large</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -208,7 +208,7 @@
     <deposit>
       <ID>DEPOSIT_GOLD_VAST</ID>
       <name>TEXT.Name.Deposit.VastGoldDeposit</name>
-      <description>Gold [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GOLD-MINE-1] to [Produce|PRODUCE] a large amount of [TREASURE].[BLANK-LINE]This is among the largest deposits ever found!</description>
+      <description>金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。[BLANK-LINE]这是迄今发现的最大金矿床之一！</description>
       <texturePath>Images/Deposits/Minerals/Gold_Vast</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -233,7 +233,7 @@
     <deposit>
       <ID>DEPOSIT_GEMS</ID>
       <name>TEXT.Name.Deposit.GemsDeposit</name>
-      <description>Gem [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GEM-MINE-1] to [Produce|PRODUCE] a huge amount of [TREASURE].</description>
+      <description>宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。</description>
       <texturePath>Images/Deposits/Minerals/Gems</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -258,7 +258,7 @@
     <deposit>
       <ID>DEPOSIT_GEMS_LARGE</ID>
       <name>TEXT.Name.Deposit.LargeGemsDeposit</name>
-      <description>Gem [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GEM-MINE-1] to [Produce|PRODUCE] a huge amount of [TREASURE].[BLANK-LINE]This is a particularly large deposit!</description>
+      <description>宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。[BLANK-LINE]这是一处特别大的宝石矿床！</description>
       <texturePath>Images/Deposits/Minerals/Gems_Large</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -283,7 +283,7 @@
     <deposit>
       <ID>DEPOSIT_GEMS_VAST</ID>
       <name>TEXT.Name.Deposit.VastGemsDeposit</name>
-      <description>Gem [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [GEM-MINE-1] to [Produce|PRODUCE] a huge amount of [TREASURE].[BLANK-LINE]This is among the largest deposits ever found!</description>
+      <description>宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。[BLANK-LINE]这是迄今发现的最大宝石矿床之一！</description>
       <texturePath>Images/Deposits/Minerals/Gems_Vast</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -315,7 +315,7 @@
     <deposit>
       <ID>DEPOSIT_STONE</ID>
       <name>TEXT.Name.Deposit.StoneDeposit</name>
-      <description>Stone [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [STONE-QUARRY-1] to [Produce|PRODUCE] [STONE].</description>
+      <description>石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。</description>
       <texturePath>Images/Deposits/Minerals/Stone</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -340,7 +340,7 @@
     <deposit>
       <ID>DEPOSIT_STONE_LARGE</ID>
       <name>TEXT.Name.Deposit.LargeStoneDeposit</name>
-      <description>Stone [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [STONE-QUARRY-1] to [Produce|PRODUCE] [STONE].[BLANK-LINE]This is a particularly large deposit!</description>
+      <description>石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。[BLANK-LINE]这是一处特别大的石料矿床！</description>
       <texturePath>Images/Deposits/Minerals/Stone_Large</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -365,7 +365,7 @@
     <deposit>
       <ID>DEPOSIT_STONE_VAST</ID>
       <name>TEXT.Name.Deposit.VastStoneDeposit</name>
-      <description>Stone [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [STONE-QUARRY-1] to [Produce|PRODUCE] [STONE].[BLANK-LINE]This is among the largest deposits ever found!</description>
+      <description>石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。[BLANK-LINE]这是迄今发现的最大石料矿床之一！</description>
       <texturePath>Images/Deposits/Minerals/Stone_Vast</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <terrainTexturePath>
@@ -540,7 +540,7 @@
     <deposit>
       <ID>DEPOSIT_SALT</ID>
       <name>TEXT.Name.Deposit.SaltDeposit</name>
-      <description>Salt [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [SALT-MINE-1] to [Produce|PRODUCE] [SALT].</description>
+      <description>盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。</description>
       <texturePath>Images/Deposits/Minerals/Salt</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <depositTypeID>DEPOSIT_TYPE_SALT</depositTypeID>
@@ -553,7 +553,7 @@
     <deposit>
       <ID>DEPOSIT_SALT_LARGE</ID>
       <name>TEXT.Name.Deposit.LargeSaltDeposit</name>
-      <description>Salt [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [SALT-MINE-1] to [Produce|PRODUCE] [SALT].[BLANK-LINE]This is a particularly large deposit!</description>
+      <description>盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。[BLANK-LINE]这是一处特别大的盐矿床！</description>
       <texturePath>Images/Deposits/Minerals/Salt_Large</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <depositTypeID>DEPOSIT_TYPE_SALT</depositTypeID>
@@ -566,7 +566,7 @@
     <deposit>
       <ID>DEPOSIT_SALT_VAST</ID>
       <name>TEXT.Name.Deposit.VastSaltDeposit</name>
-      <description>Salt [Deposits|DEPOSIT] can be [Harvested|HARVEST] by a [DIGGER] or [SALT-MINE-1] to [Produce|PRODUCE] [SALT].[BLANK-LINE]This is among the largest deposits ever found!</description>
+      <description>盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。[BLANK-LINE]这是迄今发现的最大盐矿床之一！</description>
       <texturePath>Images/Deposits/Minerals/Salt_Vast</texturePath>
       <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
       <depositTypeID>DEPOSIT_TYPE_SALT</depositTypeID>

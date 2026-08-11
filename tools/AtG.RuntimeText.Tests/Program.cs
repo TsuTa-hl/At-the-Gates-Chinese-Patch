@@ -163,6 +163,7 @@ static void RuntimeDisplayMapLoads()
         "P\t" + B64("\u0080No extra") + "\t" + B64("\u0080\u65e0\u989d\u5916"),
         "F\t" + B64("Content") + "\t" + B64("\u6ee1\u8db3"),
         "F\t" + B64("engage in ") + "\t" + B64("\u5377\u5165"),
+        "B\t" + B64("STONE_LARGE") + "\t" + B64("\u5927\u578b\u77f3\u6599\u77ff\u5e8a"),
         "C\t" + B64("CLAN") + "\t" + B64("Clan") + "\t" + B64("\u6c0f\u65cf"),
         "E\t" + B64("Close") + "\t" + B64("\u5173\u95ed"),
     });
@@ -183,6 +184,12 @@ static void RuntimeDisplayMapLoads()
         DisplayStringLocalizer.LocalizeRichText("Train [Clan|CLAN]"));
     Equal("\u5377\u5165Brawls",
         DisplayStringLocalizer.LocalizeRichText("engage in Brawls"));
+    Equal("\u4f60\u5df2\u8bc6\u522b\u5927\u578b\u77f3\u6599\u77ff\u5e8a\u3002",
+        DisplayStringLocalizer.LocalizeRichText("\u4f60\u5df2\u8bc6\u522b[STONE_LARGE]\u3002"));
+    Equal("[UNREGISTERED_TAG]",
+        DisplayStringLocalizer.LocalizeRichText("[UNREGISTERED_TAG]"));
+    Equal("[COLOR:NEGATIVE]\u4fdd\u6301[/COLOR]",
+        DisplayStringLocalizer.LocalizeRichText("[COLOR:NEGATIVE]\u4fdd\u6301[/COLOR]"));
 }
 
 static void GeneratedRuntimeDisplayMapLoads()
@@ -193,6 +200,11 @@ static void GeneratedRuntimeDisplayMapLoads()
 
     DisplayStringLocalizer.ResetForTests();
     using (var reader = File.OpenText(path)) DisplayStringLocalizer.Load(reader);
+
+    Equal("\u4f60\u5df2\u8bc6\u522b\u5927\u578b\u77f3\u6599\u77ff\u5e8a\u3002", DisplayStringLocalizer.LocalizeRichText(
+        "\u4f60\u5df2\u8bc6\u522b[STONE_LARGE]\u3002"));
+    Equal("\u5df2\u8bc6\u522b\u7f8a\u7fa4\u3002", DisplayStringLocalizer.LocalizeRichText("\u5df2\u8bc6\u522b[SHEEP]\u3002"));
+    Equal("[UNREGISTERED_TAG]", DisplayStringLocalizer.LocalizeRichText("[UNREGISTERED_TAG]"));
 
     Equal("会痴迷于", DisplayStringLocalizer.LocalizeRichText(
         "become obsessed with the idea of"));

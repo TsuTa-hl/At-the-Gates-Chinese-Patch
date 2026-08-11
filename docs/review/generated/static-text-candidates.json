@@ -13392,7 +13392,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -13409,7 +13409,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -13426,7 +13426,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -13443,7 +13443,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -13460,7 +13460,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -13477,7 +13477,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -14650,7 +14650,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [IRON-MINE-1] [Produce|PRODUCE] [IRON]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -14684,7 +14684,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [IRON-MINE-1] [Produce|PRODUCE] [IRON] [BLANK-LINE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -14718,7 +14718,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [IRON-MINE-1] [Produce|PRODUCE] [IRON] [BLANK-LINE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -14752,7 +14752,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [BLANK-LINE] [Harvested|HARVEST] [DIGGER] [IRON-MINE-1] [Produce|PRODUCE] [IRON]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -14786,7 +14786,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [BLANK-LINE] [Harvested|HARVEST] [DIGGER] [IRON-MINE-1] [Produce|PRODUCE] [IRON]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -14820,7 +14820,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [BLANK-LINE] [Harvested|HARVEST] [DIGGER] [IRON-MINE-1] [Produce|PRODUCE] [IRON]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -14854,7 +14854,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [GOLD-MINE-1] [Produce|PRODUCE] [TREASURE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -14888,7 +14888,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [GOLD-MINE-1] [Produce|PRODUCE] [TREASURE] [BLANK-LINE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -14922,7 +14922,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [GOLD-MINE-1] [Produce|PRODUCE] [TREASURE] [BLANK-LINE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -14956,7 +14956,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [GEM-MINE-1] [Produce|PRODUCE] [TREASURE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -14990,7 +14990,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [GEM-MINE-1] [Produce|PRODUCE] [TREASURE] [BLANK-LINE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -15024,7 +15024,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [GEM-MINE-1] [Produce|PRODUCE] [TREASURE] [BLANK-LINE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -15058,7 +15058,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [STONE-QUARRY-1] [Produce|PRODUCE] [STONE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -15092,7 +15092,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [STONE-QUARRY-1] [Produce|PRODUCE] [STONE] [BLANK-LINE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -15126,7 +15126,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [STONE-QUARRY-1] [Produce|PRODUCE] [STONE] [BLANK-LINE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -15364,7 +15364,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [SALT-MINE-1] [Produce|PRODUCE] [SALT]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -15398,7 +15398,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [SALT-MINE-1] [Produce|PRODUCE] [SALT] [BLANK-LINE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -15432,7 +15432,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "[Deposits|DEPOSIT] [Harvested|HARVEST] [DIGGER] [SALT-MINE-1] [Produce|PRODUCE] [SALT] [BLANK-LINE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26346,7 +26346,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Active|ACTIVE] [Profession|PROFESSION]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26380,7 +26380,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Settled|SETTLED] [Profession|PROFESSION]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26414,7 +26414,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Settled|SETTLED] [Profession|PROFESSION] [Resident|RESIDENT] [Structure|STRUCTURE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26448,7 +26448,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Warrior|WARRIOR] [Profession|PROFESSION]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26482,7 +26482,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Civilian|CIVILIAN] [Profession|PROFESSION]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26516,7 +26516,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26550,7 +26550,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [HONOR]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26584,7 +26584,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [AGRICULTURE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26618,7 +26618,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [LIVESTOCK]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26652,7 +26652,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [METALWORKING]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26686,7 +26686,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [CRAFTING]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26720,7 +26720,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [DISCOVERY]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26754,7 +26754,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [AGRICULTURE] [LIVESTOCK]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26788,7 +26788,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [METALWORKING] [CRAFTING] [DISCOVERY]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26822,7 +26822,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [AGRICULTURE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26856,7 +26856,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [LIVESTOCK]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26890,7 +26890,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [METALWORKING]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26924,7 +26924,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [CRAFTING]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26958,7 +26958,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Profession|PROFESSION] [DISCOVERY]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -26992,7 +26992,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Warrior|WARRIOR] [Profession|PROFESSION]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -27026,7 +27026,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [Warrior|WARRIOR] [Profession|PROFESSION]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {
@@ -27060,7 +27060,7 @@
         "NeedsFontWhenTranslated":  false,
         "NeedsLayoutReview":  false,
         "Placeholders":  "(NAME) (INTENSITY) [SETTLEMENT] [Resident|RESIDENT] [Structure|STRUCTURE]",
-        "AlreadyPatched":  false,
+        "AlreadyPatched":  true,
         "Reason":  "No established safe patching rule yet."
     },
     {

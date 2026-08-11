@@ -125,7 +125,7 @@ public static class CompositeTextCatalog
     private static readonly Regex BracketToken = new(
         @"\[[^\]]+\]", RegexOptions.CultureInvariant);
     private static readonly Regex BareRuntimeDisplayToken = new(
-        @"^\[[A-Z][A-Z0-9-]*\]$", RegexOptions.CultureInvariant);
+        @"^\[[A-Z][A-Z0-9_-]*\]$", RegexOptions.CultureInvariant);
     private static readonly Regex AsciiWord = new(
         @"[A-Za-z]{2,}", RegexOptions.CultureInvariant);
     private static readonly Regex MachineToken = new(
@@ -305,6 +305,7 @@ public static class CompositeTextCatalog
         "PlainText",
         "PlainTextFragments",
         "RichTextFragments",
+        "BareTags",
         "Templates",
         "ConceptDisplay",
     };
@@ -1024,6 +1025,15 @@ public static class CompositeTextCatalog
                 Description = "Scoped rich-text fragments are replaced before parsing so their concept keys and recursive hovers remain intact.",
                 Source = "translations/runtime-display-strings.json",
             },
+            ["runtime-display-bare-tag"] = new()
+            {
+                RuleId = "runtime-display-bare-tag",
+                Kind = "RuntimeDisplayMap",
+                Status = "Active",
+                EntryPointId = "runtime-map:BareTags",
+                Description = "Curated internal resource tags are rendered as plain localized labels at the final display boundary without turning them into concept links.",
+                Source = "translations/runtime-display-strings.json",
+            },
             ["runtime-display-template"] = new()
             {
                 RuleId = "runtime-display-template",
@@ -1116,7 +1126,7 @@ public static class CompositeTextCatalog
         if (!File.Exists(path)) yield break;
         using var document = OpenJson(path);
         if (document.RootElement.ValueKind != JsonValueKind.Object) yield break;
-        foreach (var section in new[] { "Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "Templates", "ConceptDisplay" })
+        foreach (var section in new[] { "Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "BareTags", "Templates", "ConceptDisplay" })
         {
             if (!document.RootElement.TryGetProperty(section, out var values) ||
                 values.ValueKind != JsonValueKind.Array) continue;
@@ -1126,7 +1136,9 @@ public static class CompositeTextCatalog
                     !TryGetString(value, "Translation", out var translation)) continue;
                 var key = section == "ConceptDisplay" && TryGetString(value, "ConceptKey", out var conceptKey)
                     ? conceptKey : null;
-                var originalFormat = key is null ? original : $"[{original}|{key}]";
+                var originalFormat = key is null
+                    ? section == "BareTags" ? $"[{original}]" : original
+                    : $"[{original}|{key}]";
                 var localizedFormat = key is null ? translation : $"[{translation}|{key}]";
                 var entry = NewEntry($"runtime-map:{section}:{ShortHash((key ?? "") + "\u001f" + original)}",
                     new CompositeTextSource
@@ -1159,6 +1171,7 @@ public static class CompositeTextCatalog
                     "PlainText" => "runtime-display-plain",
                     "PlainTextFragments" => "runtime-display-fragment",
                     "RichTextFragments" => "runtime-display-richtext-fragment",
+                    "BareTags" => "runtime-display-bare-tag",
                     "Templates" => "runtime-display-template",
                     _ => "runtime-display-concept",
                 };
@@ -1541,8 +1554,10 @@ public static class CompositeTextCatalog
         // the token literally unless the final-display map replaces it. Permit
         // only a plain localized display replacement in this scoped map; all
         // actual concept links, hotkeys, and formatting remain strict.
-        if (entryPointId.StartsWith("runtime-map:RichTextFragments:",
-                StringComparison.Ordinal) &&
+        if ((entryPointId.StartsWith("runtime-map:RichTextFragments:",
+                StringComparison.Ordinal) ||
+             entryPointId.StartsWith("runtime-map:BareTags:",
+                StringComparison.Ordinal)) &&
             BareRuntimeDisplayToken.IsMatch(original) &&
             !BracketToken.IsMatch(localized))
             return;

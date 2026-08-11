@@ -864,7 +864,7 @@ function Add-RuntimeDisplayMapKnownTexts {
     }
 
     $sourceFile = "translations\runtime-display-strings.json"
-    foreach ($section in @("Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "Templates", "ConceptDisplay")) {
+    foreach ($section in @("Exact", "PlainText", "PlainTextFragments", "RichTextFragments", "BareTags", "Templates", "ConceptDisplay")) {
         foreach ($item in @($map.$section)) {
             if ($null -eq $item -or $null -eq $item.Original -or $null -eq $item.Translation) {
                 continue
@@ -887,7 +887,10 @@ function Add-RuntimeDisplayMapKnownTexts {
                 }
             }
 
-            $original = if ([string]::IsNullOrWhiteSpace($conceptKey)) {
+            $original = if ($section -eq "BareTags") {
+                "[$runtimeOriginal]"
+            }
+            elseif ([string]::IsNullOrWhiteSpace($conceptKey)) {
                 $runtimeOriginal
             }
             else {

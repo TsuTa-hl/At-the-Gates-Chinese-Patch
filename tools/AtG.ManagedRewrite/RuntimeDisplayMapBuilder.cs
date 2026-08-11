@@ -10,6 +10,7 @@ public sealed record RuntimeDisplayMapBuildResult(
     int PlainTextCount,
     int PlainTextFragmentCount,
     int RichTextFragmentCount,
+    int BareTagCount,
     int ConceptDisplayCount,
     string OutputPath);
 
@@ -21,6 +22,8 @@ public static class RuntimeDisplayMapBuilder
         @"^\[([^\]|]+)\|([A-Z][A-Z0-9-]*)\]$", RegexOptions.CultureInvariant);
     private static readonly Regex BareConceptKey = new(
         @"^[A-Z][A-Z0-9-]{1,}$", RegexOptions.CultureInvariant);
+    private static readonly Regex BareRuntimeTagIdentifier = new(
+        @"^[A-Z][A-Z0-9_]*$", RegexOptions.CultureInvariant);
     private static readonly Regex RuntimeTemplateArgument = new(
         @"\{arg:\d+\}", RegexOptions.CultureInvariant);
     private static readonly Regex RuntimeTemplateAnchor = new(
@@ -45,6 +48,7 @@ public static class RuntimeDisplayMapBuilder
         var plain = model.PlainText ?? [];
         var plainFragments = (model.PlainTextFragments ?? []).ToList();
         var richTextFragments = (model.RichTextFragments ?? []).ToList();
+        var bareTags = model.BareTags ?? [];
         var templates = (model.Templates ?? []).ToList();
         var configuredConceptDisplay = model.ConceptDisplay ?? [];
         var conceptDisplay = configuredConceptDisplay.ToList();
@@ -57,6 +61,7 @@ public static class RuntimeDisplayMapBuilder
         ValidateUnique(plain, entry => entry.Original, "plain-text");
         ValidateUnique(plainFragments, entry => entry.Original, "plain-text-fragment");
         ValidateUnique(richTextFragments, entry => entry.Original, "rich-text-fragment");
+        ValidateUnique(bareTags, entry => entry.Original, "bare-tag");
         ValidateUnique(templates, entry => entry.Original, "template");
         ValidateUnique(configuredConceptDisplay,
             entry => entry.ConceptKey + "\u001F" + entry.Original, "concept-display");
@@ -94,6 +99,11 @@ public static class RuntimeDisplayMapBuilder
                 throw new InvalidDataException(
                     $"Rich-text fragment changes concept keys: '{entry.Original}' -> '{entry.Translation}'.");
         }
+        foreach (var entry in bareTags)
+        {
+            ValidateBareTagIdentifier(entry.Original, "BareTags.Original");
+            ValidateDisplay(entry.Translation, "BareTags.Translation");
+        }
         foreach (var entry in templates)
         {
             ValidateRequired(entry.Original, "Template.Original");
@@ -115,7 +125,7 @@ public static class RuntimeDisplayMapBuilder
 
         var lines = new List<string>(conceptKeys.Count + exact.Count + plain.Length +
             plainFragments.Count + richTextFragments.Count + templates.Count +
-            conceptDisplay.Count + 1)
+            bareTags.Length + conceptDisplay.Count + 1)
         {
             "# AtG.RuntimeText display map v1",
         };
@@ -131,6 +141,8 @@ public static class RuntimeDisplayMapBuilder
         lines.AddRange(richTextFragments.OrderByDescending(entry => entry.Original.Length)
             .ThenBy(entry => entry.Original, StringComparer.Ordinal)
             .Select(entry => "R\t" + Encode(entry.Original) + "\t" + Encode(entry.Translation)));
+        lines.AddRange(bareTags.OrderBy(entry => entry.Original, StringComparer.Ordinal)
+            .Select(entry => "B\t" + Encode(entry.Original) + "\t" + Encode(entry.Translation)));
         lines.AddRange(templates.OrderByDescending(entry => entry.Original.Length)
             .ThenBy(entry => entry.Original, StringComparer.Ordinal)
             .Select(entry => "T\t" + Encode(entry.Original) + "\t" + Encode(entry.Translation)));
@@ -146,7 +158,7 @@ public static class RuntimeDisplayMapBuilder
         File.WriteAllText(output, string.Join("\n", lines) + "\n", new UTF8Encoding(false));
         return new RuntimeDisplayMapBuildResult(conceptKeys.Count, exact.Count,
             plain.Length, plainFragments.Count, richTextFragments.Count,
-            conceptDisplay.Count, output);
+            bareTags.Length, conceptDisplay.Count, output);
     }
 
     private static void ImportConceptDisplaySources(string mapPath,
@@ -439,6 +451,14 @@ public static class RuntimeDisplayMapBuilder
             throw new InvalidDataException(description + " must not contain rich-text markup.");
     }
 
+    private static void ValidateBareTagIdentifier(string value, string description)
+    {
+        ValidateRequired(value, description);
+        if (!BareRuntimeTagIdentifier.IsMatch(value))
+            throw new InvalidDataException(
+                description + " must be an uppercase internal identifier without rich-text markup.");
+    }
+
     private static void ValidateFragmentTranslation(string value, string description)
     {
         if (value is null)
@@ -456,6 +476,7 @@ public static class RuntimeDisplayMapBuilder
         public RuntimeDisplayEntry[]? PlainText { get; set; }
         public RuntimeDisplayEntry[]? PlainTextFragments { get; set; }
         public RuntimeDisplayEntry[]? RichTextFragments { get; set; }
+        public RuntimeDisplayEntry[]? BareTags { get; set; }
         public RuntimeDisplayEntry[]? Templates { get; set; }
         public RuntimeConceptDisplayEntry[]? ConceptDisplay { get; set; }
         public string[]? ConceptDisplaySources { get; set; }

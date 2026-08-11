@@ -22,7 +22,10 @@ var tests = new (string Name, Action Body)[]
     ("Obsessed intensity tooltip config preserves its rich-text boundary", ObsessedIntensityTooltipConfigPreservesRichTextBoundary),
     ("Deserted-location exploration configs cover all event outcomes", DesertedLocationExplorationConfigsCoverAllEventOutcomes),
     ("Flax deposit tooltips cover all field sizes", FlaxDepositTooltipsCoverAllFieldSizes),
+    ("Mineral deposit tooltips cover all types and sizes", MineralDepositTooltipsCoverAllTypesAndSizes),
     ("Clan-feud tooltips and pack warning use exact safe mappings", ClanFeudTooltipsAndPackWarningUseExactSafeMappings),
+    ("Clan-desire notification tooltips cover every dynamic description", ClanDesireNotificationTooltipsCoverAllDynamicDescriptions),
+    ("Supply-status tooltips map every display literal", SupplyStatusTooltipsMapEveryDisplayLiteral),
     ("Besiege tooltip maps every composed literal", BesiegeTooltipMapsEveryComposedLiteral),
     ("Rewrite coordinator caches completed jobs", RewriteCoordinatorCachesJobs),
     ("Repository rewrite plan discovers all available assemblies", RepositoryRewritePlanDiscoversAssemblies),
@@ -678,6 +681,51 @@ static void FinalGamePatchRetainsLocalizedEnnobledMoodReason()
         candidate.MethodToken == MethodToken && candidate.Value == Translation));
 }
 
+static void StaticCheckArticlesUseContextualChineseFragments()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-game-il-rewrite.json");
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesGame.original.exe");
+    var expected = new[]
+    {
+        (MethodToken: "0x06001243", IlOffset: 73, Original: " a ", Translation: "一座"),
+        (MethodToken: "0x06001265", IlOffset: 91, Original: " a ", Translation: ""),
+    };
+
+    var sourceEntries = LdstrCatalog.Read(source);
+    var specs = RewriteMap.Load(mapPath);
+    foreach (var item in expected)
+    {
+        Assert.True(sourceEntries.Any(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Original));
+        var spec = specs.Single(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Original == item.Original);
+        Assert.Equal(item.Translation, spec.Translation);
+    }
+
+    var selectedSpecs = specs.Where(candidate => expected.Any(item =>
+        candidate.MethodToken == item.MethodToken &&
+        candidate.IlOffset == item.IlOffset &&
+        candidate.Original == item.Original)).ToArray();
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "At The Gates.exe");
+    var result = ManagedAssemblyRewriter.Rewrite(source, output, selectedSpecs);
+    Assert.Equal(expected.Length, result.RewrittenCount);
+
+    var rewritten = LdstrCatalog.Read(output);
+    foreach (var item in expected)
+    {
+        Assert.True(rewritten.Any(candidate =>
+            candidate.MethodToken == item.MethodToken &&
+            candidate.IlOffset == item.IlOffset &&
+            candidate.Value == item.Translation));
+    }
+}
+
 static void EnnobledDisciplineChoiceOptionsCoverAllSixEffects()
 {
     var repositoryRoot = FindRepositoryRoot();
@@ -839,7 +887,7 @@ static void ObsessedIntensityTooltipConfigPreservesRichTextBoundary()
     var item = intensityMap.GetProperty("Items").EnumerateArray()
         .Single(candidate => candidate.GetProperty("ID").GetString() == "INTENSITY_OBSESSED");
     Assert.Equal("痴迷", item.GetProperty("Name").GetString());
-    const string ExpectedTranslation = "[COLOR:BAD-RED]会痴迷[/COLOR]于";
+    const string ExpectedTranslation = "[COLOR:BAD-RED]痴迷[/COLOR]";
     Assert.Equal(ExpectedTranslation, item.GetProperty("Description").GetString());
 
     var sourceDescription = source.Root!.Elements("intensity")
@@ -1148,6 +1196,97 @@ static void FlaxDepositTooltipsCoverAllFieldSizes()
             .ToArray();
 }
 
+static void MineralDepositTooltipsCoverAllTypesAndSizes()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var sourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "OnMap",
+        "Deposits.original.xml");
+    var mapPath = Path.Combine(repositoryRoot, "translations", "config-node-onmap-strings.json");
+    var mineralIds = new[]
+    {
+        "DEPOSIT_IRON", "DEPOSIT_IRON_LARGE", "DEPOSIT_IRON_VAST",
+        "DEPOSIT_METEORITE", "DEPOSIT_METEORITE_LARGE", "DEPOSIT_METEORITE_VAST",
+        "DEPOSIT_GOLD", "DEPOSIT_GOLD_LARGE", "DEPOSIT_GOLD_VAST",
+        "DEPOSIT_GEMS", "DEPOSIT_GEMS_LARGE", "DEPOSIT_GEMS_VAST",
+        "DEPOSIT_STONE", "DEPOSIT_STONE_LARGE", "DEPOSIT_STONE_VAST",
+        "DEPOSIT_COAL", "DEPOSIT_COAL_LARGE", "DEPOSIT_COAL_VAST",
+        "DEPOSIT_PEAT", "DEPOSIT_PEAT_LARGE", "DEPOSIT_PEAT_VAST",
+        "DEPOSIT_SALT", "DEPOSIT_SALT_LARGE", "DEPOSIT_SALT_VAST"
+    };
+    var expectedTranslations = new Dictionary<string, string>(StringComparer.Ordinal)
+    {
+        ["DEPOSIT_IRON"] = "铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。",
+        ["DEPOSIT_IRON_LARGE"] = "铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是一处特别大的铁矿床！",
+        ["DEPOSIT_IRON_VAST"] = "铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是迄今发现的最大铁矿床之一！",
+        ["DEPOSIT_METEORITE"] = "陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。",
+        ["DEPOSIT_METEORITE_LARGE"] = "陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是迄今发现的最大陨石之一！",
+        ["DEPOSIT_METEORITE_VAST"] = "陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是一块真正巨大的陨石，可能是有史以来最大的！",
+        ["DEPOSIT_GOLD"] = "金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。",
+        ["DEPOSIT_GOLD_LARGE"] = "金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。[BLANK-LINE]这是一处特别大的金矿床！",
+        ["DEPOSIT_GOLD_VAST"] = "金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。[BLANK-LINE]这是迄今发现的最大金矿床之一！",
+        ["DEPOSIT_GEMS"] = "宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。",
+        ["DEPOSIT_GEMS_LARGE"] = "宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。[BLANK-LINE]这是一处特别大的宝石矿床！",
+        ["DEPOSIT_GEMS_VAST"] = "宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。[BLANK-LINE]这是迄今发现的最大宝石矿床之一！",
+        ["DEPOSIT_STONE"] = "石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。",
+        ["DEPOSIT_STONE_LARGE"] = "石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。[BLANK-LINE]这是一处特别大的石料矿床！",
+        ["DEPOSIT_STONE_VAST"] = "石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。[BLANK-LINE]这是迄今发现的最大石料矿床之一！",
+        ["DEPOSIT_COAL"] = "煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。",
+        ["DEPOSIT_COAL_LARGE"] = "煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]这是一处特别大的煤矿床！",
+        ["DEPOSIT_COAL_VAST"] = "煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]这是迄今发现的最大煤矿床之一！",
+        ["DEPOSIT_PEAT"] = "泥炭[矿床|DEPOSIT]可由[DIGGER]或[PEAT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]泥炭仅分布于[MARSH:S]。",
+        ["DEPOSIT_PEAT_LARGE"] = "泥炭[矿床|DEPOSIT]可由[DIGGER]或[PEAT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]泥炭仅分布于[MARSH:S]。[BLANK-LINE]这是一处特别大的泥炭矿床！",
+        ["DEPOSIT_PEAT_VAST"] = "泥炭[矿床|DEPOSIT]可由[DIGGER]或[PEAT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]泥炭仅分布于[MARSH:S]。[BLANK-LINE]这是迄今发现的最大泥炭矿床之一！",
+        ["DEPOSIT_SALT"] = "盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。",
+        ["DEPOSIT_SALT_LARGE"] = "盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。[BLANK-LINE]这是一处特别大的盐矿床！",
+        ["DEPOSIT_SALT_VAST"] = "盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。[BLANK-LINE]这是迄今发现的最大盐矿床之一！"
+    };
+
+    var source = System.Xml.Linq.XDocument.Load(sourcePath);
+    using var map = System.Text.Json.JsonDocument.Parse(File.ReadAllText(mapPath));
+    var depositsMap = map.RootElement.GetProperty(@"Content\Config\OnMap\Deposits.xml");
+    var sourceDescriptions = source.Root!.Elements()
+        .Where(group => group.Name.LocalName is "Iron_Treasure" or "Stone_Coal_Salt")
+        .SelectMany(group => group.Elements("deposit"))
+        .ToDictionary(
+            node => node.Element("ID")!.Value,
+            node => node.Element("description")!.Value,
+            StringComparer.Ordinal);
+    var translatedDescriptions = depositsMap.GetProperty("Items").EnumerateArray()
+        .Where(item => mineralIds.Contains(item.GetProperty("ID").GetString(), StringComparer.Ordinal))
+        .ToDictionary(
+            item => item.GetProperty("ID").GetString()!,
+            item => item.GetProperty("Description").GetString()!,
+            StringComparer.Ordinal);
+
+    Assert.Equal(24, mineralIds.Length);
+    Assert.True(mineralIds.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        sourceDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    Assert.True(mineralIds.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        translatedDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+
+    foreach (var id in mineralIds)
+    {
+        var translation = translatedDescriptions[id];
+        Assert.Equal(expectedTranslations[id], translation);
+        Assert.True(ReadMineralRichTextKeys(sourceDescriptions[id]).OrderBy(key => key, StringComparer.Ordinal)
+            .SequenceEqual(ReadMineralRichTextKeys(translation).OrderBy(key => key, StringComparer.Ordinal),
+                StringComparer.Ordinal));
+
+        var displayText = System.Text.RegularExpressions.Regex.Replace(translation, @"\[[^\]]+\]", "");
+        Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+    }
+
+    static string[] ReadMineralRichTextKeys(string value) =>
+        System.Text.RegularExpressions.Regex.Matches(value, @"\[([^\]]+)\]")
+            .Select(match =>
+            {
+                var contents = match.Groups[1].Value;
+                var separator = contents.IndexOf('|');
+                return separator >= 0 ? contents[(separator + 1)..] : contents;
+            })
+            .ToArray();
+}
+
 static void SheepDepositTooltipsCoverAllHerdSizes()
 {
     var repositoryRoot = FindRepositoryRoot();
@@ -1267,11 +1406,14 @@ static void ClanFeudTooltipsAndPackWarningUseExactSafeMappings()
             node => node.Element("description")!.Value,
             StringComparer.Ordinal);
 
+    var translatedClanFeudDescriptions = translatedDescriptions
+        .Where(pair => feudIds.Contains(pair.Key, StringComparer.Ordinal))
+        .ToDictionary(pair => pair.Key, pair => pair.Value, StringComparer.Ordinal);
     Assert.True(feudIds.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
-        translatedDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+        translatedClanFeudDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
     Assert.True(feudIds.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
         sourceDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
-    foreach (var translation in translatedDescriptions.Values)
+    foreach (var translation in translatedClanFeudDescriptions.Values)
     {
         Assert.True(translation.Contains("(FEUD-DESC)", StringComparison.Ordinal));
         Assert.True(translation.Contains("(NAME)", StringComparison.Ordinal));
@@ -1320,6 +1462,143 @@ static void ClanFeudTooltipsAndPackWarningUseExactSafeMappings()
     {
         var displayText = System.Text.RegularExpressions.Regex.Replace(value, @"\[[^\]]+\]", "");
         Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+    }
+}
+
+static void ClanDesireNotificationTooltipsCoverAllDynamicDescriptions()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var sourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "Primary",
+        "ClanDesires.original.xml");
+    var mapPath = Path.Combine(repositoryRoot, "translations", "config-node-strings.json");
+    var sourceDocument = System.Xml.Linq.XDocument.Load(sourcePath);
+    using var mapDocument = System.Text.Json.JsonDocument.Parse(File.ReadAllText(mapPath));
+    var desireMap = mapDocument.RootElement.GetProperty(@"Content\Config\Primary\ClanDesires.xml");
+    var sourceDescriptions = sourceDocument.Descendants("clanDesire")
+        .Where(node => node.Element("description")!.Value.Contains("(INTENSITY)", StringComparison.Ordinal))
+        .ToDictionary(
+            node => node.Element("ID")!.Value,
+            node => node.Element("description")!.Value,
+            StringComparer.Ordinal);
+    var translatedDescriptions = desireMap.GetProperty("Items").EnumerateArray()
+        .Where(item => sourceDescriptions.ContainsKey(item.GetProperty("ID").GetString()!))
+        .ToDictionary(
+            item => item.GetProperty("ID").GetString()!,
+            item => item.GetProperty("Description").GetString()!,
+            StringComparer.Ordinal);
+
+    Assert.Equal(22, sourceDescriptions.Count);
+    Assert.True(sourceDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        translatedDescriptions.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    foreach (var (id, sourceDescription) in sourceDescriptions)
+    {
+        var translation = translatedDescriptions[id];
+        Assert.NotEqual(sourceDescription, translation);
+        Assert.True(translation.Contains("(NAME)", StringComparison.Ordinal));
+        Assert.True(translation.Contains("(INTENSITY)", StringComparison.Ordinal));
+        var sourceConceptKeys = System.Text.RegularExpressions.Regex.Matches(
+                sourceDescription, @"\[(?:[^|\]]+\|)?([A-Z-]+)\]")
+            .Select(match => match.Groups[1].Value)
+            .OrderBy(key => key, StringComparer.Ordinal);
+        var translatedConceptKeys = System.Text.RegularExpressions.Regex.Matches(
+                translation, @"\[(?:[^|\]]+\|)?([A-Z-]+)\]")
+            .Select(match => match.Groups[1].Value)
+            .OrderBy(key => key, StringComparer.Ordinal);
+        Assert.True(sourceConceptKeys.SequenceEqual(translatedConceptKeys, StringComparer.Ordinal));
+        // A bare bracket token is engine markup, not a concept link. It may be
+        // displayed through the runtime concept map, but this config mapping
+        // must not turn it into a new [label|KEY] link.
+        var sourceBareTokens = System.Text.RegularExpressions.Regex.Matches(
+                sourceDescription, @"\[[^|\]]+\]")
+            .Select(match => match.Value)
+            .OrderBy(token => token, StringComparer.Ordinal);
+        var translatedBareTokens = System.Text.RegularExpressions.Regex.Matches(
+                translation, @"\[[^|\]]+\]")
+            .Select(match => match.Value)
+            .OrderBy(token => token, StringComparer.Ordinal);
+        Assert.True(sourceBareTokens.SequenceEqual(translatedBareTokens, StringComparer.Ordinal));
+        var displayText = System.Text.RegularExpressions.Regex.Replace(
+            translation, @"\([A-Z0-9-]+\)|\[[^\]]+\]", "");
+        Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+    }
+
+    var intensitiesSourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "Misc",
+        "Intensities.original.xml");
+    var intensitiesMapPath = Path.Combine(repositoryRoot, "translations", "config-node-misc-strings.json");
+    var sourceIntensities = System.Xml.Linq.XDocument.Load(intensitiesSourcePath)
+        .Descendants("intensity")
+        .ToDictionary(node => node.Element("ID")!.Value, StringComparer.Ordinal);
+    using var intensitiesMapDocument = System.Text.Json.JsonDocument.Parse(File.ReadAllText(intensitiesMapPath));
+    var intensitiesMap = intensitiesMapDocument.RootElement.GetProperty(@"Content\Config\Misc\Intensities.xml");
+    var translatedIntensities = intensitiesMap.GetProperty("Items").EnumerateArray()
+        .ToDictionary(item => item.GetProperty("ID").GetString()!, item => item, StringComparer.Ordinal);
+
+    Assert.True(sourceIntensities.Keys.OrderBy(id => id, StringComparer.Ordinal).SequenceEqual(
+        translatedIntensities.Keys.OrderBy(id => id, StringComparer.Ordinal), StringComparer.Ordinal));
+    foreach (var (id, sourceIntensity) in sourceIntensities)
+    {
+        var translation = translatedIntensities[id];
+        var translatedName = translation.GetProperty("Name").GetString()!;
+        var translatedDescription = translation.GetProperty("Description").GetString()!;
+        Assert.NotEqual(sourceIntensity.Element("name")!.Value, translatedName);
+        Assert.NotEqual(sourceIntensity.Element("description")!.Value, translatedDescription);
+        foreach (var value in new[] { translatedName, translatedDescription })
+        {
+            var displayText = System.Text.RegularExpressions.Regex.Replace(value, @"\[[^\]]+\]", "");
+            Assert.False(System.Text.RegularExpressions.Regex.IsMatch(displayText, "[A-Za-z]"));
+        }
+    }
+}
+
+static void SupplyStatusTooltipsMapEveryDisplayLiteral()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var mapPath = Path.Combine(repositoryRoot, "translations", "hardcoded-ui-il-rewrite.json");
+    var specs = RewriteMap.Load(mapPath);
+    var source = Path.Combine(repositoryRoot, "source", "AtTheGatesUI.original.dll");
+    var supplyMethods = new HashSet<string>(StringComparer.Ordinal)
+    {
+        "0x06000363", // AddLabel_SupplyReserve
+        "0x0600036d", // AddLabel_SupplyProvided
+        "0x0600036e", // AddLabel_SupplyStatus
+        "0x0600036f", // AppendSupplyPenalties
+    };
+
+    var sourceStrings = LdstrCatalog.Read(source)
+        .Where(candidate => supplyMethods.Contains(candidate.MethodToken))
+        .Where(candidate => candidate.Value != "Images/WhitePixel")
+        .Where(candidate => System.Text.RegularExpressions.Regex.IsMatch(candidate.Value, "[A-Za-z]"))
+        .OrderBy(candidate => candidate.MethodToken, StringComparer.Ordinal)
+        .ThenBy(candidate => candidate.IlOffset)
+        .ToArray();
+
+    var familySpecs = specs.Where(candidate =>
+        supplyMethods.Contains(candidate.MethodToken) && sourceStrings.Any(sourceString =>
+            sourceString.MethodToken == candidate.MethodToken &&
+            sourceString.IlOffset == candidate.IlOffset &&
+            sourceString.Value == candidate.Original))
+        .ToArray();
+
+    Assert.Equal(sourceStrings.Length, familySpecs.Length);
+    foreach (var sourceString in sourceStrings)
+    {
+        Assert.True(familySpecs.Any(candidate =>
+            candidate.MethodToken == sourceString.MethodToken &&
+            candidate.IlOffset == sourceString.IlOffset &&
+            candidate.Original == sourceString.Value));
+    }
+
+    using var temp = new TempDirectory();
+    var output = Path.Combine(temp.Path, "AtTheGatesUI.dll");
+    var result = ManagedAssemblyRewriter.Rewrite(source, output, familySpecs);
+    Assert.Equal(sourceStrings.Length, result.RewrittenCount);
+
+    var rewritten = LdstrCatalog.Read(output);
+    foreach (var spec in familySpecs)
+    {
+        Assert.True(rewritten.Any(candidate =>
+            candidate.MethodToken == spec.MethodToken && candidate.IlOffset == spec.IlOffset &&
+            candidate.Value == spec.Translation));
     }
 }
 
@@ -1671,6 +1950,7 @@ static void RuntimeDisplayMapPreservesConceptKeys()
           "PlainText": [{ "Original": "Train ", "Translation": "\u8bad\u7ec3" }],
           "PlainTextFragments": [{ "Original": "engage in ", "Translation": "\u5377\u5165" }],
           "RichTextFragments": [{ "Original": "[Clan|CLAN] in the [Turn|TURN]", "Translation": "[Clan|CLAN]\uFF0C\u6240\u5C5E\u4E3A[Turn|TURN]" }],
+          "BareTags": [{ "Original": "STONE_LARGE", "Translation": "大型石料矿床" }],
           "Templates": [{ "Original": "Leader Trait ({arg:0})", "Translation": "\u9886\u8896\u7279\u8D28\uFF08{arg:0}\uFF09" }],
           "ConceptDisplay": [{ "ConceptKey": "CLAN", "Original": "Clan", "Translation": "\u6c0f\u65cf" }]
         }
@@ -1689,12 +1969,42 @@ static void RuntimeDisplayMapPreservesConceptKeys()
         RuntimeMapConceptFixture.Encode("Clan") + "\t" + RuntimeMapConceptFixture.Encode("\u6c0f\u65cf")));
     Assert.Equal(1, result.PlainTextFragmentCount);
     Assert.Equal(1, result.RichTextFragmentCount);
+    Assert.Equal(1, result.BareTagCount);
     Assert.True(lines.Any(line => line == "F\t" + RuntimeMapConceptFixture.Encode("engage in ") + "\t" +
         RuntimeMapConceptFixture.Encode("\u5377\u5165")));
     Assert.True(lines.Any(line => line == "R\t" + RuntimeMapConceptFixture.Encode("[Clan|CLAN] in the [Turn|TURN]") + "\t" +
         RuntimeMapConceptFixture.Encode("[Clan|CLAN]\uFF0C\u6240\u5C5E\u4E3A[Turn|TURN]")));
+    Assert.True(lines.Any(line => line == "B\t" + RuntimeMapConceptFixture.Encode("STONE_LARGE") + "\t" +
+        RuntimeMapConceptFixture.Encode("大型石料矿床")));
     Assert.True(lines.Any(line => line == "T\t" + RuntimeMapConceptFixture.Encode("Leader Trait ({arg:0})") + "\t" +
         RuntimeMapConceptFixture.Encode("\u9886\u8896\u7279\u8D28\uFF08{arg:0}\uFF09")));
+}
+
+static void RuntimeDisplayBareTagsCoverEverySourceDepositIdentifier()
+{
+    var repositoryRoot = FindRepositoryRoot();
+    var sourcePath = Path.Combine(repositoryRoot, "source", "Content", "Config", "OnMap",
+        "Deposits.original.xml");
+    var mapPath = Path.Combine(repositoryRoot, "translations", "runtime-display-strings.json");
+    var source = System.Xml.Linq.XDocument.Load(sourcePath);
+    using var map = System.Text.Json.JsonDocument.Parse(File.ReadAllText(mapPath));
+
+    var configured = map.RootElement.GetProperty("BareTags").EnumerateArray()
+        .Select(item => item.GetProperty("Original").GetString()!)
+        .ToHashSet(StringComparer.Ordinal);
+    var sourceIdentifiers = source.Descendants("ID")
+        .Select(element => element.Value)
+        .Where(id => id.StartsWith("DEPOSIT_", StringComparison.Ordinal))
+        .Select(id => id["DEPOSIT_".Length..])
+        .OrderBy(id => id, StringComparer.Ordinal)
+        .ToArray();
+    var missing = sourceIdentifiers.Where(id => !configured.Contains(id)).ToArray();
+
+    Assert.Equal(78, sourceIdentifiers.Length);
+    Assert.Equal(78, configured.Count);
+    if (missing.Length > 0)
+        throw new InvalidDataException(
+            "Bare runtime tag map is missing source deposit identifiers: " + string.Join(", ", missing));
 }
 
 static void RuntimeDisplayMapImportsConceptTags()
@@ -2055,6 +2365,12 @@ static void CompositeCatalogPermitsBareRuntimeDisplayReplacements()
             EntryPointId = "runtime-map:RichTextFragments:fixture-score",
             OriginalFormat = "[SCORE]",
             LocalizedFormat = "得分",
+        },
+        new CompositeTextEntry
+        {
+            EntryPointId = "runtime-map:BareTags:fixture-stone",
+            OriginalFormat = "[STONE_LARGE]",
+            LocalizedFormat = "大型石料矿床",
         },
     ], []);
 

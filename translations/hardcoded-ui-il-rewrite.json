@@ -4500,7 +4500,7 @@
 },
 {
     "Original":  " on another ",
-    "Translation":  "on 另一个",
+    "Translation":  "另一",
     "MethodToken":  "0x0600036e",
     "ILOffset":  394,
     "StringToken":  "0x7001008a",
@@ -15809,5 +15809,35 @@
     "MethodName":  "AddButton_Pack",
     "Safety":  "SafeUI",
     "Note":  "Pack-action warning prefix; preserves the dynamic training project and profession."
+},
+{
+    "Original":  "This ",
+    "Translation":  "该",
+    "MethodToken":  "0x0600036e",
+    "ILOffset":  185,
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.SelectionPanel",
+    "MethodName":  "AddLabel_SupplyStatus",
+    "Safety":  "SafeUI",
+    "Note":  "Supply critical tooltip prefix."
+},
+{
+    "Original":  "This ",
+    "Translation":  "该",
+    "MethodToken":  "0x0600036e",
+    "ILOffset":  782,
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.SelectionPanel",
+    "MethodName":  "AddLabel_SupplyStatus",
+    "Safety":  "SafeUI",
+    "Note":  "Supply recovery tooltip prefix."
+},
+{
+    "Original":  " and suffer ",
+    "Translation":  "并遭受",
+    "MethodToken":  "0x0600036f",
+    "ILOffset":  42,
+    "TypeFullName":  "AtTheGatesUI.ns_InGame.SelectionPanel",
+    "MethodName":  "AppendSupplyPenalties",
+    "Safety":  "SafeUI",
+    "Note":  "Supply penalty connector shared by critical and exhausted states."
 }
 ]

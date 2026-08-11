@@ -25,8 +25,8 @@ have the Mood drop by an additional -1.
   <!--                               -->
   <intensity>
     <ID>INTENSITY_CURIOUS</ID>
-    <name>Interested</name>
-    <description>expressed interest in</description>
+    <name>兴趣</name>
+    <description>兴趣</description>
     <feudDescription>轻微争执</feudDescription>
     <afterEvent>
       <mood>0</mood>
@@ -50,8 +50,8 @@ have the Mood drop by an additional -1.
   <!--                               -->
   <intensity>
     <ID>INTENSITY_INTERESTED</ID>
-    <name>Interested</name>
-    <description>expressed interest in</description>
+    <name>兴趣</name>
+    <description>兴趣</description>
     <feudDescription>轻微争执</feudDescription>
     <afterEvent>
       <mood>0</mood>
@@ -113,8 +113,8 @@ have the Mood drop by an additional -1.
   <!--                               -->
   <intensity>
     <ID>INTENSITY_DISTRACTED</ID>
-    <name>Interested</name>
-    <description>expressed interest in</description>
+    <name>兴趣</name>
+    <description>兴趣</description>
     <feudDescription>轻微争执</feudDescription>
     <afterEvent>
       <mood>0</mood>
@@ -169,7 +169,7 @@ have the Mood drop by an additional -1.
   <intensity>
     <ID>INTENSITY_OBSESSED</ID>
     <name>痴迷</name>
-    <description>[COLOR:BAD-RED]会痴迷[/COLOR]于</description>
+    <description>[COLOR:BAD-RED]痴迷[/COLOR]</description>
     <feudDescription>[COLOR:BAD-RED]名为争执，实为战争[/COLOR]</feudDescription>
     <afterEvent>
       <mood>0</mood>

@@ -23,6 +23,7 @@
                                         {
                                             "English":  "Active",
                                             "Chinese":  [
+                                                            "活跃",
                                                             "主动"
                                                         ]
                                         },
@@ -1945,7 +1946,8 @@
                                         {
                                             "English":  "Resident",
                                             "Chinese":  [
-                                                            "居民"
+                                                            "居民",
+                                                            "住民"
                                                         ]
                                         }
                                     ]
