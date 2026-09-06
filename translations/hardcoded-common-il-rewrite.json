@@ -4107,7 +4107,7 @@
     },
     {
         "Original":  "is left ",
-        "Translation":  "剩下",
+        "Translation":  "已",
         "MethodToken":  "0x0600014e",
         "ILOffset":  237,
         "Safety":  "CommonDisplayCandidate",
@@ -4128,6 +4128,16 @@
         "ILOffset":  334,
         "Safety":  "CommonDisplayCandidate",
         "Note":  "Accepted mapping; exact source locator is authoritative."
+    },
+    {
+        "Original":  "rattled",
+        "Translation":  "受到震慑",
+        "MethodToken":  "0x0600014e",
+        "ILOffset":  348,
+        "TypeFullName":  "AtTheGatesCommon.ns_Utilities.BattleProjection",
+        "MethodName":  "BuildSummary",
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "Screenshot-visible battle forecast adjective, previously classified TechnicalInternal. Single source occurrence appended to the display summary; preserve combat calculations."
     },
     {
         "Original":  "virtually unscathed",
@@ -4298,8 +4308,24 @@
         "Note":  "Accepted mapping; exact source locator is authoritative."
     },
     {
+        "Original":  " of ",
+        "Translation":  "的",
+        "MethodToken":  "0x06000348",
+        "ILOffset":  6288,
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "ProfessionTooltip training requirement: level of experience connector; exact display-only operand, not a global grammar replacement."
+    },
+    {
+        "Original":  " of ",
+        "Translation":  "的",
+        "MethodToken":  "0x060002f0",
+        "ILOffset":  2387,
+        "Safety":  "CommonDisplayCandidate",
+        "Note":  "ClanTooltip counterpart of the profession training requirement: level of experience connector."
+    },
+    {
         "Original":  " need only a single ",
-        "Translation":  "只需要一个",
+        "Translation":  "）时，只需1",
         "MethodToken":  "0x06000348",
         "ILOffset":  6335,
         "Safety":  "CommonDisplayCandidate",
@@ -4307,7 +4333,7 @@
     },
     {
         "Original":  ". For each ",
-        "Translation":  "。每个",
+        "Translation":  "。每欠缺1",
         "MethodToken":  "0x06000348",
         "ILOffset":  6389,
         "Safety":  "CommonDisplayCandidate",
@@ -4315,7 +4341,7 @@
     },
     {
         "Original":  " that needs to be made up ",
-        "Translation":  "需要补足",
+        "Translation":  "，",
         "MethodToken":  "0x06000348",
         "ILOffset":  6407,
         "Safety":  "CommonDisplayCandidate",
@@ -4323,7 +4349,7 @@
     },
     {
         "Original":  " time is increased by 1 additional ",
-        "Translation":  "时间额外增加1",
+        "Translation":  "时间增加1",
         "MethodToken":  "0x06000348",
         "ILOffset":  6425,
         "Safety":  "CommonDisplayCandidate",
@@ -4491,7 +4517,7 @@
     },
     {
         "Original":  " need only a single ",
-        "Translation":  "只需要一个",
+        "Translation":  "）时，只需1",
         "MethodToken":  "0x060002f0",
         "ILOffset":  2439,
         "Safety":  "CommonDisplayCandidate",
@@ -4499,7 +4525,7 @@
     },
     {
         "Original":  ". For each ",
-        "Translation":  "。每个",
+        "Translation":  "。每欠缺1",
         "MethodToken":  "0x060002f0",
         "ILOffset":  2493,
         "Safety":  "CommonDisplayCandidate",
@@ -4507,7 +4533,7 @@
     },
     {
         "Original":  " that needs to be made up ",
-        "Translation":  "需要补足",
+        "Translation":  "，",
         "MethodToken":  "0x060002f0",
         "ILOffset":  2511,
         "Safety":  "CommonDisplayCandidate",
@@ -4515,7 +4541,7 @@
     },
     {
         "Original":  " time is increased by 1 additional ",
-        "Translation":  "时间额外增加1",
+        "Translation":  "时间增加1",
         "MethodToken":  "0x060002f0",
         "ILOffset":  2529,
         "Safety":  "CommonDisplayCandidate",
@@ -5189,7 +5215,7 @@
     },
     {
         "Original":  " in ",
-        "Translation":  "，还需",
+        "Translation":  "，所属纪律：",
         "MethodToken":  "0x060002f0",
         "ILOffset":  2299,
         "TypeFullName":  "AtTheGatesCommon.ns_UI.ns_Tooltips.ClanTooltip",
@@ -5199,7 +5225,7 @@
     },
     {
         "Original":  " in ",
-        "Translation":  "，还需",
+        "Translation":  "（所属纪律：",
         "MethodToken":  "0x060002f0",
         "ILOffset":  2405,
         "TypeFullName":  "AtTheGatesCommon.ns_UI.ns_Tooltips.ClanTooltip",
@@ -5209,7 +5235,7 @@
     },
     {
         "Original":  " in ",
-        "Translation":  "，还需",
+        "Translation":  "，所属纪律：",
         "MethodToken":  "0x06000348",
         "ILOffset":  6205,
         "TypeFullName":  "AtTheGatesCommon.ns_UI.ns_Tooltips.ProfessionTooltip",
@@ -5219,7 +5245,7 @@
     },
     {
         "Original":  " in ",
-        "Translation":  "，还需",
+        "Translation":  "（所属纪律：",
         "MethodToken":  "0x06000348",
         "ILOffset":  6306,
         "TypeFullName":  "AtTheGatesCommon.ns_UI.ns_Tooltips.ProfessionTooltip",
@@ -7899,7 +7925,7 @@
     },
     {
         "Original":  " in this ",
-        "Translation":  " 在此 ",
+        "Translation":  "为此",
         "MethodToken":  "0x060002f0",
         "ILOffset":  2475,
         "StringToken":  "0x7001ed56",
@@ -7910,7 +7936,7 @@
     },
     {
         "Original":  " in this ",
-        "Translation":  " 在此 ",
+        "Translation":  "为此",
         "MethodToken":  "0x06000348",
         "ILOffset":  6371,
         "StringToken":  "0x7001ed56",
@@ -7954,7 +7980,7 @@
     },
     {
         "Original":  " to be ",
-        "Translation":  " 为 ",
+        "Translation":  "即可",
         "MethodToken":  "0x060002f0",
         "ILOffset":  2457,
         "StringToken":  "0x700029d7",
@@ -7965,7 +7991,7 @@
     },
     {
         "Original":  " to be ",
-        "Translation":  " 为 ",
+        "Translation":  "即可",
         "MethodToken":  "0x06000348",
         "ILOffset":  6353,
         "StringToken":  "0x700029d7",

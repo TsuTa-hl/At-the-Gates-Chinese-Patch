@@ -9580,7 +9580,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": "is left ",
-      "LocalizedFormat": "\u5269\u4E0B",
+      "LocalizedFormat": "\u5DF2",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -9706,6 +9706,42 @@
       ],
       "StructuralFlags": [],
       "Notes": "Accepted mapping; exact source locator is authoritative.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "managed-map:hardcoded-common-il-rewrite.json:0x0600014e:IL_015C",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-common-il-rewrite.json",
+        "TypeFullName": "AtTheGatesCommon.ns_Utilities.BattleProjection",
+        "MethodName": "BuildSummary",
+        "MethodToken": "0x0600014e",
+        "ILOffset": 348,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": "rattled",
+      "LocalizedFormat": "\u53D7\u5230\u9707\u6151",
+      "Classification": "LogicSensitive",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-common",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "rattled",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesCommon.original.dll",
+            "Original": "rattled",
+            "MethodToken": "0x0600014e",
+            "ILOffset": 348
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Screenshot-visible battle forecast adjective, previously classified TechnicalInternal. Single source occurrence appended to the display summary; preserve combat calculations.",
       "Stale": false
     },
     {
@@ -23840,7 +23876,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " in ",
-      "LocalizedFormat": "\uFF0C\u8FD8\u9700",
+      "LocalizedFormat": "\uFF0C\u6240\u5C5E\u7EAA\u5F8B\uFF1A",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -23899,6 +23935,40 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-common-il-rewrite.json:0x060002f0:IL_0953",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-common-il-rewrite.json",
+        "MethodToken": "0x060002f0",
+        "ILOffset": 2387,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " of ",
+      "LocalizedFormat": "\u7684",
+      "Classification": "LogicSensitive",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-common",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " of ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesCommon.original.dll",
+            "Original": " of ",
+            "MethodToken": "0x060002f0",
+            "ILOffset": 2387
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "ClanTooltip counterpart of the profession training requirement: level of experience connector.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-common-il-rewrite.json:0x060002f0:IL_0965",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -23910,7 +23980,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " in ",
-      "LocalizedFormat": "\uFF0C\u8FD8\u9700",
+      "LocalizedFormat": "\uFF08\u6240\u5C5E\u7EAA\u5F8B\uFF1A",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -23944,7 +24014,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " need only a single ",
-      "LocalizedFormat": "\u53EA\u9700\u8981\u4E00\u4E2A",
+      "LocalizedFormat": "\uFF09\u65F6\uFF0C\u53EA\u97001",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -23980,7 +24050,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " to be ",
-      "LocalizedFormat": " \u4E3A ",
+      "LocalizedFormat": "\u5373\u53EF",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -24016,7 +24086,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " in this ",
-      "LocalizedFormat": " \u5728\u6B64 ",
+      "LocalizedFormat": "\u4E3A\u6B64",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -24050,7 +24120,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": ". For each ",
-      "LocalizedFormat": "\u3002\u6BCF\u4E2A",
+      "LocalizedFormat": "\u3002\u6BCF\u6B20\u7F3A1",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -24084,7 +24154,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " that needs to be made up ",
-      "LocalizedFormat": "\u9700\u8981\u8865\u8DB3",
+      "LocalizedFormat": "\uFF0C",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -24118,7 +24188,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " time is increased by 1 additional ",
-      "LocalizedFormat": "\u65F6\u95F4\u989D\u5916\u589E\u52A01",
+      "LocalizedFormat": "\u65F6\u95F4\u589E\u52A01",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -25693,7 +25763,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " in ",
-      "LocalizedFormat": "\uFF0C\u8FD8\u9700",
+      "LocalizedFormat": "\uFF0C\u6240\u5C5E\u7EAA\u5F8B\uFF1A",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -25752,6 +25822,40 @@
       "Stale": false
     },
     {
+      "EntryPointId": "managed-map:hardcoded-common-il-rewrite.json:0x06000348:IL_1890",
+      "Source": {
+        "Kind": "ManagedRewriteMap",
+        "RelativePath": "translations/hardcoded-common-il-rewrite.json",
+        "MethodToken": "0x06000348",
+        "ILOffset": 6288,
+        "CallKind": "LdstrRewrite"
+      },
+      "OriginalFormat": " of ",
+      "LocalizedFormat": "\u7684",
+      "Classification": "LogicSensitive",
+      "Status": "ExistingRule",
+      "RuleId": "il-rewrite-common",
+      "AuditStatus": "Localized",
+      "RuleScope": "EntrySpecific",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": " of ",
+          "KnownTextReference": {
+            "SourceFile": "source/AtTheGatesCommon.original.dll",
+            "Original": " of ",
+            "MethodToken": "0x06000348",
+            "ILOffset": 6288
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "ProfessionTooltip training requirement: level of experience connector; exact display-only operand, not a global grammar replacement.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "managed-map:hardcoded-common-il-rewrite.json:0x06000348:IL_18A2",
       "Source": {
         "Kind": "ManagedRewriteMap",
@@ -25763,7 +25867,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " in ",
-      "LocalizedFormat": "\uFF0C\u8FD8\u9700",
+      "LocalizedFormat": "\uFF08\u6240\u5C5E\u7EAA\u5F8B\uFF1A",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -25797,7 +25901,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " need only a single ",
-      "LocalizedFormat": "\u53EA\u9700\u8981\u4E00\u4E2A",
+      "LocalizedFormat": "\uFF09\u65F6\uFF0C\u53EA\u97001",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -25833,7 +25937,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " to be ",
-      "LocalizedFormat": " \u4E3A ",
+      "LocalizedFormat": "\u5373\u53EF",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -25869,7 +25973,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " in this ",
-      "LocalizedFormat": " \u5728\u6B64 ",
+      "LocalizedFormat": "\u4E3A\u6B64",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -25903,7 +26007,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": ". For each ",
-      "LocalizedFormat": "\u3002\u6BCF\u4E2A",
+      "LocalizedFormat": "\u3002\u6BCF\u6B20\u7F3A1",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -25937,7 +26041,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " that needs to be made up ",
-      "LocalizedFormat": "\u9700\u8981\u8865\u8DB3",
+      "LocalizedFormat": "\uFF0C",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -25971,7 +26075,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": " time is increased by 1 additional ",
-      "LocalizedFormat": "\u65F6\u95F4\u989D\u5916\u589E\u52A01",
+      "LocalizedFormat": "\u65F6\u95F4\u589E\u52A01",
       "Classification": "LogicSensitive",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-common",
@@ -54014,7 +54118,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": "\u0027s [Mood|MOOD] has improved!",
-      "LocalizedFormat": "\u7684[Mood|MOOD]\u6539\u5584\u4E86\uFF01",
+      "LocalizedFormat": "\u7684[\u5FC3\u60C5|MOOD]\u6539\u5584\u4E86\uFF01",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-ui",
@@ -57752,7 +57856,7 @@
         "CallKind": "LdstrRewrite"
       },
       "OriginalFormat": "\u0027s [Mood|MOOD] has improved!",
-      "LocalizedFormat": "\u7684[Mood|MOOD]\u6539\u5584\u4E86\uFF01",
+      "LocalizedFormat": "\u7684[\u5FC3\u60C5|MOOD]\u6539\u5584\u4E86\uFF01",
       "Classification": "DisplaySafe",
       "Status": "ExistingRule",
       "RuleId": "il-rewrite-ui",
@@ -309104,6 +309208,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:2e5d352b5201a723",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "abandoning shared religious beliefs plus ",
+      "LocalizedFormat": "\u80CC\u5F03\u5171\u540C\u5B97\u6559\u4FE1\u4EF0\u53CA",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "abandoning shared religious beliefs plus ",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "abandoning shared religious beliefs plus ",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "abandoning shared religious beliefs plus "
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:3028989ebd831b8d",
       "Source": {
         "Kind": "RuntimeMap",
@@ -316816,6 +316952,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:d7e45d48ef176287",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": ", abandoning shared religious beliefs.",
+      "LocalizedFormat": "\uFF0C\u56E0\u80CC\u5F03\u5171\u540C\u5B97\u6559\u4FE1\u4EF0\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": ", abandoning shared religious beliefs.",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": ", abandoning shared religious beliefs.",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": ", abandoning shared religious beliefs."
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:d8cfe6df685e69cf",
       "Source": {
         "Kind": "RuntimeMap",
@@ -317296,6 +317464,38 @@
       "Stale": false
     },
     {
+      "EntryPointId": "runtime-map:PlainTextFragments:e55236feb761cdfd",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "shared religious beliefs plus ",
+      "LocalizedFormat": "\u5171\u540C\u5B97\u6559\u4FE1\u4EF0\u53CA",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "shared religious beliefs plus ",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "shared religious beliefs plus ",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "shared religious beliefs plus "
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
       "EntryPointId": "runtime-map:PlainTextFragments:e5c0c16eaef8c818",
       "Source": {
         "Kind": "RuntimeMap",
@@ -317448,6 +317648,38 @@
             "Original": "The Greuthungi",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "The Greuthungi"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:ea9c0a299b51c7e8",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "abandoning shared religious beliefs.",
+      "LocalizedFormat": "\u56E0\u80CC\u5F03\u5171\u540C\u5B97\u6559\u4FE1\u4EF0\u3002",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "abandoning shared religious beliefs.",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "abandoning shared religious beliefs.",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "abandoning shared religious beliefs."
           }
         }
       ],
@@ -317704,6 +317936,38 @@
             "Original": "from ",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "from "
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:f23f06072705d680",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "Neutrals",
+      "LocalizedFormat": "\u4E2D\u7ACB\u8005",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "Neutrals",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "Neutrals",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "Neutrals"
           }
         }
       ],
@@ -318152,6 +318416,38 @@
             "Original": "The Lombards",
             "RuntimeMapSection": "PlainTextFragments",
             "RuntimeMapOriginal": "The Lombards"
+          }
+        }
+      ],
+      "StructuralFlags": [],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:PlainTextFragments:fb91bc161c4717de",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "PlainTextFragments"
+      },
+      "OriginalFormat": "\u4F20\u95FB\u6709\u4E00\u4E2ANeutral ",
+      "LocalizedFormat": "\u4F20\u95FB\u6709\u4E00\u5EA7\u4E2D\u7ACB",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "UniformFragment",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "\u4F20\u95FB\u6709\u4E00\u4E2ANeutral ",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "\u4F20\u95FB\u6709\u4E00\u4E2ANeutral ",
+            "RuntimeMapSection": "PlainTextFragments",
+            "RuntimeMapOriginal": "\u4F20\u95FB\u6709\u4E00\u4E2ANeutral "
           }
         }
       ],
@@ -318611,6 +318907,41 @@
             "Original": "[Profession|PROFESSION] in the [DISCOVERY] [Discipline|DISCIPLINE]",
             "RuntimeMapSection": "RichTextFragments",
             "RuntimeMapOriginal": "[Profession|PROFESSION] in the [DISCOVERY] [Discipline|DISCIPLINE]"
+          }
+        }
+      ],
+      "StructuralFlags": [
+        "ConceptLink",
+        "RichTextMarkup"
+      ],
+      "Notes": "Generated from runtime display-map binding.",
+      "Stale": false
+    },
+    {
+      "EntryPointId": "runtime-map:RichTextFragments:3889ddffbf249c58",
+      "Source": {
+        "Kind": "RuntimeMap",
+        "RelativePath": "translations/runtime-display-strings.json",
+        "CallKind": "RichTextFragments"
+      },
+      "OriginalFormat": "forced into an [Active|ACTIVE] [Profession|PROFESSION] where they\u0027re neither within the [SETTLEMENT] nor the [Resident|RESIDENT] of a [Structure|STRUCTURE]",
+      "LocalizedFormat": "\u88AB\u8FEB\u4ECE\u4E8B[Active|ACTIVE][Profession|PROFESSION]\uFF0C\u4E14\u65E2\u4E0D\u5728[SETTLEMENT]\u5185\uFF0C\u4E5F\u4E0D\u4EE5[Resident|RESIDENT]\u8EAB\u4EFD\u4F4F\u5728[Structure|STRUCTURE]\u4E2D",
+      "Classification": "DisplaySafe",
+      "Status": "ExistingRule",
+      "RuleId": "runtime-display-richtext-fragment",
+      "AuditStatus": "Localized",
+      "RuleScope": "RuntimeMap",
+      "Confidence": "Exact",
+      "Parts": [
+        {
+          "Position": 0,
+          "Kind": "Literal",
+          "Value": "forced into an [Active|ACTIVE] [Profession|PROFESSION] where they\u0027re neither within the [SETTLEMENT] nor the [Resident|RESIDENT] of a [Structure|STRUCTURE]",
+          "KnownTextReference": {
+            "SourceFile": "translations/runtime-display-strings.json",
+            "Original": "forced into an [Active|ACTIVE] [Profession|PROFESSION] where they\u0027re neither within the [SETTLEMENT] nor the [Resident|RESIDENT] of a [Structure|STRUCTURE]",
+            "RuntimeMapSection": "RichTextFragments",
+            "RuntimeMapOriginal": "forced into an [Active|ACTIVE] [Profession|PROFESSION] where they\u0027re neither within the [SETTLEMENT] nor the [Resident|RESIDENT] of a [Structure|STRUCTURE]"
           }
         }
       ],

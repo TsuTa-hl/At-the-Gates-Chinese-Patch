@@ -11,6 +11,8 @@ knowledge, then either finish or return to repair.
 - `docs/agent/black-box-tests.md`
 - Selected section of `docs/agent/black-box/interfaces.md`
 - `docs/agent/operations/game-automation.md`
+- `docs/agent/operations/debug-console.md` only for an uncalibrated target,
+  console-assisted diagnosis, or a user-authorized manual recording
 
 ## Read after a Matching Failure
 
@@ -31,25 +33,30 @@ knowledge, then either finish or return to repair.
 2. Select Active Focus plus only the interface scenarios affected by the
    change. Full regression remains opt-in. If the user authorizes a designated
    fixed-save replay, execute only that selected scenario.
-3. Build and statically validate each affected scenario once, then run the
-   authorized fixed-save replay. Never create a new random world merely to
-   discover whether an unrelated surface might be wrong. Repeated random-world
-   creation remains separately gated by explicit user confirmation and manual
-   procedure confirmation.
-4. If no replay was authorized, hand the prepared scenario to the user for
+3. Skip console setup for a point with current calibration. For an uncalibrated
+   screenshot or named runtime-state question, run the console-assisted target
+   triage owned by `operations/game-automation.md`, then complete its
+   cursor-marker calibration gate before making text assertions.
+4. Build and statically validate each affected scenario once, then run the
+   authorized fixed-save replay. Use structured harness actions as replay
+   authority; console output and recordings remain discovery inputs only.
+5. Never create a new random world merely to discover whether an unrelated
+   surface might be wrong. Repeated random-world creation remains separately
+   gated by explicit user confirmation and manual procedure confirmation.
+6. If no replay was authorized, hand the prepared scenario to the user for
    manual execution. Otherwise collect cursor-marked screenshots and text-trace
    evidence from the approved fixed-save points.
-5. If the user later supplies a manual crash result, use the crash procedure:
+7. If the user later supplies a manual crash result, use the crash procedure:
    record the screenshot and new `Crash.AtGLog` block as primary evidence.
-6. Produce a session conclusion of `Stopped` (user-run pending) only when no
+8. Produce a session conclusion of `Stopped` (user-run pending) only when no
    replay was authorized; otherwise report the measured replay result.
-7. **Run `update-knowledge.md` for every conclusion before doing anything
+9. **Run `update-knowledge.md` for every conclusion before doing anything
    else.** Use its knowledge-maintenance steps to incorporate passing coverage,
    failures, limitations, and text evidence into their owning files.
-8. If the conclusion is `Failed`, return to assess/fix using the now-updated
+10. If the conclusion is `Failed`, return to assess/fix using the now-updated
    knowledge unless a stop condition applies. For a user-provided manual
    result, do not autonomously retry the game.
-9. Report the stopped/manual-pending result after the knowledge update.
+11. Report the stopped/manual-pending result after the knowledge update.
 
 ## User-confirmed exploratory boundary
 

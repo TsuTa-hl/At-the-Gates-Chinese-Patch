@@ -12,7 +12,7 @@ the facts. User review exports are not AI workflow input.
 | Assess/fix | `text-sources.md`, `translation-style.md` | `catalog-review.md` for visible text; `managed-patching.md` for XML/DLL; `ui-source-map.md` for UI mapping; composition-rule JSON queried by `EntryPointId`/`RuleId` for dynamic text; crash-risk index plus its symptom topic; black-box interface and automation for reproduction; safety registry for a previously rejected operand |
 | Package/install | `operations/build-and-install.md`, `architecture.md` | text/managed topic after text-generation or rewrite changes; composition-rule JSON after dynamic/rich-text changes; crash-risk topic matching the changed subsystem |
 | Release branch | `workflows/publish-release-branch.md`, `operations/build-and-install.md` | `architecture.md`, `crash-risks.md` after installer, uninstaller, or patch-artifact changes |
-| Test/loop | `black-box-tests.md`, selected interface topic, `operations/game-automation.md` | text/catalog/composite/style/crash topics only after a matching failure symptom |
+| Test/loop | `black-box-tests.md`, selected interface topic, `operations/game-automation.md` | `operations/debug-console.md` only for an uncalibrated target or console-assisted diagnosis; text/catalog/composite/style/crash topics only after a matching failure symptom |
 | Update knowledge | this index and changed-file list | latest test handoff only for a test result; owner files implicated by the changed fact |
 
 ## Topic Ownership
@@ -25,6 +25,7 @@ the facts. User review exports are not AI workflow input.
 | Repository-wide refactor verification and scope limit | `current-status.md` |
 | Recovery and common operational failures | `troubleshooting.md` |
 | Input/capture/crash procedure | `operations/game-automation.md` |
+| In-game console commands, key bindings, and black-box safety | `operations/debug-console.md` |
 | Resource/network diagnostics | `operations/diagnostics.md` |
 | Source priority and safety | `text-sources.md` |
 | Catalog operations and user review exports | `text-sources/catalog-review.md` |

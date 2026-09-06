@@ -74,6 +74,32 @@ against a pre-action timestamp/bookmark; never infer it from an old log tail.
 If a current crash is verified, record it and stop the UI session; do not create
 a new world or silently broaden the save-selection procedure.
 
+### Console-Assisted Target Triage
+
+Use the console only before calibration when the user supplied a screenshot or
+the target has no approved point. Read [debug-console.md](debug-console.md)
+before issuing a command.
+
+1. On the intended save and interface, run `set ShowMousePosition true`, close
+   the console, hover the exact control, and capture the full client. Record the
+   displayed live X/Y, live client size, window mode, save, and control identity.
+2. Do not copy a screenshot pixel or an unproven live coordinate directly into
+   the fixed 2560 x 1440 scenario space. Use it only as a candidate for the
+   cursor-marker calibration gate below.
+3. Reopen the console, run `set ShowMousePosition false`, close it, and wait for
+   the target interface to stabilize before collecting localization evidence.
+4. Use read-only lists, status, camera, highlight, or tile-overlay commands only
+   when they answer a named diagnostic question. Tile overlays do not identify
+   UI controls.
+5. Built-in `record`/`play` is a temporary manual path aid, not durable test
+   state. It requires explicit user authorization and must be converted to JSON
+   harness actions before reuse.
+
+TestHarness remains the replay authority because it owns the game window,
+transforms reference coordinates, marks the cursor, waits for stable state, and
+applies structured text assertions. The built-in recorder provides none of
+those proofs.
+
 ### Coordinate Calibration Gate
 
 Scenario `X`/`Y` values are expressed in the harness's fixed 2560 x 1440
@@ -107,38 +133,6 @@ negative example: all six entered coordinates were absolute and stable, but
 the fish point opened Shallow Water, the clan points did not open their three
 requested tooltips, and the purported diplomacy setup did not reach diplomacy.
 Those six failures are invalid coordinate evidence, not translation results.
-
-Terrain and trait exploratory auto-coverage remains retired. A fixed-save
-replay for a user-confirmed defect may be launched when the user authorizes
-that designated run; it must use approved absolute coordinates and may not
-silently broaden into a discovery sweep. Do not launch a generated tile sweep
-or random six-point trait pass. Any workflow that would repeatedly create
-random worlds remains separately gated by the user's confirmation and manual
-confirmation that the procedure behaves correctly.
-The Win32 driver re-activates the owned window before every absolute move,
-click, fingerprint, and frame capture, then verifies the cursor with
-`GetCursorPos`; it never falls back to relative mouse motion.
-
-On this workspace, launch the test harness through the bundled runtime:
-`& .\.tools\dotnet\dotnet.exe .\tools\AtG.TestHarness\bin\Release\net8.0-windows\AtG.TestHarness.dll ...`.
-The standalone `AtG.TestHarness.exe` needs a global .NET 8 installation and
-cannot start here; the bundled runtime avoids that environmental failure.
-Its fixed-save selector temporarily promotes the selected save in the external
-Steam `Saved Games` directory. In the sandbox this requires the scoped elevated
-test command; an access-denied selector failure occurs before the game starts.
-`AtG.TestHarness` filters by suite before applying `--scenario`; for a manually
-selected scenario whose suite has not been checked, pass `--suite All` to avoid
-an otherwise successful zero-point session.
-
-Resolve a user-supplied world keyword in the resolved game's `Saved Games`
-directory before invoking the harness, then pass the exact filename through
-`--save-name` (or the scenario's `SaveName`). `SaveSelectionLease` only promotes
-that exact file by timestamp; it does not search the user profile, infer a world
-ID, or isolate other saves. A load-list failure is current evidence only when a
-new post-action `Crash.AtGLog` event (or a matching process exit) is recorded
-against a pre-action timestamp/bookmark; never infer it from an old log tail.
-If a current crash is verified, record it and stop the UI session; do not create
-a new world or silently broaden the save-selection procedure.
 
 ## Hover and Capture Discipline
 

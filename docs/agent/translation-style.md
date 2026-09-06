@@ -51,6 +51,12 @@ Chinese strings.
   and the `(I)` / `(R)` abbreviations. These are runtime display labels; do not
   alter the underlying faction IDs.
 
+## 局部漏译修复时的整段复核
+
+- 修复一个残留英文词时，必须重新阅读完整句子和段落，核对实际拼接顺序及变量含义，不能只替换该词便结束。
+- 同时检查其他已汉化片段的语序、连接词、指代、条件和数量关系。若它们使整段不通顺或改变原意，应在同一显示边界内一并修正，并检查同类入口。
+- 以最终拼接出的中文判断可读性，保留概念链接、变量及游戏规则；不要将某一语境的连接词译法全局推广。按用户授权范围验证，未做游戏内测试时不得声称已验证视觉效果。
+
 ## Tags and Placeholders
 
 Preserve these exactly unless the surrounding system explicitly requires a

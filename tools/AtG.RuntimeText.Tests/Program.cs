@@ -205,6 +205,9 @@ static void GeneratedRuntimeDisplayMapLoads()
         "\u4f60\u5df2\u8bc6\u522b[STONE_LARGE]\u3002"));
     Equal("\u5df2\u8bc6\u522b\u7f8a\u7fa4\u3002", DisplayStringLocalizer.LocalizeRichText("\u5df2\u8bc6\u522b[SHEEP]\u3002"));
     Equal("[UNREGISTERED_TAG]", DisplayStringLocalizer.LocalizeRichText("[UNREGISTERED_TAG]"));
+    Equal("中立者（小部族）", DisplayStringLocalizer.LocalizeRichText("Neutrals（小部族）"));
+    Equal("会见中立者（小部族）才能提出请求或宣战。",
+        DisplayStringLocalizer.LocalizeRichText("会见Neutrals（小部族）才能提出请求或宣战。"));
 
     Equal("会痴迷于", DisplayStringLocalizer.LocalizeRichText(
         "become obsessed with the idea of"));
@@ -217,6 +220,9 @@ static void GeneratedRuntimeDisplayMapLoads()
     Equal("无法在[SETTLEMENT]内过冬，或作为[居民|RESIDENT]居住在[建筑|STRUCTURE]中",
         DisplayStringLocalizer.LocalizeRichText(
             "unable to spend the winter inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE]"));
+    Equal("被迫从事[主动|ACTIVE][职业|PROFESSION]，且既不在[SETTLEMENT]内，也不以[居民|RESIDENT]身份住在[建筑|STRUCTURE]中",
+        DisplayStringLocalizer.LocalizeRichText(
+            "forced into an [Active|ACTIVE] [Profession|PROFESSION] where they're neither within the [SETTLEMENT] nor the [Resident|RESIDENT] of a [Structure|STRUCTURE]"));
     Equal("• -1，因边界过近（相距不超过6格）。", DisplayStringLocalizer.LocalizeRichText(
         "• -1, borders being too close (within 6 tiles)."));
     Equal("• -1，因边界过近（相距不超过3格）。", DisplayStringLocalizer.LocalizeRichText(
@@ -247,6 +253,8 @@ static void GeneratedRuntimeDisplayMapLoads()
         "Leader 特质（随和）"));
     Equal("领袖特质", DisplayStringLocalizer.LocalizeRichText("Leader Trait"));
     Equal("领袖特质", DisplayStringLocalizer.LocalizeRichText("Leader 特质"));
+    Equal("传闻有一座中立小麦农场", DisplayStringLocalizer.LocalizeRichText(
+        "传闻有一个Neutral 小麦农场"));
     var westernFaction = new FakeWordProcessor("Western", 200);
     westernFaction.WordsInLine = new FakeStringSplitter(new[] { "Roman", "Empire", "tail" });
     CjkWordWrapCore.ProcessWord(westernFaction,
@@ -268,6 +276,12 @@ static void GeneratedRuntimeDisplayMapLoads()
         "[Level-Up|LEVEL]"));
     Equal("• +1，因宗教信仰相同。", DisplayStringLocalizer.LocalizeRichText(
         "• +1, shared religious beliefs."));
+    Equal("• -1，因背弃共同宗教信仰。", DisplayStringLocalizer.LocalizeRichText(
+        "• -1, abandoning shared religious beliefs."));
+    Equal("• +2, 共同宗教信仰及Leader 特质（虔诚）", DisplayStringLocalizer.LocalizeRichText(
+        "• +2, shared religious beliefs plus Leader Trait（虔诚）"));
+    Equal("• -3, 背弃共同宗教信仰及Leader 特质（虔诚）", DisplayStringLocalizer.LocalizeRichText(
+        "• -3, abandoning shared religious beliefs plus Leader Trait（虔诚）"));
     Equal("-2, 善待敌对领袖（匈人）", DisplayStringLocalizer.LocalizeRichText(
         "-2, being nice to Enemy（匈人）"));
     Equal("+2, 苛待敌对领袖（匈人）", DisplayStringLocalizer.LocalizeRichText(
@@ -332,7 +346,12 @@ static void DiplomacyTooltipBulletsLocalize()
     DisplayStringLocalizer.RegisterPlainTextFragment("-1 from ", "-1来自");
     DisplayStringLocalizer.RegisterPlainTextFragment("+0 from ", "+0来自");
     DisplayStringLocalizer.RegisterPlainTextFragment(", suffering differing religious beliefs.", "，因宗教信仰不同而承受惩罚。");
+    DisplayStringLocalizer.RegisterPlainTextFragment(", abandoning shared religious beliefs.", "，因背弃共同宗教信仰。");
+    DisplayStringLocalizer.RegisterPlainTextFragment("abandoning shared religious beliefs.", "因背弃共同宗教信仰。");
+    DisplayStringLocalizer.RegisterPlainTextFragment("abandoning shared religious beliefs plus ", "背弃共同宗教信仰及");
+    DisplayStringLocalizer.RegisterPlainTextFragment("shared religious beliefs plus ", "共同宗教信仰及");
     DisplayStringLocalizer.RegisterPlainTextFragment("differing religious beliefs.", "因宗教信仰不同而承受惩罚。");
+    DisplayStringLocalizer.RegisterPlainTextFragment("Leader Trait", "领袖特质");
     DisplayStringLocalizer.RegisterPlainTextFragment("The", "");
     DisplayStringLocalizer.RegisterPlainTextFragment("The Peucini", "佩乌奇尼人");
     DisplayStringLocalizer.RegisterRichTextFragment("[Relationship Level|RL].", "[关系等级|RL]。");
@@ -351,6 +370,14 @@ static void DiplomacyTooltipBulletsLocalize()
         DisplayStringLocalizer.LocalizeRichText("• +0 from [Reputation|REPUTATION]."));
     Equal("• -1，因宗教信仰不同而承受惩罚。",
         DisplayStringLocalizer.LocalizeRichText("• -1, suffering differing religious beliefs."));
+    Equal("• -1，因背弃共同宗教信仰。",
+        DisplayStringLocalizer.LocalizeRichText("• -1, abandoning shared religious beliefs."));
+    Equal("• +2, 共同宗教信仰及领袖特质（虔诚）",
+        DisplayStringLocalizer.LocalizeRichText(
+            "• +2, shared religious beliefs plus Leader Trait（虔诚）"));
+    Equal("• -3, 背弃共同宗教信仰及领袖特质（虔诚）",
+        DisplayStringLocalizer.LocalizeRichText(
+            "• -3, abandoning shared religious beliefs plus Leader Trait（虔诚）"));
     Equal("因宗教信仰不同而承受惩罚。",
         DisplayStringLocalizer.LocalizeDisplayString("differing religious beliefs."));
     Equal("佩乌奇尼人", DisplayStringLocalizer.LocalizeDisplayString("The Peucini"));

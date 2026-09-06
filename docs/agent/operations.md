@@ -33,6 +33,7 @@ These rules apply to every build, install, smoke, verification, and release acti
 
 - Build, transaction install/uninstall, unified verification: [build-and-install.md](operations/build-and-install.md)
 - Game process control, screenshots, and input: [game-automation.md](operations/game-automation.md)
+- In-game debug console, commands, and black-box safety: [debug-console.md](operations/debug-console.md)
 - Resource, network, and runtime diagnostics: [diagnostics.md](operations/diagnostics.md)
 - Architecture and data flow: [architecture.md](architecture.md)
 - Current verification state: [current-status.md](current-status.md)

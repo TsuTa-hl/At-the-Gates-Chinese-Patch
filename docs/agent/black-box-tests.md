@@ -38,3 +38,12 @@ On a tested surface, reject raw keys, unresolved tags, mojibake, safely
 localizable English, artificial Chinese spacing, clipping, or broken recursive
 hover. Generated names, IDs, versions, URLs, and documented logic-sensitive
 residuals remain exceptions only when their owner record says so.
+
+## Console-Assisted Triage
+
+For an uncalibrated target or a named read-only runtime question, follow
+[console-assisted target triage](operations/game-automation.md#console-assisted-target-triage)
+and the [console command safety reference](operations/debug-console.md).
+Console output is discovery evidence only: it does not expand authorization,
+promote a scenario coordinate, identify a UI control, or replace structured
+TestHarness replay.

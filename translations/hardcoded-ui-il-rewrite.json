@@ -7063,7 +7063,7 @@
 },
 {
     "Original":  "\u0027s [Mood|MOOD] has improved!",
-    "Translation":  "的[Mood|MOOD]改善了！",
+    "Translation":  "的[心情|MOOD]改善了！",
     "MethodToken":  "0x0600002d",
     "ILOffset":  1702,
     "StringToken":  "0x7000180a",
@@ -7129,7 +7129,7 @@
 },
 {
     "Original":  "\u0027s [Mood|MOOD] has improved!",
-    "Translation":  "的[Mood|MOOD]改善了！",
+    "Translation":  "的[心情|MOOD]改善了！",
     "MethodToken":  "0x0600002f",
     "ILOffset":  2240,
     "StringToken":  "0x7000180a",

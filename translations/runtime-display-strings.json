@@ -455,6 +455,10 @@
   ],
   "PlainTextFragments": [
     {
+      "Original": "Neutrals",
+      "Translation": "中立者"
+    },
+    {
       "Original": "commit Theft",
       "Translation": "\u72af\u4e0b\u76d7\u7a83"
     },
@@ -573,6 +577,10 @@
     {
       "Original": "NEUTRAL",
       "Translation": "\u4e2d\u7acb"
+    },
+    {
+      "Original": "\u4f20\u95fb\u6709\u4e00\u4e2aNeutral ",
+      "Translation": "\u4f20\u95fb\u6709\u4e00\u5ea7\u4e2d\u7acb"
     },
     {
       "Original": "PLEASANT",
@@ -1527,6 +1535,22 @@
       "Translation": "\uff0c\u56e0\u5b97\u6559\u4fe1\u4ef0\u76f8\u540c\u3002"
     },
     {
+      "Original": ", abandoning shared religious beliefs.",
+      "Translation": "\uff0c\u56e0\u80cc\u5f03\u5171\u540c\u5b97\u6559\u4fe1\u4ef0\u3002"
+    },
+    {
+      "Original": "abandoning shared religious beliefs.",
+      "Translation": "\u56e0\u80cc\u5f03\u5171\u540c\u5b97\u6559\u4fe1\u4ef0\u3002"
+    },
+    {
+      "Original": "abandoning shared religious beliefs plus ",
+      "Translation": "\u80cc\u5f03\u5171\u540c\u5b97\u6559\u4fe1\u4ef0\u53ca"
+    },
+    {
+      "Original": "shared religious beliefs plus ",
+      "Translation": "\u5171\u540c\u5b97\u6559\u4fe1\u4ef0\u53ca"
+    },
+    {
       "Original": "shared religious beliefs.",
       "Translation": "\u56e0\u5b97\u6559\u4fe1\u4ef0\u76f8\u540c\u3002"
     },
@@ -1863,6 +1887,10 @@
     {
       "Original": "unable to spend the winter inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE]",
       "Translation": "\u65e0\u6cd5\u5728[SETTLEMENT]\u5185\u8fc7\u51ac\uff0c\u6216\u4f5c\u4e3a[Resident|RESIDENT]\u5c45\u4f4f\u5728[Structure|STRUCTURE]\u4e2d"
+    },
+    {
+      "Original": "forced into an [Active|ACTIVE] [Profession|PROFESSION] where they're neither within the [SETTLEMENT] nor the [Resident|RESIDENT] of a [Structure|STRUCTURE]",
+      "Translation": "\u88ab\u8feb\u4ece\u4e8b[Active|ACTIVE][Profession|PROFESSION]\uff0c\u4e14\u65e2\u4e0d\u5728[SETTLEMENT]\u5185\uff0c\u4e5f\u4e0d\u4ee5[Resident|RESIDENT]\u8eab\u4efd\u4f4f\u5728[Structure|STRUCTURE]\u4e2d"
     },
     {
       "Original": "become obsessed with the idea of",
