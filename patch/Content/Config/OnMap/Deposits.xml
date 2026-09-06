@@ -1,0 +1,2073 @@
+<deposits>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <Iron_Treasure>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Iron                     -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_IRON</ID>
+      <name>TEXT.Name.Deposit.IronDeposit</name>
+      <description>铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。</description>
+      <texturePath>Images/Deposits/Minerals/Iron</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Iron_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Iron_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Iron_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_IRON</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_IRON</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_IRON_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeIronDeposit</name>
+      <description>铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是一处特别大的铁矿床！</description>
+      <texturePath>Images/Deposits/Minerals/Iron_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Iron_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Iron_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Iron_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_IRON</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_IRON</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_IRON_VAST</ID>
+      <name>TEXT.Name.Deposit.VastIronDeposit</name>
+      <description>铁[矿床|DEPOSIT]可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是迄今发现的最大铁矿床之一！</description>
+      <texturePath>Images/Deposits/Minerals/Iron_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Iron_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Iron_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Iron_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_IRON</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_IRON</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Meteorite                -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_METEORITE</ID>
+      <name>TEXT.Name.Deposit.Meteorite</name>
+      <description>陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。</description>
+      <texturePath>Images/Deposits/Minerals/Meteorite</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Meteorite_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Meteorite_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Meteorite_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_METEORITE</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_IRON</harvestableResourceID>
+      <quantity>6</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_METEORITE_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeMeteorite</name>
+      <description>陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是迄今发现的最大陨石之一！</description>
+      <texturePath>Images/Deposits/Minerals/Meteorite_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Meteorite_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Meteorite_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Meteorite_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_METEORITE</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_IRON</harvestableResourceID>
+      <quantity>6</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_METEORITE_VAST</ID>
+      <name>TEXT.Name.Deposit.VastMeteorite</name>
+      <description>陨石[矿床|DEPOSIT]极其罕见！[BLANK-LINE]它们可由[DIGGER]或[IRON-MINE-1][采收|HARVEST]，以[产出|PRODUCE][IRON]。[BLANK-LINE]这是一块真正巨大的陨石，可能是有史以来最大的！</description>
+      <texturePath>Images/Deposits/Minerals/Meteorite_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Meteorite_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Meteorite_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Meteorite_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_METEORITE</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_IRON</harvestableResourceID>
+      <quantity>6</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Gold                     -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_GOLD</ID>
+      <name>TEXT.Name.Deposit.GoldDeposit</name>
+      <description>金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。</description>
+      <texturePath>Images/Deposits/Minerals/Gold</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gold_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gold_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_GOLD</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_TREASURE</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_GOLD_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeGoldDeposit</name>
+      <description>金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。[BLANK-LINE]这是一处特别大的金矿床！</description>
+      <texturePath>Images/Deposits/Minerals/Gold_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gold_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gold_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_GOLD</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_TREASURE</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_GOLD_VAST</ID>
+      <name>TEXT.Name.Deposit.VastGoldDeposit</name>
+      <description>金[矿床|DEPOSIT]可由[DIGGER]或[GOLD-MINE-1][采收|HARVEST]，以[产出|PRODUCE]大量[TREASURE]。[BLANK-LINE]这是迄今发现的最大金矿床之一！</description>
+      <texturePath>Images/Deposits/Minerals/Gold_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gold_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gold_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_GOLD</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_TREASURE</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Gems                     -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_GEMS</ID>
+      <name>TEXT.Name.Deposit.GemsDeposit</name>
+      <description>宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。</description>
+      <texturePath>Images/Deposits/Minerals/Gems</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gems_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gems_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gems_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_GEMS</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_TREASURE</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_GEMS_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeGemsDeposit</name>
+      <description>宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。[BLANK-LINE]这是一处特别大的宝石矿床！</description>
+      <texturePath>Images/Deposits/Minerals/Gems_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gems_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gems_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gems_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_GEMS</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_TREASURE</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_GEMS_VAST</ID>
+      <name>TEXT.Name.Deposit.VastGemsDeposit</name>
+      <description>宝石[矿床|DEPOSIT]可由[DIGGER]或[GEM-MINE-1][采收|HARVEST]，以[产出|PRODUCE]巨量[TREASURE]。[BLANK-LINE]这是迄今发现的最大宝石矿床之一！</description>
+      <texturePath>Images/Deposits/Minerals/Gems_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gems_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gems_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Gems_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_GEMS</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_TREASURE</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+  </Iron_Treasure>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <Stone_Coal_Salt>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Stone                    -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_STONE</ID>
+      <name>TEXT.Name.Deposit.StoneDeposit</name>
+      <description>石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。</description>
+      <texturePath>Images/Deposits/Minerals/Stone</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Stone_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Stone</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Stone</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_STONE</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_STONE</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_STONE_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeStoneDeposit</name>
+      <description>石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。[BLANK-LINE]这是一处特别大的石料矿床！</description>
+      <texturePath>Images/Deposits/Minerals/Stone_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Stone_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Stone_Large</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Stone_Large</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_STONE</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_STONE</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_STONE_VAST</ID>
+      <name>TEXT.Name.Deposit.VastStoneDeposit</name>
+      <description>石料[矿床|DEPOSIT]可由[DIGGER]或[STONE-QUARRY-1][采收|HARVEST]，以[产出|PRODUCE][STONE]。[BLANK-LINE]这是迄今发现的最大石料矿床之一！</description>
+      <texturePath>Images/Deposits/Minerals/Stone_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Stone_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Stone_Vast</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Stone_Vast</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_STONE</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_STONE</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Coal                     -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_COAL</ID>
+      <name>TEXT.Name.Deposit.CoalDeposit</name>
+      <description>煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。</description>
+      <texturePath>Images/Deposits/Minerals/Coal</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Coal_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Coal_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Coal_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_COAL</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_COAL</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_COAL_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeCoalDeposit</name>
+      <description>煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]这是一处特别大的煤矿床！</description>
+      <texturePath>Images/Deposits/Minerals/Coal_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Coal_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Coal_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Coal_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_COAL</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_COAL</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_COAL_VAST</ID>
+      <name>TEXT.Name.Deposit.VastCoalDeposit</name>
+      <description>煤[矿床|DEPOSIT]可由[DIGGER]或[COAL-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]这是迄今发现的最大煤矿床之一！</description>
+      <texturePath>Images/Deposits/Minerals/Coal_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/Coal_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Coal_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Coal_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_COAL</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_COAL</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Peat                     -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_PEAT</ID>
+      <name>TEXT.Name.Deposit.PeatDeposit</name>
+      <description>泥炭[矿床|DEPOSIT]可由[DIGGER]或[PEAT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]泥炭仅分布于[MARSH:S]。</description>
+      <texturePath>Images/Deposits/Minerals/Peat</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Peat_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Peat_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_PEAT</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_COAL</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_PEAT_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargePeatDeposit</name>
+      <description>泥炭[矿床|DEPOSIT]可由[DIGGER]或[PEAT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]泥炭仅分布于[MARSH:S]。[BLANK-LINE]这是一处特别大的泥炭矿床！</description>
+      <texturePath>Images/Deposits/Minerals/Peat_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Peat_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Peat_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_PEAT</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_COAL</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_PEAT_VAST</ID>
+      <name>TEXT.Name.Deposit.VastPeatDeposit</name>
+      <description>泥炭[矿床|DEPOSIT]可由[DIGGER]或[PEAT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][COAL]。[BLANK-LINE]泥炭仅分布于[MARSH:S]。[BLANK-LINE]这是迄今发现的最大泥炭矿床之一！</description>
+      <texturePath>Images/Deposits/Minerals/Peat_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/Peat_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/Peat_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_PEAT</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_COAL</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Salt                     -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_SALT</ID>
+      <name>TEXT.Name.Deposit.SaltDeposit</name>
+      <description>盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。</description>
+      <texturePath>Images/Deposits/Minerals/Salt</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <depositTypeID>DEPOSIT_TYPE_SALT</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_SALT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_SALT_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeSaltDeposit</name>
+      <description>盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。[BLANK-LINE]这是一处特别大的盐矿床！</description>
+      <texturePath>Images/Deposits/Minerals/Salt_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <depositTypeID>DEPOSIT_TYPE_SALT</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_SALT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_SALT_VAST</ID>
+      <name>TEXT.Name.Deposit.VastSaltDeposit</name>
+      <description>盐[矿床|DEPOSIT]可由[DIGGER]或[SALT-MINE-1][采收|HARVEST]，以[产出|PRODUCE][SALT]。[BLANK-LINE]这是迄今发现的最大盐矿床之一！</description>
+      <texturePath>Images/Deposits/Minerals/Salt_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownMineral</sketchPath>
+      <depositTypeID>DEPOSIT_TYPE_SALT</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_MINERAL</shroudID>
+      <harvestableResourceID>RESOURCE_SALT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+  </Stone_Coal_Salt>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <Animals>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Horses                   -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_HORSES</ID>
+      <name>TEXT.Name.Deposit.HerdOfHorses</name>
+      <description>[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Horses</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Horses_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Horses_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_HORSES</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_HORSES</harvestableResourceID>
+      <quantity>20</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_HORSES_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeHerdOfHorses</name>
+      <description>[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。[BLANK-LINE]这是一大群马！</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Horses_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Horses_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Horses_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_HORSES</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_HORSES</harvestableResourceID>
+      <quantity>30</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_HORSES_VAST</ID>
+      <name>TEXT.Name.Deposit.VastHerdOfHorses</name>
+      <description>[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。[BLANK-LINE]这是迄今发现的最大马群之一！</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Horses_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Horses_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Horses_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_HORSES</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_HORSES</harvestableResourceID>
+      <quantity>40</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Purebreds                -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_PUREBREDS</ID>
+      <name>TEXT.Name.Deposit.HerdOfPurebreds</name>
+      <description>[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。[BLANK-LINE]纯种马群比普通马群包含更多有用的牲畜！</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/HorsesPurebreds</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/HorsesPurebreds_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/HorsesPurebreds_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_PUREBREDS</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_HORSES</harvestableResourceID>
+      <quantity>30</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_PUREBREDS_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeHerdOfPurebreds</name>
+      <description>[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。[BLANK-LINE]纯种马群比普通马群包含更多有用的牲畜！[BLANK-LINE]这是一大群马！</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/HorsesPurebreds_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/HorsesPurebreds_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/HorsesPurebreds_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_PUREBREDS</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_HORSES</harvestableResourceID>
+      <quantity>40</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_PUREBREDS_VAST</ID>
+      <name>TEXT.Name.Deposit.VastHerdOfPurebreds</name>
+      <description>[HORSES]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][HORSE-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供其他用途使用。[BLANK-LINE]纯种马群比普通马群包含更多有用的牲畜！[BLANK-LINE]这是迄今发现的最大马群之一！</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/HorsesPurebreds_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/HorsesPurebreds_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/HorsesPurebreds_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_PUREBREDS</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_HORSES</harvestableResourceID>
+      <quantity>50</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Cattle                   -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_CATTLE</ID>
+      <name>TEXT.Name.Deposit.HerdOfCattle</name>
+      <description>Herds of [CATTLE] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes by [Constructing|CONSTRUCT] a [CATTLE-PASTURE-1] on them.</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Cattle</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Animals/Cattle_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Cattle_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Cattle_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_CATTLE</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_CATTLE</harvestableResourceID>
+      <quantity>20</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_CATTLE_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeHerdOfCattle</name>
+      <description>Herds of [CATTLE] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes by [Constructing|CONSTRUCT] a [CATTLE-PASTURE-1] on them.[BLANK-LINE]This is a particularly large herd!</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Cattle_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Animals/Cattle_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Cattle_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Cattle_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_CATTLE</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_CATTLE</harvestableResourceID>
+      <quantity>30</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_CATTLE_VAST</ID>
+      <name>TEXT.Name.Deposit.VastHerdOfCattle</name>
+      <description>Herds of [CATTLE] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes by [Constructing|CONSTRUCT] a [CATTLE-PASTURE-1] on them.[BLANK-LINE]This is among the largest herds ever found!</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Cattle_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Animals/Cattle_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Cattle_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Cattle_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_CATTLE</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_CATTLE</harvestableResourceID>
+      <quantity>40</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Aurochs                  -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_AUROCHS</ID>
+      <name>TEXT.Name.Deposit.HerdOfAurochs</name>
+      <description>Herds of [CATTLE] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes by [Constructing|CONSTRUCT] a [CATTLE-PASTURE-1] on them.[BLANK-LINE]Auroch herds contain more useful animals than normal herds!</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/CattleAurochs</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/CattleAurochs_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/CattleAurochs_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_AUROCHS</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_CATTLE</harvestableResourceID>
+      <quantity>30</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_AUROCHS_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeHerdOfAurochs</name>
+      <description>Herds of [CATTLE] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes by [Constructing|CONSTRUCT] a [CATTLE-PASTURE-1] on them.[BLANK-LINE]Auroch herds contain more useful animals than normal herds![BLANK-LINE]This is a particularly large herd!</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/CattleAurochs_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/CattleAurochs_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/CattleAurochs_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_AUROCHS</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_CATTLE</harvestableResourceID>
+      <quantity>40</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_AUROCHS_VAST</ID>
+      <name>TEXT.Name.Deposit.VastHerdOfAurochs</name>
+      <description>Herds of [CATTLE] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes by [Constructing|CONSTRUCT] a [CATTLE-PASTURE-1] on them.[BLANK-LINE]Auroch herds contain more useful animals than normal herds![BLANK-LINE]This is among the largest herds ever found!</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/CattleAurochs_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/CattleAurochs_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/CattleAurochs_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_AUROCHS</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_CATTLE</harvestableResourceID>
+      <quantity>50</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Sheep                    -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_SHEEP</ID>
+      <name>TEXT.Name.Deposit.HerdOfSheep</name>
+      <description>[SHEEP]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][SHEEP-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供采集[WOOL]、制作[CLOTH]等其他用途使用。</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Sheep</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Animals/Sheep_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Sheep_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Sheep_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_SHEEP</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_SHEEP</harvestableResourceID>
+      <quantity>20</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_SHEEP_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeHerdOfSheep</name>
+      <description>[SHEEP]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][SHEEP-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供采集[WOOL]、制作[CLOTH]等其他用途使用。[BLANK-LINE]这是一大群羊！</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Sheep_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Animals/Sheep_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Sheep_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Sheep_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_SHEEP</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_SHEEP</harvestableResourceID>
+      <quantity>30</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_SHEEP_VAST</ID>
+      <name>TEXT.Name.Deposit.VastHerdOfSheep</name>
+      <description>[SHEEP]可由[HUNTER]或[TRAPPER][采收|HARVEST]：前者获得[MEAT]，后者获得[PARCHMENT]或[CLOTH]；还可在其上[建造|CONSTRUCT][SHEEP-PASTURE-1]，将其纳入你的[库存|STOCKPILE]，供采集[WOOL]、制作[CLOTH]等其他用途使用。[BLANK-LINE]这是迄今发现的最大羊群之一！</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Sheep_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Animals/Sheep_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Sheep_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Sheep_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_SHEEP</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_SHEEP</harvestableResourceID>
+      <quantity>40</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Pigs                     -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_PIGS</ID>
+      <name>TEXT.Name.Deposit.HerdOfPigs</name>
+      <description>Herds of [PIGS] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes by [Constructing|CONSTRUCT] a [PIG-PASTURE-1] on them.</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Pigs</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Pigs_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Pigs_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_PIGS</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_PIGS</harvestableResourceID>
+      <quantity>20</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_PIGS_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeHerdOfPigs</name>
+      <description>Herds of [PIGS] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes by [Constructing|CONSTRUCT] a [PIG-PASTURE-1] on them.[BLANK-LINE]This is a particularly large herd!</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Pigs_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Pigs_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Pigs_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_PIGS</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_PIGS</harvestableResourceID>
+      <quantity>30</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_PIGS_VAST</ID>
+      <name>TEXT.Name.Deposit.VastHerdOfPigs</name>
+      <description>Herds of [PIGS] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], for [PARCHMENT] or [CLOTH] by a [TRAPPER], or added to your [Stockpile|STOCKPILE] and then used for other purposes by [Constructing|CONSTRUCT] a [PIG-PASTURE-1] on them.[BLANK-LINE]This is among the largest herds ever found!</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Pigs_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Pigs_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Pigs_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_PIGS</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_PIGS</harvestableResourceID>
+      <quantity>40</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Deer                     -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_DEER_VISIBLE</ID>
+      <name>TEXT.Name.Deposit.HerdOfDeer</name>
+      <description>Herds of [DEER] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], or for [PARCHMENT] or [CLOTH] by a [TRAPPER].[BLANK-LINE]Note that unlike other kinds of [Animals|ANIMAL] Deer cannot be added to your [Stockpile|STOCKPILE] by [Constructing|CONSTRUCT] a [Pasture|PASTURE] on them.</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Deer</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Deer_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Deer_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_DEER</depositTypeID>
+      <depositTypeWeight>10</depositTypeWeight>
+      <harvestableResourceID>RESOURCE_DEER</harvestableResourceID>
+      <quantity>20</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_DEER</ID>
+      <name>TEXT.Name.Deposit.HerdOfDeer</name>
+      <description>Herds of [DEER] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], or for [PARCHMENT] or [CLOTH] by a [TRAPPER].[BLANK-LINE]Note that unlike other kinds of [Animals|ANIMAL] Deer cannot be added to your [Stockpile|STOCKPILE] by [Constructing|CONSTRUCT] a [Pasture|PASTURE] on them.</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Deer</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Deer_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Deer_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_DEER</depositTypeID>
+      <depositTypeWeight>5</depositTypeWeight>
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_DEER</harvestableResourceID>
+      <quantity>20</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_DEER_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeHerdOfDeer</name>
+      <description>Herds of [DEER] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], or for [PARCHMENT] or [CLOTH] by a [TRAPPER].[BLANK-LINE]Note that unlike other kinds of [Animals|ANIMAL] Deer cannot be added to your [Stockpile|STOCKPILE] by [Constructing|CONSTRUCT] a [Pasture|PASTURE] on them.[BLANK-LINE]This is a particularly large herd!</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Deer_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Deer_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Deer_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_DEER</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_DEER</harvestableResourceID>
+      <quantity>30</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_DEER_VAST</ID>
+      <name>TEXT.Name.Deposit.VastHerdOfDeer</name>
+      <description>Herds of [DEER] can be [Harvested|HARVEST] for [MEAT] by a [HUNTER], or for [PARCHMENT] or [CLOTH] by a [TRAPPER].[BLANK-LINE]Note that unlike other kinds of [Animals|ANIMAL] Deer cannot be added to your [Stockpile|STOCKPILE] by [Constructing|CONSTRUCT] a [Pasture|PASTURE] on them.[BLANK-LINE]This is among the largest herds ever found!</description>
+      <fontIcon>61</fontIcon>
+      <texturePath>Images/Deposits/Animals/Deer_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownAnimal</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Deer_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Deer_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_DEER</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_ANIMAL</shroudID>
+      <harvestableResourceID>RESOURCE_DEER</harvestableResourceID>
+      <quantity>40</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Beehives                 -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_BEEHIVE</ID>
+      <name>TEXT.Name.Deposit.Beehive</name>
+      <description>蜂巢可被[采收|HARVEST]，由[GATHERER]或[APIARY-1]进行，以[产出|PRODUCE][HONEY]。</description>
+      <texturePath>Images/Deposits/Animals/Beehive</texturePath>
+      <sketchPath>Images/Deposits/Sketches/Beehive</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Beehive_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Beehive_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_BEEHIVE</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <harvestableResourceID>RESOURCE_HONEY</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_BEEHIVE_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeBeehive</name>
+      <description>蜂巢可被[采收|HARVEST]，由[GATHERER]或[APIARY-1]进行，以[产出|PRODUCE][HONEY]。[BLANK-LINE]这是一座特别大的蜂巢！</description>
+      <texturePath>Images/Deposits/Animals/Beehive_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/Beehive</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Beehive_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Beehive_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_BEEHIVE</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <harvestableResourceID>RESOURCE_HONEY</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_BEEHIVE_VAST</ID>
+      <name>TEXT.Name.Deposit.VastBeehive</name>
+      <description>蜂巢可被[采收|HARVEST]，由[GATHERER]或[APIARY-1]进行，以[产出|PRODUCE][HONEY]。[BLANK-LINE]这是迄今发现的最大蜂巢之一！</description>
+      <texturePath>Images/Deposits/Animals/Beehive_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/Beehive</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/Beehive_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/Beehive_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_BEEHIVE</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <harvestableResourceID>RESOURCE_HONEY</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Fish                     -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_FISH</ID>
+      <name>TEXT.Name.Deposit.SchoolOfFish</name>
+      <description>鱼群可由[FISHERMAN][采收|HARVEST]，以[产出|PRODUCE][FISH]。</description>
+      <texturePath>Images/Deposits/Animals/Fish</texturePath>
+      <sketchPath>Images/Deposits/Animals/Fish_Sketch</sketchPath>
+      <depositTypeID>DEPOSIT_TYPE_FISH</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <harvestableResourceID>RESOURCE_FISH</harvestableResourceID>
+      <quantity>24</quantity>
+      <isWater>true</isWater>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_FISH_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeSchoolOfFish</name>
+      <description>鱼群可由[FISHERMAN][采收|HARVEST]，以[产出|PRODUCE][FISH]。[BLANK-LINE]这是一大群鱼！</description>
+      <texturePath>Images/Deposits/Animals/Fish_Large</texturePath>
+      <sketchPath>Images/Deposits/Animals/Fish_Sketch</sketchPath>
+      <depositTypeID>DEPOSIT_TYPE_FISH</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <harvestableResourceID>RESOURCE_FISH</harvestableResourceID>
+      <quantity>32</quantity>
+      <isWater>true</isWater>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_FISH_VAST</ID>
+      <name>TEXT.Name.Deposit.VastSchoolOfFish</name>
+      <description>鱼群可由[FISHERMAN][采收|HARVEST]，以[产出|PRODUCE][FISH]。[BLANK-LINE]这是迄今发现的最大鱼群之一！</description>
+      <texturePath>Images/Deposits/Animals/Fish_Vast</texturePath>
+      <sketchPath>Images/Deposits/Animals/Fish_Sketch</sketchPath>
+      <depositTypeID>DEPOSIT_TYPE_FISH</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <harvestableResourceID>RESOURCE_FISH</harvestableResourceID>
+      <quantity>40</quantity>
+      <isWater>true</isWater>
+    </deposit>
+  </Animals>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <Plants>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Berries                  -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_BERRIES</ID>
+      <name>TEXT.Name.Deposit.PatchOfBerries</name>
+      <description>浆果丛可被[采收|HARVEST]，由[GATHERER]进行，以[产出|PRODUCE][FRUIT]。</description>
+      <texturePath>Images/Deposits/Plants/Berries</texturePath>
+      <sketchPath>Images/Deposits/Sketches/Berries</sketchPath>
+      <!-- Terrain Textures -->
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_BERRIES</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <harvestableResourceID>RESOURCE_FRUIT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_BERRIES_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargePatchOfBerries</name>
+      <description>浆果丛可被[采收|HARVEST]，由[GATHERER]进行，以[产出|PRODUCE][FRUIT]。[BLANK-LINE]这是一大片浆果丛！</description>
+      <texturePath>Images/Deposits/Plants/Berries_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/Berries</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Large_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Large_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_BERRIES</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <harvestableResourceID>RESOURCE_FRUIT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_BERRIES_VAST</ID>
+      <name>TEXT.Name.Deposit.VastPatchOfBerries</name>
+      <description>浆果丛可被[采收|HARVEST]，由[GATHERER]进行，以[产出|PRODUCE][FRUIT]。[BLANK-LINE]这是迄今发现的最大浆果丛之一！</description>
+      <texturePath>Images/Deposits/Plants/Berries_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/Berries</sketchPath>
+      <!-- Terrain Textures -->
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Vast_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Berries_Vast_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_BERRIES</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <harvestableResourceID>RESOURCE_FRUIT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Fruit Trees              -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_FRUIT_TREES</ID>
+      <name>TEXT.Name.Deposit.GroveOfFruitTrees</name>
+      <description>Groves of Fruit Truits can be [Harvested|HARVEST] by a [GATHERER] or [FRUIT-FARM-1] to [Produce|PRODUCE] [FRUIT].</description>
+      <texturePath>Images/Deposits/Plants/FruitTrees</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_FRUIT_TREES</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_FRUIT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_FRUIT_TREES_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeGroveOfFruitTrees</name>
+      <description>Groves of Fruit Truits can be [Harvested|HARVEST] by a [GATHERER] or [FRUIT-FARM-1] to [Produce|PRODUCE] [FRUIT].[BLANK-LINE]This is a particularly large grove!</description>
+      <texturePath>Images/Deposits/Plants/FruitTrees_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Large_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Large_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_FRUIT_TREES</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_FRUIT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_FRUIT_TREES_VAST</ID>
+      <name>TEXT.Name.Deposit.VastGroveOfFruitTrees</name>
+      <description>Groves of Fruit Truits can be [Harvested|HARVEST] by a [GATHERER] or [FRUIT-FARM-1] to [Produce|PRODUCE] [FRUIT].[BLANK-LINE]This is among the largest groves ever found!</description>
+      <texturePath>Images/Deposits/Plants/FruitTrees_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Vast_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Vast_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/FruitTrees_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_FRUIT_TREES</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_FRUIT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Wheat                    -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_WHEAT</ID>
+      <name>TEXT.Name.Deposit.FieldOfWheat</name>
+      <description>小麦田可由[REAPER]或[WHEAT-FARM-1][采收|HARVEST]，以[产出|PRODUCE][WHEAT]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，小麦无法继续采收。</description>
+      <texturePath>Images/Deposits/Plants/Wheat</texturePath>
+      <sketchPath>Images/Deposits/Sketches/Wheat</sketchPath>
+      <!-- Terrain Textures -->
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Snow</texturePath>
+      </terrainTexturePath>
+      <!-- Deposit -->
+      <depositTypeID>DEPOSIT_TYPE_WHEAT</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <harvestableResourceID>RESOURCE_WHEAT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_WHEAT_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeFieldOfWheat</name>
+      <description>小麦田可由[REAPER]或[WHEAT-FARM-1][采收|HARVEST]，以[产出|PRODUCE][WHEAT]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，小麦无法继续采收。[BLANK-LINE]这是一大片麦田！</description>
+      <texturePath>Images/Deposits/Plants/Wheat_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/Wheat</sketchPath>
+      <!-- Terrain Textures -->
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Large_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Large_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Large_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <!-- Deposit -->
+      <depositTypeID>DEPOSIT_TYPE_WHEAT</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <harvestableResourceID>RESOURCE_WHEAT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_WHEAT_VAST</ID>
+      <name>TEXT.Name.Deposit.VastFieldOfWheat</name>
+      <description>小麦田可由[REAPER]或[WHEAT-FARM-1][采收|HARVEST]，以[产出|PRODUCE][WHEAT]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，小麦无法继续采收。[BLANK-LINE]这是迄今发现的最大麦田之一！</description>
+      <texturePath>Images/Deposits/Plants/Wheat_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/Wheat</sketchPath>
+      <!-- Terrain Textures -->
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Vast_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Vast_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Vast_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Wheat_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <!-- Deposit -->
+      <depositTypeID>DEPOSIT_TYPE_WHEAT</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <harvestableResourceID>RESOURCE_WHEAT</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Barley                   -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_BARLEY</ID>
+      <name>TEXT.Name.Deposit.FieldOfBarley</name>
+      <description>Fields of Barley can be [Harvested|HARVEST] by a [REAPER] or [BARLEY-FARM-1] to [Produce|PRODUCE] [BARLEY].[BLANK-LINE]Barley can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].</description>
+      <texturePath>Images/Deposits/Plants/Barley</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <!-- Terrain Textures -->
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_BARLEY</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_BARLEY</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_BARLEY_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeFieldOfBarley</name>
+      <description>Fields of Barley can be [Harvested|HARVEST] by a [REAPER] or [BARLEY-FARM-1] to [Produce|PRODUCE] [BARLEY].[BLANK-LINE]Barley can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].[BLANK-LINE]This is a particularly large field!</description>
+      <texturePath>Images/Deposits/Plants/Barley_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <!-- Terrain Textures -->
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_BARLEY</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_BARLEY</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_BARLEY_VAST</ID>
+      <name>TEXT.Name.Deposit.VastFieldOfBarley</name>
+      <description>Fields of Barley can be [Harvested|HARVEST] by a [REAPER] or [BARLEY-FARM-1] to [Produce|PRODUCE] [BARLEY].[BLANK-LINE]Barley can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].[BLANK-LINE]This is among the largest fields ever found!</description>
+      <texturePath>Images/Deposits/Plants/Barley_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <!-- Terrain Textures -->
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Barley_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_BARLEY</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_BARLEY</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Olives                   -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_OLIVES</ID>
+      <name>TEXT.Name.Deposit.OliveGrove</name>
+      <description>Olive Groves can be [Harvested|HARVEST] by a [GATHERER] or [OLIVE-FARM-1] to [Produce|PRODUCE] [OLIVES].[BLANK-LINE]Olives can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].</description>
+      <texturePath>Images/Deposits/Plants/Olives</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_OLIVES</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_OLIVES</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_OLIVES_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeOliveGrove</name>
+      <description>Olive Groves can be [Harvested|HARVEST] by a [GATHERER] or [OLIVE-FARM-1] to [Produce|PRODUCE] [OLIVES].[BLANK-LINE]Olives can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].[BLANK-LINE]This is a particularly large grove!</description>
+      <texturePath>Images/Deposits/Plants/Olives_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Large_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Large_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_OLIVES</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_OLIVES</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_OLIVES_VAST</ID>
+      <name>TEXT.Name.Deposit.VastOliveGrove</name>
+      <description>Olive Groves can be [Harvested|HARVEST] by a [GATHERER] or [OLIVE-FARM-1] to [Produce|PRODUCE] [OLIVES].[BLANK-LINE]Olives can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].[BLANK-LINE]This is among the largest groves ever found!</description>
+      <texturePath>Images/Deposits/Plants/Olives_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Vast_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Vast_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Olives_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_OLIVES</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_OLIVES</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Grapes                   -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_GRAPES</ID>
+      <name>TEXT.Name.Deposit.FieldOfGrapes</name>
+      <description>Fields of Grapes can be [Harvested|HARVEST] by a [GATHERER] or [VINEYARD-1] to [Produce|PRODUCE] [GRAPES].[BLANK-LINE]Grapes can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].</description>
+      <texturePath>Images/Deposits/Plants/Grapes</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_GRAPES</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_GRAPES</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_GRAPES_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeFieldOfGrapes</name>
+      <description>Fields of Grapes can be [Harvested|HARVEST] by a [GATHERER] or [VINEYARD-1] to [Produce|PRODUCE] [GRAPES].[BLANK-LINE]Grapes can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].[BLANK-LINE]This is a particularly large field!</description>
+      <texturePath>Images/Deposits/Plants/Grapes_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Large_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Large_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_GRAPES</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_GRAPES</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_GRAPES_VAST</ID>
+      <name>TEXT.Name.Deposit.VastFieldOfGrapes</name>
+      <description>Fields of Grapes can be [Harvested|HARVEST] by a [GATHERER] or [VINEYARD-1] to [Produce|PRODUCE] [GRAPES].[BLANK-LINE]Grapes can no longer be Harvested when a [Tile|TILE] becomes [Cold|COLD].[BLANK-LINE]This is among the largest fields ever found!</description>
+      <texturePath>Images/Deposits/Plants/Grapes_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Vast_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Vast_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Grapes_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_GRAPES</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_GRAPES</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Flax                     -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_FLAX</ID>
+      <name>TEXT.Name.Deposit.FieldOfFlax</name>
+      <description>亚麻田可由[REAPER]或[FLAX-FARM-1][采收|HARVEST]，以[产出|PRODUCE][FLAX]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，亚麻无法继续采收。</description>
+      <texturePath>Images/Deposits/Plants/Flax</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_FLAX</depositTypeID>
+      <depositTypeWeight>15</depositTypeWeight>
+      <!-- 75% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_FLAX</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_FLAX_LARGE</ID>
+      <name>TEXT.Name.Deposit.LargeFieldOfFlax</name>
+      <description>亚麻田可由[REAPER]或[FLAX-FARM-1][采收|HARVEST]，以[产出|PRODUCE][FLAX]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，亚麻无法继续采收。[BLANK-LINE]这是一大片亚麻田！</description>
+      <texturePath>Images/Deposits/Plants/Flax_Large</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Large_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Large_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Large_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Large_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_FLAX</depositTypeID>
+      <depositTypeWeight>4</depositTypeWeight>
+      <!-- 20% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_FLAX</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+    <deposit>
+      <ID>DEPOSIT_FLAX_VAST</ID>
+      <name>TEXT.Name.Deposit.VastFieldOfFlax</name>
+      <description>亚麻田可由[REAPER]或[FLAX-FARM-1][采收|HARVEST]，以[产出|PRODUCE][FLAX]。[BLANK-LINE]当[地块|TILE]变为[寒冷|COLD]时，亚麻无法继续采收。[BLANK-LINE]这是迄今发现的最大亚麻田之一！</description>
+      <texturePath>Images/Deposits/Plants/Flax_Vast</texturePath>
+      <sketchPath>Images/Deposits/Sketches/UnknownPlant</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Vast_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Vast_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Vast_Cold_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/Flax_Vast_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_FLAX</depositTypeID>
+      <depositTypeWeight>1</depositTypeWeight>
+      <!-- 5% -->
+      <shroudID>DEPOSIT_UNKNOWN_PLANT</shroudID>
+      <harvestableResourceID>RESOURCE_FLAX</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+  </Plants>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <Other>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Mineral Spring           -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_MINERAL_SPRING</ID>
+      <name>TEXT.Name.Deposit.MineralSpring</name>
+      <description>The water from Mineral Springs is known to improve health. Armies can heal [Damage|DAMAGE] while next to them.</description>
+      <texturePath>Images/Deposits/Minerals/MineralSpring</texturePath>
+      <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/MineralSpring_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/MineralSpring_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_COLD_FERTILE</terrainID>
+        <texturePath>Images/Deposits/Minerals/MineralSpring_Cold_Fertile</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_MINERAL_SPRING</depositTypeID>
+      <allowsAdjacentHealing>true</allowsAdjacentHealing>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Rare Forest              -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_RARE_FOREST</ID>
+      <name>TEXT.Name.Deposit.ForestOfRareTimber</name>
+      <description>Rare Forests can be [Harvested|HARVEST] for a great deal more [TIMBER] than the run-of-the-mill trees you can find just anywhere.</description>
+      <texturePath>Images/Deposits/Plants/RareForest</texturePath>
+      <sketchPath>Images/Deposits/Sketches/_Special</sketchPath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/RareForest_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/RareForest_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/RareForest_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_RARE_FOREST</depositTypeID>
+      <harvestableResourceID>RESOURCE_TIMBER</harvestableResourceID>
+      <quantity>24</quantity>
+    </deposit>
+  </Other>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <Unknown>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Unknown Mineral          -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_UNKNOWN_MINERAL</ID>
+      <name>TEXT.Name.Deposit.UnidentifiedMineral</name>
+      <description>Seeing this on a [Tile|TILE] means there's a [Mineral|MINERAL] there, but you don't know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [DIGGER] or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.</description>
+      <fontIcon>131</fontIcon>
+      <texturePath>Images/Deposits/Minerals/_Unknown</texturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Minerals/_Unknown_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Minerals/_Unknown_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Minerals/_Unknown_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_SHROUD</depositTypeID>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Unknown Animal           -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_UNKNOWN_ANIMAL</ID>
+      <name>TEXT.Name.Deposit.UnidentifiedAnimal</name>
+      <description>Seeing this on a [Tile|TILE] means there's a [Herd of Animals|ANIMAL] there, but you don't know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [HUNTER], [TRAPPER], or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.</description>
+      <fontIcon>131</fontIcon>
+      <texturePath>Images/Deposits/Animals/_Unknown</texturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Animals/_Unknown_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Animals/_Unknown_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Animals/_Unknown_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_SHROUD</depositTypeID>
+    </deposit>
+    <!--*******************************-->
+    <!--                               -->
+    <!--      Unknown Plant            -->
+    <!--                               -->
+    <deposit>
+      <ID>DEPOSIT_UNKNOWN_PLANT</ID>
+      <name>TEXT.Name.Deposit.UnidentifiedPlant</name>
+      <description>Seeing this on a [Tile|TILE] means there's a useful [Plant|PLANT] there, but you don't know what kind yet.[BLANK-LINE]Once [Identified|UNIDENTIFIED] by a [GATHERER], [REAPER], or [SURVEYOR] you will be able to [Harvest|HARVEST] [Resources|RESOURCE] from it.</description>
+      <fontIcon>131</fontIcon>
+      <texturePath>Images/Deposits/Plants/_Unknown</texturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_DRY</terrainID>
+        <texturePath>Images/Deposits/Plants/_Unknown_Dry</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_SNOW</terrainID>
+        <texturePath>Images/Deposits/Plants/_Unknown_Snow</texturePath>
+      </terrainTexturePath>
+      <terrainTexturePath>
+        <terrainID>TERRAIN_BLIZZARD</terrainID>
+        <texturePath>Images/Deposits/Plants/_Unknown_Snow</texturePath>
+      </terrainTexturePath>
+      <depositTypeID>DEPOSIT_TYPE_SHROUD</depositTypeID>
+    </deposit>
+  </Unknown>
+</deposits>

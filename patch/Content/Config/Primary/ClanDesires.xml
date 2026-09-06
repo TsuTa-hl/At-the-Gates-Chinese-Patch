@@ -1,0 +1,1303 @@
+<!--
+
+NOTES:
+
+
+		For a 'desire', 'prereqCondition', 'ethicalFeudPrereqCondition', or 'invalidCondition' Condition to be 
+		satisfied, only a SINGLE entry contained inside the block needs to be true. To specify MULTIPLE Conditions 
+		that must be met for validity use multiple condition blocks.
+
+
+		A Desire is NOT satisfied if an 'invalidCondition' Condition BECOMES true for one which has already started.
+		
+		
+		If a Feud makes use of 'ethicalFeudPrereqCondition', it must have exactly 2 blocks of this type.
+
+
+
+
+		~~~~~~~~~~~~~~~~~~~~~~~~  MORE LIKELY  ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+		Desires
+
+			*  Aggressive			2x
+			*  Creative				2x
+			*  Demanding			3x
+			*  Dramatic				4x
+			*  Greedy					4x
+			*  Impatient			2x
+			*  Impulsive			2x
+			*  Lazy						2x
+			*  Obsessive			3x
+			*  Obstinate			2x
+			*  Passionate			3x
+
+
+		Feuds
+
+			*  Aggressive			2x
+			*  Boisterous			2x
+			*  Competitive		3x
+			*  Demanding			3x
+			*  Dramatic				4x
+			*  Envious				4x
+			*  Haggler				2x
+			*  Obstinate			2x
+			*  Passionate			2x
+			*  Petty					4x
+			*  Rowdy					2x
+			*  Sensitive			4x
+			*  Stubborn				2x
+			*  Violent				3x
+			*  Wild						3x
+
+
+
+		~~~~~~~~~~~~~~~~~~~~~~~~  LESS LIKELY  ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+		Desires
+
+			*  Calm						0.5x
+			*  Disgraced			0.5x
+			*  Imaginative		0.5x
+			*  Miserable			0.5x
+			*  Squeamish			0.5x
+			*  Sullen					0.5x
+
+
+		Feuds
+
+			*  Charismatic		0.5x
+			*  Creative				0.5x
+			*  Disgraced			0.5x
+			*  Eloquent				0.5x
+			*  Esteemed				0.5x
+			*  Frail					0.5x
+			*  Gregarious			0.5x
+			*  Imaginative		0.5x
+
+
+
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~  NEVER  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+		Desires
+
+			*  Apathetic
+			*  Ascetic
+			*  Dutiful
+			*  Gregarious
+			*  Independent
+			*  Loyal
+			*  Meek
+			*  Obedient
+			*  Reclusive
+			*  Reserved
+			*  Resourceful
+			*  Stoic
+
+
+		Feuds
+
+			*  Ascetic
+			*  Calm
+			*  Dutiful
+			*  Gentle
+			*  Intimidating
+			*  Meek
+			*  Obedient
+			*  Reserved
+			*  Squeamish
+			*  Stoic
+			*  ~~~~ Independent ~~~~
+			*  ~~~~ Reclusive ~~~~
+
+-->
+<clanDesires>
+  <desires_Profession_Type>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                 Desire  -  Profession  -  Active                 -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Profession_Active</ID>
+      <name>Wanderlust</name>
+      <description>(NAME)对改任[活跃|ACTIVE]的[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into an [Settled|SETTLED] [Profession|PROFESSION] within the [SETTLEMENT]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <isActive>true</isActive>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <isSettled>true</isSettled>
+      </prereqCondition>
+      <!-- Conditions ... Invalid -->
+      <invalidCondition>
+        <traitID>TRAIT_Lazy</traitID>
+      </invalidCondition>
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+      <modCondition>
+        <traitID>TRAIT_Adventurous</traitID>
+        <onceEveryXTurns>10</onceEveryXTurns>
+        <minIntensity>2</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Curious</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>2</maxIntensity>
+      </modCondition>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                Desire  -  Profession  -  Settled                 -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Profession_Settled</ID>
+      <name>A City Life</name>
+      <description>(NAME)对改任[定居|SETTLED]的[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into an [Active|ACTIVE] [Profession|PROFESSION] outside the [SETTLEMENT]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <isSettled>true</isSettled>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <isActive>true</isActive>
+      </prereqCondition>
+      <!-- Conditions ... Invalid -->
+      <invalidCondition>
+        <traitID>TRAIT_Adventurous</traitID>
+      </invalidCondition>
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+      <modCondition>
+        <traitID>TRAIT_Epicure</traitID>
+        <onceEveryXTurns>25</onceEveryXTurns>
+        <minIntensity>2</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Local</traitID>
+        <onceEveryXTurns>10</onceEveryXTurns>
+        <minIntensity>2</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--           Desire  -  Profession  -  Settled Or Resident          -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Profession_SettledOrResident</ID>
+      <name>Home Sweet Home</name>
+      <description>(NAME)对改任[定居|SETTLED]的[职业|PROFESSION]，或成为[建筑|STRUCTURE]的[住民|RESIDENT]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into an [Active|ACTIVE] [Profession|PROFESSION] where they're neither within the [SETTLEMENT] nor the [Resident|RESIDENT] of a [Structure|STRUCTURE]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <isSettled>true</isSettled>
+        <isResident>true</isResident>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <REVERSE>true</REVERSE>
+        <isSettled>true</isSettled>
+        <isResident>true</isResident>
+      </prereqCondition>
+      <!-- Conditions ... Invalid -->
+      <invalidCondition>
+        <traitID>TRAIT_Adaptable</traitID>
+      </invalidCondition>
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+      <modCondition>
+        <traitID>TRAIT_Bow_Legged</traitID>
+        <onceEveryXTurns>100</onceEveryXTurns>
+        <minIntensity>2</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <!--<modCondition>-->
+      <!--<traitID>TRAIT_Rustic</traitID>-->
+      <!--<onceEveryXTurns>200</onceEveryXTurns>-->
+      <!--<maxIntensity>3</maxIntensity>-->
+      <!--</modCondition>-->
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                 Desire  -  Profession  -  Warrior                -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Profession_Warrior</ID>
+      <name>For Glory</name>
+      <description>(NAME)对改任[战士|WARRIOR]类[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Civilian|CIVILIAN] [Profession|PROFESSION]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <isWarrior>true</isWarrior>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <isCivilian>true</isCivilian>
+      </prereqCondition>
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                Desire  -  Profession  -  Civilian                -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Profession_Civilian</ID>
+      <name>Swords to Ploughshares</name>
+      <description>(NAME)对改任[平民|CIVILIAN]类[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Warrior|WARRIOR] [Profession|PROFESSION]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <isCivilian>true</isCivilian>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <isWarrior>true</isWarrior>
+      </prereqCondition>
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+      <modCondition>
+        <traitID>TRAIT_Epicure</traitID>
+        <onceEveryXTurns>25</onceEveryXTurns>
+        <minIntensity>2</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                Desire  -  Profession  -  Non-Naval               -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Profession_Land</ID>
+      <name>Back to Solid Ground</name>
+      <description>(NAME)对改任不涉海的[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a seafaring [Profession|PROFESSION]</descriptionForTrait>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <professionID>UNIT_FISHERMAN</professionID>
+        <professionID>UNIT_GALLEY</professionID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Afraid_of_Water</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>2</baseOnceEveryXTurns>
+      <baseMinIntensity>3</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+  </desires_Profession_Type>
+  <desires_Discipline>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                  Desire  -  Discipline  -  Honor                 -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Discipline_Honor</ID>
+      <name>A Life of Honor</name>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[HONOR]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [HONOR]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <disciplineID>DISCIPLINE_HONOR</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_HONOR</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Archers</traitID>
+        <traitID>TRAIT_Dutiful</traitID>
+        <traitID>TRAIT_Eager</traitID>
+        <traitID>TRAIT_Hunters</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--               Desire  -  Discipline  -  Agriculture              -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Discipline_Agriculture</ID>
+      <name>A Life of Cultivation</name>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[AGRICULTURE]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [AGRICULTURE]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <disciplineID>DISCIPLINE_AGRICULTURE</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_AGRICULTURE</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Farmers</traitID>
+        <traitID>TRAIT_Gatherers</traitID>
+        <traitID>TRAIT_Green_Thumb</traitID>
+        <traitID>TRAIT_Reapers</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                Desire  -  Discipline  -  Livestock               -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Discipline_Livestock</ID>
+      <name>A Life on the Range</name>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[LIVESTOCK]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [LIVESTOCK]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <disciplineID>DISCIPLINE_LIVESTOCK</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_LIVESTOCK</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Herder</traitID>
+        <traitID>TRAIT_Nomadic</traitID>
+        <traitID>TRAIT_Ranchers</traitID>
+        <traitID>TRAIT_Trappers</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--               Desire  -  Discipline  -  Metalworking             -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Discipline_Metalworking</ID>
+      <name>A Life of Iron</name>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[METALWORKING]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [METALWORKING]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <disciplineID>DISCIPLINE_METALWORKING</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_METALWORKING</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Dabbler</traitID>
+        <traitID>TRAIT_Diggers</traitID>
+        <traitID>TRAIT_Miners</traitID>
+        <traitID>TRAIT_Smithing_Lineage</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                 Desire  -  Discipline  -  Crafting               -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Discipline_Crafting</ID>
+      <name>A Life of Craftsmanship</name>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[CRAFTING]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [CRAFTING]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <disciplineID>DISCIPLINE_CRAFTING</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_CRAFTING</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Handy</traitID>
+        <traitID>TRAIT_Loggers</traitID>
+        <traitID>TRAIT_Wood_Collectors</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                 Desire  -  Discipline  -  Discovery              -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Discipline_Discovery</ID>
+      <name>A Life of Learning</name>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[DISCOVERY]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [DISCOVERY]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <disciplineID>DISCIPLINE_DISCOVERY</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_DISCOVERY</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Curious</traitID>
+        <traitID>TRAIT_Explorers</traitID>
+        <traitID>TRAIT_Imaginative</traitID>
+        <traitID>TRAIT_Surveyors</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+  </desires_Discipline>
+  <desires_NOT_Discipline>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                Desire  -  Specific Work  -  Rustic               -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_SpecificWork_Rustic</ID>
+      <name>A Life in the Country</name>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[AGRICULTURE]或[LIVESTOCK]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [AGRICULTURE] or [LIVESTOCK]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <disciplineID>DISCIPLINE_AGRICULTURE</disciplineID>
+        <disciplineID>DISCIPLINE_LIVESTOCK</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_AGRICULTURE</disciplineID>
+        <disciplineID>DISCIPLINE_LIVESTOCK</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Rustic</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--               Desire  -  Specific Work  -  Creative              -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_SpecificWork_Creative</ID>
+      <name>A Life of Creation</name>
+      <description>(NAME)对改任[职业|PROFESSION]并归入[METALWORKING]、[CRAFTING]或[DISCOVERY]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] outside of [METALWORKING], [CRAFTING], or [DISCOVERY]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <disciplineID>DISCIPLINE_METALWORKING</disciplineID>
+        <disciplineID>DISCIPLINE_CRAFTING</disciplineID>
+        <disciplineID>DISCIPLINE_DISCOVERY</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_METALWORKING</disciplineID>
+        <disciplineID>DISCIPLINE_CRAFTING</disciplineID>
+        <disciplineID>DISCIPLINE_DISCOVERY</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Creative</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--           Desire  -  Specific Work  -  NOT Agriculture           -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_SpecificWork_NotAgriculture</ID>
+      <name>Everything Keeps Dying...</name>
+      <description>(NAME)对改任不属[AGRICULTURE]的[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] in the [AGRICULTURE] [Discipline|DISCIPLINE]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_AGRICULTURE</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <disciplineID>DISCIPLINE_AGRICULTURE</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Brown_Thumb</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--            Desire  -  Specific Work  -  NOT Livestock            -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_SpecificWork_NotLivestock</ID>
+      <name>It Wants to Kill Me!</name>
+      <description>(NAME)对改任不属[LIVESTOCK]的[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] in the [LIVESTOCK] [Discipline|DISCIPLINE]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_LIVESTOCK</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <disciplineID>DISCIPLINE_LIVESTOCK</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Afraid_of_Animals</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--           Desire  -  Specific Work  -  NOT Metalworking          -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_SpecificWork_NotMetalworking</ID>
+      <name>Put That Out...</name>
+      <description>(NAME)对改任不属[METALWORKING]的[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] in the [METALWORKING] [Discipline|DISCIPLINE]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_METALWORKING</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <disciplineID>DISCIPLINE_METALWORKING</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Afraid_of_Fire</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--             Desire  -  Specific Work  -  NOT Crafting            -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_SpecificWork_NotCrafting</ID>
+      <name>My Thumb!</name>
+      <description>(NAME)对改任不属[CRAFTING]的[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] in the [CRAFTING] [Discipline|DISCIPLINE]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_CRAFTING</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <disciplineID>DISCIPLINE_CRAFTING</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_All_Thumbs</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--            Desire  -  Specific Work  -  NOT Discovery            -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_SpecificWork_NotDiscovery</ID>
+      <name>A Life of Work</name>
+      <description>(NAME)对改任不属[DISCOVERY]的[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced into a [Profession|PROFESSION] in the [DISCOVERY] [Discipline|DISCIPLINE]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <REVERSE>true</REVERSE>
+        <disciplineID>DISCIPLINE_DISCOVERY</disciplineID>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <disciplineID>DISCIPLINE_DISCOVERY</disciplineID>
+      </prereqCondition>
+      <prereqCondition>
+        <traitID>TRAIT_Rustic</traitID>
+        <traitID>TRAIT_Strong</traitID>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>10</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+    </clanDesire>
+  </desires_NOT_Discipline>
+  <desires_Misc>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                 Desire  -  Bored (Wants New Job)                -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Bored</ID>
+      <name>The Itch</name>
+      <description>(NAME)对改任[战士|WARRIOR]类[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>stuck in the same [Professions|PROFESSION] for more than a year or two</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <isWarrior>true</isWarrior>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <isCivilian>true</isCivilian>
+      </prereqCondition>
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                 Desire  -  Stressed (From Switching Jobs)                -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Stressed</ID>
+      <name>Overwhelmed</name>
+      <description>(NAME)对改任[战士|WARRIOR]类[职业|PROFESSION]表现出(INTENSITY)。</description>
+      <descriptionForTrait>forced to switch [Professions|PROFESSION]</descriptionForTrait>
+      <!-- Conditions ... Desired -->
+      <conditionDesired>
+        <isWarrior>true</isWarrior>
+      </conditionDesired>
+      <!-- Conditions ... Prereq -->
+      <prereqCondition>
+        <isCivilian>true</isCivilian>
+      </prereqCondition>
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                         Desire  -  Warmth                        -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Warmth</ID>
+      <name>Brrr...</name>
+      <description>(NAME)对寻找温暖的去处表现出(INTENSITY)（可在[SETTLEMENT]内，或成为[建筑|STRUCTURE]的[住民|RESIDENT]）。</description>
+      <descriptionForTrait>unable to spend the winter inside the [SETTLEMENT] or as the [Resident|RESIDENT] of a [Structure|STRUCTURE]</descriptionForTrait>
+      <shouldOnlyTestOnce>true</shouldOnlyTestOnce>
+      <!-- Desired Conditions -->
+      <conditionDesired>
+        <isSettled>true</isSettled>
+        <isResident>true</isResident>
+      </conditionDesired>
+      <!-- Prereq Conditions -->
+      <prereqCondition>
+        <belowTemperature>20</belowTemperature>
+      </prereqCondition>
+      <prereqCondition>
+        <REVERSE>true</REVERSE>
+        <isSettled>true</isSettled>
+        <isResident>true</isResident>
+      </prereqCondition>
+      <!-- Chance -->
+      <baseOnceEveryXTurns>200</baseOnceEveryXTurns>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+      <modCondition>
+        <belowTemperature>5</belowTemperature>
+        <onceEveryXTurns>40</onceEveryXTurns>
+        <minIntensity>2</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Adaptable</traitID>
+        <percentChance>-5</percentChance>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>2</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Easily_Cold</traitID>
+        <onceEveryXTurns>4</onceEveryXTurns>
+        <minIntensity>2</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Epicure</traitID>
+        <onceEveryXTurns>25</onceEveryXTurns>
+        <minIntensity>2</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Explorers</traitID>
+        <percentChance>-5</percentChance>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>2</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Northmen</traitID>
+        <percentChance>-100</percentChance>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>1</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Obstinate</traitID>
+        <percentChance>-5</percentChance>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>2</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Strong</traitID>
+        <percentChance>-100</percentChance>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>1</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Tough</traitID>
+        <percentChance>-100</percentChance>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>1</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Woodsmen</traitID>
+        <percentChance>-100</percentChance>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>1</maxIntensity>
+      </modCondition>
+    </clanDesire>
+  </desires_Misc>
+  <feuds_General>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                      Feud  -  Sharing Tile                       -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Feud_SharingTile</ID>
+      <name>One Must Go</name>
+      <!--<description>A (FEUD-DESC) has broken out between (NAME) and (NAME2)! Each is demanding the other be 'exiled' from the [SETTLEMENT] and [retrained|TRAIN] in an [Active|ACTIVE] [Profession|PROFESSION].</description>-->
+      <description>(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为他们长时间相处，反复发生冲突！双方都要求在[SETTLEMENT]惩罚对方。</description>
+      <!-- (permanently reducing their [Mood|MOOD] by 1, and stripping a [Clan|CLAN] of their [Profession|PROFESSION] and [Discipline|DISCIPLINE], should they have one).</description>-->
+      <descriptionForTrait>there's another [Clan|CLAN] on the same [Tile|TILE]</descriptionForTrait>
+      <isFeud>true</isFeud>
+      <!-- Conditions - Prereq -->
+      <prereqCondition>
+        <isSharingTile>true</isSharingTile>
+      </prereqCondition>
+      <!--
+			<prereqCondition>
+				<isSettled>true</isSettled>
+			</prereqCondition>-->
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>1</baseMaxIntensity>
+      <!-- Mods -->
+      <modCondition>
+        <traitID>TRAIT_Aggressive</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Boisterous</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Competitive</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Demanding</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Dramatic</traitID>
+        <onceEveryXTurns>50</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Envious</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Filthy</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Obstinate</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Passionate</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Paranoid</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Petty</traitID>
+        <onceEveryXTurns>50</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Rowdy</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Sensitive</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Stubborn</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Violent</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+      <modCondition>
+        <traitID>TRAIT_Wild</traitID>
+        <onceEveryXTurns>200</onceEveryXTurns>
+        <minIntensity>1</minIntensity>
+        <maxIntensity>4</maxIntensity>
+      </modCondition>
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                       Feud  -  Drama Queen                       -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Feud_DramaQueen</ID>
+      <name>Drama Queen</name>
+      <description>(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为流言蜚语和名声问题！双方都要求在[SETTLEMENT]惩罚对方。</description>
+      <!-- (permanently reducing their [Mood|MOOD] by 1, and stripping a [Clan|CLAN] of their [Profession|PROFESSION] and [Discipline|DISCIPLINE], should they have one).</description>-->
+      <descriptionForTrait>they become embroiled in petty drama with another [Clan|CLAN] they share a [Tile|TILE] with</descriptionForTrait>
+      <isFeud>true</isFeud>
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                     Feud  -  Hates Criminals                     -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Feud_HatesCriminals</ID>
+      <name>Zero Tolerance</name>
+      <description>(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为有人议论对方过去的犯罪行为！双方都要求在[SETTLEMENT]惩罚对方。</description>
+      <!-- (permanently reducing their [Mood|MOOD] by 1, and stripping a [Clan|CLAN] of their [Profession|PROFESSION] and [Discipline|DISCIPLINE], should they have one).</description>-->
+      <descriptionForTrait>they share a [Tile|TILE] with a [Clan|CLAN] of [Criminals|CRIME]</descriptionForTrait>
+      <isFeud>true</isFeud>
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                    Feud  -  Hates the Impure                     -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Feud_HatesUnpure</ID>
+      <name>Cleanse the Impure</name>
+      <description>(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为有人议论对方不洁且道德败坏！双方都要求在[SETTLEMENT]惩罚对方。</description>
+      <!-- (permanently reducing their [Mood|MOOD] by 1, and stripping a [Clan|CLAN] of their [Profession|PROFESSION] and [Discipline|DISCIPLINE], should they have one).</description>-->
+      <descriptionForTrait>they share a [Tile|TILE] with an 'unpure' [Clan|CLAN]</descriptionForTrait>
+      <isFeud>true</isFeud>
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--                   Feud  -  Hates Badly Behaved                   -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Feud_HatesBadlyBehaved</ID>
+      <name>Law and Order</name>
+      <description>(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为他们认为对方举止不端并当众羞辱自己！双方都要求在[SETTLEMENT]惩罚对方。</description>
+      <!-- (permanently reducing their [Mood|MOOD] by 1, and stripping a [Clan|CLAN] of their [Profession|PROFESSION] and [Discipline|DISCIPLINE], should they have one).</description>-->
+      <descriptionForTrait>they share a [Tile|TILE] with a badly behaved [Clan|CLAN]</descriptionForTrait>
+      <isFeud>true</isFeud>
+      <!-- Chance -->
+      <basePercentChance>0</basePercentChance>
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>2</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+  </feuds_General>
+  <feuds_Personality_Clash>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--             Feud  -  Personality Clash  -  Too Nosy              -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Feud_PersonalityClash_TooNosy</ID>
+      <name>Nosy Neighbors</name>
+      <description>(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为有人认为对方反复侵犯隐私！双方都要求在[SETTLEMENT]惩罚对方。</description>
+      <!-- (permanently reducing their [Mood|MOOD] by 1, and stripping a [Clan|CLAN] of their [Profession|PROFESSION] and [Discipline|DISCIPLINE], should they have one).</description>-->
+      <descriptionForTrait>they share a [Tile|TILE] with an 'Attentive', 'Boisterous', 'Curious', or 'Perceptive' [Clan|CLAN]</descriptionForTrait>
+      <descriptionForTrait2>they share a [Tile|TILE] with a 'Disgraced', 'Independent', 'Paranoid', or 'Reclusive' [Clan|CLAN]</descriptionForTrait2>
+      <isFeud>true</isFeud>
+      <!-- Conditions - Prereq 
+			<prereqCondition>
+				<isSharingTile>true</isSharingTile>
+			</prereqCondition>-->
+      <!-- Conditions - Ethical Feud Prereqs 
+			<ethicalFeudPrereqCondition>
+				<traitID>TRAIT_Disgraced</traitID>
+				<traitID>TRAIT_Independent</traitID>
+				<traitID>TRAIT_Paranoid</traitID>
+				<traitID>TRAIT_Reclusive</traitID>-->
+      <!--<traitID>TRAIT_Disfigured</traitID>-->
+      <!--<traitID>TRAIT_Dramatic</traitID>-->
+      <!--<traitID>TRAIT_Reserved</traitID>-->
+      <!--<traitID>TRAIT_Sensitive</traitID>
+			</ethicalFeudPrereqCondition>
+
+			<ethicalFeudPrereqCondition>
+				<traitID>TRAIT_Attentive</traitID>
+				<traitID>TRAIT_Boisterous</traitID>
+				<traitID>TRAIT_Curious</traitID>
+				<traitID>TRAIT_Perceptive</traitID>-->
+      <!--<traitID>TRAIT_Eager</traitID>
+			</ethicalFeudPrereqCondition>-->
+      <!-- Chance 
+			<baseOnceEveryXTurns>100</baseOnceEveryXTurns>-->
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--            Feud  -  Personality Clash  -  Competition            -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Feud_PersonalityClash_Competition</ID>
+      <name>There Can Be Only One</name>
+      <description>(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为他们争论谁更优秀！双方都要求在[SETTLEMENT]惩罚对方。</description>
+      <!-- (permanently reducing their [Mood|MOOD] by 1, and stripping a [Clan|CLAN] of their [Profession|PROFESSION] and [Discipline|DISCIPLINE], should they have one).</description>-->
+      <descriptionForTrait>they share a [Tile|TILE] with another 'Competitive' or 'Confident' [Clan|CLAN]</descriptionForTrait>
+      <descriptionForTrait2>they share a [Tile|TILE] with another 'Competitive' or 'Confident' [Clan|CLAN]</descriptionForTrait2>
+      <isFeud>true</isFeud>
+      <!-- Conditions - Prereq 
+			<prereqCondition>
+				<isSharingTile>true</isSharingTile>
+			</prereqCondition>-->
+      <!-- Conditions - Ethical Feud Prereqs 
+			<ethicalFeudPrereqCondition>
+				<traitID>TRAIT_Competitive</traitID>
+				<traitID>TRAIT_Confident</traitID>
+			</ethicalFeudPrereqCondition>
+
+			<ethicalFeudPrereqCondition>
+				<traitID>TRAIT_Competitive</traitID>
+				<traitID>TRAIT_Confident</traitID>
+			</ethicalFeudPrereqCondition>-->
+      <!-- Chance 
+			<baseOnceEveryXTurns>100</baseOnceEveryXTurns>-->
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--            Feud  -  Personality Clash  -  Immorality             -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Feud_PersonalityClash_Immorality</ID>
+      <name>Cracking the Whip</name>
+      <description>(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为有人议论对方不道德且不配属于本部族！双方都要求在[SETTLEMENT]惩罚对方。</description>
+      <!-- (permanently reducing their [Mood|MOOD] by 1, and stripping a [Clan|CLAN] of their [Profession|PROFESSION] and [Discipline|DISCIPLINE], should they have one).</description>-->
+      <descriptionForTrait>they share a [Tile|TILE] with a 'Corrupt', 'Gluttonous', 'Greedy', 'Hoarder', 'Lazy', or 'Wasteful' [Clan|CLAN]</descriptionForTrait>
+      <descriptionForTrait2>they share a [Tile|TILE] with an 'Attentive', 'Demanding', 'Dutiful', or 'Efficient' [Clan|CLAN]</descriptionForTrait2>
+      <isFeud>true</isFeud>
+      <!-- Conditions - Prereq 
+			<prereqCondition>
+				<isSharingTile>true</isSharingTile>
+			</prereqCondition>-->
+      <!-- Conditions - Ethical Feud Prereqs 
+			<ethicalFeudPrereqCondition>
+				<traitID>TRAIT_Attentive</traitID>
+				<traitID>TRAIT_Demanding</traitID>
+				<traitID>TRAIT_Dutiful</traitID>
+				<traitID>TRAIT_Efficient</traitID>-->
+      <!--<traitID>TRAIT_Ascetic</traitID>-->
+      <!--<traitID>TRAIT_Loyal</traitID>
+			</ethicalFeudPrereqCondition>
+
+			<ethicalFeudPrereqCondition>
+				<traitID>TRAIT_Corrupt</traitID>
+				<traitID>TRAIT_Gluttonous</traitID>
+				<traitID>TRAIT_Greedy</traitID>
+				<traitID>TRAIT_Hoarder</traitID>
+				<traitID>TRAIT_Lazy</traitID>
+				<traitID>TRAIT_Wasteful</traitID>
+			</ethicalFeudPrereqCondition>-->
+      <!-- Chance 
+			<baseOnceEveryXTurns>100</baseOnceEveryXTurns>-->
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--           Feud  -  Personality Clash  -  Too Demanding           -->
+    <!--                                                                  -->
+    <!--                                                                  -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <clanDesire>
+      <ID>DESIRE_Feud_PersonalityClash_TooDemanding</ID>
+      <name>Chill Out</name>
+      <description>(FEUD-DESC)在(NAME)与(NAME2)之间爆发，因为有人指责对方无能！双方都要求在[SETTLEMENT]惩罚对方。</description>
+      <!-- (permanently reducing their [Mood|MOOD] by 1, and stripping a [Clan|CLAN] of their [Profession|PROFESSION] and [Discipline|DISCIPLINE], should they have one).</description>-->
+      <descriptionForTrait>they share a [Tile|TILE] with a 'Demanding', 'Efficient', 'Fastidious', 'Impatient', 'Obstinante', 'Stubborn', or 'Thorough' [Clan|CLAN]</descriptionForTrait>
+      <descriptionForTrait2>they share a [Tile|TILE] with an 'Epicure', 'Frail', 'Gluttonous', or 'Lazy' [Clan|CLAN]</descriptionForTrait2>
+      <isFeud>true</isFeud>
+      <!-- Conditions - Prereq 
+			<prereqCondition>
+				<isSharingTile>true</isSharingTile>
+			</prereqCondition>-->
+      <!-- Conditions - Ethical Feud Prereqs 
+			<ethicalFeudPrereqCondition>
+				<traitID>TRAIT_Epicure</traitID>
+				<traitID>TRAIT_Frail</traitID>
+				<traitID>TRAIT_Gluttonous</traitID>
+				<traitID>TRAIT_Lazy</traitID>
+			</ethicalFeudPrereqCondition>
+
+			<ethicalFeudPrereqCondition>
+				<traitID>TRAIT_Demanding</traitID>
+				<traitID>TRAIT_Efficient</traitID>
+				<traitID>TRAIT_Fastidious</traitID>
+				<traitID>TRAIT_Impatient</traitID>
+				<traitID>TRAIT_Obstinate</traitID>
+				<traitID>TRAIT_Stubborn</traitID>
+				<traitID>TRAIT_Thorough</traitID>-->
+      <!--<traitID>TRAIT_Attentive</traitID>-->
+      <!--<traitID>TRAIT_Eager</traitID>-->
+      <!--<traitID>TRAIT_Obsessive</traitID>-->
+      <!--<traitID>TRAIT_Passionate</traitID>-->
+      <!--<traitID>TRAIT_Perceptive</traitID>
+			</ethicalFeudPrereqCondition>-->
+      <!-- Chance 
+			<baseOnceEveryXTurns>100</baseOnceEveryXTurns>-->
+      <baseMinIntensity>1</baseMinIntensity>
+      <baseMaxIntensity>4</baseMaxIntensity>
+      <!-- Mods -->
+    </clanDesire>
+  </feuds_Personality_Clash>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                                                                  -->
+  <!--                                                                  -->
+  <!--                               TEST                               -->
+  <!--                                                                  -->
+  <!--                                                                  -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+	<TEST>
+
+
+
+		<clanDesire>
+			<ID>DESIRE_TEST</ID>
+			<name>TEST</name>
+			<description>(NAME) has (INTENSITY) switching to an [Active|ACTIVE] [Profession|PROFESSION].</description>
+			<descriptionForTrait>forced into an [Settled|SETTLED] [Profession|PROFESSION] within the [SETTLEMENT]</descriptionForTrait>
+
+			<conditionDesired>
+				<isActive>true</isActive>
+			</conditionDesired>
+
+			<prereqCondition>
+				<isSettled>true</isSettled>
+			</prereqCondition>
+
+			<invalidCondition>
+				<traitID>TRAIT_Lazy</traitID>
+			</invalidCondition>
+
+			<basePercentChance>25</basePercentChance>
+			<baseMinIntensity>1</baseMinIntensity>
+			<baseMaxIntensity>4</baseMaxIntensity>
+
+		</clanDesire>
+
+
+
+	</TEST>-->
+</clanDesires>

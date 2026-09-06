@@ -1,0 +1,465 @@
+<goodyResults>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <Resources>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*                 FOOD                  *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_FOOD</ID>
+      <name>在最近废弃农场的仓库中，你的[EXPLORER]发现了大量[FOOD]！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>RESOURCE_AWARD</propertyID>
+        <num>10</num>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*                 TIMBER                *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_TIMBER</ID>
+      <name>在农场的一间仓库中，你的[EXPLORER]发现了几捆可用的[TIMBER]！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>RESOURCE_AWARD</propertyID>
+        <num>30</num>
+        <resourceID>RESOURCE_TIMBER</resourceID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*                TREASURE               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_TREASURE</ID>
+      <name>在村落遗迹中，你的[EXPLORER]发现了被遗弃的贵重物品！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>RESOURCE_AWARD</propertyID>
+        <num>30</num>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*                 TOOLS                 *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_TOOLS</ID>
+      <name>在村落遗迹中，你的[EXPLORER]发现了一批[TOOLS]！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>RESOURCE_AWARD</propertyID>
+        <num>10</num>
+        <resourceID>RESOURCE_TOOLS</resourceID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*                 WEAPONS               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_WEAPONS</ID>
+      <name>在废墟中，你的[EXPLORER]发现了数件可用的[WEAPONS]！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>RESOURCE_AWARD</propertyID>
+        <num>10</num>
+        <resourceID>RESOURCE_WEAPONS</resourceID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*                LUXURIES               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_LUXURIES</ID>
+      <name>在城市遗迹中，你的[EXPLORER]发现了前居民遗留的各类奢侈品！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>RESOURCE_AWARD</propertyID>
+        <num>5</num>
+        <resourceID>RESOURCE_CLOTH</resourceID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+      <property>
+        <propertyID>RESOURCE_AWARD</propertyID>
+        <num>5</num>
+        <resourceID>RESOURCE_ALCOHOL</resourceID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+      <property>
+        <propertyID>RESOURCE_AWARD</propertyID>
+        <num>5</num>
+        <resourceID>RESOURCE_OIL</resourceID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+  </Resources>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <Units>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*             UNIT - FARMER             *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_FARMER</ID>
+      <name>在废墟中，你的[EXPLORER]发现了一个由[FARMER:S]组成的[氏族|CLAN]，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_FARMER</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*             UNIT - GATHERER           *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_GATHERER</ID>
+      <name>在废墟中，你的[EXPLORER]发现了一个由[GATHERER:S]组成的[氏族|CLAN]，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_GATHERER</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*             UNIT - REAPER             *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_REAPER</ID>
+      <name>在废墟中，你的[EXPLORER]发现了一个由[REAPER:S]组成的[氏族|CLAN]，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_REAPER</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*             UNIT - DIGGER             *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_DIGGER</ID>
+      <name>在村落遗迹中，你的[EXPLORER]发现了一个由[DIGGER:S]组成的[氏族|CLAN]，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_DIGGER</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*        UNIT - WOOD COLLECTOR          *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_WOOD_COLLECTOR</ID>
+      <name>在村落遗迹中，你的[EXPLORER]发现了一个由[WOOD-COLLECTOR:S]组成的[氏族|CLAN]，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_WOOD_COLLECTOR</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*              UNIT - MINER             *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_MINER</ID>
+      <name>在村落遗迹中，你的[EXPLORER]发现了一个由[MINER:S]组成的[氏族|CLAN]，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_MINER</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*             UNIT - LOGGER             *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_LOGGER</ID>
+      <name>在村落遗迹中，你的[EXPLORER]发现了一个由[LOGGER:S]组成的[氏族|CLAN]，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_LOGGER</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*              UNIT - TRADER              *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_TRADER</ID>
+      <name>在城市遗迹中，你的[EXPLORER]发现了一群[TRADER:S]，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_TRADER</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*              UNIT - SURVEYOR            *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_SURVEYOR</ID>
+      <name>在城市遗迹中，你的[EXPLORER]发现了一群[SURVEYOR:S]，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_SURVEYOR</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*            UNIT - SUPPLY CAMP           *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <!--<goodyResult>
+		<ID>GOODY_RESULT_SUPPLY_CAMP</ID>
+		<name>Hidden inside the Farm's storage your [EXPLORER] finds a fully functional supply wagon!</name>
+    <description>TODO</description>
+
+		<property>
+			<propertyID>CREATE_UNIT</propertyID>
+			<ID>UNIT_SUPPLY_WAGON</ID>
+      <fromDescription>from [Deserted Location|DESERTED-LOCATION]</fromDescription>
+    </property>
+	</goodyResult>-->
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*               UNIT - EXPLORER              *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_EXPLORER</ID>
+      <name>在要塞遗迹中，你的[EXPLORER]发现了另一群四处流浪的探索者，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_EXPLORER</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*             UNIT - ARCHER               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_ARCHER</ID>
+      <name>在要塞遗迹中，你的[EXPLORER]发现了一群流浪的[战士|WARRIOR]，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_ARCHER</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*              UNIT - LANCER              *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_LANCER</ID>
+      <name>在要塞遗迹中，你的[EXPLORER]发现了一群流浪的[骑兵|CAVALRY]，希望加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_LIGHT_CAVALRY</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*           UNIT - ROMAN LEGION           *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_ROMAN_LEGION</ID>
+      <name>在城市遗迹中，你的[EXPLORER]发现了一群对罗马失望的士兵，愿意加入你！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_UNIT</propertyID>
+        <ID>UNIT_ROMAN_LEGION</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+  </Units>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <Unit_Upgrades>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*           VISION POINT           *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_VISION_POINT</ID>
+      <name>在废墟中，你的[EXPLORER]发现了能提升视野范围的装备！（+1 [视野|VISION]）</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>VISION</propertyID>
+        <num>1</num>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*            MOVE POINT            *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_MOVE_POINT</ID>
+      <name>在废墟中，你的[EXPLORER]发现了能提升移动能力的轻便装备！（+1 [移动|MOVE-POINT]）</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>MOVES</propertyID>
+        <num>1</num>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*        SUPPLY COST        *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_SUPPLY_COST</ID>
+      <name>在农场的仓库中，你的[EXPLORER]发现了愿意加入他的生存专家！（所需[补给|SUPPLY] -1）</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>SUPPLY_NEEDED</propertyID>
+        <num>-1</num>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*             POWER             *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_POWER_UPGRADE</ID>
+      <name>在废墟中，你的[EXPLORER]发现了能提升其[力量|POWER]的更好装备！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>POWER</propertyID>
+        <num>3</num>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*         VISION & MOVE & POWER         *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_VISION_MOVE_POWER</ID>
+      <name>在废墟中，你的[EXPLORER]发现了一批精良装备！其[力量|POWER]、[移动|MOVE-POINT]和[视野|VISION]均得到提升！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>VISION</propertyID>
+        <num>1</num>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+      <property>
+        <propertyID>MOVES</propertyID>
+        <num>1</num>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+      <property>
+        <propertyID>POWER</propertyID>
+        <num>3</num>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+  </Unit_Upgrades>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <Other>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*         REVEAL NEARBY GOODIES         *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_REVEAL_NEARBY_GOODIES</ID>
+      <name>在破碎的建筑中，你的[EXPLORER]发现了一张勉强可辨的地图，揭示附近其他[废弃地点|DESERTED-LOCATION]！</name>
+      <description>TODO</description>
+      <numNearbyGoodiesRequired>2</numNearbyGoodiesRequired>
+      <property>
+        <propertyID>REVEAL_NEARBY_GOODIES</propertyID>
+        <num>4</num>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*                BANDITS                *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_BANDITS</ID>
+      <name>在要塞遗迹中，你的[EXPLORER]意外撞见了一支埋伏的[强盗|BANDIT]部队！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>CREATE_ADJACENT_HOSTILE_UNIT</propertyID>
+        <ID>UNIT_SLAVE_INFANTRY</ID>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*               FREE TECH               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <goodyResult>
+      <ID>GOODY_RESULT_TECH</ID>
+      <name>在废墟中，你的[EXPLORER]发现了失传罗马技艺的秘密！</name>
+      <description>TODO</description>
+      <property>
+        <propertyID>Free_Tech</propertyID>
+        <num>1</num>
+        <fromDescription>来自[废弃地点|DESERTED-LOCATION]</fromDescription>
+      </property>
+    </goodyResult>
+  </Other>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+</goodyResults>

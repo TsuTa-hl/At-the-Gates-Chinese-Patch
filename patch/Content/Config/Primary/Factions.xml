@@ -1,0 +1,1679 @@
+<!-- NOTE: The game expects the 'splinter' factions for each Roman Empire to come first. -->
+<factions>
+  <NPCs_Romans>
+    <NPCs>
+      <!--*****************************************-->
+      <!--*                                       *-->
+      <!--*               NEUTRALS                *-->
+      <!--*                                       *-->
+      <!--*****************************************-->
+      <faction>
+        <ID>FACTION_NEUTRALS</ID>
+        <name>Neutrals</name>
+        <description>TODO</description>
+        <duplicateFactionNamesList>
+          <name>苏维比人</name>
+          <name>弗里西人</name>
+          <name>朱特人</name>
+          <name>勃艮第人</name>
+          <name>斯基里人</name>
+          <name>保加尔人</name>
+          <name>图林根人</name>
+          <name>坦克特里人</name>
+          <name>切鲁西人</name>
+          <name>赫尔蒙杜里人</name>
+          <name>查蒂人</name>
+          <name>鲁吉人</name>
+          <name>赫鲁利人</name>
+          <name>格皮德人</name>
+          <name>萨尔马特人</name>
+          <name>巴伐利亚人</name>
+          <name>可萨人</name>
+          <name>柏柏尔人</name>
+          <name>盎格鲁人</name>
+          <name>瓦兰吉人</name>
+          <name>马扎尔人</name>
+          <name>丹麦人</name>
+          <name>特尔文吉人</name>
+          <name>格鲁通吉人</name>
+          <name>巴斯塔奈人</name>
+          <name>佩乌奇尼人</name>
+          <name>斯基泰人</name>
+          <name>阿兰人</name>
+          <name>盖塔人</name>
+          <name>达契亚人</name>
+          <name>贾特人</name>
+          <name>耶阿特人</name>
+          <name>马萨革太人</name>
+          <name>阿斯帕西奥伊人</name>
+          <name>达赫人</name>
+          <name>伊塞多涅斯人</name>
+          <name>乌孙人</name>
+          <name>塞迦人</name>
+          <name>瓦里尼人</name>
+          <name>卡里尼人</name>
+          <name>古托内斯人</name>
+          <name>辛布里人</name>
+          <name>条顿人</name>
+          <name>考基人</name>
+          <name>莱莫维人</name>
+          <name>夸迪人</name>
+          <name>伊阿齐格斯人</name>
+          <name>马科曼尼人</name>
+          <name>科斯托博奇人</name>
+          <name>哈斯丁吉人</name>
+          <name>拉克林吉人</name>
+          <name>布里人</name>
+          <name>科蒂尼人</name>
+          <name>卡尔皮人</name>
+          <name>泰法利人</name>
+          <name>维克托哈利人</name>
+          <name>萨利安人</name>
+        </duplicateFactionNamesList>
+        <shortName>Ntr</shortName>
+        <adjective>Neutral</adjective>
+        <leaderID>LEADER_MINOR</leaderID>
+        <color>White</color>
+        <flag>Images/Interface/OnMap/Flags/White</flag>
+        <borderColor>White</borderColor>
+        <borderPreviewColor>B9B9B9C9</borderPreviewColor>
+        <defaultReligionID>RELIGION_PAGAN</defaultReligionID>
+        <isIndependent>true</isIndependent>
+        <controlRangeChange>-2</controlRangeChange>
+        <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+        <traits>
+          <trait>
+            <factionTraitID>FACTIONTRAIT_MINOR</factionTraitID>
+            <percentChance>100</percentChance>
+          </trait>
+        </traits>
+        <!-- Cities -->
+        <city>
+          <placeableID>PLACEABLE_SETTLEMENT</placeableID>
+          <name>小部族</name>
+          <isCapital>true</isCapital>
+          <unitID>UNIT_NO_PROFESSION</unitID>
+          <unitID>UNIT_NO_PROFESSION</unitID>
+          <unitID>UNIT_NO_PROFESSION</unitID>
+        </city>
+      </faction>
+      <!--*****************************************-->
+      <!--*                                       *-->
+      <!--*                BANDITS                *-->
+      <!--*                                       *-->
+      <!--*****************************************-->
+      <faction>
+        <ID>FACTION_BANDITS</ID>
+        <name>Bandits</name>
+        <description>TODO</description>
+        <duplicateFactionNamesList>
+          <name>Bandits 1</name>
+          <name>Bandits 2</name>
+          <name>Bandits 3</name>
+          <name>Bandits 4</name>
+          <name>Bandits 5</name>
+        </duplicateFactionNamesList>
+        <shortName>Bnd</shortName>
+        <adjective>Bandit</adjective>
+        <leaderID>LEADER_BANDIT</leaderID>
+        <color>Black</color>
+        <flag>Images/Interface/OnMap/Flags/Black</flag>
+        <borderColor>181818</borderColor>
+        <borderPreviewColor>333333C9</borderPreviewColor>
+        <defaultReligionID>RELIGION_PAGAN</defaultReligionID>
+        <isHostileTribes>true</isHostileTribes>
+        <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+      </faction>
+    </NPCs>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <Western_Rome>
+      <!--*****************************************-->
+      <!--*                                       *-->
+      <!--*         WESTERN ROME - REBELS         *-->
+      <!--*                                       *-->
+      <!--*****************************************-->
+      <faction>
+        <ID>FACTION_WESTERN_ROME_REBELS</ID>
+        <name>Western Roman Rebels</name>
+        <description>TODO</description>
+        <shortName>WRR</shortName>
+        <adjective>Western Roman (R)</adjective>
+        <leaderID>LEADER_WESTERN_ROME</leaderID>
+        <color>Orange</color>
+        <flag>Images/Interface/OnMap/Flags/Orange</flag>
+        <borderColor>fb7c00</borderColor>
+        <borderPreviewColor>bb7016D9</borderPreviewColor>
+        <defaultReligionID>RELIGION_NICENE</defaultReligionID>
+        <isRomanSplinter>true</isRomanSplinter>
+        <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+        <!-- Faction Traits -->
+        <traits>
+          <trait>
+            <factionTraitID>FACTIONTRAIT_ROMAN</factionTraitID>
+            <percentChance>100</percentChance>
+          </trait>
+        </traits>
+      </faction>
+      <!--*****************************************-->
+      <!--*                                       *-->
+      <!--*      WESTERN ROME - INDEPENDENTS      *-->
+      <!--*                                       *-->
+      <!--*****************************************-->
+      <faction>
+        <ID>FACTION_WESTERN_ROME_INDEPENDENTS</ID>
+        <name>Western Roman Independents</name>
+        <description>TODO</description>
+        <shortName>WRI</shortName>
+        <adjective>Western Roman (I)</adjective>
+        <leaderID>LEADER_WESTERN_ROME</leaderID>
+        <color>Green</color>
+        <flag>Images/Interface/OnMap/Flags/Green</flag>
+        <borderColor>Green</borderColor>
+        <borderPreviewColor>16d916D9</borderPreviewColor>
+        <defaultReligionID>RELIGION_NICENE</defaultReligionID>
+        <isRomanSplinter>true</isRomanSplinter>
+        <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+        <!-- Faction Traits -->
+        <traits>
+          <trait>
+            <factionTraitID>FACTIONTRAIT_ROMAN</factionTraitID>
+            <percentChance>100</percentChance>
+          </trait>
+        </traits>
+      </faction>
+      <!--*****************************************-->
+      <!--*                                       *-->
+      <!--*             WESTERN ROME              *-->
+      <!--*                                       *-->
+      <!--*****************************************-->
+      <faction>
+        <ID>FACTION_WESTERN_ROME</ID>
+        <name>The Western Roman Empire</name>
+        <description>TODO</description>
+        <shortName>WRm</shortName>
+        <adjective>Western Roman</adjective>
+        <leaderID>LEADER_WESTERN_ROME</leaderID>
+        <color>Red</color>
+        <flag>Images/Interface/OnMap/Flags/Red</flag>
+        <borderColor>a91313</borderColor>
+        <borderPreviewColor>901717D9</borderPreviewColor>
+        <defaultReligionID>RELIGION_NICENE</defaultReligionID>
+        <hereticalReligionID>RELIGION_ARIAN</hereticalReligionID>
+        <isRoman>true</isRoman>
+        <rebelFactionID>FACTION_WESTERN_ROME_REBELS</rebelFactionID>
+        <independentFactionID>FACTION_WESTERN_ROME_INDEPENDENTS</independentFactionID>
+        <placeOnLeftSideOfMap>true</placeOnLeftSideOfMap>
+        <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+        <!-- Faction Traits -->
+        <traits>
+          <trait>
+            <factionTraitID>FACTIONTRAIT_ROMAN</factionTraitID>
+            <percentChance>100</percentChance>
+          </trait>
+        </traits>
+        <!-- Starting Cities -->
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Rome</name>
+          <population>5.0</population>
+          <isCapital>true</isCapital>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_HEAVY_CAVALRY</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Milan</name>
+          <population>5.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LIGHT_CAVALRY</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Ravenna</name>
+          <population>3.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Trier</name>
+          <population>3.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Aquileia</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Lugdunum</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Massilia</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Carthage</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Londinium</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Leptis Magna</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Carthago Nova</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <!-- Starting Faction Structures -->
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+      </faction>
+    </Western_Rome>
+    <Eastern_Rome>
+      <!--*****************************************-->
+      <!--*                                       *-->
+      <!--*         EASTERN ROME - REBELS         *-->
+      <!--*                                       *-->
+      <!--*****************************************-->
+      <faction>
+        <ID>FACTION_EASTERN_ROME_REBELS</ID>
+        <name>Eastern Roman Rebels</name>
+        <description>TODO</description>
+        <shortName>ERR</shortName>
+        <adjective>Eastern Roman (R)</adjective>
+        <leaderID>LEADER_EASTERN_ROME</leaderID>
+        <color>Maroon</color>
+        <flag>Images/Interface/OnMap/Flags/Maroon</flag>
+        <borderColor>Maroon</borderColor>
+        <borderPreviewColor>901780D9</borderPreviewColor>
+        <defaultReligionID>RELIGION_ARIAN</defaultReligionID>
+        <isRomanSplinter>true</isRomanSplinter>
+        <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+        <!-- Faction Traits -->
+        <traits>
+          <trait>
+            <factionTraitID>FACTIONTRAIT_ROMAN</factionTraitID>
+            <percentChance>100</percentChance>
+          </trait>
+        </traits>
+      </faction>
+      <!--*****************************************-->
+      <!--*                                       *-->
+      <!--*      EASTERN ROME - INDEPENDENTS      *-->
+      <!--*                                       *-->
+      <!--*****************************************-->
+      <faction>
+        <ID>FACTION_EASTERN_ROME_INDEPENDENTS</ID>
+        <name>Eastern Roman Independents</name>
+        <description>TODO</description>
+        <shortName>ERI</shortName>
+        <adjective>Eastern Roman (I)</adjective>
+        <leaderID>LEADER_EASTERN_ROME</leaderID>
+        <color>Gray</color>
+        <flag>Images/Interface/OnMap/Flags/Gray</flag>
+        <borderColor>Gray</borderColor>
+        <borderPreviewColor>606060D9</borderPreviewColor>
+        <defaultReligionID>RELIGION_ARIAN</defaultReligionID>
+        <isRomanSplinter>true</isRomanSplinter>
+        <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+        <!-- Faction Traits -->
+        <traits>
+          <trait>
+            <factionTraitID>FACTIONTRAIT_ROMAN</factionTraitID>
+            <percentChance>100</percentChance>
+          </trait>
+        </traits>
+      </faction>
+      <!--*****************************************-->
+      <!--*                                       *-->
+      <!--*              EASTERN ROME             *-->
+      <!--*                                       *-->
+      <!--*****************************************-->
+      <faction>
+        <ID>FACTION_EASTERN_ROME</ID>
+        <name>The Eastern Roman Empire</name>
+        <description>TODO</description>
+        <shortName>ERm</shortName>
+        <adjective>Eastern Roman</adjective>
+        <leaderID>LEADER_EASTERN_ROME</leaderID>
+        <color>Purple</color>
+        <flag>Images/Interface/OnMap/Flags/Purple</flag>
+        <borderColor>6325b1</borderColor>
+        <borderPreviewColor>7030A9D9</borderPreviewColor>
+        <defaultReligionID>RELIGION_ARIAN</defaultReligionID>
+        <hereticalReligionID>RELIGION_NICENE</hereticalReligionID>
+        <isRoman>true</isRoman>
+        <rebelFactionID>FACTION_EASTERN_ROME_REBELS</rebelFactionID>
+        <independentFactionID>FACTION_EASTERN_ROME_INDEPENDENTS</independentFactionID>
+        <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+        <!-- Faction Traits -->
+        <traits>
+          <trait>
+            <factionTraitID>FACTIONTRAIT_ROMAN</factionTraitID>
+            <percentChance>100</percentChance>
+          </trait>
+        </traits>
+        <!-- Starting Cities -->
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Constantinople</name>
+          <population>4.0</population>
+          <isCapital>true</isCapital>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LIGHT_CAVALRY</unitID>
+          <unitID>UNIT_ROMAN_HEAVY_CAVALRY</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Athens</name>
+          <population>3.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LIGHT_CAVALRY</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Damascus</name>
+          <population>4.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_HEAVY_CAVALRY</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Pergamum</name>
+          <population>3.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Smyrna</name>
+          <population>3.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Alexandria</name>
+          <population>5.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Corinth</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Antioch</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Ephesus</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Jerusalem</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <city>
+          <placeableID>PLACEABLE_CITY_CORE</placeableID>
+          <name>Sirmium</name>
+          <population>2.0</population>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+          <unitID>UNIT_ROMAN_LEGION</unitID>
+        </city>
+        <!-- Starting Faction Structures -->
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_FARM_ADDS_FERTILE</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+        <placeableID>PLACEABLE_LOGGING_CAMP_ADDS_FOREST</placeableID>
+      </faction>
+    </Eastern_Rome>
+  </NPCs_Romans>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <Tribes>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*               THE GOTHS               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <faction>
+      <ID>FACTION_GOTHS</ID>
+      <name>The Goths</name>
+      <description>TEXT.Faction.FactionTraitDescription.Goths</description>
+      <shortName>Gth</shortName>
+      <adjective>Gothic</adjective>
+      <isPlayable>true</isPlayable>
+      <leaderID>LEADER_ALARIC</leaderID>
+      <color>Blue</color>
+      <flag>Images/Interface/OnMap/Flags/Blue</flag>
+      <borderColor>02478e</borderColor>
+      <!--<borderPreviewColor>265086FF</borderPreviewColor>-->
+      <!--<borderPreviewColor>13284380</borderPreviewColor>-->
+      <borderPreviewColor>01234780</borderPreviewColor>
+      <defaultReligionID>RELIGION_ARIAN</defaultReligionID>
+      <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+      <cityMovementRate>1</cityMovementRate>
+      <romanSatelliteMustBeInRegion>true</romanSatelliteMustBeInRegion>
+      <!-- Faction Traits 
+        <traits>
+            <trait>
+                <factionTraitID>FACTIONTRAIT_GOTHS</factionTraitID>
+                <percentChance>100</percentChance>
+            </trait>
+        </traits>-->
+      <!-- Resources Per Turn -->
+      <resource>
+        <resourceID>RESOURCE_FAME</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_PRESTIGE</resourceID>
+        <freeNumPerTurn>2</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_KNOWLEDGE</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <!-- Resources -->
+      <resource>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <startingNum>10</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <startingNum>100</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TOOLS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_WEAPONS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TIMBER</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <!-- Cities -->
+      <city>
+        <placeableID>PLACEABLE_SETTLEMENT</placeableID>
+        <name>The Goths</name>
+        <isCapital>true</isCapital>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+      </city>
+      <!-- Nearby Roman Structures -->
+      <nearbyRomanPlaceableID>PLACEABLE_ROMAN_FORT</nearbyRomanPlaceableID>
+      <!-- Nearby Zone Traits -->
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>0</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_IRON</ID>
+        <validRing>0</validRing>
+        <validRing>1</validRing>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <!--<zoneTrait>
+        <ID>TRAIT_BANDIT_CAMP</ID>
+        <validRing>3</validRing>
+      </zoneTrait>
+			<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+				<validRing>4</validRing>
+			</zoneTrait>-->
+    </faction>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*                THE HUNS               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <faction>
+      <ID>FACTION_HUNS</ID>
+      <name>The Huns</name>
+      <description>TEXT.Faction.FactionTraitDescription.Huns</description>
+      <shortName>Hun</shortName>
+      <adjective>Hunnic</adjective>
+      <isPlayable>true</isPlayable>
+      <leaderID>LEADER_ATTILA</leaderID>
+      <color>Yellow</color>
+      <flag>Images/Interface/OnMap/Flags/Yellow</flag>
+      <borderColor>fcc738</borderColor>
+      <!--<borderPreviewColor>CDB85CCE</borderPreviewColor>-->
+      <borderPreviewColor>BEA850C0</borderPreviewColor>
+      <defaultReligionID>RELIGION_PAGAN</defaultReligionID>
+      <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+      <cityMovementRate>1</cityMovementRate>
+      <romanSatelliteMustBeInRegion>true</romanSatelliteMustBeInRegion>
+      <!-- Faction Traits -->
+      <cannotOwnStructures>true</cannotOwnStructures>
+      <startsWithUnitID>UNIT_HORSE_ARCHER</startsWithUnitID>
+      <startsWithTechID>UNIT_HORSE_ARCHER</startsWithTechID>
+      <cannotTrainUnitID>UNIT_FARMER</cannotTrainUnitID>
+      <cannotTrainUnitID>UNIT_RANCHER</cannotTrainUnitID>
+      <cannotTrainUnitID>UNIT_MINER</cannotTrainUnitID>
+      <cannotTrainUnitID>UNIT_LOGGER</cannotTrainUnitID>
+      <cannotTrainUnitID>UNIT_TRADER</cannotTrainUnitID>
+      <cannotResearchTechID>UNIT_FARMER</cannotResearchTechID>
+      <cannotResearchTechID>UNIT_RANCHER</cannotResearchTechID>
+      <cannotResearchTechID>UNIT_MINER</cannotResearchTechID>
+      <cannotResearchTechID>UNIT_LOGGER</cannotResearchTechID>
+      <cannotResearchTechID>UNIT_TRADER</cannotResearchTechID>
+      <traits>
+        <!--<trait>-->
+        <!--<factionTraitID>FACTIONTRAIT_HUNS</factionTraitID>-->
+        <!--<percentChance>100</percentChance>-->
+        <!--</trait>-->
+        <trait>
+          <factionTraitID>FACTIONTRAIT_HORSEMEN</factionTraitID>
+          <percentChance>100</percentChance>
+          <!--<ignoreIfHuman>true</ignoreIfHuman>-->
+        </trait>
+      </traits>
+      <!-- Resources Per Turn -->
+      <resource>
+        <resourceID>RESOURCE_FAME</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_PRESTIGE</resourceID>
+        <freeNumPerTurn>2</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_KNOWLEDGE</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <!-- Resources -->
+      <resource>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <startingNum>10</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <startingNum>40</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TOOLS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_WEAPONS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TIMBER</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <!-- Cities -->
+      <city>
+        <placeableID>PLACEABLE_SETTLEMENT</placeableID>
+        <name>The Huns</name>
+        <isCapital>true</isCapital>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+      </city>
+      <!-- Nearby Roman Structures -->
+      <nearbyRomanPlaceableID>PLACEABLE_ROMAN_FORT</nearbyRomanPlaceableID>
+      <!-- Nearby Zone Traits -->
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>0</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_IRON</ID>
+        <validRing>0</validRing>
+        <validRing>1</validRing>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <!--<zoneTrait>
+        <ID>TRAIT_BANDIT_CAMP</ID>
+        <validRing>3</validRing>
+      </zoneTrait>
+			<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+				<validRing>4</validRing>
+			</zoneTrait>-->
+    </faction>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*              THE VANDALS              *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <faction>
+      <ID>FACTION_VANDALS</ID>
+      <name>The Vandals</name>
+      <description>TEXT.Faction.FactionTraitDescription.Vandals</description>
+      <shortName>Vdl</shortName>
+      <adjective>Vandal</adjective>
+      <isPlayable>true</isPlayable>
+      <leaderID>LEADER_GENSERIC</leaderID>
+      <color>Silver</color>
+      <flag>Images/Interface/OnMap/Flags/Gray</flag>
+      <borderColor>Silver</borderColor>
+      <borderPreviewColor>686868D0</borderPreviewColor>
+      <defaultReligionID>RELIGION_ARIAN</defaultReligionID>
+      <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+      <cityMovementRate>1</cityMovementRate>
+      <romanSatelliteMustBeInRegion>true</romanSatelliteMustBeInRegion>
+      <!-- Faction Traits -->
+      <hasPermanentAllianceWithRome>true</hasPermanentAllianceWithRome>
+      <romanGiftMinTurns>24</romanGiftMinTurns>
+      <romanGiftMaxTurns>36</romanGiftMaxTurns>
+      <romanGiftPossibility>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <num100>500</num100>
+      </romanGiftPossibility>
+      <romanGiftPossibility>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <num100>4000</num100>
+      </romanGiftPossibility>
+      <traits>
+        <!--<trait>-->
+        <!--<factionTraitID>FACTIONTRAIT_VANDALS</factionTraitID>-->
+        <!--<percentChance>100</percentChance>-->
+        <!--</trait>-->
+        <trait>
+          <factionTraitID>FACTIONTRAIT_MARITIME</factionTraitID>
+          <percentChance>100</percentChance>
+          <!--<ignoreIfHuman>true</ignoreIfHuman>-->
+        </trait>
+      </traits>
+      <!-- Resources Per Turn -->
+      <resource>
+        <resourceID>RESOURCE_FAME</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_PRESTIGE</resourceID>
+        <freeNumPerTurn>2</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_KNOWLEDGE</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <!-- Resources -->
+      <resource>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <startingNum>10</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <startingNum>40</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TOOLS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_WEAPONS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TIMBER</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <!-- Cities -->
+      <city>
+        <placeableID>PLACEABLE_SETTLEMENT</placeableID>
+        <name>The Vandals</name>
+        <isCapital>true</isCapital>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+      </city>
+      <!-- Nearby Roman Structures -->
+      <nearbyRomanPlaceableID>PLACEABLE_ROMAN_FORT</nearbyRomanPlaceableID>
+      <!-- Nearby Zone Traits -->
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>0</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_IRON</ID>
+        <validRing>0</validRing>
+        <validRing>1</validRing>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <!--<zoneTrait>
+        <ID>TRAIT_BANDIT_CAMP</ID>
+        <validRing>3</validRing>
+      </zoneTrait>
+			<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+				<validRing>4</validRing>
+			</zoneTrait>-->
+    </faction>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*              THE ALEMANNI             *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <faction>
+      <ID>FACTION_ALEMANNI</ID>
+      <name>The Alemanni</name>
+      <description>TEXT.Faction.FactionTraitDescription.Alemanni</description>
+      <shortName>Alm</shortName>
+      <adjective>Alemanni</adjective>
+      <isPlayable>true</isPlayable>
+      <leaderID>LEADER_KROKUS</leaderID>
+      <color>Orange</color>
+      <flag>Images/Interface/OnMap/Flags/Orange</flag>
+      <borderColor>ff7800</borderColor>
+      <borderPreviewColor>A86010B0</borderPreviewColor>
+      <defaultReligionID>RELIGION_ARIAN</defaultReligionID>
+      <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+      <cityMovementRate>1</cityMovementRate>
+      <romanSatelliteMustBeInRegion>true</romanSatelliteMustBeInRegion>
+      <!-- Faction Traits -->
+      <resourceProductionMod>
+        <resourceID>RESOURCE_FAME</resourceID>
+        <num100>-50</num100>
+      </resourceProductionMod>
+      <allClansMustHaveTrait>
+        <traitID>TRAIT_Adaptable</traitID>
+        <traitID>TRAIT_Archers</traitID>
+        <traitID>TRAIT_Attentive</traitID>
+        <traitID>TRAIT_Calm</traitID>
+        <traitID>TRAIT_Charismatic</traitID>
+        <traitID>TRAIT_Confident</traitID>
+        <traitID>TRAIT_Creative</traitID>
+        <traitID>TRAIT_Curious</traitID>
+        <traitID>TRAIT_Dabbler</traitID>
+        <traitID>TRAIT_Diggers</traitID>
+        <traitID>TRAIT_Dutiful</traitID>
+        <traitID>TRAIT_Eager</traitID>
+        <traitID>TRAIT_Efficient</traitID>
+        <traitID>TRAIT_Eloquent</traitID>
+        <traitID>TRAIT_Epicure</traitID>
+        <traitID>TRAIT_Esteemed</traitID>
+        <traitID>TRAIT_Explorers</traitID>
+        <traitID>TRAIT_Farmers</traitID>
+        <traitID>TRAIT_Fast_Learner</traitID>
+        <traitID>TRAIT_Fastidious</traitID>
+        <traitID>TRAIT_Gatherers</traitID>
+        <traitID>TRAIT_Gentle</traitID>
+        <traitID>TRAIT_Green_Thumb</traitID>
+        <traitID>TRAIT_Gregarious</traitID>
+        <traitID>TRAIT_Handy</traitID>
+        <traitID>TRAIT_Herder</traitID>
+        <traitID>TRAIT_Hillmen</traitID>
+        <traitID>TRAIT_Hunters</traitID>
+        <traitID>TRAIT_Imaginative</traitID>
+        <traitID>TRAIT_Intimidating</traitID>
+        <traitID>TRAIT_Loggers</traitID>
+        <traitID>TRAIT_Loyal</traitID>
+        <traitID>TRAIT_Marshmen</traitID>
+        <traitID>TRAIT_Miners</traitID>
+        <traitID>TRAIT_Nomadic</traitID>
+        <traitID>TRAIT_Northmen</traitID>
+        <traitID>TRAIT_Obedient</traitID>
+        <traitID>TRAIT_Passionate</traitID>
+        <traitID>TRAIT_Peddlers</traitID>
+        <traitID>TRAIT_Perceptive</traitID>
+        <traitID>TRAIT_Ranchers</traitID>
+        <traitID>TRAIT_Reapers</traitID>
+        <traitID>TRAIT_Resourceful</traitID>
+        <traitID>TRAIT_Rivermen</traitID>
+        <traitID>TRAIT_Rustic</traitID>
+        <traitID>TRAIT_Stoic</traitID>
+        <traitID>TRAIT_Strong</traitID>
+        <traitID>TRAIT_Surveyors</traitID>
+        <traitID>TRAIT_Tough</traitID>
+        <traitID>TRAIT_Trappers</traitID>
+        <traitID>TRAIT_Vigorous</traitID>
+        <traitID>TRAIT_Wood_Collectors</traitID>
+        <traitID>TRAIT_Woodsmen</traitID>
+      </allClansMustHaveTrait>
+      <noClansCanHaveTrait>
+        <traitID>TRAIT_Afraid_of_Animals</traitID>
+        <traitID>TRAIT_Afraid_of_Fire</traitID>
+        <traitID>TRAIT_Afraid_of_Water</traitID>
+        <traitID>TRAIT_All_Thumbs</traitID>
+        <traitID>TRAIT_Bow_Legged</traitID>
+        <traitID>TRAIT_Brown_Thumb</traitID>
+        <traitID>TRAIT_Competitive</traitID>
+        <traitID>TRAIT_Corrupt</traitID>
+        <traitID>TRAIT_Craven</traitID>
+        <traitID>TRAIT_Demanding</traitID>
+        <traitID>TRAIT_Disgraced</traitID>
+        <traitID>TRAIT_Dramatic</traitID>
+        <traitID>TRAIT_Easily_Cold</traitID>
+        <traitID>TRAIT_Envious</traitID>
+        <traitID>TRAIT_Filthy</traitID>
+        <traitID>TRAIT_Frail</traitID>
+        <traitID>TRAIT_Gluttonous</traitID>
+        <traitID>TRAIT_Greedy</traitID>
+        <traitID>TRAIT_Hoarder</traitID>
+        <traitID>TRAIT_Impatient</traitID>
+        <traitID>TRAIT_Impulsive</traitID>
+        <traitID>TRAIT_Lazy</traitID>
+        <traitID>TRAIT_Leperous</traitID>
+        <traitID>TRAIT_Low_Fertility</traitID>
+        <traitID>TRAIT_Meek</traitID>
+        <traitID>TRAIT_Miserable</traitID>
+        <traitID>TRAIT_Nervous</traitID>
+        <traitID>TRAIT_Obsessive</traitID>
+        <traitID>TRAIT_Obstinate</traitID>
+        <traitID>TRAIT_Paranoid</traitID>
+        <traitID>TRAIT_Petty</traitID>
+        <traitID>TRAIT_Reclusive</traitID>
+        <traitID>TRAIT_Rowdy</traitID>
+        <traitID>TRAIT_Sensitive</traitID>
+        <traitID>TRAIT_Smithing_Lineage</traitID>
+        <traitID>TRAIT_Squeamish</traitID>
+        <traitID>TRAIT_Stubborn</traitID>
+        <traitID>TRAIT_Sullen</traitID>
+        <traitID>TRAIT_Wasteful</traitID>
+      </noClansCanHaveTrait>
+      <!--<traits>-->
+      <!--<trait>-->
+      <!--<factionTraitID>FACTIONTRAIT_ALEMANNI</factionTraitID>-->
+      <!--<percentChance>100</percentChance>-->
+      <!--</trait>-->
+      <!--</traits>-->
+      <!-- Resources Per Turn -->
+      <resource>
+        <resourceID>RESOURCE_FAME</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_PRESTIGE</resourceID>
+        <freeNumPerTurn>2</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_KNOWLEDGE</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <!-- Resources -->
+      <resource>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <startingNum>10</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <startingNum>40</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TOOLS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_WEAPONS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TIMBER</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <!-- Cities -->
+      <city>
+        <placeableID>PLACEABLE_SETTLEMENT</placeableID>
+        <name>The Alemanni</name>
+        <isCapital>true</isCapital>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+      </city>
+      <!-- Nearby Roman Structures -->
+      <nearbyRomanPlaceableID>PLACEABLE_ROMAN_FORT</nearbyRomanPlaceableID>
+      <!-- Nearby Zone Traits -->
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>0</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_IRON</ID>
+        <validRing>0</validRing>
+        <validRing>1</validRing>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <!--<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+			</zoneTrait>
+			<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+				<validRing>4</validRing>
+			</zoneTrait>-->
+    </faction>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*               THE PICTS               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <faction>
+      <ID>FACTION_PICTS</ID>
+      <name>The Picts</name>
+      <description>TEXT.Faction.FactionTraitDescription.Picts</description>
+      <shortName>Pct</shortName>
+      <adjective>Pictish</adjective>
+      <isPlayable>true</isPlayable>
+      <leaderID>LEADER_DREST</leaderID>
+      <color>Green</color>
+      <flag>Images/Interface/OnMap/Flags/Green</flag>
+      <borderColor>1e8000</borderColor>
+      <!--<borderPreviewColor>10400380</borderPreviewColor>-->
+      <borderPreviewColor>08380270</borderPreviewColor>
+      <defaultReligionID>RELIGION_ARIAN</defaultReligionID>
+      <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+      <cityMovementRate>1</cityMovementRate>
+      <romanSatelliteMustBeInRegion>true</romanSatelliteMustBeInRegion>
+      <!-- Faction Traits -->
+      <!--<traits>-->
+      <!--<trait>-->
+      <!--<factionTraitID>FACTIONTRAIT_PICTS</factionTraitID>-->
+      <!--<percentChance>100</percentChance>-->
+      <!--</trait>-->
+      <!--</traits>-->
+      <!-- Resources Per Turn -->
+      <resource>
+        <resourceID>RESOURCE_FAME</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_KNOWLEDGE</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <!-- Resources -->
+      <resource>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <startingNum>30</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <startingNum>40</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TOOLS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_WEAPONS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TIMBER</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <!-- Cities -->
+      <city>
+        <placeableID>PLACEABLE_SETTLEMENT</placeableID>
+        <name>The Picts</name>
+        <isCapital>true</isCapital>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+      </city>
+      <!-- Nearby Roman Structures -->
+      <nearbyRomanPlaceableID>PLACEABLE_ROMAN_FORT</nearbyRomanPlaceableID>
+      <!-- Nearby Zone Traits -->
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>0</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_IRON</ID>
+        <validRing>0</validRing>
+        <validRing>1</validRing>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <!--<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+			</zoneTrait>
+			<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+				<validRing>4</validRing>
+			</zoneTrait>-->
+    </faction>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*             THE LOMBARDS              *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <faction>
+      <ID>FACTION_LOMBARDS</ID>
+      <name>The Lombards</name>
+      <description>TEXT.Faction.FactionTraitDescription.Lombards</description>
+      <shortName>Lmb</shortName>
+      <adjective>Lombardian</adjective>
+      <isPlayable>true</isPlayable>
+      <leaderID>LEADER_ALBOIN</leaderID>
+      <color>Pink</color>
+      <flag>Images/Interface/OnMap/Flags/Pink</flag>
+      <borderColor>e8488a</borderColor>
+      <borderPreviewColor>A04070A8</borderPreviewColor>
+      <defaultReligionID>RELIGION_ARIAN</defaultReligionID>
+      <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+      <cityMovementRate>1</cityMovementRate>
+      <romanSatelliteMustBeInRegion>true</romanSatelliteMustBeInRegion>
+      <!-- Faction Traits -->
+      <startsWithDepositsIdentified>true</startsWithDepositsIdentified>
+      <cannotTrainUnitID>UNIT_HUNTER</cannotTrainUnitID>
+      <cannotTrainUnitID>UNIT_GATHERER</cannotTrainUnitID>
+      <cannotTrainUnitID>UNIT_REAPER</cannotTrainUnitID>
+      <cannotTrainUnitID>UNIT_TRAPPER</cannotTrainUnitID>
+      <cannotTrainUnitID>UNIT_DIGGER</cannotTrainUnitID>
+      <cannotTrainUnitID>UNIT_WOOD_COLLECTOR</cannotTrainUnitID>
+      <cannotResearchTechID>UNIT_TRAPPER</cannotResearchTechID>
+      <!-- Resources Per Turn -->
+      <resource>
+        <resourceID>RESOURCE_FAME</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_PRESTIGE</resourceID>
+        <freeNumPerTurn>2</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_KNOWLEDGE</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <!-- Resources -->
+      <resource>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <startingNum>40</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <startingNum>40</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TOOLS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_WEAPONS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TIMBER</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <!-- Cities -->
+      <city>
+        <placeableID>PLACEABLE_SETTLEMENT</placeableID>
+        <name>The Lombards</name>
+        <isCapital>true</isCapital>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+      </city>
+      <!-- Nearby Roman Structures -->
+      <nearbyRomanPlaceableID>PLACEABLE_ROMAN_FORT</nearbyRomanPlaceableID>
+      <!-- Nearby Zone Traits -->
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>0</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_IRON</ID>
+        <validRing>0</validRing>
+        <validRing>1</validRing>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <!--<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+			</zoneTrait>
+			<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+				<validRing>4</validRing>
+			</zoneTrait>-->
+    </faction>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*              THE FRANKS               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <faction>
+      <ID>FACTION_FRANKS</ID>
+      <name>The Franks</name>
+      <description>TEXT.Faction.FactionTraitDescription.Franks</description>
+      <shortName>Frk</shortName>
+      <adjective>Frankish</adjective>
+      <isPlayable>true</isPlayable>
+      <leaderID>LEADER_CLOVIS</leaderID>
+      <color>LightBlue</color>
+      <flag>Images/Interface/OnMap/Flags/LightBlue</flag>
+      <borderColor>60A3DD</borderColor>
+      <borderPreviewColor>5080A0A8</borderPreviewColor>
+      <defaultReligionID>RELIGION_NICENE</defaultReligionID>
+      <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+      <cityMovementRate>1</cityMovementRate>
+      <romanSatelliteMustBeInRegion>true</romanSatelliteMustBeInRegion>
+      <!-- Faction Traits -->
+      <clanMoodChange>1</clanMoodChange>
+      <permanentWarAgainstOtherReligions>true</permanentWarAgainstOtherReligions>
+      <!--<traits>-->
+      <!--<trait>-->
+      <!--<factionTraitID>FACTIONTRAIT_FRANKS</factionTraitID>-->
+      <!--<percentChance>100</percentChance>-->
+      <!--</trait>-->
+      <!--</traits>-->
+      <!-- Resources Per Turn -->
+      <resource>
+        <resourceID>RESOURCE_FAME</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_PRESTIGE</resourceID>
+        <freeNumPerTurn>2</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_KNOWLEDGE</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <!-- Resources -->
+      <resource>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <startingNum>10</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <startingNum>40</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TOOLS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_WEAPONS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TIMBER</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <!-- Cities -->
+      <city>
+        <placeableID>PLACEABLE_SETTLEMENT</placeableID>
+        <name>The Franks</name>
+        <isCapital>true</isCapital>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+      </city>
+      <!-- Nearby Roman Structures -->
+      <nearbyRomanPlaceableID>PLACEABLE_ROMAN_FORT</nearbyRomanPlaceableID>
+      <!-- Nearby Zone Traits -->
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>0</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_IRON</ID>
+        <validRing>0</validRing>
+        <validRing>1</validRing>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <!--<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+			</zoneTrait>
+			<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+				<validRing>4</validRing>
+			</zoneTrait>-->
+    </faction>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*               THE SLAVS               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <faction>
+      <ID>FACTION_SLAVS</ID>
+      <name>The Slavs</name>
+      <description>TEXT.Faction.FactionTraitDescription.Slavs</description>
+      <shortName>Slv</shortName>
+      <adjective>Slavic</adjective>
+      <isPlayable>true</isPlayable>
+      <leaderID>LEADER_SAMO</leaderID>
+      <color>Lime</color>
+      <flag>Images/Interface/OnMap/Flags/Lime</flag>
+      <borderColor>90bc00</borderColor>
+      <borderPreviewColor>48700090</borderPreviewColor>
+      <defaultReligionID>RELIGION_ARIAN</defaultReligionID>
+      <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+      <cityMovementRate>1</cityMovementRate>
+      <romanSatelliteMustBeInRegion>true</romanSatelliteMustBeInRegion>
+      <!-- Faction Traits -->
+      <isSupplyOnlyNeededInEnemyBorders>true</isSupplyOnlyNeededInEnemyBorders>
+      <!--<traits>-->
+      <!--<trait>-->
+      <!--<factionTraitID>FACTIONTRAIT_SLAVS</factionTraitID>-->
+      <!--<percentChance>100</percentChance>-->
+      <!--</trait>-->
+      <!--</traits>-->
+      <!-- Resources Per Turn -->
+      <resource>
+        <resourceID>RESOURCE_FAME</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_PRESTIGE</resourceID>
+        <freeNumPerTurn>2</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_KNOWLEDGE</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <!-- Resources -->
+      <resource>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <startingNum>10</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <startingNum>40</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TOOLS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_WEAPONS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TIMBER</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <!-- Cities -->
+      <city>
+        <placeableID>PLACEABLE_SETTLEMENT</placeableID>
+        <name>The Slavs</name>
+        <isCapital>true</isCapital>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+      </city>
+      <!-- Nearby Roman Structures -->
+      <nearbyRomanPlaceableID>PLACEABLE_ROMAN_FORT</nearbyRomanPlaceableID>
+      <!-- Nearby Zone Traits -->
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>0</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_IRON</ID>
+        <validRing>0</validRing>
+        <validRing>1</validRing>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <!--<zoneTrait>
+        <ID>TRAIT_BANDIT_CAMP</ID>
+        <validRing>3</validRing>
+      </zoneTrait>
+			<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+				<validRing>4</validRing>
+			</zoneTrait>-->
+    </faction>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*              THE SAXONS               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <faction>
+      <ID>FACTION_SAXONS</ID>
+      <name>The Saxons</name>
+      <description>TEXT.Faction.FactionTraitDescription.Saxons</description>
+      <shortName>Sxn</shortName>
+      <adjective>Saxon</adjective>
+      <isPlayable>true</isPlayable>
+      <leaderID>LEADER_CERDIC</leaderID>
+      <color>Orange</color>
+      <flag>Images/Interface/OnMap/Flags/Orange</flag>
+      <borderColor>E84800</borderColor>
+      <borderPreviewColor>84310090</borderPreviewColor>
+      <defaultReligionID>RELIGION_ARIAN</defaultReligionID>
+      <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+      <cityMovementRate>1</cityMovementRate>
+      <romanSatelliteMustBeInRegion>true</romanSatelliteMustBeInRegion>
+      <!-- Faction Traits -->
+      <startsWithUnitID>UNIT_GALLEY</startsWithUnitID>
+      <isStartAlwaysNextToOcean>true</isStartAlwaysNextToOcean>
+      <isGoodyHutBonusDoubled>true</isGoodyHutBonusDoubled>
+      <traits>
+        <!--<trait>-->
+        <!--<factionTraitID>FACTIONTRAIT_SAXONS</factionTraitID>-->
+        <!--<percentChance>100</percentChance>-->
+        <!--</trait>-->
+        <trait>
+          <factionTraitID>FACTIONTRAIT_MARITIME</factionTraitID>
+          <percentChance>100</percentChance>
+          <!--<ignoreIfHuman>true</ignoreIfHuman>-->
+        </trait>
+      </traits>
+      <!-- Resources Per Turn -->
+      <resource>
+        <resourceID>RESOURCE_FAME</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_PRESTIGE</resourceID>
+        <freeNumPerTurn>2</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_KNOWLEDGE</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <!-- Resources -->
+      <resource>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <startingNum>10</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <startingNum>40</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TOOLS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_WEAPONS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TIMBER</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <!-- Cities -->
+      <city>
+        <placeableID>PLACEABLE_SETTLEMENT</placeableID>
+        <name>The Saxons</name>
+        <isCapital>true</isCapital>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+      </city>
+      <!-- Nearby Roman Structures -->
+      <nearbyRomanPlaceableID>PLACEABLE_ROMAN_FORT</nearbyRomanPlaceableID>
+      <!-- Nearby Zone Traits -->
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>0</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_IRON</ID>
+        <validRing>0</validRing>
+        <validRing>1</validRing>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <!--<zoneTrait>
+        <ID>TRAIT_BANDIT_CAMP</ID>
+        <validRing>3</validRing>
+      </zoneTrait>
+			<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+				<validRing>4</validRing>
+			</zoneTrait>-->
+    </faction>
+    <!--*****************************************-->
+    <!--*                                       *-->
+    <!--*               THE AVARS               *-->
+    <!--*                                       *-->
+    <!--*****************************************-->
+    <faction>
+      <ID>FACTION_AVARS</ID>
+      <name>The Avars</name>
+      <description>TEXT.Faction.FactionTraitDescription.Avars</description>
+      <shortName>Avr</shortName>
+      <adjective>Avar</adjective>
+      <isPlayable>true</isPlayable>
+      <leaderID>LEADER_BAYAN</leaderID>
+      <color>Yellow</color>
+      <flag>Images/Interface/OnMap/Flags/Yellow</flag>
+      <borderColor>Yellow</borderColor>
+      <borderPreviewColor>BEA850C0</borderPreviewColor>
+      <defaultReligionID>RELIGION_ARIAN</defaultReligionID>
+      <fromPopularityUnitID>UNIT_NO_PROFESSION</fromPopularityUnitID>
+      <cityMovementRate>1</cityMovementRate>
+      <romanSatelliteMustBeInRegion>true</romanSatelliteMustBeInRegion>
+      <!-- Faction Traits -->
+      <startsWithTechID>UNIT_HORSE_ARCHER</startsWithTechID>
+      <allClansReceiveProperties>
+        <property>
+          <propertyID>MOVES</propertyID>
+          <num>1</num>
+          <fromDescription>Faction Trait</fromDescription>
+        </property>
+        <property>
+          <propertyID>SUPPLY_NEEDED</propertyID>
+          <num>1</num>
+          <fromDescription>Faction Trait</fromDescription>
+        </property>
+      </allClansReceiveProperties>
+      <traits>
+        <!--<trait>-->
+        <!--<factionTraitID>FACTIONTRAIT_AVARS</factionTraitID>-->
+        <!--<percentChance>100</percentChance>-->
+        <!--</trait>-->
+        <trait>
+          <factionTraitID>FACTIONTRAIT_HORSEMEN</factionTraitID>
+          <percentChance>100</percentChance>
+          <!--<ignoreIfHuman>true</ignoreIfHuman>-->
+        </trait>
+      </traits>
+      <!-- Resources Per Turn -->
+      <resource>
+        <resourceID>RESOURCE_FAME</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_PRESTIGE</resourceID>
+        <freeNumPerTurn>2</freeNumPerTurn>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_KNOWLEDGE</resourceID>
+        <freeNumPerTurn>4</freeNumPerTurn>
+      </resource>
+      <!-- Resources -->
+      <resource>
+        <resourceID>RESOURCE_FOOD</resourceID>
+        <startingNum>10</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TREASURE</resourceID>
+        <startingNum>40</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TOOLS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_WEAPONS</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <resource>
+        <resourceID>RESOURCE_TIMBER</resourceID>
+        <startingNum>0</startingNum>
+      </resource>
+      <!-- Cities -->
+      <city>
+        <placeableID>PLACEABLE_SETTLEMENT</placeableID>
+        <name>The Avars</name>
+        <isCapital>true</isCapital>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+        <unitID>UNIT_NO_PROFESSION</unitID>
+      </city>
+      <!-- Nearby Roman Structures -->
+      <nearbyRomanPlaceableID>PLACEABLE_ROMAN_FORT</nearbyRomanPlaceableID>
+      <!-- Nearby Zone Traits -->
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>0</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_START_LOCATION_FOOD</ID>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <zoneTrait>
+        <ID>TRAIT_IRON</ID>
+        <validRing>0</validRing>
+        <validRing>1</validRing>
+        <validRing>2</validRing>
+      </zoneTrait>
+      <!--<zoneTrait>
+        <ID>TRAIT_BANDIT_CAMP</ID>
+        <validRing>3</validRing>
+      </zoneTrait>
+			<zoneTrait>
+				<ID>TRAIT_BANDIT_CAMP</ID>
+				<validRing>3</validRing>
+				<validRing>4</validRing>
+			</zoneTrait>-->
+    </faction>
+  </Tribes>
+</factions>

@@ -1,0 +1,4344 @@
+<!-- 
+
+NOTES:
+
+
+		If the 'description' field is filled it will be shown in the list of effects. Otherwise, it should be left empty.
+
+
+		The default 'weight' value is 10.
+		
+		
+		In general, the design philosophy is to define the Traits which make Crimes possible or more likely in the Crimes XML,
+		whereas there are quite a few more Desires and Feuds, so those are generally UNLOCKED in the Desires XML but whether
+		different Traits increase or decrease the CHANCE of a Desire being triggered is handled here.
+
+-->
+<clanTraits>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Adaptable                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Adaptable</ID>
+    <name>适应力强</name>
+    <description></description>
+    <fontIcon>152</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Adaptable</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Weight -->
+    <weight>10</weight>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>我们的旧部族解散了，不过没关系。有新机会摆在眼前，何必回头看呢？</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>我们想换个地方生活。还能容下几个人吗？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>变化是好事。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>这种随遇而安的日子并不坏！需要帮手就告诉我们吧。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>嗯，听起来不错。我们会去做。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Discipline_Switch_Cost-->
+    <property>
+      <propertyID>Discipline_Switch_Cost</propertyID>
+      <percent>-100</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Adventurous              -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Adventurous</ID>
+    <name>爱冒险</name>
+    <description>想在定居点外担任[主动|ACTIVE][职业|PROFESSION]</description>
+    <fontIcon>153</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Adventurous</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>我们四处看了看，不得不承认这里很让人兴奋。我们很愿意留下。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>我们听说这里有不少了不起的事，就忍不住赶来参与！</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>活在当下吧，谁也不能保证明天。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>与其闲着浪费时间，不如好好把握每一天。生命短暂，值得去看的、去做的事情太多了。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>好吧，这应该会很有意思！</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--MOVES-->
+    <property>
+      <propertyID>MOVES</propertyID>
+      <num>1</num>
+    </property>
+    <!--VISION-->
+    <property>
+      <propertyID>VISION</propertyID>
+      <num>1</num>
+    </property>
+    <!--Cannot_DigIn-->
+    <property>
+      <propertyID>Cannot_DigIn</propertyID>
+    </property>
+    <!--Cannot_Encamp-->
+    <property>
+      <propertyID>Cannot_Encamp</propertyID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Afraid of Animals        -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Afraid_of_Animals</ID>
+    <name>怕动物</name>
+    <description></description>
+    <fontIcon>154</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Afraid_of_Animals</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>请让我们进去，外面有熊。熊啊！</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>终于……离开树林，来到文明之地了。你得明白，森林绝对是能想象到的最可怕的地方。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>只要看见野兽冰冷漆黑的眼睛，就知道它们脑子里只想着一件事……怎么把我们全杀掉。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>我们可以派上用场。只要别碰任何毛茸茸的东西。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <percent>100</percent>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <percent>-50</percent>
+    </property>
+    <!--Power_VS_Unit_Type-->
+    <property>
+      <propertyID>Power_VS_Unit_Type</propertyID>
+      <ID>Mounted</ID>
+      <percent>-50</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Afraid of Fire           -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Afraid_of_Fire</ID>
+    <name>怕火</name>
+    <description></description>
+    <fontIcon>155</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Afraid_of_Fire</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>你们有人负责生火和照看炊火，对吧？我们真的受够自己处理这些事了。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>呃，问一下……你会经常梦见自己被烧死吗？</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>问题有点怪，不过这些帐篷会着火吗？</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>如果有差事，我们很愿意听听……只要你确定不会让我们葬身火海。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_METALWORKING</ID>
+      <percent>100</percent>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <ID>DISCIPLINE_METALWORKING</ID>
+      <percent>-50</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Afraid of Water          -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Afraid_of_Water</ID>
+    <name>怕水</name>
+    <description></description>
+    <fontIcon>156</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Afraid_of_Water</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们真的需要一个落脚处。再在雨里过一夜，我们肯定会疯掉。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>水。最糟糕的东西。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>请别安排会把我们弄湿的差事。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--RIVER_TURNS_TO_ENTER-->
+    <property>
+      <propertyID>RIVER_TURNS_TO_ENTER</propertyID>
+      <ID>RIVER_SMALL</ID>
+      <num>3</num>
+    </property>
+    <!--TERRAIN_TURNS_TO_ENTER-->
+    <property>
+      <propertyID>TERRAIN_TURNS_TO_ENTER</propertyID>
+      <num>2</num>
+      <terrainID>TERRAIN_MARSH</terrainID>
+    </property>
+    <!--NAVAL_TRAINING_TURNS-->
+    <property>
+      <propertyID>NAVAL_TRAINING_TURNS</propertyID>
+      <percent>100</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Aggressive               -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Aggressive</ID>
+    <name>好斗</name>
+    <description></description>
+    <fontIcon>157</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Aggressive</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>有谁的脸需要砸烂吗？</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>有人点了一支单氏族破坏队吗？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>你知道打断鼻梁时那种令人满意的“咔嚓”声吗？嗯，刚刚正想到那个……</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>大概就是等着什么时候能去砸几张脸吧。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>开始吧！</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--ATTACK_MOD-->
+    <property>
+      <propertyID>ATTACK_MOD</propertyID>
+      <percent>25</percent>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>100</percent>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>100</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      All Thumbs               -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_All_Thumbs</ID>
+    <name>笨手笨脚</name>
+    <description></description>
+    <fontIcon>158</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/All_Thumbs</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>大家手里拿着走来走去的那种末端有金属块的木棍是什么？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>是的……他让我们中的一个人帮忙拿一下锤子……我没想到会变成那样。这种事故正说明工具天生危险。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>承认吧，让我们远离那些精细工具活也许是明智的，但别以为我们就什么都做不好。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_CRAFTING</ID>
+      <percent>100</percent>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <ID>DISCIPLINE_CRAFTING</ID>
+      <percent>-50</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Apathetic                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Apathetic</ID>
+    <name>冷漠</name>
+    <description></description>
+    <fontIcon>159</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Apathetic</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>我想这里和别处也差不多。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>这地方看着还行。那就停在这里吧。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>随便吧。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>有活……没活……说实话，这真的重要吗？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>好——吧，为什么不呢？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <percent>-100</percent>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Ascetic                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Ascetic</ID>
+    <name>苦行</name>
+    <description></description>
+    <fontIcon>160</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Ascetic</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>诸神向我们开口，命我们与你们一同定居于此。希望你能理解。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>今生的牺牲，会在来世得到回报。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>诸神最眷顾辛勤劳作之人。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>诸神如此旨意：我们将劳动。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--RESOURCE_MAINTENANCE-->
+    <property>
+      <propertyID>RESOURCE_MAINTENANCE</propertyID>
+      <percent>-50</percent>
+      <resourceID>RESOURCE_FOOD</resourceID>
+    </property>
+    <!--Social_Training_Turns ... BLOCKED -->
+    <property>
+      <propertyID>Social_Training_Turns</propertyID>
+      <trueOrFalse>true</trueOrFalse>
+    </property>
+    <!--Ennoble_Cost ... BLOCKED -->
+    <property>
+      <propertyID>Ennoble_Cost</propertyID>
+      <trueOrFalse>true</trueOrFalse>
+    </property>
+    <!--Mood_Max-->
+    <property>
+      <propertyID>Mood_Max</propertyID>
+      <ID>MOOD_CONTENT</ID>
+    </property>
+    <!--Mood_Min-->
+    <property>
+      <propertyID>Mood_Min</propertyID>
+      <ID>MOOD_CONTENT</ID>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Archers                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Archers</ID>
+    <name>弓箭手</name>
+    <description></description>
+    <fontIcon>161</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Archers</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_ARCHER</unitID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Attentive                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Attentive</ID>
+    <name>专注</name>
+    <description></description>
+    <fontIcon>162</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Attentive</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>来的路上，我们注意到附近有几处值得留意的地方。也许我们可以替你仔细看看，再回来报告。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>不知道你有没有发现，你的束腰外衣上好像有块污渍。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>我们只是想指出，很多其他氏族已经被安排了具体任务……</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--TURNS_TO_SURVEY-->
+    <property>
+      <propertyID>TURNS_TO_SURVEY</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--No_Crimes_On_Tile-->
+    <property>
+      <propertyID>No_Crimes_On_Tile</propertyID>
+    </property>
+  </clanTrait>
+  <!--   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   -->
+  <!--   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   -->
+  <!--   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   B   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Boisterous               -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Boisterous</ID>
+    <name>喧闹</name>
+    <description></description>
+    <fontIcon>163</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Boisterous</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>啊哈！你一定就是这个非常……伟大……部族的领袖！今晚我们为你举杯！</text>
+      </comment>
+    </comments_Intro>
+    <!--RESOURCE_PRODUCTION_INCREASE-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION_INCREASE</propertyID>
+      <percent>25</percent>
+      <resourceID>RESOURCE_FAME</resourceID>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>100</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Bow-Legged               -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Bow_Legged</ID>
+    <name>罗圈腿</name>
+    <description></description>
+    <fontIcon>164</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Bow_Legged</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>你绝不会相信我们走到这里花了多久，何况那些人还说路不远！</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>不，我们没有连续骑马好几天。事实上我们连马都没有。（换行）……你为什么这么问？</text>
+      </comment>
+    </comments_Intro>
+    <!--MOVES-->
+    <property>
+      <propertyID>MOVES</propertyID>
+      <num>-1</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Brown Thumb              -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Brown_Thumb</ID>
+    <name>拙于园艺</name>
+    <description></description>
+    <fontIcon>165</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Brown_Thumb</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们的庄稼全死了……大概是土不好之类的。所以我们放弃了那块没用的地。这里长势更好吗？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>人和动物会变大，是因为我们把别的东西吃进肚子里。可植物到底怎么变大？它们又不吃东西！真令人费解。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>我们一直用这些空闲时间种盆栽，练习农活！说起来，叶尖变黄是什么意思？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_AGRICULTURE</ID>
+      <percent>100</percent>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <ID>DISCIPLINE_AGRICULTURE</ID>
+      <percent>-50</percent>
+    </property>
+  </clanTrait>
+  <!--   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   -->
+  <!--   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   -->
+  <!--   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   C   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Calm                     -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Calm</ID>
+    <name>冷静</name>
+    <description></description>
+    <fontIcon>166</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Calm</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>你好。如果可以的话，我们想加入。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>不太明白为什么人们总觉得非得闹出点动静。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>不用干活确实轻松，但我们也不介意出点力。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--MORALE-->
+    <property>
+      <propertyID>MORALE</propertyID>
+      <percent>25</percent>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>-50</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Charismatic              -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Charismatic</ID>
+    <name>有魅力</name>
+    <description></description>
+    <fontIcon>167</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Charismatic</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>旅途中我们听说过你卓越领导的传闻。现在看来，传闻确有其事。</text>
+      </comment>
+    </comments_Intro>
+    <!--Morale_On_Tile-->
+    <property>
+      <propertyID>Morale_On_Tile</propertyID>
+      <percent>25</percent>
+    </property>
+    <!--Social_Training_Turns-->
+    <property>
+      <propertyID>Social_Training_Turns</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--Social_Experience_Rate-->
+    <property>
+      <propertyID>Social_Experience_Rate</propertyID>
+      <percent>100</percent>
+    </property>
+    <!--No_Crimes_On_Tile-->
+    <property>
+      <propertyID>No_Crimes_On_Tile</propertyID>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>-50</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Competitive              -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Competitive</ID>
+    <name>好胜</name>
+    <description></description>
+    <fontIcon>168</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Competitive</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>该死！我们没能比 (CLAN_ON_TILE) 更早到这里。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>只用了 27 天就走到这里。以这段距离来说，这可是纪录时间！</text>
+      </comment>
+    </comments_Intro>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>200</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Confident                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Confident</ID>
+    <name>自信</name>
+    <description></description>
+    <fontIcon>169</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Confident</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>感谢收留我们。我向你保证，我们会对这个共同体有价值。</text>
+      </comment>
+    </comments_Intro>
+    <!--MORALE-->
+    <property>
+      <propertyID>MORALE</propertyID>
+      <percent>50</percent>
+    </property>
+    <!--Social_Training_Turns-->
+    <property>
+      <propertyID>Social_Training_Turns</propertyID>
+      <num>-1</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Corrupt                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Corrupt</ID>
+    <name>腐败</name>
+    <description></description>
+    <fontIcon>170</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Corrupt</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们是来拿自己应得那份的。你明白吧？</text>
+      </comment>
+    </comments_Intro>
+    <!--RESOURCE_PRODUCTION-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>-25</percent>
+    </property>
+    <!--RESOURCE_PRODUCTION (ForStructure)-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>-25</percent>
+      <usage>ForStructure</usage>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Craven                   -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Craven</ID>
+    <name>怯懦</name>
+    <description>会拒绝攻击敌方军队</description>
+    <fontIcon>171</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Craven</iconPath>
+    <!-- Comments -->
+    <!--MORALE-->
+    <property>
+      <propertyID>MORALE</propertyID>
+      <percent>-75</percent>
+    </property>
+    <!--MOVES-->
+    <property>
+      <propertyID>MOVES</propertyID>
+      <num>1</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Creative                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Creative</ID>
+    <name>有创造力</name>
+    <description></description>
+    <fontIcon>172</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Creative</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>嗯……来的路上我们刚想到一个点子。你想听听吗？</text>
+      </comment>
+    </comments_Intro>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_METALWORKING</ID>
+      <ID>DISCIPLINE_CRAFTING</ID>
+      <ID>DISCIPLINE_DISCOVERY</ID>
+      <percent>-50</percent>
+    </property>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_HONOR</ID>
+      <ID>DISCIPLINE_AGRICULTURE</ID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <percent>100</percent>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>100</percent>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>-50</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Curious                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Curious</ID>
+    <name>好奇</name>
+    <description></description>
+    <fontIcon>173</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Curious</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>所以，你有什么故事？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>你有没有想过，大约一千六百年后的人会过着什么样的生活？</text>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <num>-1</num>
+    </property>
+    <!--DISCIPLINE_LEVEL-->
+    <property>
+      <propertyID>DISCIPLINE_LEVEL</propertyID>
+      <ID>DISCIPLINE_DISCOVERY</ID>
+      <num>1</num>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <percent>50</percent>
+    </property>
+    <!--<property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <ID>DISCIPLINE_HONOR</ID>
+      <ID>DISCIPLINE_AGRICULTURE</ID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <ID>DISCIPLINE_METALWORKING</ID>
+      <ID>DISCIPLINE_CRAFTING</ID>
+      <percent>-100</percent>
+    </property>-->
+  </clanTrait>
+  <!--   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   -->
+  <!--   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   -->
+  <!--   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   D   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Dabbler                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Dabbler</ID>
+    <name>涉猎广</name>
+    <description></description>
+    <fontIcon>174</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Dabbler</iconPath>
+    <!-- Comments -->
+    <!--DISCIPLINE_LEVEL-->
+    <property>
+      <propertyID>DISCIPLINE_LEVEL</propertyID>
+      <ID>DISCIPLINE_METALWORKING</ID>
+      <num>1</num>
+    </property>
+    <!--RESOURCE_AWARD-->
+    <property>
+      <propertyID>RESOURCE_AWARD</propertyID>
+      <num>5</num>
+      <resourceID>RESOURCE_TOOLS</resourceID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Demanding                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Demanding</ID>
+    <name>苛求</name>
+    <description></description>
+    <fontIcon>175</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Demanding</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们要搬进来了。住多久？无限期。所以，让你的氏族把帐篷从那块地方挪开，对，就是那块视野不错的地方，我们要在那里安顿。</text>
+      </comment>
+    </comments_Intro>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>200</percent>
+    </property>
+    <!--Desire_Max_Mood-->
+    <property>
+      <propertyID>Desire_Max_Mood</propertyID>
+      <ID>MOOD_ANGRY</ID>
+    </property>
+    <!--Desire_Min_Intensity-->
+    <property>
+      <propertyID>Desire_Min_Intensity</propertyID>
+      <ID>INTENSITY_OBSESSED</ID>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>200</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Diggers                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Diggers</ID>
+    <name>掘土者</name>
+    <description></description>
+    <fontIcon>176</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Diggers</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_DIGGER</unitID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Disfigured               -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Disfigured</ID>
+    <name>毁容</name>
+    <description></description>
+    <fontIcon>177</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Disfigured</iconPath>
+    <!-- Comments -->
+    <!--Social_Training_Turns ... BLOCKED-->
+    <property>
+      <propertyID>Social_Training_Turns</propertyID>
+      <trueOrFalse>true</trueOrFalse>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <percent>100</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Disgraced                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Disgraced</ID>
+    <name>失誉</name>
+    <description></description>
+    <fontIcon>178</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Disgraced</iconPath>
+    <!-- Comments -->
+    <!--Social_Training_Turns ... BLOCKED -->
+    <property>
+      <propertyID>Social_Training_Turns</propertyID>
+      <trueOrFalse>true</trueOrFalse>
+    </property>
+    <!--Ennoble_Cost ... BLOCKED -->
+    <property>
+      <propertyID>Ennoble_Cost</propertyID>
+      <trueOrFalse>true</trueOrFalse>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--Cannot_Feud
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>-->
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>-50</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Dramatic                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Dramatic</ID>
+    <name>爱夸张</name>
+    <description></description>
+    <fontIcon>179</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Dramatic</iconPath>
+    <!-- Comments -->
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>300</percent>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>300</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Dutiful                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Dutiful</ID>
+    <name>尽责</name>
+    <description></description>
+    <fontIcon>180</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Dutiful</iconPath>
+    <!-- Comments -->
+    <!--DISCIPLINE_LEVEL-->
+    <property>
+      <propertyID>DISCIPLINE_LEVEL</propertyID>
+      <ID>DISCIPLINE_HONOR</ID>
+      <num>4</num>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <ID>DISCIPLINE_DISCOVERY</ID>
+      <percent>-100</percent>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+  </clanTrait>
+  <!--   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   -->
+  <!--   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   -->
+  <!--   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   E   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Eager                    -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Eager</ID>
+    <name>热切</name>
+    <description></description>
+    <fontIcon>181</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Eager</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>准备好了，有能力，也很愿意！</text>
+      </comment>
+    </comments_Intro>
+    <!--DISCIPLINE_LEVEL-->
+    <property>
+      <propertyID>DISCIPLINE_LEVEL</propertyID>
+      <ID>DISCIPLINE_HONOR</ID>
+      <num>3</num>
+    </property>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <num>-1</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Easily Cold              -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Easily_Cold</ID>
+    <name>畏寒</name>
+    <description></description>
+    <!--<description>Very likely to [Desire|DESIRE] remaining in the [SETTLEMENT] or a [Structure|STRUCTURE] during winter.</description>-->
+    <fontIcon>257</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Easily_Cold</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>别想在冬天把我们派出去。说真的。</text>
+      </comment>
+    </comments_Intro>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Efficient                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Efficient</ID>
+    <name>高效</name>
+    <description></description>
+    <fontIcon>182</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Efficient</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们比预计更早抵达，而且还有不少力气。有什么需要做的？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>许多事情只要重新仔细考虑做法，就能改进。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>你知道吗？没有让每个健壮的氏族成员都去工作，会损失很多潜在收益。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--RESOURCE_PRODUCTION-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>50</percent>
+    </property>
+    <!--RESOURCE_PRODUCTION (ForStructure)-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>50</percent>
+      <usage>ForStructure</usage>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Eloquent                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Eloquent</ID>
+    <name>善辩</name>
+    <description></description>
+    <fontIcon>183</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Eloquent</iconPath>
+    <!-- Comments -->
+    <!--Social_Training_Turns-->
+    <property>
+      <propertyID>Social_Training_Turns</propertyID>
+      <num>-1</num>
+    </property>
+    <!--No_Crimes_On_Tile-->
+    <property>
+      <propertyID>No_Crimes_On_Tile</propertyID>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>-50</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Envious                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Envious</ID>
+    <name>善妒</name>
+    <description></description>
+    <fontIcon>208</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Envious</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>啊，所以你们就是那些把好地全占着的人。看来现在你们得和我们分享了，对吧？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>为什么别人都有事做，我们却只能坐在这里？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... On Same Tile With Clan -->
+      <comment>
+        <text>(CLAN_ON_TILE) 的帐篷明显比别人的都大吧？我是说，拜托，他们凭什么？</text>
+        <prereq>
+          <isSharingTile>true</isSharingTile>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>什么，真的？你想让我们去当 (TRAINING_IN_PROFESSION)，而 (CLAN_ON_TILE) 却在做……不管他们在做什么？明明我们会做得更好。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>300</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Epicure                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Epicure</ID>
+    <name>享乐者</name>
+    <description></description>
+    <fontIcon>184</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Epicure</iconPath>
+    <!-- Comments -->
+    <!--RESOURCE_AWARD-->
+    <property>
+      <propertyID>RESOURCE_AWARD</propertyID>
+      <num>2</num>
+      <resourceID>RESOURCE_ALCOHOL</resourceID>
+    </property>
+    <!--RESOURCE_AWARD-->
+    <property>
+      <propertyID>RESOURCE_AWARD</propertyID>
+      <num>2</num>
+      <resourceID>RESOURCE_GRAPES</resourceID>
+    </property>
+    <!--RESOURCE_AWARD-->
+    <property>
+      <propertyID>RESOURCE_AWARD</propertyID>
+      <num>2</num>
+      <resourceID>RESOURCE_OLIVES</resourceID>
+    </property>
+    <!--POWER-->
+    <property>
+      <propertyID>POWER</propertyID>
+      <num>-1</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Esteemed                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Esteemed</ID>
+    <name>受敬重</name>
+    <description></description>
+    <fontIcon>185</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Esteemed</iconPath>
+    <!-- Comments -->
+    <!--Ennoble-->
+    <property>
+      <propertyID>Ennoble</propertyID>
+    </property>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_AGRICULTURE</ID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <ID>DISCIPLINE_METALWORKING</ID>
+      <percent>100</percent>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <ID>DISCIPLINE_AGRICULTURE</ID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <ID>DISCIPLINE_METALWORKING</ID>
+      <percent>-50</percent>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>-50</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Explorers                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Explorers</ID>
+    <name>探索者</name>
+    <description></description>
+    <fontIcon>238</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Explorers</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_EXPLORER</unitID>
+    </property>
+  </clanTrait>
+  <!--   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   -->
+  <!--   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   -->
+  <!--   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   F   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Farmers                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Farmers</ID>
+    <name>农夫</name>
+    <description></description>
+    <fontIcon>186</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Farmers</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_FARMER</unitID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Fast Learner             -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Fast_Learner</ID>
+    <name>学得快</name>
+    <description></description>
+    <fontIcon>187</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Fast_Learner</iconPath>
+    <!-- Comments -->
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <num>-1</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Fastidious               -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Fastidious</ID>
+    <name>挑剔</name>
+    <description></description>
+    <fontIcon>188</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Fastidious</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>真的？你准备让我们住在那里？这绝对不行。我们得重新布置一些东西。</text>
+      </comment>
+    </comments_Intro>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <percent>100</percent>
+    </property>
+    <!--RESOURCE_PRODUCTION-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>50</percent>
+    </property>
+    <!--RESOURCE_PRODUCTION (ForStructure)-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>50</percent>
+      <usage>ForStructure</usage>
+    </property>
+    <!--MOVES-->
+    <property>
+      <propertyID>MOVES</propertyID>
+      <num>1</num>
+    </property>
+    <!--POWER-->
+    <property>
+      <propertyID>POWER</propertyID>
+      <num>1</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Fecund                   -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Fecund</ID>
+    <name>多产</name>
+    <description></description>
+    <fontIcon>189</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Fecund</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>感谢你邀请我们进来，但我得先提醒，我们可能需要额外空间。路上又要添新人了……！</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>没有比繁衍更崇高的使命了，你说呢？</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>一个人的脑子任何时候都只该想着两件事之一：生产和繁衍。现在我们没有在生产，所以……</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Family_Growth-->
+    <property>
+      <propertyID>Family_Growth</propertyID>
+      <percent>50</percent>
+    </property>
+    <!--RESOURCE_PRODUCTION-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>25</percent>
+    </property>
+    <!--RESOURCE_PRODUCTION (ForStructure)-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>25</percent>
+      <usage>ForStructure</usage>
+    </property>
+    <!--Max_Health-->
+    <property>
+      <propertyID>Max_Health</propertyID>
+      <percent>50</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Filthy                   -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Filthy</ID>
+    <name>肮脏</name>
+    <description></description>
+    <fontIcon>240</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Filthy</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>哇……你们把这里收拾得真干净。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>你们的人进棚屋前会脱鞋……真奇怪。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>你知道一直洗来洗去会让皮肤变干吧？</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>反正我闻不出来。</text>
+      </comment>
+    </comments_Random>
+    <!--Same_Tile_Feud_Chance-
+    <property>
+      <propertyID>Same_Tile_Feud_Chance</propertyID>
+      <percent>200</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Frail                    -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Frail</ID>
+    <name>虚弱</name>
+    <description></description>
+    <fontIcon>190</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Frail</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>我们太虚弱，走不动了……可以在这里结束旅程吗？</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>玛丽发着高烧，根德拉肚子，吉姆断了条腿，不过除此之外，我们随时能上。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>可能……要吐了……</text>
+      </comment>
+    </comments_Random>
+    <!--MOVES-->
+    <property>
+      <propertyID>MOVES</propertyID>
+      <num>-1</num>
+    </property>
+    <!--Max_Health-->
+    <property>
+      <propertyID>Max_Health</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>-50</percent>
+    </property>-->
+  </clanTrait>
+  <!--   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   -->
+  <!--   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   -->
+  <!--   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   G   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Gatherers                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Gatherers</ID>
+    <name>采集者</name>
+    <description></description>
+    <fontIcon>191</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Gatherers</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_GATHERER</unitID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Gentle                   -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Gentle</ID>
+    <name>温和</name>
+    <description></description>
+    <fontIcon>192</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Gentle</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>希望我们能和你以及你的人一起在这里定居。</text>
+      </comment>
+    </comments_Intro>
+    <!--CIVILIAN_TRAINING_TURNS-->
+    <property>
+      <propertyID>CIVILIAN_TRAINING_TURNS</propertyID>
+      <num>-1</num>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Gluttonous               -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Gluttonous</ID>
+    <name>贪食</name>
+    <description></description>
+    <fontIcon>193</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Gluttonous</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>备好你们最好的肉，在餐厅清出一张桌子，因为我们到了，而这位朋友，正是值得庆祝的理由！</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>几周陈旧的路粮让我们的胃口更大了。打开你的柜子，让我们看看有什么能填饱它。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>今晚，我们要大吃一顿！</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>别错过享受人生滋味的机会。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>给我们点事做吧，免得我们又胖又懒。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>啊，正合胃口！</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Migrating -->
+      <comment>
+        <text>我们要去哪儿？希望是个菜肴不错的地方。</text>
+        <prereq>
+          <isSettlementPackedUp>true</isSettlementPackedUp>
+        </prereq>
+      </comment>
+      <!-- Random ... Below 20 Degrees -->
+      <comment>
+        <text>你确定我们的食物足够撑过冬天吗？</text>
+        <prereq>
+          <belowTemperature>20</belowTemperature>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <traitID>TRAIT_Northmen</traitID>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--RESOURCE_MAINTENANCE-->
+    <property>
+      <propertyID>RESOURCE_MAINTENANCE</propertyID>
+      <percent>50</percent>
+      <resourceID>RESOURCE_FOOD</resourceID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Greedy                   -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Greedy</ID>
+    <name>贪婪</name>
+    <description></description>
+    <fontIcon>194</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Greedy</iconPath>
+    <!-- Comments -->
+    <!--RESOURCE_PRODUCTION-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>-10</percent>
+    </property>
+    <!--RESOURCE_PRODUCTION (ForStructure)-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>-10</percent>
+      <usage>ForStructure</usage>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>300</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Green Thumb              -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Green_Thumb</ID>
+    <name>园艺能手</name>
+    <description></description>
+    <fontIcon>195</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Green_Thumb</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们真心希望你有些需要照料的植物。你看，我们对这种活还算有些本事。</text>
+      </comment>
+    </comments_Intro>
+    <!--DISCIPLINE_LEVEL-->
+    <property>
+      <propertyID>DISCIPLINE_LEVEL</propertyID>
+      <ID>DISCIPLINE_AGRICULTURE</ID>
+      <num>2</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Gregarious               -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Gregarious</ID>
+    <name>合群</name>
+    <description></description>
+    <fontIcon>196</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Gregarious</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>哦，我们经历过的事情可多了。你根本想不到。先是有个奇怪的商人，不停说他找到一处能治愈任何伤口的矿泉。然后呢……</text>
+      </comment>
+    </comments_Intro>
+    <!--Social_Training_Turns-->
+    <property>
+      <propertyID>Social_Training_Turns</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--No_XP_Outside_Social_Professions-->
+    <property>
+      <propertyID>No_XP_Outside_Social_Professions</propertyID>
+    </property>
+    <!--No_Crimes_On_Tile-->
+    <property>
+      <propertyID>No_Crimes_On_Tile</propertyID>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>-50</percent>
+    </property>-->
+  </clanTrait>
+  <!--   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   -->
+  <!--   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   -->
+  <!--   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   H   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Haggler                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Haggler</ID>
+    <name>会砍价</name>
+    <description></description>
+    <fontIcon>197</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Haggler</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们暂时会帮你一把，但别指望我们永远如此。人生万事都有价码。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>下一支商队什么时候来？</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>如果你需要和谁谈成交易，就告诉我们。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--RESOURCE_PRODUCTION-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>50</percent>
+      <structureID>STRUCTURE_TRADING_POST_1</structureID>
+      <structureID>STRUCTURE_TRADING_POST_2</structureID>
+      <resourceID>RESOURCE_TREASURE</resourceID>
+      <usage>ForStructure</usage>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>100</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Handy                    -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Handy</ID>
+    <name>手巧</name>
+    <description></description>
+    <fontIcon>198</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Handy</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>谢谢你收留我们。作为回报，我们很乐意替你建点什么，或修点什么。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>等等……你的意思是我们可以就这么留下？没有附加条件？这倒新鲜。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>会使用工具，是人与野兽的区别。会把工具用好，则是人与庸人的区别！</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>那个我们能修。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>有什么需要我们建造的吗？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_LEVEL-->
+    <property>
+      <propertyID>DISCIPLINE_LEVEL</propertyID>
+      <ID>DISCIPLINE_CRAFTING</ID>
+      <num>3</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Herder                   -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Herder</ID>
+    <name>牧人</name>
+    <description></description>
+    <fontIcon>199</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Herder</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>像我们这样跟着羊群走了这么久，你也会闻起来像它们。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>有人听见了吗？我有种咩——妙的预感……</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>每次想数清我们有多少只羊，我都会睡着。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>附近有什么动物需要我们照看吗？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_LEVEL-->
+    <property>
+      <propertyID>DISCIPLINE_LEVEL</propertyID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <num>4</num>
+    </property>
+    <!--RESOURCE_AWARD-->
+    <property>
+      <propertyID>RESOURCE_AWARD</propertyID>
+      <num>3</num>
+      <resourceID>RESOURCE_SHEEP</resourceID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Hillmen                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Hillmen</ID>
+    <name>山地人</name>
+    <description></description>
+    <fontIcon>200</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Hillmen</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们的崎岖故乡如今也许太危险，不能居住，但我们仍对那里了如指掌。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>这片土地像海一样平。我们不喜欢海。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>*哈欠*[NEWLINE]我们的故乡从没这么无聊……也许我们该回去。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--TERRAIN_MOVE_COST-->
+    <property>
+      <propertyID>TERRAIN_MOVE_COST</propertyID>
+      <num>0</num>
+      <terrainID>TERRAIN_HILL</terrainID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Hoarder                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Hoarder</ID>
+    <name>囤积者</name>
+    <description></description>
+    <fontIcon>201</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Hoarder</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>等等，什么？！为了加入你的部族，我们得把东西全交给你？也许这主意根本不怎么样……</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>我们的棚屋被东西塞得有点满。也许该卖掉一些。嗯，也许等明年春天吧……</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>至少没事做的时候，我们能把东西藏起来，躲开所有贪婪的目光。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--RESOURCE_AWARD-->
+    <property>
+      <propertyID>RESOURCE_AWARD</propertyID>
+      <num>5</num>
+      <resourceID>RESOURCE_FOOD</resourceID>
+    </property>
+    <!--RESOURCE_AWARD-->
+    <property>
+      <propertyID>RESOURCE_AWARD</propertyID>
+      <num>20</num>
+      <resourceID>RESOURCE_TREASURE</resourceID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Hunters                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Hunters</ID>
+    <name>猎人</name>
+    <description></description>
+    <fontIcon>202</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Hunters</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_HUNTER</unitID>
+    </property>
+  </clanTrait>
+  <!--   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   -->
+  <!--   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   -->
+  <!--   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   I   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Imaginative              -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Imaginative</ID>
+    <name>富想象</name>
+    <description></description>
+    <fontIcon>203</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Imaginative</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>啊，我们终于见面了！没错，我们梦见过这一刻。梦里还预示，我们会一起成就伟业。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>哦！我想得太入神，差点没注意到这座……呃……定居点。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>如果我们发现一座隐藏山谷，里面生活着许多巨大的古老生物，那不是太惊人了吗？</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>我们有几个相当不错的点子，也许能帮上这里的忙。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_LEVEL-->
+    <property>
+      <propertyID>DISCIPLINE_LEVEL</propertyID>
+      <ID>DISCIPLINE_DISCOVERY</ID>
+      <num>5</num>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>-50</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Impatient                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Impatient</ID>
+    <name>急躁</name>
+    <description></description>
+    <fontIcon>204</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Impatient</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>终于到了。[NEWLINE]嘿，我们结束了吗？我们还有很多东西要卸，你和我们谈得越久，我们就越晚弄完。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>你是不是也觉得，每件事都比预想的耗时更久？</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>还要多久我们才能真正，嗯，做点什么？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Migrating -->
+      <comment>
+        <text>所以……我们到了没有？</text>
+        <prereq>
+          <isSettlementPackedUp>true</isSettlementPackedUp>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <percent>50</percent>
+      <cost>3</cost>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>100</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Impulsive                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Impulsive</ID>
+    <name>冲动</name>
+    <description></description>
+    <fontIcon>205</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Impulsive</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>对，这就是我们命中注定该来的地方！你不也这么觉得吗？[NEWLINE]等等……那边是什么？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>我们对之前那件事改主意了。现在觉得建个公共浴场可能不错……哦，或者来个 ___ 也挺好！</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>当斥候听起来挺有趣……不过铁匠好像也不坏……[NEWLINE]啊，算了。晚饭在哪？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>100</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Independent              -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Independent</ID>
+    <name>独立</name>
+    <description></description>
+    <fontIcon>206</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Independent</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>遗憾的是，想保住脑袋，我们似乎不能再独自待着。即便如此，最好还是让我们按自己的方式行事。[NEWLINE]成交？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>又来检查我们了？你是不信任我们还是什么？</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>我们越早离开这堆拥挤的人群越好……</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <percent>200</percent>
+    </property>
+    <!--Settled_Training_Turns-->
+    <property>
+      <propertyID>Settled_Training_Turns</propertyID>
+      <percent>50</percent>
+    </property>
+    <!--Social_Training_Turns-->
+    <property>
+      <propertyID>Social_Training_Turns</propertyID>
+      <percent>100</percent>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+    <!--Cannot_Feud-
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Intimidating             -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Intimidating</ID>
+    <name>威吓</name>
+    <description></description>
+    <fontIcon>207</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Intimidating</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>没错，我们就是 (NAME)。怎么了？这个名字对你有意义吗？最好别让我们听见你在背后议论。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>如果我们不让其他氏族守规矩，就没人会这么做了。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>所以，你到底有没有事情让我们做，还是要让我们继续坐在这里吓小孩？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--No_Crimes_On_Tile-->
+    <property>
+      <propertyID>No_Crimes_On_Tile</propertyID>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+  </clanTrait>
+  <!--   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   -->
+  <!--   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   -->
+  <!--   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   L   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Lazy                     -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Lazy</ID>
+    <name>懒惰</name>
+    <description></description>
+    <fontIcon>209</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Lazy</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>呼……你根本不会相信我们已经走了多久。该死，至少也有好几个小时吧。[NEWLINE]所以……有地方能坐吗？</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>那段苦路之后，能休息一会儿就太好了。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>你知道吗，放轻松确实对健康有好处。</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>ZZZZZZZZZZZZZ……[NEWLINE]*哼哧*</text>
+      </comment>
+      <!-- Random ... Unemployed 1 -->
+      <comment>
+        <text>很高兴你也同意，人生不全是干活。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Unemployed 2 -->
+      <comment>
+        <text>啊……躺着什么都不做最好了。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed 1 -->
+      <comment>
+        <text>真的，这么快就有差事？我们才刚安顿下来……</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed 2 -->
+      <comment>
+        <text>好吧，我想我们会去做的。毕竟在强者眼里，我们都只是驮马。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--MOVES-->
+    <property>
+      <propertyID>MOVES</propertyID>
+      <num>-1</num>
+    </property>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <num>1</num>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>100</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Leperous                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Leperous</ID>
+    <name>麻风</name>
+    <description></description>
+    <fontIcon>210</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Leperous</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>是的，我们知道，你不必说。我们会……待在角落里。像往常一样……</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>拜托……别那样看着我们……</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>你知道，这也没那么容易传染……</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>什么都不做也没那么糟。总比被人默默嘲笑强多了。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... On Same Tile With Clan -->
+      <comment>
+        <text>我们真希望 (CLAN_ON_TILE) 别再盯着我们看了……我们到底做错了什么……</text>
+        <prereq>
+          <isSharingTile>true</isSharingTile>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Mood_On_Tile-->
+    <property>
+      <propertyID>Mood_On_Tile</propertyID>
+      <num>-2</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Local                    -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Local</ID>
+    <name>本地人</name>
+    <description></description>
+    <fontIcon>211</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Local</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>啊，我们从附近其他氏族那里听说了很多关于你的事。如果你有时间，我们可以告诉你哪里食物最多，哪些河别碰，哪些树后面最适合小解。你知道，都是重要消息。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>这是我们唯一熟悉的地方。很难相信有一天我们终究得把它抛在身后……</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>你知道，如果没什么事要我们做，也许我们可以回旧家看看。算是休个小假？[NEWLINE]好吧，是的，我就知道不行……</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Reveal_Nearby_Deposits-->
+    <property>
+      <propertyID>Reveal_Nearby_Deposits</propertyID>
+      <num>2</num>
+    </property>
+    <!--REVEAL_NEARBY_GOODIES-->
+    <property>
+      <propertyID>REVEAL_NEARBY_GOODIES</propertyID>
+      <num>4</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Loggers                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Loggers</ID>
+    <name>伐木工</name>
+    <description></description>
+    <fontIcon>212</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Loggers</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_LOGGER</unitID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Low Fertility            -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Low_Fertility</ID>
+    <name>低生育</name>
+    <description></description>
+    <fontIcon>213</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Low_Fertility</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们知道人数也许不多，但我们打算为你努力干活。</text>
+      </comment>
+    </comments_Intro>
+    <!--FAMILY_GROWTH-->
+    <property>
+      <propertyID>Family_Growth</propertyID>
+      <percent>-25</percent>
+    </property>
+    <!--RESOURCE_PRODUCTION-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>-10</percent>
+    </property>
+    <!--RESOURCE_PRODUCTION (ForStructure)-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>-10</percent>
+      <usage>ForStructure</usage>
+    </property>
+    <!--Max_Health-->
+    <property>
+      <propertyID>Max_Health</propertyID>
+      <percent>-10</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Loyal                    -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Loyal</ID>
+    <name>忠诚</name>
+    <description></description>
+    <fontIcon>214</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Loyal</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>感谢你收留我们，我们保证你不会后悔。既然我们如今欠你一份大恩，你希望我们做什么？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>我们为侍奉而生。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>如果你需要任何事，任何事都可以，尽管召唤我们。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Mood_Min-->
+    <property>
+      <propertyID>Mood_Min</propertyID>
+      <ID>MOOD_HAPPY</ID>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+    <!--Cannot_Feud
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>-->
+  </clanTrait>
+  <!--   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   -->
+  <!--   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   -->
+  <!--   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   M   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Marshmen                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Marshmen</ID>
+    <name>沼泽民</name>
+    <description></description>
+    <fontIcon>215</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Marshmen</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们叫 (NAME)，来自潮湿又难闻的土地。但干地……嗯，这倒是新鲜。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>我们本来想自称“沼泽人”，但不知为什么，总觉得哪里怪怪的……</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>如果你有能发挥这一点的差事，水对我们来说并不算什么障碍。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--TERRAIN_TURNS_TO_ENTER-->
+    <property>
+      <propertyID>TERRAIN_TURNS_TO_ENTER</propertyID>
+      <num>0</num>
+      <terrainID>TERRAIN_MARSH</terrainID>
+    </property>
+    <!--TERRAIN_MOVE_COST-->
+    <property>
+      <propertyID>TERRAIN_MOVE_COST</propertyID>
+      <num>0</num>
+      <terrainID>TERRAIN_RAIN</terrainID>
+    </property>
+    <!--Terrain_No_Longer_Traps-->
+    <property>
+      <propertyID>Terrain_No_Longer_Traps</propertyID>
+      <terrainID>TERRAIN_FLOODED</terrainID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Meek                     -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Meek</ID>
+    <name>温顺</name>
+    <description></description>
+    <fontIcon>216</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Meek</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>哦……[NEWLINE]你好……</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>嗯……[NEWLINE]算了。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>呃……那个……我们就这样……待着不做事……没关系吗？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--MORALE-->
+    <property>
+      <propertyID>MORALE</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--Social_Training_Turns ... BLOCKED-->
+    <property>
+      <propertyID>Social_Training_Turns</propertyID>
+      <trueOrFalse>true</trueOrFalse>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Miners                   -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Miners</ID>
+    <name>矿工</name>
+    <description></description>
+    <fontIcon>217</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Miners</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_MINER</unitID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Miserable                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Miserable</ID>
+    <name>苦闷</name>
+    <description>会拒绝[攻击|ATTACK]敌方[军队|ARMY]</description>
+    <fontIcon>218</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Miserable</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>继续下去也没什么意义，但看来诸神还没折磨够我们。所以……我们来了。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>我想落到这种地方，总比死了强。呵，走着瞧吧。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>唉。[NEWLINE]这一切都太……没意义了。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>也许有活干来分散注意力，人生就不会显得这么可怕……</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>所以，你真想让我们当 (TRAINING_IN_PROFESSION)？认真的？唉……这肯定会糟透。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Below 20 Degrees -->
+      <comment>
+        <text>又这么冷。每年都一样。我们快撑不住了……</text>
+        <prereq>
+          <belowTemperature>20</belowTemperature>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <traitID>TRAIT_Northmen</traitID>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Mood_Max-->
+    <property>
+      <propertyID>Mood_Max</propertyID>
+      <ID>MOOD_UPSET</ID>
+    </property>
+    <!--MORALE-->
+    <property>
+      <propertyID>MORALE</propertyID>
+      <percent>-75</percent>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <percent>-100</percent>
+    </property>
+    <!--Desire_Chance
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>-50</percent>
+    </property>-->
+  </clanTrait>
+  <!--   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   -->
+  <!--   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   -->
+  <!--   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   N   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Nervous                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Nervous</ID>
+    <name>紧张</name>
+    <description></description>
+    <fontIcon>219</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Nervous</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>天啊，真不敢相信我们居然完整地到了这里……等等！那块石头刚才动了！你看见了，对吧？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>我有种不好的预感……关于什么？我是说……你知道，所有事！</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>干坐着最糟了……你只会去想所有可能发生的可怕事情。而且它们大概真的会发生。唉……</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--MORALE-->
+    <property>
+      <propertyID>MORALE</propertyID>
+      <percent>-75</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Nomadic                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Nomadic</ID>
+    <name>游牧</name>
+    <description></description>
+    <fontIcon>220</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Nomadic</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>这些土地很危险，看来我们暂时要与你同行。但你要知道，我们并不打算永远留在这里。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>闭上眼，想象一片无边无际的美丽大地。那曾是我们的家。也许有一天我们会回去。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>整天坐在装满陌生人的巨大帐篷里，实在让我们不太自在。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_LEVEL-->
+    <property>
+      <propertyID>DISCIPLINE_LEVEL</propertyID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <num>2</num>
+    </property>
+    <!--MOVES-->
+    <property>
+      <propertyID>MOVES</propertyID>
+      <num>1</num>
+    </property>
+    <!--RESOURCE_AWARD-->
+    <property>
+      <propertyID>RESOURCE_AWARD</propertyID>
+      <num>3</num>
+      <resourceID>RESOURCE_HORSES</resourceID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Northmen                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Northmen</ID>
+    <name>北地人</name>
+    <description></description>
+    <fontIcon>221</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Northmen</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>问候！听说你们的人一年到头都支着帐篷？哈，太荒唐了！夏天可热得受不了。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>天气这么好，为什么大家还穿着上衣？</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>没有什么比毛皮更实用又时髦。</text>
+      </comment>
+    </comments_Random>
+    <!--TERRAIN_MOVE_COST-->
+    <property>
+      <propertyID>TERRAIN_MOVE_COST</propertyID>
+      <num>1</num>
+      <terrainID>TERRAIN_SNOW</terrainID>
+    </property>
+  </clanTrait>
+  <!--   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   -->
+  <!--   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   -->
+  <!--   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   O   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Obedient                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Obedient</ID>
+    <name>服从</name>
+    <description></description>
+    <fontIcon>222</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Obedient</iconPath>
+    <!-- Comments -->
+    <!--Discipline_Switch_Cost-->
+    <property>
+      <propertyID>Discipline_Switch_Cost</propertyID>
+      <percent>-100</percent>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Obsessive                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Obsessive</ID>
+    <name>执念</name>
+    <description></description>
+    <fontIcon>223</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Obsessive</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们听说了你的事，也谈过要来这里，很快我们就再也想不了别的，所以我们来了！</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>我已经想那棵老树想了好几个星期。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>我们一直停不下来地想着，怎样才能更好地为共同体效力。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <percent>-50</percent>
+      <cost>3</cost>
+    </property>
+    <!--Desire_Min_Intensity-->
+    <property>
+      <propertyID>Desire_Min_Intensity</propertyID>
+      <ID>INTENSITY_OBSESSED</ID>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>200</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Obstinate                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Obstinate</ID>
+    <name>顽固</name>
+    <description></description>
+    <fontIcon>224</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Obstinate</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>行，我们同意加入你的部族，但事情要按我们的方式来。明白了吗？</text>
+      </comment>
+    </comments_Intro>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_HONOR</ID>
+      <percent>100</percent>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <percent>-25</percent>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>100</percent>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>100</percent>
+    </property>-->
+  </clanTrait>
+  <!--   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   -->
+  <!--   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   -->
+  <!--   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   P   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Paranoid                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Paranoid</ID>
+    <name>多疑</name>
+    <description></description>
+    <fontIcon>225</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Paranoid</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>重新开始会不错，但这里所有人迟早也会背叛我们。人就是这样，不能信任。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>所以我们可以留下？[NEWLINE]别装了，有什么条件？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>只有当你的理论被证明是错的，那才叫多疑。否则，那叫智慧！</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>树林里到处都是眼睛……</text>
+      </comment>
+    </comments_Random>
+    <!--VISION-->
+    <property>
+      <propertyID>VISION</propertyID>
+      <num>1</num>
+    </property>
+    <!--MOVES-->
+    <property>
+      <propertyID>MOVES</propertyID>
+      <num>-1</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Passionate               -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Passionate</ID>
+    <name>热情</name>
+    <description></description>
+    <fontIcon>226</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Passionate</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>加入你的部族会是我们遇到过最好的事，我们就是知道！</text>
+      </comment>
+    </comments_Intro>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <num>-1</num>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <percent>100</percent>
+    </property>
+    <!--Desire_Min_Intensity-->
+    <property>
+      <propertyID>Desire_Min_Intensity</propertyID>
+      <ID>INTENSITY_OBSESSED</ID>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>200</percent>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>100</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Peddlers                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Peddlers</ID>
+    <name>小贩</name>
+    <description></description>
+    <fontIcon>227</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Peddlers</iconPath>
+    <!-- Comments -->
+    <!--RESOURCE_PRODUCTION-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <num>0.25</num>
+      <resourceID>RESOURCE_TREASURE</resourceID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Perceptive               -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Perceptive</ID>
+    <name>敏锐</name>
+    <description></description>
+    <fontIcon>228</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Perceptive</iconPath>
+    <!-- Comments -->
+    <!--VISION-->
+    <property>
+      <propertyID>VISION</propertyID>
+      <num>1</num>
+    </property>
+    <!--No_Crimes_On_Tile
+		<property>
+			<propertyID>No_Crimes_On_Tile</propertyID>
+		</property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Petty                    -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Petty</ID>
+    <name>小气</name>
+    <description></description>
+    <fontIcon>229</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Petty</iconPath>
+    <!-- Comments -->
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>300</percent>
+    </property>-->
+  </clanTrait>
+  <!--   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   -->
+  <!--   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   -->
+  <!--   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   R   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Ranchers                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Ranchers</ID>
+    <name>牧场主</name>
+    <description></description>
+    <fontIcon>230</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Ranchers</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_RANCHER</unitID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Reapers                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Reapers</ID>
+    <name>收割者</name>
+    <description></description>
+    <fontIcon>231</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Reapers</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_REAPER</unitID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Reclusive                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Reclusive</ID>
+    <name>离群索居</name>
+    <description></description>
+    <fontIcon>232</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Reclusive</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>你能直接告诉我们哪些帐篷归我们吗？</text>
+      </comment>
+    </comments_Intro>
+    <!--Active_Training_Turns-->
+    <property>
+      <propertyID>Active_Training_Turns</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--Social_Training_Turns ... BLOCKED-->
+    <property>
+      <propertyID>Social_Training_Turns</propertyID>
+      <trueOrFalse>true</trueOrFalse>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+    <!--Cannot_Feud
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Reserved                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Reserved</ID>
+    <name>寡言</name>
+    <description></description>
+    <fontIcon>233</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Reserved</iconPath>
+    <!-- Comments -->
+    <!--Social_Training_Turns-->
+    <property>
+      <propertyID>Social_Training_Turns</propertyID>
+      <percent>100</percent>
+    </property>
+    <!--Social_Experience_Rate-->
+    <property>
+      <propertyID>Social_Experience_Rate</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Resourceful              -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Resourceful</ID>
+    <name>足智多谋</name>
+    <description></description>
+    <fontIcon>234</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Resourceful</iconPath>
+    <!-- Comments -->
+    <!--SUPPLY_NEEDED-->
+    <property>
+      <propertyID>SUPPLY_NEEDED</propertyID>
+      <num>-1</num>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Rivermen                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Rivermen</ID>
+    <name>河民</name>
+    <description></description>
+    <fontIcon>235</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Rivermen</iconPath>
+    <!-- Comments -->
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>有些人会晕船。那我第一个告诉你：我们会晕陆。没错，真有这回事。</text>
+      </comment>
+    </comments_Random>
+    <!--RIVER_MOVE_COST-->
+    <property>
+      <propertyID>RIVER_MOVE_COST</propertyID>
+      <ID>RIVER_SMALL</ID>
+      <num>0</num>
+    </property>
+    <!--RIVER_TURNS_TO_ENTER-->
+    <property>
+      <propertyID>RIVER_TURNS_TO_ENTER</propertyID>
+      <ID>RIVER_SMALL</ID>
+      <num>0</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Rowdy                    -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Rowdy</ID>
+    <name>粗野</name>
+    <description></description>
+    <fontIcon>236</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Rowdy</iconPath>
+    <!-- Comments -->
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>100</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Rustic                   -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Rustic</ID>
+    <name>乡野</name>
+    <description></description>
+    <fontIcon>237</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Rustic</iconPath>
+    <!-- Comments -->
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>头顶只有开阔天空就能入睡，那才是正道。</text>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_AGRICULTURE</ID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <num>-1</num>
+    </property>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_DISCOVERY</ID>
+      <percent>100</percent>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <ID>DISCIPLINE_DISCOVERY</ID>
+      <percent>-50</percent>
+    </property>
+  </clanTrait>
+  <!--   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   -->
+  <!--   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   -->
+  <!--   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   S   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Sensitive                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Sensitive</ID>
+    <name>敏感</name>
+    <description></description>
+    <fontIcon>239</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Sensitive</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我们上一任氏族领袖极其忘恩负义。希望你会不同……</text>
+      </comment>
+    </comments_Intro>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>300</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Smithing Lineage         -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Smithing_Lineage</ID>
+    <name>锻造世家</name>
+    <description></description>
+    <fontIcon>241</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Smithing_Lineage</iconPath>
+    <!-- Comments -->
+    <!--DISCIPLINE_LEVEL-->
+    <property>
+      <propertyID>DISCIPLINE_LEVEL</propertyID>
+      <ID>DISCIPLINE_METALWORKING</ID>
+      <num>4</num>
+    </property>
+    <!--RESOURCE_AWARD-->
+    <property>
+      <propertyID>RESOURCE_AWARD</propertyID>
+      <num>2</num>
+      <resourceID>RESOURCE_TOOLS</resourceID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Squeamish                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Squeamish</ID>
+    <name>易反胃</name>
+    <description></description>
+    <fontIcon>242</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Squeamish</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>等等，那是什么？你也看见了，对吧？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>短尾巴的动物最糟，因为你总能看见它们的……它们的……你懂的……</text>
+      </comment>
+      <!-- Random ... On Same Tile With Clan -->
+      <comment>
+        <text>负责 (CLAN_ON_TILE) 的那家伙，两眼中间长着一颗可怕的大脓包。这让人……实在很难和他说话。</text>
+        <prereq>
+          <isSharingTile>true</isSharingTile>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--MORALE-->
+    <property>
+      <propertyID>MORALE</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <percent>100</percent>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <percent>-50</percent>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>-50</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Stoic                    -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Stoic</ID>
+    <name>坚忍</name>
+    <description></description>
+    <fontIcon>243</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Stoic</iconPath>
+    <!-- Comments -->
+    <comments_Random>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>需要我们时，我们就在这里。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Mood_Max-->
+    <property>
+      <propertyID>Mood_Max</propertyID>
+      <ID>MOOD_CONTENT</ID>
+    </property>
+    <!--Mood_Min-->
+    <property>
+      <propertyID>Mood_Min</propertyID>
+      <ID>MOOD_CONTENT</ID>
+    </property>
+    <!--Cannot_Have_Desires-->
+    <property>
+      <propertyID>Cannot_Have_Desires</propertyID>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Strong                   -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Strong</ID>
+    <name>强壮</name>
+    <description></description>
+    <fontIcon>244</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Strong</iconPath>
+    <!-- Comments -->
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <ID>DISCIPLINE_AGRICULTURE</ID>
+      <ID>DISCIPLINE_LIVESTOCK</ID>
+      <ID>DISCIPLINE_METALWORKING</ID>
+      <ID>DISCIPLINE_CRAFTING</ID>
+      <num>-1</num>
+    </property>
+    <!--WARRIOR_TRAINING_TURNS-->
+    <property>
+      <propertyID>WARRIOR_TRAINING_TURNS</propertyID>
+      <num>-1</num>
+    </property>
+    <!--POWER-->
+    <property>
+      <propertyID>POWER</propertyID>
+      <num>1</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Stubborn                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Stubborn</ID>
+    <name>固执</name>
+    <description></description>
+    <fontIcon>245</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Stubborn</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>这不完全是我们原本要去的地方，但该死，我们绝不会再回到外面。我们要留下。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>宁愿坐着，也不想让你要求我们做些荒唐事，逼得我不得不拒绝。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Discipline_Switch_Cost-->
+    <property>
+      <propertyID>Discipline_Switch_Cost</propertyID>
+      <num>2</num>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>100</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Sullen                   -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Sullen</ID>
+    <name>阴沉</name>
+    <description></description>
+    <fontIcon>246</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Sullen</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>请别问我们从哪来，也别问为什么来。这是……一个真正令人沮丧的故事。反正你也不会想听。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>死亡总是比任何人意识到的都更近。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>没别的事可做时，很难不陷进阴暗的念头里……</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Mood_Max-->
+    <property>
+      <propertyID>Mood_Max</propertyID>
+      <ID>MOOD_UPSET</ID>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--Desire_Chance-->
+    <property>
+      <propertyID>Desire_Chance</propertyID>
+      <percent>-50</percent>
+    </property>
+    <!--Cannot_Feud-->
+    <property>
+      <propertyID>Cannot_Feud</propertyID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Surveyors                -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Surveyors</ID>
+    <name>测绘员</name>
+    <description></description>
+    <fontIcon>247</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Surveyors</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_SURVEYOR</unitID>
+    </property>
+  </clanTrait>
+  <!--   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   -->
+  <!--   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   -->
+  <!--   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   T   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Thorough                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Thorough</ID>
+    <name>细致</name>
+    <description></description>
+    <fontIcon>248</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Thorough</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>和你的几位氏族成员谈过，又检查了住处之后，我们判断这里确实可以成为我们的合适家园。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>不用带我们参观了，谢谢。我们已经自己看过不少地方。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>花时间真正弄清手头任务的方方面面，才能得到更好的结果。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>我们已经开始为一项任务做准备。有安排时就告诉我们。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--DISCIPLINE_TRAINING_TURNS-->
+    <property>
+      <propertyID>DISCIPLINE_TRAINING_TURNS</propertyID>
+      <percent>50</percent>
+    </property>
+    <!--DISCIPLINE_EXPERIENCE_RATE-->
+    <property>
+      <propertyID>DISCIPLINE_EXPERIENCE_RATE</propertyID>
+      <percent>200</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Tough                    -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Tough</ID>
+    <name>坚韧</name>
+    <description></description>
+    <fontIcon>249</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Tough</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>我都记不清来路上有多少强盗袭击过我们了。哦，别担心，我们没事。[NEWLINE]不过既然你提到了，也许有人能帮忙把我兄弟汉瑟里克膝盖上的箭拔出来？</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>传说高高高祖父 (CLAN_NAME) 曾把一头熊当作爱人。你也看得出来，熊血现在被冲淡了些。但这仍然很能解释一些事。</text>
+      </comment>
+    </comments_Random>
+    <!--COMBAT_DAMAGE_MOD-->
+    <property>
+      <propertyID>COMBAT_DAMAGE_MOD</propertyID>
+      <percent>-50</percent>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Trappers                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Trappers</ID>
+    <name>陷阱猎人</name>
+    <description></description>
+    <fontIcon>250</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Trappers</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_TRAPPER</unitID>
+    </property>
+  </clanTrait>
+  <!--   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   -->
+  <!--   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   -->
+  <!--   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   V   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Vigorous                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Vigorous</ID>
+    <name>精力旺盛</name>
+    <description></description>
+    <fontIcon>251</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Vigorous</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro -->
+      <comment>
+        <text>行了行了，我们宣誓效忠之类的。不用带我们参观，把地图拿来，把装备拿出来。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>保持强健体魄的关键，就是不断把自己逼到极限！</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>世界这么小，但拜托，总该还有更多地方可去吧！</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>我们已经准备出发，只要给个目的地！</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>(TRAINING_IN_PROFESSION)。好，我们马上去做。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--MOVES-->
+    <property>
+      <propertyID>MOVES</propertyID>
+      <num>1</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Violent                  -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Violent</ID>
+    <name>暴力</name>
+    <description></description>
+    <fontIcon>252</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Violent</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>你的定居点软弱又脆弱。只要有足够的铁与血，我们就能修好这一点。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>上一个地方我们一个活口都没留。小心别落得和他们一样。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>你考虑过把人头插在木桩上吓退进攻者吗？人头我们来提供。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>这世上到处都是杀戮与屠灭。什么时候轮到我们？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>(TRAINING_IN_PROFESSION)？你开玩笑吗？好吧，如果这是粉碎敌人所需，那就这样。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--POWER-->
+    <property>
+      <propertyID>POWER</propertyID>
+      <percent>50</percent>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>200</percent>
+    </property>-->
+  </clanTrait>
+  <!--   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   -->
+  <!--   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   -->
+  <!--   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   W   -->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Wasteful                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Wasteful</ID>
+    <name>浪费</name>
+    <description></description>
+    <fontIcon>253</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Wasteful</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>我们为了减轻负重丢下了一些补给，想着你会有替代品。幸好我们来得正是时候。再晚一两天，我们可能就饿死了……！</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>这里一定能让我们逃过风霜，我知道！</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>其他氏族总在翻我们的垃圾，真有点恶心……他们是在挨饿还是怎么？</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>培根要是没有边上那些肥肉就好多了。把它们剔掉太麻烦。</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>我们总该有点用处吧。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>(TRAINING_IN_PROFESSION)……不太清楚那是怎么回事，但试试看吧。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Below 20 Degrees -->
+      <comment>
+        <text>呼，我们可不是为这种天气而生的。</text>
+        <prereq>
+          <belowTemperature>20</belowTemperature>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <traitID>TRAIT_Northmen</traitID>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--RESOURCE_PRODUCTION-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>-10</percent>
+    </property>
+    <!--RESOURCE_PRODUCTION (ForStructure)-->
+    <property>
+      <propertyID>RESOURCE_PRODUCTION</propertyID>
+      <percent>-10</percent>
+      <usage>ForStructure</usage>
+    </property>
+    <!--SUPPLY_NEEDED-->
+    <property>
+      <propertyID>SUPPLY_NEEDED</propertyID>
+      <num>1</num>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Wild                     -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Wild</ID>
+    <name>野性</name>
+    <description></description>
+    <fontIcon>254</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Wild</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>我们听说这里有吃有喝。嗯。不过还需要更刺激一点！</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>所以……这附近有什么好玩的？拜托，别告诉我们你们像上个部族一样端着架子。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>“把自己洗干净？”什么？！你说话像个罗马人。</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>他们让我们安分下来。他们让我们穿裤子。嘿嘿……他们不会再犯那种错误了！</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>反正闲着也是闲着，我们会自己找乐子的！</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>(TRAINING_IN_PROFESSION) 啊？好，我们应该能玩出点花样！</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--POWER-->
+    <property>
+      <propertyID>POWER</propertyID>
+      <num>1</num>
+    </property>
+    <!--MORALE-->
+    <property>
+      <propertyID>MORALE</propertyID>
+      <percent>25</percent>
+    </property>
+    <!--Feud_Chance-
+    <property>
+      <propertyID>Feud_Chance</propertyID>
+      <percent>200</percent>
+    </property>-->
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Wood Collectors          -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Wood_Collectors</ID>
+    <name>拾柴者</name>
+    <description></description>
+    <fontIcon>255</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Wood_Collectors</iconPath>
+    <!-- Not a Personality Trait -->
+    <isNotPersonalityTrait>true</isNotPersonalityTrait>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>想找结实的斧头，就不用再找了。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>你也会被噩梦般的橡树和云杉幻象纠缠吗？我们来治好这毛病。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic -->
+      <comment>
+        <text>我们家最小的孩子刚砍倒了他的第一棵树！</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>你刚才说把我们的斧头放哪儿了？</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>(TRAINING_IN_PROFESSION)……嗯……是的，我们大概能把斧头用在那上面。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--Change_Config-->
+    <property>
+      <propertyID>Change_Config</propertyID>
+      <unitID>UNIT_WOOD_COLLECTOR</unitID>
+    </property>
+  </clanTrait>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--                               -->
+  <!--      Woodsmen                 -->
+  <!--                               -->
+  <clanTrait>
+    <ID>TRAIT_Woodsmen</ID>
+    <name>林地人</name>
+    <description></description>
+    <fontIcon>256</fontIcon>
+    <iconPath>Images/Interface/Icons/ClanTraits/Woodsmen</iconPath>
+    <!-- Comments -->
+    <comments_Intro>
+      <!-- Intro 1 -->
+      <comment>
+        <text>森林是我们的第一个家。那我们为什么来这里？当然是两个家比一个好。</text>
+      </comment>
+      <!-- Intro 2 -->
+      <comment>
+        <text>树木开口了。它们叫我们来这里。</text>
+      </comment>
+    </comments_Intro>
+    <comments_Random>
+      <!-- Random ... Generic 1 -->
+      <comment>
+        <text>你见过森林冠层上方闪烁的星光吗？没见过？很好，交给我们吧。外面很危险。</text>
+      </comment>
+      <!-- Random ... Generic 2 -->
+      <comment>
+        <text>这片土地可以多几棵树，你不觉得吗？</text>
+      </comment>
+      <!-- Random ... Unemployed -->
+      <comment>
+        <text>我们已经准备好面对荒野。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <REVERSE>true</REVERSE>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+      <!-- Random ... Training ... Was Unemployed -->
+      <comment>
+        <text>你说 (TRAINING_IN_PROFESSION)？太好了，没有什么比困在帐篷里更糟。</text>
+        <prereq>
+          <professionID>UNIT_NO_PROFESSION</professionID>
+        </prereq>
+        <prereq>
+          <isBeingTrained>true</isBeingTrained>
+        </prereq>
+      </comment>
+    </comments_Random>
+    <!--TERRAIN_MOVE_COST-->
+    <property>
+      <propertyID>TERRAIN_MOVE_COST</propertyID>
+      <num>0</num>
+      <terrainID>TERRAIN_FOREST_LEAFY</terrainID>
+      <terrainID>TERRAIN_BRUSH_LEAFY</terrainID>
+      <terrainID>TERRAIN_FOREST_PINE</terrainID>
+      <terrainID>TERRAIN_BRUSH_PINE</terrainID>
+    </property>
+  </clanTrait>
+</clanTraits>
+<!-- X X X X X X X X X X X X X X X X -->
+<!-- X X X X X X X X X X X X X X X X -->
+<!-- X X X X X X X X X X X X X X X X -->
+<!--<unitIndexMustHave>0</unitIndexMustHave>-->
+<!-- X X X X X X X X X X X X X X X X -->
+<!-- X X X X X X X X X X X X X X X X -->
+<!-- X X X X X X X X X X X X X X X X -->

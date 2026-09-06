@@ -1,0 +1,243 @@
+<goodyHuts>
+  <!--*****************************************-->
+  <!--*                                       *-->
+  <!--*            DESERTED VILLAGE           *-->
+  <!--*                                       *-->
+  <!--*****************************************-->
+  <goodyHut>
+    <ID>GOODY_HUT_VILLAGE</ID>
+    <name>废弃村落</name>
+    <description>这是昔日繁荣社区的遗迹。[NEWLINE]其中可能仍有有用的物资，可由[EXPLORER]调查。</description>
+    <fontIcon>96</fontIcon>
+    <texturePath>Images/Structures/Goodies/DesertedVillage</texturePath>
+    <sketchPath>Images/Structures/Goodies/DesertedVillage_Sketch</sketchPath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_DRY</terrainID>
+      <texturePath>Images/Structures/Goodies/DesertedVillage_Dry</texturePath>
+    </terrainTexturePath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_SNOW</terrainID>
+      <texturePath>Images/Structures/Goodies/DesertedVillage_Winter</texturePath>
+    </terrainTexturePath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_BLIZZARD</terrainID>
+      <texturePath>Images/Structures/Goodies/DesertedVillage_Winter</texturePath>
+    </terrainTexturePath>
+    <randSelectionWeight>10</randSelectionWeight>
+    <popPropStructureID>STRUCTURE_WRECKAGE</popPropStructureID>
+    <!-- Possible Results -->
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_REVEAL_NEARBY_GOODIES</resultID>
+      <randSelectionWeight>52</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_TREASURE</resultID>
+      <randSelectionWeight>16</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_TOOLS</resultID>
+      <randSelectionWeight>8</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_DIGGER</resultID>
+      <randSelectionWeight>1</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_WOOD_COLLECTOR</resultID>
+      <randSelectionWeight>1</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_MINER</resultID>
+      <randSelectionWeight>1</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_LOGGER</resultID>
+      <randSelectionWeight>1</randSelectionWeight>
+    </possibleGoodyResult>
+  </goodyHut>
+  <!--*****************************************-->
+  <!--*                                       *-->
+  <!--*             DESERTED FARM             *-->
+  <!--*                                       *-->
+  <!--*****************************************-->
+  <goodyHut>
+    <ID>GOODY_HUT_FARM</ID>
+    <name>废弃农场</name>
+    <description>这是一座最近被遗弃的农场。[NEWLINE]其中可能仍有有用的物资，可由[EXPLORER]调查。</description>
+    <fontIcon>96</fontIcon>
+    <texturePath>Images/Structures/Goodies/AbandonedFarm</texturePath>
+    <sketchPath>Images/Structures/Goodies/AbandonedFarm_Sketch</sketchPath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_DRY</terrainID>
+      <texturePath>Images/Structures/Goodies/AbandonedFarm_Dry</texturePath>
+    </terrainTexturePath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_SNOW</terrainID>
+      <texturePath>Images/Structures/Goodies/AbandonedFarm_Winter</texturePath>
+    </terrainTexturePath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_BLIZZARD</terrainID>
+      <texturePath>Images/Structures/Goodies/AbandonedFarm_Winter</texturePath>
+    </terrainTexturePath>
+    <randSelectionWeight>10</randSelectionWeight>
+    <popPropStructureID>STRUCTURE_WRECKAGE</popPropStructureID>
+    <!-- Possible Results -->
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_FOOD</resultID>
+      <randSelectionWeight>39</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_TIMBER</resultID>
+      <randSelectionWeight>12</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_SUPPLY_COST</resultID>
+      <randSelectionWeight>6</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_FARMER</resultID>
+      <randSelectionWeight>1</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_REAPER</resultID>
+      <randSelectionWeight>1</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_GATHERER</resultID>
+      <randSelectionWeight>1</randSelectionWeight>
+    </possibleGoodyResult>
+  </goodyHut>
+  <!--*****************************************-->
+  <!--*                                       *-->
+  <!--*             DESERTED FORT             *-->
+  <!--*                                       *-->
+  <!--*****************************************-->
+  <goodyHut>
+    <ID>GOODY_HUT_FORT</ID>
+    <name>废弃要塞</name>
+    <description>即使是这般残破、饱经岁月侵蚀的要塞，也可能隐藏着危险。[NEWLINE]其中可能仍有有用的物资，可由[EXPLORER]调查。</description>
+    <fontIcon>96</fontIcon>
+    <texturePath>Images/Structures/Goodies/CrumblingFort</texturePath>
+    <sketchPath>Images/Structures/Goodies/CrumblingFort_Sketch</sketchPath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_DRY</terrainID>
+      <texturePath>Images/Structures/Goodies/CrumblingFort_Dry</texturePath>
+    </terrainTexturePath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_SNOW</terrainID>
+      <texturePath>Images/Structures/Goodies/CrumblingFort_Winter</texturePath>
+    </terrainTexturePath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_BLIZZARD</terrainID>
+      <texturePath>Images/Structures/Goodies/CrumblingFort_Winter</texturePath>
+    </terrainTexturePath>
+    <randSelectionWeight>10</randSelectionWeight>
+    <popPropStructureID>STRUCTURE_WRECKAGE</popPropStructureID>
+    <!-- Possible Results -->
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_BANDITS</resultID>
+      <randSelectionWeight>13</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_EXPLORER</resultID>
+      <randSelectionWeight>4</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_ARCHER</resultID>
+      <randSelectionWeight>2</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_LANCER</resultID>
+      <randSelectionWeight>1</randSelectionWeight>
+    </possibleGoodyResult>
+  </goodyHut>
+  <!--*****************************************-->
+  <!--*                                       *-->
+  <!--*         DESERTED BATTLEFIELD          *-->
+  <!--*                                       *-->
+  <!--*****************************************-->
+  <goodyHut>
+    <ID>GOODY_HUT_BATTLEFIELD</ID>
+    <name>废弃战场</name>
+    <description>这里曾是大型战役的战场，旧装备散落各处。[NEWLINE]其中可能仍有有用的物资，可由[EXPLORER]调查。</description>
+    <fontIcon>96</fontIcon>
+    <texturePath>Images/Structures/Goodies/RecentBattlefield</texturePath>
+    <sketchPath>Images/Structures/Goodies/RecentBattlefield_Sketch</sketchPath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_SNOW</terrainID>
+      <texturePath>Images/Structures/Goodies/RecentBattlefield_Winter</texturePath>
+    </terrainTexturePath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_BLIZZARD</terrainID>
+      <texturePath>Images/Structures/Goodies/RecentBattlefield_Winter</texturePath>
+    </terrainTexturePath>
+    <randSelectionWeight>10</randSelectionWeight>
+    <popPropStructureID>STRUCTURE_WRECKAGE</popPropStructureID>
+    <!-- Possible Results -->
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_WEAPONS</resultID>
+      <randSelectionWeight>13</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_VISION_POINT</resultID>
+      <randSelectionWeight>4</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_MOVE_POINT</resultID>
+      <randSelectionWeight>2</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_POWER_UPGRADE</resultID>
+      <randSelectionWeight>1</randSelectionWeight>
+    </possibleGoodyResult>
+    <!--<possibleGoodyResult>
+			<resultID>GOODY_RESULT_VISION_MOVE_POWER</resultID>
+			<randSelectionWeight>1</randSelectionWeight>
+		</possibleGoodyResult>-->
+  </goodyHut>
+  <!--*****************************************-->
+  <!--*                                       *-->
+  <!--*             DESERTED CITY             *-->
+  <!--*                                       *-->
+  <!--*****************************************-->
+  <goodyHut>
+    <ID>GOODY_HUT_CITY</ID>
+    <name>废弃城市</name>
+    <pluralName>Deserted Cities</pluralName>
+    <description>这是一座不久前被遗弃的宏伟罗马城市遗迹。[NEWLINE]其中可能仍有有用的物资，可由[EXPLORER]调查。</description>
+    <fontIcon>96</fontIcon>
+    <texturePath>Images/Structures/Goodies/RuinedCity</texturePath>
+    <sketchPath>Images/Structures/Goodies/RuinedCity_Sketch</sketchPath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_DRY</terrainID>
+      <texturePath>Images/Structures/Goodies/RuinedCity_Dry</texturePath>
+    </terrainTexturePath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_SNOW</terrainID>
+      <texturePath>Images/Structures/Goodies/RuinedCity_Winter</texturePath>
+    </terrainTexturePath>
+    <terrainTexturePath>
+      <terrainID>TERRAIN_BLIZZARD</terrainID>
+      <texturePath>Images/Structures/Goodies/RuinedCity_Winter</texturePath>
+    </terrainTexturePath>
+    <randSelectionWeight>10</randSelectionWeight>
+    <popPropStructureID>STRUCTURE_WRECKAGE</popPropStructureID>
+    <!-- Possible Results -->
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_LUXURIES</resultID>
+      <randSelectionWeight>13</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_SURVEYOR</resultID>
+      <randSelectionWeight>4</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_TRADER</resultID>
+      <randSelectionWeight>2</randSelectionWeight>
+    </possibleGoodyResult>
+    <possibleGoodyResult>
+      <resultID>GOODY_RESULT_ROMAN_LEGION</resultID>
+      <randSelectionWeight>1</randSelectionWeight>
+    </possibleGoodyResult>
+  </goodyHut>
+</goodyHuts>
